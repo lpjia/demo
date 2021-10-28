@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标点击特效</title>
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1743249_grf4shm1g3t.css">
+  <style>
+    html {
+      cursor: pointer;
+    }
+
+    h3 {
+      text-align: center;
+      user-select: none;
+    }
+
+    .div-box {
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>请点击屏幕查看效果</h3>
+  <script>
+    window.onclick = function (e) {
+      //存储需要的颜色
+      let arr = ["red", "yellow", "green", "pink", "blue", "purple", "orangered"];
+      //随机产生一个颜色
+      let heartNum = Math.floor(Math.random() * arr.length);
+      let div = document.createElement("div");
+      div.setAttribute("class", "iconfont iconzan div-box");
+      div.style.color = arr[heartNum];
+      document.body.appendChild(div);
+      //获得鼠标的x,y轴的位置，并减去自身宽高的一半，使其能够在爱心的正中心
+      let x = e.pageX - div.offsetWidth / 2;
+      let y = e.pageY - div.offsetHeight / 2;
+      div.style.left = x + "px";
+      div.style.top = y + "px";
+      //获得0-1的整数
+      let num = Math.round(Math.random());
+      let timer = setInterval(() => {
+        y -= 10;
+        if (num === 0) x -= 10;
+        else x += 10;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        //如果超出屏幕范围，则删除此节点
+        if (y < -100) {
+          clearInterval(timer);
+          div.remove();
+        }
+      }, 100);
+    }
+  </script>
+</body>
+
+</html>

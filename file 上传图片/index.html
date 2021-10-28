@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="description" content="HTML examples">
+  <meta name="keywords" content="HTML,CSS,JavaScript,blog">
+  <meta name="author" content="xumeng">
+  <title>file 上传图片</title>
+  <style type="text/css">
+    .none {
+      visibility: hidden;
+    }
+
+    .content {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .file_upload {
+      width: 48%;
+      min-height: 400px;
+      margin: 10px;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .file_upload>div {
+      width: 100%;
+      height: 100%;
+    }
+
+    .file_con .hide {
+      width: 120px;
+      height: 30px;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      position: absolute;
+      left: 0;
+      z-index: 22;
+    }
+
+    .file_con .file_uploader,
+    .upload_bt {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      padding: 6px 14px;
+      color: #fff;
+      background: #2ECC71;
+      text-align: center;
+      z-index: 11;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .upload_bt {
+      left: 130px;
+    }
+
+    .file_con .hide:hover {
+      box-shadow: 1px 2px #44795b;
+    }
+
+    .img_holder,
+    .m_img_holder {
+      padding-top: 40px;
+    }
+
+    .img_holder img,
+    .m_img_holder img {
+      max-width: 200px;
+    }
+
+    .img_box {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      border: 1px transparent dashed;
+      padding: 12px;
+      box-shadow: 2px 2px 10px #ccc;
+    }
+
+    .img_box:hover {
+      /*border: 1px #ccc dashed;*/
+    }
+
+    .img_box:hover .delete {
+      display: block;
+    }
+
+    .img_box .delete {
+      position: absolute;
+      right: 1px;
+      top: 0;
+      display: none;
+      font-family: Arial;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .progress {
+      display: inline-block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 代码没仔细看过, 以后得研究研究 -->
+  <div class="content">
+    <div class="file_upload">
+      <div class="file_con">
+        <div>
+          <input type="file" class="hide" id="upload"><span class="file_uploader">上传单个文件</span><span
+            class="upload_bt none">确认上传</span>
+        </div>
+        <div class="img_holder"></div>
+      </div>
+      <span class="progress"></span>
+    </div>
+    <div class="file_upload">
+      <div class="file_con">
+        <div>
+          <input type="file" multiple="multiple" class="hide" id="m_upload"><span class="file_uploader">上传多个文件</span>
+        </div>
+        <div class="m_img_holder"></div>
+      </div>
+    </div>
+    <div>
+      参考文章：
+      <a target="_blank">filereader</a>
+      <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank">mozilla</a>
+    </div>
+  </div>
+  <script type="text/javascript"
+    src="http://js.40017.cn/cn/min/??/cn/lvcang/base/jquery-1.7.2.min.js?v=2016071216"></script>
+  <script type="text/javascript">
+    (function () {
+      var file = {
+        upload: function (e) {
+          var file = e.target.files[0];
+          var type = file.type.split('/')[0];
+          if (type != 'image') {
+            alert('请上传图片');
+            return;
+          }
+          var size = Math.floor(file.size / 1024 / 1024);
+          if (size > 3) {
+            alert('图片大小不得超过3M');
+            return;
+          };
+          var reader = new FileReader();
+          console.log(file);
+          console.log(reader);
+          // reader.readAsBinaryString(file);
+          // reader.readAsArrayBuffer(file);
+          // reader.abort(file);
+          // reader.readAsText(file);
+          reader.readAsDataURL(file);
+          reader.onloadstart = function () {
+            console.log('start');
+          };
+          reader.onprogress = function (e) {
+            var p = '已完成：' + Math.round(e.loaded / e.total * 100) + '%';
+            $(".file_upload").find(".progress").html(p);
+            // console.log(e);
+            console.log('uploading');
+          };
+          reader.onabort = function () {
+            console.log('abort');
+          };
+          reader.onerror = function () {
+            console.log('error');
+          };
+          reader.onload = function () {
+            console.log('load complete');
+          };
+          reader.onloadend = function (e) {
+            // console.log(e);
+            var dataURL = reader.result;
+            var image = '<img src="' + dataURL + '"/>';
+            var text = '<span>"' + dataURL + '"</span>';
+            // console.log(dataURL);
+            //file里面存放有文件的名字(name)、格式(type)、大小(size)、上传时间(time)等等
+            var name = file.name, size = Math.round(file.size / 1024), time = new Date(file.lastModified);
+            time = time.getFullYear() + '年' + Math.floor(time.getMonth() + 1) + '月' + time.getDate() + '日';
+            var div = '<p>Name: ' + name + '</p><p>Size: ' + size + 'kb</p>';
+            var imglist = '<div class="img_box"><span class="delete">X</span>' + image + div + '</div>';
+            $(".img_holder").html(imglist);
+            //异步提交数据
+            $(".upload_bt").click(function () {
+              if ($("#upload").val() == '') {
+                alert('请上传图片');
+                return;
+              };
+              var para = {
+                name: name,
+                url: dataURL
+              };
+              $.ajax({
+                url: 'http://www.baidu.com',
+                type: 'post',
+                data: para,
+                success: function (data) {
+                  if (data) {
+                    alert('success');
+                  } else {
+                    alert('failure');
+                  }
+                },
+                err: function () {
+                  alert('error');
+                }
+              })
+            });
+          };
+        },
+        m_upload: function (e) {
+          var m_file = e.target.files;
+          //file里面存放有文件的名字(name)、格式(type)、大小(size)、上传时间(time)等等
+          var name = '', div = '', image = '';
+          for (var i = 0; i < m_file.length; i++) {
+            var z = m_file[i];
+            // var type = z.type.split('/')[0];
+            // if (type !='image') {
+            // 	alert('请上传图片');
+            // 	return;
+            // }
+            var reader = new FileReader();//这里可能会有坑
+            reader.readAsDataURL(z);
+            // console.log(z.name);
+            reader.onloadend = (function (i) {
+              return function () {
+                console.log();
+                console.log(i);
+                div = '<p>Name: ' + i.name + '</p><p>Size: ' + Math.round(i.size / 1024) + 'kb</p>';
+                image = '<img src="' + this.result + '"/>';
+                var imglist = '<div class="img_box"><span class="delete">X</span>' + image + div + '</div>';
+                $(".m_img_holder").append(imglist);
+              };
+            })(z);
+          };
+        },
+        event: function () {
+          $("#upload").change(function (e) {
+            $(".progress").removeClass("none");
+            file.upload(e);
+          });
+          $("#m_upload").change(function (e) {
+            file.m_upload(e);
+          });
+          //删除文件
+          $(".file_upload").delegate(".delete", "click", function () {
+            var o = $(this);
+            o.parents(".img_box").remove();//并没有清空input里面的值
+            $(".progress").addClass("none");
+            $("#upload,#m_upload").val('');//这下就删除了
+          })
+        },
+        init: function () {
+          this.event();
+        }
+      }
+      file.init();
+    }());
+  </script>
+</body>
+
+</html>

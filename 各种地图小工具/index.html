@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>各种地图小工具</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="flex">
+      <div class="gap">
+        <div id="mapDiv" class="mapDiv"></div>
+        <div class="up_down">
+          <el-select v-model="selectVal" @change="selectChange">
+            <el-option v-for="(item,idx) in cityArr" :key="idx" :value="item.name" :label="item.name" />
+          </el-select>
+        </div>
+        <div>
+          这是百度地图<br>
+          地图中心点坐标: {{ mapCenter }}<br>
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <div class="gap">
+        <div id="mapDiv2" class="mapDiv"></div>
+        <div>
+          这是高德地图 JSAPI 加载器<br>
+        </div>
+      </div>
+      <!-- <div class="gap">
+        <div id="mapDiv3" class="mapDiv"></div>
+        <div>
+          这是 chart3<br>
+          渐变色加到 shadow 没效果<br>
+          整体渐变色也没效果<br>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <script src="../lib/vue@2.6.12.js"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://webapi.amap.com/loader.js"></script>
+  <script type="text/javascript"
+    src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=cgmRU9IZ6Vb6MX3VNEwN6WwTzUwXqMP2"></script>
+  <!-- <script src="index.js" type="text/javascript" charset="utf-8"></script> -->
+  <script src="map/geoArea.js" type="text/javascript" charset="utf-8"></script>
+  <script src="m_index.js" type="module"></script>
+</body>
+
+</html>

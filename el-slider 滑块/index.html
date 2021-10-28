@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-slider 滑块</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    .blk {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <div class="blk">上限:</div>
+    <div class="blk">
+      <el-slider show-input v-model="valueTop" :min="valueTopMin" :max="valueTopMax" :step="step"
+        @change="changeValTop">
+      </el-slider>
+    </div>
+    <div class="blk">下限:</div>
+    <div class="blk">
+      <!-- <el-slider show-input v-model="valueBtm" :min="valueBtmMin" :max="valueBtmMax" :step="step"
+        @change="changeValBtm"></el-slider> -->
+      <el-slider show-input v-model="valueBtm" :min="valueTopMin" :max="valueTopMax" :step="step"
+        @change="changeValBtm"></el-slider>
+    </div>
+
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

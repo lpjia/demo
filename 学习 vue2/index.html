@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学习 vue2</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="up_down">
+      <div>网络调慢, 可以明显看出</div>
+      <div v-cloak>{{ msg }}</div>
+      <div>作为对比, 没加 v-cloak: {{ msg }}</div>
+    </div>
+    <div class="up_down">
+      <button v-on:click="counter += 1">Add 1</button>
+      <button @click="counter += 2">Add 2</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+    <div class="up_down">
+      <button @click="greet">Greet</button>
+    </div>
+    <div class="up_down">
+      <button @click="doLog('log 日志', $event)">doLog</button>
+    </div>
+    <div class="up_down">
+      <button @click.once="doSomething('this is doOnce')">doOnce</button>
+    </div>
+    <div class="up_down" style="width: 500px;">
+      <el-input @keyup.enter.native="doSomething('this is doEnterNative')" v-model="enter"></el-input> el-input
+      在绑定原生事件必须使用 .native 修饰符
+    </div>
+    <div class="up_down" style="width: 500px;">
+      <input @keyup.enter="doSomething('this is doEnter')" value="enter"></input>原生 input 不用加 .native 修饰符
+    </div>
+    <div class="up_down" style="width: 500px;">
+      <input @keyup.page-down="doSomething('this is doPageDown')" value="page-down"></input>
+      <input @keyup.delete="doSomething('this is doDelete')" value="delete"></input>
+      <input @keyup.esc="doSomething('this is doEsc')" value="esc"></input>
+      <input @keyup.space="doSomething('this is doSpace')" value="space"></input>
+      <input @keyup.up="doSomething('this is doUp')" value="up"></input>
+      <input @keyup.down="doSomething('this is doDown')" value="down"></input>
+      <input @keyup.left="doSomething('this is doLeft')" value="left"></input>
+      <input @keyup.right="doSomething('this is doRight')" value="right"></input>
+    </div>
+    <div class="up_down">
+      <button @click.ctrl="doSomething('this is doCtrl')" style="cursor: pointer;">Ctrl + Click</button>
+
+      <!-- 有且只有 Ctrl 被按下的时候才触发 -->
+      <button @click.ctrl.exact="doSomething('this is doCtrlExact')">有且只有 Ctrl 被按下的时候才触发</button>
+
+      <!-- 没有任何系统修饰符被按下的时候才触发 -->
+      <button @click.exact="doSomething('this is doExact')">没有任何系统修饰符被按下的时候才触发</button>
+    </div>
+    <div class="up_down">
+      <!-- 鼠标右键 -->
+      <button @click.right="doSomething('this is doClickRight')">鼠标右键</button>
+
+      <!-- 滚轮键 -->
+      <button @click.middle="doSomething('this is doClickMiddle')">滚轮键</button>
+    </div>
+    <div class="up_down">
+      <!-- 双大括号可以 -->
+      <p v-for="(item, idx) in arr">{{ item.name + " is " + item.age }}</p>
+      <b>在模板中放入太多的逻辑会让模板过重且难以维护, 下面用计算属性来代替</b>
+      <p v-for="(item, idx) in arr" :title="longName(item)">{{ longName(item) }}</p>
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

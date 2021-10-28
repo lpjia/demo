@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>获取 script 标签中的属性数据</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style></style>
+</head>
+
+<body>
+
+  <!-- 在 HTML5 中，type 属性不再是必需的。默认值是 "text/javascript"。 -->
+  <!-- 显式取 type 则取不到 -->
+  <script data-id="one"></script>
+  <script data-id="two" type="text/javascript"></script>
+
+  <!-- 属性名和标签名一样, 不区分大小写 -->
+  <!-- 先取到的属性才能输出 -->
+  <script data-id="three" data-sectionId="1" data-sectionid="11"></script>
+  <script data-id="four" data-sectionid="11" data-sectionId="1"></script>
+
+  <!-- 只有内置标准属性才能直接用 obj.xxx 或者 obj['xxx'] 的方式来取 -->
+  <!-- 用户自定义属性只能通过调用方法来取 -->
+  <script data-id="five" zdyVal="自定义属性"></script>
+
+  <script src="index.js" type="text/javascript"></script>
+
+  <script>
+    window.onload = () => {
+      // 获取 dom
+      // let domScript = document.querySelector('script')
+      let domScript = document.querySelectorAll('script')
+      // let domScript = document.getElementsByTagName('script')
+      console.log('domScript: ', domScript)
+
+      let arr = []
+      for (const item of domScript) {
+        let obj = {
+          'item.type': item.type,
+          'getAttribute("data-id")': item.getAttribute("data-id"),
+          'data-sectionId': item.getAttribute("data-sectionId"),
+          'item.zdyVal': item.zdyVal,
+          'item.async': item.async,
+          'item["src"]': item['src'],
+        }
+        arr.push(obj)
+      }
+      // console.table(arr, ['data-sectionId'])
+      console.table(arr)
+    }
+  </script>
+</body>
+
+</html>

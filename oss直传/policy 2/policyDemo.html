@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>OSS web直传</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script typet="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+
+<h2>OSS web直传---直接在JS签名</h2>
+<ol>
+<li>基于plupload封装 </li>
+<li>支持html5,flash,silverlight,html4 等协议上传</li>
+<li>可以运行在PC浏览器，手机浏览器，微信</li>
+<li>可以选择多文件上传</li>
+<li>显示上传进度条</li>
+<li>可以控制上传文件的大小</li>
+<li>最关键的是，让你10分钟之内就能移植到你的系统，实现以上牛逼的功能！</li>
+<li>注意一点，把policy.js第一行的service_url更换成各个环境(dev/uat/prd)的接口请求地址即可</li>
+<li>lib目录存放的是核心算法签名JS,请原样引入,不要作变更</li>
+<li>上传选择的文件名的重写的js方法在policy.js 的 calculate_object_name 函数和get_uploaded_object_name函数</li>
+<li>注意复制嵌套到其他项目的时候，下面div的三个id名字请勿更换，div id ="container", a id="selectfiles" a id ="postfiles" 请原样保留那个div id="container"的区域</li>
+<li>此方法是直接在后端签名，前端通过后端的签名参数然后提交到指定的bucket,以达到access_secret不泄漏又能通过前端直传阿里云OSS,绕过应用服务器<a href="https://help.aliyun.com/document_detail/oss/practice/pc_web_upload/js_php_upload.html">点击查看详细文档</a></li>
+</ol>
+<br>
+<h4>您所选择的文件列表：</h4>
+<div id="ossfile">你的浏览器不支持flash,Silverlight或者HTML5！</div>
+
+<br/>
+
+<div id="container">
+	<a id="selectfiles" href="javascript:void(0);" class='btn'>选择文件</a>
+	<a id="postfiles" href="javascript:void(0);" class='btn'>开始上传</a>
+</div>
+
+<pre id="console"></pre>
+
+<p>&nbsp;</p>
+
+</body>
+<script type="text/javascript" src="lib/crypto1/crypto/crypto.js"></script>
+<script type="text/javascript" src="lib/crypto1/hmac/hmac.js"></script>
+<script type="text/javascript" src="lib/crypto1/sha1/sha1.js"></script>
+<script type="text/javascript" src="lib/base64.js"></script>
+<script type="text/javascript" src="lib/plupload-2.1.2/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="policy.js"></script>
+</html>

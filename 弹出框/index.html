@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>弹出框</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #login {
+      width: 200px;
+      height: 200px;
+      border: solid #000 1px;
+      position: absolute;
+      padding: 2px 4px;
+      background-color: #eee;
+    }
+
+    #close {
+      position: absolute;
+      top: 0;
+      right: 4px;
+      cursor: pointer;
+    }
+
+    body {
+      height: 2000px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <button>弹出</button>
+
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script>
+
+    $(function () {
+
+      $('button').click(function () {
+        var oLogin = $(`<div id="login">
+                          <p>用户名：<input type="text"></p>
+                          <p>密码：<input type="password"></p>
+                          <div id="close">X</div>
+                        </div>`)
+
+        $('body').append(oLogin)
+        oLogin.hide(0, function () {
+          oLogin.fadeIn('slow')
+        })
+
+        oLogin.css('left', ($(window).width() - oLogin.outerWidth()) / 2)
+        oLogin.css('top', ($(window).height() - oLogin.outerHeight()) / 2)
+
+        $(window).on('scroll resize', function () {
+          oLogin.css('left', ($(window).width() - oLogin.outerWidth()) / 2)
+          oLogin.css('top', ($(window).height() - oLogin.outerHeight()) / 2 + $(window).scrollTop())
+
+        })
+
+        $('#close').click(function () {
+          oLogin.fadeOut('slow', function () {
+            oLogin.remove()
+          })
+        })
+
+      })
+
+    })
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

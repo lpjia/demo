@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模版</title>
+
+
+    <!-- 库文件 -->
+    <link rel="stylesheet" href="../../libs/elementUI/element-ui@2.6.1_index.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../../common/common.css" /> -->
+
+    <!-- 其他文件 -->
+    <link rel="stylesheet/less" type="text/css" href="learn_vue.less">
+    <script src="../../libs/less.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <div>.app</div>
+    <div class="app">
+      <p v-if="isMorning">早上好！</p>
+      <p v-if="isAfternoon">中午好！</p>
+      <p v-if="isEvening">晚上好！</p>
+    </div>
+
+    <hr />
+    <div>.app2</div>
+    <div class="app2">
+      <p v-if="hours < 12">早上好！</p>
+      <p v-if="hours >= 12 && hours < 18">中午好！</p>
+      <p v-if="hours >= 18">晚上好！</p>
+    </div>
+
+    <hr />
+    <div>.app3</div>
+    <div class="app3">
+      <p>Hello,{{ greetee }}</p>
+    </div>
+
+    <hr />
+    <div>.app4</div>
+    <div class="app4">
+      <p v-if="path === '/'">你正位于首页</p>
+      <p v-else>你正位于{{ path }}</p>
+    </div>
+
+    <hr />
+    <div>.app5</div>
+    <div class="app5">
+      <p>第三条狗的名字是{{ dogs[2] }}</p>
+      <p>所有狗的名字是{{ dogs }}</p>
+    </div>
+
+    <hr />
+    <div>.app6</div>
+    <div class="app6">
+      <p v-if="true">v-if true</p>
+      <p v-if="false">v-if false</p>
+    </div>
+
+    <hr />
+    <div>.app7</div>
+    <div class="app7">
+      <p v-show="true">v-show true</p>
+      <p v-show="false">v-show false</p>
+    </div>
+
+    <hr />
+    <div>.app8</div>
+    <div class="app8">
+      <p v-if="user.name" title="v-if user.name">v-if user.name</p>
+      <p v-if="user.value">v-if user.value</p>
+      <p id="app_8" v-show="user.value">v-show user.value</p>
+      <p id="app8"></p>
+    </div>
+
+    <hr />
+    <div>.app9</div>
+    <div class="app9">
+      <p v-if="state === 'loading'">加载中...</p>
+      <p v-else-if="state === 'error'">出错了</p>
+      <p v-else>其他内容</p>
+    </div>
+
+    <hr />
+    <div>.app10</div>
+    <div class="app10">
+      <p>第三条狗的名字是{{ dogs[2] }}</p>
+      <p>{{ dogs }}</p>
+      <ul>
+        <li v-for="dog in dogs">{{ dog }}</li>
+      </ul>
+      <p>↓ 是带索引的</p>
+      <ul>
+        <li v-for="(dog,i) in dogs">{{ dog }}, index is {{ i }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <div>.app11</div>
+    <div class="app11">
+      <ul>
+        <li v-for="(value,key) in obj">{{ key }} : {{ value }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <div>.app12</div>
+    <div class="app12">
+      <ul>
+        <li v-for="n in 10">{{ n }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <div>.app13</div>
+    <div class="app13">
+      <button v-bind:title="title">btn1</button>
+      <input type="text" :disabled="disa" value="disabled" />
+    </div>
+
+    <hr />
+    <div>.app14</div>
+    <div class="app14">
+      <ul>
+        <li v-for="dog in dogs">{{ dog }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <div>.app15</div>
+    <div class="app15">
+      <input type="text" v-bind:value="inputText" />
+      <p>inputText: {{ inputText }}</p>
+      <p>v-bind只会在inputText值变化时才更新输入框的值，反过来则不行。</p>
+    </div>
+
+    <hr />
+    <div>.app16</div>
+    <div class="app16">
+      <input type="text" v-model="inputText" />
+      <p>inputText: {{ inputText }}</p>
+      <p>v-model用在表单元素绑定上。</p>
+    </div>
+
+    <hr />
+    <div>.app17</div>
+    <div class="app17">
+      <p>当前状态: {{ statusFromId(status) }}</p>
+    </div>
+
+    <hr />
+    <div>.app18</div>
+    <div class="app18">
+      <ul>
+        <li v-for="number in filterPositive(numbers)">{{ number }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <div>.app19</div>
+    <div class="app19">
+      <p>数字的总和是：{{ numberTotal }}</p>
+    </div>
+
+    <hr />
+    <div>.app20</div>
+    <div class="app20">
+      <p>Sum of numbers: {{ numberTotal }}</p>
+      <button v-on:click="numberTotal += 1">add</button>
+      <p>{{numbers }}</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app21
+      <span>侦听器</span>
+    </h3>
+    <div class="app21">
+      <input type="text" v-model="inputValue" />
+      <p>5秒之后，显示输入的值为"{{ oldInputValue }}".</p>
+      <p>↑ 这个是 this.oldInputValue = NEWVALUE;const NEWVALUE = this.inputValue;</p>
+      <p>↓ 这个是 this.oldInputValue2 = this.inputValue;</p>
+      <p>5秒之后，显示输入的值为"{{ oldInputValue2 }}".</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app22
+      <span>获取旧值</span>
+      <span>监听data对象中某个对象的属性</span>
+      <span>深度监听</span>
+    </h3>
+    <div class="app22">
+      <p>changeData.valuee: {{ changeData.valuee }}</p>
+      <button v-on:click="changeData.valuee += 1">add changeData.valuee</button>
+      <p>changeData.value: {{ changeData.value }}</p>
+      <button v-on:click="changeData.value += 1">add changeData.value</button>
+      <p>旧值: {{ oldV }}</p>
+      <p>新值: {{ newV }}</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app23
+      <span>过滤器</span>
+    </h3>
+    <div class="app23">
+      <p>productOneCost: {{ productOneCost }}</p>
+      <p>商品一花费了: ${{ (productOneCost / 100).toFixed(1) }}</p>
+      <h3>下面换一种写法，用过滤器</h3>
+      <p>商品一花费了: {{ productOneCost | formatCost }}</p>
+      <h3>链式调用多个过滤器</h3>
+      <p>商品一花费了: {{ productOneCost | round | formatCost }}</p>
+      <h3>过滤器同样可以接受参数</h3>
+      <p>商品一花费了: {{ productOneCost | formatCost2('$ ') }}</p>
+      <h3>在v-bind中使用过滤器</h3>
+      <input type="text" v-bind:value="productOneCost | formatCost2('$$ ')" />
+      <h3>Vue.filter()注册全局过滤器，在创建 Vue 实例之前全局定义过滤器</h3>
+      <p>商品一花费了: {{ productOneCost | formatCost3('$$$ ') }}</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app24
+      <span>使用ref直接访问元素</span>
+      <span>原生js jQuery Vue.js访问元素</span>
+    </h3>
+    <div class="app24">
+      <h3>原生js访问这个结构</h3>
+      <p v-if="dis">document.getElementsByClassName('app24')[0]</p>
+      <h3>jQuery访问这个结构</h3>
+      <p v-if="disJQ">$('.app24')</p>
+      <div style="border: 1px solid deepskyblue;height: 30px;" ref="myCanvas"></div>
+    </div>
+    <h3>Vue.js访问这个结构</h3>
+    <h6 id="app24h4"></h6>
+
+    <hr />
+    <h3>
+      .app25
+      <span>输入和事件</span>
+    </h3>
+    <div class="app25">
+      <h3>使用内联代码</h3>
+      <button @click="counter++">单击增加计数</button>
+      <p>你已经单击了按钮 {{ counter }} 次</p>
+      <h3>使用方法</h3>
+      <button @click="increase">单击增加计数</button>
+      <p>你已经单击了按钮 {{ counter2 }} 次</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app26
+      <span>事件修饰符</span>
+    </h3>
+    <div class="app26">
+      <a style="display: block;" href="#" @click="jumpBaidu">页面跳转</a>
+      <a style="display: block;" href="#" @click.prevent="jumpBaidu">页面不跳转</a>
+      <input type="text" placeholder="测试一个键" @keydown.enter="keydownEnter">
+      <input type="text" placeholder="测试两个键" @keydown.enter.exact="keydownEnter">
+    </div>
+
+    <hr />
+    <h3>
+      .app27
+      <span>生命周期钩子</span>
+    </h3>
+    <div class="app27">看log</div>
+
+    <hr />
+    <h3>
+      .app28
+      <span>自定义指令</span>
+    </h3>
+    <div class="app28">
+      <p v-blink>本段内容会闪烁</p>
+    </div>
+
+    <hr />
+    <h3>
+      .app29
+      <span>组件基础</span>
+    </h3>
+    <div class="app29">
+      <h3>局部组件</h3>
+      <custom-button></custom-button>
+      <h3>全局组件</h3>
+      <customm-button></customm-button>
+      <h3>全局组件，数据、方法、计算属性</h3>
+      <positive-numbers></positive-numbers>
+      <positive-button></positive-button>
+      <h3>传递数据</h3>
+      <color-preview color="red"></color-preview>
+      <color-preview color="deepskyblue"></color-preview>
+      <h3>Prop验证</h3>
+      <price-display :unit="priceDisplay"></price-display>
+      <h3>Prop的大小写</h3>
+      <blog-post post-title="vue自动把中横线在组件内部转成驼峰"></blog-post>
+      <h3>响应式</h3>
+      <displpay-number :number="number"></displpay-number>
+      <h3>自定义输入组件与v-model</h3>
+      <input-username v-model="username"></input-username>
+      <h3>使用插槽(slot)将内容传递给组件</h3>
+      <custom-button2>单击我2</custom-button2>
+      <h3>自定义事件</h3>
+      <button @click="handleClick">单击了{{ clicks }}次</button>
+      <p><button @click="startEvent">触发事件</button></p>
+      <p><button @click="endEvent">取消事件</button></p>
+      <h3>非prop属性 父组件class传递</h3>
+      <custom-button3 class="this-class"></custom-button3>
+      <h3>非prop属性 父子组件class和style合并</h3>
+      <custom-button4 name="father-btn" class="father-class" style="color:#fff!important;border: none;"></custom-button4>
+      <h3>非prop属性 父子组件属性规则 父组件属性覆盖子组件</h3>
+      <custom-button5 name="father-btn"></custom-button5>
+    </div>
+
+    <hr />
+    <h3>
+      <span>主动释放内存 内存泄漏</span>
+    </h3>
+    <button onclick="varSetNull()">释放内存</button>
+
+    <hr />
+    <h3>
+      .app30
+      <span>获取本地json数据</span>
+    </h3>
+    <div class="app30">
+      <ul>
+        <li v-for="(item,i) in items">id is {{ item.id }}. index is {{ i }}</li>
+      </ul>
+    </div>
+
+    <hr />
+    <h3>
+      .app31
+      <span>原生js方式用script标签来实现引入模版效果</span>
+    </h3>
+    <button onclick="ysJsLoadScript()">引入模版</button><span>
+      html文件中script标签里type类型为text/html和text/template，页面最初渲染并不会把这里的html结构也渲染出来。推荐把这类模版script标签写到body的底部位置。此处为了方便查看所以才放到这个位置。</span>
+    <div class="app31-1">
+      <p>未引入模版</p>
+    </div>
+    <script type="text/template" id="app31-1">
+      <p>原生js用script标签引入的模版！！！</p>
+    </script>
+
+    <h3>原生js方式用template标签引入的模版</h3>
+    <button onclick="ysJsLoadTemplate()">引入模版</button>
+    <div class="app31-2">
+      <p>未引入模版</p>
+    </div>
+    <template id="app31-2">
+      <p>原生js用template标签引入的模版！！！</p>
+    </template>
+
+    <h3>用vue来引入模版</h3>
+    <div class="app31"></div>
+    <template id="app31">
+      <p>vue引入的模版！！！对vue而言，模版得放到被引用的前面。个人推荐script标签形式</p>
+    </template>
+
+    <hr />
+    <h3>
+      .app32
+      <span>v-for</span>
+    </h3>
+    <div class="app32"></div>
+    <script type="text/template" id="app32">
+      <ul v-if="items.length">
+        <li @click="items.splice(i,1)" :style="styleCss" v-for="(item,i) in items" :key="item.id">{{ item.id }}</li>
+      </ul>
+      <p v-else>无数据显示</p>
+    </script>
+
+    <hr />
+    <h3>
+      .app33
+      <span>render函数 标签名称</span>
+    </h3>
+    <div class="app33"></div>
+
+    <hr />
+    <h3>
+      .app34
+      <span>vue路由 vue-router</span>
+    </h3>
+    <div class="app34"></div>
+
+    <hr />
+    <h3>
+      .app35
+      <span>模拟vue的例子</span>
+    </h3>
+    <div class="app35">
+      <h3>各自维护数据状态</h3>
+      <local-c></local-c>
+      <local-c></local-c>
+      <local-c></local-c>
+      <h3>模拟共用维护一套数据状态 只为演示，闹着玩</h3>
+      <local-co></local-co>
+    </div>
+    
+    
+    
+    
+
+    <!-- 库文件 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+    <script src="../../libs/vue-v2.6.7.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="libs/vue-router-v3.0.2.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../libs/axios-v0.18.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../libs/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="../../libs/elementUI/element-ui@2.6.1_index.min.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="../../common/common.js" type="text/javascript" charset="utf-8"></script>
+
+    <!--  <script type="text/x-template" id="app31">
+        <p>原生js用script标签引入的模版！！！</p>
+      </script> -->
+    <!--  <template id="app31">
+         <p>vue引入的模版！！！对vue而言，模版得放到被引用的前面。个人推荐script标签形式</p>
+       </template> -->
+
+    <!-- 其他文件 -->
+    <script src="learn_vue.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

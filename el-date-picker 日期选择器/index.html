@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-date-picker 日期选择器</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    .block {
+      margin-bottom: 10px;
+    }
+
+    .demonstration {
+      width: 300px;
+      display: inline-block;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .datePicker {
+      width: 600px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value)">选定一个时间, 然后限制范围</span>
+      <el-date-picker clearable v-model="form.value1" type="daterange" :picker-options="pickerOptionsObj()"
+        @change="pickerChange" @focus="pickerFocus" value-format="yyyy-MM-dd" range-separator="至"
+        start-placeholder="开始日期" end-placeholder="结束日期">
+      </el-date-picker>
+    </div>
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value2)">选择当天前后一周内日期</span>
+      <el-date-picker style="width:500px;" clearable :picker-options="pickerOptionsObj2" v-model="form.value2"
+        type="daterange" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"
+        :default-time="['00:00:00', '23:59:59']" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+      </el-date-picker>
+    </div>
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value3)">选择当天前后任意天数日期</span>
+      <el-date-picker class="datePicker" clearable :picker-options="pickerOptionsObj3" v-model="form.value3"
+        type="daterange" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss"
+        :default-time="['00:00:00', '23:59:59']" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
+      </el-date-picker>
+    </div>
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value4)">默认</span>
+      <el-date-picker clearable v-model="form.value4" type="daterange"> </el-date-picker>
+    </div>
+
+
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="m_index.js" type="module" charset="utf-8"></script>
+</body>
+
+</html>

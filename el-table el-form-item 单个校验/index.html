@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-table el-form-item 单个校验</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <div>
+      <el-form>
+        <el-table ref="table_comp" class="up_down" :data="list" border max-height="600">
+          <!-- <el-table-column type="selection" width="60" align="center"></el-table-column> -->
+          <el-table-column type="index" label="NO." width="60" align="center"></el-table-column>
+          <el-table-column prop="name" label="商品名称" align="center"></el-table-column>
+          <el-table-column prop="price" label="单价" align="center"></el-table-column>
+          <el-table-column label="插槽 单价" align="center">
+            <template #default="{row, $index}">
+              <span>{{ row.price }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="预算">
+            <!-- 用到了行内的动态校验信息, 这里校验规则函数和以前常见的那个不一样, 没自带形参 -->
+            <template #default="{row, column, $index}">
+              <el-form-item :error="row.err" :rules="[{validator: validatorRulesFn(row), trigger: 'blur'}]"
+                :inline-message="$index === 2" :size="$index === 3? 'mini': ''">
+                <el-input v-model="row.val" style="width: 30%;"></el-input>
+              </el-form-item>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button @click="getList2">数据</el-button>
+        <el-button @click="validate">验证</el-button>
+      </el-form>
+    </div>
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="../lib/mock.js"></script> -->
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

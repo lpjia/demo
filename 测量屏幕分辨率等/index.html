@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta charset="UTF-8">
+  <title>测量屏幕分辨率</title>
+</head>
+
+<body onload="a()">
+
+  <script>
+    function a() {
+      var widthdoc = document.body.clientWidth || document.documentElement.clientWidth
+      var heightdoc = document.body.clientHeight || document.documentElement.clientHeight
+      document.write(
+        "屏幕分辨率为：" + screen.width + "*" + screen.height +
+        "<br />" +
+        "屏幕可用大小：" + screen.availWidth + "*" + screen.availHeight +
+        "<br />" +
+        "浏览器可见区域宽：" + widthdoc +
+        "<br />" +
+        "浏览器可见区域高：" + heightdoc +
+        "<br />" +
+        "网页可见区域宽(包括边线的宽)：" + document.body.offsetWidth +
+        "<br />" +
+        "网页可见区域高(包括边线的宽)：" + document.body.offsetHeight +
+        "<br />" +
+        "网页正文全文宽：" + document.body.scrollWidth +
+        "<br />" +
+        "网页正文全文高：" + document.body.scrollHeight +
+        "<br />" +
+        "网页被卷去的高：" + document.body.scrollTop +
+        "<br />" +
+        "网页被卷去的左：" + document.body.scrollLeft +
+        "<br />" +
+        "网页正文部分上：" + window.screenTop +
+        "<br />" +
+        "网页正文部分左：" + window.screenLeft +
+        "<br />" +
+        "屏幕分辨率的高：" + window.screen.height +
+        "<br />" +
+        "屏幕分辨率的宽：" + window.screen.width +
+        "<br />" +
+        "屏幕可用工作区高度：" + window.screen.availHeight +
+        "<br />" +
+        "屏幕可用工作区宽度：" + window.screen.availWidth
+      );
+    }
+  </script>
+</body>
+
+</html>

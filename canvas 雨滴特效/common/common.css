@@ -1,0 +1,35 @@
+
+/**
+* 样式清0
+*/
+* {box-sizing: border-box;margin: 0;padding: 0;color: #333;font-family: "Microsoft Yahei";
+    /*font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;*/
+}
+html, body {width: 100%;height: 100%;}
+html {font-size: 16px;}
+img {border: none;}
+ul, ol, li {list-style: none;}
+input, select, textarea {outline: none;border: none;}
+textarea {resize: none;}
+a, a:focus, a:hover {text-decoration: none;}
+i {font-style: normal;}
+strong {font-weight: normal;}
+/*input, textarea {-webkit-appearance: none;-moz-appearance: none;}*/
+
+/**
+* 清浮动
+*/
+.clear_f:after {content: "";display: block;clear: both;height: 0;}
+.clear_f {*zoom: 1;}
+
+/**
+* 左右浮动
+*/
+.float_l {float: left;}
+.float_r {float: right;}
+
+/**
+* table
+*/
+table{border-collapse:collapse;} 
+th,td{font-weight:normal;padding:10px;border: 1px solid deepskyblue;}

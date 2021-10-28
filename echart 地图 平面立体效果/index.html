@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>echart 地图 平面立体效果</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="flex">
+      <div class="gap">
+        <div id="mapDiv" class="mapDiv"></div>
+        <div class="up_down">
+          <el-select v-model="selectVal" @change="selectChange">
+            <el-option v-for="(item,idx) in cityArr" :key="idx" :value="item.code" :label="item.name" />
+          </el-select>
+        </div>
+        <div>
+          这是 chart<br>
+          实现了整体渐变色效果<br>
+          实现了整体移动和缩放的效果, 需要 echart@4.9.0 版本<br>
+        </div>
+      </div>
+      <div class="gap">
+        <div id="mapDiv2" class="mapDiv"></div>
+        <div>
+          这是 chart2<br>
+          这是可以移动和缩放的, 不过是有问题的<br>
+          geo 是底图配置项<br>
+          渐变色也只能加到 area, 不能加到阴影上<br>
+          图上渐变色是根据每个块来渐变的, 而不是整体渐变<br>
+        </div>
+      </div>
+      <div class="gap">
+        <div id="mapDiv3" class="mapDiv"></div>
+        <div>
+          这是 chart3<br>
+          渐变色加到 shadow 没效果<br>
+          整体渐变色也没效果<br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+  <!-- <script src="../lib/axios@0.21.1.min.js"></script> -->
+  <script src="map/geoArea.js" type="text/javascript" charset="utf-8"></script>
+  <script src="map/cityCenter.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+</body>
+
+</html>

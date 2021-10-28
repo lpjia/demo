@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dayjs()</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%;
+    }
+
+    th,
+    td {
+      font-weight: normal;
+      padding: 10px;
+      border: 4px solid deepskyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <table>
+      <thead>
+        <tr>
+          <th>描述</th>
+          <th>值</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>new Date()</td>
+          <td>{{ msg }}</td>
+        </tr>
+        <tr>
+          <td>dayjs()</td>
+          <td>{{ msg2 }}</td>
+        </tr>
+        <tr>
+          <td>dayjs.locale('zh-cn')</td>
+          <td>{{ msg3 }}</td>
+        </tr>
+        <tr>
+          <td>dayjs.locale('zh-cn')</td>
+          <td>{{ msg4 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="../lib/vue@2.6.12.js"></script>
+  <script src="../lib/dayjs@1.10.6/dayjs.min.js"></script>
+  <script src="../lib/dayjs@1.10.6/zh-cn.js"></script>
+  <script src="m_index.js" type="module"></script>
+</body>
+
+</html>

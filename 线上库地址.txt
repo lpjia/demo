@@ -1,0 +1,68 @@
+// 优先使用线上库
+
+
+vue.js
+对于制作原型或学习，你可以这样使用最新版本：
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+
+如果你使用原生 ES Modules，这里也有一个兼容 ES Module 的构建文件：
+<script type="module">
+  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+</script>
+
+
+
+vue 3
+<script src="https://unpkg.com/vue@next"></script>
+
+
+
+
+jquery
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+
+
+
+axios
+<script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+
+
+
+vue-router
+<script src="https://cdn.jsdelivr.net/npm/vue-router@3.5.1/dist/vue-router.min.js"></script>
+<script src="https://unpkg.com/vue-router@3.5.1/dist/vue-router.js"></script>
+
+
+
+
+echarts
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.0.1/dist/echarts.min.js"></script>
+
+
+
+vue-i18n
+<script src="https://cdn.jsdelivr.net/npm/vue-i18n@8.22.4/dist/vue-i18n.common.min.js"></script>
+
+
+element-ui
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/element-ui@2.15.1/lib/index.js"></script>
+// 这个 js 库文件需要在 vuejs 库文件之后引入
+
+
+dayjs
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
+
+g6
+<script src="https://gw.alipayobjects.com/os/lib/antv/g6/4.3.6/dist/g6.min.js"></script>

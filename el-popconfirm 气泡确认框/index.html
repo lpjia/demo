@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-popconfirm 气泡确认框</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    .blk {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- https://element.eleme.cn/#/zh-CN/component/popconfirm -->
+
+    <!-- slot="reference" 是必须要加的, 用来显示的 dom 元素 -->
+    <el-popconfirm title="这是一段内容确定删除吗？" @confirm="queren" @cancel="quxiao">
+      <el-button slot="reference">删除</el-button>
+    </el-popconfirm>
+
+
+    <el-popconfirm confirm-button-text='好的' cancel-button-text='不用了' icon="el-icon-info" icon-color="red"
+      title="这是一段内容确定删除吗？">
+      <el-button slot="reference">删除</el-button>
+    </el-popconfirm>
+
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

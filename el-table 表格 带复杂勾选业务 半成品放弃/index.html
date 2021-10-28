@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-table 表格 带复杂勾选业务</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <div>
+      <el-checkbox :indeterminate="isIndeterminate" v-model="isCheckAll" @change="handleCheckAllChange">
+        全选
+      </el-checkbox>
+      <div class="up_down">这个 demo 是个半成品, 有些方法思路还是可以学习点的</div>
+      <el-checkbox-group v-model="childcheckedArr" @change="handleCheckboxGroupChange">
+        <el-table :data="tableData" border :span-method="spanMethodObj" style="width: 60%;">
+          <el-table-column label="广告组" align="center">
+            <el-table-column label="选择" align="center" width="80">
+              <template slot-scope="{row, $index}">
+                <el-checkbox :label="'_' + row.flagStr" :indeterminate="row.isInde"
+                  @change="checked => handleTopCheck(checked, '_' + row.flagStr, $index)">
+                </el-checkbox>
+              </template>
+            </el-table-column>
+            <el-table-column prop="txt" label="广告组信息" align="center">
+            </el-table-column>
+          </el-table-column>
+
+          <el-table-column label="广告计划" align="center">
+            <el-table-column label="选择" align="center" width="120">
+              <template slot-scope="{row, $index}">
+                <el-checkbox :label="row.flagStr"
+                  @change="checked => handleBtmCheck(checked, '_' + row.flagStr, $index)"></el-checkbox>
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="name" label="计划名称" align="center">
+            </el-table-column>
+
+            <el-table-column prop="ys" label="预算" align="center">
+            </el-table-column>
+
+            <el-table-column prop="zh" label="目标转化" align="center">
+            </el-table-column>
+          </el-table-column>
+        </el-table>
+      </el-checkbox-group>
+
+    </div>
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/mock.js"></script>
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

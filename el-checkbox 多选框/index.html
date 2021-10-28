@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-checkbox 多选框</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="up_down">
+      <el-checkbox v-model="checkVal" :disabled="!switchVal">备选项</el-checkbox>
+      <el-switch v-model="switchVal" @change="switchCheckboxDisabled" active-color="#13ce66" inactive-color="#ff4949">
+      </el-switch>
+    </div>
+
+    <el-checkbox-group v-model="groupCheckVal" @change="handleGroupChange">
+      <el-checkbox label="复选框 A"></el-checkbox>
+      <el-checkbox label="复选框 B"></el-checkbox>
+      <el-checkbox label="复选框 C"></el-checkbox>
+    </el-checkbox-group>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

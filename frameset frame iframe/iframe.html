@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>frameset frame iframe</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <!-- https://www.cnblogs.com/nyw1983/p/11427157.html -->
+  <!-- iframe嵌套在frameset标签中，则必须放在body标签中，否则无法显示。 -->
+  <!-- frame不能脱离frameset单独使用，而iframe可以单独使用 -->
+  <!-- frameset不能放在body标签中，frame嵌套在frameset中, 如果放在body中则不能正常显示。 -->
+  <frameset>
+    <iframe src="main.html" name="firstIframe">
+  </frameset>
+</body>
+
+</html>

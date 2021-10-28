@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>简易随机码</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    #div1 {
+      width: 100px;
+      height: 200px;
+      background-color: #C0C4CC;
+      float: left;
+    }
+
+    #div2 {
+      width: 100px;
+      height: 200px;
+      background-color: #DCDFE6;
+      float: left;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="div1"></div>
+  <div id="div2"></div>
+  <button id="btn1">前区号码</button>
+  <button id="reset">清空前区</button>
+  <br>
+  <button id="btn2">后区号码</button>
+  <button id="reset2">清空后区</button>
+  <br>
+
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script>
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min; // 含最大值，含最小值 
+    }
+
+    $(function () {
+
+      var b1 = $("#btn1")
+      var b2 = $('#btn2')
+      let d = $('#div1')
+        , d2 = $('#div2')
+
+      // 35选5
+      b1.click(function () {
+        let count = 5,
+          arr = []
+        while (arr.length < count) {
+          let x = getRandomIntInclusive(1, 35)
+          arr.indexOf(x) === -1 && arr.push(x)
+        }
+        arr.sort((a, b) => a - b)
+        for (let x of arr) {
+          if (d.html() == '') {
+            d.html(x)
+          } else {
+            d.html(d.html() + '<br>' + x)
+          }
+        }
+      })
+
+      // 12选2
+      b2.click(function () {
+        let count = 2,
+          arr = []
+        while (arr.length < count) {
+          let x = getRandomIntInclusive(1, 12)
+          arr.indexOf(x) === -1 && arr.push(x)
+        }
+        arr.sort((a, b) => a - b)
+        for (let x of arr) {
+          if (d2.html() == '') {
+            d2.html(x)
+          } else {
+            d2.html(d2.html() + '<br>' + x)
+          }
+        }
+      })
+
+
+      $('#reset').click(function () {
+        d.html('')
+      })
+      $('#reset2').click(function () {
+        d2.html('')
+      })
+
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <title>Accordion</title>
+  <style>
+    .accordion {
+      width: 200px;
+    }
+
+    .accordion div {
+      list-style: none;
+      display: none;
+    }
+
+    .first-level {
+      background-color: #d8d8d8;
+      background-color: rgba(236, 208, 208, 0.53);
+      border-radius: 4px;
+      display: block;
+      cursor: pointer;
+      position: relative;
+      margin: 2px 0 0 0;
+      padding: 8px;
+      min-height: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="accordion">
+    <li>
+      <h3 class="first-level">level one</h3>
+      <div>
+        <p>first item</p>
+        <p>second item</p>
+        <p>third item</p>
+        <p>third item</p>
+        <p>third item</p>
+        <p>third item</p>
+      </div>
+    </li>
+    <li>
+      <h3 class="first-level">level one</h3>
+      <div>
+        <p>first item</p>
+        <p>second item</p>
+        <p>third item</p>
+      </div>
+    </li>
+    <li>
+      <h3 class="first-level">level one</h3>
+      <div>
+        <p>first item</p>
+        <p>second item</p>
+        <p>third item</p>
+      </div>
+    </li>
+  </ul>
+  <script>
+    var EventUtil = {
+      addHandler: function (element, type, handler) {
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler;
+        }
+      },
+      getTarget: function (event) {
+        return event.target || event.srcElement;
+      }
+    }
+
+    var getStyle = function (el, style) {
+      if (el.currentStyle) {
+        style = style.replace(/\-(\w)/g, function (all, letter) {
+          return letter.toUpperCase();
+        });
+        var value = el.currentStyle[style];
+        return value;
+      } else {
+        return document.defaultView.getComputedStyle(el, null).getPropertyValue(style);
+      }
+    }
+
+    var toggleDisplay = function (element) {
+      var display = getStyle(element, "display");
+      if (display == "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
+    console.log(EventUtil.__proto__)
+    var heads = document.querySelectorAll(".first-level");
+    function headClick(event) {
+      var target = EventUtil.getTarget(event);
+      toggleDisplay(target.parentNode.querySelector("div"));
+    }
+    for (var i = 0; i < heads.length; i++) {
+      EventUtil.addHandler(heads[i], "click", headClick);
+    }
+
+  </script>

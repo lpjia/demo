@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vxe-table 表格 带复杂勾选业务</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vxe-table/lib/style.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+    <template>
+      <div>
+        <vxe-checkbox v-model="check" @change="checkChangeEvent" style="margin-bottom: 10px;">全选</vxe-checkbox>
+        <vxe-table border height="820" :scroll-y="{enabled: false}" :span-method="rowspanMethod" :data="tableData">
+          <vxe-column field="name1" title="功能模块">
+            <template #default="{ row }">
+              <vxe-checkbox v-model="row.check1" @change="check1ChangeEvent(row, row.check1)">{{ row.name1 }}
+              </vxe-checkbox>
+            </template>
+          </vxe-column>
+          <vxe-column field="name2" title="详细功能">
+            <template #default="{ row }">
+              <vxe-checkbox v-model="row.check2" @change="check2ChangeEvent(row, row.check2)">{{ row.name2 }}
+              </vxe-checkbox>
+            </template>
+          </vxe-column>
+          <vxe-column field="name3" title="权限类型">
+            <template #default="{ row }">
+              <vxe-checkbox v-model="row.check3" @change="check3ChangeEvent(row, row.check3)">{{ row.name3 }}
+              </vxe-checkbox>
+            </template>
+          </vxe-column>
+          <vxe-column field="name4" title="权限列表">
+            <template #default="{ row }">
+              <vxe-checkbox v-model="row.check4" @change="check4ChangeEvent(row, row.check4)">{{ row.name4 }}
+              </vxe-checkbox>
+            </template>
+          </vxe-column>
+        </vxe-table>
+      </div>
+    </template>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xe-utils"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vxe-table"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

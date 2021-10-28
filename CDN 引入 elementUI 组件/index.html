@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CDN 引入 elementUI 组件</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div>{{ msg }}</div>
+    <el-button @click="reverseMsg">reverseMsg</el-button>
+    <el-button type="info" @click="click">click</el-button>
+    <el-button type="success" @click="click2">click2</el-button>
+    <el-button type="primary" @click="click3">click3</el-button>
+    <el-button @click="click4">click4</el-button>
+    <el-button type="primary" @click="click5">click5</el-button>
+    <el-button type="info" @click="click6">click6</el-button>
+
+    <div style="margin: 20px 0;">
+      <el-select v-model="value" placeholder="请选择" @change="test">
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+      </el-select>
+    </div>
+
+    <div style="margin: 20px 0;">
+      <el-button>添加规格</el-button>
+
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

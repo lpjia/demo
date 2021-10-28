@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>拖拽</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div></div>
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var disX = 0
+      var disY = 0
+
+      $('div').mousedown(function (eve) {
+
+        disX = eve.pageX - $(this).offset().left;
+        disY = eve.pageY - $(this).offset().top;
+
+
+        $(document).mousemove(function (eve) {
+
+          $('div').css('left', eve.pageX - disX);
+          $('div').css('top', eve.pageY - disY);
+        })
+
+        $(document).mouseup(function () {
+
+          $(document).off();
+        })
+
+        return false;
+
+      })
+
+    })
+
+  </script>
+
+</body>
+
+</html>

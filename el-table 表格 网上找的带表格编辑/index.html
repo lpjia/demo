@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-table 表格 网上找的带表格编辑</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <div class="waterApplyTable">
+
+      <el-table border ref="domTable" :data="tableData3" max-height="500" width="100%" :cell-style="cellStyle"
+        :row-style="getRowClass" :header-row-style="getRowClass" :header-cell-style="getRowClass"
+        :span-method="cellMerge">
+        <el-table-column prop="title" :label="title" align="center">
+          <el-table-column prop="all" label="第一列 all idx=0" min-width="20%" align="center">
+            <template slot-scope="scope">
+              <span>{{ scope.row.all }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="name" label="第二列 name idx=1" min-width="15%" align="center" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="value1" label="第三列 value1 idx=2" min-width="15%" align="center">
+            <template slot-scope="scope">
+              <template v-if="scope.row.editing">
+                <el-input class="edit-input" v-model="scope.row.value1"></el-input>
+              </template>
+              <span v-else>{{ scope.row.value1 }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="value2" label="第四列 value2 idx=3" min-width="15%" align="center">
+            <template slot-scope="scope">
+              <template v-if="scope.row.editing">
+                <el-input class="edit-input" v-model="scope.row.value2"></el-input>
+              </template>
+              <span v-else>{{ scope.row.value2 }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="value3" label="第五列 value3 idx=4" min-width="15%" align="center"></el-table-column>
+
+          <el-table-column prop="editing" label="操作 idx=5" min-width="20%" align="center">
+            <template slot-scope="scope">
+              <el-button type="primary" v-if="!scope.row.editing" @click.native="handleEdit(scope.$index, scope.row)">编辑
+              </el-button>
+
+              <el-button type="primary" v-else @click.native="savemodify(scope.$index, scope.row)">保存</el-button>
+
+              <el-button type="primary" @click.native="clickTodo(scope.$index, scope.row)">快捷填写</el-button>
+            </template>
+          </el-table-column>
+        </el-table-column>
+      </el-table>
+
+      <el-dialog class="dialog" :visible="dialogQuick" top="15vh" @close="dialogQuickClose" width="20%" title="快捷填写"
+        :append-to-body="true">
+        <el-form :model="addform" class="demo-form-inline">
+          <el-form-item label="value1">
+            <el-input v-model.trim="addform.w"></el-input>
+          </el-form-item>
+          <el-form-item label="value2">
+            <el-input v-model.trim="addform.q"></el-input>
+          </el-form-item>
+        </el-form>
+
+        <div slot="footer" class="dialog-footer">
+          <el-button @click.native="addSubmit">确定</el-button>
+        </div>
+      </el-dialog>
+    </div>
+
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="../lib/mock.js"></script> -->
+  <script src="index.js"></script>
+</body>
+
+</html>

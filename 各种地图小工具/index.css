@@ -1,0 +1,14 @@
+.flex {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.gap {
+  margin: 0 10px;
+}
+
+.mapDiv {
+  width: 800px;
+  height: 400px;
+  border: 1px solid #000;
+}

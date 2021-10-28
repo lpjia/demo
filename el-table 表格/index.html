@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-table 表格</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <div>
+      <el-table ref="table_comp" class="up_down" :data="list" border @cell-click="cellClick" @row-click="rowClick"
+        @row-contextmenu="rowContextmenu" @header-click="headerClick" @selection-change="selectionChange">
+        <el-table-column type="selection" width="60" align="center"></el-table-column>
+        <el-table-column type="index" label="NO." width="60" align="center"></el-table-column>
+        <el-table-column prop="date" label="日期" align="center"></el-table-column>
+      </el-table>
+      <el-button type="primary" @click="clearSelect">清空</el-button>
+      <el-button type="primary" @click="toggleAllSelect">手动 勾选/不勾选 全选</el-button>
+      <el-button type="primary" @click="toggleSelect">反选</el-button>
+
+    </div>
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="../lib/mock.js"></script> -->
+  <script src="index.js"></script>
+</body>
+
+</html>

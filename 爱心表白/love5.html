@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>爱心满屏飞</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    .heart-body {
+      width: 500px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .snowfall-flakes:before,
+    .snowfall-flakes:after {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      display: block;
+      width: 30px;
+      height: 46px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .snowfall-flakes:before {
+      -webkit-transform: rotate(-45deg);
+      /* Safari 和 Chrome */
+      -moz-transform: rotate(-45deg);
+      /* Firefox */
+      -ms-transform: rotate(-45deg);
+      /* IE 9 */
+      -o-transform: rotate(-45deg);
+      /* Opera */
+      transform: rotate(-45deg);
+    }
+
+    .snowfall-flakes:after {
+      left: 13px;
+      -webkit-transform: rotate(45deg);
+      /* Safari 和 Chrome */
+      -moz-transform: rotate(45deg);
+      /* Firefox */
+      -ms-transform: rotate(45deg);
+      /* IE 9 */
+      -o-transform: rotate(45deg);
+      /* Opera */
+      transform: rotate(45deg);
+    }
+
+    /* 把爱心画小一点 */
+    .snowfall-flakes:before,
+    .snowfall-flakes:after {
+      width: 10px;
+      height: 16px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .snowfall-flakes:after {
+      left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- https://www.cnblogs.com/yingzi1028/p/6249767.html -->
+
+  <!-- <div class="heart-body">
+    <div class="snowfall-flakes"></div>
+  </div> -->
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script src="../lib/snowfall@1.7.4.jquery.min.js"></script>
+  <script>
+    //调用飘落函数 实现飘落效果
+    $(document).snowfall({
+      flakeCount: 50 //爱心的个数
+    });
+  </script>
+</body>
+
+</html>

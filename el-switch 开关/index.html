@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-switch 开关</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../global/global.css" />
+  <link rel="stylesheet/less" href="index.less">
+  <script src="../lib/less@2.5.3.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <el-switch v-model="switchVal"></el-switch>
+    </div>
+    <div>
+      <el-switch v-model="switchVal" disabled></el-switch>
+    </div>
+    <div>
+      <el-switch v-model="switchVal" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+    </div>
+    <div>
+      <el-switch v-model="switchVal" active-text="是" inactive-text="否" content="呵呵"></el-switch>
+    </div>
+    <div>
+      <el-switch v-model="switchVal" active-icon-class="el-icon-check" inactive-icon-class="el-icon-close"></el-switch>
+    </div>
+    <div class="up_down">
+      <el-switch v-model="switchVal" class="tablescope" active-text="是" inactive-text="否">
+      </el-switch>
+    </div>
+    <div class="up_down">
+      <el-switch v-model="switchVal" class="tablescope tablescope_2" active-text="是是是是是" inactive-text="否否否否否">
+      </el-switch>
+    </div>
+    <div class="up_down">
+      <el-button @click="getVal">获取 switchVal 的值</el-button>
+    </div>
+    <div class="up_down">
+      <el-switch v-model="switchVal_2" active-value="Yes" inactive-value="No" active-text="Yes" inactive-text="No">
+      </el-switch>
+    </div>
+    <div class="up_down">
+      <el-button @click="getVal_2">获取 switchVal_2 的值</el-button>
+    </div>
+    <div class="up_down">
+      <el-switch v-model="switchVal_3" :active-value="1" :inactive-value="-1" active-text="1" inactive-text="-1">
+      </el-switch>
+    </div>
+    <div class="up_down">
+      <el-button @click="getVal_3">获取 switchVal_3 的值</el-button>
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

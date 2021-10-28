@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浪漫的表白</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    ul,
+    li,
+    ol,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      border: none;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    .clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .fl {
+      float: left;
+    }
+
+    .fr {
+      float: right;
+    }
+
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: -webkit-radial-gradient(center, #0dd8d8, rgb(46, 8, 88));
+    }
+
+    .heartBox {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .myHeart {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform: rotate(45deg);
+      animation: heartMove 10s infinite alternate;
+      z-index: 10;
+    }
+
+    .myHeart div {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgb(255, 0, 200);
+    }
+
+    .myHeart .two {
+      right: 0;
+      bottom: 0;
+      width: 200px;
+      height: 200px;
+    }
+
+    .myHeart .one {
+      left: 0;
+      bottom: 0;
+      border-radius: 50%;
+    }
+
+    .myHeart .three {
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+    }
+
+    .myHeart p {
+      width: 200px;
+      height: 30px;
+      font: bold 25px/30px "";
+      text-align: center;
+    }
+
+    .myHeart p {
+      position: absolute;
+      right: 0;
+      bottom: 85px;
+      transform: rotate(-45deg);
+    }
+
+    .balloonBox {
+      width: 100%;
+      height: 100%;
+    }
+
+    .balloon {
+      position: absolute;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .balloon:after {
+      content: '';
+      position: absolute;
+      background: rgba(189, 207, 21, 0.96);
+      height: 80px;
+      width: 2px;
+      left: 0;
+      right: 0;
+      bottom: -80px;
+      margin: auto;
+    }
+
+    @-webkit-keyframes heartMove {
+      10% {
+        transform: rotate(45deg) scale(1.1);
+        text-shadow: 0 0 5px #fff;
+        opacity: 0.2;
+        color: rgb(122, 196, 26);
+      }
+
+      20% {
+        transform: rotate(45deg) scale(1.2);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      30% {
+        transform: rotate(45deg) scale(1.3);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      40% {
+        transform: rotate(45deg) scale(1.2);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      50% {
+        transform: rotate(45deg) scale(1.3);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      60% {
+        transform: rotate(45deg) scale(1.2);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      70% {
+        transform: rotate(45deg) scale(1.3);
+        text-shadow: 0 0 5px #fff;
+      }
+
+      80% {
+        transform: rotate(45deg) scale(1.2);
+        text-shadow: 0 0 10px #fff;
+      }
+
+      90% {
+        transform: rotate(45deg) scale(1.1);
+        text-shadow: 0 0 5px #fff;
+        opacity: 1;
+        color: rgb(219, 190, 25);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heartBox">
+    <div class="myHeart">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+      <p>520</p>
+    </div>
+  </div>
+  <div class="balloonBox"></div>
+  <script>
+    function color(self) {
+      var _color = randomMyColor();
+      if (_color == self.bg) {
+        color(self);
+      } else {
+        return _color;
+      }
+    }
+    function MyBalloon() {
+      this.div = document.createElement("div");
+      this.left = randomRange(0, 100);
+      this.top = randomRange(0, 50);
+      this.bg = randomMyColor();
+      this.color = color(this);
+      this.r = Math.random() * 40 + 20;
+      this.speedX = randomRange(-5, 5);
+      this.speedY = randomRange(-5, 5);
+    }
+    MyBalloon.prototype.draw = function (parent) {
+      this.parent = parent;
+      var _div = this.div;
+      var style = _div.style;
+      style.width = this.r * 2 + "px";
+      style.height = this.r * 2 + "px";
+      _div.className = 'balloon';
+      _div.innerHTML = '1314';
+      style.lineHeight = this.r * 2 + "px";
+      style.fontSize = this.r / 2 + "px";
+      style.left = this.left + "px";
+      style.top = this.top + "px";
+      style.background = this.bg;
+      style.color = this.color;
+      parent.appendChild(this.div);
+    }
+    MyBalloon.prototype.move = function () {
+      var maxLeft = this.parent.offsetWidth - this.r * 2;
+      var maxTop = this.parent.offsetHeight - this.r * 2;
+      var self = this;
+      var _div = self.div;
+      setInterval(function () {
+        var left = _div.offsetLeft + self.speedX;
+        var top = _div.offsetTop + self.speedY;
+        if (left <= 0) {
+          left = 0;
+          self.speedX *= -1;
+        }
+
+        if (top <= 0) {
+          top = 0;
+          self.speedY *= -1;
+        }
+
+        if (left >= maxLeft) {
+          left = maxLeft;
+          self.speedX *= -1;
+        }
+
+        if (top >= maxTop) {
+          top = maxTop;
+          self.speedY *= -1;
+        }
+        _div.style.left = left + "px";
+        _div.style.top = top + "px";
+      }, 30);
+    }
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function randomMyColor() {
+      var r = randomRange(0, 255);
+      var g = randomRange(0, 255);
+      var b = randomRange(0, 255);
+      var a = randomRange(0, 1);
+      return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+    }
+
+    function draw() {
+      var n = 1;
+      for (var i = 0; i <= 36; i++) {
+        var b = new MyBalloon();
+        b.draw(document.body.getElementsByClassName('balloonBox')[0]);
+        b.move();
+      }
+    }
+    draw();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学习 mocha 自动化测试</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style></style>
+
+  <!-- 添加 mocha 样式, 来展示结果 -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css"> -->
+  <link rel="stylesheet" href="../lib/mocha@9.1.1/mocha.css">
+  <!-- 添加 mocha 框架代码 -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script> -->
+  <script src="../lib/mocha@9.1.1/mocha.js"></script>
+  <script>
+    mocha.setup('bdd'); // 最少要设置
+  </script>
+  <!-- 添加 chai -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script> -->
+  <script src="../lib/chai@4.3.4/chai.js"></script>
+  <script>
+    // chai 有很多东西, 让我们把断言设为全局
+    let assert = chai.assert;
+  </script>
+
+</head>
+
+<body>
+  <!-- https://zh.javascript.info/testing-mocha -->
+
+  <script src="index.js"></script>
+
+  <!-- 测试脚本 -->
+  <script src="autoTest.js"></script>
+
+  <!-- id="mocha" 的元素将呈现测试结果 -->
+  <div id="mocha"></div>
+
+  <!-- 运行测试 -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>

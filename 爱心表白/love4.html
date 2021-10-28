@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浪漫的表白</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: #000;
+      perspective: 1200px;
+    }
+
+    #heart {
+      width: 80px;
+      height: 120px;
+      animation: first 9s infinite;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes first {
+      from {
+        transform: rotateZ(0deg) rotateX(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg) rotateX(360deg);
+      }
+    }
+
+    ul {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      transform-style: preserve-3d;
+    }
+
+    li {
+      width: 50px;
+      height: 50px;
+      list-style: none;
+      background: #fff;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+    }
+
+    ul>li:nth-child(1) {
+      transform: rotateY(90deg) translateZ(25px);
+    }
+
+    ul>li:nth-child(2) {
+      transform: rotateY(90deg) translateZ(-25px);
+    }
+
+    ul>li:nth-child(3) {
+      transform: rotateX(90deg) translateZ(25px);
+    }
+
+    ul>li:nth-child(4) {
+      transform: rotateX(90deg) translateZ(-25px);
+    }
+
+    ul>li:nth-child(5) {
+      transform: translateZ(25px);
+    }
+
+    ul>li:nth-child(6) {
+      transform: translateZ(-25px);
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      display: block;
+      border: none;
+    }
+
+    #heart>div {
+      position: absolute;
+      top: 0;
+      width: 80px;
+      height: 120px;
+      border: 1px solid red;
+      border-left: 0;
+      border-bottom: 0;
+      border-radius: 61px 52px 64px 43px/65px 39px 0px 0px;
+      /*transform: rotateZ(45deg);*/
+    }
+  </style>
+</head>
+
+<body>
+  <div id="heart">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    var oHeart = document.getElementById("heart");
+    for (var i = 0; i < 36; i++) {
+      var oDiv = document.createElement("div");//创建div
+      oHeart.appendChild(oDiv);//在heart中添加div
+      oDiv.style.transform = "rotateY(" + i * 10 + "deg) rotateZ(45deg) translateX(23px)";
+    }
+  </script>
+</body>
+
+</html>
