@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-row el-col</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    .el-header,
+    .el-footer {
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+    }
+
+    .el-aside {
+      background-color: #D3DCE6;
+      color: #333;
+      text-align: center;
+      line-height: 400px;
+    }
+
+    .el-main {
+      background-color: #E9EEF3;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- 可以学习布局 -->
+
+    <el-container>
+      <el-header>Header</el-header>
+      <el-container>
+        <el-aside width="200px">Aside</el-aside>
+        <el-container>
+          <el-main>Main</el-main>
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
+    <el-divider></el-divider>
+
+    <el-container>
+      <el-header>Header</el-header>
+      <el-container>
+        <el-aside width="200px">Aside</el-aside>
+        <el-container>
+          <el-main>Main</el-main>
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
+
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

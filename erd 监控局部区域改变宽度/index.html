@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>erd 监听局部区域改变宽度</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- 用了 el 布局,
+      用了 jsx,
+      用了全局组件/局部组件,
+      用了动态渲染多个 chart, 
+      用了监听局部区域的库,
+      用了防抖(没用库), -->
+
+    <el-container>
+      <el-aside class="cbl animated" :class="{collapse: isCollapse}">
+        <el-col>
+          <el-menu default-active="2" :collapse="isCollapse" @open="handleOpen" @close="handleClose"
+            background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" class="el-menu-vertical-demo">
+            <el-submenu index="1">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>导航一</span>
+              </template>
+              <el-menu-item-group>
+                <template slot="title">分组一</template>
+                <el-menu-item index="1-1">选项1</el-menu-item>
+                <el-menu-item index="1-2">选项2</el-menu-item>
+              </el-menu-item-group>
+              <el-menu-item-group title="分组2">
+                <el-menu-item index="1-3">选项3</el-menu-item>
+              </el-menu-item-group>
+              <el-submenu index="1-4">
+                <template slot="title">选项4</template>
+                <el-menu-item index="1-4-1">选项1</el-menu-item>
+              </el-submenu>
+            </el-submenu>
+            <el-menu-item index="2">
+              <i class="el-icon-menu"></i>
+              <span slot="title">导航二</span>
+            </el-menu-item>
+            <el-menu-item index="3" disabled>
+              <i class="el-icon-document"></i>
+              <span slot="title">导航三</span>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <i class="el-icon-setting"></i>
+              <span slot="title">导航四</span>
+            </el-menu-item>
+          </el-menu>
+        </el-col>
+      </el-aside>
+      <el-container>
+        <el-header class="animated">
+          <el-row>
+            <el-col class="wrap">
+              <i class="fh" :class="{'el-icon-s-unfold':isCollapse,'el-icon-s-fold':!isCollapse}"
+                @click="isCollapse = !isCollapse"></i>
+              <!-- 单标签和多标签 -->
+              <!-- <i class="fh el-icon-s-fold" @click="isCollapse = !isCollapse" v-if="!isCollapse"></i>
+              <i class="fh el-icon-s-unfold" @click="isCollapse = !isCollapse" v-else></i> -->
+
+              <button-counter></button-counter>
+              <button-counter></button-counter>
+              <!-- <button-counter-minus></button-counter-minus>
+              <button-counter-minus></button-counter-minus> -->
+            </el-col>
+          </el-row>
+        </el-header>
+        <el-main class="animated">
+          <el-row :gutter="20">
+            <el-col :span="12" v-for="(item, idx) in domList" :key="idx" class="wrap_chart">
+              <!-- 静态 -->
+              <!-- <line-chart :id="domChart"></line-chart> -->
+
+              <!-- 动态 -->
+              <line-chart :id="item.id"></line-chart>
+
+
+            </el-col>
+          </el-row>
+          <el-col :span="12"></el-col>
+        </el-main>
+      </el-container>
+    </el-container>
+    <el-divider></el-divider>
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/echarts@5.2.1.min.js"></script>
+  <script src="../lib/erd@1.2.1/element-resize-detector.min.js"></script>
+  <!-- <script src="m_index.js" type="module"></script> -->
+  <script src="option.js"></script>
+  <script src="globalComp.js"></script>
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

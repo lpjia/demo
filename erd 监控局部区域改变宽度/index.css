@@ -1,0 +1,94 @@
+.el-header,
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  /* text-align: center; */
+  line-height: 40px;
+  height: 40px !important;
+  padding: 0;
+}
+
+.el-aside {
+  background-color: #D3DCE6;
+  color: #333;
+  /* text-align: center; */
+  /* line-height: 100px; */
+  background-color: #545c64;
+  height: calc(100vh - 100px);
+}
+
+.el-main {
+  /* background-color: #E9EEF3; */
+  background-color: rgb(240, 242, 245);
+  color: #333;
+  text-align: center;
+  line-height: 360px;
+  overflow-x: hidden;
+}
+
+
+
+/* 侧边栏 */
+.cbl {
+  width: 200px !important;
+  overflow-x: hidden;
+}
+
+
+/* 保证收缩动画流畅 */
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  height: 100%;
+}
+
+
+/* 增加动画 */
+.animated {
+  transition: width .3s;
+}
+
+/* 收缩后的宽度 */
+.cbl.collapse {
+  width: 80px !important;
+}
+
+.wrap {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.fh {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+
+/* 修复 */
+.el-menu {
+  border-right: none;
+  /* border-right: 1px solid red; */
+}
+
+/* 增加 z-index 配合 border-right: 1px solid red; 来显示, 方便查看动画是否流畅 */
+/* .el-menu-vertical-demo {
+  z-index: 9999;
+} */
+
+
+
+.btn_gutter {
+  margin: 0 20px;
+}
+
+
+.wrap_chart {
+  /* display: flex;
+ justify-content: center; */
+}
+
+.chartContainer {
+  width: 100%;
+  height: 180px;
+  background-color: #fff;
+}
