@@ -56,6 +56,9 @@ let resArr = res.sectionDataList.filter(item => {
   })
 console.log('resArr: ', resArr)
 
+let idx = resArr.findIndex(curr => curr.sensorType === 2)
+console.log(resArr.splice(idx, 1))
+
 
 
 // arr.every()
