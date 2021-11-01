@@ -51,10 +51,12 @@ const lineChart = {
     // 'button-counter-minus': buttonCounterMinus,
   },
   created() {
+    console.log('子组件 line-chart created()')
   },
   mounted() {
     this.initChart()
     this.resizeChart()
+    console.log('子组件 line-chart mounted()')
   },
   beforeDestroy() {
     this.$erd.removeAllListeners(document.querySelector('#' + this.id))
@@ -178,9 +180,13 @@ let vue = new Vue({
   },
   computed: {
   },
+  created() {
+    console.log('根组件 created()')
+  },
   mounted() {
     // this.windowResize()
     // this.init()
+    console.log('根组件 mounted()')
   },
   methods: {
     handleOpen(key, keyPath) {
