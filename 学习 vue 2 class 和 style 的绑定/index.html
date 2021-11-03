@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>学习 vue 2 class 和 style 的绑定</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css"> -->
+  <link rel="stylesheet" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="up_down">
+      添加两种动态样式 :style
+      <div v-for="(basicMes, idx) in list" :key="idx">
+        <!-- 更多用法还是经常查阅官网文档 -->
+        <span :style="[productStatusIcon(basicMes.finishStatus), productStatusTextColor(basicMes.finishStatus)]">
+          {{ basicMes.name }}
+        </span>
+      </div>
+    </div>
+
+    <div class="up_down">
+      三元表达式 :class
+      <div v-for="(row, idx) in rowList" :key="idx">
+        <span :class="row.sensorStatus? { tableCellGreen:true }: { tableCellRed:true }">{{ row.name }}</span>
+      </div>
+    </div>
+
+    <div class="up_down">
+      三元表达式 :class
+      <div v-for="(row, idx) in rowList" :key="idx">
+        <span :class="[row.sensorStatus? tableCellGreenFlag: tableCellRedFlag, tableCellFlag]">{{ row.name }}</span>
+      </div>
+    </div>
+
+    <div class="up_down">
+      三元表达式 :style
+      <div v-for="(row, idx) in rowList" :key="idx">
+        <span :style="[row.sensorStatus? styleObj: styleObj3, styleObj2]">{{ row.name }}</span>
+      </div>
+    </div>
+
+    <div class="up_down">
+      :class 说白了是根据对象属性去找对应的 class 名
+      <div v-for="(item, idx) in tabList" :key="idx">
+        <!-- active几 都是 class 名 -->
+
+        <!-- 原始样式 -->
+        <a @click="switchTab(idx)" href="javascript:;">{{ item }}</a>
+
+        <!-- 三元表达式 -->
+        <a @click="switchTab(idx)" :class="numActive === idx? { active: true }: ''">{{ item }}</a>
+
+        <!-- isActive 得在 data 定义 -->
+        <a @click="switchTab(idx)" :class="{ active2: isActive }">{{ item }}</a>
+
+        <!-- 驼峰和中横线都可以（中横线k要用引号） -->
+        <a @click="switchTab(idx)" :class="{ 'color-c': true, bgColor: true }">{{ item }}</a>
+
+        <!-- objActive3 得在 data 定义 -->
+        <a @click="switchTab(idx)" :class="objActive3">{{ item }}</a>
+
+        <!-- 复杂的判断逻辑可以用计算属性 -->
+        <!-- 这个和 { 'color-c': true, bgColor: true } 类似 -->
+        <a @click="switchTab(idx)" :class="classObject(idx)">{{ item }}</a>
+
+        <!-- 数组形式, active4Class 得在 data 定义 -->
+        <!-- 查看 dom 可以发现有 active active2 active3 -->
+        <a @click="switchTab(idx)" :class="[ { active: true }, { active2: isActive }, objActive3, active4Class ]">
+          {{ item }}</a>
+      </div>
+    </div>
+
+    <div class="up_down">
+      v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。<br>
+      :style 说白了是根据对象属性直接去找 css 样式
+      <div v-for="(item, idx) in tabList" :key="idx">
+        <!-- 属性值也就是具体样式, 一定要加上引号, 如 'deepskyblue' -->
+        <!-- 直接当内联样式写, 驼峰和中横线都可以（中横线k要用引号） -->
+        <a @click="switchTab(idx)" :style="{ color: '#fff', 'background-color': 'deepskyblue' }">{{ item }}</a>
+        <a @click="switchTab(idx)" :style="{ color: '#fff', backgroundColor: '#000' }">{{ item }}</a>
+
+        <!-- 把对象拿出来替换, styleObj 得在 data 定义 -->
+        <a @click="switchTab(idx)" :style="styleObj">{{ item }}</a>
+
+        <!-- 多个对象就可以用数组 -->
+        <a @click="switchTab(idx)" :style="[styleObj2, styleObj3, { border: '1px solid red' }]">{{ item }}</a>
+
+        <!-- 带数值的属性值 -->
+        <a @click="switchTab(idx)" :style="styleObj4">{{ item }}</a>
+        <a @click="switchTab(idx)" :style="{ fontSize: fontSize5 + 'px' }">{{ item }}</a>
+
+        <!-- 计算属性, 获取 data 中的数据来用 -->
+        <a @click="switchTab(idx)" :style="styleObj6">{{ item }}</a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script> -->
+  <script src="index.js"></script>
+</body>
+
+</html>

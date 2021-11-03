@@ -1,3 +1,5 @@
+import { deepClone } from '../util/commonMethod.js'
+
 // 不用打印, 把代码直接粘贴到控制台中运行
 // 简洁高效
 
@@ -56,8 +58,10 @@ let resArr = res.sectionDataList.filter(item => {
   })
 console.log('resArr: ', resArr)
 
-let idx = resArr.findIndex(curr => curr.sensorType === 2)
-console.log(resArr.splice(idx, 1))
+let resArr2 = deepClone(resArr)
+  , idx = resArr2.findIndex(curr => curr.sensorType === 2)
+console.log('被删掉的项: ', resArr2.splice(idx, 1))
+console.log('操作后的数组: ', resArr2)
 
 
 
