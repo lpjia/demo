@@ -20,8 +20,16 @@ var cla = new ClassFn('xm')
 
 
 
+let arr = ['10', '11', '11', '13']
+const reverseMapping = o => Object.keys(o).reduce((r, k) =>
+  Object.assign(r, { [o[k]]: (r[o[k]] || []).concat(k) }), {})
+reverseMapping(arr)
 
-var obj = { name: "海绵宝宝", age: "16", gender: "男" };
+
+
+
+
+let obj = { name: "海绵宝宝", age: "16", gender: "男" };
 
 var result = {};
 for (let key in obj) { // key 属性名

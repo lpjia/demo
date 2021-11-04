@@ -1,6 +1,12 @@
 new Vue({
   el: '#app',
   data: {
+    list: [
+      { name: 'H<sub>2</sub>S&nbsp;传感器', amount: 13, key: '12' },
+      { name: 'CO &nbsp;传感器', amount: 15, key: '1' },
+      { name: 'CH<sub>4</sub>&nbsp;传感器', amount: 13, key: '13' },
+      { name: 'O<sub>2</sub> &nbsp;&nbsp;传感器', amount: 15, key: '7' }
+    ],
     msg: 'this is msg',
     counter: 0,
     enter: 'this is enter',

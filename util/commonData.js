@@ -1,4 +1,4 @@
-import { reverseMapping, manyToOne } from '@/utils/commonMethods'
+import { reverseMapping, manyToOne } from './commonMethod.js'
 
 // 表单项提示信息
 export const placeholderTxt = {

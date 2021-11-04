@@ -1,0 +1,47 @@
+[
+  {
+    "sectionName": "分段名称分段名称分段名称分段名称分段名称",
+    "equipmentID": 61733,
+    "equipmentName": "氧气",
+    "category": 7,
+    "eventName": "越限告警",
+    "eventDiscription": "越上限,当前值为：20.5",
+    "level": 2
+  },
+  {
+    "sectionName": "分段名称分段名称分段名称分段名称分段名称",
+    "equipmentID": 61733,
+    "equipmentName": "硫化氢",
+    "category": 12,
+    "eventName": "越限告警",
+    "eventDiscription": "越上限,当前值为：20.5",
+    "level": 1
+  },
+  {
+    "sectionName": "分段名称分段名称分段名称分段名称分段名称",
+    "equipmentID": 61733,
+    "equipmentName": "甲烷",
+    "category": 13,
+    "eventName": "越限告警",
+    "eventDiscription": "越上限,当前值为：20.5",
+    "level": 2
+  },
+  {
+    "sectionName": "分段名称分段名称分段名称分段名称分段名称",
+    "equipmentID": 61733,
+    "equipmentName": "接地环流",
+    "category": 4,
+    "eventName": "越限告警",
+    "eventDiscription": "越上限,当前值为：20.5",
+    "level": 1
+  },
+  {
+    "sectionName": "分段名称分段名称分段名称分段名称分段名称",
+    "equipmentID": 61733,
+    "equipmentName": "液位",
+    "category": 15,
+    "eventName": "越限告警",
+    "eventDiscription": "越上限,当前值为：20.5",
+    "level": 0
+  }
+]

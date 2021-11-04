@@ -6,33 +6,20 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>学习 vue2 v-for</title>
+  <title>学习</title>
   <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css"> -->
   <link rel="stylesheet" href="../global/global.css" />
-  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
   <div id="app">
-    <div class="up_down">
-      遍历数组 一参是数组项, 二参是索引
-      <div v-for="(item, idx) in sensorSum.slice(0, sensorSumSplit)" :key="idx">
-        <span>{{ item.sensorName }} -- {{ parentMessage }}</span>
-      </div>
-    </div>
 
-    <div class="up_down">
-      遍历对象 一参是值, 二参是键, 三参是索引, 会按 Object.keys() 的结果遍历
-      <div v-for="(value, name, idx) in myObject" :key="idx">
-        <span>{{ idx }} - {{ name }} : {{ value }}</span>
-      </div>
-    </div>
   </div>
 
 
   <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script> -->
-  <script src="index.js"></script>
+  <script src="index.js" type="module"></script>
 </body>
 
 </html>

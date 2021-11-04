@@ -18,7 +18,7 @@ export const clearStorage = (storage = sessionStorage) => storage.clear()
 
 
 // 判断不为空, 用来获取接口数据判断用, 一般不会返回 Symbol 类型
-function judgeNotEmpty(param) {
+export function judgeNotEmpty(param) {
   let judgeObj = p => {
     if (p === null) return false // 是 null
     else if (Array.isArray(p)) return p.length ? true : false // 是数组
@@ -381,5 +381,35 @@ export function debounce(func, wait, immediate) {
     }
 
     return result
+  }
+}
+
+
+/**
+ * @description 把 obj 的 KV 调换, 调换后的 V 是数组类型(考虑到调换前的 V 有重复值) 
+ * @param {object} o 
+ * @returns {object}
+ */
+export const reverseMapping = o => Object.keys(o).reduce((r, k) =>
+  Object.assign(r, { [o[k]]: (r[o[k]] || []).concat(k) }), {})
+
+
+/**
+ * @description 建立多对一的映射关系, 用法是 manyToOne(map)(key)
+ * @param {object} map 
+ * @returns {function}
+ */
+export function manyToOne(map) {
+  const MAP = {};
+  return function (type) {
+    return MAP[type] != null ? MAP[type] : (function () {
+      for (let names in map) {
+        let namesArray = names.split('|');
+        for (let i = 0, length = namesArray.length; i < length; i++) {
+          MAP[namesArray[i]] = map[names];
+        }
+      }
+      return MAP[type] != null ? MAP[type] : '';
+    })();
   }
 }
