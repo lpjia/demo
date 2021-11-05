@@ -90,7 +90,7 @@ function formatNumber(n) {
 }
 
 
-// 格式化ISO时间
+// 格式化 ISO 时间
 export function timeFormat(timeString) {
   if (!judgeNotEmpty(timeString)) return ''
   if (typeof timeString !== 'string') throw new Error('时间数据类型错误!')
@@ -119,14 +119,19 @@ export function deepClone(source) {
 }
 
 
-// // 成功
-// export function msgSucc(msg) {
-//   message({ message: msg, type: 'success', showClose: true, duration: 2000 })
-// }
-// // 失败
-// export function msgFail(msg) {
-//   message({ message: msg, type: 'error', showClose: true, duration: 2000 })
-// }
+/*
+// 成功
+export function msgSucc(msg) {
+  message({ message: msg, type: 'success', showClose: true, duration: 2000 })
+}
+// 失败
+export function msgFail(msg) {
+  message({ message: msg, type: 'error', showClose: true, duration: 2000 })
+}
+// 警告
+export function msgWarn(msg) {
+  message({ message: msg, type: 'warning', showClose: true, duration: 2000 })
+} */
 
 
 /**
@@ -386,7 +391,7 @@ export function debounce(func, wait, immediate) {
 
 
 /**
- * @description 把 obj 的 KV 调换, 调换后的 V 是数组类型(考虑到调换前的 V 有重复值) 
+ * @description 反向映射, 把 obj 的 KV 调换, 调换后的 V 是数组类型(考虑到调换前的 V 有重复值)
  * @param {object} o 
  * @returns {object}
  */

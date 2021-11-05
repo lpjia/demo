@@ -105,3 +105,12 @@ export const alarmLevelObj = {
   1: '预警',
   // 0: '提示',
 }
+
+
+// 设备传感器控制
+// 风机和防火门是一组, 红外门禁是一组
+const sensorControlGroupMap = {
+  '2': 'oneCheck',
+  '5|14': 'twoCheck',
+}
+export const getControlGroupBySensor = manyToOne(sensorControlGroupMap)

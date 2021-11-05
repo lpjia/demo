@@ -29,6 +29,12 @@ reverseMapping(arr)
 
 
 
+
+
+
+
+
+
 let obj = { name: "海绵宝宝", age: "16", gender: "男" };
 
 var result = {};

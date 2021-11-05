@@ -10,3 +10,14 @@ export function validFloat(str) {
   const reg = /^(-?\d+)(\.\d+)?$/
   return reg.test(num);
 }
+
+
+/**
+ * @description 校验 IP 是否合法
+ * @param {string} ip 
+ * @returns {boolean}
+ */
+export function validIp(ip) {
+  const reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+  return reg.test(ip);
+}
