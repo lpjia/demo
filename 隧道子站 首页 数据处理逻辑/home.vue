@@ -23,7 +23,7 @@
             <el-col :span="5" v-for="(item,idx) in sensorSum.slice(0, sensorSumSplit)" :key="idx">
               <section class="card" :class="item.groupType">
                 <div class="left" :class="item.imgType">
-                  <!-- <img :src="require('@/../static/images/home/'+ item.imgType + '.png')"> -->
+                  <img :src="require('@/../static/images/home/'+ item.imgType + '.png')">
                 </div>
                 <div class="right" :class="item.groupType">
                   <div class="txt" v-for="sensor in item.sensor" :key="sensor.key">
@@ -37,7 +37,7 @@
             <el-col :span="5" v-for="(item,idx) in sensorSum.slice(sensorSumSplit)" :key="idx + 10000">
               <section class="card" :class="item.groupType">
                 <div class="left" :class="item.imgType">
-                  <!-- <img :src="require('@/../static/images/home/'+ item.imgType + '.png')"> -->
+                  <img :src="require('@/../static/images/home/'+ item.imgType + '.png')">
                 </div>
                 <div class="right" :class="item.groupType">
                   <div class="txt" v-for="sensor in item.sensor" :key="sensor.key">
@@ -72,7 +72,7 @@
                   <section class="card2 alarm">
                     <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
                     <div class="card2Main">
-                      <!-- <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div> -->
+                      <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div>
                       <div class="right oneLine">
                         <!-- <div class="txt" :title="item.eventDiscription">传感器/设备状态: {{ item.eventDiscription }}</div> -->
                         <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
@@ -98,7 +98,7 @@
                   <section class="card2 warning">
                     <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
                     <div class="card2Main">
-                      <!-- <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div> -->
+                      <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div>
                       <div class="right oneLine">
                         <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
                       </div>
@@ -123,7 +123,7 @@
                   <section class="card2 hint">
                     <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
                     <div class="card2Main">
-                      <!-- <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div> -->
+                      <div class="left"><img :src="require('@/../static/images/home/'+ item.imgType + '.png')"></div>
                       <div class="right oneLine">
                         <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
                       </div>
@@ -141,9 +141,9 @@
 </template>
 
 <script>
-// import { sensorSumInfo, sensorAlarm } from '@/api/home'
-// import { device_type_reverse, getGroupByDevice, getImgGroupByDevice } from '@/utils/commonData'
-// import { judgeNotEmpty } from '@/utils/commonMethods'
+import { sensorSumInfo, sensorAlarm } from '@/api/home'
+import { device_type_reverse, getGroupByDevice, getImgGroupByDevice } from '@/utils/commonData'
+import { judgeNotEmpty } from '@/utils/commonMethods'
 
 
 export default {

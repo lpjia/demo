@@ -1,0 +1,1102 @@
+ [
+    {
+      "label": "奥兰群岛(AX)",
+      "value": "AX"
+    },
+    {
+      "label": "黑山(ME)",
+      "value": "ME"
+    },
+    {
+      "label": "塞尔维亚(RS)",
+      "value": "RS"
+    },
+    {
+      "label": "澳门(MO)",
+      "value": "MO"
+    },
+    {
+      "label": "安提瓜和巴布达(AG)",
+      "value": "AG"
+    },
+    {
+      "label": "阿拉伯联合酋长国(AE)",
+      "value": "AE"
+    },
+    {
+      "label": "阿富汗(AF)",
+      "value": "AF"
+    },
+    {
+      "label": "阿尔及利亚(DZ)",
+      "value": "DZ"
+    },
+    {
+      "label": "阿塞拜疆(AZ)",
+      "value": "AZ"
+    },
+    {
+      "label": "阿尔巴尼亚(AL)",
+      "value": "AL"
+    },
+    {
+      "label": "亚美尼亚(AM)",
+      "value": "AM"
+    },
+    {
+      "label": "安道尔(AD)",
+      "value": "AD"
+    },
+    {
+      "label": "安哥拉(AO)",
+      "value": "AO"
+    },
+    {
+      "label": "美属萨摩亚(AS)",
+      "value": "AS"
+    },
+    {
+      "label": "阿根廷(AR)",
+      "value": "AR"
+    },
+    {
+      "label": "澳大利亚(AU)",
+      "value": "AU"
+    },
+    {
+      "label": "奥地利(AT)",
+      "value": "AT"
+    },
+    {
+      "label": "安圭拉(AI)",
+      "value": "AI"
+    },
+    {
+      "label": "巴林(BH)",
+      "value": "BH"
+    },
+    {
+      "label": "巴巴多斯(BB)",
+      "value": "BB"
+    },
+    {
+      "label": "博茨瓦纳(BW)",
+      "value": "BW"
+    },
+    {
+      "label": "百慕大(BM)",
+      "value": "BM"
+    },
+    {
+      "label": "比利时(BE)",
+      "value": "BE"
+    },
+    {
+      "label": "巴哈马(BS)",
+      "value": "BS"
+    },
+    {
+      "label": "孟加拉国(BD)",
+      "value": "BD"
+    },
+    {
+      "label": "伯利兹(BZ)",
+      "value": "BZ"
+    },
+    {
+      "label": "波斯尼亚和黑塞哥维那(BA)",
+      "value": "BA"
+    },
+    {
+      "label": "玻利维亚(BO)",
+      "value": "BO"
+    },
+    {
+      "label": "缅甸(MM)",
+      "value": "MM"
+    },
+    {
+      "label": "贝宁(BJ)",
+      "value": "BJ"
+    },
+    {
+      "label": "白俄罗斯(BY)",
+      "value": "BY"
+    },
+    {
+      "label": "所罗门群岛(SB)",
+      "value": "SB"
+    },
+    {
+      "label": "巴西(BR)",
+      "value": "BR"
+    },
+    {
+      "label": "不丹(BT)",
+      "value": "BT"
+    },
+    {
+      "label": "保加利亚(BG)",
+      "value": "BG"
+    },
+    {
+      "label": "文莱(BN)",
+      "value": "BN"
+    },
+    {
+      "label": "加拿大(CA)",
+      "value": "CA"
+    },
+    {
+      "label": "柬埔寨(KH)",
+      "value": "KH"
+    },
+    {
+      "label": "乍得(TD)",
+      "value": "TD"
+    },
+    {
+      "label": "斯里兰卡(LK)",
+      "value": "LK"
+    },
+    {
+      "label": "刚果（金）(CD)",
+      "value": "CD"
+    },
+    {
+      "label": "中国(CN)",
+      "value": "CN"
+    },
+    {
+      "label": "智利(CL)",
+      "value": "CL"
+    },
+    {
+      "label": "开曼群岛(KY)",
+      "value": "KY"
+    },
+    {
+      "label": "科科斯群岛(CC)",
+      "value": "CC"
+    },
+    {
+      "label": "喀麦隆(CM)",
+      "value": "CM"
+    },
+    {
+      "label": "科摩罗(KM)",
+      "value": "KM"
+    },
+    {
+      "label": "哥伦比亚(CO)",
+      "value": "CO"
+    },
+    {
+      "label": "北马里亚纳群岛(MP)",
+      "value": "MP"
+    },
+    {
+      "label": "哥斯达黎加(CR)",
+      "value": "CR"
+    },
+    {
+      "label": "中非共和国(CF)",
+      "value": "CF"
+    },
+    {
+      "label": "古巴(CU)",
+      "value": "CU"
+    },
+    {
+      "label": "佛得角(CV)",
+      "value": "CV"
+    },
+    {
+      "label": "库克群岛(CK)",
+      "value": "CK"
+    },
+    {
+      "label": "丹麦(DK)",
+      "value": "DK"
+    },
+    {
+      "label": "吉布提(DJ)",
+      "value": "DJ"
+    },
+    {
+      "label": "多米尼克(DM)",
+      "value": "DM"
+    },
+    {
+      "label": "多米尼加共和国(DO)",
+      "value": "DO"
+    },
+    {
+      "label": "厄瓜多尔(EC)",
+      "value": "EC"
+    },
+    {
+      "label": "埃及(EG)",
+      "value": "EG"
+    },
+    {
+      "label": "爱尔兰(IE)",
+      "value": "IE"
+    },
+    {
+      "label": "赤道几内亚(GQ)",
+      "value": "GQ"
+    },
+    {
+      "label": "爱沙尼亚(EE)",
+      "value": "EE"
+    },
+    {
+      "label": "厄立特里亚(ER)",
+      "value": "ER"
+    },
+    {
+      "label": "萨尔瓦多(SV)",
+      "value": "SV"
+    },
+    {
+      "label": "埃塞俄比亚(ET)",
+      "value": "ET"
+    },
+    {
+      "label": "捷克共和国(CZ)",
+      "value": "CZ"
+    },
+    {
+      "label": "法属圭亚那(GF)",
+      "value": "GF"
+    },
+    {
+      "label": "芬兰(FI)",
+      "value": "FI"
+    },
+    {
+      "label": "斐济(FJ)",
+      "value": "FJ"
+    },
+    {
+      "label": "马尔维纳斯群岛（福克兰）(FK)",
+      "value": "FK"
+    },
+    {
+      "label": "密克罗尼西亚(FM)",
+      "value": "FM"
+    },
+    {
+      "label": "法罗群岛(FO)",
+      "value": "FO"
+    },
+    {
+      "label": "法属波利尼西亚(PF)",
+      "value": "PF"
+    },
+    {
+      "label": "法国(FR)",
+      "value": "FR"
+    },
+    {
+      "label": "冈比亚(GM)",
+      "value": "GM"
+    },
+    {
+      "label": "加蓬(GA)",
+      "value": "GA"
+    },
+    {
+      "label": "格鲁吉亚(GE)",
+      "value": "GE"
+    },
+    {
+      "label": "加纳(GH)",
+      "value": "GH"
+    },
+    {
+      "label": "直布罗陀(GI)",
+      "value": "GI"
+    },
+    {
+      "label": "格林纳达(GD)",
+      "value": "GD"
+    },
+    {
+      "label": "格陵兰(GL)",
+      "value": "GL"
+    },
+    {
+      "label": "德国(DE)",
+      "value": "DE"
+    },
+    {
+      "label": "瓜德罗普(GP)",
+      "value": "GP"
+    },
+    {
+      "label": "关岛(GU)",
+      "value": "GU"
+    },
+    {
+      "label": "希腊(GR)",
+      "value": "GR"
+    },
+    {
+      "label": "危地马拉(GT)",
+      "value": "GT"
+    },
+    {
+      "label": "几内亚(GN)",
+      "value": "GN"
+    },
+    {
+      "label": "圭亚那(GY)",
+      "value": "GY"
+    },
+    {
+      "label": "海地(HT)",
+      "value": "HT"
+    },
+    {
+      "label": "洪都拉斯(HN)",
+      "value": "HN"
+    },
+    {
+      "label": "克罗地亚(HR)",
+      "value": "HR"
+    },
+    {
+      "label": "匈牙利(HU)",
+      "value": "HU"
+    },
+    {
+      "label": "冰岛(IS)",
+      "value": "IS"
+    },
+    {
+      "label": "印度尼西亚(ID)",
+      "value": "ID"
+    },
+    {
+      "label": "印度(IN)",
+      "value": "IN"
+    },
+    {
+      "label": "英属印度洋领地(IO)",
+      "value": "IO"
+    },
+    {
+      "label": "伊朗(IR)",
+      "value": "IR"
+    },
+    {
+      "label": "以色列(IL)",
+      "value": "IL"
+    },
+    {
+      "label": "意大利(IT)",
+      "value": "IT"
+    },
+    {
+      "label": "科特迪瓦(CI)",
+      "value": "CI"
+    },
+    {
+      "label": "伊拉克(IQ)",
+      "value": "IQ"
+    },
+    {
+      "label": "日本(JP)",
+      "value": "JP"
+    },
+    {
+      "label": "牙买加(JM)",
+      "value": "JM"
+    },
+    {
+      "label": "约旦(JO)",
+      "value": "JO"
+    },
+    {
+      "label": "肯尼亚(KE)",
+      "value": "KE"
+    },
+    {
+      "label": "吉尔吉斯斯坦(KG)",
+      "value": "KG"
+    },
+    {
+      "label": "朝鲜(KP)",
+      "value": "KP"
+    },
+    {
+      "label": "基里巴斯(KI)",
+      "value": "KI"
+    },
+    {
+      "label": "韩国(KR)",
+      "value": "KR"
+    },
+    {
+      "label": "圣诞岛(CX)",
+      "value": "CX"
+    },
+    {
+      "label": "科威特(KW)",
+      "value": "KW"
+    },
+    {
+      "label": "哈萨克斯坦(KZ)",
+      "value": "KZ"
+    },
+    {
+      "label": "老挝(LA)",
+      "value": "LA"
+    },
+    {
+      "label": "黎巴嫩(LB)",
+      "value": "LB"
+    },
+    {
+      "label": "拉脱维亚(LV)",
+      "value": "LV"
+    },
+    {
+      "label": "立陶宛(LT)",
+      "value": "LT"
+    },
+    {
+      "label": "利比里亚(LR)",
+      "value": "LR"
+    },
+    {
+      "label": "斯洛伐克(SK)",
+      "value": "SK"
+    },
+    {
+      "label": "列支敦士登(LI)",
+      "value": "LI"
+    },
+    {
+      "label": "莱索托(LS)",
+      "value": "LS"
+    },
+    {
+      "label": "卢森堡(LU)",
+      "value": "LU"
+    },
+    {
+      "label": "利比亚(LY)",
+      "value": "LY"
+    },
+    {
+      "label": "马达加斯加(MG)",
+      "value": "MG"
+    },
+    {
+      "label": "马提尼克(MQ)",
+      "value": "MQ"
+    },
+    {
+      "label": "摩尔多瓦(MD)",
+      "value": "MD"
+    },
+    {
+      "label": "马约特(YT)",
+      "value": "YT"
+    },
+    {
+      "label": "蒙古(MN)",
+      "value": "MN"
+    },
+    {
+      "label": "蒙特塞拉特(MS)",
+      "value": "MS"
+    },
+    {
+      "label": "马拉维(MW)",
+      "value": "MW"
+    },
+    {
+      "label": "马其顿(MK)",
+      "value": "MK"
+    },
+    {
+      "label": "马里(ML)",
+      "value": "ML"
+    },
+    {
+      "label": "摩纳哥(MC)",
+      "value": "MC"
+    },
+    {
+      "label": "摩洛哥(MA)",
+      "value": "MA"
+    },
+    {
+      "label": "毛里求斯(MU)",
+      "value": "MU"
+    },
+    {
+      "label": "毛里塔尼亚(MR)",
+      "value": "MR"
+    },
+    {
+      "label": "马耳他(MT)",
+      "value": "MT"
+    },
+    {
+      "label": "阿曼(OM)",
+      "value": "OM"
+    },
+    {
+      "label": "马尔代夫(MV)",
+      "value": "MV"
+    },
+    {
+      "label": "墨西哥(MX)",
+      "value": "MX"
+    },
+    {
+      "label": "马来西亚(MY)",
+      "value": "MY"
+    },
+    {
+      "label": "莫桑比克(MZ)",
+      "value": "MZ"
+    },
+    {
+      "label": "新喀里多尼亚(NC)",
+      "value": "NC"
+    },
+    {
+      "label": "纽埃(NU)",
+      "value": "NU"
+    },
+    {
+      "label": "诺福克岛(NF)",
+      "value": "NF"
+    },
+    {
+      "label": "尼日尔(NE)",
+      "value": "NE"
+    },
+    {
+      "label": "瓦努阿图(VU)",
+      "value": "VU"
+    },
+    {
+      "label": "尼日利亚(NG)",
+      "value": "NG"
+    },
+    {
+      "label": "荷兰(NL)",
+      "value": "NL"
+    },
+    {
+      "label": "挪威(NO)",
+      "value": "NO"
+    },
+    {
+      "label": "尼泊尔(NP)",
+      "value": "NP"
+    },
+    {
+      "label": "瑙鲁(NR)",
+      "value": "NR"
+    },
+    {
+      "label": "苏里南(SR)",
+      "value": "SR"
+    },
+    {
+      "label": "新西兰(NZ)",
+      "value": "NZ"
+    },
+    {
+      "label": "皮特凯恩群岛(PN)",
+      "value": "PN"
+    },
+    {
+      "label": "秘鲁(PE)",
+      "value": "PE"
+    },
+    {
+      "label": "中国南沙群岛(XS)",
+      "value": "XS"
+    },
+    {
+      "label": "巴基斯坦(PK)",
+      "value": "PK"
+    },
+    {
+      "label": "波兰(PL)",
+      "value": "PL"
+    },
+    {
+      "label": "巴拿马(PA)",
+      "value": "PA"
+    },
+    {
+      "label": "葡萄牙(PT)",
+      "value": "PT"
+    },
+    {
+      "label": "巴布亚新几内亚(PG)",
+      "value": "PG"
+    },
+    {
+      "label": "帕劳(PW)",
+      "value": "PW"
+    },
+    {
+      "label": "争议领土(XX)",
+      "value": "XX"
+    },
+    {
+      "label": "几内亚比绍(GW)",
+      "value": "GW"
+    },
+    {
+      "label": "卡塔尔(QA)",
+      "value": "QA"
+    },
+    {
+      "label": "留尼汪(RE)",
+      "value": "RE"
+    },
+    {
+      "label": "马绍尔群岛(MH)",
+      "value": "MH"
+    },
+    {
+      "label": "罗马尼亚(RO)",
+      "value": "RO"
+    },
+    {
+      "label": "菲律宾(PH)",
+      "value": "PH"
+    },
+    {
+      "label": "波多黎各(PR)",
+      "value": "PR"
+    },
+    {
+      "label": "俄罗斯(RU)",
+      "value": "RU"
+    },
+    {
+      "label": "卢旺达(RW)",
+      "value": "RW"
+    },
+    {
+      "label": "沙特阿拉伯(SA)",
+      "value": "SA"
+    },
+    {
+      "label": "圣皮埃尔和密克隆群岛(PM)",
+      "value": "PM"
+    },
+    {
+      "label": "圣基茨和尼维斯(KN)",
+      "value": "KN"
+    },
+    {
+      "label": "塞舌尔(SC)",
+      "value": "SC"
+    },
+    {
+      "label": "南非(ZA)",
+      "value": "ZA"
+    },
+    {
+      "label": "塞内加尔(SN)",
+      "value": "SN"
+    },
+    {
+      "label": "圣赫勒拿(SH)",
+      "value": "SH"
+    },
+    {
+      "label": "斯洛文尼亚(SI)",
+      "value": "SI"
+    },
+    {
+      "label": "塞拉利昂(SL)",
+      "value": "SL"
+    },
+    {
+      "label": "圣马力诺(SM)",
+      "value": "SM"
+    },
+    {
+      "label": "新加坡(SG)",
+      "value": "SG"
+    },
+    {
+      "label": "索马里(SO)",
+      "value": "SO"
+    },
+    {
+      "label": "西班牙(ES)",
+      "value": "ES"
+    },
+    {
+      "label": "圣卢西亚(LC)",
+      "value": "LC"
+    },
+    {
+      "label": "苏丹(SD)",
+      "value": "SD"
+    },
+    {
+      "label": "瑞典(SE)",
+      "value": "SE"
+    },
+    {
+      "label": "南乔治亚岛和南桑威奇群岛(GS)",
+      "value": "GS"
+    },
+    {
+      "label": "叙利亚(SY)",
+      "value": "SY"
+    },
+    {
+      "label": "瑞士(CH)",
+      "value": "CH"
+    },
+    {
+      "label": "特立尼达和多巴哥(TT)",
+      "value": "TT"
+    },
+    {
+      "label": "泰国(TH)",
+      "value": "TH"
+    },
+    {
+      "label": "塔吉克斯坦(TJ)",
+      "value": "TJ"
+    },
+    {
+      "label": "特克斯和凯科斯群岛(TC)",
+      "value": "TC"
+    },
+    {
+      "label": "托克劳(TK)",
+      "value": "TK"
+    },
+    {
+      "label": "汤加(TO)",
+      "value": "TO"
+    },
+    {
+      "label": "多哥(TG)",
+      "value": "TG"
+    },
+    {
+      "label": "圣多美和普林西比(ST)",
+      "value": "ST"
+    },
+    {
+      "label": "突尼斯(TN)",
+      "value": "TN"
+    },
+    {
+      "label": "东帝汶(TL)",
+      "value": "TL"
+    },
+    {
+      "label": "土耳其(TR)",
+      "value": "TR"
+    },
+    {
+      "label": "图瓦卢(TV)",
+      "value": "TV"
+    },
+    {
+      "label": "台湾(TW)",
+      "value": "TW"
+    },
+    {
+      "label": "土库曼斯坦(TM)",
+      "value": "TM"
+    },
+    {
+      "label": "坦桑尼亚(TZ)",
+      "value": "TZ"
+    },
+    {
+      "label": "乌干达(UG)",
+      "value": "UG"
+    },
+    {
+      "label": "英国(GB)",
+      "value": "GB"
+    },
+    {
+      "label": "乌克兰(UA)",
+      "value": "UA"
+    },
+    {
+      "label": "美国(US)",
+      "value": "US"
+    },
+    {
+      "label": "布基纳法索(BF)",
+      "value": "BF"
+    },
+    {
+      "label": "乌拉圭(UY)",
+      "value": "UY"
+    },
+    {
+      "label": "乌兹别克斯坦(UZ)",
+      "value": "UZ"
+    },
+    {
+      "label": "圣文森特和格林纳丁斯(VC)",
+      "value": "VC"
+    },
+    {
+      "label": "委内瑞拉(VE)",
+      "value": "VE"
+    },
+    {
+      "label": "英属维京群岛(VG)",
+      "value": "VG"
+    },
+    {
+      "label": "越南(VN)",
+      "value": "VN"
+    },
+    {
+      "label": "美属维京群岛(VI)",
+      "value": "VI"
+    },
+    {
+      "label": "梵蒂冈(VA)",
+      "value": "VA"
+    },
+    {
+      "label": "纳米比亚(NA)",
+      "value": "NA"
+    },
+    {
+      "label": "瓦利斯和富图纳(WF)",
+      "value": "WF"
+    },
+    {
+      "label": "西撒哈拉(EH)",
+      "value": "EH"
+    },
+    {
+      "label": "萨摩亚(WS)",
+      "value": "WS"
+    },
+    {
+      "label": "斯威士兰(SZ)",
+      "value": "SZ"
+    },
+    {
+      "label": "联合国中立区(XD)",
+      "value": "XD"
+    },
+    {
+      "label": "伊拉克沙特阿拉伯中立区(XE)",
+      "value": "XE"
+    },
+    {
+      "label": "也门(YE)",
+      "value": "YE"
+    },
+    {
+      "label": "赞比亚(ZM)",
+      "value": "ZM"
+    },
+    {
+      "label": "津巴布韦(ZW)",
+      "value": "ZW"
+    },
+    {
+      "label": "香港(HK)",
+      "value": "HK"
+    },
+    {
+      "label": "塞浦路斯(CY)",
+      "value": "CY"
+    },
+    {
+      "label": "法属南部领地(TF)",
+      "value": "TF"
+    },
+    {
+      "label": "美国本土外小岛屿(UM)",
+      "value": "UM"
+    },
+    {
+      "label": "巴勒斯坦(PS)",
+      "value": "PS"
+    },
+    {
+      "label": "南极洲(AQ)",
+      "value": "AQ"
+    },
+    {
+      "label": "布韦岛(BV)",
+      "value": "BV"
+    },
+    {
+      "label": "赫德岛和麦克唐纳群岛(HM)",
+      "value": "HM"
+    },
+    {
+      "label": "斯瓦尔巴群岛和扬马延岛(SJ)",
+      "value": "SJ"
+    },
+    {
+      "label": "圣巴泰勒米岛(BL)",
+      "value": "BL"
+    },
+    {
+      "label": "南苏丹(SS)",
+      "value": "SS"
+    },
+    {
+      "label": "荷兰加勒比区(BQ)",
+      "value": "BQ"
+    },
+    {
+      "label": "库拉索(CW)",
+      "value": "CW"
+    },
+    {
+      "label": "荷属圣马丁(SX)",
+      "value": "SX"
+    },
+    {
+      "label": "阿鲁巴(AW)",
+      "value": "AW"
+    },
+    {
+      "label": "布隆迪(BI)",
+      "value": "BI"
+    },
+    {
+      "label": "根西岛(GG)",
+      "value": "GG"
+    },
+    {
+      "label": "马恩岛(IM)",
+      "value": "IM"
+    },
+    {
+      "label": "泽西岛(JE)",
+      "value": "JE"
+    },
+    {
+      "label": "尼加拉瓜(NI)",
+      "value": "NI"
+    },
+    {
+      "label": "巴拉圭(PY)",
+      "value": "PY"
+    },
+    {
+      "label": "UN001(UN001)",
+      "value": "UN001"
+    },
+    {
+      "label": "未知国家(unknown)",
+      "value": "unknown"
+    },
+    {
+      "label": "其他国家(ZZ)",
+      "value": "ZZ"
+    },
+    {
+      "label": "荷属安的列斯群岛(AN)",
+      "value": "AN"
+    },
+    {
+      "label": "419(419)",
+      "value": "419"
+    },
+    {
+      "label": "纳戈尔诺-卡拉巴赫(NK)",
+      "value": "NK"
+    },
+    {
+      "label": "法国_IF(IF)",
+      "value": "IF"
+    },
+    {
+      "label": "南斯拉夫联盟共和国(YU)",
+      "value": "YU"
+    },
+    {
+      "label": "英国(UK)",
+      "value": "UK"
+    },
+    {
+      "label": "东帝汶(TP)",
+      "value": "TP"
+    },
+    {
+      "label": "科索沃(YK)",
+      "value": "YK"
+    },
+    {
+      "label": "欧盟(EU)",
+      "value": "EU"
+    },
+    {
+      "label": "未知国家(N/A)",
+      "value": "N/A"
+    },
+    {
+      "label": "亚太地区(AP)",
+      "value": "AP"
+    },
+    {
+      "label": "匿名代理(A1)",
+      "value": "A1"
+    },
+    {
+      "label": "卫星线路(A2)",
+      "value": "A2"
+    },
+    {
+      "label": "其他国家(O1)",
+      "value": "O1"
+    },
+    {
+      "label": "拉美地区(LM)",
+      "value": "LM"
+    },
+    {
+      "label": "北美地区(NM)",
+      "value": "NM"
+    },
+    {
+      "label": "非洲地区(AC)",
+      "value": "AC"
+    },
+    {
+      "label": "法国本土(FX)",
+      "value": "FX"
+    },
+    {
+      "label": "刚果(CG)",
+      "value": "CG"
+    },
+    {
+      "label": "圣马丁(MF)",
+      "value": "MF"
+    },
+    {
+      "label": "科索沃(XK)",
+      "value": "XK"
+    }
+  ]
