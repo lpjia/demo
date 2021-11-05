@@ -35,7 +35,7 @@ let vue = new Vue({
     },
     // 获取传感器数量统计
     async getSensorCountInfo() {
-      let response = await fetch('map.json')
+      let response = await fetch('mock/map.json')
       if (!response.ok) throw new Error('response failed')
       let res = await response.json()
       console.log('数据源 res: ', res)
@@ -54,7 +54,7 @@ let vue = new Vue({
     },
     // 获取报警等传感器数据
     async getSensorAlarm() {
-      let response = await fetch('alarm.json')
+      let response = await fetch('mock/alarm.json')
       if (!response.ok) throw new Error('response failed')
       let sourceData = await response.json()
       console.log('数据源 sourceData: ', sourceData)
