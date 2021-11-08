@@ -64,6 +64,7 @@ Vue.component("tab-archive", {
 
 // 局部注册
 const buttonCounterMinus = {
+  // name: 'minus',
   props: ['prop_count'],
   data: function () {
     return {
@@ -76,6 +77,7 @@ const buttonCounterMinus = {
   template: '<button v-on:click="count--" @click="" class="btn_gutter">&nbsp; You clicked me {{ count }} times. I\'m count-- &nbsp;</button>'
 }
 const buttonCounter = {
+  // name: 'add',
   props: ['prop_count'],
   data: function () {
     return {
@@ -85,9 +87,13 @@ const buttonCounter = {
   mounted() {
     this.count = this.prop_count
   },
+  // methods: {
+  //   click() {
+  //     this.count = 0
+  //   }
+  // },
   template: '<button v-on:click="count++" class="btn_gutter">&nbsp; You clicked me {{ count }} times. I\'m count++ &nbsp;</button>'
 }
-
 
 
 new Vue({

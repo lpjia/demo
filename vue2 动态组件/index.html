@@ -18,7 +18,6 @@
       <component v-bind:is="currentTabComponent" class="tab"></component>
     </keep-alive>
 
-
     <div class="up_down">
       <component :is="currLocalComp" :prop_count="100"></component>
     </div>
@@ -29,6 +28,30 @@
     <div class="up_down">
       缓存动态组件, 不被销毁
       <keep-alive>
+        <component :is="currLocalComp" :prop_count="100"></component>
+      </keep-alive>
+    </div>
+
+    <div class="up_down">
+      缓存部分动态组件, 不被销毁
+      <!-- 这里不能用组件名去正则匹配, 因为都能匹配上, 加个 name 来区分吧 -->
+      <!-- <keep-alive :include="/button-counter/"> -->
+
+      <!-- 根据 name 来区分 -->
+      <!-- <keep-alive :include="/add/"> -->
+
+      <!-- 数组 -->
+      <!-- <keep-alive :include="['button-counter']"> -->
+
+      <!-- 字符串, 不用绑定, 多个以逗号隔开 -->
+      <keep-alive include="button-counter">
+        <component :is="currLocalComp" :prop_count="100"></component>
+      </keep-alive>
+    </div>
+
+    <div class="up_down">
+      不缓存部分动态组件
+      <keep-alive exclude="button-counter">
         <component :is="currLocalComp" :prop_count="100"></component>
       </keep-alive>
     </div>
