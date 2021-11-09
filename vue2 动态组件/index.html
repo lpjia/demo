@@ -51,7 +51,7 @@
 
     <div class="up_down">
       不缓存部分动态组件
-      <keep-alive exclude="button-counter">
+      <keep-alive exclude="button-counter,button-counter-minus">
         <component :is="currLocalComp" :prop_count="100"></component>
       </keep-alive>
     </div>
