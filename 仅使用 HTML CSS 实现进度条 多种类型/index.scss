@@ -1,0 +1,151 @@
+meter {
+  width: 200px;
+}
+
+
+progress {
+  width: 200px;
+}
+
+
+.g-container {
+  width: 240px;
+  height: 25px;
+  border-radius: 25px;
+  background: #eee;
+}
+
+:root {
+  --progress: 30%; // 自定义属性, 声明
+}
+
+.g-progress {
+  // width: 50%;
+  width: var(--progress); // 使用
+  height: inherit;
+  border-radius: 25px 0 0 25px;
+  // background: #0f0;
+  transition: width .5s linear; // 添加过渡效果
+  background: linear-gradient(90deg, #0f0, #0ff) // 添加渐变色
+}
+
+
+.g-progress-2 {
+  width: 240px;
+  height: 25px;
+  border-radius: 25px;
+  border: 1px solid #eee;
+  // background: linear-gradient(90deg, #0f0, #0ff 70%, transparent 0);
+  background: linear-gradient(90deg, #0f0, #0ff var(--progress-2), transparent 0);
+}
+
+
+// @property 实验性功能, 兼容性差
+@property --progress-3 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.g-progress-3 {
+  // width: 240px; // 尽可能复用上面样式
+  // height: 25px;
+  // border-radius: 25px;
+  // border: 1px solid #eee;
+  background: linear-gradient(90deg, #0f0, #0ff var(--progress-3), transparent 0);
+  transition: .3s --progress-3;
+}
+
+
+.g-progress-4 {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: conic-gradient(#FFCDB2 0, #FFCDB2 25%, #B5838D 25%, #B5838D);
+  // 中间镂空
+  -webkit-mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0);
+  mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0); // 无效, 所以加 上一行样式
+
+}
+
+.g-progress-5 {
+  // width: 160px; // 尽可能复用上面样式
+  // height: 160px;
+  // border-radius: 50%;
+  // -webkit-mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0);
+  // mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0);
+  background:
+    conic-gradient(#FFCDB2 0, #FFCDB2 25%,
+      #B5838D 25%, #B5838D 50%,
+      #673ab7 50%, #673ab7 90%,
+      #ff5722 90.2%, #ff5722 100%);
+}
+
+
+.g-progress-6 {
+  background: conic-gradient(#FFCDB2 0, #FFCDB2 27%, #B5838D 27%, #B5838D)
+}
+
+
+.g-progress-7 {
+  background: conic-gradient(#FFCDB2 0, #FFCDB2 27%, #B5838D 27.2%, #B5838D)
+}
+
+
+
+
+.g-container-8 {
+  --percentage: 20%;
+  --percentage-deg: 72deg;
+  // --percentage-deg: calc(360 * var(--percentage) / 100);
+  // --percentage-deg: 72;
+}
+
+.wenben {
+  font-size: var(--percentage-deg);
+}
+
+.g-container-8 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.g-progress-8 {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  // background: conic-gradient(#FFCDB2 0, #FFCDB2 33%, #B5838D 33%, #B5838D);
+  background: conic-gradient(#FFCDB2 0, #FFCDB2 var(--percentage), #B5838D var(--percentage), #B5838D);
+  -webkit-mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+  mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+}
+
+.g-circle-8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 90px;
+    left: 90px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFCDB2;
+    z-index: 1;
+  }
+
+  &::before {
+    transform: translate(0, -90px);
+  }
+
+  &::after {
+    // transform: rotate(90deg) translate(0, -90px);
+    transform: rotate(var(--percentage-deg)) translate(0, -90px);
+  }
+}
