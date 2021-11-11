@@ -1,0 +1,73 @@
+.container {
+  width: 200px;
+  height: 200px;
+  border: 5px solid rgb(118, 218, 255);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wave-change {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 0;
+  top: 0;
+  animation: change 12s infinite linear;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 50%;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 45% 47% 43% 46%;
+    transform: translate(-50%, -70%) rotate(0);
+    animation: rotate 7s linear infinite;
+    z-index: 1;
+  }
+
+  &::after {
+    border-radius: 47% 42% 46% 44%;
+    background-color: rgba(255, 255, 255, .8);
+    transform: translate(-50%, -70%) rotate(0);
+    animation: rotate 9s linear -4s infinite;
+    z-index: 2;
+  }
+}
+
+.wave {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(118, 218, 255);
+  border-radius: 50%;
+}
+
+p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  color: #000;
+  z-index: 10;
+}
+
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -70%) rotate(360deg);
+  }
+}
+
+@keyframes change {
+  from {
+    top: 80px;
+  }
+
+  to {
+    top: -120px;
+  }
+}
