@@ -8,6 +8,9 @@ let vm = new Vue({
       value2: '',
       value3: '',
       value4: '',
+      value5: '',
+      value6: '',
+      value7: '',
     },
     pickerVal: null, // 第一次选中的时间
     isEnable: true,
@@ -42,6 +45,8 @@ let vm = new Vue({
   },
   computed: {
   },
+  mounted() {
+  },
   methods: {
     pickerChange(val) {
       console.log(val)
@@ -64,6 +69,7 @@ let vm = new Vue({
     },
 
     log(time) {
+      console.log('-- start log --')
       console.log(time)
 
       let arr = []
@@ -93,6 +99,40 @@ let vm = new Vue({
         return time < minTime || time > maxTime
       }
       return false
-    }
+    },
+
+
+    // 赋值数组
+    setArrValue5() {
+      console.log('this.form: ', this.form)
+      this.form.value5 = ['2021-11-08', '2021-11-12']
+
+      setTimeout(() => {
+        // 这里想用下 this.$data
+        console.log('this.$data: ', this.$data)
+        this.$data.form.value5 = ['2021-11-01', '2021-11-22']
+      }, 2000);
+    },
+
+    // 赋值 date 对象
+    setDateValue6() {
+      this.form.value6 = new Date()
+    },
+
+    // 赋值 date 对象
+    setDateValue7() {
+      let start = new Date(new Date().getTime() - 1000 * 3600 * 24 * 6)
+        , end = new Date()
+      this.form.value7 = [start, end]
+    },
+
+    // 赋值 date 对象
+    setStringValue7() {
+      let start = new Date().getTime() - 1000 * 3600 * 24 * 6
+        , end = new Date()
+        , startStr = formatTime(start, 'Y-M-D')
+        , endStr = formatTime(end, 'Y-M-D')
+      this.form.value7 = [startStr, endStr]
+    },
   }
 })

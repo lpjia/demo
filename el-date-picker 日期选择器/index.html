@@ -7,7 +7,7 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>el-date-picker 日期选择器</title>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
   <style>
     .block {
@@ -19,6 +19,7 @@
       display: inline-block;
       text-align: right;
       margin-right: 10px;
+      cursor: pointer;
     }
 
     .datePicker {
@@ -38,6 +39,7 @@
       </el-date-picker>
     </div>
 
+
     <div class="block">
       <span class="demonstration" @click="log(form.value2)">选择当天前后一周内日期</span>
       <el-date-picker style="width:500px;" clearable :picker-options="pickerOptionsObj2" v-model="form.value2"
@@ -45,6 +47,7 @@
         :default-time="['00:00:00', '23:59:59']" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
       </el-date-picker>
     </div>
+
 
     <div class="block">
       <span class="demonstration" @click="log(form.value3)">选择当天前后任意天数日期</span>
@@ -54,9 +57,36 @@
       </el-date-picker>
     </div>
 
+
     <div class="block">
       <span class="demonstration" @click="log(form.value4)">默认</span>
-      <el-date-picker clearable v-model="form.value4" type="daterange"> </el-date-picker>
+      <el-date-picker clearable v-model="form.value4" type="daterange"></el-date-picker>
+      <p>type="daterange" 默认的输入框显示格式是 xxxx-xx-xx</p>
+      <p>绑定值的格式是原生 date 对象, 然后 toString() 了</p>
+    </div>
+
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value5)">选择时间范围 赋值</span>
+      <el-date-picker clearable v-model="form.value5" value-format="yyyy-MM-dd" type="daterange"></el-date-picker>
+      <el-button @click="setArrValue5">赋值数组</el-button>
+    </div>
+
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value6)">单个时间 赋值</span>
+      <el-date-picker clearable v-model="form.value6" value-format="yyyy-MM-dd"></el-date-picker>
+      <el-button @click="setDateValue6">赋值 date 对象</el-button>
+    </div>
+
+
+    <div class="block">
+      <span class="demonstration" @click="log(form.value7)">最近一周 赋值</span>
+      <el-date-picker clearable v-model="form.value7" value-format="yyyy-MM-dd" type="daterange"></el-date-picker>
+      <el-button @click="setDateValue7">赋值 date 对象</el-button>
+      <el-button @click="setStringValue7">赋值常用字符串格式</el-button>
+      <p>这里会发现一个问题, 赋值给的是原生 date 对象, 这时取值就成了原生 date 对象 toString() 了</p>
+      <p>然后再次手动选择日期范围后, 取值则就成了 value-format 给定的格式了</p>
     </div>
 
 
@@ -65,7 +95,7 @@
 
 
   <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="m_index.js" type="module" charset="utf-8"></script>
 </body>
 
