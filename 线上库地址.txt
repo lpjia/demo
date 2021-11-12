@@ -58,6 +58,7 @@ element-ui
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js"></script>
 // 这个 js 库文件需要在 vuejs 库文件之后引入
+// 2021-11-12 最新版本是@2.15.6, 新 demo 可以换新版本
 
 
 dayjs
