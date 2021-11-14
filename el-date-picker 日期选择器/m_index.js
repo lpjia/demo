@@ -11,6 +11,8 @@ let vm = new Vue({
       value5: '',
       value6: '',
       value7: '',
+      // value8: '',
+      value8: null
     },
     pickerVal: null, // 第一次选中的时间
     isEnable: true,

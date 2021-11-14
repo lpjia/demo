@@ -113,11 +113,12 @@ $(function () {
 
 
 
-  // $().data() 可以
+  // $().data() 本质上是缓存, 在当前 jQ 对象上, 添加一个自定义的属性类似 jQuery331079058818933652232
+  // 缓存所有 $().data() 的赋值
   $('#id').data('noshow', '不会渲染在 html 中')
   let val16 = $('#id').data('noshow')
   console.log('val16: ', val16)
-
+  console.log('$("#id"): ', $("#id"))
 
 
 })

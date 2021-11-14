@@ -7,7 +7,7 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>el-date-picker 日期选择器</title>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
   <style>
     .block {
@@ -82,7 +82,7 @@
 
     <div class="block">
       <span class="demonstration" @click="log(form.value7)">最近一周 赋值</span>
-      <el-date-picker clearable v-model="form.value7" value-format="yyyy-MM-dd" type="daterange"></el-date-picker>
+      <el-date-picker v-model="form.value7" value-format="yyyy-MM-dd" type="daterange"></el-date-picker>
       <el-button @click="setDateValue7">赋值 date 对象</el-button>
       <el-button @click="setStringValue7">赋值常用字符串格式</el-button>
       <p>这里会发现一个问题, 赋值给的是原生 date 对象, 这时取值就成了原生 date 对象 toString() 了</p>
@@ -90,12 +90,22 @@
     </div>
 
 
+    <div class="block">
+      <span class="demonstration" @click="log(form.value8)">多日期选择模式</span>
+      <el-date-picker type="dates" clearable v-model="form.value8" value-format="yyyy-MM-dd" placeholder="选择一个或多个日期">
+      </el-date-picker>
+      <p>默认都带清除按钮功能, 不用再显式写 clearable 属性, 注意清除后, 值被置为 null/'null', 不是空字符串</p>
+    </div>
+
+
+
+
 
   </div>
 
 
   <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js" type="text/javascript" charset="utf-8"></script>
   <script src="m_index.js" type="module" charset="utf-8"></script>
 </body>
 
