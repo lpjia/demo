@@ -6,11 +6,4 @@
 <!-- <script src="global/globalFn.js" type="text/javascript" charset="utf-8"></script> -->
 
 
-
-
-<!-- <script src="m_index.js" type="module" charset="utf-8"></script> -->
-
-
-
-
 <!-- <link rel="stylesheet" href="index.css" /> -->
