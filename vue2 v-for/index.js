@@ -1,4 +1,4 @@
-let vue = new Vue({
+const vue = new Vue({
   el: '#app',
   data: {
     sensorSum: [],
