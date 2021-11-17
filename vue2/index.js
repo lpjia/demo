@@ -1,40 +1,3 @@
-{/* <div>
-  我是子组件
-  <slot name="name">我是默认名称:{{ name }}</slot>
-</div> */}
-
-// 局部注册
-const childOne = {
-  data() {
-    return {
-      name: 'this is childOne'
-    }
-  },
-  components: {
-  },
-  created() {
-    console.log('子组件 child-one created()')
-  },
-  mounted() {
-    console.log('子组件 child-one mounted()')
-  },
-  beforeDestroy() {
-  },
-  methods: {
-  },
-  template: `<div>
-                我是子组件
-                <slot childOne="name">我是默认名称:{{ name }}</slot>
-              </div>`,
-  // render(h) {
-  //   return h('section', {
-  //   },
-  //   )
-  // }
-}
-
-
-
 const vm = new Vue({
   el: '#app',
   data: {
@@ -52,9 +15,7 @@ const vm = new Vue({
       { name: 'xj', age: 27 },
     ]
   },
-  components: {
-    'son': childOne,
-  },
+  components: {},
   computed: {
     longName() {
       return item => item.name + " is " + item.age
