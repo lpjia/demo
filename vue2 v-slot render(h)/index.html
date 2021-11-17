@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue2 v-slot</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+    全局组件: <button-counter></button-counter>
+    <el-divider></el-divider>
+
+
+    <h3>不用插槽</h3>
+    <child-one></child-one>
+    <el-divider></el-divider>
+
+
+    <div class="up_down">
+      <h3>v-slot 具名插槽</h3>
+      <div>
+        <child-one>
+          <template v-slot:slot_1>
+            <!-- 这里注意是v-slot:子组件的插槽名 -->
+            <!-- <slot> 元素作为组件模板之中的内容分发插槽。<slot> 元素自身将被替换。 -->
+            template 是不渲染的, template 下的都会被替换
+            <span style="color: deepskyblue;">替换了</span>
+          </template>
+        </child-one>
+      </div>
+    </div>
+    <el-divider></el-divider>
+
+
+    <h3>测试作用域插槽</h3>
+    <child-one>
+      <!-- 作用域插槽不能传事件, 可以传数据, 类比 el-table-column 插入的 row -->
+      <!-- 插槽的显示顺序, 看子组件挖坑的顺序 -->
+      <template #slot_2="dataFromChild">
+        这是父组件的 slot_2 插槽
+        <span style="color: deepskyblue;">替换了</span>
+        <div>{{ dataFromChild }}</div>
+        <div>{{ dataFromChild.data }}</div>
+      </template>
+      <template #slot_1="dataFromChild">
+        这是父组件的 slot_1 插槽
+        <span style="color: deepskyblue;">替换了</span>
+        <div>{{ dataFromChild }}</div>
+        <div>{{ dataFromChild.data }}</div>
+      </template>
+    </child-one>
+    <el-divider></el-divider>
+
+
+    <h3>测试 render</h3>
+    <child-two>
+      <template #slot_1="dataFromChild">
+        这是父组件的 slot_1 插槽
+        <span style="color: deepskyblue;">替换了</span>
+        <div>{{ dataFromChild }}</div>
+        <div>{{ dataFromChild.data }}</div>
+      </template>
+      <template #slot_2>
+        这是父组件的 slot_2 插槽
+        <span style="color: deepskyblue;">替换了</span>
+      </template>
+      <template #default>
+        这是父组件的 default 插槽
+        <span style="color: deepskyblue;">替换了</span>
+      </template>
+    </child-two>
+    <el-divider></el-divider>
+
+
+    <base-layout>
+      <template v-slot:header>
+        <h3>Here might be a page title 这可能是一个页面标题</h3>
+      </template>
+      <p>A paragraph for the main content. 一段主要内容</p>
+      <p>And another one. 还有一个</p>
+      <p>template 里没有指明具名插槽的, 按默认插槽处理, 这三行都是直接填坑到默认插槽</p>
+      <template #footer>
+        <p>Here's some contact info 这是一些联系信息</p>
+      </template>
+    </base-layout>
+    <el-divider></el-divider>
+
+
+    <hx-comp :level="3">这是 h3</hx-comp>
+    <el-divider></el-divider>
+
+
+    <blog-post>
+      <template #header>
+        <h1>About Me</h1>
+      </template>
+
+      <p>Here's some page content, which will be included in vm.$slots.default, because it's not inside a named slot.
+      </p>
+
+      <template #footer>
+        <p>Copyright 2016 Evan You</p>
+      </template>
+
+      <p>If I have some content down here, it will also be included in vm.$slots.default.</p><br>
+    </blog-post>
+    <el-divider></el-divider>
+
+
+    <div style="height: 500px;"></div>
+
+
+
+  </div>
+
+
+
+
+
+  <!-- https://cn.vuejs.org/v2/guide/components-edge-cases.html#X-Template -->
+  <!-- 另一个定义模板的方式是在一个 <script> 元素中，并为其带上 text/x-template 的类型，然后通过一个 id 将模板引用过去。 -->
+  <!-- x-template 需要定义在 Vue 所属的 DOM 元素外。 -->
+  <!-- 一种模版直接写到组件的 template 上, 另一种模版是下面这个, 靠 id 引入 -->
+
+  <script type="text/x-template" id="test-template">
+    <div class="container">
+      <header>
+        header: <slot name="header"></slot>
+      </header>
+      <main>
+        main: <slot></slot>
+      </main>
+      <footer>
+        footer: <slot name="footer"></slot>
+      </footer>
+    </div>
+  </script>
+
+
+  <script type="text/x-template" id="hx-template">
+    <h1 v-if="level === 1">
+    <slot></slot>
+    </h1>
+    <h2 v-else-if="level === 2">
+      <slot></slot>
+    </h2>
+    <h3 v-else-if="level === 3">
+      <slot></slot>
+    </h3>
+  </script>
+
+
+
+
+
+
+
+
+  <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#attr-src -->
+  <!-- src 这个属性定义引用外部脚本的URI，这可以用来代替直接在文档中嵌入脚本。指定了 src 属性的script元素标签内不应该再有嵌入的脚本。 -->
+  <!-- 不能这样用, 会报错, src 就是引入外部脚本文件 -->
+
+  <!-- <script type="text/x-template" id="test-template" src="template.js"></script> -->
+
+
+
+  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../erd 监控局部区域改变宽度/components/globalComp.js"></script>
+  <script>
+    // <\/script> 闭合标签在这里影响解析器工作(作为脚本结束标签, 而不是期望的字符串), 所以需要把它断开
+    // const jiao = '<script src="components/one.js"></scr' + 'ipt>'
+    // 也可以加反斜杠
+    const jiao = `<script src="components/one.js"><\/script>`
+    document.writeln(jiao)
+  </script>
+  <script src="components/two.js"></script>
+  <script src="components/three.js"></script>
+  <script src="components/four.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <script>
+    const jiao2 = `<script src="index.js"><\/script>`
+    document.writeln(jiao2)
+  </script>
+</body>
+
+</html>

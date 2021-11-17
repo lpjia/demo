@@ -85,6 +85,7 @@ const lineChart = {
   },
   /**
    * 这不能直接写标签的形式, 因为是 dom 模版, 没有 babel 工具
+   * 感觉上一行的解释有问题? 应该是可以写自定义组件, 只需提前引入该组件
    */
   // template: `<div class="chartContainer" id="id"></div>`
   // template: `<div class="chartContainer">
@@ -93,33 +94,43 @@ const lineChart = {
 
   /**
    * 因为得绑定动态的 id, 所以不能用 template
+   * Vue 选项中的 render 函数若存在，则 Vue 构造函数不会从 template 选项或通过 el 选项指定的挂载元素中提取出的 HTML 模板编译渲染函数。
+   * 简单讲就是有 render 则 template 不会生效
    */
   render(h) {
     // console.log(h)
 
     /**
      * 官网
+     * https://cn.vuejs.org/v2/api/#render
+     * https://cn.vuejs.org/v2/guide/render-function.html#createElement-%E5%8F%82%E6%95%B0
      * https://cn.vuejs.org/v2/guide/render-function.html#%E6%B7%B1%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1
      */
-    return h('section', {
-      /**
-       * 这传 id, 无效
-       */
-      // props: {
-      //  id: this.id
-      // },
 
-      /**
-       * 普通的 html 属性
-       */
-      attrs: {
-        class: 'chartContainer',
-        id: this.id, // id, 因为是普通的 html 属性
+    return h('section',
+      // 第一个参数
+      // {String | Object | Function}
+      // 一个 HTML 标签名、组件选项对象，或者
+      // resolve 了上述任何一种的一个 async 函数。必填项。
+      {
+        /**
+         * 这传 id, 无效
+         */
+        // props: {
+        //  id: this.id
+        // },
+
+        /**
+         * 普通的 html 属性
+         */
+        attrs: {
+          class: 'chartContainer',
+          id: this.id, // id, 因为是普通的 html 属性
+        },
+        // class: { // 下面这种写法也行
+        //   chartContainer: false
+        // }
       },
-      // class: { // 下面这种写法也行
-      //   chartContainer: false
-      // }
-    },
       /**
        * 第三个参数, 传标签内容/子标签
        */
@@ -129,7 +140,8 @@ const lineChart = {
        * 为了测试传入子组件的数据
        */
       // [
-      //   h('button-counter-minus', {
+      //   h('button-counter-minus', 
+      //   {
       //     props: {
       //       // count: this.count // 不用, 子组件内的逻辑会改变 count
       //       prop_count: this.count // 用 props 传入子组件
@@ -143,7 +155,8 @@ const lineChart = {
        * 子标签
        */
       // [
-      //   h('div', {
+      //   h('div', 
+      //   {
       //     attrs: {
       //       title: this.count
       //     },
@@ -162,7 +175,7 @@ const lineChart = {
 Vue.prototype.$erd = elementResizeDetectorMaker();
 
 
-let vue = new Vue({
+const vm = new Vue({
   el: '#app',
   // 局部注册, 唯一注意的是加s
   components: {

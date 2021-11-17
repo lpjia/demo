@@ -1,0 +1,19 @@
+const vm = new Vue({
+  el: '#app',
+  data: {
+  },
+  components: {
+    'child-one': childOne,
+    'child-two': childTwo,
+    // 局部组件封装后就是个 obj, template 是其属性, 下一行代码写法没毛病
+    'base-layout': { template: '#test-template' },
+    'hx-comp': hxComp,
+    'blog-post': blogPost,
+  },
+  computed: {
+  },
+  mounted() {
+  },
+  methods: {
+  }
+})
