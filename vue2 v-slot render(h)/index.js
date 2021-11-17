@@ -9,6 +9,7 @@ const vm = new Vue({
     'base-layout': { template: '#test-template' },
     'hx-comp': hxComp,
     'blog-post': blogPost,
+    'child-three': childThree,
   },
   computed: {
   },

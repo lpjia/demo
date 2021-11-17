@@ -46,28 +46,24 @@
         这是父组件的 slot_2 插槽
         <span style="color: deepskyblue;">替换了</span>
         <div>{{ dataFromChild }}</div>
-        <div>{{ dataFromChild.data }}</div>
       </template>
       <template #slot_1="dataFromChild">
         这是父组件的 slot_1 插槽
         <span style="color: deepskyblue;">替换了</span>
         <div>{{ dataFromChild }}</div>
-        <div>{{ dataFromChild.data }}</div>
       </template>
     </child-one>
     <el-divider></el-divider>
 
 
-    <h3>测试 render</h3>
+    <h3>测试 render 和插槽</h3>
     <child-two>
-      <template #slot_1="dataFromChild">
-        这是父组件的 slot_1 插槽
-        <span style="color: deepskyblue;">替换了</span>
-        <div>{{ dataFromChild }}</div>
-        <div>{{ dataFromChild.data }}</div>
+      <template #slot_3="dataFromChild">
+        这是父组件的 slot_3 插槽
+        <span style="color: deepskyblue;">{{ dataFromChild.id }}</span>
       </template>
-      <template #slot_2>
-        这是父组件的 slot_2 插槽
+      <template #slot_4>
+        这是父组件的 slot_4 插槽
         <span style="color: deepskyblue;">替换了</span>
       </template>
       <template #default>
@@ -78,21 +74,15 @@
     <el-divider></el-divider>
 
 
-    <base-layout>
-      <template v-slot:header>
-        <h3>Here might be a page title 这可能是一个页面标题</h3>
-      </template>
-      <p>A paragraph for the main content. 一段主要内容</p>
-      <p>And another one. 还有一个</p>
-      <p>template 里没有指明具名插槽的, 按默认插槽处理, 这三行都是直接填坑到默认插槽</p>
-      <template #footer>
-        <p>Here's some contact info 这是一些联系信息</p>
-      </template>
-    </base-layout>
+    <hx-comp :level="2">这是 h2</hx-comp>
+    <hx-comp :level="3">
+      <template #default="dataFromChild"> {{ dataFromChild.text }} </template>
+    </hx-comp>
     <el-divider></el-divider>
 
 
-    <hx-comp :level="3">这是 h3</hx-comp>
+    <h3>用渲染函数向子组件中传递作用域插槽</h3>
+    <child-three></child-three>
     <el-divider></el-divider>
 
 
@@ -111,6 +101,27 @@
       <p>If I have some content down here, it will also be included in vm.$slots.default.</p><br>
     </blog-post>
     <el-divider></el-divider>
+
+
+    <base-layout>
+      <template v-slot:header>
+        <h3>Here might be a page title 这可能是一个页面标题</h3>
+      </template>
+      <p>A paragraph for the main content. 一段主要内容</p>
+      <p>And another one. 还有一个</p>
+      <p>template 里没有指明具名插槽的, 按默认插槽处理, 这三行都是直接填坑到默认插槽</p>
+      <template #footer>
+        <p>Here's some contact info 这是一些联系信息</p>
+      </template>
+    </base-layout>
+    <el-divider></el-divider>
+
+
+    <!-- <child-three dengji="three"></child-three> -->
+    <!-- // 如果组件是其它组件的子组件，需为插槽指定名称
+    slot: 'name-of-slot',
+    研究下怎么用
+    https://cn.vuejs.org/v2/guide/render-function.html#%E6%B7%B1%E5%85%A5%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1 -->
 
 
     <div style="height: 500px;"></div>
@@ -143,7 +154,8 @@
   </script>
 
 
-  <script type="text/x-template" id="hx-template">
+  <!-- 这种模版写着冗余, 不够优雅 -->
+  <!-- <script type="text/x-template" id="hx-template">
     <h1 v-if="level === 1">
     <slot></slot>
     </h1>
@@ -153,7 +165,7 @@
     <h3 v-else-if="level === 3">
       <slot></slot>
     </h3>
-  </script>
+  </script> -->
 
 
 
@@ -172,7 +184,7 @@
 
   <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../erd 监控局部区域改变宽度/components/globalComp.js"></script>
+  <script src="../erd 监控局部区域改变宽度 render(h)/components/globalComp.js"></script>
   <script>
     // <\/script> 闭合标签在这里影响解析器工作(作为脚本结束标签, 而不是期望的字符串), 所以需要把它断开
     // const jiao = '<script src="components/one.js"></scr' + 'ipt>'
@@ -182,6 +194,7 @@
   </script>
   <script src="components/two.js"></script>
   <script src="components/three.js"></script>
+  <script src="components/three2.js"></script>
   <script src="components/four.js"></script>
   <!-- <script src="index.js"></script> -->
   <script>
