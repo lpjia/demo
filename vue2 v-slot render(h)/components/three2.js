@@ -2,14 +2,17 @@
 const childThree = {
   data() {
     return {
-      list: [{ lv: 2 }, { lv: 4 }]
+      list: [
+        { lv: 2 },
+        { lv: 4 },
+      ]
     }
   },
   components: {
     'hx-comp': hxComp
   },
   render(h) {
-    console.log('---- child-three ----')
+    // console.log('---- child-three ----')
 
     // <div><hx-comp :level="2" #default="data"><span>{{ data.text }}</span></hx-comp></div>
     return h('div',
