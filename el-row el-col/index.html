@@ -9,35 +9,171 @@
   <title>el-row el-col</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <style>
-    .el-header,
-    .el-footer {
-      background-color: #B3C0D1;
-      color: #333;
-      text-align: center;
-      line-height: 60px;
-    }
-
-    .el-aside {
-      background-color: #D3DCE6;
-      color: #333;
-      text-align: center;
-      line-height: 400px;
-    }
-
-    .el-main {
-      background-color: #E9EEF3;
-      color: #333;
-      text-align: center;
-      line-height: 160px;
-    }
-  </style>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
   <div id="app">
 
     <!-- 可以学习布局 -->
+
+    <el-container>
+      <el-aside width="200px">Aside</el-aside>
+      <el-container>
+        <el-main style="background-color: #EAEBEF;">
+          <!-- 等接口, 然后处理成动态, 也要保留静态页 -->
+          <div class="top">
+            <section>
+              <div class="bar">
+                <img src="img/alarm.png">
+                <span>报警数:</span>
+                <span>6</span>
+              </div>
+            </section>
+            <section>
+              <div class="bar">
+                <img src="img/offline.png">
+                <span>离线数:</span>
+                <span>1</span>
+              </div>
+            </section>
+          </div>
+
+          <el-row class="dashboard">
+            <el-row :gutter="40" style="padding: 20px;">
+              <el-col :xs="24" :sm="24" :md="12" :lg="8">
+                <section class="wrap">
+                  <div class="head">
+                    <div class="title">
+                      <img src="img/tunnel.png"><span>&nbsp;&nbsp;隧道</span>
+                    </div>
+                    <div class="count"><b>10</b>&nbsp;&nbsp;<span>条</span></div>
+                  </div>
+                  <el-row class="main">
+                    <el-col :span="8" class="tag">
+                      <div>郑州: <span class="num">6</span></div>
+                    </el-col>
+                    <el-col :span="8" class="tag">
+                      <div>郑州: <span class="num">6</span></div>
+                    </el-col>
+                    <el-col :span="8" class="tag">
+                      <div>郑州: <span class="num">6</span></div>
+                    </el-col>
+                    <el-col :span="8" class="tag">
+                      <div>郑州: <span class="num">6</span></div>
+                    </el-col>
+                    <el-col :span="8" class="tag">
+                      <div>郑州: <span class="num">6</span></div>
+                    </el-col>
+                  </el-row>
+                </section>
+              </el-col>
+
+            </el-row>
+          </el-row>
+
+          <el-row class="btm">
+            <el-row>
+              <el-col :span="24">
+                <!-- 静态页 -->
+                <!-- <section>
+                  <div class="sectionName">
+                    <b>报警</b>&nbsp;&nbsp;<span>4 个</span>
+                  </div>
+                  <el-row :gutter="30">
+                    <el-col :span="4" class="minwidth" v-for="(item, idx) in sensorAlarmList" :key="idx">
+                      <section class="card2 alarm">
+                        <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
+                        <div class="card2Main">
+                          <div class="left"><img src="img/gas.png"></div>
+                          <div class="right oneLine">
+                            <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
+                          </div>
+                        </div>
+                      </section>
+                    </el-col>
+                  </el-row>
+                </section> -->
+
+                <!-- 动态数据 -->
+                <section v-for="(x, i) in sensorList" :key="i">
+                  <div class="sectionName">
+                    <b>{{ x.sectionName }}</b>&nbsp;&nbsp;<span>{{ x.count }} 个</span>
+                  </div>
+                  <el-row :gutter="30">
+                    <el-col :span="4" class="minwidth" v-for="(item, idx) in x.list" :key="idx">
+                      <section class="card2" :class="x.type">
+                        <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
+                        <div class="card2Main">
+                          <div class="left"><img :src="'img/'+ item.imgType + '.png'"></div>
+                          <div class="right oneLine">
+                            <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
+                          </div>
+                        </div>
+                      </section>
+                    </el-col>
+                  </el-row>
+                </section>
+
+              </el-col>
+            </el-row>
+          </el-row>
+
+
+          <el-divider></el-divider>
+          <p class="un_down">el-row 可以直接嵌套 el-row, 不需要中间加 el-col</p>
+          <p class="un_down">el-col 有响应式栅格属性, 例如 :xs="24" :sm="24" :lg="8" 等, 父级 el-row 就不用显式写 type="flex"
+            justify="start" 等</p>
+          <el-row class="dashboard">
+            <el-row :gutter="40" style="padding: 20px;">
+              <el-col :xs="24" :sm="24" :lg="8">
+                <div class="wrap">1</div>
+              </el-col>
+              <el-col :xs="24" :sm="24" :lg="8">
+                <div class="wrap">2</div>
+              </el-col>
+              <el-col :xs="24" :sm="24" :lg="8">
+                <div class="wrap">3</div>
+              </el-col>
+            </el-row>
+          </el-row>
+
+
+          <p class="un_down">el-col 有响应式栅格属性, :span="3" 也可以不用显式加</p>
+          <el-row class="dashboard">
+            <el-row :gutter="40" style="padding: 20px;">
+              <el-col :span="3">
+                <div class="wrap">1</div>
+              </el-col>
+              <el-col :span="3">
+                <div class="wrap">2</div>
+              </el-col>
+              <el-col :span="3">
+                <div class="wrap">3</div>
+              </el-col>
+            </el-row>
+          </el-row>
+
+        </el-main>
+      </el-container>
+    </el-container>
+    <el-divider></el-divider>
+
+    <div class="flex">
+      <section class="child one">1</section>
+      <section class="child two">2</section>
+      <section class="child three">3</section>
+    </div>
+    <el-divider></el-divider>
+
+    <div class="flex chuizhi">
+      <section class="child one">1</section>
+      <section class="child two">2</section>
+      <section class="child three">3</section>
+    </div>
+    <el-divider></el-divider>
+
 
     <el-container>
       <el-header>Header</el-header>
@@ -50,6 +186,7 @@
       </el-container>
     </el-container>
     <el-divider></el-divider>
+
 
     <el-container>
       <el-header>Header</el-header>
@@ -66,10 +203,10 @@
   </div>
 
 
-  <script src="../lib/vue@2.6.12.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
   <!-- <script src="m_index.js" type="module"></script> -->
-  <script src="index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js" type="module"></script>
 </body>
 
 </html>

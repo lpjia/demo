@@ -1,0 +1,213 @@
+// 头部信息
+.top {
+  display: flex;
+  justify-content: start;
+
+  >section {
+    margin-bottom: 20px;
+
+    .bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      margin-right: 40px;
+
+      >img {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      >span {
+        vertical-align: middle;
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+
+.dashboard {
+  background-color: #fff;
+
+  .wrap {
+    background-color: #EAEBEF;
+    padding: 10px 20px 14px;
+    border: 1px solid #DCDDE4;
+    border-radius: 10px;
+
+    >.head {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      height: 32px;
+
+      >.title {
+        img {
+          // 宽高可给
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        span {
+          vertical-align: middle;
+          color: #666666;
+          font-size: 16px;
+        }
+      }
+
+      >.count {
+        line-height: 32px;
+
+        >b {
+          font-size: 24px;
+          font-family: Source Han Sans SC;
+          font-weight: bold;
+          color: #333333;
+          vertical-align: middle;
+        }
+
+        >span {
+          vertical-align: middle;
+          color: #666666;
+          font-size: 16px;
+          display: inline-block;
+        }
+      }
+    }
+
+    >.main {
+      background-color: #fff;
+      height: 200px;
+      overflow-y: auto;
+      border-radius: 10px;
+
+      .tag {
+        margin: 10px 0;
+
+        .num {
+          color: #4F63A7;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.btm {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 20px;
+
+  .sectionName {
+    text-align: left;
+
+    >b {
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+      font-weight: bold;
+      line-height: 27px;
+      color: #333333;
+    }
+
+    >span {
+      font-size: 14px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      line-height: 24px;
+      color: #666666;
+    }
+  }
+
+  .minwidth {
+    min-width: 230px;
+    margin-top: 16px;
+  }
+
+  .nameTitle {
+    text-align: left;
+    font-size: 16px;
+    font-family: SimHei;
+    font-weight: 400;
+    line-height: 21px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .card2 {
+    height: 140px;
+    box-sizing: border-box;
+    padding: 16px 10px 0 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  .card2Main {
+    display: flex;
+
+    .right {
+      margin-left: 20px;
+    }
+
+    .txt {
+      text-align: left;
+      font-size: 16px;
+      font-family: SimHei;
+      font-weight: 400;
+      line-height: 21px;
+      color: #ffffff;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+
+
+  .alarm {
+    background-color: #dc4f4f;
+  }
+
+  .warning {
+    background-color: #e58c26;
+  }
+
+  .hint {
+    background-color: #77a6cf;
+  }
+
+}
+
+
+
+// 以下为测试样式
+.child {
+  border: 1px solid red;
+  // text-align: center;
+}
+
+.one {
+  flex: 1;
+}
+
+.two {
+  flex: 2;
+}
+
+.three {
+  flex: 3;
+}
+
+.chuizhi {
+  flex-direction: column;
+  height: 180px;
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "sectionName": "隧道2",
+    "equipmentName": "传感器",
+    "level": 2,
+    "category": 1,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道2",
+    "equipmentName": "传感器",
+    "level": 2,
+    "category": 2,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道1",
+    "equipmentName": "传感器",
+    "level": 1,
+    "category": 10,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道2",
+    "equipmentName": "传感器",
+    "level": 2,
+    "category": 4,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道1",
+    "equipmentName": "传感器",
+    "level": 1,
+    "category": 5,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道null",
+    "equipmentName": "传感器",
+    "level": null,
+    "category": 6,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道null",
+    "equipmentName": "传感器",
+    "level": null,
+    "category": 7,
+    "eventDiscription": "越上限,当前值为：27.3"
+  },
+  {
+    "sectionName": "隧道null",
+    "equipmentName": "传感器",
+    "level": null,
+    "category": 8,
+    "eventDiscription": "越上限,当前值为：27.3"
+  }
+]
