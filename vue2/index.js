@@ -1,6 +1,8 @@
 const vm = new Vue({
   el: '#app',
   data: {
+    kexuanlian: null,
+
     list: [
       { name: 'H<sub>2</sub>S&nbsp;传感器', amount: 13, key: '12' },
       { name: 'CO &nbsp;传感器', amount: 15, key: '1' },
@@ -22,16 +24,19 @@ const vm = new Vue({
     }
   },
   mounted() {
-    this.init()
+    setTimeout(() => {
+      this.getKexuanlian()
+    }, 1000)
   },
   methods: {
-    /**
-     * 
-     */
-    init() {
+    async getKexuanlian() {
+      let url = "mock/kexuanlian.json"
+      let response = await fetch(url);
+
+      if (!response.ok) throw new Error('response failed')
+      let res = await response.json();
+      this.kexuanlian = res
     },
-
-
     greet: function (event) {
       console.log('Hello ' + this.msg + '!')
       // `event` 是原生 DOM 事件
