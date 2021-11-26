@@ -1,0 +1,1 @@
+测试新忽视规则时, 把 gitignore.txt 改为 .gitignore 即可
