@@ -58,7 +58,8 @@ const obj = {
   money: 100 ** 3,
   hasMoney: true,
 }
-const { name, money, hasMoney: isRich } = obj
+const { name, money, hasMoney: isRich, noZiduan = '默认赋值' } = obj
 console.log('name: ', name)
 console.log('money: ', money)
 console.log('isRich: ', isRich)
+console.log('noZiduan: ', noZiduan)
