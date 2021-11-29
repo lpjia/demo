@@ -112,5 +112,31 @@ export const alarmLevelObj = {
 const sensorControlGroupMap = {
   '2': 'oneCheck',
   '5|14': 'twoCheck',
+  '6': 'state',
 }
 export const getControlGroupBySensor = manyToOne(sensorControlGroupMap)
+
+
+// 联动状态
+export const deviceLinkObj = {
+  0: '未联动',
+  1: '已联动',
+}
+
+
+// 消防的设备状态
+export const fireSensorStatus = {
+  255: '全部',
+  0: '正常',
+  1: '火警',
+  2: '故障',
+  3: '启动',
+  4: '停动',
+  5: '隔离',
+  6: '释放',
+  7: '监管',
+  8: '反馈',
+  9: '动作',
+  10: '复位',
+  // 255: '全部',
+}
