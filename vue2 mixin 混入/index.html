@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue2 mixin 混入</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css"> -->
+  <link rel="stylesheet" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="app">
+
+    <h3>mixin 混入</h3>
+    <ul>
+      <li v-for="(item, idx) in allFireSensorStateArr" :key="idx">{{ item }}</li>
+    </ul>
+    <hr class="up_down">
+    <p>{{ allFireSensorStateObj }}</p>
+    <hr class="up_down">
+
+  </div>
+
+
+  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script> -->
+  <!-- <script src="mixinx/sensorState.js" type="module"></script> -->
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>
