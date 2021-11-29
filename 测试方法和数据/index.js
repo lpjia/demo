@@ -1,5 +1,5 @@
-import { reverseMapping, manyToOne } from '../util/commonMethod.js'
-import { getImgGroupByDevice } from '../util/commonData.js'
+import { reverseMapping, objToArr, deepClone } from '../util/commonMethod.js'
+import { getImgGroupByDevice, fireSensorStatus } from '../util/commonData.js'
 import diff from '../util/diff.js'
 
 
@@ -62,4 +62,18 @@ console.log('c: ', c)
 console.log('JSON.stringify(c): ', JSON.stringify(c))
 console.log('d: ', d)
 console.log('JSON.stringify(d): ', JSON.stringify(d))
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+// 测试对象转数组方法的项顺序
+// const allFireSensorStateObj = 
+console.log('fireSensorStatus: ', fireSensorStatus)
+const allFireSensorStateArr = objToArr(fireSensorStatus, { l: 'name', v: 'value' })
+console.log('数组项调位置前 allFireSensorStateArr: ', allFireSensorStateArr)
+// 把最后面的"全部"项调到最前
+const allFireSensorStateArr2 = deepClone(allFireSensorStateArr)
+let popItem = allFireSensorStateArr2.pop()
+allFireSensorStateArr2.unshift(popItem)
+console.log('数组项调位置后 allFireSensorStateArr2: ', allFireSensorStateArr2)
 console.log('---- 分割线 ----\n\n\n')
