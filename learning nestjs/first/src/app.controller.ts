@@ -1,9 +1,11 @@
 import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiTags } from '@nestjs/swagger';
 
 
 // @Controller()
 // 主路径是 app
+@ApiTags('公共接口')
 @Controller('app')
 export class AppController {
   constructor(private readonly appService: AppService) { }

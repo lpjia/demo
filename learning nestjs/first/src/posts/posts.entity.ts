@@ -8,6 +8,7 @@ export class PostsEntity {
   @Column({ length: 50 })
   title: string
 
+  // @Column({ length: 20, default: 'moren_author' })
   @Column({ length: 20 })
   author: string
 
