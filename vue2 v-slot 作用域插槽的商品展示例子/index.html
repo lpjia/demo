@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue2 v-slot 作用域插槽的商品展示例子</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <el-row :gutter="20">
+      <el-col :span="12" v-for="(column, index) in columnList" :key="index">
+        <el-card class="box-card card-column">
+          <div slot="header" class="clearfix">
+            <span>{{ column.columnName }}</span>
+          </div>
+          <!-- 这里只需要给Commodity组件传入数据，响应Commodity组件的clickCommodity事件即可。
+            事件不必携带参数，完全符合父到子的数据流向，而不会发生子组件又给父组件反向发数据的情况 -->
+          <commodity-list :commodities="column.commodityList">
+            <!-- 接下, 渲染完子组件内容, 用作用域插槽来填坑 -->
+            <template #default="{ row }">
+              <!-- dom 模板, 属性名用短横线 -->
+              <!-- 没有用 template 标签, 纯渲染子组件内容 -->
+              <commodity :modity-data="row" @click-commodity="onCommodityClick"></commodity>
+            </template>
+          </commodity-list>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :close-on-click-modal="false"
+      v-loading.fullscreen.lock="isFullscreenLoading" :lock-scroll="false">
+      <span>{{ dialogMsg }}</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogConfirm">确 定</el-button>
+      </span>
+    </el-dialog>
+
+
+    <hr class="up_down">
+
+
+    <!-- 先写个静态页 -->
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <el-card class="box-card card-column">
+          <div slot="header" class="clearfix">
+            <span>first 大卡片</span>
+          </div>
+          <section>
+            <el-row :gutter="20">
+              <el-col :span="8" style="margin-top:20px;">
+                <el-card class="box-card card-column">
+                  <div slot="header" class="clearfix">
+                    <span>second 小卡片</span>
+                  </div>
+                  <section>小卡片内容</section>
+                </el-card>
+              </el-col>
+              <el-col :span="8" style="margin-top:20px;">
+                <el-card class="box-card card-column">
+                  <div slot="header" class="clearfix">
+                    <span>second 小卡片</span>
+                  </div>
+                  <section>小卡片内容</section>
+                </el-card>
+              </el-col>
+              <el-col :span="8" style="margin-top:20px;">
+                <el-card class="box-card card-column">
+                  <div slot="header" class="clearfix">
+                    <span>second 小卡片</span>
+                  </div>
+                  <section>小卡片内容</section>
+                </el-card>
+              </el-col>
+            </el-row>
+          </section>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <hr class="up_down">
+
+
+  </div>
+
+
+
+  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js"></script>
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>
