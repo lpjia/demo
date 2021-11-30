@@ -1,6 +1,12 @@
 const vm = new Vue({
   el: '#app',
   data: {
+    dynamicSlotList: [
+      { slotName: 'default' },
+      { slotName: 'slot_1' },
+      { slotName: 'slot_2' },
+    ],
+    dynamic: 'default'
   },
   components: {
     'child-one': childOne,
@@ -16,5 +22,8 @@ const vm = new Vue({
   mounted() {
   },
   methods: {
+    switchSlot(slotName) {
+      this.dynamic = slotName
+    }
   }
 })

@@ -22,19 +22,33 @@
     <el-divider></el-divider>
 
 
-    <div class="up_down">
-      <h3>v-slot 具名插槽</h3>
-      <div>
-        <child-one>
-          <template v-slot:slot_1>
-            <!-- 这里注意是v-slot:子组件的插槽名 -->
-            <!-- <slot> 元素作为组件模板之中的内容分发插槽。<slot> 元素自身将被替换。 -->
-            template 是不渲染的, template 下的都会被替换
-            <span style="color: deepskyblue;">替换了</span>
-          </template>
-        </child-one>
-      </div>
-    </div>
+    <h3>v-slot 具名插槽</h3>
+    <child-one>
+      <template v-slot:slot_1>
+        <!-- 这里注意是v-slot:子组件的插槽名 -->
+        <!-- <slot> 元素作为组件模板之中的内容分发插槽。<slot> 元素自身将被替换。 -->
+        template 是不渲染的, template 下的都会被替换
+        <span style="color: deepskyblue;">替换了</span>
+      </template>
+    </child-one>
+    <el-divider></el-divider>
+
+
+    <h3>动态插槽名</h3>
+    <button v-for="(item, idx) in dynamicSlotList" :key="idx" @click="switchSlot(item.slotName)"
+      style="margin-right: 10px;">
+      {{ item.slotName }}</button>
+    <child-one>
+      <!-- 不访问子组件的数据, 这种写法也可以 -->
+      <!-- <template v-slot:[dynamic]> -->
+      <!-- <template #[dynamic]> -->
+      <!-- <template #[dynamic]="xxx"> -->
+
+      <!-- 动态的插槽名在 dom 模版中, 会被直接转为全小写, dynamicSlotName 驼峰式命名变量就报错了 -->
+      <template v-slot:[dynamic]="{ data }">
+        我是父组件 ---- {{ data }}
+      </template>
+    </child-one>
     <el-divider></el-divider>
 
 
@@ -45,12 +59,12 @@
       <template #slot_2="dataFromChild">
         这是父组件的 slot_2 插槽
         <span style="color: deepskyblue;">替换了</span>
-        <div>{{ dataFromChild }}</div>
+        <div>从子组件获取的数据: &nbsp;&nbsp;{{ dataFromChild }}</div>
       </template>
-      <template #slot_1="dataFromChild">
+      <template #slot_1="{ data }">
         这是父组件的 slot_1 插槽
-        <span style="color: deepskyblue;">替换了</span>
-        <div>{{ dataFromChild }}</div>
+        <span style="color: deepskyblue;">插槽 prop 解构出来</span>
+        <div>从子组件获取的数据: &nbsp;&nbsp;{{ data }}</div>
       </template>
     </child-one>
     <el-divider></el-divider>
