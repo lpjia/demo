@@ -1,0 +1,41 @@
+注: 成型的直接写成单 bat 文件, 不成型的全写这, 多加注释
+测试脚本命令, 直接在此文件夹打开 cmd, 更好用
+多行命令建议写到 bat 文件, 然后鼠标双击执行
+
+
+
+
+:: 注释, 推荐
+rem 注释
+
+
+
+
+
+:: 创建文件夹
+md mulu
+
+:: 创建多个文件夹
+md mulu mulu2 mulu3
+
+:: 创建中文目录
+:: 需要先把 .bat 文件使用 ANSI 编码, 推荐用 Notepad++ 编辑器, 然后再输入中文目录
+md 目录2
+
+
+
+
+:: start 命令, 调用外部程序，所有的DOS命令和命令行程序都可以由start命令来调用。
+start test.bat
+
+
+
+
+:: 打开 git 终端
+start C:\z_software\Git\git-bash.exe
+
+:: 并进入某文件夹
+start C:\z_software\Git\git-bash.exe --cd=C:\tempStableVersion\submana_bg
+
+:: 再输入命令执行
+start C:\z_software\Git\git-bash.exe --cd=C:\tempStableVersion\submana_bg -c "npm run dev"
