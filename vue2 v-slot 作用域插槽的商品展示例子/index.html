@@ -22,7 +22,7 @@
           <div slot="header" class="clearfix">
             <span>{{ column.columnName }}</span>
           </div>
-          <!-- 这里只需要给Commodity组件传入数据，响应Commodity组件的clickCommodity事件即可。
+          <!-- 这里只需要给Commodity组件传入数据，响应Commodity组件的click-commodity事件即可。
             事件不必携带参数，完全符合父到子的数据流向，而不会发生子组件又给父组件反向发数据的情况 -->
           <commodity-list :commodities="column.commodityList">
             <!-- 接下, 渲染完子组件内容, 用作用域插槽来填坑 -->

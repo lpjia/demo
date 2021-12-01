@@ -1,12 +1,30 @@
 export default {
   props: ['commodities'],
-  mounted() {
-  },
   render(h) {
     return h('el-row',
       {
-
-      }
+        props: {
+          gutter: 20
+        },
+      },
+      [
+        this.commodities.map((item, idx) => {
+          return h('el-col',
+            {
+              props: {
+                span: 8,
+                key: idx
+              },
+              style: {
+                marginTop: '20px'
+              },
+            },
+            [ // <slot :row="item"></slot>
+              this.$scopedSlots.default({ row: item })
+            ]
+          )
+        })
+      ]
     )
   },
   /*

@@ -5,7 +5,8 @@ const childThree = {
       list: [
         { lv: 2 },
         { lv: 4 },
-      ]
+      ],
+      level: 1
     }
   },
   components: {
@@ -14,7 +15,13 @@ const childThree = {
   render(h) {
     // console.log('---- child-three ----')
 
-    // <div><hx-comp :level="2" #default="data"><span>{{ data.text }}</span></hx-comp></div>
+    // 想要实现的 dom 节点
+    ; `<div>
+      <hx-comp :level="2" #default="data">
+        <span>{{ data.text }}</span>
+      </hx-comp>
+    </div>`;
+
     return h('div',
       [
         // 加遍历
@@ -24,9 +31,22 @@ const childThree = {
               props: {
                 level: item.lv
               },
+              /*
+              // 作用域插槽的格式为
+              // { name: props => VNode | Array<VNode> }
               scopedSlots: {
-                default: data => h('span', data.text)
-              },
+                default: props => h('span', props.text)
+              }, */
+              scopedSlots: {
+                // 这是加了渲染 dom 节点功能, 解决 &nbsp; 问题, 下面是对照
+                default: data => h('span',
+                  {
+                    domProps: {
+                      innerHTML: `h${item.lv} &nbsp;&nbsp;${data.text}`
+                    }
+                  }
+                )
+              }
             }
           )
         }),
@@ -34,10 +54,11 @@ const childThree = {
         h('hx-comp',
           {
             props: {
-              level: 1
+              level: this.level
             },
             scopedSlots: {
-              default: data => h('span', data.text)
+              // &nbsp; 不会按照 dom 去渲染, 被当做文本渲染
+              default: data => h('span', [`h${this.level} &nbsp; `, data.text])
             },
           }
         ),

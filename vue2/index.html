@@ -21,7 +21,7 @@
 
 
     <div class="up_down">
-      v-html
+      v-html 在绑定元素的 innerHTML 里, 渲染出 dom 节点
       <div class="txt" v-for="sensor in list" :key="sensor.key">
         <span v-html="sensor.name"></span>&nbsp;&nbsp;{{ sensor.amount }} 个
       </div>

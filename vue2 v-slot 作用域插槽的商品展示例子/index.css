@@ -5,3 +5,8 @@
 .clearfix {
   color: #fff;
 }
+
+section {
+  height: 140px;
+  cursor: pointer;
+}
