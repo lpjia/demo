@@ -12,6 +12,10 @@ body {
   display: none;
 }
 
+button {
+  padding: 2px 4px;
+}
+
 .up_down {
   margin: 20px 0;
 }
