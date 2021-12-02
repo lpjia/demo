@@ -29,21 +29,26 @@ import * as morenAs from './defaultExport.js'
 
 
 console.log('showTxt: ', showTxt)
+console.log('---- 分割线 ----\n\n\n')
 
 
 console.log('moren: ', moren)
+console.log('---- 分割线 ----\n\n\n')
 
 
 console.log('mingmingAs: ', mingmingAs)
 console.log('mingmingAs.dc: ', mingmingAs.dc)
+console.log('---- 分割线 ----\n\n\n')
 
 
 console.log('hunhe: ', hunhe)
 console.log('mm: ', mm)
+console.log('---- 分割线 ----\n\n\n')
 
 
 console.log('morenAs: ', morenAs)
 console.log('morenAs.default: ', morenAs.default)
+console.log('---- 分割线 ----\n\n\n')
 
 
 
@@ -63,3 +68,41 @@ console.log('name: ', name)
 console.log('money: ', money)
 console.log('isRich: ', isRich)
 console.log('noZiduan: ', noZiduan)
+console.log('---- 分割线 ----\n\n\n')
+
+
+/**
+ * 多层解构
+ */
+const obj2 = {
+  name: 'this is obj2',
+  child: {
+    childName: 'this is childName',
+    childAge: 1
+  }
+}
+const {
+  name: objName,
+  child: { childName, childAge },
+  child // 为了不报错, 不写这行取不到 child
+} = obj2
+console.log('objName: ', objName)
+console.log('child: ', child)
+console.log('childName: ', childName)
+console.log('childAge: ', childAge)
+console.log('---- 分割线 ----\n\n\n')
+
+
+/**
+ * 变量值互换, 数组解构
+ */
+// let a = 100, b = 80
+let a = 100
+let b = 80
+console.log('a: ', a)
+console.log('b: ', b)
+console.log('解构后互换值')
+  ;[a, b] = [b, a]
+console.log('a: ', a)
+console.log('b: ', b)
+console.log('---- 分割线 ----\n\n\n')
