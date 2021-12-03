@@ -348,6 +348,34 @@ export function factorial(num) {
 
 
 /**
+ * @description 排列
+ * @param {number} n 
+ * @param {number} m
+ * @returns {number}
+ */
+export function arrangement(n, m) {
+  let top = factorial(n)
+    , btm = factorial(n - m)
+  if (n < m) throw new Error('一参不能小于二参')
+  return top / btm
+}
+
+
+/**
+ * @description 组合
+ * @param {number} n 
+ * @param {number} m
+ * @returns {number}
+ */
+export function combination(n, m) {
+  let top = factorial(n)
+    , btm = factorial(n - m) * factorial(m)
+  if (n < m) throw new Error('一参不能小于二参')
+  return top / btm
+}
+
+
+/**
  * @description 防抖
  * @param {Function} func
  * @param {number} wait

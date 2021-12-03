@@ -1,4 +1,8 @@
-import { reverseMapping, objToArr, deepClone } from '../util/commonMethod.js'
+import {
+  reverseMapping, objToArr, deepClone,
+  factorial, arrangement, combination,
+  generateIntArr, getRandomIntInclusive
+} from '../util/commonMethod.js'
 import { getImgGroupByDevice, fireSensorStatus } from '../util/commonData.js'
 import diff from '../util/diff.js'
 
@@ -6,9 +10,9 @@ import diff from '../util/diff.js'
 
 
 // 可以用 number 类型
-let a = getImgGroupByDevice(1)
-console.log('a: ', a)
-console.log('typeof a: ', typeof a)
+const sensorType = getImgGroupByDevice(1)
+console.log('sensorType: ', sensorType)
+console.log('typeof sensorType: ', typeof sensorType)
 console.log('---- 分割线 ----\n\n\n')
 
 
@@ -47,21 +51,24 @@ const difference = diff(curr, prev)
 console.log('difference: ', difference)
 console.log('difference.toString(): ', difference.toString())
 console.log('JSON.stringify(difference): ', JSON.stringify(difference))
-const aa = JSON.stringify(difference)
+const stringifyDiff = JSON.stringify(difference)
+// 不传参其实传了个 undefined, json 序列化直接跳过
 console.log('JSON.stringify(): ', JSON.stringify())
-console.log('JSON.parse(aa): ', JSON.parse(aa))
+// null 可以被 json 序列化
+console.log('JSON.stringify(null): ', JSON.stringify(null))
+console.log('JSON.parse(stringifyDiff): ', JSON.parse(stringifyDiff))
 console.log('---- 分割线 ----\n\n\n')
 
 
 
 // 反向映射, 对于数组是把索引和值反向了
-const b = ['10', '11', '13', '11']
-const c = reverseMapping(b)
-const d = c['11']
-console.log('c: ', c)
-console.log('JSON.stringify(c): ', JSON.stringify(c))
-console.log('d: ', d)
-console.log('JSON.stringify(d): ', JSON.stringify(d))
+const arrayWithRepeatedValues = ['10', '11', '13', '11']
+const reverseArrayItemsAndIndexes = reverseMapping(arrayWithRepeatedValues)
+const reverseArrayItem = reverseArrayItemsAndIndexes['11']
+console.log('reverseArrayItemsAndIndexes: ', reverseArrayItemsAndIndexes)
+console.log('JSON.stringify(reverseArrayItemsAndIndexes): ', JSON.stringify(reverseArrayItemsAndIndexes))
+console.log('reverseArrayItem: ', reverseArrayItem)
+console.log('JSON.stringify(reverseArrayItem): ', JSON.stringify(reverseArrayItem))
 console.log('---- 分割线 ----\n\n\n')
 
 
@@ -73,7 +80,94 @@ const allFireSensorStateArr = objToArr(fireSensorStatus, { l: 'name', v: 'value'
 console.log('数组项调位置前 allFireSensorStateArr: ', allFireSensorStateArr)
 // 把最后面的"全部"项调到最前
 const allFireSensorStateArr2 = deepClone(allFireSensorStateArr)
-let popItem = allFireSensorStateArr2.pop()
+const popItem = allFireSensorStateArr2.pop()
 allFireSensorStateArr2.unshift(popItem)
 console.log('数组项调位置后 allFireSensorStateArr2: ', allFireSensorStateArr2)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+
+// 阶乘
+const jiecheng = factorial(5)
+console.log('jiecheng: ', jiecheng)
+// 排列
+const pailie = arrangement(5, 0)
+console.log('pailie: ', pailie)
+const pailie2 = arrangement(5, 2)
+console.log('pailie2: ', pailie2)
+const pailie3 = arrangement(5, 3)
+console.log('pailie3: ', pailie3)
+// 组合
+const zuhe = combination(5, 0)
+console.log('zuhe: ', zuhe)
+const zuhe2 = combination(5, 2)
+console.log('zuhe2: ', zuhe2)
+const zuhe3 = combination(5, 3)
+console.log('zuhe3: ', zuhe3)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+// import 的取值
+console.log('import.meta.url: ', import.meta.url)
+console.log('import.meta: ', import.meta)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+// 随机长度数组, 数组项可重复
+const arrayOfAnyLengthWithRepeatedValues = generateIntArr(getRandomIntInclusive(1, 10), { min: 1, max: 10 })
+console.log('arrayOfAnyLengthWithRepeatedValues: ', arrayOfAnyLengthWithRepeatedValues)
+const arrayOfAnyLengthWithoutRepeatedValues = generateIntArr(getRandomIntInclusive(1, 10), { min: 1, max: 10, isUnique: true })
+console.log('arrayOfAnyLengthWithoutRepeatedValues: ', arrayOfAnyLengthWithoutRepeatedValues)
+const arrayOfWithRepeatedValues = generateIntArr(5, { min: 1, max: 10 })
+console.log('arrayOfWithRepeatedValues: ', arrayOfWithRepeatedValues)
+const arrayOfWithoutRepeatedValues = generateIntArr(5, { min: 1, max: 10, isUnique: true })
+console.log('arrayOfWithoutRepeatedValues: ', arrayOfWithoutRepeatedValues)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+// 可选链操作符
+const user = {}
+console.log('user?.address?.street: ', user?.address?.street)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+// 替代多个或 || 的写法
+const type = 2
+if (type === 1 || type === 2 || type === 3) {
+  console.log('type === 1 || type === 2 || type === 3 的写法')
+}
+switch (type) {
+  case 1: case 2: case 3:
+    console.log('switch case 写法')
+    break;
+  default:
+    break;
+}
+const condition = [1, 2, 3]
+if (condition.includes(type)) {
+  console.log('arr.includes 写法, 推荐')
+}
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+// 组织架构, 扁平化且去重
+const deps = {
+  '人事部': [5, 8, 12],
+  '行政部': [5, 14, 79],
+  '运输部': [3, 64, 105],
+  '采购部': [1, 2, 3],
+}
+const member = [...new Set(Object.values(deps).flat(Infinity))]
+console.log('member: ', member)
+console.log('升序后: ', member.sort((a, b) => a - b))
 console.log('---- 分割线 ----\n\n\n')
