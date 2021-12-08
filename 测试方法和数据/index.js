@@ -1,7 +1,7 @@
 import {
   reverseMapping, objToArr, deepClone,
   factorial, arrangement, combination,
-  generateIntArr, getRandomIntInclusive
+  generateIntArr, getRandomIntInclusive, arrToObj
 } from '../util/commonMethod.js'
 import { getImgGroupByDevice, fireSensorStatus } from '../util/commonData.js'
 import diff from '../util/diff.js'
@@ -76,7 +76,7 @@ console.log('---- 分割线 ----\n\n\n')
 // 测试对象转数组方法的项顺序
 // const allFireSensorStateObj = 
 console.log('fireSensorStatus: ', fireSensorStatus)
-const allFireSensorStateArr = objToArr(fireSensorStatus, { l: 'name', v: 'value' })
+const allFireSensorStateArr = objToArr(fireSensorStatus, { v: 'value' })
 console.log('数组项调位置前 allFireSensorStateArr: ', allFireSensorStateArr)
 // 把最后面的"全部"项调到最前
 const allFireSensorStateArr2 = deepClone(allFireSensorStateArr)
@@ -171,3 +171,25 @@ const member = [...new Set(Object.values(deps).flat(Infinity))]
 console.log('member: ', member)
 console.log('升序后: ', member.sort((a, b) => a - b))
 console.log('---- 分割线 ----\n\n\n')
+
+
+
+// 测试数组结构转变的那两个方法
+const renmingArr = [
+  { name: 'xm', value: 'k' },
+  { name: 'xz', value: 'k2' },
+  { name: 'xc', value: 'k3' },
+]
+const renmingObj = arrToObj(renmingArr)
+console.log('renmingObj: ', renmingObj)
+const renmingArr2 = [
+  { name: 'xm', id: 'k' },
+  { name: 'xz', id: 'k2' },
+  { name: 'xc', id: 'k3' },
+]
+const renmingObj2 = arrToObj(renmingArr2, { k: 'id' })
+console.log('renmingObj2: ', renmingObj2)
+const renmingArr3 = objToArr(renmingObj)
+console.log('renmingArr3: ', renmingArr3)
+const renmingArr4 = objToArr(renmingObj, { l: 'label', v: 'type' })
+console.log('renmingArr4: ', renmingArr4)

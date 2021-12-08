@@ -36,7 +36,7 @@ export function judgeNotEmpty(param) {
 
 
 // 对象数组转对象
-export function arrToObj(arr, { k = 'value', v = 'name' }) {
+export function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
   const objKeyValue = arr.reduce((acc, cur) => {
     acc[cur[k]] = cur[v]
     return acc
@@ -46,7 +46,7 @@ export function arrToObj(arr, { k = 'value', v = 'name' }) {
 
 
 // 对象转对象数组
-export function objToArr(obj, { l = 'name', v = 'id', isNum = false }) {
+export function objToArr(obj, { l = 'name', v = 'id', isNum = false } = {}) {
   let aKey = Object.keys(obj)
     , aResult = []
   aKey.map(item => {

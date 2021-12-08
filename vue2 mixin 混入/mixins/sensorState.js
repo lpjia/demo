@@ -15,7 +15,7 @@ export default {
     // 获取所有火灾传感器状态
     getAllFireSensorState() {
       this.allFireSensorStateObj = fireSensorStatus
-      let res = objToArr(fireSensorStatus, { l: 'name', v: 'value' })
+      let res = objToArr(fireSensorStatus, { v: 'value' })
 
       // 把最后面的"全部"项调到最前
       let popItem = res.pop()
