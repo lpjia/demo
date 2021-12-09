@@ -1,6 +1,7 @@
 <template>
   <div>
-
+    <h3 class="up_down">{{ pageName }}</h3>
+    <p>{{ msg }}</p>
   </div>
 </template>
 
@@ -13,6 +14,8 @@ export default {
   },
   data() {
     return {
+      pageName: 'two.vue',
+      msg: '',
     };
   },
   computed: {

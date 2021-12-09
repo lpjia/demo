@@ -18,11 +18,12 @@ const routes = [
     path: '/two',
     component: () => import('@/views/two.vue')
   },
+  /*
   {
     path: '*',
     // redirect: '/404'
     component: () => import('@/views/error-page/404.vue')
-  }
+  } */
 ]
 
 export default new VueRouter({ routes })
