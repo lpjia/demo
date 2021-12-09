@@ -1,6 +1,6 @@
 /**
  * vue-cli 按需引入 lodash
- * import { get as _get } from 'lodash'
+ * import _get from 'lodash/get'
  */
 
 // https://www.lodashjs.com/docs/lodash.get
