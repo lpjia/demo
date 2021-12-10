@@ -1,6 +1,6 @@
 .img-wrap {
   /* width: 194px;
-height: 108px; */
+  height: 108px; */
   float: left;
   margin-left: 6px;
   background: #e8e8e8;
@@ -23,7 +23,7 @@ height: 108px; */
   /* -webkit-transform: matrix(1.04, 0, 0, 1.04, 0, 0);
   -ms-transform: matrix(1.04, 0, 0, 1.04, 0, 0);
   transform: matrix(1.04, 0, 0, 1.04, 0, 0); */
-  transform: matrix(2, 0, 0, 2, 0, 0);
+  transform: matrix(1.2, 0, 0, 1.2, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }

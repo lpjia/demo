@@ -1,0 +1,102 @@
+body {
+  padding: 4rem;
+}
+
+.calculator {
+  margin: -35px auto 30px;
+  width: 150px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #ff7200;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.calculator:hover {
+  background-color: #fb7b14;
+}
+
+.calculator i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: url("cal.png") no-repeat;
+}
+
+.calculator i.tada {
+  -webkit-animation: tada 2s infinite linear;
+  -moz-animation: tada 2s infinite linear;
+  animation: tada 2s infinite linear;
+}
+
+.calculator .calculator-txt {
+  line-height: 1;
+  vertical-align: middle;
+  color: #ff7200;
+  font-size: 14px;
+}
+
+.calculator:hover .calculator-txt {
+  color: #fff;
+}
+
+.calculator:hover i {
+  background-position: 0 -16px;
+}
+
+.calculator:hover i.tada {
+  -webkit-animation: ccc 2s infinite;
+  -moz-animation: ccc 2s infinite;
+  animation: ccc 2s infinite;
+}
+
+@keyframes tada {
+  0% {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+
+  5% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    -moz-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  10% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    -moz-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  15% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    -moz-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  20% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    -moz-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  25%,
+  26% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    -moz-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  100% {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+}
