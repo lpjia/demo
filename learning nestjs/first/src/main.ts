@@ -28,6 +28,6 @@ async function bootstrap() {
   // 注册验证管道
   app.useGlobalPipes(new ValidationPipe())
 
-  await app.listen(3000);
+  await app.listen(8100);
 }
 bootstrap();
