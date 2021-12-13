@@ -31,4 +31,9 @@ vue 版本暂且用到 2.6.14, 如有新版本, 则新写的 demo 用新版本, 
 <hr class="up_down">
 
 
+浏览器打印台使用
 console.log('---- 分割线 ----\n\n\n')
+
+
+终端使用
+console.log('---- 分割线 ----\n')
