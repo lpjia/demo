@@ -1,23 +1,14 @@
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-
-
-// const router = require('./router')
-// 导入controller middleware:
-const controller = require('./controller');
-
+const router = require('./router')
 
 // 实例化
 const app = new Koa();
 
-
 // 打印请求方法和路径
 app.use(async (ctx, next) => {
-  // console.log(`${ctx.request.method} ${ctx.request.url}`)
   console.log(`${ctx.method} ${ctx.url}`)
   await next()
 })
-
 
 // 打印时间
 app.use(async (ctx, next) => {
@@ -28,13 +19,27 @@ app.use(async (ctx, next) => {
 })
 
 
-app.use(bodyParser());
+// router.get('/', async (ctx, next) => {
+//   ctx.response.body = '<h1>Index</h1>';
+// });
+app.use(router.routes())
 
+// 响应内容
+app.use(async (ctx, next) => {
+  await next();
+  ctx.response.type = 'text/html';
+  ctx.response.body = '<h1>Hello, koa2!</h1>';
+});
 
-// app.use(router.routes())
-// 使用middleware:
-app.use(controller());
-
+/*
+app.use(async (ctx, next) => {
+  if (await checkUserPermission(ctx)) {
+    await next();
+  } else {
+    ctx.response.status = 403;
+    console.log(`测试简写 ${ctx.status}`)
+  }
+}); */
 
 app.listen(8100, () => {
   console.log('app started at port 8100...');

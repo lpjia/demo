@@ -1,6 +1,15 @@
-const Koa = require('koa');
-const router = require('./router')
-const bodyParser = require('koa-bodyparser');
+// const Koa = require('koa');
+import Koa from 'koa'
+
+
+// const router = require('koa-router')()
+// 路由单独剥离出来
+// import _router from './src/router' // 报错
+// const router = require('./src/router')
+
+
+// import { checkUserPermission } from ''
+
 
 // 实例化
 const app = new Koa();
@@ -20,15 +29,19 @@ app.use(async (ctx, next) => {
   console.log(`Time: ${ms}ms`)
 })
 
-app.use(bodyParser());
-app.use(router.routes())
+/*
+router.get('/', async (ctx, next) => {
+  ctx.response.body = '<h1>Index</h1>';
+}); */
+
+// app.use(router.routes())
 
 // 响应内容
-// app.use(async (ctx, next) => {
-//   await next();
-//   ctx.response.type = 'text/html';
-//   ctx.response.body = '<h1>Hello, koa2!</h1>';
-// });
+app.use(async (ctx, next) => {
+  await next();
+  ctx.response.type = 'text/html';
+  ctx.response.body = '<h1>Hello, koa2!</h1>';
+});
 
 /*
 app.use(async (ctx, next) => {
