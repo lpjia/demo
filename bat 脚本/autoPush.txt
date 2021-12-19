@@ -9,8 +9,10 @@
 
 set git_work=C:\demo
 
-
 set setup_path=D:\
+
+set log_name=autoPush
+
 
 
 @echo Pushing %git_work%
@@ -37,9 +39,13 @@ exit
 cd %git_work%
 
 
-if exist "%setup_path%"\autoPush.log (echo update:   %git_work%   %date% %time%  >> "%setup_path%"\autoPush.log) else echo create:   %git_work%   %date% %time% >"%setup_path%"\autoPush.log
+if exist "%setup_path%"\%log_name%.log (echo update:   %git_work%   %date% %time%  >> "%setup_path%"\%log_name%.log) else echo create:   %git_work%   %date% %time% >"%setup_path%"\%log_name%.log
 
 git push
+
+choice /t 10 /d y /n >nul
+
+start %setup_path%\%log_name%.log
 
 exit
 

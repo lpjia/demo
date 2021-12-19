@@ -19,6 +19,11 @@ set svn_work=C:\items_zj
 
 set setup_path=D:\
 
+
+:: 日志文件名
+set log_name=autoTest
+
+
 @echo 正在更新目录 %svn_work%
 
 if exist %svn_work% GOTO :gengxin else GOTO :MK
@@ -39,9 +44,16 @@ exit
 
 :gengxin
 
-if exist "%setup_path%"\autoUpdate.log (echo update:   %svn_work%   %date% %time%  >> "%setup_path%"\autoUpdate.log) else echo create:   %svn_work%   %date% %time% >"%setup_path%"\autoUpdate.log
+if exist "%setup_path%"\%log_name%.log (echo update:   %svn_work%   %date% %time%  >> "%setup_path%"\%log_name%.log) else echo create:   %svn_work%   %date% %time% >"%setup_path%"\%log_name%.log
 
 "%svn_home%"\TortoiseProc.exe/command:update /path:"%svn_work%" /notempfile /closeonend:1
 
-exit
 
+:: 延时, 单位是秒
+choice /t 10 /d y /n >nul
+
+:: 打开日志
+start %setup_path%\%log_name%.log
+
+
+exit

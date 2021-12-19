@@ -9,8 +9,8 @@
   <title>el-row el-col</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -144,13 +144,32 @@
           <el-row class="dashboard">
             <el-row :gutter="40" style="padding: 20px;">
               <el-col :span="3">
-                <div class="wrap">1</div>
+                <div class="wrap">11</div>
               </el-col>
               <el-col :span="3">
-                <div class="wrap">2</div>
+                <div class="wrap">22</div>
               </el-col>
               <el-col :span="3">
-                <div class="wrap">3</div>
+                <div class="wrap">33</div>
+              </el-col>
+            </el-row>
+          </el-row>
+
+          <p class="un_down">不用响应式栅格, 靠行内块自动换行</p>
+          <el-row class="dashboard">
+            <!-- <el-row :gutter="40" class="btnGroup"> -->
+            <el-row class="btnGroup">
+              <el-col :span="24">
+                <el-button type="primary">11</el-button>
+                <el-button type="primary">22</el-button>
+                <el-button type="primary">33</el-button>
+                <el-button type="primary">44</el-button>
+                <el-button type="primary">55</el-button>
+                <el-button type="primary">66</el-button>
+                <el-button type="primary">77</el-button>
+                <el-button type="primary">88</el-button>
+                <el-button type="primary">99</el-button>
+                <el-button type="primary">00</el-button>
               </el-col>
             </el-row>
           </el-row>
@@ -161,16 +180,16 @@
     <el-divider></el-divider>
 
     <div class="flex">
-      <section class="child one">1</section>
-      <section class="child two">2</section>
-      <section class="child three">3</section>
+      <section class="child one">111</section>
+      <section class="child two">222</section>
+      <section class="child three">333</section>
     </div>
     <el-divider></el-divider>
 
     <div class="flex chuizhi">
-      <section class="child one">1</section>
-      <section class="child two">2</section>
-      <section class="child three">3</section>
+      <section class="child one">1111</section>
+      <section class="child two">2222</section>
+      <section class="child three">3333</section>
     </div>
     <el-divider></el-divider>
 

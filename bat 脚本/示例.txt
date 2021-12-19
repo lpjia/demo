@@ -39,3 +39,29 @@ start C:\z_software\Git\git-bash.exe --cd=C:\tempStableVersion\submana_bg
 
 :: 再输入命令执行
 start C:\z_software\Git\git-bash.exe --cd=C:\tempStableVersion\submana_bg -c "npm run dev"
+
+
+
+
+
+:: 延时, 单位是秒
+choice /t 10 /d y /n >nul
+
+
+
+
+
+:: 设置变量
+set svn_home=C:\z_software\SVN\bin
+set svn_work=C:\items_zj
+set setup_path=D:\
+set log_name=autoUpdate
+
+:: 使用变量, 变量命前后加%
+%svn_work%
+
+
+
+
+:: 打开日志
+start %setup_path%\%log_name%.log
