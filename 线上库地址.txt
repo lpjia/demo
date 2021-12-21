@@ -67,3 +67,7 @@ dayjs
 
 g6
 <script src="https://gw.alipayobjects.com/os/lib/antv/g6/4.3.6/dist/g6.min.js"></script>
+
+
+qs
+<script src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script>

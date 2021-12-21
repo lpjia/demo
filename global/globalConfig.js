@@ -1,0 +1,1 @@
+export const RAP2_TUNNEL_ONLINE_MONITORING = 'http://rap2api.taobao.org/app/mock' + '/270234'
