@@ -6,57 +6,125 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>el-switch 开关</title>
+  <title>el-select 下拉选择</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
   <link rel="stylesheet" href="../global/global.css" />
-  <!-- <link rel="stylesheet" href="index.css"> -->
 </head>
 
 <body>
   <div id="app">
+    如果 Select 的绑定值为对象类型，请务必指定 value-key 作为它的唯一性标识。
 
-    <h3 class="up_down">手写的三级联动</h3>
-    <el-form ref="form" :model="formSearchTerm" label-width="50px" :inline="true" size="small">
-      <el-form-item label="隧道">
-        <el-select v-model="formSearchTerm.tunnel" @change="searchSelectTunnel" filterable default-first-option
-          value-key="formSearchTerm_tunnel">
-          <el-option label="全部" value="-1"></el-option>
-          <el-option v-for="item in allTunnelArr" :key="item.id" :label="item.name" :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="设备">
-        <el-select v-model="formSearchTerm.device" @change="searchSelectDevice" :disabled="!canSelectDevice" filterable
-          default-first-option value-key="formSearchTerm_device">
-          <el-option label="全部" value="-1"></el-option>
-          <el-option v-for="item in allDtsDeviceArr" :key="item.id" :label="item.name" :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="通道">
-        <el-select v-model="formSearchTerm.channel" :disabled="!canSelectChannel" filterable default-first-option
-          value-key="formSearchTerm_channel">
-          <el-option label="全部" value="-1"></el-option>
-          <el-option v-for="item in allDtsChannelArr" :key="item.id" :label="item.name" :value="item.id">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="searchForm">搜索</el-button>
-      </el-form-item>
-      <el-form-item>
-        <el-button @click="reset">清空</el-button>
-      </el-form-item>
-    </el-form>
+    <h3 class="up_down">单选</h3>
+    <p class="up_down">可清空单选, el-select 加属性 clearable, 仅适用于单选</p>
+    <p class="up_down">前端模糊搜索, el-select 加属性 filterable</p>
+    <p class="up_down">某选项被禁用, el-option 加属性 disabled</p>
+    <p class="up_down">size 依次是默认、medium、small、mini</p>
+    <el-select ref="oneSelect" v-model="food" placeholder="请选择" filterable clearable
+      @change="handleSingleSelectionChange" @clear="handleSingleSelectionClear" @blur="handleSingleSelectionBlur"
+      @focus="handleSingleSelectionFocus" @visible-change="handleSingleSelectionVisibleChange">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value"
+        :disabled="!item.canSelect">
+      </el-option>
+    </el-select>
+    <el-select v-model="food" placeholder="请选择" size="medium">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value"
+        :disabled="!item.canSelect">
+      </el-option>
+    </el-select>
+    <el-select v-model="food" placeholder="请选择" size="small">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value"
+        :disabled="!item.canSelect">
+      </el-option>
+    </el-select>
+    <el-select v-model="food" placeholder="请选择" size="mini">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value"
+        :disabled="!item.canSelect">
+      </el-option>
+    </el-select>
+    <div class="up_down">
+      <el-button @click="emitFocus">手动触发 focus 方法</el-button>
+      <el-button @click="emitBlur">手动触发 blur 方法</el-button>
+    </div>
+
+    <h3 class="up_down">整个下拉禁用</h3>
+    <p class="up_down">el-select 加属性 disabled</p>
+    <el-select v-model="disabledValue" :disabled="elSelectDisable" placeholder="请选择">
+    </el-select>
+
+    <h3 class="up_down">多选</h3>
+    <p class="up_down">el-select 加属性 multiple</p>
+    <p class="up_down">el-select 加属性 multiple-limit, 值为 number 类型, 多选时用户最多可以选择的项目数，为 0 则不限制</p>
+    <el-select v-model="aArr" multiple :multiple-limit="3" @remove-tag="handleSingleSelectionRemoveTag"
+      placeholder="请选择">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+    <p class="up_down">设置 collapse-tags 属性将它们合并为一段文字</p>
+    <el-select v-model="a2Arr" multiple collapse-tags placeholder="请选择">
+      <el-option v-for="item in foods" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+
+    <h3 class="up_down">自定义下拉选项</h3>
+    <el-select v-model="city" placeholder="请选择">
+      <el-option v-for="item in cities" :key="item.value" :label="item.label" :value="item.value">
+        <span style="float: left">{{ item.label }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=>
+        <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+      </el-option>
+    </el-select>
+
+    <h3 class="up_down">分组展示</h3>
+    <p class="up_down">需要的数据结构也要复杂点, 是二位数组</p>
+    <el-select v-model="group" placeholder="请选择">
+      <el-option-group v-for="group in groups" :key="group.groupName" :label="group.groupName">
+        <el-option v-for="item in group.children" :key="item.value" :label="item.label" :value="item.value">
+        </el-option>
+      </el-option-group>
+    </el-select>
+
+    <h3 class="up_down">创建并选中选项中不存在的条目</h3>
+    <p class="up_down">el-select 加属性 allow-create、filterable, 新加的数据以显示文本作值来传, 举例 ['Shenzhen', '河南']</p>
+    <el-select v-model="city2Arr" placeholder="请选择" multiple filterable allow-create default-first-option>
+      <el-option v-for="item in cities" :key="item.value" :label="item.label" :value="item.value">
+        <span style="float: left">{{ item.label }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=>
+        <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+      </el-option>
+    </el-select>
+    <el-button @click="getCity2">获取</el-button>
+
+    <h3 class="up_down">无选项时的下拉列表, 可以自定义样式和内容</h3>
+    <el-select v-model="emptyVal" placeholder="默认的无数据"></el-select>
+    <el-select v-model="emptyVal" placeholder="自定义的无数据">
+      <template slot="empty">
+        <div style="padding: 4px 6px;">
+          <el-tag effect="dark" type="warning" size="small">这里没有选项</el-tag>
+        </div>
+      </template>
+      <!-- <el-option value="123">onetwothree</el-option> -->
+    </el-select>
+
+    <h3 class="up_down">远程搜索</h3>
+    <p class="up_down">el-select 加属性 remote、:remote-method、filterable、:loading、clearable</p>
+    <el-select v-model="remoteVal" filterable remote :remote-method="remoteMethod" placeholder="请选择" :loading="loading"
+      clearable>
+      <el-option v-for="item in actualOptions" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+    <el-select v-model="remoteArr" multiple filterable remote :remote-method="remoteMethod2" placeholder="请选择"
+      :loading="loading2" clearable>
+      <el-option v-for="item in actualOptions2" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+
 
     <hr class="up_down">
-
   </div>
 
 
-  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <script src=" ../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8">
+  </script>
   <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../lib/qs@6.7.0.min.js"></script>
   <script src="index.js" type="module"></script>
 </body>
 
