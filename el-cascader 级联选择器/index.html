@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>el-cascader 级联选择器</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../global/global.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <h3 class="up_down">级联 基础用法</h3>
+    <p class="up_down">默认是 click 触发子菜单, 可改为 hover 触发, :props="{ expandTrigger: 'hover' }", 只有这两种</p>
+    <div class="up_down">
+      <el-cascader v-model="elBasicValArr" :options="documentContents"></el-cascader>
+      <b>{{ elBasicValArr }}</b>
+    </div>
+    <div class="up_down">
+      <el-cascader v-model="elBasicValArr2" :options="documentContents" :props="{ expandTrigger: 'hover' }" clearable>
+      </el-cascader>
+      <b>{{ elBasicValArr2 }}</b>
+    </div>
+
+    <h3 class="up_down">多选</h3>
+    <p class="up_down">折叠, el-cascader 加属性 :collapse-tags="true"</p>
+    <p class="up_down">清空已选项功能, el-cascader 加属性 clearable</p>
+    <el-cascader v-model="elBasicValArr3" :options="documentContents2" :props="propsObj" clearable
+      :collapse-tags="true">
+    </el-cascader>
+    <b>{{ elBasicValArr3 }}</b>
+
+    <h3 class="up_down">选择任意一级选项 单选 多选</h3>
+    <p class="up_down">:props="{ checkStrictly: true }", 任意选择一级, 不限制在最后一级</p>
+    <el-cascader v-model="elBasicValArr4" :options="documentContents"
+      :props="{ expandTrigger: 'hover', checkStrictly: true }" clearable>
+    </el-cascader>
+    <el-cascader v-model="elBasicValArr5" :options="documentContents"
+      :props="{ expandTrigger: 'hover', multiple: true, checkStrictly: true }" clearable>
+    </el-cascader>
+
+
+    <hr class="up_down">
+  </div>
+
+
+  <script src=" ../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8">
+  </script>
+  <script src="https://unpkg.com/element-ui@2.15.7/lib/index.js" type="text/javascript" charset="utf-8"></script>
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

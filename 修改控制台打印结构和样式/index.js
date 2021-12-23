@@ -28,7 +28,7 @@ console.table(arr2)
 console.log('---- 分割线 ----\n\n\n')
 
 
-console.log('%c 这是一个测试', 'color:red;font-size:50px')
+console.log('%c这是一个测试', 'color:red;font-size:50px')
 console.log('---- 分割线 ----\n\n\n')
 
 
