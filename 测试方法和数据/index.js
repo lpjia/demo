@@ -16,7 +16,7 @@ console.log('typeof sensorType: ', typeof sensorType)
 console.log('---- 分割线 ----\n\n\n')
 
 const sensorType2 = getImgGroupByDevice(0)
-console.log('没有该类型时 sensorType2: ', sensorType2)
+console.log('没有该类型时, 返回空字符串 sensorType2: ', sensorType2)
 console.log('typeof sensorType2: ', typeof sensorType2)
 console.log('---- 分割线 ----\n\n\n')
 

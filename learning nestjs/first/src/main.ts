@@ -29,5 +29,6 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe())
 
   await app.listen(8100);
+  console.log(`[\x1B[36mRunning\x1B[0m] 服务已启动: http://localhost:8100`);
 }
 bootstrap();

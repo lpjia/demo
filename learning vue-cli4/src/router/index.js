@@ -26,12 +26,12 @@ const constantRoutes = [
   {
     path: '/one',
     name: 'one',
-    component: () => import('@/views/one.vue')
+    component: () => import('@/views/one/one')
   },
   {
     path: '/two',
     name: 'two',
-    component: () => import('@/views/two.vue')
+    component: () => import('@/views/two/two')
   },
 
 
