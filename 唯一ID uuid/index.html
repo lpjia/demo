@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>uuid</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style></style>
+</head>
+
+<body>
+
+  <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+  <script>
+    /**
+     * import { v4 as uuidv4 } from 'uuid'
+     * 上面是常用引入写法
+     */
+    const uuid = uuidv4()
+    console.log('uuid: ', uuid)
+    console.log('uuid.length: ', uuid.length)
+  </script>
+</body>
+
+</html>
