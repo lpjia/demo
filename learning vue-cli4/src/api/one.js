@@ -66,11 +66,3 @@ export function createPost(data) {
     data
   })
 }
-
-export function createPost2(query) {
-  return request({
-    url: '/api/post/',
-    method: 'GET',
-    params: query
-  })
-}

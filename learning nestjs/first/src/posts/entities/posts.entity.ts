@@ -21,9 +21,15 @@ export class PostsEntity {
   @Column('tinyint')
   type: number
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP'
+  })
   create_time: Date
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP'
+  })
   update_time: Date
 }

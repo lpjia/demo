@@ -33,7 +33,7 @@ export class PostsController {
    */
   @ApiOperation({ summary: '获取指定文章' })
   @Get(':id')
-  async findById(@Param('id') id) {
+  async findById(@Param('id') id: number) {
     return await this.postsService.findById(id)
   }
 
@@ -44,7 +44,7 @@ export class PostsController {
    */
   @ApiOperation({ summary: '更新文章' })
   @Put(':id')
-  async update(@Param('id') id, @Body() post) {
+  async update(@Param('id') id: number, @Body() post: CreatePostDto) {
     return await this.postsService.updateById(id, post)
   }
 
@@ -54,7 +54,7 @@ export class PostsController {
    */
   @ApiOperation({ summary: '删除文章' })
   @Delete(':id')
-  async remove(@Param('id') id) {
+  async remove(@Param('id') id: number) {
     return await this.postsService.remove(id)
   }
 }

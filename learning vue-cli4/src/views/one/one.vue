@@ -96,10 +96,10 @@ export default {
 
     async getList() {
       let res = await findAll()
-      this.list = res.list
+      this.list = res.data.list
     },
     async addPost() {
-      const idx = 2
+      const idx = 4
       const params = {
         title: 'title-' + idx,
         author: 'author-' + idx,
@@ -116,5 +116,8 @@ export default {
 };
 </script>
 
-<style scoped >
+<style scoped lang="scss">
+button {
+  margin: 0 4px;
+}
 </style>

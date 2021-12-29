@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { getRepository, Repository } from 'typeorm';
-import { PostsEntity } from './posts.entity';
+import { PostsEntity } from './entities/posts.entity';
 
 
 export interface PostsRo {
@@ -21,7 +21,9 @@ export class PostsService {
     const { title } = post
     if (!title) throw new HttpException('缺少文章标题', 401)
 
-    const doc = await this.postsRepository.findOne({ where: { title } })
+    const doc = await this.postsRepository.findOne({
+      where: { title }
+    })
     if (doc) throw new HttpException('文章已存在', 401)
 
     return await this.postsRepository.save(post)
