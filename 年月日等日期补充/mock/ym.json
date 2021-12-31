@@ -1,0 +1,14 @@
+[
+  {
+    "dateTime": "2022-02",
+    "alarmCount": 100
+  },
+  {
+    "dateTime": "2021-10",
+    "alarmCount": 50
+  },
+  {
+    "dateTime": "2021-12",
+    "alarmCount": 80
+  }
+]

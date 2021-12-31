@@ -30,7 +30,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('docs', app, document)
 
-  await app.listen(8100);
-  console.log(`[\x1B[36mRunning\x1B[0m] 服务已启动: http://localhost:8100`);
+
+  const port = 8100
+  await app.listen(port);
+  console.log(`[\x1B[36mRunning\x1B[0m] 服务已启动: http://localhost:${port}`);
 }
 bootstrap();
