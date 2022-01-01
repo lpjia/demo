@@ -1,5 +1,29 @@
 import { fetchGet } from '../util/fetchRequest.js'
+import { formatTime } from '../util/commonMethod.js'
 import { fillDate } from '../util/dates.js'
+import { recentlyDate } from '../util/dates.js'
+
+
+const currentDate = new Date()
+
+
+function generateData() {
+  return [
+    {
+      "dateTime": recentlyDate(currentDate, 2),
+      "alarmCount": 100
+    },
+    {
+      "dateTime": recentlyDate(currentDate, 5),
+      "alarmCount": 80
+    },
+    {
+      "dateTime": recentlyDate(currentDate, 3, 'after'),
+      "alarmCount": 50
+    },
+  ]
+}
+
 
 async function init() {
   const y = await fetchGet('mock/y.json')
@@ -41,5 +65,23 @@ async function init() {
   })
   console.log('newYMD: ', newYMD)
   console.log('---- 分割线 ----\n\n\n')
+
+
+  console.log('一周前日期 str: ', recentlyDate(currentDate, 7))
+  console.log('currentDate str: ', formatTime(currentDate, 'Y-M-D'))
+  console.log('一周后日期 str: ', recentlyDate(currentDate, 7, 'after'))
+  console.log('---- 分割线 ----\n\n\n')
+
+
+  const ymd2 = generateData()
+  console.log('源数据 ymd2: ', ymd2)
+  const newYMD2 = fillDate(ymd2, {
+    timeField: 'dateTime',
+    valField: 'alarmCount',
+    startStr: recentlyDate(currentDate, 7),
+    endStr: recentlyDate(currentDate, 7, 'after'),
+    dateType: 'Y-M-D'
+  })
+  console.log('newYMD2: ', newYMD2)
 }
 init()

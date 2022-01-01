@@ -1,6 +1,5 @@
-// 由于 formatTime 很早就放在了 commonMethod.js 中, 被使用了很多, 所以不建议再迁移
+// 由于 formatTime 很早就放在了 commonMethod.js 中, 被很多 demo 使用, 所以不建议再迁移
 import { formatTime } from './commonMethod.js'
-
 
 
 /**
@@ -40,4 +39,20 @@ export function fillDate(arr, {
     else if (dateType === 'Y') startDate.setFullYear(startDate.getFullYear() + 1)
   }
   return result
+}
+
+
+/**
+ * @description 计算距离固定天数的日期, 7天则是按6天算(实际日期)
+ * @param {date} time 日期对象或时间戳
+ * @param {number} days 正数
+ * @param {string} type 'after' / 'before'
+ * @returns {string}
+ */
+export function recentlyDate(time, days, type = 'before') {
+  days -= 1
+  let currDate = new Date(time)
+    , number = type === 'before' ? (-days) : days
+    , otherDate = currDate.setDate(currDate.getDate() + number)
+  return formatTime(otherDate, 'Y-M-D')
 }
