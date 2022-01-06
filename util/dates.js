@@ -43,7 +43,7 @@ export function fillDate(arr, {
 
 
 /**
- * @description 计算距离固定天数的日期, 7天则是按6天算(实际日期)
+ * @description 计算距离固定天数的日期, 最近一周则是按6天算(实际日期)
  * @param {date} time 日期对象或时间戳
  * @param {number} days 正数
  * @param {string} type 'after' / 'before'

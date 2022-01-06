@@ -4,8 +4,9 @@ const vue = new Vue({
   el: '#app',
   mixins: [mixin_sensorState],
   data: {
-    allFireSensorStateObj: {},
-    allFireSensorStateArr: [],
+    // 可以省略变量
+    /* allFireSensorStateObj: {},
+    allFireSensorStateArr: [], */
   },
   computed: {
   },
