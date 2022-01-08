@@ -1,0 +1,7 @@
+name: &name my_config
+env: &env
+  version: 1.0
+
+compose:
+  key1: *name
+  key2: *env

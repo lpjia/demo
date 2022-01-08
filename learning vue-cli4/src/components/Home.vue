@@ -9,6 +9,10 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
 import TestLodash from '@/components/TestLodash.vue'
+// import YAML from '@/utils/one.yaml'
+// import YAML from '@/utils/two.yaml'
+import YAML from '@/utils/three.yaml'
+// import YAML from '@/utils/one.json'
 
 export default {
   name: 'Home',
@@ -27,6 +31,7 @@ export default {
   watch: {
   },
   created() {
+    console.log('YAML: ', YAML)
   },
   mounted() {
   },

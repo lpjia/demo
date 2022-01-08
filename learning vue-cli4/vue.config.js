@@ -3,9 +3,7 @@ const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+const resolve = dir => path.join(__dirname, dir);
 
 
 module.exports = {
@@ -21,6 +19,21 @@ module.exports = {
         })
       )
   } */
+
+
+  // vue 文件引入 yaml 文件配置
+  chainWebpack(config) {
+    config.module
+      .rule('yaml')
+      .test(/\.ya?ml$/)
+      .use('json-loader')
+      .loader('json-loader')
+      .end()
+      .use('yaml-loader')
+      .loader('yaml-loader')
+      .end()
+  },
+
   devServer: {
     // port: port,
     open: true,
