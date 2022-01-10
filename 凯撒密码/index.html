@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>凯撒密码 ROT13 替换式密码 密钥固定</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <style>
+    .inlineB {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>字母表</h2>
+  <p>abcdefghijklmnopqrstuvwxyz</p>
+  <p>nopqrstuvwxyzabcdefghijklm</p>
+  <b>注: 必要时可搭配上数字代表声调, 采用数字1、2、3、4、5，代替《汉语拼音方案》中声调阴平（ˉ），阳平（ˊ），上声（ˇ），去声（ˋ），轻声（不标调）这几个标调符号。</b>
+  <div class="up_down">
+    <label for="shu1ru4">明文: </label>
+    <input type="text" name="shu1ru4" id="shu1ru4">
+    <button onclick="clearInput()">清空</button>
+    <button onclick="jujiao()">聚焦在输入框</button>
+  </div>
+  <div class="up_down">
+    密文: <p class="inlineB"></p>
+  </div>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
