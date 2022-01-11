@@ -61,15 +61,15 @@ async function init() {
     valField: 'alarmCount',
     startStr: '2021-12-17',
     endStr: '2022-01-05',
-    dateType: 'Y-M-D'
+    // dateType: 'Y-M-D'
   })
   console.log('newYMD: ', newYMD)
   console.log('---- 分割线 ----\n\n\n')
 
 
-  console.log('一周前日期 str: ', recentlyDate(currentDate, 7))
+  console.log('一周前开始 日期 str: ', recentlyDate(currentDate, 7))
   console.log('currentDate str: ', formatTime(currentDate, 'Y-M-D'))
-  console.log('一周后日期 str: ', recentlyDate(currentDate, 7, 'after'))
+  console.log('一周后结束 日期 str: ', recentlyDate(currentDate, 7, 'after'))
   console.log('---- 分割线 ----\n\n\n')
 
 
@@ -80,7 +80,7 @@ async function init() {
     valField: 'alarmCount',
     startStr: recentlyDate(currentDate, 7),
     endStr: recentlyDate(currentDate, 7, 'after'),
-    dateType: 'Y-M-D'
+    // dateType: 'Y-M-D'
   })
   console.log('newYMD2: ', newYMD2)
 }
