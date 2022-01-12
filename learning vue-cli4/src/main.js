@@ -9,12 +9,14 @@ import router from './router'
 
 
 // 按需加载
-import { Button, Input, Form, FormItem } from 'element-ui';
+import { Button, Input, Form, FormItem, Select, Option, } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Button);
 Vue.use(Input);
 Vue.use(Form);
 Vue.use(FormItem);
+Vue.use(Select);
+Vue.use(Option);
 
 
 

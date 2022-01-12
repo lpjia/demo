@@ -1,0 +1,231 @@
+# 注释用#, 只能单行注释
+
+
+
+
+# json
+#{
+#  "name": "ruims"
+#}
+
+name: hehe
+
+
+
+
+#{
+#  "names": [
+#    { "name": "ruims" }, 
+#    { "name": "ruidoc" }
+#  ]
+#}
+
+names:
+  - name: ruims
+  - name: ruidoc
+
+
+
+
+
+# 应用名称
+name: my_app
+# 应用端口
+port: 8080
+
+
+
+# 和 package.json 是不是一致?
+name: flutter_demo
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0
+
+dependencies:
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+
+
+
+
+
+
+# 对象
+
+#{
+#  "id": 1,
+#  "name": "杨成功",
+#  "isman": true
+#}
+
+id: 1
+name: 杨成功
+isman: true
+
+
+
+
+
+# 数组
+
+#["hello", "world"]
+
+- hello
+- world
+
+
+
+
+
+# 复杂的
+
+#{
+#  "name": "杨成功",
+#  "isman": true,
+#  "age": 25,
+#  "tag": ["阳光", "帅气"],
+#  "address": [
+#    { "city": "北京", "area": "海淀区" },
+#    { "city": "天津", "area": "滨海新区" }
+#  ]
+#}
+
+name: 杨成功
+isman: true
+age: 25
+tag:
+  - 阳光
+  - 帅气
+address:
+  - city: 北京
+    area: 海淀区
+  - city: 天津
+    area: 滨海新区
+
+
+
+
+# null 用 ~
+# 时间大多用 2021-12-21 这种格式
+
+#{
+#  who: null,
+#  date: new Date('2019-09-10')
+#}
+
+who: ~
+date: 2019-09-10
+
+
+
+
+
+# shell 命令, 参数多的话, 就会很长
+
+# $ docker run --name my-nginx -d nginx
+
+# linux 在每行后加 \ 符号标识换行
+
+# $ docker run \
+#  --name my-nginx \
+#  -d nginx
+
+# 直接换行即可, YAML 默认会把换行符转换成空格
+
+cmd: docker run 
+--name my-nginx
+-d nginx
+
+# {
+#   "cmd": "docker run --name my-nginx -d nginx"
+# }
+
+
+
+# 保留换行符, 不转成空格
+# 首行加一个 | 符号
+cmd: |
+docker run
+--name my-nginx
+-d nginx
+
+# {
+#   "cmd": "docker run\n--name my-nginx\n-d nginx"
+# }
+
+
+
+# YAML
+# 锚点不能作为 变量 在字符串中使用, 会直接渲染成字符
+a: &anchor # 设置锚点, 用&
+  one: 1
+  two: 2
+  three: 3
+b: *anchor # 引用锚点, 用*
+
+# JSON
+#"a": {
+#  "one": 1,
+#  "two": 2,
+#  "three": 3
+#},
+#"b": {
+#  "one": 1,
+#  "two": 2,
+#  "three": 3
+#}
+
+
+name: &name my_config
+env: &env
+  version: 1.0
+
+compose:
+  key1: *name
+  key2: *env
+
+#{
+#  "name": "my_config",
+#  "env": { "version": 1 },
+#  "compose": { "key1": "my_config", "key2": { "version": 1 } }
+#}
+
+
+
+# 配合合并标签“<<”使用可以与任意数据进行合并，你可以把这套操作想象成面向对象语言中的继承...
+# 感觉这个和上面那个锚点用法是一致的, 只不过字段名换成了<<
+human: &base # 添加名为 base 的锚点
+    body: 1
+    hair: 999
+singer:
+    <<: *base # 引用 base 锚点，实例化时会自动展开
+    skill: sing # 添加额外的属性
+programer:
+    <<: *base # 引用 base 锚点，实例化时会自动展开
+    hair: 6 # 覆写 base 中的属性
+    skill: code # 添加额外的属性
+
+
+#"human": { "body": 1, "hair": 999 },
+#"singer": { "body": 1, "hair": 999, "skill": "sing" },
+#"programer": { "body": 1, "hair": 6, "skill": "code" }
+
+
+
+
+# 用三个-来表示开始, 用三个.来表示结束
+
+---
+# 这是第一份内容
+one: 1
+# 其他内容...
+...
+
+---
+# 这是第二份内容
+two: 2
+# 其他内容...
+...

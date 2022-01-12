@@ -20,7 +20,11 @@
           <el-input v-model="form.email"></el-input>
         </el-form-item>
         <el-form-item label="角色">
-          <el-input v-model="form.role"></el-input>
+          <!-- <el-input v-model="form.role"></el-input> -->
+          <el-select v-model="form.role" placeholder="请选择" size="mini" value-key="form_role" style="width:100%">
+            <el-option v-for="item in roles" :key="item.value" :label="item.value" :value="item.value">
+            </el-option>
+          </el-select>
         </el-form-item>
         <button @click.prevent="sure">注册</button>
       </el-form>
@@ -49,7 +53,7 @@ export default {
         nickname: '',
         avatar: '',
         email: '',
-        role: '',
+        role: 'visitor',
       },
       rules: {
         username: [
@@ -58,7 +62,13 @@ export default {
         password: [
           { required: true, message: '请输入', trigger: 'blur' }
         ],
-      }
+      },
+
+      roles: [
+        { value: 'visitor' },
+        { value: 'author' },
+        { value: 'root' },
+      ]
     };
   },
   computed: {

@@ -22,7 +22,7 @@ async function bootstrap() {
 
   // 设置 swagger 文档
   const config = new DocumentBuilder()
-    .setTitle('管理后台')
+    .setTitle('后台')
     .setDescription('管理后台接口文档')
     .setVersion('0.1.0')
     .addBearerAuth()
