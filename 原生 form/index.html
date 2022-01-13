@@ -5,70 +5,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>原生 form</title>
-  <style>
-    .div1,
-    .div2,
-    .div3,
-    .div4,
-    .div5 {
-      float: left;
-      margin-right: 10px;
-      padding-right: 10px;
-      border-right: 2px solid red;
-    }
-
-    .clearfix:after {
-      content: "";
-      display: block;
-      clear: both
-    }
-
-    .clearfix {
-      *zoom: 1;
-    }
-
-    .box {
-      height: 30px;
-      width: 200px;
-      border: solid 1px #9999FF;
-      outline: none;
-      border-radius: 10px;
-      padding-left: 5px;
-      color: #CCCCCC;
-    }
-
-    .btn {
-      height: 30px;
-      width: 200px;
-      background: #CCCCFF;
-      font-size: 14px;
-      border: none;
-      outline: none;
-      border-radius: 30px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #FF0000;
-    }
-
-    label {
-      font-size: 16px;
-      color: #CCCCCC
-    }
-
-    a {
-      font-size: 10px;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
   <!-- 网道 https://wangdoc.com/html/form.html -->
 
   <div class="clearfix">
-    <div class="div1">
+    <div class="divClass">
       <form>
         <label>账号</label><input type="text" class="box" value="请输入账号" />
         <p />
@@ -83,7 +27,7 @@
         &nbsp;&nbsp;&nbsp;<input type="button" class="btn" value="登录" />
       </form>
     </div>
-    <div class="div2">
+    <div class="divClass">
       <form>
         <input type="text" name="user_name" value="输入框"></input>
         <p />
@@ -110,7 +54,7 @@
         <input type="color"></input>
       </form>
     </div>
-    <div class="div3">
+    <div class="divClass">
       <form>
         <input type="time"></input>
         <p />
@@ -128,7 +72,7 @@
         <p />
       </form>
     </div>
-    <div class="div4">
+    <div class="divClass">
       <form action="">
         <input type="search" value="search"></input>
         <p />
@@ -142,10 +86,18 @@
         <input type="text" name="baidu"></input>
       </form>
     </div>
-    <div class="div5">
+    <div class="divClass">
       <form action="https://baidu.com/baidu" target="_blank">
         <input type="text" name="baidu"></input></p>
         <input type="submit" value="百度一下"></input>
+      </form>
+    </div>
+    <div class="divClass">
+      <form action="">
+        <label for="first">first: </label>
+        <input type="text" name="first" id="first" value="分开好控制">
+        <br>
+        <label class="labelInput">second: <input type="text" value="不好控制字体宽度, 对不齐"></label>
       </form>
     </div>
   </div>
