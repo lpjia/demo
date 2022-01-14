@@ -15,20 +15,30 @@ export class UserService {
   async register(createUser: CreateUserDto) {
     const { username } = createUser
 
-    const existUser = await this.userRepository.findOne({ where: { username } })
+    const existUser = await this.userRepository.findOne({
+      where: { username }
+    })
     if (existUser) throw new HttpException('用户名已存在', HttpStatus.BAD_REQUEST)
 
-    const newUser = await this.userRepository.create(createUser) // 相当于 new User(createUser)  // 只是创建了一个新的用户对象
+    const newUser = await this.userRepository.create(createUser) // 相当于 new User(createUser) // 只是创建了一个新的用户对象
     return await this.userRepository.save(newUser)
-
-    // // 以下是隐藏 password 数据
-    // await this.userRepository.save(newUser)
-    // return await this.userRepository.findOne({ where: { username } })
   }
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  create(user: CreateUserDto) {
+    return this.register(user)
   }
+
+  // //
+  // async getUser(user: User) {
+  //   const { username } = user
+  //   const existUser = await this.userRepository.findOne({
+  //     where: { username }
+  //   })
+
+  //   return existUser
+
+  //   // return 'true'
+  // }
 
   findAll() {
     return `This action returns all user`;

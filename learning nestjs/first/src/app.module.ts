@@ -7,7 +7,8 @@ import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthController } from './login.controller';
+import { AuthController } from './auth/login.controller';
+
 
 @Module({
   // imports: [TypeOrmModule.forRoot(), PostsModule],
@@ -34,6 +35,8 @@ import { AuthController } from './login.controller';
       useFactory: async (configService: ConfigService) => ({
         type: 'mysql', // 数据库类型
         // entities: [PostsEntity],  // 数据表实体
+        // get()方法还接受一个可选的第二个参数，该参数定义一个默认值，当键不存在时将返回该值
+        // get() 其实是 get<string>()
         host: configService.get('DB_HOST', 'localhost'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT', 3306), // 端口号
         username: configService.get('DB_USER', 'root'),   // 用户名
@@ -44,9 +47,12 @@ import { AuthController } from './login.controller';
         autoLoadEntities: true,
       }),
     }),
-    PostsModule,
-    UserModule,
+    /**
+     * 下面 module 的顺序和 controller 的顺序可以影响 swagger 接口(按组)的顺序
+     */
     AuthModule,
+    UserModule,
+    PostsModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService],

@@ -1,12 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { LoginDto } from 'src/auth/dto/login.dto';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+// import { CreateAuthDto } from './dto/create-auth.dto';
+// import { UpdateAuthDto } from './dto/update-auth.dto';
 
+@ApiTags('认证')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
+
+  @ApiOperation({ summary: '获取 token' })
+  @UseGuards(AuthGuard('local'))
+  @Post('getToken')
+  getToken(@Body() createAuthDto: LoginDto) {
+    return this.authService.login(createAuthDto);
+  }
+
+
+  /*
   @Post()
   create(@Body() createAuthDto: CreateAuthDto) {
     return this.authService.create(createAuthDto);
@@ -30,5 +44,5 @@ export class AuthController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.authService.remove(+id);
-  }
+  } */
 }
