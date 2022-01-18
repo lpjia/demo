@@ -6,7 +6,9 @@ import { PostsEntity } from './entities/posts.entity';
 
 export interface PostsRo {
   list: PostsEntity[]
-  count: number
+  count: number,
+  pageNum: number,
+  pageSize: number,
 }
 
 @Injectable()
@@ -15,6 +17,37 @@ export class PostsService {
     @InjectRepository(PostsEntity)
     private readonly postsRepository: Repository<PostsEntity>
   ) { }
+
+
+  // 批量添加测试数据
+  async createTestData(post: Partial<PostsEntity>): Promise<void> {
+    const arr = []
+    for (let index = 1000; index < 10010; index++) {
+      let obj = {
+        id: index,
+        title: `title-${index}`,
+        author: `author-${index}`,
+        content: '',
+        cover_url: '',
+        type: 0,
+      }
+      arr.push(obj)
+      await this.postsRepository.save(obj)
+    }
+    // return {
+    //   id: 0,
+    //   title: `title-0`,
+    //   author: `author-0`,
+    //   content: '',
+    //   thumbUrl: '',
+    //   type: 0,
+    //   createTime: new Date(),
+    //   updateTime: new Date()
+    // }
+    return Promise.resolve()
+  }
+
+
 
   // 创建文章
   async create(post: Partial<PostsEntity>): Promise<PostsEntity> {
@@ -36,13 +69,13 @@ export class PostsService {
     qb.orderBy('post.create_time', 'DESC')
 
     const count = await qb.getCount()
-    const { pageNum = 1, pageSize = 10, ...params } = query
+    const { pageNum = 1, pageSize = 100, ...params } = query
     qb.limit(pageSize)
     qb.offset(pageSize * (pageNum - 1))
 
     const posts = await qb.getMany()
 
-    return { list: posts, count }
+    return { count, pageNum, pageSize, list: posts }
   }
 
   // 获取指定文章

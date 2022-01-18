@@ -15,21 +15,26 @@ export class PostsEntity {
   @Column('text')
   content: string
 
-  @Column({ default: '' })
-  thumb_url: string
+  @Column({
+    name: 'thumb_url',
+    default: ''
+  })
+  thumbUrl: string
 
   @Column('tinyint')
   type: number
 
   @Column({
+    name: 'create_time',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP'
   })
-  create_time: Date
+  createTime: Date
 
   @Column({
+    name: 'update_time',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP'
   })
-  update_time: Date
+  updateTime: Date
 }

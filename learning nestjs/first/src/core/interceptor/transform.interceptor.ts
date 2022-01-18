@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { map, Observable } from 'rxjs';
-import * as dayjs from 'dayjs'
+import { isExistField, formatDisplayTime } from 'src/utils/commonMethods';
 
 @Injectable()
 export class TransformInterceptor implements NestInterceptor {
@@ -9,12 +9,22 @@ export class TransformInterceptor implements NestInterceptor {
       .handle()
       .pipe(
         map(data => {
-          // 解构变量加类型, 并重命名
-          const { createTime: cT = new Date().toString(), updateTime: uT = '222' }: { createTime: string, updateTime: string } = data
-          if (!Array.isArray(data)) {
-            if (cT) data.createTime = dayjs(cT).format('YYYY-MM-DD HH:mm')
-            if (uT) data.updateTime = dayjs(uT).format('YYYY-MM-DD HH:mm')
+          // pageNum, // 第几页
+          // pageSize, // 每页条数
+          // total count, // 总条数
+          // list, // 数据
+          if (
+            isExistField(data) &&
+            isExistField(data.pageNum) &&
+            isExistField(data.pageSize) &&
+            isExistField(data.count) &&
+            isExistField(data.list)
+          ) {
+            for (const item of data.list) {
+              formatDisplayTime(item)
+            }
           }
+          formatDisplayTime(data)
 
           return {
             data,

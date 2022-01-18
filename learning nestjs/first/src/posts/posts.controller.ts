@@ -8,6 +8,17 @@ import { CreatePostDto } from './dto/create-post.dto';
 export class PostsController {
   constructor(private readonly postsService: PostsService) { }
 
+
+  /**
+   * @param post
+   */
+  @ApiOperation({ summary: '批量添加测试数据' })
+  @Post('test')
+  async createTestData(@Body() post: CreatePostDto) {
+    return await this.postsService.createTestData(post)
+  }
+
+
   /**
    * 创建文章
    * @param post
