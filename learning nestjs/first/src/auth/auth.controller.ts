@@ -20,6 +20,17 @@ export class AuthController {
   }
 
 
+  // @ApiOperation({ summary: '微信登录跳转' })
+  // @Get('wechatLogin')
+  // async wechatLogin(@Headers() header, @Res() res) {
+  //   const APPID = process.env.APPID
+  // }
+
+  // async wechatLogin(@Headers()) {
+
+  // }
+
+
   /*
   @Post()
   create(@Body() createAuthDto: CreateAuthDto) {

@@ -20,9 +20,9 @@ export class PostsService {
 
 
   // 批量添加测试数据
-  async createTestData(post: Partial<PostsEntity>): Promise<void> {
+  async createTestData(post: Partial<PostsEntity>): Promise<string> {
     const arr = []
-    for (let index = 1000; index < 10010; index++) {
+    for (let index = 1020; index < 10030; index++) {
       let obj = {
         id: index,
         title: `title-${index}`,
@@ -44,7 +44,7 @@ export class PostsService {
     //   createTime: new Date(),
     //   updateTime: new Date()
     // }
-    return Promise.resolve()
+    return Promise.resolve('success')
   }
 
 

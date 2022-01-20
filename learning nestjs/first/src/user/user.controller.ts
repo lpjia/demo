@@ -21,7 +21,7 @@ export class UserController {
 
   @ApiOperation({ summary: '获取用户信息' })
   @ApiBearerAuth() // swagger 文档设置 token
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt')) // 验证策略
   @Get('getUserInfo')
   getUserInfo(@Req() req) {
     return req.user
@@ -29,7 +29,7 @@ export class UserController {
 
 
   @ApiOperation({ summary: '创建用户' })
-  // @UseInterceptors(ClassSerializerInterceptor) // 返回数据中去掉密码字段
+  // @UseInterceptors(ClassSerializerInterceptor) // 返回数据中去掉密码字段, 配合实体中的 @Exclude() 使用
   @Post()
   create(@Body() user: CreateUserDto) {
     return this.userService.create(user);
