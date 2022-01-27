@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Headers, Res, Get } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from 'src/auth/dto/login.dto';
@@ -20,15 +20,17 @@ export class AuthController {
   }
 
 
-  // @ApiOperation({ summary: '微信登录跳转' })
-  // @Get('wechatLogin')
+  /*
+  @ApiOperation({ summary: '微信登录跳转' })
+  @Get('wechatLogin')
   // async wechatLogin(@Headers() header, @Res() res) {
   //   const APPID = process.env.APPID
   // }
 
-  // async wechatLogin(@Headers()) {
-
-  // }
+  async wechatLogin(@Headers() header, @Res() res) {
+    const APPID = process.env.APPID
+    // const redirectUrl = urlencode('http://lms.siyuanren.com/web/login_front.html')
+  } */
 
 
   /*

@@ -39,12 +39,11 @@ a.toLocaleString('zh-Hans-CN-u-nu-hanidec', { style: 'currency', currency: 'CNY'
 
 
 
-function test() {
+function updateTst() {
   let reg = '^[\u4e00-\u9fa5]{0,}$'
   reg.search()
 }
 
 
-
-
-
+// { "name": "xj", "age": 28 }
+const aaa = null
