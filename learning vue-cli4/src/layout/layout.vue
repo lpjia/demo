@@ -1,29 +1,10 @@
 <template>
-  <el-container>
-    <el-aside width="200px">Aside</el-aside>
-    <el-container>
-      <el-main style="background-color: #EAEBEF;">
-        <!-- 等接口, 然后处理成动态, 也要保留静态页 -->
-        <div class="top">
-          <section>
-            <div class="bar">
-              <img src="@/assets/imgs/home/alarm.png">
-              <span>报警数:</span>
-              <span>6</span>
-            </div>
-          </section>
-          <section>
-            <div class="bar">
-              <img src="@/assets/imgs/home/offline.png">
-              <span>离线数:</span>
-              <span>1</span>
-            </div>
-          </section>
-        </div>
-
-      </el-main>
-    </el-container>
-  </el-container>
+  <div class="top">
+    <router-link to="/" class="colGap">go to home</router-link>
+    <router-link to="/one" class="colGap">go to one</router-link>
+    <router-link to="/two" class="colGap">go to two</router-link>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -51,4 +32,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.top {
+  margin: 20px auto;
+  .colGap {
+    margin: 0 10px;
+  }
+}
 </style>

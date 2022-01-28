@@ -8,6 +8,7 @@ import { PostsModule } from './posts/posts.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/login.controller';
+import { CommodityModule } from './commodity/commodity.module';
 
 
 @Module({
@@ -53,6 +54,7 @@ import { AuthController } from './auth/login.controller';
     AuthModule,
     UserModule,
     PostsModule,
+    CommodityModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService],

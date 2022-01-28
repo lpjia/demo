@@ -17,22 +17,40 @@ const constantRoutes = [
 
 
 
+  // {
+  //   path: '/',
+  //   name: 'Home',
+  //   component: () => import('@/components/Home.vue')
+  //   // redirect: '/one'
+  // },
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@/components/Home.vue')
+    name: 'layout',
+    component: () => import('@/layout/layout.vue'),
     // redirect: '/one'
+    children: [
+      {
+        path: '/one',
+        name: 'one',
+        component: () => import('@/views/one/one')
+      },
+      {
+        path: '/two',
+        name: 'two',
+        component: () => import('@/views/two/two')
+      },
+    ]
   },
-  {
-    path: '/one',
-    name: 'one',
-    component: () => import('@/views/one/one')
-  },
-  {
-    path: '/two',
-    name: 'two',
-    component: () => import('@/views/two/two')
-  },
+  // {
+  //   path: '/one',
+  //   name: 'one',
+  //   component: () => import('@/views/one/one')
+  // },
+  // {
+  //   path: '/two',
+  //   name: 'two',
+  //   component: () => import('@/views/two/two')
+  // },
 
 
 
