@@ -1,29 +1,42 @@
-import { Column, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
-export class Commodity {
+@Entity('commodity')
+export class CommodityEntity {
   @PrimaryColumn()
   id: number
 
   @PrimaryGeneratedColumn('uuid')
   uuid: string
 
-  @Column({ length: 50 })
-  product_name: string
+  @Column({
+    name: 'product_name',
+    length: 20
+  })
+  productName: string
 
-  @Column()
-  unit_price: number
+  @Column({
+    name: 'unit_price',
+  })
+  unitPrice: number
 
   @Column({ length: 10 })
   unit: string
 
-  @Column({ length: 50 })
-  shop: string
+  @Column({
+    name: 'shop_name',
+    length: 50
+  })
+  shopName: string
 
-  @Column()
-  discount_price: number
+  @Column({
+    name: 'discount_price',
+  })
+  discountPrice: number
 
-  @Column()
-  discount_rate: number
+  @Column({
+    name: 'discount_rate',
+  })
+  discountRate: number
 
   @Column({
     name: 'create_time',

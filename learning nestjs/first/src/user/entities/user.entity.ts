@@ -4,7 +4,7 @@ import { Exclude } from 'class-transformer';
 import { hashSync } from 'bcryptjs'
 
 @Entity('user')
-export class User {
+export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 

@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { User } from './entities/user.entity';
+import { UserEntity } from './entities/user.entity';
 import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('用户')
@@ -13,7 +13,7 @@ export class UserController {
 
   @ApiOperation({ summary: '注册用户' })
   @UseInterceptors(ClassSerializerInterceptor)
-  @ApiResponse({ status: 201, type: [User] })
+  @ApiResponse({ status: 201, type: [UserEntity] })
   @Post('register')
   register(@Body() createUser: CreateUserDto) {
     return this.userService.register(createUser)

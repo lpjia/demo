@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { UserEntity } from 'src/user/entities/user.entity';
 import { Repository } from 'typeorm';
 // import { CreateAuthDto } from './dto/create-auth.dto';
 // import { UpdateAuthDto } from './dto/update-auth.dto';
@@ -10,17 +10,17 @@ import { Repository } from 'typeorm';
 export class AuthService {
   constructor(
     private jwtService: JwtService,
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
   ) { }
 
   // 生成 token
-  createToken(user: Partial<User>) {
+  createToken(user: Partial<UserEntity>) {
     return this.jwtService.sign(user)
   }
 
   // 登录
-  async login(user: Partial<User>) {
+  async login(user: Partial<UserEntity>) {
     const token = this.createToken({
       id: user.id,
       username: user.username,
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   // 获取用户信息
-  async getUser(user: User): Promise<User> {
+  async getUser(user: UserEntity): Promise<UserEntity> {
     const { username } = user
     const existUser = await this.userRepository.findOne({
       where: { username }

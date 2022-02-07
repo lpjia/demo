@@ -3,13 +3,13 @@ import { PassportStrategy } from "@nestjs/passport";
 import { InjectRepository } from "@nestjs/typeorm";
 import { compareSync } from "bcryptjs";
 import { IStrategyOptions, Strategy } from "passport-local";
-import { User } from "src/user/entities/user.entity";
+import { UserEntity } from "src/user/entities/user.entity";
 import { Repository } from "typeorm";
 
 export class LocalStorage extends PassportStrategy(Strategy) {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>
   ) {
     // 比如我们是用邮箱进行验证，传入的参数是email, 那usernameField对应的value就是email
     super({

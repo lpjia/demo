@@ -1,11 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { CommodityService } from './commodity.service';
 import { CreateCommodityDto } from './dto/create-commodity.dto';
 import { UpdateCommodityDto } from './dto/update-commodity.dto';
 
+
 @Controller('commodity')
 export class CommodityController {
-  constructor(private readonly commodityService: CommodityService) {}
+  constructor(private readonly commodityService: CommodityService) { }
 
   @Post()
   create(@Body() createCommodityDto: CreateCommodityDto) {
@@ -22,7 +23,7 @@ export class CommodityController {
     return this.commodityService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateCommodityDto: UpdateCommodityDto) {
     return this.commodityService.update(+id, updateCommodityDto);
   }

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/user/entities/user.entity';
+import { UserEntity } from 'src/user/entities/user.entity';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStorage } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
@@ -28,8 +28,8 @@ const jwtModule = JwtModule.registerAsync({
 
 
 @Module({
-  // imports: [TypeOrmModule.forFeature([User]), PassportModule],
-  imports: [TypeOrmModule.forFeature([User]), PassportModule, jwtModule],
+  // imports: [TypeOrmModule.forFeature([UserEntity]), PassportModule],
+  imports: [TypeOrmModule.forFeature([UserEntity]), PassportModule, jwtModule],
   // exports: [jwtModule],
   controllers: [AuthController],
   providers: [AuthService, LocalStorage, JwtStorage]
