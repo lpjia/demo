@@ -39,6 +39,11 @@ const constantRoutes = [
         name: 'two',
         component: () => import('@/views/two/two')
       },
+      {
+        path: '/three',
+        name: 'three',
+        component: () => import('@/views/three/three')
+      },
     ]
   },
   // {

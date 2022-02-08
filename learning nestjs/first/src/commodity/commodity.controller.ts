@@ -1,16 +1,19 @@
 import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CommodityService } from './commodity.service';
 import { CreateCommodityDto } from './dto/create-commodity.dto';
 import { UpdateCommodityDto } from './dto/update-commodity.dto';
 
-
+@ApiTags('商品')
 @Controller('commodity')
 export class CommodityController {
   constructor(private readonly commodityService: CommodityService) { }
 
+
+  @ApiOperation({ summary: '创建商品' })
   @Post()
-  create(@Body() createCommodityDto: CreateCommodityDto) {
-    return this.commodityService.create(createCommodityDto);
+  async create(@Body() commodity: CreateCommodityDto) {
+    return await this.commodityService.create(commodity);
   }
 
   @Get()

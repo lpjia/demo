@@ -8,6 +8,8 @@ import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('用户')
 @Controller('user')
+// 如果你想让该Controller中所有的请求都不包含password字段， 那可以直接用ClassSerializerInterceptor标记类。
+// @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) { }
 

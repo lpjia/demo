@@ -2,9 +2,6 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('commodity')
 export class CommodityEntity {
-  @PrimaryColumn()
-  id: number
-
   @PrimaryGeneratedColumn('uuid')
   uuid: string
 
@@ -16,8 +13,11 @@ export class CommodityEntity {
 
   @Column({
     name: 'unit_price',
+    default: '',
+    // type: 'tinyint'
   })
-  unitPrice: number
+  unitPrice: string
+  // 这里不能用number类型, 否则非必填项是传的''
 
   @Column({ length: 10 })
   unit: string
@@ -29,14 +29,30 @@ export class CommodityEntity {
   shopName: string
 
   @Column({
-    name: 'discount_price',
+    length: 50,
+    default: '',
   })
-  discountPrice: number
+  position: string
+
+  @Column({
+    length: 20,
+    default: '',
+  })
+  spec: string
+
+  @Column({
+    name: 'discount_price',
+    default: '',
+    // type: 'tinyint'
+  })
+  discountPrice: string
 
   @Column({
     name: 'discount_rate',
+    default: '',
+    // type: 'tinyint'
   })
-  discountRate: number
+  discountRate: string
 
   @Column({
     name: 'create_time',

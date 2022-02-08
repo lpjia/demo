@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { removeObjEmptyKey } from '@/utils'
+import { Message } from 'element-ui'
+// import { removeObjEmptyKey } from '@/utils'
 import { URL } from './config.js'
 
 const service = axios.create({
@@ -23,8 +24,12 @@ service.interceptors.request.use(
     // }
 
     // console.log('config.headers: ', config.headers)
-    config.data && removeObjEmptyKey(config.data)
-    config.params && removeObjEmptyKey(config.params)
+
+    /**
+     * 没值的字段对于表单来说还不能去掉
+     */
+    // config.data && removeObjEmptyKey(config.data)
+    // config.params && removeObjEmptyKey(config.params)
 
     return config
   },
@@ -37,14 +42,16 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   response => {
-    // console.log('response: ', response)
+    // console.log('response:', response)
+    if (response.data.code === -1) Message.error(response.data.message)
     return response.data
   },
   error => {
     // 响应的状态码
     // error.response.status
     // 响应的提示信息
-    console.log('error: ', error)
+    // console.log('error: ', error)
+    Message.error(error.message)
     // let errMsg = error.response.data.error.message
     // console.error('err: ' + errMsg) // for debug
     return Promise.reject(error)
