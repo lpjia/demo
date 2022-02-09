@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex 布局</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+  <style></style>
+</head>
+
+<body>
+  <!-- 建议看阮一峰的教程 -->
+  <!-- http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html -->
+
+  <!-- MDN -->
+  <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox -->
+
+  <section class="flexStyle">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+  </section>
+  <hr class="up_down">
+
+  <p>子元素没有加 flex:1 等属性, 宽度是按 60px 给的, 容器宽度是 180px</p>
+  <section class="inlineFlexStyle">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </section>
+  <hr class="up_down">
+
+  <p>子元素加了 flex:1 等属性, 容器宽度还是 180px, 子元素宽度是按比例分的</p>
+  <section class="inlineFlexStyle">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+  </section>
+  <hr class="up_down">
+
+  <script></script>
+</body>
+
+</html>

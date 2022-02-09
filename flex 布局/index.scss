@@ -1,0 +1,59 @@
+div {
+  width: 60px;
+  height: 60px;
+  border: 1px solid deepskyblue;
+}
+
+
+
+// 容器和项目(或叫子元素)是分开的
+// 容器有自己的属性, 项目有自己的元素
+// 注意，设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
+
+// 容器
+.flexStyle {
+  display: flex;
+
+  // flex-direction: row | row-reverse | column | column-reverse;
+
+  // flex-wrap: nowrap | wrap | wrap-reverse;
+
+  // flex-flow: <flex-direction> || <flex-wrap>;
+  // flex-flow: column-reverse nowrap;
+
+  // justify-content: flex-start | flex-end | center | space-between | space-around;
+
+  // align-items: flex-start | flex-end | center | baseline | stretch;
+
+  // align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+
+.inlineFlexStyle {
+  display: inline-flex;
+}
+
+
+// 项目或子元素
+.one {
+  // order: <integer>;
+
+  // flex-grow: <number>; /* default 0 */
+  // flex-shrink: <number>; /* default 1 */
+  // flex-basis: <length> | auto; /* default auto */
+
+  // flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+  // 建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+  // flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+
+  // align-self: auto | flex-start | flex-end | center | baseline | stretch;
+
+  flex: 1;
+}
+
+.two {
+  flex: 2;
+}
+
+.three {
+  flex: 3;
+}
