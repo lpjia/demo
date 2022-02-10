@@ -1,0 +1,27 @@
+body {
+  background-color: #000;
+  border: 1px solid deeppink;
+  color: #fff;
+
+  // 间距会随着字号的变大而变大, 说明间距和字体有关系
+  font-size: 50px;
+}
+
+div {
+  width: 960px;
+  height: 60px;
+  border: 1px solid deepskyblue;
+}
+
+
+
+// 常用的还是靠左右 margin 来消除相邻 img 间距
+img {
+  vertical-align: bottom; // 消除 img 和后面 div 的上下间距
+  margin: 0 -8px; // 实测发现最少得8px
+  // display: block; // 消除间距的方案
+}
+
+img:first-child {
+  margin-left: 0;
+}

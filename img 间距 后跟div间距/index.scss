@@ -1,0 +1,35 @@
+body {
+  background-color: #000;
+  border: 1px solid deeppink;
+  color: #fff;
+
+  // 间距会随着字号的变大而变大, 说明间距和字体有关系
+  font-size: 50px;
+}
+
+.moren {
+  img {
+    vertical-align: baseline;
+  }
+}
+
+img {
+  // 推荐
+  vertical-align: bottom; // top middle baseline(默认) bottom
+
+  // display: block; // 也可以解决间距问题
+}
+
+div {
+  width: 960px;
+  height: 60px;
+  border: 1px solid deepskyblue;
+}
+
+p {
+  color: #fff;
+
+  >span {
+    color: deepskyblue;
+  }
+}
