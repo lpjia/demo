@@ -88,9 +88,9 @@ export default {
         unit: [
           { required: true, message: '请选择', trigger: 'change' }
         ],
-        position: [
-          { required: true, message: '请选择', trigger: 'change' }
-        ],
+        // position: [
+        //   { required: true, message: '请选择', trigger: 'change' }
+        // ],
       },
 
       unitArr: [],
@@ -108,6 +108,9 @@ export default {
         0: '金梧桐长椿店',
         1: '怡亩田乡超市',
         2: '蔬便利万和城店',
+
+        3: '北门馒头店东侧菜店',
+        4: '北门馒头店西侧菜店',
       },
 
       positionArr: [],
@@ -147,7 +150,7 @@ export default {
         discountPrice,
         discountRate,
         spec,
-        position: this.positionObj[position]
+        position: this.positionObj[position] === undefined ? '' : this.positionObj[position]
       }
       const res = await commodityCreate(params)
       this.msg = res

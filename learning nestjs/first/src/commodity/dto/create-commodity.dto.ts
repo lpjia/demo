@@ -20,8 +20,9 @@ export class CreateCommodityDto {
   @IsNotEmpty({ message: '缺少商店名' })
   readonly shopName: string
 
-  @ApiProperty({ description: '位置' })
-  @IsNotEmpty({ message: '缺少位置' })
+  @ApiPropertyOptional({ description: '位置' })
+  // @ApiProperty({ description: '位置' })
+  // @IsNotEmpty({ message: '缺少位置' })
   readonly position: string
 
   @ApiPropertyOptional({ description: '规格' })
