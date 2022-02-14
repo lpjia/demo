@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Layout from '@/layout/layout.vue'
+
 Vue.use(VueRouter)
 
 const constantRoutes = [
@@ -26,21 +28,22 @@ const constantRoutes = [
   {
     path: '/',
     name: 'layout',
-    component: () => import('@/layout/layout.vue'),
+    // component: () => import('@/layout/layout.vue'),
+    component: Layout,
     // redirect: '/one'
     children: [
       {
-        path: '/one',
+        path: 'one',
         name: 'one',
         component: () => import('@/views/one/one')
       },
       {
-        path: '/two',
+        path: 'two',
         name: 'two',
         component: () => import('@/views/two/two')
       },
       {
-        path: '/three',
+        path: 'three',
         name: 'three',
         component: () => import('@/views/three/three')
       },
@@ -63,7 +66,7 @@ const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new VueRouter({
+const createRouter = new VueRouter({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
@@ -75,4 +78,4 @@ const createRouter = () => new VueRouter({
 //   router.matcher = newRouter.matcher // reset router
 // }
 
-export default createRouter()
+export default createRouter

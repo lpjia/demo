@@ -1,6 +1,7 @@
 <template>
   <div class="top">
     <router-link to="/" class="colGap">go to home</router-link>
+    <router-link to="/hello" class="colGap">go to hello</router-link>
     <router-link to="/one" class="colGap">go to one</router-link>
     <router-link to="/two" class="colGap">go to two</router-link>
     <router-link to="/three" class="colGap">go to three</router-link>
@@ -14,20 +15,6 @@ export default {
   components: {
   },
   props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
   },
 };
 </script>

@@ -1,4 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+// import store from './store'
+import router from './router'
 
-createApp(App).mount('#app')
+import '@/assets/fonts/iconfont.css'
+
+createApp(App)
+  .use(router)
+  .mount('#app')

@@ -31,7 +31,7 @@ export default {
   setup() {
     const { showDiv, show, hide } = showOrHide()
     const { fontColor, changeRed, changeYellow } = changeFontColor()
-    console.log('showDiv:', showDiv)
+    // console.log('showDiv:', showDiv)
 
     return {
       showDiv,

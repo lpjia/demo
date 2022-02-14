@@ -1,25 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App" />
-  <Zh />
-  <Zhh />
-  <Xxs />
+  <router-view />
+  <!-- <NavBottom />
+  -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Zh from '@/views/zuhe/zh'
-import Zhh from '@/views/zuhe/zh2'
-import Xxs from '@/views/zuhe/xxs'
+import NavBottom from '@/layout/NavBottom.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Zh,
-    Zhh,
-    Xxs
-  }
+    NavBottom
+  },
 }
 </script>
 
