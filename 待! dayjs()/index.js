@@ -1,22 +1,24 @@
+// 差
+
 new Vue({
-  el:'#app',
-  data:{
+  el: '#app',
+  data: {
   },
-  computed:{
-    msg(){
+  computed: {
+    msg() {
       return new Date()
     },
-    msg2(){
+    msg2() {
       return dayjs()
     },
-    msg3(){
+    msg3() {
       return dayjs.locale('zh-cn')
     },
-    msg4(){
+    msg4() {
       return dayjs().locale('zh-cn')
     },
   },
-  created(){
+  created() {
     console.log('dayjs():', dayjs())
   }
 })

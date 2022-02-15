@@ -4,6 +4,30 @@ import { deepClone } from '../util/commonMethod.js'
 // 简洁高效
 
 
+
+// arr.map()
+let idxArr = [
+  { idx: 1 },
+  { idx: 2 },
+  { idx: 3 },
+]
+// map 会返回处理后的数组
+idxArr.map(item => {
+  return { idx: item.idx + 10 }
+})
+
+// arr.forEach()
+// 无返回值, 但是有时会改变引用类型的数据
+idxArr.forEach(item => item.id = 100)
+// 每个对象都多了个 id: 100 的属性
+idxArr
+// 真想改变原数组, 定义一个临时数组, 可以遍历原数组
+// 组装新数据 push 到临时数组存起来, 把临时数组赋值给原数组即可
+
+
+
+
+
 // arr.includes()
 let arr = [null, undefined, '', 0, NaN, false, {}, []]
 
