@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 import { CreateCommodityDto } from './dto/create-commodity.dto';
 import { UpdateCommodityDto } from './dto/update-commodity.dto';
 import { CommodityEntity } from './entities/commodity.entity';
@@ -12,6 +12,13 @@ export interface CommodityRo {
   pageNum: number,
   pageSize: number,
 }
+
+// export interface CreateCommodityRo {
+//   list: CreateCommodityDto[]
+//   count: number,
+//   pageNum: number,
+//   pageSize: number,
+// }
 
 
 @Injectable()
@@ -36,8 +43,19 @@ export class CommodityService {
     return await this.commodityRepository.save(commodity)
   }
 
-  findAll() {
-    return `This action returns all commodity`;
+  // 获取商品列表
+  async findAll(query): Promise<CommodityRo> {
+    const qb = await getRepository(CommodityEntity).createQueryBuilder('commodity')
+    qb.where('1 = 1')
+    qb.orderBy('commodity.create_time', 'DESC')
+
+    const count = await qb.getCount()
+    const { pageNum = 1, pageSize = 100, ...params } = query
+    qb.limit(pageSize)
+    qb.offset(pageSize * (pageNum - 1))
+
+    const commodities = await qb.getMany()
+    return { count, pageNum, pageSize, list: commodities }
   }
 
   findOne(id: number) {

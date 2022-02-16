@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CommodityService } from './commodity.service';
+import { CommodityRo, CommodityService } from './commodity.service';
 import { CreateCommodityDto } from './dto/create-commodity.dto';
 import { UpdateCommodityDto } from './dto/update-commodity.dto';
+
 
 @ApiTags('商品')
 @Controller('commodity')
@@ -16,9 +17,10 @@ export class CommodityController {
     return await this.commodityService.create(commodity);
   }
 
+  @ApiOperation({ summary: '获取商品列表' })
   @Get()
-  findAll() {
-    return this.commodityService.findAll();
+  async findAll(@Query() query): Promise<CommodityRo> {
+    return await this.commodityService.findAll(query);
   }
 
   @Get(':id')

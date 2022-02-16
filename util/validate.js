@@ -1,3 +1,35 @@
+
+
+/**
+ * @description 验证是否只有数字
+ * @param {string} str
+ * @param {number} n 需要限制的位数
+ * @returns {boolean}
+ */
+export function validIntString(str, n) {
+  if (typeof str !== 'string') throw new Error('一参请传入 string 类型参数')
+  let reg = null
+  if (typeof n === 'undefined')
+    reg = /^[0-9]*$/
+  else if (typeof n === 'number')
+    reg = new RegExp("^\\d{" + n + "}$") // ^\d{n}$
+  else throw new Error('二参请传入 number 类型参数')
+
+  return reg.test(str);
+}
+
+
+/**
+ * @description 去掉字符串中的所有空格
+ * @param {string} str #need
+ * @returns {string}
+ */
+export function removeAllSpace(str) {
+  if (typeof str !== 'string') throw new Error('请传入 string 类型参数')
+  return str.replace(/\s*/g, "")
+}
+
+
 /**
  * @description 验证是否为有效的浮点型
  * @param {string / number} str 
