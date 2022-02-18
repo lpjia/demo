@@ -1,0 +1,31 @@
+body {
+  background-color: #000;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  width: 600px;
+  height: 400px;
+  background-color: #36AF7C;
+}
+
+// 没有 boder, 也可以用 border-radius 来控制背景块的形状
+.one {
+  border-radius: 10% / 50%;
+}
+
+.two {
+  border-radius: 50% / 10%;
+}
+
+.three {
+  border-radius: 50% / 10%;
+  // 这两个值我认为控制的顺序是 top-left
+  // 下面是 top-right
+  border-top-left-radius: 0% 50%;
+  border-top-right-radius: 0% 50%;
+}
