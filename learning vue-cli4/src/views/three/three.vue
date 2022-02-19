@@ -5,45 +5,50 @@
     <div class="formSection">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px" size="mini" style="width:300px;">
         <el-form-item label="商品名" prop="productName">
-          <el-input v-model="form.productName"></el-input>
+          <el-input ref="input-1" v-model="form.productName"></el-input>
+          <i class="el-icon-error" @click="clearFormItem('productName', 1)"></i>
         </el-form-item>
         <el-form-item label="单价" prop="unitPrice">
-          <el-input v-model="form.unitPrice"></el-input>
+          <el-input ref="input-2" v-model="form.unitPrice"></el-input>
+          <i class="el-icon-error" @click="clearFormItem('unitPrice', 2)"></i>
         </el-form-item>
         <el-form-item label="计价单位" prop="unit">
-          <el-select v-model="form.unit" placeholder="请选择" size="mini" value-key="form_unit" style="width:100%">
+          <el-select v-model="form.unit" placeholder="请选择" size="mini" value-key="form_unit" style="width: 100%">
             <el-option v-for="item in unitArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="商店名" prop="shopName">
           <el-select v-model="form.shopName" @change="changePosition" placeholder="请选择" size="mini"
-            value-key="form_shopName" style="width:100%">
+            value-key="form_shopName" style="width: 100%">
             <el-option v-for="item in shopNameArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="位置" prop="position">
           <el-select v-model="form.position" disabled placeholder="请选择" size="mini" value-key="form_position"
-            style="width:100%">
+            style="width: 100%">
             <el-option v-for="item in positionArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="规格" prop="spec">
-          <el-input v-model="form.spec"></el-input>
+          <el-input ref="input-3" v-model="form.spec"></el-input>
+          <i class="el-icon-error" @click="clearFormItem('spec', 3)"></i>
         </el-form-item>
         <el-form-item label="折扣价" prop="discountPrice">
-          <el-input v-model="form.discountPrice"></el-input>
+          <el-input ref="input-4" v-model="form.discountPrice"></el-input>
+          <i class="el-icon-error" @click="clearFormItem('discountPrice', 4)"></i>
         </el-form-item>
         <el-form-item label="折扣" prop="discountRate">
-          <el-input v-model="form.discountRate"></el-input>
+          <el-input ref="input-5" v-model="form.discountRate"></el-input>
+          <i class="el-icon-error" @click="clearFormItem('discountRate', 5)"></i>
         </el-form-item>
         <button @click.prevent="sure">提交</button>
       </el-form>
-
     </div>
     <p>{{ msg }}</p>
+    <hr class="up_down">
   </div>
 </template>
 
@@ -170,6 +175,11 @@ export default {
       this.positionArr = objToArr(this.positionObj, { l: 'name', v: 'value' })
     },
 
+    clearFormItem(k, i) {
+      this.form[k] = ''
+      this.$refs[`input-${i}`].focus()
+    },
+
     changePosition(val) {
       this.form.position = val
     },
@@ -181,6 +191,16 @@ export default {
 .formSection {
   display: flex;
   justify-content: center;
+}
+
+.el-input {
+  width: 80%;
+}
+.el-icon-error {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 16px;
+  cursor: pointer;
 }
 
 // label {

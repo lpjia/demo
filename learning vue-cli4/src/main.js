@@ -12,7 +12,7 @@ import router from './router'
 import {
   Button, Input, Form,
   FormItem, Select, Option,
-  Message
+  Message, Table, TableColumn
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Button);
@@ -22,6 +22,8 @@ Vue.use(FormItem);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Message);
+Vue.use(Table);
+Vue.use(TableColumn);
 
 
 Vue.prototype.$message = Message;
