@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+.lpj {
+  margin-top: 160px;
+
+  // border: solid 1px deepskyblue;
+  ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .oneLevel {
+    width: 600px;
+    height: 60px;
+    display: flex;
+
+    >li {
+      // width: 100px;
+      // height: 60px;
+      position: relative;
+      border: 1px solid deeppink;
+      border-right: none;
+
+      // 直接在下级写伪元素, 无效
+      // :hover .twoLevel {
+      //   display: block;
+      // }
+
+      // 直接在下级写伪元素, 无效
+      // :last-child {
+      //   border-right: 1px solid deeppink;
+      // }
+
+      a {
+        width: 100px;
+        display: inline-block;
+        line-height: 60px;
+        text-align: center;
+      }
+    }
+
+    >li:last-child {
+      border-right: 1px solid deeppink;
+    }
+
+    >li:hover .twoLevel {
+      display: block;
+    }
+  }
+
+  .twoLevel {
+    display: none;
+    position: absolute;
+    top: 56px;
+    // top: 90px;
+    left: -1px;
+
+    .zw {
+      width: 100%;
+      height: 40px;
+      background-color: transparent;
+      // border: 1px solid red;
+    }
+
+    >li {
+      border: 1px solid deepskyblue;
+      border-bottom: none;
+
+      :last-child {
+        border-bottom: 1px solid deepskyblue;
+      }
+    }
+  }
+
+
+  #triangle-up {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 3px;
+    left: 43px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 37px solid deepskyblue;
+  }
+
+
+}
