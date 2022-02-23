@@ -9,12 +9,14 @@ body {
 
 .moren {
   img {
+    // 注意是给 img 加的样式
     vertical-align: baseline;
   }
 }
 
 img {
   // 推荐
+  // 注意是给 img 加的样式
   vertical-align: bottom; // top middle baseline(默认) bottom
 
   // display: block; // 也可以解决间距问题
