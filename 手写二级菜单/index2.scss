@@ -34,6 +34,15 @@
       //   border-right: 1px solid deeppink;
       // }
 
+      // 加 & 有效
+      &:hover .twoLevel {
+        display: block;
+      }
+
+      &:last-child {
+        border-right: 1px solid deeppink;
+      }
+
       a {
         width: 100px;
         display: inline-block;
@@ -42,13 +51,14 @@
       }
     }
 
-    >li:last-child {
-      border-right: 1px solid deeppink;
-    }
+    // 被 & 替代了
+    // >li:last-child {
+    //   border-right: 1px solid deeppink;
+    // }
 
-    >li:hover .twoLevel {
-      display: block;
-    }
+    // >li:hover .twoLevel {
+    //   display: block;
+    // }
   }
 
   .twoLevel {

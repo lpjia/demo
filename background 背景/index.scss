@@ -130,8 +130,17 @@ section {
   background-position: -30px -807px;
 }
 
+@mixin bgImgHW($px) {
+  width: $px;
+  height: $px;
+}
+
 .eleven {
-  width: 30px;
-  height: 30px;
+  @include bgImgHW(30px);
   background-position: -30px -736px;
+}
+
+.twelve {
+  @include bgImgHW(33px);
+  background-position: -28px -220px;
 }
