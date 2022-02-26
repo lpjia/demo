@@ -1,0 +1,27 @@
+section {
+  margin-top: 50px;
+  width: 300px;
+  height: 60px;
+  border: 1px solid deepskyblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 0 10px;
+
+  .blk {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    cursor: pointer;
+  }
+
+  // 改变边框颜色, 不要增删边框, 不会造成内容抖动
+  .blk.active {
+    border: 1px solid gray;
+  }
+}

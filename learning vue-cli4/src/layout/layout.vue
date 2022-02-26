@@ -3,7 +3,7 @@
     <router-link to="/" class="colGap">go to home</router-link>
     <router-link to="/one" class="colGap">go to one</router-link>
     <router-link to="/two" class="colGap">go to two</router-link>
-    <router-link to="/three" class="colGap">go to three</router-link>
+    <router-link to="/three" class="colGap" @click.native="test">go to three</router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -28,6 +28,13 @@ export default {
   mounted() {
   },
   methods: {
+    /**
+     * Vue2中注册在router-link上事件无效解决方法
+     * 使用@click.native。原因：router-link会阻止click事件，.native指直接监听一个原生事件
+     */
+    test() {
+      console.log('测试 router-link 上的事件')
+    },
   },
 };
 </script>

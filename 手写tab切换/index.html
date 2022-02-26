@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手写tab切换</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <div id="app">
+    <section>
+      <div class="blk" :class="{active: tabIdx === 1}" @click="switchTab(1)">本周</div>
+      <div class="blk" :class="{active: tabIdx === 2}" @click="switchTab(2)">本月</div>
+      <div class="blk" :class="{active: tabIdx === 3}" @click="switchTab(3)">本年</div>
+    </section>
+    <!-- 仅需两层 dom 便可实现 -->
+    <section>
+      <div v-for="(tab, idx) in tabs" :key="idx" :class="{active: tabIdx === (idx + 1)}" class="blk"
+        @click="switchTab(idx + 1)">{{ tab.name }}</div>
+    </section>
+  </div>
+
+
+  <script src="../lib/vue@2.6.14.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
