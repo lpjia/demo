@@ -20,8 +20,9 @@ section {
     cursor: pointer;
   }
 
-  // 改变边框颜色, 不要增删边框, 不会造成内容抖动
+  // 改变边框颜色和背景色, 不要增删边框, 不会造成内容抖动
   .blk.active {
     border: 1px solid gray;
+    background-color: #F0F0F0;
   }
 }
