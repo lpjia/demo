@@ -38,3 +38,10 @@ export class CreateCommodityDto {
   // @IsNumber()
   // readonly type: number
 }
+
+
+// 测试组合类型
+export class AdditionalInfo {
+  @ApiProperty({ description: '额外信息' })
+  info: string;
+}

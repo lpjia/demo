@@ -1,8 +1,9 @@
-import { Controller, Post, Body, UseGuards, Headers, Res, Get } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Headers, Res, Get, Query, Param } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from 'src/auth/dto/login.dto';
 import { AuthService } from './auth.service';
+import { WxLoginDto } from './dto/wxLogin.dto';
 // import { CreateAuthDto } from './dto/create-auth.dto';
 // import { UpdateAuthDto } from './dto/update-auth.dto';
 
@@ -18,6 +19,21 @@ export class AuthController {
   getToken(@Body() createAuthDto: LoginDto) {
     return this.authService.login(createAuthDto);
   }
+
+
+  @ApiOperation({ summary: '微信登录' })
+  @Post('wxLogin')
+  wxLogin(@Body() wxCode: WxLoginDto) {
+    return this.authService.wxLogin(wxCode)
+  }
+
+
+  @ApiOperation({ summary: '微信登录2' })
+  @Get('wxLogin2')
+  wxLogin2(@Query() query: string) {
+    return this.authService.wxLogin2(query)
+  }
+
 
 
   /*

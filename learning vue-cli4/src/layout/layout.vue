@@ -45,5 +45,6 @@ export default {
   .colGap {
     margin: 0 10px;
   }
+  text-align: center;
 }
 </style>

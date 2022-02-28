@@ -45,24 +45,33 @@
           <i class="el-icon-error" @click="clearFormItem('discountRate', 5)"></i>
         </el-form-item>
         <button @click.prevent="sure">提交</button>
+        <button @click.prevent="search" style="margin-left:20px;">查询</button>
       </el-form>
     </div>
-    <p>{{ msg }}</p>
+    <div class="treeSection">
+      <JsonViewer :value="msg" :expand-depth="10" />
+    </div>
     <hr class="up_down">
+    <p>{{ msg }}</p>
+    <!-- <hr class="up_down"> -->
   </div>
 </template>
 
 <script>
 import {
   commodityCreate,
+  commodityByName,
   // commodityList,
-  // commodityById
+  // commodityById,
 } from '@/api/three.js'
 import { getStorage, setStorage, objToArr } from '@/utils'
+
+import JsonViewer from 'vue-json-viewer'
 
 export default {
   name: 'three',
   components: {
+    JsonViewer,
   },
   props: {
   },
@@ -168,6 +177,14 @@ export default {
         }
       })
     },
+    async search() {
+      const { productName } = this.form
+      const params = {
+        name: productName
+      }
+      const res = await commodityByName(params)
+      this.msg = res
+    },
 
     init() {
       this.unitArr = objToArr(this.unitObj, { l: 'name', v: 'value' })
@@ -188,6 +205,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.treeSection {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
 .formSection {
   display: flex;
   justify-content: center;

@@ -17,11 +17,20 @@ export class CommodityController {
     return await this.commodityService.create(commodity);
   }
 
+
+  @ApiOperation({ summary: '查询某商品名' })
+  @Get('findByName')
+  async findByName(@Query('name') name: string) {
+    return await this.commodityService.findByName(name)
+  }
+
+
   @ApiOperation({ summary: '获取商品列表' })
   @Get()
   async findAll(@Query() query): Promise<CommodityRo> {
     return await this.commodityService.findAll(query);
   }
+
 
   @Get(':id')
   findOne(@Param('id') id: string) {

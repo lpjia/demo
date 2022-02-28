@@ -42,6 +42,14 @@ export function commodityList(query) {
   })
 }
 
+export function commodityByName(query) {
+  return request({
+    url: '/api/commodity/findByName',
+    method: 'GET',
+    params: query
+  })
+}
+
 export function commodityById(data) {
   return request({
     url: '/api/commodity/' + data.id,

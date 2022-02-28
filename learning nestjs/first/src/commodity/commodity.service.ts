@@ -28,6 +28,7 @@ export class CommodityService {
     private readonly commodityRepository: Repository<CommodityEntity>
   ) { }
 
+
   async create(commodity): Promise<CreateCommodityDto> {
     // async create(commodity: Partial<CommodityEntity>): Promise<CommodityEntity> {
     const { productName, shopName } = commodity
@@ -43,7 +44,38 @@ export class CommodityService {
     return await this.commodityRepository.save(commodity)
   }
 
-  // 获取商品列表
+
+  async findByName(name: string): Promise<CreateCommodityDto[]> {
+    const qb = await getRepository(CommodityEntity).createQueryBuilder('commodity')
+
+    // qb.where('commodity.productName LIKE :productName', { productName: `%${name}%` })
+
+    // 更简洁的写法
+    qb.where('commodity.productName LIKE "%' + name + '%"')
+
+    // qb.where('commodity.productName LIKE :param', { param: `%${name}%` })
+    //   .orderBy("commodity.createTime", "ASC")
+
+    // :后跟一个'变量', 可以自定义属性名
+    // 后面跟个对象是 setParameters 的方式, setParameters({ productName: `%${name}%` })
+    // 多查询条件适合这样写?
+    // qb.where('commodity.productName LIKE :productName AND commodity.unitPrice < :param', {
+    //   productName: `%${name}%`,
+    //   param: 10,
+    // })
+
+    // 单独获取
+    const list = await qb.getMany();
+    // const count = await qb.getCount()
+    // 可以同时获取
+    // const [list, total] = await qb.getManyAndCount();
+
+    return list
+    // return { count: total, list }
+    // return { pageNum: 1, pageSize: 100, count, list }
+  }
+
+
   async findAll(query): Promise<CommodityRo> {
     const qb = await getRepository(CommodityEntity).createQueryBuilder('commodity')
     qb.where('1 = 1')
@@ -55,7 +87,7 @@ export class CommodityService {
     qb.offset(pageSize * (pageNum - 1))
 
     const commodities = await qb.getMany()
-    return { count, pageNum, pageSize, list: commodities }
+    return { pageNum, pageSize, count, list: commodities }
   }
 
   findOne(id: number) {
