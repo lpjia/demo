@@ -2,7 +2,7 @@
 // let cityCodeObj = arrToObj(areaList.cities, { k: 'name', v: 'name' })
 
 
-new Vue({
+const vm = new Vue({
   el: '#app',
   data() {
     return {
@@ -13,7 +13,8 @@ new Vue({
     }
   },
   mounted() {
-    this.baiduMapInit()
+    // this.baiduMapInit()
+    // this.gaodeMapInit()
   },
   methods: {
     gaodeMapInit() {
@@ -42,8 +43,8 @@ new Vue({
       map.enableScrollWheelZoom(true);
     },
 
-
-    selectChange(val) {
+    // 选择城市, 一般定位市政府办公地方, 也显示出定位点的经纬度
+    selectCity(val) {
       this.map.clearOverlays()
       console.log('val: ', val)
       val != "" && this.map.centerAndZoom(val, 16)
@@ -58,5 +59,3 @@ new Vue({
     }
   }
 })
-
-

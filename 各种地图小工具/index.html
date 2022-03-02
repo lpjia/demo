@@ -9,52 +9,92 @@
   <title>各种地图小工具</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
   <div id="app">
-    <div class="flex">
+    <div class="">
       <div class="gap">
-        <div id="mapDiv" class="mapDiv"></div>
+        <div id="mapDiv" class="mapDiv up_down"></div>
+        <el-select v-model="selectVal" @change="selectCity">
+          <el-option v-for="(item,idx) in cityArr" :key="idx" :value="item.name" :label="item.name" />
+        </el-select>
         <div class="up_down">
-          <el-select v-model="selectVal" @change="selectChange">
-            <el-option v-for="(item,idx) in cityArr" :key="idx" :value="item.name" :label="item.name" />
-          </el-select>
-        </div>
-        <div>
           这是百度地图<br>
           地图中心点坐标: {{ mapCenter }}<br>
         </div>
-        <div>
-
-        </div>
       </div>
+      <hr class="up_down">
+
       <div class="gap">
-        <div id="mapDiv2" class="mapDiv"></div>
+        <div id="mapDiv2" class="mapDiv up_down"></div>
         <div>
           这是高德地图 JSAPI 加载器<br>
         </div>
       </div>
-      <!-- <div class="gap">
-        <div id="mapDiv3" class="mapDiv"></div>
+      <hr class="up_down">
+
+      <div class="gap">
+        <div id="mapDiv3" class="mapDiv up_down"></div>
         <div>
-          这是 chart3<br>
-          渐变色加到 shadow 没效果<br>
-          整体渐变色也没效果<br>
+          这是高德地图 script 加载<br>
         </div>
-      </div> -->
+        <div class="info">
+          <h4 id="status"></h4>
+          <p id="result"></p>
+          <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
+        </div>
+      </div>
+      <hr class="up_down">
+
+      <div class="gap">
+        <div id="mapDiv4" class="mapDiv up_down"></div>
+        <div>
+          这是高德地图 script 加载, 获取点的经纬度<br>
+          加一个自由获取点标记的经纬度功能<br>
+        </div>
+        <section class="xySection up_down">
+          <div class="up_down">
+            <button id="addCenter">添加点标记</button>
+          </div>
+          <b id="showMsg"></b>
+        </section>
+        <section class="xySection">
+          <div>
+            <p>lng: </p>
+            <input type="text" id="lng">
+            <span class="el-icon-error" id="clearLng"></span>
+          </div>
+          <div>
+            <p>lat: </p>
+            <input type="text" id="lat">
+            <span class="el-icon-error" id="clearLat"></span>
+          </div>
+          <div class="up_down">
+            <button id="addXY">添加固定经纬度的点标记</button>
+          </div>
+        </section>
+      </div>
     </div>
+    <hr class="up_down">
+
+
+  </div>
   </div>
 
   <script src="../lib/vue@2.6.14.js"></script>
   <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
+
   <script src="https://webapi.amap.com/loader.js"></script>
   <script type="text/javascript"
     src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=cgmRU9IZ6Vb6MX3VNEwN6WwTzUwXqMP2"></script>
-  <!-- <script src="index.js" type="text/javascript" charset="utf-8"></script> -->
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d75c7f616a34e84f228e5f9fbd286996"></script>
+
   <script src="map/geoArea.js" type="text/javascript" charset="utf-8"></script>
-  <script src="m_index.js" type="module"></script>
+  <script src="index.js" type="module"></script>
+  <!-- <script src="index2.js" type="module"></script> -->
+  <script src="index3.js" type="module"></script>
 </body>
 
 </html>
