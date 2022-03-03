@@ -4,7 +4,8 @@
     <router-link to="/one" class="colGap">go to one</router-link>
     <router-link to="/two" class="colGap">go to two</router-link>
     <router-link to="/three" class="colGap" @click.native="test">go to three</router-link>
-    <router-view></router-view>
+    <router-link to="/gmap" class="colGap">go to gmap</router-link>
+    <router-view style="margin-top:20px;"></router-view>
   </div>
 </template>
 

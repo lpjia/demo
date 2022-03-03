@@ -52,6 +52,7 @@ export class CommodityService {
 
     // 更简洁的写法
     qb.where('commodity.productName LIKE "%' + name + '%"')
+      .orderBy("commodity.createTime", "DESC")
 
     // qb.where('commodity.productName LIKE :param', { param: `%${name}%` })
     //   .orderBy("commodity.createTime", "ASC")
