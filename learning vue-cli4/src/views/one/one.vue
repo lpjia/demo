@@ -59,6 +59,8 @@ export default {
   created() {
   },
   mounted() {
+    console.log('这是来自 vuex 的值: ', this.$store.state.count)
+    console.log('这是来自 vuex 的值: ', this.$store.state['moduleA'].varA)
   },
   methods: {
     async getHello() {
