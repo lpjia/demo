@@ -2,9 +2,17 @@ const state = {
   varA: 'A'
 }
 
-const mutations = {}
+const mutations = {
+  set_token(state, data) {
+    state.varA = data
+  }
+}
 
-const actions = {}
+const actions = {
+  setToken({ commit }, token) {
+    commit('set_token', token)
+  }
+}
 
 
 export default {

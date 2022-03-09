@@ -17,6 +17,13 @@
     <hr class="up_down">
     <button @click="getList">@Get('list')</button>
     <button @click="addPost">@Post('post')</button>
+    <hr class="up_down">
+
+    <button @click="changeDataList">测试响应式监听数据改变</button>
+    <div class="treeSection">
+      <JsonViewer :value="dataList" :expand-depth="10" />
+      <!-- <JsonViewer :value="items" :expand-depth="10" /> -->
+    </div>
 
     <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
       <span>这是一段信息</span>
@@ -34,13 +41,15 @@ import {
   apiGetHello, apiCreate, apiGetUser,
   apiUpdateUser, apiUpdate, apiDelete,
   findAll, createPost
-} from '@/api/one'
+} from '@/api/one.js'
 // import Form from './components/form.vue'
+import JsonViewer from 'vue-json-viewer'
 
 export default {
   name: 'one',
   components: {
     // Form
+    JsonViewer,
   },
   props: {
   },
@@ -49,7 +58,29 @@ export default {
       pageName: 'one.vue',
       msg: '',
       post: '',
-      list: []
+      list: [],
+      dataList: [
+        {
+          id: 1,
+          name: 'name',
+        },
+        {
+          id: 11,
+          name: 'name2',
+        },
+        {
+          id: 111,
+          name: 'name3',
+        },
+      ],
+
+      // dataList: {
+      //   id: 1,
+      //   name: 'name',
+      // },
+
+      // items: ['a', 'b', 'c'],
+
     };
   },
   computed: {
@@ -61,6 +92,11 @@ export default {
   mounted() {
     console.log('这是来自 vuex 的值: ', this.$store.state.count)
     console.log('这是来自 vuex 的值: ', this.$store.state['moduleA'].varA)
+
+    setTimeout(() => {
+      this.$store.dispatch('moduleA/setToken', 'AA')
+      console.log('dispatch: ', this.$store.state['moduleA'].varA)
+    }, 1000)
   },
   methods: {
     async getHello() {
@@ -114,6 +150,13 @@ export default {
       let res = await createPost(params)
       this.post = res
     },
+
+
+    changeDataList() {
+      // this.dataList[0] = 'x'
+      this.$set(this.dataList, 0, 'x')
+      // this.items[1] = 'x'
+    },
   },
 };
 </script>
@@ -121,5 +164,11 @@ export default {
 <style scoped lang="scss">
 button {
   margin: 0 4px;
+}
+
+.treeSection {
+  text-align: left;
+  display: flex;
+  justify-content: center;
 }
 </style>

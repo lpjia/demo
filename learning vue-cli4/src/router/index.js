@@ -52,6 +52,11 @@ const constantRoutes = [
         name: 'gmap',
         component: () => import('@/views/gmap/gmap')
       },
+      {
+        path: 'four',
+        name: 'four',
+        component: () => import('@/views/four/four')
+      },
     ]
   },
   // {

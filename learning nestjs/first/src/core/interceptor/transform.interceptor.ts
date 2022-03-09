@@ -12,6 +12,7 @@ export class TransformInterceptor implements NestInterceptor {
       .pipe(
         map(data => {
           /**
+           * 分页数据
            * pageNum, // 第几页
            * pageSize, // 每页条数
            * total / count, // 总条数
@@ -28,6 +29,15 @@ export class TransformInterceptor implements NestInterceptor {
               formatDisplayTime(item)
             }
           }
+
+          // 单独返回一个数组
+          if (Array.isArray(data)) {
+            for (const item of data) {
+              formatDisplayTime(item)
+            }
+          }
+
+          // 单独返回一个 obj
           formatDisplayTime(data)
 
           return {

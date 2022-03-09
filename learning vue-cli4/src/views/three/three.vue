@@ -13,21 +13,21 @@
           <i class="el-icon-error" @click="clearFormItem('unitPrice', 2)"></i>
         </el-form-item>
         <el-form-item label="计价单位" prop="unit">
-          <el-select v-model="form.unit" placeholder="请选择" size="mini" value-key="form_unit" style="width: 100%">
+          <el-select v-model="form.unit" filterable default-first-option placeholder="请选择" value-key="form_unit"
+            style="width: 100%">
             <el-option v-for="item in unitArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="商店名" prop="shopName">
-          <el-select v-model="form.shopName" @change="changePosition" placeholder="请选择" size="mini"
+          <el-select v-model="form.shopName" filterable default-first-option @change="changePosition" placeholder="请选择"
             value-key="form_shopName" style="width: 100%">
             <el-option v-for="item in shopNameArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="位置" prop="position">
-          <el-select v-model="form.position" disabled placeholder="请选择" size="mini" value-key="form_position"
-            style="width: 100%">
+          <el-select v-model="form.position" disabled placeholder="请选择" value-key="form_position" style="width: 100%">
             <el-option v-for="item in positionArr" :key="item.value" :label="item.name" :value="item.value">
             </el-option>
           </el-select>
@@ -45,7 +45,7 @@
           <i class="el-icon-error" @click="clearFormItem('discountRate', 5)"></i>
         </el-form-item>
         <button @click.prevent="sure">提交</button>
-        <button @click.prevent="search" style="margin-left:20px;">查询</button>
+        <button @click.prevent="search" style="margin-left:20px;">查询商品</button>
       </el-form>
     </div>
     <div class="treeSection">
@@ -122,9 +122,12 @@ export default {
         0: '金梧桐长椿店',
         1: '怡亩田乡超市',
         2: '蔬便利万和城店',
+        3: '永辉超市',
+        4: '金梧桐合欢店',
+        5: '丹尼斯全日鲜万和城店',
 
-        3: '北门馒头店东侧菜店',
-        4: '北门馒头店西侧菜店',
+        98: '北门馒头店东侧菜店',
+        99: '北门馒头店西侧菜店',
       },
 
       positionArr: [],
@@ -132,6 +135,9 @@ export default {
         0: '万和城D区东门对面',
         1: '万和城D区东门对面往南',
         2: '万和城A区西门往北',
+        3: '万和商场负一楼',
+        4: '新芒果春天社区',
+        5: '万和城C区北门对面往西',
       },
     };
   },

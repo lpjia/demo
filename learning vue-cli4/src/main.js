@@ -13,7 +13,7 @@ import store from './store'
 import {
   Button, Input, Form,
   FormItem, Select, Option,
-  Message, Table, TableColumn
+  Message, Table, TableColumn,
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(Button);
@@ -22,7 +22,7 @@ Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Select);
 Vue.use(Option);
-Vue.use(Message);
+// Vue.use(Message); // 不要这样用, 会默认弹
 Vue.use(Table);
 Vue.use(TableColumn);
 
