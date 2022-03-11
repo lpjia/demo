@@ -10,10 +10,7 @@
 
 <script>
 export default {
-  name: 'child',
-  components: {
-
-  },
+  name: 'Child',
   // props: {
   //   // sendChild: {
   //   //   require: true,
@@ -30,18 +27,6 @@ export default {
     return {
       sendFatherData: '来自子组件(child.vue)的数据',
     };
-  },
-  computed: {
-
-  },
-  watch: {
-
-  },
-  created() {
-
-  },
-  mounted() {
-
   },
   methods: {
     sendFather() {

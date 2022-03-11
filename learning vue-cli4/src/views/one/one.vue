@@ -1,6 +1,10 @@
 <template>
   <div>
     <h3 class="up_down">{{ pageName }}</h3>
+    <button @click="backToPrevPage">返回上一个路由页面</button>
+    <hr class="up_down">
+    <button @click="goNextPage">跳转页面</button>
+    <hr class="up_down">
     <p>{{ msg }}</p>
     <hr class="up_down">
     <button @click="getHello">@Get('list')</button>
@@ -19,11 +23,17 @@
     <button @click="addPost">@Post('post')</button>
     <hr class="up_down">
 
-    <button @click="changeDataList">测试响应式监听数据改变</button>
+    <h3>测试响应式监听数据改变</h3>
+    <button @click="handleObj">增/删对象的属性</button>
+    <div class="treeSection">
+      <JsonViewer :value="obj" :expand-depth="10" />
+    </div>
+    <button @click="handleArr">操作数组</button>
     <div class="treeSection">
       <JsonViewer :value="dataList" :expand-depth="10" />
-      <!-- <JsonViewer :value="items" :expand-depth="10" /> -->
     </div>
+    <hr class="up_down">
+    <GlobalComp />
 
     <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
       <span>这是一段信息</span>
@@ -45,6 +55,14 @@ import {
 // import Form from './components/form.vue'
 import JsonViewer from 'vue-json-viewer'
 
+
+let obj = {
+  name: 'xj',
+  age: 28,
+  sex: 'man'
+}
+
+
 export default {
   name: 'one',
   components: {
@@ -55,6 +73,7 @@ export default {
   },
   data() {
     return {
+      obj,
       pageName: 'one.vue',
       msg: '',
       post: '',
@@ -73,13 +92,6 @@ export default {
           name: 'name3',
         },
       ],
-
-      // dataList: {
-      //   id: 1,
-      //   name: 'name',
-      // },
-
-      // items: ['a', 'b', 'c'],
 
     };
   },
@@ -152,10 +164,49 @@ export default {
     },
 
 
-    changeDataList() {
-      // this.dataList[0] = 'x'
-      this.$set(this.dataList, 0, 'x')
-      // this.items[1] = 'x'
+    handleObj() {
+      console.log('handleObj()')
+
+      // delete this.obj['sex'] // 属性已删除, 但非响应式
+      // delete obj['sex'] // 属性已删除, 但非响应式
+      this.$delete(obj, 'sex') // 正常可以删除, 响应式
+      this.$set(this.obj, 'country', 'china') // obj 和 this.obj 是一个对象地址
+
+      console.log('this.obj:', this.obj)
+      console.log('obj:', obj)
+    },
+
+    handleArr() {
+      console.log('handleArr()')
+      /**
+       * Vue 不能检测以下数组的变动：
+       * 当你利用索引直接设置一个数组项时
+       * 当你修改数组的长度时
+       */
+
+      // this.dataList[0] = 'x' // 非响应式
+      // this.dataList.length = 2 // 非响应式
+      this.dataList.splice(0, 1, 'x') // 响应式
+      this.dataList.splice(2, 1) // 响应式
+
+      // this.$set(this.dataList, 0, 'x') // 响应式
+      console.log('this.dataList:', this.dataList)
+    },
+    backToPrevPage() {
+      this.$router.go(-1)
+    },
+
+    goNextPage() {
+      this.$router.push({
+        path: 'five',
+        query: {
+          id: 110
+        },
+        // name: 'five',
+        // params: {
+        //   page: 'fivePage'
+        // }
+      })
     },
   },
 };

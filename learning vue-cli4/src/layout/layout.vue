@@ -5,7 +5,7 @@
     <router-link to="/two" class="colGap">go to two</router-link>
     <router-link to="/three" class="colGap" @click.native="test">goods</router-link>
     <router-link to="/gmap" class="colGap">go to gmap</router-link>
-    <router-link to="/four" class="colGap">go to four</router-link>
+    <router-link to="/four" class="colGap">组件通信汇总</router-link>
     <router-view style="margin-top:20px;"></router-view>
   </div>
 </template>
@@ -13,21 +13,10 @@
 <script>
 export default {
   name: 'layout',
-  components: {
-  },
-  props: {
-  },
   data() {
     return {
+      layoutData: 'layout.vue'
     };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
   },
   methods: {
     /**

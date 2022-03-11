@@ -8,6 +8,11 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      rootData: 'App.vue 的数据'
+    }
+  }
 }
 </script>
 

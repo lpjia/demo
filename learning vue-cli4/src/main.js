@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import GlobalComp from "@/components/GlobalComp.vue";
+
 // 全部加载
 // import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -31,6 +33,11 @@ Vue.prototype.$message = Message;
 
 
 import '@/styles/index.scss' // global css
+
+
+Vue.prototype.$bus = new Vue()
+
+Vue.component('GlobalComp', GlobalComp)
 
 
 Vue.config.productionTip = false
