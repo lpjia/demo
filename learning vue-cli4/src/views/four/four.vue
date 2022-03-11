@@ -90,7 +90,6 @@ export default {
     })
   },
   methods: {
-
     getChildData(data) {
       this.fromChildData = data
     },

@@ -197,15 +197,18 @@ export default {
     },
 
     goNextPage() {
+      // this.$router.push({
+      //   path: 'five',
+      //   query: {
+      //     id: 110
+      //   },
+      //   // name: 'five',
+      //   // params: {
+      //   //   page: 'fivePage'
+      //   // }
+      // })
       this.$router.push({
-        path: 'five',
-        query: {
-          id: 110
-        },
-        // name: 'five',
-        // params: {
-        //   page: 'fivePage'
-        // }
+        path: 'five/lpjia'
       })
     },
   },

@@ -58,9 +58,14 @@ const constantRoutes = [
         component: () => import('@/views/four/four')
       },
       {
-        path: 'five',
+        path: 'five/:username',
         name: 'five',
         component: () => import('@/views/five/five')
+      },
+      {
+        path: 'five/:username/:reponame',
+        name: 'six',
+        component: () => import('@/views/six/six')
       },
     ]
   },

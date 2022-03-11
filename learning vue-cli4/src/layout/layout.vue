@@ -6,6 +6,7 @@
     <router-link to="/three" class="colGap" @click.native="test">goods</router-link>
     <router-link to="/gmap" class="colGap">go to gmap</router-link>
     <router-link to="/four" class="colGap">组件通信汇总</router-link>
+    <!-- <router-link to="/five/:username" class="colGap">测试</router-link> -->
     <router-view style="margin-top:20px;"></router-view>
   </div>
 </template>

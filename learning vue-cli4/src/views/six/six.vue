@@ -1,24 +1,20 @@
 <template>
   <div>
-    <h4>five.vue</h4>
-    <button @click="goTo">跳转新页面, 但是页面路径还得有 username</button>
+    <h4>six.vue</h4>
+    <details>这是折叠内容</details>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'five',
+  name: 'six',
   mounted() {
     console.log('this.$route:', this.$route)
     console.log('this.$route.query:', this.$route.query)
     console.log('this.$route.params:', this.$route.params)
   },
   methods: {
-    goTo() {
-      this.$router.push({
-        path: 'lpjia2/demo2'
-      })
-    },
+
   },
 };
 </script>

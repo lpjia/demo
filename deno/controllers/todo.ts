@@ -1,6 +1,6 @@
 import { v4 } from "https://deno.land/std@0.104.0/uuid/mod.ts";
 // 接口
-import Todo from "../interface/Todo.ts";
+import ITodo from "../interface/Todo.ts";
 // stubs
 import todos from "../stubs/todos.ts";
 
@@ -20,7 +20,7 @@ let errRes: (
     response: any;
   },
 ) => {
-  const todo: Todo | undefined = todos.find((t) => t.id === params.id);
+  const todo: ITodo | undefined = todos.find((t) => t.id === params.id);
   if (!todo) {
     response.status = 404;
     response.body = {

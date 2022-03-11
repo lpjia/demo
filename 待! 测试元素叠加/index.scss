@@ -1,0 +1,25 @@
+body {
+  padding: 20px;
+  border: solid 1px #000;
+}
+
+div {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+}
+
+#two {
+  background-color: deeppink;
+  top: 40px;
+  left: 66px;
+}
+
+// 覆盖顺序和 z-index 有关, 也和 dom 先后顺序有关
+// 谁大谁上, 后来居上
+
+#one {
+  background-color: deepskyblue;
+  top: 10px;
+  z-index: 1;
+}
