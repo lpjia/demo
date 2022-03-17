@@ -1,7 +1,8 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
 import { Exclude } from 'class-transformer';
 // import bcrypt from "bcryptjs";
 import { hashSync } from 'bcryptjs'
+import { InfoEntity } from "src/info/entities/info.entity";
 
 @Entity('user')
 export class UserEntity {
@@ -10,6 +11,10 @@ export class UserEntity {
 
   @Column({ length: 100 })
   username: string
+
+  @OneToOne(type => InfoEntity, info => info.user)
+  @JoinColumn()
+  info: InfoEntity
 
   @Column({ length: 100, default: '' })
   nickname: string

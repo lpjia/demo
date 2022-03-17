@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/login.controller';
 import { CommodityModule } from './commodity/commodity.module';
+import { InfoModule } from './info/info.module';
 
 
 @Module({
@@ -53,6 +54,7 @@ import { CommodityModule } from './commodity/commodity.module';
      */
     AuthModule,
     UserModule,
+    InfoModule,
     PostsModule,
     CommodityModule,
   ],
