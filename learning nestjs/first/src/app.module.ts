@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthController } from './auth/login.controller';
 import { CommodityModule } from './commodity/commodity.module';
 import { InfoModule } from './info/info.module';
+import { UseriModule } from './useri/useri.module';
 
 
 @Module({
@@ -44,8 +45,8 @@ import { InfoModule } from './info/info.module';
         username: configService.get('DB_USER', 'root'),   // 用户名
         password: configService.get('DB_PASSWORD', '1qaz!QAZ'), // 密码
         database: configService.get('DB_DATABASE', 'blog'), //数据库名
-        timezone: '+08:00', //服务器上配置的时区
-        synchronize: false, //根据实体自动创建数据库表， 生产环境建议关闭
+        timezone: '+08:00', // 服务器上配置的时区
+        synchronize: false, // 根据实体自动创建数据库表， 生产环境建议关闭
         autoLoadEntities: true,
       }),
     }),
@@ -54,6 +55,7 @@ import { InfoModule } from './info/info.module';
      */
     AuthModule,
     UserModule,
+    UseriModule,
     InfoModule,
     PostsModule,
     CommodityModule,

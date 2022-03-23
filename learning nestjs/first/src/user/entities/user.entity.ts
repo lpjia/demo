@@ -12,9 +12,9 @@ export class UserEntity {
   @Column({ length: 100 })
   username: string
 
-  @OneToOne(type => InfoEntity, info => info.user)
-  @JoinColumn()
-  info: InfoEntity
+  // @OneToOne(type => InfoEntity, info => info.user)
+  // @JoinColumn()
+  // info: InfoEntity
 
   @Column({ length: 100, default: '' })
   nickname: string
@@ -29,7 +29,9 @@ export class UserEntity {
   @Column({ default: '' })
   email: string
 
-  @Column('simple-enum', { enum: ['root', 'author', 'visitor'] })
+  @Column('simple-enum', {
+    enum: ['root', 'author', 'visitor']
+  })
   role: string
 
   @Column({
@@ -46,8 +48,8 @@ export class UserEntity {
   })
   updateTime: Date
 
-  @BeforeInsert()
-  async encryptPwd() {
-    this.password = await hashSync(this.password)
-  }
+  // @BeforeInsert()
+  // async encryptPwd() {
+  //   this.password = await hashSync(this.password)
+  // }
 }

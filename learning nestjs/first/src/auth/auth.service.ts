@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { rejects } from 'assert';
-import { loadavg } from 'os';
-import { resolve } from 'path/posix';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { Repository } from 'typeorm';
 import { WxLoginDto } from './dto/wxLogin.dto';

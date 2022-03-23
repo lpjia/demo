@@ -4,7 +4,7 @@ import { CreateInfoDto } from './dto/create-info.dto';
 import { UpdateInfoDto } from './dto/update-info.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('')
+@ApiTags('用户档案')
 @Controller('info')
 export class InfoController {
   constructor(private readonly infoService: InfoService) { }

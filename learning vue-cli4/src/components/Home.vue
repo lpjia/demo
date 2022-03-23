@@ -9,10 +9,10 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
 import TestLodash from '@/components/TestLodash.vue'
-// import YAML from '@/utils/one.yaml'
-// import YAML from '@/utils/two.yaml'
-import YAML from '@/utils/three.yaml'
-// import YAML from '@/utils/one.json'
+// import YAML from '@/utils/yaml/one.yaml'
+// import YAML from '@/utils/yaml/two.yaml'
+import YAML from '@/utils/yaml/three.yaml'
+// import YAML from '@/utils/json/one.json'
 
 export default {
   name: 'Home',
