@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>使用策略模式的表单校验</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+</head>
+
+<body>
+
+  <h4>以注册举例</h4>
+  <form action="javascript:;" class="registerForm">
+    <div>
+      用户名:<br>
+      <input type="text" name="username" autocomplete="off">
+    </div>
+    <div>
+      密码:<br>
+      <input type="password" name="password">
+    </div>
+    <div>
+      手机号:<br>
+      <input type="text" name="phoneNumber" autocomplete="off">
+    </div>
+    <div style="margin-top: 10px;">
+      <button type="submit">注册</button>
+    </div>
+  </form>
+
+  <hr class="up_down">
+
+  <h4>以策略模式重构</h4>
+  <form action="javascript:;" class="registerform_2">
+    <div>
+      用户名:<br>
+      <input type="text" name="username" autocomplete="off">
+    </div>
+    <div>
+      密码:<br>
+      <input type="password" name="password">
+    </div>
+    <div>
+      手机号:<br>
+      <input type="text" name="phoneNumber" autocomplete="off">
+    </div>
+    <div style="margin-top: 10px;">
+      <button type="submit">注册</button>
+    </div>
+  </form>
+
+  <script src="index.js" type="module"></script>
+  <script src="index2.js" type="module"></script>
+</body>
+
+</html>
