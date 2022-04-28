@@ -44,20 +44,23 @@ arr7.map(Math.pow);
 
 
 
+
 /**
- * arr.includes()
+ * arr.flatMap()
  */
-let arr = [null, undefined, '', 0, NaN, false, {}, []]
-
-// console.log('arr.includes(null):', arr.includes(null))
-// console.log('arr.includes(undefined):', arr.includes(undefined))
-// console.log('arr.includes(""):', arr.includes(''))
-// console.log('arr.includes(0):', arr.includes(0))
-// console.log('arr.includes(NaN):', arr.includes(NaN))
-// console.log('arr.includes(false):', arr.includes(false))
-// console.log('arr.includes({}):', arr.includes({}))
-// console.log('arr.includes([]):', arr.includes([]))
-
+let arr9 = [
+  { name: 'one', val: 1 },
+  { name: 'five', val: 5 },
+  { name: 'three', val: 3 },
+  { name: 'two', val: 2 },
+  { name: 'four', val: 4 },
+]
+// 参数和 map 方法使用一致
+arr9.flatMap(item => {
+  return item.val > 3 ? [item] : []
+})
+// 返回 [ { name: 'five', val: 5 }, { name: 'four', val: 4 }, ]
+// 实际上这个例子算是 map + filter + flat 的结合
 
 
 
@@ -133,7 +136,6 @@ arr8.reduce((total, curr) => {
 
 
 
-
 /**
  * arr.every()
  */
@@ -147,6 +149,27 @@ arr8.reduce((total, curr) => {
  * arr.sort()
  */
 // 未完待续
+
+
+
+
+
+
+
+
+/**
+ * arr.includes()
+ */
+let arr = [null, undefined, '', 0, NaN, false, {}, []]
+
+// console.log('arr.includes(null):', arr.includes(null))
+// console.log('arr.includes(undefined):', arr.includes(undefined))
+// console.log('arr.includes(""):', arr.includes(''))
+// console.log('arr.includes(0):', arr.includes(0))
+// console.log('arr.includes(NaN):', arr.includes(NaN))
+// console.log('arr.includes(false):', arr.includes(false))
+// console.log('arr.includes({}):', arr.includes({}))
+// console.log('arr.includes([]):', arr.includes([]))
 
 
 
