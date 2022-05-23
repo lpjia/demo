@@ -53,4 +53,3 @@ class UIElement {
   }
 }
 let button = new UIElement()
-
