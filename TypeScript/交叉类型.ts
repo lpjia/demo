@@ -59,14 +59,14 @@
 
 
 
-  type User = {
+  interface User {
     name: string,
     age: number
   }
 
-  type Member = {
+  interface Member extends User {
     level: string,
-  } & User
+  }
 
   const bl5: Member = {
     name: 'jlp',
