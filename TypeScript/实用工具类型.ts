@@ -68,7 +68,8 @@
   // 从 User 中忽略 'age' 和 'lessons' 属性, 组成新的类型
 
 
-  // 这里东西没完 start
+
+
   interface User2 {
     id: string,
     name: string,
@@ -95,48 +96,31 @@
 
 
 
-  // 手写 FilterValueType
-  type FilterValueType<T, U> = {
+
+
+
+
+
+  // 手写值类型过滤掉索引
+  // 13:03 2022/5/29 内置库还没有
+  type FilterValueType<T, U> = Pick<T, ExcludeKeyof<T, U>>
+
+  // 可作为工具类型
+  type LX_16 = FilterValueType<User2, string>
+
+  // 排除掉 U 后, 组成新的联合类型
+  // 命名借鉴 keyof(映射成属性名称的联合类型)
+  type ExcludeKeyof<T, U> = {
     [K in keyof T]: T[K] extends U ? never : K
   }[keyof T]
 
-  type LX3 = FilterValueType<User2, string>
+  // 工具类型包含两步, 先找出非 string 的成员类型
+  type LX3 = ExcludeKeyof<User2, string>
 
+  // 再选出相应成员组成新的类型
   type LX4 = Pick<User2, LX3>
 
 
-
-
-
-
-
-  type flter<T,U> = {
-    //  [K in keyof T]:T[K]
-    // [K in keyof T]: never
-    [K in keyof T]: T[K] extends U ? never : K
-  // }[keyof T]
-  }[]
-  type a = flter<User2, string>
-  type filter<T> = { [x in keyof T]: never }[keyof T]
-
-
-  // type FilterValueType<T, U> = {
-  //   [K in keyof T]: T[K] extends U ? never : K
-  // }[]
-
-  // type FilterValueType<T, U> = {
-  //   // keyof T 返回 'id' | 'name' 等联合类型
-  //   [K in keyof T as Exclude<keyof T, U>]: T[K]
-  //   // [K in keyof T]: T[K]
-  // }
-
- 
-
-  // 参考
-  type FXX<T, K extends string | number | symbol> = {
-    [P in Exclude<keyof T, K>]: T[P];
-  }
-  // end
 
 
 
@@ -169,7 +153,7 @@
 
 
 
-  // 手写 
+  // 改变属性名称
   type FX_7<T> = {
     [K in keyof T as `get${Capitalize<string & K>}`]: T[K]
   }
@@ -180,9 +164,6 @@
   // Lowercase 全小写
 
   type LX_15 = FX_7<User2>
-
-  
-  type A = User2[keyof User2]
 
 
 
