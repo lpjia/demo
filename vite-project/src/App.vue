@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import LearnPinia from './views/learn-pinia/index.vue';
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <hr>
+  <learn-pinia />
   <router-view />
 
 
