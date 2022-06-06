@@ -24,7 +24,6 @@ import ScriptSetup from "./component/script-setup.vue"
 <template>
   <ScriptSetup />
   <ExportSetup />
-  <!-- <MouseXy /> -->
 </template>
 
 <style lang="scss" scoped>
