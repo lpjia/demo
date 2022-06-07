@@ -5,7 +5,6 @@ const baseUrl = 'http://rap2api.taobao.org/app/mock/288967'
 const url = ref(baseUrl + '/api/random')
 
 const { data, error } = useFetch(url)
-.3 +
 </script>
 
 <template>

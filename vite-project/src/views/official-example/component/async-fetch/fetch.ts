@@ -1,6 +1,6 @@
 import { Ref } from "vue"
 
-export function useFetch(url: Ref) {
+export function useFetch(url: string | Ref) {
   const data = ref(null)
   const error = ref(null as any)
 
