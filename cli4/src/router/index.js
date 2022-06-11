@@ -30,8 +30,13 @@ const constantRoutes = [
     name: 'layout',
     // component: () => import('@/layout/layout.vue'),
     component: Layout,
-    // redirect: '/one'
+    redirect: '/template-syntax',
     children: [
+      {
+        path: 'template-syntax',
+        name: 'template-syntax',
+        component: () => import('@/views/template-syntax/index.vue')
+      },
       {
         path: 'one',
         name: 'one',

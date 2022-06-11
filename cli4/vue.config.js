@@ -1,9 +1,10 @@
 'use strict'
 const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
+const customSetting = require('./src/configs/setting')
 
 const resolve = dir => path.join(__dirname, dir);
+const title = customSetting.title || 'vuecli4'
 
 
 module.exports = {
@@ -58,17 +59,20 @@ module.exports = {
       }
     },
     plugins: [
+      // 打包分析包大小
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled'
       }),
-      /**
-       * 这个插件需要升级 node, 
-       * 插件作者说需要14版本的, 
-       * 我自己查有说12版本的就可以, 
-       * 等换下家公司就开始尝试 node 多版本管理器
-       */
-      // require('unplugin-vue-components/webpack')({ /* options */ }),
     ],
   },
+
+
+  pages: {
+    // 改标签页 title
+    index: {
+      entry: 'src/main.js',
+      title
+    }
+  }
 
 }

@@ -151,25 +151,6 @@
 
 
 
-
-
-  // 改变属性名称
-  type FX_7<T> = {
-    [K in keyof T as `get${Capitalize<string & K>}`]: T[K]
-  }
-  // Capitalize 意思是首字母大写
-  // Uncapitalize 首字母小写
-
-  // Uppercase 意思是全大写
-  // Lowercase 全小写
-
-  type LX_15 = FX_7<User2>
-
-
-
-
-
-
   // 手写 Partial
   type FX4<T> = {
     [P in keyof T]?: T[P]
@@ -374,12 +355,15 @@
   type LX_9 = ReturnType<LX_7> // string
 
   type LX_10 = ReturnType<<T>() => T> // unknown
-  type LX_13 = ReturnType<null> // unknown
-  type LX_14 = ReturnType<undefined> // unknown
 
   type LX_11 = ReturnType<any> // any
   
   type LX_12 = ReturnType<never> // never
+
+  // 这三个报错
+  // type LX_13 = ReturnType<null>
+  // type LX_14 = ReturnType<undefined>
+  // type LX_15 = ReturnType<string>
 
 
 

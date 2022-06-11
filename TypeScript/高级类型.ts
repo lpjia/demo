@@ -104,7 +104,7 @@
 
   // 用 infer 来解包
   type Unpack_2<T> = T extends (infer R)[] ? R : T
-  // 如果T是某个待推断类型的数组，则返回推断的类型，否则返回T
+  // 如果T是某个待推断类型的数组，则返回推断的类型(R 用来存储被推断的类型)，否则返回T
   // infer 声明的类型变量只在条件类型的"真值"分支中可用
 
   type IdType_2 = Unpack_2<Ids>
