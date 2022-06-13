@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import CreatePersistedState from "vuex-persistedstate"
-// import getters from './getters'
+import getters from './getters'
 
 Vue.use(Vuex)
 
@@ -22,6 +22,7 @@ const vuexPersisted = new CreatePersistedState({
 })
 
 const store = new Vuex.Store({
+  getters,
   modules,
   plugins: [vuexPersisted]
 })

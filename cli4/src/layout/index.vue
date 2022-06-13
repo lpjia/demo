@@ -59,9 +59,11 @@ export default {
 //   text-align: center;
 //   line-height: 800px;
 // }
-.el-aside {
-  background-color: #d3dce6;
-}
+
+// .el-aside {
+//   background-color: #d3dce6;
+// }
+
 .el-main {
   background-color: #e9eef3;
   color: #333;

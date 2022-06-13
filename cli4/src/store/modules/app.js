@@ -3,13 +3,12 @@ import customSetting from '@/configs/setting.js'
 // 两种写法都行, 因为 vue 会自动编译为 CJM
 
 const state = {
-  // 存文字的颜色
-
+  sidebarLogoTxtColor_2: customSetting.sidebarLogoTxtColor // 二
 }
 
-const getters = {
-  sidebarLogoColor: () => customSetting.sidebarLogoColor
-}
+// const getters = {
+//   sidebarLogoTxtColor: () => customSetting.sidebarLogoTxtColor
+// }
 
 const mutations = {
   // set_token(state, data) {
@@ -27,7 +26,7 @@ const actions = {
 export default {
   namespaced: true,
   state,
-  getters,
+  // getters,
   mutations,
   actions
 }

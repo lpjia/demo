@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import 'normalize.css/normalize.css'
+
 import GlobalComp from "@/components/GlobalComp.vue";
 
 // 全部加载
@@ -28,6 +30,9 @@ Vue.use(ElementUI);
 // Vue.use(Table);
 // Vue.use(TableColumn);
 // Vue.prototype.$message = Message;
+
+
+import './permission'
 
 
 import '@/styles/index.scss' // global css

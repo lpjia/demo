@@ -1,9 +1,13 @@
 module.exports = {
-  title: '',
+  title: '', // 标签页 title
 
-  showSidebarLogo: true,
+  showSidebarLogo: true, // 显示侧边栏上方 logo 和系统名
 
-  sidebarLogoColor: 'red'
+  // logo 地址
+  sidebarLogoUrl: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png',
+
+  // 系统名字体颜色
+  sidebarLogoTxtColor: '#fff',
 
   //   /**
   //    * @type {boolean} true | false

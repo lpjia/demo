@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 
 
 // 以后加动态路由, 简单着来
+// 其实也是一个排序的模板
 const constantRoutes = [
   {
     path: '/404',
@@ -30,7 +31,7 @@ const constantRoutes = [
     name: 'layout',
     // component: () => import('@/layout/layout.vue'),
     component: Layout,
-    redirect: '/one',
+    redirect: '/two',
     children: [
       {
         path: 'template-syntax',
@@ -92,12 +93,10 @@ const constantRoutes = [
 ]
 
 
-
 // const createRouter = new VueRouter({
 //   scrollBehavior: () => ({ y: 500 }),
 //   routes: constantRoutes
 // })
-
 
 // const createRouter = new VueRouter({
 //   scrollBehavior(to, from, savedPosition) {
@@ -108,16 +107,18 @@ const constantRoutes = [
 //   routes: constantRoutes
 // })
 
-
-const createRouter = new VueRouter({
+const createRouter = () => new VueRouter({
+  // mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
 
+const router = createRouter()
 
+// 重置路由
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
-// export function resetRouter() {
-//   const newRouter = createRouter()
-//   router.matcher = newRouter.matcher // reset router
-// }
-
-export default createRouter
+export default router
