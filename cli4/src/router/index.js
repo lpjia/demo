@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Layout from '@/layout/layout.vue'
+import Layout from '@/layout/index.vue'
 
 Vue.use(VueRouter)
 
+
+// 以后加动态路由, 简单着来
 const constantRoutes = [
   {
     path: '/404',
     component: () => import('@/views/error-page/404.vue'),
     hidden: true
-    /**
-     * 该字段用来是否在侧边栏显示
-     * 一般情况下, 不写该字段, 其值为 undefined
-     * 需要显示的菜单项肯定比隐藏的多, 隐藏的就写得少
-     */
+    // 该字段用来是否在侧边栏显示
+    // 一般情况下, 不写该字段, 其值为 undefined, 也就是假值
+    // 需要显示的菜单项肯定比隐藏的多, 隐藏的就写得少
   },
 
 
@@ -30,7 +30,7 @@ const constantRoutes = [
     name: 'layout',
     // component: () => import('@/layout/layout.vue'),
     component: Layout,
-    redirect: '/template-syntax',
+    redirect: '/one',
     children: [
       {
         path: 'template-syntax',
@@ -91,11 +91,28 @@ const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
+
+
+// const createRouter = new VueRouter({
+//   scrollBehavior: () => ({ y: 500 }),
+//   routes: constantRoutes
+// })
+
+
+// const createRouter = new VueRouter({
+//   scrollBehavior(to, from, savedPosition) {
+//     console.log('to:', to)
+//     console.log('from:', from)
+//     console.log('savedPosition:', savedPosition)
+//   },
+//   routes: constantRoutes
+// })
+
+
 const createRouter = new VueRouter({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
+
 
 
 // export function resetRouter() {

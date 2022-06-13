@@ -1,11 +1,17 @@
 <template>
-  <div />
+  <div>
+    <Computed />
+  </div>
 </template>
 
 <script>
+import Computed from './component/computed.vue'
+
 export default {
   name: 'ComputedWatch',
-  props: {},
+  components: {
+    Computed
+  },
   data() {
     return {}
   },

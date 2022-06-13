@@ -1,20 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import CreatePersistedState from "vuex-persistedstate"
 // import getters from './getters'
 
 Vue.use(Vuex)
-
-// const store = new Vuex.Store({
-//   state: {
-//     count: 0
-//   },
-//   mutations: {
-//     increment(state) {
-//       state.count++
-//     }
-//   }
-// })
-
 
 const modulesFiles = require.context('./modules', true, /\.js$/)
 // 它将自动加载模块文件中的所有 vuex 模块
@@ -26,12 +16,14 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   return modules
 }, {})
 
+const vuexPersisted = new CreatePersistedState({
+  key: 'VuexPersisted',
+  storage: window.sessionStorage,
+})
+
 const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
   modules,
-  // getters,
+  plugins: [vuexPersisted]
 })
 
 export default store

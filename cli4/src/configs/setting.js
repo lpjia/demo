@@ -1,6 +1,10 @@
 module.exports = {
   title: '',
 
+  showSidebarLogo: true,
+
+  sidebarLogoColor: 'red'
+
   //   /**
   //    * @type {boolean} true | false
   //    * @description Whether show the settings right-panel

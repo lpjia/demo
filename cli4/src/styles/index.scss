@@ -1,9 +1,15 @@
-body {
-  overflow-y: scroll;
-}
+@import './base.scss';
+
+// body {
+//   overflow-y: scroll;
+// }
 
 .up_down {
   margin: 20px 0;
+}
+
+#app {
+  height: 100%;
 }
 
 

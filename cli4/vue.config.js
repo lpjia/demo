@@ -1,7 +1,10 @@
 'use strict'
 const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 const customSetting = require('./src/configs/setting')
+// import customSetting from './src/configs/setting.js'
+// 这里不能用 ESM 写, 因为这个文件是要运行在 CommonJS 环境下, 只能用 CJM 语法
 
 const resolve = dir => path.join(__dirname, dir);
 const title = customSetting.title || 'vuecli4'

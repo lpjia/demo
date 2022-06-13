@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- <router-view style="height: 2000px;" /> -->
     <router-view />
   </div>
 </template>
@@ -10,16 +11,8 @@ export default {
   name: 'App',
   data() {
     return {
-      rootData: 'App.vue 的数据'
+      rootData: 'app.vue'
     }
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-}
-</style>
