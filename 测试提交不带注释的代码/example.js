@@ -6,9 +6,8 @@
 
 
 console.log(111)
-
-
-console.log(222)
-
-
 console.log(333)
+
+
+// 另一人提交的注释4, 同时把我的 222 给删了
+console.log(444)
