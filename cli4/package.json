@@ -38,6 +38,7 @@
     "plop": "~2.7.6",
     "sass": "1.26.2",
     "sass-loader": "8.0.2",
+    "svgo": "~2.6.1",
     "vue-json-viewer": "~2.2.21",
     "vue-template-compiler": "~2.6.14",
     "webpack-bundle-analyzer": "~4.5.0",

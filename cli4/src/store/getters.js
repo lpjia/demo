@@ -15,7 +15,6 @@ const getters = {
 
 
 
-
   // logoTxtColor: (state, getters) => getters['app/sidebarLogoTxtColor']
 
   logoTxtColor: state => state.app.sidebarLogoTxtColor_2,

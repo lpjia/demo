@@ -13,18 +13,26 @@
           <span slot="title">导航四</span>
         </el-menu-item> -->
 
-        <!-- <el-menu-item v-for="route in">
+        <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path" route> -->
+        <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path">
+          <template>
+            <i class="el-icon-goods"></i>
+            <span slot="title">{{ route.name }}</span>
 
-        </el-menu-item> -->
+          </template>
+        </el-menu-item>
       </el-menu>
     </el-scrollbar>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Logo from './logo.vue';
 import customSetting from '@/configs/setting.js'
 // import vars from '@/styles/vars.scss'
+
+
 
 export default {
   name: 'Sidebar',
@@ -34,15 +42,39 @@ export default {
   data() {
     return {
       // 直接从 setting.js 取数据, 也没存 vuex
-      showLogo: customSetting.showSidebarLogo
+      showLogo: customSetting.showSidebarLogo,
+
     };
+  },
+  computed: {
+    ...mapGetters(['permission_routes'])
+  },
+  created() {
+    this.load()
   },
   mounted() {
     // console.log('this.showLogo:', this.showLogo)
 
-    const msg = this.$route
-    console.log('msg:', msg)
+    console.log('this.$route:', this.$route)
+
+    // console.log('this.$router:', this.$router)
+
+    console.log('this.permission_routes:', this.permission_routes)
+
+    // const req = require.context('./svg', false, /\.svg$/)
+    // const req = require.context('@/icons/svg', false, /\.svg$/)
+    // console.log('req:', req)
   },
+  methods: {
+    load() {
+      this.$store.dispatch('permission/generateRoutes_2', null)
+
+      // const arr = [].concat(constantRoutes)
+      // for (const iterator of arr) {
+      //   router.addRoute(iterator)
+      // }
+    }
+  }
 };
 </script>
 

@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 // 以后加动态路由, 简单着来
 // 其实也是一个排序的模板
-const constantRoutes = [
+export const constantRoutes = [
   {
     path: '/404',
     component: () => import('@/views/error-page/404.vue'),
@@ -75,11 +75,13 @@ const constantRoutes = [
       },
     ]
   },
+
   // {
   //   path: '/one',
   //   name: 'one',
   //   component: () => import('@/views/one/one')
   // },
+
   // {
   //   path: '/two',
   //   name: 'two',
