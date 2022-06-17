@@ -1,6 +1,6 @@
 // 全局注册
 Vue.component('button-counter', {
-  data: function () {
+  data() {
     return {
       count: 0
     }

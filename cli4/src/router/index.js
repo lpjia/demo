@@ -31,12 +31,28 @@ export const constantRoutes = [
     name: 'layout',
     // component: () => import('@/layout/layout.vue'),
     component: Layout,
-    redirect: '/two',
+    // redirect: '/computed-watch',
+    redirect: '/worker',
     children: [
       {
         path: 'template-syntax',
         name: 'template-syntax',
         component: () => import('@/views/template-syntax/index.vue')
+      },
+      // {
+      //   path: 'computed-watch',
+      //   name: 'computed-watch',
+      //   component: () => import('@/views/computed-watch/index.vue')
+      // },
+      {
+        path: 'worker',
+        name: 'worker',
+        component: () => import('@/views/worker/index.vue')
+      },
+      {
+        path: 'SlotRender',
+        name: 'SlotRender',
+        component: () => import('@/views/slot-render/index.vue')
       },
       {
         path: 'one',

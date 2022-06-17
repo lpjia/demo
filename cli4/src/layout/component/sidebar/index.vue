@@ -15,7 +15,7 @@
 
         <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path" route> -->
         <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path">
-          <template>
+          <template v-if="route.hidden">
             <i class="el-icon-goods"></i>
             <span slot="title">{{ route.name }}</span>
 
@@ -49,10 +49,8 @@ export default {
   computed: {
     ...mapGetters(['permission_routes'])
   },
-  created() {
-    this.load()
-  },
   mounted() {
+    this.$store.dispatch('permission/generateRoutes_2', null)
     // console.log('this.showLogo:', this.showLogo)
 
     console.log('this.$route:', this.$route)
@@ -65,16 +63,6 @@ export default {
     // const req = require.context('@/icons/svg', false, /\.svg$/)
     // console.log('req:', req)
   },
-  methods: {
-    load() {
-      this.$store.dispatch('permission/generateRoutes_2', null)
-
-      // const arr = [].concat(constantRoutes)
-      // for (const iterator of arr) {
-      //   router.addRoute(iterator)
-      // }
-    }
-  }
 };
 </script>
 

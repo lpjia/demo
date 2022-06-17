@@ -91,7 +91,10 @@ export default {
 };
 </script>
 
+
+
 <style scoped lang="scss">
+// @import '@/assets/css/tailwind.css';
 .formSection {
   display: flex;
   justify-content: center;

@@ -1,20 +1,44 @@
 <template>
-  <div />
+  <div>
+    <ChildOne></ChildOne>
+
+  </div>
 </template>
 
 <script>
+import ChildOne from './'
+
 export default {
   name: 'Computed',
-  props: {},
-  data() {
-    return {}
+  components: {
+    ChildOne
   },
-  created() {},
-  mounted() {},
-  methods: {}
-}
+  props: {
+
+  },
+  data() {
+    return {
+
+    };
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  created() {
+
+  },
+  mounted() {
+
+  },
+  methods: {
+
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped lang="scss">
 </style>
+

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 重置样式
 import 'normalize.css/normalize.css'
 
 import GlobalComp from "@/components/GlobalComp.vue";
@@ -34,6 +35,8 @@ Vue.use(ElementUI);
 
 import './permission'
 
+// tailwindcss
+// import '@/assets/css/tailwind.css';
 
 import '@/styles/index.scss' // global css
 
