@@ -3,7 +3,7 @@ export default {
   name: 'ChildTwo',
   data() {
     return {
-      description: 'this is childTwo',
+      description: 'this is ChildTwo',
       id: 'xxoo',
       cls: true
     };
@@ -12,7 +12,8 @@ export default {
   // 所以模版的 <slot> 和 name="slot_x" 在 render 就变成普通标签和属性
   // 处理的思路要变
   render(h) {
-    console.log('---- child-two ----')
+    console.log("🚀 ~ file: ChildTwo.vue ~ ")
+
     // this.$slots 访问静态插槽, 静态插槽就是不带参数的
     const { default: moren, slot_3, slot_4 } = this.$slots
     console.log('moren: ', moren)
@@ -51,6 +52,7 @@ export default {
             h('h3', moren), // h('h3', this.$scopedSlots.default({ id: this.id })),
 
             // 通过 this.$scopedSlots 访问作用域插槽，每个作用域插槽都是一个返回若干 VNode 的函数
+            // 作用域插槽的参数是传过去的数据
             h('h2', this.$scopedSlots.slot_3({ id: this.id })),
             h('h4',
               {

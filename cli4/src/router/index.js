@@ -32,7 +32,7 @@ export const constantRoutes = [
     // component: () => import('@/layout/layout.vue'),
     component: Layout,
     // redirect: '/computed-watch',
-    redirect: '/worker',
+    redirect: '/SlotRender',
     children: [
       {
         path: 'template-syntax',
@@ -44,11 +44,6 @@ export const constantRoutes = [
       //   name: 'computed-watch',
       //   component: () => import('@/views/computed-watch/index.vue')
       // },
-      {
-        path: 'worker',
-        name: 'worker',
-        component: () => import('@/views/worker/index.vue')
-      },
       {
         path: 'SlotRender',
         name: 'SlotRender',

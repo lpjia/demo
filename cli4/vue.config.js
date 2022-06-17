@@ -25,6 +25,9 @@ module.exports = {
   } */
 
 
+  lintOnSave: false,
+
+
   // vue 文件引入 yaml 文件配置
   chainWebpack(config) {
     config.module

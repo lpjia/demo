@@ -53,11 +53,11 @@ export default {
     this.$store.dispatch('permission/generateRoutes_2', null)
     // console.log('this.showLogo:', this.showLogo)
 
-    console.log('this.$route:', this.$route)
+    // console.log('this.$route:', this.$route)
 
     // console.log('this.$router:', this.$router)
 
-    console.log('this.permission_routes:', this.permission_routes)
+    // console.log('this.permission_routes:', this.permission_routes)
 
     // const req = require.context('./svg', false, /\.svg$/)
     // const req = require.context('@/icons/svg', false, /\.svg$/)
