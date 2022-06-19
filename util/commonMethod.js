@@ -470,3 +470,13 @@ export function removeObjEmptyKey(obj) {
   }
   return obj
 }
+
+
+/**
+ * @description 判断是否为外链(也就是非系统页面路由)
+ * @param {string} path
+ * @returns {Boolean}
+ */
+export function isExternal(path) {
+  return /^(https?:|mailto:|tel:)/.test(path)
+}

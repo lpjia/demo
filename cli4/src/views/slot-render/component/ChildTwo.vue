@@ -52,6 +52,7 @@ export default {
             h('h3', moren), // h('h3', this.$scopedSlots.default({ id: this.id })),
 
             // 通过 this.$scopedSlots 访问作用域插槽，每个作用域插槽都是一个返回若干 VNode 的函数
+            // 作用域插槽用法是 this.$scopedSlots.xxx(), 一定记得最后要调用函数
             // 作用域插槽的参数是传过去的数据
             h('h2', this.$scopedSlots.slot_3({ id: this.id })),
             h('h4',

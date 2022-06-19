@@ -8,7 +8,14 @@ export default {
   // 为了弥补缺少的实例
   // 提供第二个参数作为上下文
   render(h, context) {
-    console.log("🚀 ~ file: BlogPost.vue ~ ")
+    console.log("🚀 ~ file: BlogPost.vue ~ ");
+    // 想要实现的 dom 节点
+    `<div>
+      <slot name="header"></slot>
+      <slot name="main"></slot>
+      <slot name="footer"></slot>
+    </div>`;
+
     const header = context.slots().header
 
     // children：VNode 子节点的数组

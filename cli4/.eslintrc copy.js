@@ -11,17 +11,18 @@ module.exports = {
   },
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "parser": "babel-eslint",
   },
   "plugins": [
     "vue"
   ],
   "rules": {
-    "generator-star-spacing": "off",
-    "no-tabs": "off",
-    "no-unused-vars": "off",
-    "no-console": "off",
-    "no-irregular-whitespace": "off",
-    "no-debugger": "off"
+    // "generator-star-spacing": "off",
+    // "no-tabs": "off",
+    "no-unused-vars": "off", // 没使用的变量
+    // "no-console": "off",
+    // "no-irregular-whitespace": "off",
+    // "no-debugger": "off"
   }
 };

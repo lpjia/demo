@@ -3,7 +3,7 @@
     <ChildOne>
       <!-- 作用域插槽不能传事件, 可以传数据, 类比 el-table-column 插入的 row -->
       <!-- 插槽的显示顺序, 看子组件挖坑的顺序 -->
-      <template #slot_2="dataFromChild">
+      <template v-slot:slot_2="dataFromChild">
         这是父组件的 slot_2 插槽
         <span style="color: deepskyblue;">替换了</span>
         <div>从子组件 {{ slotString }} 获取的数据: &nbsp;&nbsp;{{ dataFromChild }}</div>

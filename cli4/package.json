@@ -41,6 +41,7 @@
     "plop": "~2.7.6",
     "sass": "1.26.2",
     "sass-loader": "8.0.2",
+    "svg-sprite-loader": "~6.0.11",
     "svgo": "~2.6.1",
     "vue-json-viewer": "~2.2.21",
     "vue-template-compiler": "~2.6.14",
@@ -59,7 +60,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",

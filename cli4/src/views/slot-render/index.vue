@@ -26,11 +26,20 @@
 
     <!-- 原本是 dom 模版通过 <script type="text/x-template" id="test-template"> 引入 -->
     <!-- 现在改为 SFC, 直接写 template -->
-    <h3>使用了 functional 函数式组件</h3>
+    <h3>使用了 functional 函数式组件(BaseLayout.vue)</h3>
     <ChildSix />
 
     <h3>用 jsx 写, 内容少且简单, 学习 jsx</h3>
     <ChildSeven />
+
+    <h3>用 jsx 写, 多种用法展示</h3>
+    <ChildEight />
+
+    <h3>用 jsx 写, 带锚点的标题, 插槽相关用法</h3>
+    <ChildNine />
+
+    <h3>用 jsx 写, 插槽相关用法, plus</h3>
+    <ChildTen />
   </div>
 </template>
 
@@ -46,6 +55,9 @@ import ChildFour from './component/ChildFour.vue'
 import ChildFive from './component/ChildFive.vue'
 import ChildSix from './component/ChildSix.vue'
 import ChildSeven from './component/ChildSeven.vue'
+import ChildEight from './component/ChildEight.vue'
+import ChildNine from './component/ChildNine.vue'
+import ChildTen from './component/ChildTen.vue'
 
 export default {
   name: 'SlotRender',
@@ -60,11 +72,15 @@ export default {
     ChildFive,
     ChildSix,
     ChildSeven,
+    ChildEight,
+    ChildNine,
+    ChildTen,
   },
 }
 </script>
 
-<style lang="sass">
-.el-divider
-  background-color: #000
+<style lang="scss" scope>
+.el-divider {
+  background-color: #000;
+}
 </style>

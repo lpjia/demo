@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.vue'
 
 export default {
   name: 'ChildSeven',
+  // 加上后, 插槽 header 和 footer 都渲染不出来了
   functional: true,
   render(h) {
     return (

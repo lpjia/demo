@@ -14,13 +14,15 @@
         </el-menu-item> -->
 
         <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path" route> -->
-        <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path">
-          <template v-if="route.hidden">
-            <i class="el-icon-goods"></i>
-            <span slot="title">{{ route.name }}</span>
 
+        <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path">
+          <template v-if="!route.hidden">
+            <i class="el-icon-goods"></i>
+            <span slot="title" style="color: #000;">{{ route.name }}</span>
           </template>
-        </el-menu-item>
+        </el-menu-item> -->
+
+        <SidebarItem v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -28,16 +30,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from './logo.vue';
 import customSetting from '@/configs/setting.js'
 // import vars from '@/styles/vars.scss'
+import Logo from './logo.vue';
+import SidebarItem from './SidebarItem.vue'
 
 
 
 export default {
   name: 'Sidebar',
   components: {
-    Logo
+    Logo,
+    SidebarItem,
   },
   data() {
     return {
@@ -57,7 +61,7 @@ export default {
 
     // console.log('this.$router:', this.$router)
 
-    // console.log('this.permission_routes:', this.permission_routes)
+    console.log('this.permission_routes:', this.permission_routes)
 
     // const req = require.context('./svg', false, /\.svg$/)
     // const req = require.context('@/icons/svg', false, /\.svg$/)

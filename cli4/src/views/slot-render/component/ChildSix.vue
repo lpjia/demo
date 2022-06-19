@@ -1,6 +1,6 @@
-<template>
+  <template>
   <!-- <template functional> -->
-  <!-- 这里加上 functional 会报错, 不知道为啥 -->
+  <!-- 这里加上 functional 会报错, 不知道为啥, 猜测是插槽语法的问题 -->
 
   <base-layout>
     <template v-slot:header>

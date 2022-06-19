@@ -1,10 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
 
-// 重置样式
-import 'normalize.css/normalize.css'
+import 'normalize.css/normalize.css' // 重置样式
+
+// import '@/assets/fonts/iconfont.css' // 引入图标
 
 import GlobalComp from "@/components/GlobalComp.vue";
 
@@ -12,7 +10,6 @@ import GlobalComp from "@/components/GlobalComp.vue";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
-
 
 // 按需加载
 // import {
@@ -33,10 +30,16 @@ Vue.use(ElementUI);
 // Vue.prototype.$message = Message;
 
 
-import './permission'
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
-// tailwindcss
-// import '@/assets/css/tailwind.css';
+import './icons' // 图标
+
+import './permission' // 权限
+
+
+// import '@/assets/css/tailwind.css'; // tailwindcss
 
 import '@/styles/index.scss' // global css
 

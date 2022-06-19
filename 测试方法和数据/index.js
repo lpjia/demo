@@ -1,7 +1,8 @@
 import {
   reverseMapping, objToArr, deepClone,
   factorial, arrangement, combination,
-  generateIntArr, getRandomIntInclusive, arrToObj
+  generateIntArr, getRandomIntInclusive, arrToObj,
+  isExternal,
 } from '../util/commonMethod.js'
 import { getImgGroupByDevice, fireSensorStatus } from '../util/commonData.js'
 import diff from '../util/diff.js'
@@ -198,3 +199,18 @@ const renmingArr3 = objToArr(renmingObj)
 console.log('renmingArr3: ', renmingArr3)
 const renmingArr4 = objToArr(renmingObj, { l: 'label', v: 'type' })
 console.log('renmingArr4: ', renmingArr4)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+const path_2 = 'https:'
+const testIsExternal_2 = isExternal(path_2)
+console.log('testIsExternal_2:', testIsExternal_2)
+const path_3 = 'http:'
+const testIsExternal_3 = isExternal(path_3)
+console.log('testIsExternal_3:', testIsExternal_3)
+const path_4 = 'files:'
+const testIsExternal_4 = isExternal(path_4)
+console.log('testIsExternal_4:', testIsExternal_4)
+console.log('---- 分割线 ----\n\n\n')

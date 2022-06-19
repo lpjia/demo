@@ -25,11 +25,12 @@ module.exports = {
   } */
 
 
-  lintOnSave: false,
+  // 关闭 eslint 校验
+  // lintOnSave: false,
 
 
-  // vue 文件引入 yaml 文件配置
   chainWebpack(config) {
+    // vue 文件引入 yaml 文件配置
     config.module
       .rule('yaml')
       .test(/\.ya?ml$/)
@@ -38,6 +39,23 @@ module.exports = {
       .end()
       .use('yaml-loader')
       .loader('yaml-loader')
+      .end()
+
+    // 配置 svg-sprite-loader
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
       .end()
   },
 

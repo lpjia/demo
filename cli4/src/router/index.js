@@ -33,11 +33,19 @@ export const constantRoutes = [
     component: Layout,
     // redirect: '/computed-watch',
     redirect: '/SlotRender',
+    meta: {
+      title: '测试', icon: 'qq',
+      // roles: ['admin', 'editor']    
+    },
     children: [
       {
         path: 'template-syntax',
         name: 'template-syntax',
-        component: () => import('@/views/template-syntax/index.vue')
+        component: () => import('@/views/template-syntax/index.vue'),
+        meta: {
+          title: '子菜单',
+          // roles: ['admin', 'editor']
+        },
       },
       // {
       //   path: 'computed-watch',
@@ -122,7 +130,16 @@ export const constantRoutes = [
 
 const createRouter = () => new VueRouter({
   // mode: 'history',
+
+  // 滚动到页面顶部
   scrollBehavior: () => ({ y: 0 }),
+
+  // 滚动到页面底部
+  // scrollBehavior: () => {
+  //   let div = document.querySelector('#app');
+  //   return { y: div.scrollHeight }
+  // },
+
   routes: constantRoutes
 })
 
