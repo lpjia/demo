@@ -1,0 +1,30 @@
+
+script-setup
+
+setup()
+setup-fcn
+
+script setup
+setup-attr
+
+
+learning-setup
+准备在这汇总旧文件
+
+组合式 API
+zuheshi-api
+
+组合式函数
+zuheshi-fcn
+
+选项式
+option
+
+
+把目前的 learning-setup 弄成一个组件
+也弄成文件夹, 方便迁移
+
+
+目录结构
+  learning-setup
+    

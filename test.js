@@ -57,5 +57,5 @@ const aaa = null
 
 
 
-let a = { "name": "xj", "age": 28 }
-a['hehe']
+
+
