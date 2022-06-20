@@ -1,6 +1,5 @@
 <template>
   <div>
-    <el-divider></el-divider>
     <hx-comp :level="2">这是 h2, 没有 v-slot,
       用的默认插槽, this.$slots.default</hx-comp>
     <hx-comp :level="3">

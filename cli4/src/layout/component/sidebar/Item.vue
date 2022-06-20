@@ -2,16 +2,16 @@
 export default {
   name: 'MenuItem',
   functional: true,
-  props: {
-    icon: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    }
-  },
+  // props: {
+  //   icon: {
+  //     type: String,
+  //     default: ''
+  //   },
+  //   title: {
+  //     type: String,
+  //     default: ''
+  //   }
+  // },
   render(h, context) {
     const { icon, title } = context.props
     const vnodes = []
@@ -43,8 +43,8 @@ export default {
 
     // 先把上面实现, 再尝试下面 jsx
     // return (
-
-    // )
+    //   // { icon?icon.includes('el-icon') ?<i class={[icon, 'sub-el-icon']}:<>:''}      
+    //       )
   }
 }
 </script>

@@ -14,16 +14,26 @@
         <span style="color: deepskyblue;">替换了</span>
       </template>
     </child-two>
+
+    <CommonWriting :msg="msg" :isOnly="true" />
+    <el-divider></el-divider>
   </div>
 </template>
 
 <script>
 import ChildTwo from './ChildTwo.vue'
+import CommonWriting from './CommonWriting.vue'
 
 export default {
   name: 'Render',
   components: {
-    ChildTwo
+    ChildTwo,
+    CommonWriting,
   },
+  data() {
+    return {
+      msg: '这是 render 的非 h() 写法'
+    }
+  }
 };
 </script>

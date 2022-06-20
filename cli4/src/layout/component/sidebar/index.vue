@@ -5,23 +5,8 @@
 
     <!-- 下面是菜单, 带滚动 -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu mode="vertical" router :default-active="$route.path">
+      <el-menu mode="vertical" router :default-active="$route.path" :unique-opened="false">
         <!-- 先弄内容, 再管样式 -->
-
-        <!-- <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item> -->
-
-        <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path" route> -->
-
-        <!-- <el-menu-item v-for="route in permission_routes" :key="route.path" :index="route.path">
-          <template v-if="!route.hidden">
-            <i class="el-icon-goods"></i>
-            <span slot="title" style="color: #000;">{{ route.name }}</span>
-          </template>
-        </el-menu-item> -->
-
         <SidebarItem v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>

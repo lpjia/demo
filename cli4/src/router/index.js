@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// layout 不需要懒加载
 import Layout from '@/layout/index.vue'
 
 Vue.use(VueRouter)
@@ -18,29 +19,47 @@ export const constantRoutes = [
     // 需要显示的菜单项肯定比隐藏的多, 隐藏的就写得少
   },
 
+  {
+    path: '/SlotRender',
+    // name: 'SlotRender', // name 可以不加, 匹配 path 就行
+    component: Layout,
+    redirect: '/SlotRender/index',
+    meta: {
+      title: '测试一级',
+      icon: 'qq',
+      // roles: ['admin', 'editor']    
+    },
+    // alwaysShow: true,
+    // children: [] // 当字段存在且值为 [], 一级菜单右侧会出现箭头
+    children: [
+      {
+        path: 'index',
+        // name: 'SlotRender',
+        component: () => import('@/views/slot-render/index.vue'),
+        meta: {
+          title: '插槽 渲染',
+          icon: 'qq',
+          // roles: ['admin', 'editor']    
+        }
+      },
+    ]
+  },
 
+  // 最后加个三级路由的菜单
 
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: () => import('@/components/Home.vue')
-  //   // redirect: '/one'
-  // },
   {
     path: '/',
-    name: 'layout',
-    // component: () => import('@/layout/layout.vue'),
+    // name: 'layout',
     component: Layout,
-    // redirect: '/computed-watch',
-    redirect: '/SlotRender',
+    redirect: '/CompNest',
     meta: {
       title: '测试', icon: 'qq',
       // roles: ['admin', 'editor']    
     },
     children: [
       {
-        path: 'template-syntax',
-        name: 'template-syntax',
+        path: 'TemplateSyntax',
+        // name: 'TemplateSyntax',
         component: () => import('@/views/template-syntax/index.vue'),
         meta: {
           title: '子菜单',
@@ -52,64 +71,56 @@ export const constantRoutes = [
       //   name: 'computed-watch',
       //   component: () => import('@/views/computed-watch/index.vue')
       // },
+
       {
-        path: 'SlotRender',
-        name: 'SlotRender',
-        component: () => import('@/views/slot-render/index.vue')
+        path: 'CompNest',
+        // name: 'CompNest',
+        component: () => import('@/views/comp-nest/index.vue'),
+        meta: {
+          title: '子菜单二',
+          // roles: ['admin', 'editor']
+        },
       },
-      {
-        path: 'one',
-        name: 'one',
-        component: () => import('@/views/one/one')
-      },
-      {
-        path: 'two',
-        name: 'two',
-        component: () => import('@/views/two/two')
-      },
-      {
-        path: 'three',
-        name: 'three',
-        component: () => import('@/views/three/three')
-      },
-      {
-        path: 'gmap',
-        name: 'gmap',
-        component: () => import('@/views/gmap/gmap')
-      },
-      {
-        path: 'four',
-        name: 'four',
-        component: () => import('@/views/four/four')
-      },
-      {
-        path: 'five/:username',
-        name: 'five',
-        component: () => import('@/views/five/five')
-      },
-      {
-        path: 'five/:username/:reponame',
-        name: 'six',
-        component: () => import('@/views/six/six')
-      },
+      // {
+      //   path: 'one',
+      //   name: 'one',
+      //   component: () => import('@/views/one/one')
+      // },
+      // {
+      //   path: 'two',
+      //   name: 'two',
+      //   component: () => import('@/views/two/two')
+      // },
+      // {
+      //   path: 'three',
+      //   name: 'three',
+      //   component: () => import('@/views/three/three')
+      // },
+      // {
+      //   path: 'gmap',
+      //   name: 'gmap',
+      //   component: () => import('@/views/gmap/gmap')
+      // },
+      // {
+      //   path: 'four',
+      //   name: 'four',
+      //   component: () => import('@/views/four/four')
+      // },
+      // {
+      //   path: 'five/:username',
+      //   name: 'five',
+      //   component: () => import('@/views/five/five')
+      // },
+      // {
+      //   path: 'five/:username/:reponame',
+      //   name: 'six',
+      //   component: () => import('@/views/six/six')
+      // },
     ]
   },
 
-  // {
-  //   path: '/one',
-  //   name: 'one',
-  //   component: () => import('@/views/one/one')
-  // },
 
-  // {
-  //   path: '/two',
-  //   name: 'two',
-  //   component: () => import('@/views/two/two')
-  // },
-
-
-
-  // 404 page must be placed at the end !!!
+  // 404页面必须放在最后
   { path: '*', redirect: '/404', hidden: true }
 ]
 

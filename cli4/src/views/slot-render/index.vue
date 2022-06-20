@@ -13,7 +13,7 @@
     <h3>作用域插槽</h3>
     <ScopeSlot />
 
-    <h3>render 和插槽</h3>
+    <h3>render 和插槽, render 用普通数组写法</h3>
     <Render />
 
     <ChildThree />
