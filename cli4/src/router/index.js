@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 // layout 不需要懒加载
 import Layout from '@/layout/index.vue'
 
+import nestedRouter from './modules/nested'
+
 Vue.use(VueRouter)
 
 
@@ -48,21 +50,53 @@ export const constantRoutes = [
   // 最后加个三级路由的菜单
 
   {
+    path: '/PatchPackage',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/patch-package/index.vue'),
+        name: 'PatchPackage',
+        meta: {
+          title: '打补丁',
+          icon: 'el-icon-paperclip'
+        }
+      }
+    ]
+  },
+  {
+    path: 'external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://gitee.com/mirrors/vue-element-admin',
+        meta: {
+          title: '外链',
+          icon: 'link'
+        }
+      }
+    ]
+  },
+
+  nestedRouter,
+
+  {
     path: '/',
     // name: 'layout',
     component: Layout,
     redirect: '/CompNest',
     meta: {
-      title: '测试', icon: 'qq',
+      title: '测试',
+      icon: 'el-icon-phone',
       // roles: ['admin', 'editor']    
     },
     children: [
       {
         path: 'TemplateSyntax',
-        // name: 'TemplateSyntax',
+        name: 'TemplateSyntax',
         component: () => import('@/views/template-syntax/index.vue'),
         meta: {
-          title: '子菜单',
+          title: '模版语法',
           // roles: ['admin', 'editor']
         },
       },
@@ -76,46 +110,50 @@ export const constantRoutes = [
         path: 'CompNest',
         // name: 'CompNest',
         component: () => import('@/views/comp-nest/index.vue'),
-        meta: {
-          title: '子菜单二',
-          // roles: ['admin', 'editor']
-        },
+        meta: { title: '组件嵌套自身' },
       },
-      // {
-      //   path: 'one',
-      //   name: 'one',
-      //   component: () => import('@/views/one/one')
-      // },
-      // {
-      //   path: 'two',
-      //   name: 'two',
-      //   component: () => import('@/views/two/two')
-      // },
-      // {
-      //   path: 'three',
-      //   name: 'three',
-      //   component: () => import('@/views/three/three')
-      // },
-      // {
-      //   path: 'gmap',
-      //   name: 'gmap',
-      //   component: () => import('@/views/gmap/gmap')
-      // },
-      // {
-      //   path: 'four',
-      //   name: 'four',
-      //   component: () => import('@/views/four/four')
-      // },
-      // {
-      //   path: 'five/:username',
-      //   name: 'five',
-      //   component: () => import('@/views/five/five')
-      // },
-      // {
-      //   path: 'five/:username/:reponame',
-      //   name: 'six',
-      //   component: () => import('@/views/six/six')
-      // },
+      {
+        path: 'one',
+        name: 'one',
+        component: () => import('@/views/one/one'),
+        meta: { title: 'one', },
+      },
+      {
+        path: 'two',
+        name: 'two',
+        component: () => import('@/views/two/two'),
+        meta: { title: 'two', }
+      },
+      {
+        path: 'three',
+        name: 'three',
+        component: () => import('@/views/three/three'),
+        meta: { title: 'three', }
+      },
+      {
+        path: 'gmap',
+        name: 'gmap',
+        component: () => import('@/views/gmap/gmap'),
+        meta: { title: 'gmap', }
+      },
+      {
+        path: 'four',
+        name: 'four',
+        component: () => import('@/views/four/four'),
+        meta: { title: 'four', }
+      },
+      {
+        path: 'five/:username',
+        name: 'five',
+        component: () => import('@/views/five/five'),
+        meta: { title: 'five', }
+      },
+      {
+        path: 'five/:username/:reponame',
+        name: 'six',
+        component: () => import('@/views/six/six'),
+        meta: { title: 'six', }
+      },
     ]
   },
 

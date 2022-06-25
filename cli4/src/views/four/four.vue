@@ -10,7 +10,7 @@
     <button @click="emitChild2Method">触发子组件(child2.vue)的方法</button>
     <hr class="up_down">
     <Child3 comp-name="child.vue" compDepthLevel="2" @event-jianting="jianting" @eventJt="jt" />
-    <hr class="up_down">
+    <!-- <hr class="up_down">
     <Child4>这是插槽内容!</Child4>
     <hr class="up_down">
     <Child4>
@@ -33,7 +33,7 @@
       <template #four>
         four 插槽
       </template>
-    </Child4>
+    </Child4> -->
     <hr class="up_down">
     <Child5 @mounted="jtChildLifeCycle" />
     <p>父组件监听子组件的生命周期</p>
@@ -47,7 +47,7 @@
 import Child from "@/views/four/components/Child.vue";
 import Child2 from "@/views/four/components/Child2.vue";
 import Child3 from "@/views/four/components/Child3.vue";
-import Child4 from "@/views/four/components/Child4.vue";
+// import Child4 from "@/views/four/components/Child4.vue";
 import Child5 from "@/views/four/components/Child5.vue";
 import Child6 from "@/views/four/components/Child6.vue";
 
@@ -57,7 +57,7 @@ export default {
     Child,
     Child2,
     Child3,
-    Child4,
+    // Child4,
     Child5,
     Child6,
   },

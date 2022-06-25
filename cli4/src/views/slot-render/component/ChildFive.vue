@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import BlogPost from './BlogPost.vue'
+import BlogPost from './common/BlogPost.vue'
 
 export default {
   name: 'ChildFive',

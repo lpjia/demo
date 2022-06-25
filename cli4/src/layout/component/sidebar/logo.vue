@@ -54,12 +54,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// @import '@/styles/vars.scss';
+
 .sidebar-logo-container {
   position: relative;
   width: 100%;
   height: 60px;
   line-height: 60px;
   background: #2b2f3a;
+  // background-color: $menuBg;
   text-align: center;
   overflow: hidden;
   & .sidebar-logo-link {

@@ -2,21 +2,27 @@
   <div>
     <Chazhi />
     <Zhiling />
+    <SuoXie />
   </div>
 </template>
 
 <script>
-import Chazhi from './component/chazhi.vue'
-import Zhiling from './component/zhiling.vue'
+import Chazhi from './component/ChaZhi.vue'
+import Zhiling from './component/ZhiLing.vue'
+import SuoXie from './component/SuoXie.vue'
 
 export default {
   name: 'TemplateSyntax',
   components: {
     Chazhi,
     Zhiling,
+    SuoXie,
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scope>
+.el-divider {
+  background-color: #000;
+}
 </style>

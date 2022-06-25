@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h3></h3>
+    <ChildEleven />
+
     <h3>不用插槽</h3>
     <ChildOne />
     <!-- 把原先的 html 封装到组件中, 减少这的代码 -->
@@ -56,8 +59,9 @@ import ChildFive from './component/ChildFive.vue'
 import ChildSix from './component/ChildSix.vue'
 import ChildSeven from './component/ChildSeven.vue'
 import ChildEight from './component/ChildEight.vue'
-import ChildNine from './component/ChildNine.vue'
-import ChildTen from './component/ChildTen.vue'
+import ChildNine from './component/child-nine/ChildNine.vue'
+import ChildTen from './component/child-ten/ChildTen.vue'
+import ChildEleven from './component/child-eleven/ChildEleven.vue'
 
 export default {
   name: 'SlotRender',
@@ -75,6 +79,8 @@ export default {
     ChildEight,
     ChildNine,
     ChildTen,
+    ChildEleven,
+
   },
 }
 </script>

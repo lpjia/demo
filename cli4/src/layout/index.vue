@@ -1,8 +1,8 @@
 <template>
   <el-container>
-    <!-- <el-aside width="200px">Aside</el-aside> -->
     <el-aside width="200px">
-      <Sidebar />
+      <!-- 侧边栏样式 根class -->
+      <Sidebar class="sidebar-container" />
     </el-aside>
     <el-container>
       <el-header>Header</el-header>
@@ -22,7 +22,7 @@ import Sidebar from './component/sidebar/index.vue'
 // import AppMain from './component/app-main.vue'
 
 export default {
-  name: 'layout',
+  name: 'Layout',
   components: {
     Sidebar,
     // AppMain,

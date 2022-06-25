@@ -16,11 +16,6 @@ export default {
   props: {
     obj: Object
   },
-  data() {
-    return {
-
-    };
-  },
 };
 </script>
 

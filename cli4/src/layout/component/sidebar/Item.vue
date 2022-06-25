@@ -2,6 +2,8 @@
 export default {
   name: 'MenuItem',
   functional: true,
+  // 只有在函数式组件的情况下, 可以不写
+  // 在 2.3.0 或以上的版本中，你可以省略 props 选项，所有组件上的 attribute 都会被自动隐式解析为 prop。
   // props: {
   //   icon: {
   //     type: String,
@@ -41,10 +43,18 @@ export default {
     }
     return vnodes
 
-    // 先把上面实现, 再尝试下面 jsx
+    // 用 jsx 实现, 感觉没有上面的简单
     // return (
-    //   // { icon?icon.includes('el-icon') ?<i class={[icon, 'sub-el-icon']}:<>:''}      
-    //       )
+    //   <span>
+    //     {icon ? icon.includes('el-icon') ?
+    //       <i class={[icon, 'sub-el-icon']} /> :
+    //       // <i class="sub-el-icon" class={icon} /> : // 方便理解, 可以拆开写
+    //       <svg-icon icon-class={icon} /> :
+    //       ''}
+    //     {title ? <span slot='title'>{title}</span> : ''}
+    //   </span>
+    // )
+
   }
 }
 </script>

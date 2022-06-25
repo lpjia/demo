@@ -1,5 +1,5 @@
 <script>
-import BaseLayout from './BaseLayout.vue'
+import BaseLayout from './common/BaseLayout.vue'
 
 export default {
   name: 'ChildSeven',

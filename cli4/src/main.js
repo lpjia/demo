@@ -4,7 +4,6 @@ import 'normalize.css/normalize.css' // 重置样式
 
 // import '@/assets/fonts/iconfont.css' // 引入图标
 
-import GlobalComp from "@/components/GlobalComp.vue";
 
 // 全部加载
 import ElementUI from 'element-ui';
@@ -45,8 +44,6 @@ import '@/styles/index.scss' // global css
 
 
 Vue.prototype.$bus = new Vue()
-
-Vue.component('GlobalComp', GlobalComp)
 
 
 Vue.config.productionTip = false

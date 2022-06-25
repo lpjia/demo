@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 // import { removeObjEmptyKey } from '@/utils'
-import { URL } from './config.js'
+import { URL } from '../configs/config.js'
 
 const service = axios.create({
   baseURL: URL,

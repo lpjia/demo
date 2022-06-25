@@ -5,7 +5,7 @@
 
     <!-- 下面是菜单, 带滚动 -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu mode="vertical" router :default-active="$route.path" :unique-opened="false">
+      <el-menu mode="vertical" :default-active="$route.path" :unique-opened="false" :background-color="vars.$menuBg">
         <!-- 先弄内容, 再管样式 -->
         <SidebarItem v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
@@ -16,7 +16,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import customSetting from '@/configs/setting.js'
-// import vars from '@/styles/vars.scss'
+import vars from '@/styles/vars.scss'
 import Logo from './logo.vue';
 import SidebarItem from './SidebarItem.vue'
 
@@ -36,7 +36,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['permission_routes'])
+    ...mapGetters(['permission_routes']),
+    vars() {
+      return vars
+    }
   },
   mounted() {
     this.$store.dispatch('permission/generateRoutes_2', null)
@@ -56,4 +59,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+::v-deep {
+  a {
+    text-decoration: none;
+  }
+}
 </style>

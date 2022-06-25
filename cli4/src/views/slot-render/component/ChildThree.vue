@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import HxComp from './HxComp.vue'
+import HxComp from './common/HxComp.vue'
 
 export default {
   name: 'ChildThree',

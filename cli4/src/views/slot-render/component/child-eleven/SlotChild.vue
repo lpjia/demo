@@ -2,17 +2,17 @@
   <div>
     <p>
       走两步<br>
-      <slot name="five" :msg="childData"></slot>
+      <slot name="fifth" :msg="grandsonData"></slot>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Child4Child',
+  name: 'SlotChild',
   data() {
     return {
-      childData: 'Child4Child.vue 通过插槽传的数据'
+      grandsonData: '孙组件通过插槽传的数据'
     };
   },
 };

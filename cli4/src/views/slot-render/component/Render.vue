@@ -22,7 +22,7 @@
 
 <script>
 import ChildTwo from './ChildTwo.vue'
-import CommonWriting from './CommonWriting.vue'
+import CommonWriting from './common/CommonWriting.vue'
 
 export default {
   name: 'Render',
