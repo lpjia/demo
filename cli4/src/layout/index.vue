@@ -66,8 +66,9 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
+  // text-align: center;
   // line-height: 160px;
+  height: 1400px;
 }
 
 // // 固定在底部

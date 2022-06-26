@@ -49,7 +49,9 @@ import Child2 from "@/views/four/components/Child2.vue";
 import Child3 from "@/views/four/components/Child3.vue";
 // import Child4 from "@/views/four/components/Child4.vue";
 import Child5 from "@/views/four/components/Child5.vue";
+// import Child6 from "@/views/four/components/Child6.vue";
 import Child6 from "@/views/four/components/Child6.vue";
+// import Child6 from "./components/Child6.vue";
 
 export default {
   name: 'four',

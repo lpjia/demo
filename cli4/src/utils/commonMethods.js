@@ -1,8 +1,4 @@
-/**
- * @description 过滤掉对象为空值的字段(不过滤 0 和 false)
- * @param {object} obj
- * @return {object}
- */
+// 过滤掉对象为空值的字段(不过滤 0 和 false)
 export function removeObjEmptyKey(obj) {
   for (let item in obj) {
     if (!obj[item]) {
