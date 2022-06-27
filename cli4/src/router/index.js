@@ -22,10 +22,10 @@ export const constantRoutes = [
   },
 
   {
-    path: '/',
+    path: '/SlotRender',
     // name: 'SlotRender', // name 可以不加, 匹配 path 就行
     component: Layout,
-    redirect: '/BaokaoXx',
+    redirect: '/SlotRender/index',
     meta: {
       title: '测试一级',
       icon: 'qq',
@@ -35,10 +35,11 @@ export const constantRoutes = [
     // children: [] // 当字段存在且值为 [], 一级菜单右侧会出现箭头
     children: [
       {
-        path: 'BaokaoXx',
-        component: () => import('@/views/baokao-xx/index.vue'),
+        path: 'index',
+        // name: 'SlotRender',
+        component: () => import('@/views/slot-render/index.vue'),
         meta: {
-          title: '报考选学校',
+          title: '插槽 渲染',
           icon: 'qq',
           // roles: ['admin', 'editor']    
         }
@@ -46,6 +47,125 @@ export const constantRoutes = [
     ]
   },
 
+  // 最后加个三级路由的菜单
+
+  {
+    path: '/PatchPackage',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/patch-package/index.vue'),
+        name: 'PatchPackage',
+        meta: {
+          title: '打补丁',
+          icon: 'el-icon-paperclip'
+        }
+      }
+    ]
+  },
+  {
+    path: 'external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://gitee.com/mirrors/vue-element-admin',
+        meta: {
+          title: '外链',
+          icon: 'link'
+        }
+      }
+    ]
+  },
+
+  nestedRouter,
+
+  {
+    path: '/',
+    // name: 'layout',
+    component: Layout,
+    redirect: '/CompNest',
+    meta: {
+      title: '测试',
+      icon: 'el-icon-phone',
+      // roles: ['admin', 'editor']    
+    },
+    children: [
+      {
+        path: 'TemplateSyntax',
+        name: 'TemplateSyntax',
+        component: () => import('@/views/template-syntax/index.vue'),
+        meta: {
+          title: '模版语法',
+          // roles: ['admin', 'editor']
+        },
+      },
+      // {
+      //   path: 'computed-watch',
+      //   name: 'computed-watch',
+      //   component: () => import('@/views/computed-watch/index.vue')
+      // },
+
+      {
+        path: 'CompNest',
+        // name: 'CompNest',
+        component: () => import('@/views/comp-nest/index.vue'),
+        meta: { title: '组件嵌套自身' },
+      },
+      {
+        path: 'DynamicComp',
+        component: () => import('@/views/dynamic-comp/index.vue'),
+        meta: { title: '动态组件' },
+      },
+      {
+        path: 'SlotRender',
+        component: () => import('@/views/slot-render/index.vue'),
+        meta: { title: '插槽 渲染' },
+      },
+      {
+        path: 'one',
+        name: 'one',
+        component: () => import('@/views/one/one'),
+        meta: { title: 'one', },
+      },
+      {
+        path: 'two',
+        name: 'two',
+        component: () => import('@/views/two/two'),
+        meta: { title: 'two', }
+      },
+      {
+        path: 'three',
+        name: 'three',
+        component: () => import('@/views/three/three'),
+        meta: { title: 'three', }
+      },
+      {
+        path: 'gmap',
+        name: 'gmap',
+        component: () => import('@/views/gmap/gmap'),
+        meta: { title: 'gmap', }
+      },
+      {
+        path: 'four',
+        name: 'four',
+        component: () => import('@/views/four/four'),
+        meta: { title: 'four', }
+      },
+      {
+        path: 'five/:username',
+        name: 'five',
+        component: () => import('@/views/five/five'),
+        meta: { title: 'five', }
+      },
+      {
+        path: 'five/:username/:reponame',
+        name: 'six',
+        component: () => import('@/views/six/six'),
+        meta: { title: 'six', }
+      },
+    ]
+  },
 
 
   // 404页面必须放在最后

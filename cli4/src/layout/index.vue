@@ -68,7 +68,7 @@ export default {
   color: #333;
   // text-align: center;
   // line-height: 160px;
-  height: 1400px;
+  // height: 1400px;
 }
 
 // // 固定在底部

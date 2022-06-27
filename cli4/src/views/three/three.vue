@@ -64,7 +64,7 @@ import {
   // commodityList,
   // commodityById,
 } from '@/api/three.js'
-import { getStorage, setStorage, objToArr } from '@/utils'
+import { getStorage, setStorage, objToArr } from '@/utils/commonMethods.js'
 
 import JsonViewer from 'vue-json-viewer'
 

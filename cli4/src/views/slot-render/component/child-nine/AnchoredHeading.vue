@@ -22,7 +22,7 @@ export default {
         h('h' + this.level,
           this.$scopedSlots.default()
         ),
-        h('el-divider')
+        // h('el-divider')
       ]
     )
 
