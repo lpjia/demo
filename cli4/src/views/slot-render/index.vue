@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h3></h3>
+    <h3>作用域插槽 商品展示</h3>
+    <ChildTwelve />
+
+    <h3>之前写的</h3>
     <ChildEleven />
 
     <h3>不用插槽</h3>
@@ -62,6 +65,7 @@ import ChildEight from './component/ChildEight.vue'
 import ChildNine from './component/child-nine/ChildNine.vue'
 import ChildTen from './component/child-ten/ChildTen.vue'
 import ChildEleven from './component/child-eleven/ChildEleven.vue'
+import ChildTwelve from './component/child-twelve/ChildTwelve.vue'
 
 export default {
   name: 'SlotRender',
@@ -80,7 +84,7 @@ export default {
     ChildNine,
     ChildTen,
     ChildEleven,
-
+    ChildTwelve,
   },
 }
 </script>
