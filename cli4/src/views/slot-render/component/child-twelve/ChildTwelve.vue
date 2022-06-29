@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :gutter="20">
-      <el-col :span="12" v-for="(column, index) in columnList" :key="index">
+      <el-col :span="12" v-for="column in columnList" :key="column.columnName">
         <el-card class="box-card card-column">
           <div slot="header" class="clearfix">
             <span>{{ column.columnName }}</span>

@@ -5,16 +5,14 @@ export default {
   render(h) {
     return (
       <el-row gutter={20}>
-        <el-col span={8}>
-          {this.$scopedSlots.default({ row: item })}
-        </el-col>
+        {this.commodities.map(item => {
+          return (
+            <el-col span={8} style="margin-top:20px;">
+              {this.$scopedSlots.default({ row: item })}
+            </el-col>
+          )
+        })}
       </el-row>
-
-      // <el-row :gutter="20">
-      //     <el-col :span="8" v-for="(item, index) in commodities" :key="index" style="margin-top:20px;">
-      //         <slot :row="item"></slot>
-      //     </el-col>
-      // </el-row>
     )
   }
 

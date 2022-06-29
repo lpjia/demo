@@ -14,16 +14,10 @@ export default {
         <div slot="header" class="clearfix">
           <span>{this.modityData.cardName}</span>
         </div>
-        <section ></section>
+        <section vOn:click={() => this.sendData(this.modityData.msg)}>{this.modityData.msg}</section>
       </el-card>
-
-      // <el-card class="box-card card-column">
-      //   <div slot="header" class="clearfix">
-      //     <span>{{ modityData.cardName }}</span>
-      //   </div>
-      //   <section @click="sendData(modityData.msg)">{{ modityData.msg }}</section>
-      // </el-card>
     )
+    // vOn:click 推荐写成 onclick
   },
 
   /*

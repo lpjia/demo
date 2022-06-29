@@ -48,6 +48,16 @@ export default {
       // scopedSlots 属性一定要写在子组件上
       <JsxSlot level={1} scopedSlots={scopedS} />
     )
+    /**
+     * // 父组件 作用域插槽
+     * <JsxSlot level={1}>
+     *  <template v-slot:person="params">
+     *    <div style='backgroundColor:orange'>
+     *      {{ params.name }} 今年{{ params.age }}岁
+     *    </div>
+     *  </template>
+     * </JsxSlot>
+     */
   },
 };
 </script>
