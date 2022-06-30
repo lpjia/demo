@@ -28,6 +28,12 @@ Vue.use(ElementUI);
 // Vue.use(TableColumn);
 // Vue.prototype.$message = Message;
 
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+
+Vue.use(VXETable)
+
 
 import App from './App.vue'
 import router from './router'

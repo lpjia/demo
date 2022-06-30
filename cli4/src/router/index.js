@@ -123,6 +123,11 @@ export const constantRoutes = [
         meta: { title: '插槽 渲染' },
       },
       {
+        path: 'LearningDayjs',
+        component: () => import('@/views/learning-dayjs/index.vue'),
+        meta: { title: 'dayjs' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
