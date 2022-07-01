@@ -28,10 +28,11 @@ Vue.use(ElementUI);
 // Vue.use(TableColumn);
 // Vue.prototype.$message = Message;
 
+
+// 表格组件
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
-
 Vue.use(VXETable)
 
 
@@ -42,6 +43,8 @@ import store from './store'
 import './icons' // 图标
 
 import './permission' // 权限
+
+import './directives/vColor.js'
 
 
 // import '@/assets/css/tailwind.css'; // tailwindcss

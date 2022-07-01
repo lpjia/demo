@@ -128,6 +128,11 @@ export const constantRoutes = [
         meta: { title: 'dayjs' },
       },
       {
+        path: 'CustomDirective',
+        component: () => import('@/views/custom-directive/index.vue'),
+        meta: { title: '自定义指令' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),

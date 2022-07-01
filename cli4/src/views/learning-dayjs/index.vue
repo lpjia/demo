@@ -25,22 +25,10 @@
         <vxe-button>按钮2</vxe-button> -->
       </template>
     </vxe-toolbar>
-    <vxe-table border resizable ref="xTable1" height="1000"
+    <vxe-table border resizable id="vxeTable" ref="xTable1" height="1000"
       :custom-config="{storage: true, checkMethod: checkColumnMethod}" :data="tableData_2"
       @resizable-change="resizableChangeEvent">
       <vxe-column type="seq" width="60" align="right"></vxe-column>
-      <vxe-column field="name" title="Name"></vxe-column>
-      <vxe-column field="role" title="Role"></vxe-column>
-      <vxe-column field="sex" title="Sex"></vxe-column>
-      <vxe-column field="age" title="Age"></vxe-column>
-      <vxe-column field="name" title="Name"></vxe-column>
-      <vxe-column field="role" title="Role"></vxe-column>
-      <vxe-column field="sex" title="Sex"></vxe-column>
-      <vxe-column field="age" title="Age"></vxe-column>
-      <vxe-column field="name" title="Name"></vxe-column>
-      <vxe-column field="role" title="Role"></vxe-column>
-      <vxe-column field="sex" title="Sex"></vxe-column>
-      <vxe-column field="age" title="Age"></vxe-column>
       <vxe-column field="name" title="Name"></vxe-column>
       <vxe-column field="role" title="Role"></vxe-column>
       <vxe-column field="sex" title="Sex"></vxe-column>
