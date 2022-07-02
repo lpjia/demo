@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const customSetting = require('./src/configs/setting')
 // import customSetting from './src/configs/setting.js'
@@ -77,17 +77,18 @@ module.exports = {
   },
 
   configureWebpack: {
+    devtool: 'source-map', // 调试源码
     resolve: {
       alias: {
         '@': path.resolve('src')
       }
     },
-    plugins: [
-      // 打包分析包大小
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'disabled'
-      }),
-    ],
+    // plugins: [
+    //   // 打包分析包大小
+    //   new BundleAnalyzerPlugin({
+    //     analyzerMode: 'disabled'
+    //   }),
+    // ],
   },
 
 

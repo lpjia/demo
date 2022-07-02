@@ -1,4 +1,7 @@
 import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
 import 'normalize.css/normalize.css' // 重置样式
 
@@ -10,11 +13,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
-// 按需加载
+// // 按需加载
 // import {
 //   Button, Input, Form,
 //   FormItem, Select, Option,
 //   Message, Table, TableColumn,
+//   Main, Header, Footer
 // } from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 // Vue.use(Button);
@@ -22,8 +26,11 @@ Vue.use(ElementUI);
 // Vue.use(Form);
 // Vue.use(FormItem);
 // Vue.use(Select);
+// Vue.use(Main);
+// Vue.use(Header);
+// Vue.use(Footer);
 // Vue.use(Option);
-// // Vue.use(Message); // 不要这样用, 会默认弹
+// Vue.use(Message); // 不要这样用, 会默认弹
 // Vue.use(Table);
 // Vue.use(TableColumn);
 // Vue.prototype.$message = Message;
@@ -36,15 +43,12 @@ import 'vxe-table/lib/style.css'
 Vue.use(VXETable)
 
 
-import App from './App.vue'
-import router from './router'
-import store from './store'
 
 import './icons' // 图标
 
 import './permission' // 权限
 
-import './directives/vColor.js'
+import './directives/vColor.js' // 自定义指令
 
 
 // import '@/assets/css/tailwind.css'; // tailwindcss

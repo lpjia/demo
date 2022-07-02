@@ -81,6 +81,12 @@ export const constantRoutes = [
   nestedRouter,
 
   {
+    path: '/LearningFloat',
+    component: () => import('@/views/learning-float/index.vue'),
+    meta: { title: '浮动' },
+  },
+
+  {
     path: '/',
     // name: 'layout',
     component: Layout,
@@ -132,6 +138,11 @@ export const constantRoutes = [
         component: () => import('@/views/custom-directive/index.vue'),
         meta: { title: '自定义指令' },
       },
+      // {
+      //   path: 'LearningFloat',
+      //   component: () => import('@/views/learning-float/index.vue'),
+      //   meta: { title: '浮动' },
+      // },
       {
         path: 'one',
         name: 'one',

@@ -1,3 +1,4 @@
+// 注册局部指令
 // 降低耦合
 const fn = (el, binding) => {
   const { name, value, expression,
