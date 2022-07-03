@@ -42,16 +42,14 @@ import dayjs from 'dayjs'
 import { calcAges, calcWorkingYears } from '@/utils/commonMethods.js'
 // const customParseFormat = require('dayjs/plugin/customParseFormat')
 // dayjs.extend(customParseFormat)
-import tableData from './mock/tableData'
-import tableData_2 from './mock/tableData_2'
+import tableData from './tableData'
+import tableData_2 from './tableData_2'
 
 export default {
   name: 'LearningDayjs',
   components: {
-
   },
   props: {
-
   },
   data() {
     return {

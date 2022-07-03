@@ -49,7 +49,7 @@ export default {
 
     // console.log('this.$router:', this.$router)
 
-    console.log('this.permission_routes:', this.permission_routes)
+    // console.log('this.permission_routes:', this.permission_routes)
 
     // const req = require.context('./svg', false, /\.svg$/)
     // const req = require.context('@/icons/svg', false, /\.svg$/)

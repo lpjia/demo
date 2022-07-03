@@ -80,11 +80,34 @@ export const constantRoutes = [
 
   nestedRouter,
 
+
   {
+    // 考虑到计算偏移量, 简单起见, 放到一级菜单
     path: '/LearningFloat',
     component: () => import('@/views/learning-float/index.vue'),
-    meta: { title: '浮动' },
+    meta: {
+      title: '浮动',
+      icon: 'el-icon-toilet-paper',
+    },
   },
+
+  /* 当 lodash 示例变多就单独组一级菜单, 分各种类型
+  {
+    path: '/LearningLodash',
+    component: Layout,
+    meta: {
+      title: 'lodash',
+      icon: 'el-icon-s-tools',
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/learning-lodash/index.vue'),
+        meta: { title: 'lodash', },
+      }
+    ]
+  },
+  */
 
   {
     path: '/',
@@ -106,12 +129,12 @@ export const constantRoutes = [
           // roles: ['admin', 'editor']
         },
       },
-      // {
-      //   path: 'computed-watch',
-      //   name: 'computed-watch',
-      //   component: () => import('@/views/computed-watch/index.vue')
-      // },
-
+      {
+        path: 'ComputedWatch',
+        // name: 'computed-watch',
+        component: () => import('@/views/computed-watch/index.vue'),
+        meta: { title: '计算 侦听器' },
+      },
       {
         path: 'CompNest',
         // name: 'CompNest',
@@ -138,11 +161,16 @@ export const constantRoutes = [
         component: () => import('@/views/custom-directive/index.vue'),
         meta: { title: '自定义指令' },
       },
-      // {
-      //   path: 'LearningFloat',
-      //   component: () => import('@/views/learning-float/index.vue'),
-      //   meta: { title: '浮动' },
-      // },
+      {
+        path: 'LearningLodash',
+        component: () => import('@/views/learning-lodash/index.vue'),
+        meta: { title: 'lodash' },
+      },
+      {
+        path: 'ReadYaml',
+        component: () => import('@/views/read-yaml/index.vue'),
+        meta: { title: '读取 yaml' },
+      },
       {
         path: 'one',
         name: 'one',

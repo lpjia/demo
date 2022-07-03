@@ -50,7 +50,6 @@
 </template>
 
 <script>
-// import Computed from './component/computed.vue'
 import ChildOne from './component/ChildOne.vue'
 import NamedSlot from './component/NamedSlot.vue'
 import DynamicSlot from './component/DynamicSlot.vue'

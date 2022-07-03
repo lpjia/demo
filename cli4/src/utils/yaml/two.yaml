@@ -1,7 +1,9 @@
+id: &id 110
 name: &name my_config
 env: &env
   version: 1.0
 
 compose:
+  id: *id
   key1: *name
   key2: *env

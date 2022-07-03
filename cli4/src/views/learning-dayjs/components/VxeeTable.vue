@@ -1,44 +1,31 @@
-<template>
-  <div>
-    <ChildOne></ChildOne>
-
-  </div>
-</template>
-
 <script>
-import ChildOne from './'
-
 export default {
-  name: 'Computed',
+  name: 'VxeeTable',
   components: {
-    ChildOne
   },
   props: {
-
   },
   data() {
     return {
-
     };
   },
   computed: {
-
   },
   watch: {
-
   },
   created() {
-
   },
   mounted() {
-
   },
   methods: {
-
   },
 };
 </script>
 
+<template>
+  <div>
+  </div>
+</template>
+
 <style scoped lang="scss">
 </style>
-

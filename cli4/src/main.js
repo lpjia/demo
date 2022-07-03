@@ -44,6 +44,8 @@ Vue.use(VXETable)
 
 
 
+import './components' // 注册全局组件
+
 import './icons' // 图标
 
 import './permission' // 权限
@@ -60,6 +62,12 @@ Vue.prototype.$bus = new Vue()
 
 
 Vue.config.productionTip = false
+
+// Vue.config.warnHandler = (msg, vm, trace) => {
+//   console.log('msg:', msg)
+//   console.log('vm:', vm)
+//   console.log('trace:', trace)
+// }
 
 new Vue({
   router,
