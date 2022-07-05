@@ -1,20 +1,22 @@
 <template>
   <div>
-    <section v-bind="{title:'绑定了一个对象','data-name':'绑定多个属性'}">
+    <p v-bind="{title:'绑定了一个对象','data-name':'绑定多个属性'}">
       v-bind="{title:'绑定了一个对象','data-name':'绑定多个属性'}"
-    </section>
-    <section :title="`绑定 title 属性`">
+    </p>
+    <p :title="`绑定 title 属性`">
       :title="`绑定 title 属性`"
-    </section>
-    <section :[dynamicParameter]="`动态参数`">
+    </p>
+    <p :[dynamicParameter]="`动态参数`">
       :[dynamicParameter]="动态参数"
-    </section>
+    </p>
 
     <button v-on:click="clk">v-on:click="clk"</button>
-    <button @click="clk">@click="clk"</button>
-    <button @[dynamicMethod]="clk_2">@[dynamicMethod]="clk_2"</button>
-    <input v-on="{ blur: blurMehtod, focus: focusMehtod}" />
+    <button class="marginLB" @click="clk">@click="clk"</button>
+    <button class="marginLB" @[dynamicMethod]="clk_2">@[dynamicMethod]="clk_2"</button>
+    <input class="marginLB" v-on="{ blur: blurMehtod, focus: focusMehtod}" />
+    <p>----分割线----</p>
     <el-divider></el-divider>
+
   </div>
 </template>
 

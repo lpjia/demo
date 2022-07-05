@@ -153,6 +153,15 @@ arr8.reduce((total, curr) => {
 
 
 
+/**
+ * arr.at()
+ */
+// idxArr
+let arr = ['red', 'green', 'blue']
+arr.at()
+
+
+
 
 
 

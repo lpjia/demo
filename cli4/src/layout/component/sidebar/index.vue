@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{'has-logo':showLogo}">
     <!-- 上面是 logo + 系统名字 -->
     <Logo v-if="showLogo" />
 

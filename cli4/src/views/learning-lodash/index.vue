@@ -28,6 +28,7 @@ export default {
         { name: 'xc', id: 11 },
         { name: 'xz', id: 111 },
       ],
+      arr_2: ['red', 'green', 'blue'],
       obj: {
         'a': [
           {
@@ -37,6 +38,7 @@ export default {
           }
         ]
       },
+
 
     };
   },
@@ -62,7 +64,8 @@ export default {
     <Num />
     <el-divider></el-divider>
     <Str />
-    <Arr :arr="arr" />
+    <!-- <Arr :arr="arr" /> -->
+    <Arr :arr="arr_2" />
     <!-- <json-view :val="arr" /> -->
 
   </div>

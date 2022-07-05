@@ -4,19 +4,19 @@
       <button @click="change">change</button>
     </div>
     <div v-once>这个将不会改变: {{ msg }}</div>
-    <hr>
+    <p>----分割线----</p>
 
     <p>Using mustaches: {{ rawHtml }}</p>
     <p>Using v-html directive: <span v-html="rawHtml"></span></p>
     <!-- 会覆盖标签内的文本内容 -->
     <p v-html="rawHtml">Using v-html directive: </p>
-    <hr>
+    <p>----分割线----</p>
 
-    <div v-bind:id="dynamicId">动态标识</div>
-    <div :id="dynamicId_2">动态标识_2</div>
+    <p v-bind:id="dynamicId">动态标识</p>
+    <p :id="dynamicId_2">动态标识_2</p>
     <button :disabled="isButtonDisabled">Button</button>
-    <button :disabled="!isButtonDisabled">Button_2</button>
-    <hr>
+    <button class="marginLB" :disabled="!isButtonDisabled">Button_2</button>
+    <p>----分割线----</p>
 
     <div>
       <!-- 可使用简单 js 表达式, 单个表达式 -->
@@ -25,8 +25,8 @@
       {{ msg.split('').reverse().join('') }}
       {{ Math.random() }}
     </div>
-    <div :id="'list-' + id">list-id</div>
-    <hr>
+    <p :id="'list-' + id">list-id</p>
+    <el-divider></el-divider>
 
   </div>
 </template>
