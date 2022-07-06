@@ -43,6 +43,11 @@ import 'vxe-table/lib/style.css'
 Vue.use(VXETable)
 
 
+// 全局引入 中文包
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+dayjs.locale('zh-cn')
+
 
 import './components' // 注册全局组件
 

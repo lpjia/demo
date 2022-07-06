@@ -5,11 +5,15 @@
     <el-divider></el-divider>
 
     <vxee-table :tableData="tableData_2" />
+    <el-divider></el-divider>
+
+    <NativeTable />
   </div>
 </template>
 
 <script>
 import EleTable from './components/EleTable.vue';
+import NativeTable from './components/NativeTable.vue';
 import VxeeTable from './components/VxeeTable.vue';
 import tableData from './tableData'
 import tableData_2 from './tableData_2'
@@ -18,7 +22,8 @@ export default {
   name: 'LearningDayjs',
   components: {
     EleTable,
-    VxeeTable
+    VxeeTable,
+    NativeTable
   },
   props: {
   },

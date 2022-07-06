@@ -245,13 +245,13 @@ const createRouter = () => new VueRouter({
   // mode: 'history',
 
   // 滚动到页面顶部
-  scrollBehavior: () => ({ y: 0 }),
+  // scrollBehavior: () => ({ y: 0 }),
 
   // 滚动到页面底部
-  // scrollBehavior: () => {
-  //   let div = document.querySelector('#app');
-  //   return { y: div.scrollHeight }
-  // },
+  scrollBehavior: () => {
+    let div = document.querySelector('#app');
+    return { y: div.scrollHeight }
+  },
 
   routes: constantRoutes
 })

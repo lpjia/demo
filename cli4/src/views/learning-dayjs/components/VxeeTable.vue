@@ -48,7 +48,7 @@ export default {
         <vxe-button>按钮2</vxe-button> -->
       </template>
     </vxe-toolbar>
-    <vxe-table border resizable id="vxeTable" ref="xTable1" height="1000"
+    <vxe-table border resizable id="vxeTable" ref="xTable1" height="500"
       :custom-config="{storage: true, checkMethod: checkColumnMethod}" :data="tableData"
       @resizable-change="resizableChangeEvent">
       <vxe-column type="seq" width="60" align="right"></vxe-column>
