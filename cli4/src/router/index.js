@@ -172,6 +172,11 @@ export const constantRoutes = [
         meta: { title: '事件处理' },
       },
       {
+        path: 'ElementPosition',
+        component: () => import('@/views/element-position/index.vue'),
+        meta: { title: '元素定位' },
+      },
+      {
         path: 'ReadYaml',
         component: () => import('@/views/read-yaml/index.vue'),
         meta: { title: '读取 yaml' },
@@ -245,13 +250,13 @@ const createRouter = () => new VueRouter({
   // mode: 'history',
 
   // 滚动到页面顶部
-  // scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ y: 0 }),
 
-  // 滚动到页面底部
-  scrollBehavior: () => {
-    let div = document.querySelector('#app');
-    return { y: div.scrollHeight }
-  },
+  // // 滚动到页面底部
+  // scrollBehavior: () => {
+  //   let div = document.querySelector('#app');
+  //   return { y: div.scrollHeight }
+  // },
 
   routes: constantRoutes
 })
