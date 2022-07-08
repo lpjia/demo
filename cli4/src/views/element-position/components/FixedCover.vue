@@ -13,6 +13,7 @@ export default {
 </template>
 <style scoped lang="scss">
 .compRoot {
+  width: 60%;
   padding: 10px;
   border: solid 1px #000;
   .d {

@@ -177,6 +177,11 @@ export const constantRoutes = [
         meta: { title: '元素定位' },
       },
       {
+        path: 'ImgPath',
+        component: () => import('@/views/img-path/index.vue'),
+        meta: { title: '引入图片' },
+      },
+      {
         path: 'ReadYaml',
         component: () => import('@/views/read-yaml/index.vue'),
         meta: { title: '读取 yaml' },
