@@ -11,11 +11,14 @@ export default {
     <div id="two" class="d">222</div>
   </div>
 </template>
+
 <style scoped lang="scss">
 .compRoot {
   width: 60%;
   padding: 10px;
   border: solid 1px #000;
+  box-sizing: border-box;
+
   .d {
     width: 60px;
     height: 60px;

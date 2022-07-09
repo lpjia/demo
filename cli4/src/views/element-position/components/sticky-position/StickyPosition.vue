@@ -1,11 +1,14 @@
 <script>
 import ImgDuidie from './ImgDuidie.vue';
 import StickyExample from './StickyExample.vue';
+import TheadLock from './TheadLock.vue';
+
 export default {
   name: 'StickyPosition', // 粘性定位
   components: {
     StickyExample,
     ImgDuidie,
+    TheadLock,
   },
   data() {
     return {
@@ -32,12 +35,18 @@ export default {
     <h3>粘性布局</h3>
     <h3>用 iframe</h3>
     <iframe src="/html/sticky.html" class="iframeStyle" />
+    <p>----分割线----</p>
 
     <h3>用组件</h3>
     <StickyExample class="iframeStyle_2" />
+    <p>----分割线----</p>
 
     <h3>图片堆叠</h3>
     <ImgDuidie :imgArr="imgArr" />
+    <p>----分割线----</p>
+
+    <h3>表头固定</h3>
+    <thead-lock class="iframeStyle_2" />
   </div>
 </template>
 

@@ -29,6 +29,10 @@ module.exports = {
   // lintOnSave: false,
 
 
+  // 生成 .map 文件
+  productionSourceMap: false,
+
+
   chainWebpack(config) {
     // vue 文件引入 yaml 文件配置
     config.module

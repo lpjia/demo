@@ -182,6 +182,11 @@ export const constantRoutes = [
         meta: { title: '引入图片' },
       },
       {
+        path: 'LearningAnimate',
+        component: () => import('@/views/learning-animate/index.vue'),
+        meta: { title: '动画' },
+      },
+      {
         path: 'ReadYaml',
         component: () => import('@/views/read-yaml/index.vue'),
         meta: { title: '读取 yaml' },

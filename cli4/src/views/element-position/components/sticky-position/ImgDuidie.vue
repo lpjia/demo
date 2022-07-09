@@ -3,12 +3,12 @@ export default {
   name: 'ImgDuidie',
   functional: true,
   render(h, ctx) {
+    // <li>{item.path}</li>
     return (
       <div class="compRoot">
         {ctx.props.imgArr.map(item => {
           return (
             <section>
-              <li>{item.path}</li>
               <img src={require('@/assets/' + item.path)} />
             </section>
           )
@@ -21,6 +21,7 @@ export default {
 
 <style scoped lang="scss">
 .compRoot {
+  width: 60%;
   height: 400px;
   overflow: auto;
 }

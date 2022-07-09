@@ -7,22 +7,6 @@ export default {
     FixedCover,
     StickyPosition
   },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
-  },
 };
 </script>
 
@@ -30,6 +14,7 @@ export default {
   <div>
     <FixedCover />
     <el-divider></el-divider>
+
     <StickyPosition />
   </div>
 </template>

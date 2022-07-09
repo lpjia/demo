@@ -5,6 +5,11 @@ import store from './store'
 
 import 'normalize.css/normalize.css' // 重置样式
 
+
+// 动画库
+import animate from 'animate.css'
+Vue.use(animate)
+
 // import '@/assets/fonts/iconfont.css' // 引入图标
 
 
@@ -63,9 +68,8 @@ import './directives/vColor.js' // 自定义指令
 import '@/styles/index.scss' // global css
 
 
+
 Vue.prototype.$bus = new Vue()
-
-
 Vue.config.productionTip = false
 
 // Vue.config.warnHandler = (msg, vm, trace) => {

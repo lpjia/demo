@@ -32,7 +32,9 @@ export default {
         // { path: '12-480x360' },
         // { path: '13-480x360' },
         // { path: '14-480x360' },
-      ]
+      ],
+
+      jueduiPath: '/logo.png',
     };
   },
   computed: {
@@ -60,7 +62,11 @@ export default {
 </script>
 
 <template>
-  <div style="width:50%;">
+  <div style="width:60%;">
+    <h3>使用绝对路径, 找的是 public 目录</h3>
+    <p>{{ jueduiPath }}</p>
+    <img :src="jueduiPath" />
+
     <h3>模版写法</h3>
     <template-comp :arr="imgArr_2" />
     <el-divider></el-divider>

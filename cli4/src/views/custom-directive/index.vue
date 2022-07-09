@@ -10,7 +10,7 @@
 
     <!-- 加一个修饰符, 来区分固定定位和绝对定位 -->
     <!-- <p v-pin:[direction].fixed="10">动态指令参数</p> -->
-    <p v-pin:[direction].fixed="10">动态指令参数</p>
+    <p v-pin:[direction].fixed="60">动态指令参数</p>
 
     <div v-obj="{ color: 'white', txt: 'hello!' }">对象字面量</div>
 
