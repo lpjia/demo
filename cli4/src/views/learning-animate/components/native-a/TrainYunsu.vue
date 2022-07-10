@@ -58,10 +58,18 @@ export default {
   left: 0px;
   // transition: left 5s cubic-bezier(0, 0, 1, 1);
 }
+
+// 通过切换 class 来实现不同过渡效果
 .yunsu {
   transition: left 5s cubic-bezier(0, 0, 1, 1);
 }
 .jiansu {
   transition: left 5s cubic-bezier(0, 0.5, 0.5, 1);
+}
+.ease-out {
+  transition: left 5s ease-out;
+}
+.fanxiang {
+  transition: left 5s cubic-bezier(0.5, -1, 0.5, 2);
 }
 </style>
