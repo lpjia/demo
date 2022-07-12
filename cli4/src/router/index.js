@@ -167,6 +167,11 @@ export const constantRoutes = [
         meta: { title: 'lodash' },
       },
       {
+        path: 'ReadYaml',
+        component: () => import('@/views/read-yaml/index.vue'),
+        meta: { title: '读取 yaml' },
+      },
+      {
         path: 'EventProcessing',
         component: () => import('@/views/event-processing/index.vue'),
         meta: { title: '事件处理' },
@@ -185,11 +190,6 @@ export const constantRoutes = [
         path: 'LearningAnimate',
         component: () => import('@/views/learning-animate/index.vue'),
         meta: { title: '动画' },
-      },
-      {
-        path: 'ReadYaml',
-        component: () => import('@/views/read-yaml/index.vue'),
-        meta: { title: '读取 yaml' },
       },
       {
         path: 'one',

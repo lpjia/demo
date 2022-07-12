@@ -4,6 +4,6 @@ env: &env
   version: 1.0
 
 compose:
-  id: *id
-  key1: *name
-  key2: *env
+  id2: *id
+  name2: *name
+  env2: *env

@@ -38,6 +38,14 @@
     <p>作为对比, 没加 v-cloak: {{ msg }}</p>
 
     <p>----分割线----</p>
+
+    <h3>v-model 本质上是语法糖</h3>
+    <section>
+      <input type="text" v-model="msg">
+      <input type="text" class="marginLB" :value="msg" @input="msg = $event.target.value">
+      <input type="text" class="marginLB" :value="msg" @input="inputFn">
+    </section>
+
     <el-divider></el-divider>
 
   </div>
@@ -103,6 +111,11 @@ export default {
 
     formSubmit() {
       console.log(`阻止了表单默认事件`)
+    },
+
+    inputFn(e) {
+      console.log(e)
+      this.msg = e.target.value
     },
 
   }

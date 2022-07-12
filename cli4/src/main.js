@@ -67,9 +67,11 @@ import './directives/vColor.js' // 自定义指令
 
 import '@/styles/index.scss' // global css
 
-
+// import { vueCodeLinkClient } from '@linzhinan/vue-code-link'
+// vueCodeLinkClient.init()
 
 Vue.prototype.$bus = new Vue()
+
 Vue.config.productionTip = false
 
 // Vue.config.warnHandler = (msg, vm, trace) => {

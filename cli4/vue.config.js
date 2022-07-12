@@ -1,13 +1,19 @@
 'use strict'
 const path = require('path')
+const resolve = dir => path.join(__dirname, dir)
+
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const customSetting = require('./src/configs/setting')
 // import customSetting from './src/configs/setting.js'
 // 这里不能用 ESM 写, 因为这个文件是要运行在仅支持 CommonJS 的环境下, 只能用 CJM 语法
 
-const resolve = dir => path.join(__dirname, dir);
 const title = customSetting.title || 'vuecli4'
+
+// vue-code-location
+// const { vueCodeLinkServer, vueCodeLinkLoaderConfig } = require('@linzhinan/vue-code-link')
+
+
 
 
 module.exports = {
@@ -61,6 +67,9 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+
+    // // 添加vue-code-link处理器
+    // vueCodeLinkLoaderConfig.addVueCodeLinkLoader(config)
   },
 
   devServer: {
@@ -78,6 +87,8 @@ module.exports = {
         secure: false,
       }
     },
+    // // 添加监听服务
+    // before: vueCodeLinkServer.before
   },
 
   configureWebpack: {

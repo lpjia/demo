@@ -21,71 +21,50 @@ export default {
     Keyframes,
     Airplane,
   },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
-  },
+  render(h) {
+    return (
+      <div>
+        <h3>原生动画</h3>
+        <NativeAnimation class="inlineB" />
+        <h6 class="inlineB marginLB">无动画效果作为对比</h6>
+        <p>----分割线----</p>
+
+        <NumPingyi class="inlineB marginLB" />
+        <NumPingyiDelay class="inlineB marginLB" />
+        {/**start 表示在动画开始时，我们需要立即开始第一段的动画。 */}
+        <NumTiaodong class="inlineB marginLB" cls="start" />
+        {/**另一个值 end 表示：改变不应该在最开始的时候发生，而是发生在每一段的最后时刻。 */}
+        <NumTiaodong class="inlineB marginLB" cls="end" />
+        <p>----分割线----</p>
+
+        <TrainYunsu cls="yunsu" />
+        <p>----分割线----</p>
+        {/**用名词替换一种贝塞尔曲线, 方便写 */}
+        <TrainYunsu cls="jiansu" />
+        <p>----分割线----</p>
+        <TrainYunsu cls="ease-out" />
+        <p>----分割线----</p>
+
+        <TrainYunsu cls="fanxiang" />
+        <p>----分割线----</p>
+
+        <Keyframes />
+        <p>----分割线----</p>
+
+        <Airplane />
+        <p>----分割线----</p>
+
+        <iframe src="/html/circle.html" class="iframeStyle" />
+        <p>----分割线----</p>
+
+        <iframe src="/html/circle-callback.html" class="iframeStyle" />
+        <el-divider></el-divider>
+
+      </div>
+    )
+  }
 };
 </script>
-
-<template>
-  <div>
-    <h3>原生动画</h3>
-    <NativeAnimation class="inlineB" />
-    <h6 class="inlineB marginLB">无动画效果作为对比</h6>
-    <p>----分割线----</p>
-
-    <NumPingyi class="inlineB marginLB" />
-    <NumPingyiDelay class="inlineB marginLB" />
-    <!-- start 表示在动画开始时，我们需要立即开始第一段的动画。 -->
-    <NumTiaodong class="inlineB marginLB" cls="start" />
-    <!-- 另一个值 end 表示：改变不应该在最开始的时候发生，而是发生在每一段的最后时刻。 -->
-    <NumTiaodong class="inlineB marginLB" cls="end" />
-    <p>----分割线----</p>
-
-    <TrainYunsu cls="yunsu" />
-    <p>----分割线----</p>
-    <!-- 用名词替换一种贝塞尔曲线, 方便写 -->
-    <TrainYunsu cls="jiansu" />
-    <p>----分割线----</p>
-    <TrainYunsu cls="ease-out" />
-    <p>----分割线----</p>
-
-    <TrainYunsu cls="fanxiang" />
-    <p>----分割线----</p>
-
-    <Keyframes />
-    <p>----分割线----</p>
-
-    <Airplane />
-    <p>----分割线----</p>
-
-    <iframe src="/html/circle.html" class="iframeStyle" />
-    <p>----分割线----</p>
-
-    <iframe src="/html/circle-callback.html" class="iframeStyle" />
-    <el-divider></el-divider>
-
-    <!-- <h3>animate.css 库</h3>
-    <animate-css />
-    <el-divider></el-divider>
-
-    <h3>vue 内置组件 transition</h3>
-    <transition-comp /> -->
-  </div>
-</template>
 
 <style scoped lang="scss">
 ::v-deep {

@@ -19,8 +19,6 @@ export default {
     Arr,
     JsonView
   },
-  props: {
-  },
   data() {
     return {
       arr: [
@@ -42,34 +40,21 @@ export default {
 
     };
   },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
-  },
+  render(h) {
+    return (
+      <div>
+        <Obj obj={this.obj} />
+
+        <YuYan arr={this.arr} />
+
+        <Num />
+        <el-divider></el-divider>
+        <Str />
+        {/**<Arr :arr="this.arr" /> */}
+        <Arr arr={this.arr_2} />
+        {/**<json-view :val="arr" /> */}
+      </div>
+    )
+  }
 };
 </script>
-
-<template>
-  <div>
-    <Obj :obj="obj" />
-
-    <YuYan :arr="arr" />
-
-    <Num />
-    <el-divider></el-divider>
-    <Str />
-    <!-- <Arr :arr="arr" /> -->
-    <Arr :arr="arr_2" />
-    <!-- <json-view :val="arr" /> -->
-
-  </div>
-</template>
-
-<style scoped lang="scss">
-</style>

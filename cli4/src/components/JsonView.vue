@@ -6,15 +6,12 @@ export default {
   components: {
     JsonViewer
   },
-  props: ['val'],
+  props: ['val', 'notib'],
 };
 </script>
 
 <template>
-  <div class="treeSection">
+  <div :class="{treeSection:!notib}">
     <JsonViewer :value="val" :expand-depth="10" />
   </div>
 </template>
-
-<style scoped lang="scss">
-</style>

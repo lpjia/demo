@@ -1,14 +1,13 @@
 <script>
 export default {
-  name: 'AnimateCss',
+  name: 'CustomEvent',
   components: {
   },
   props: {
   },
   data() {
     return {
-
-    }
+    };
   },
   computed: {
   },

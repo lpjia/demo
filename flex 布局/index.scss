@@ -44,6 +44,7 @@ div {
   // flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
   // 建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
   // flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+  // 该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。
 
   // align-self: auto | flex-start | flex-end | center | baseline | stretch;
 
