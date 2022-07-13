@@ -3,7 +3,7 @@ children:
   - Mark
   - duoge cihui: more
 
-true: true
+boolTrue: true
 strTrue: 'true'
 false: false
 
@@ -13,20 +13,18 @@ kongzhi null: null
 num: 123
 num '': '123'
 
-hehe: &hehe
-  x: 1
-  y: 2
-
 people: &people
   eat: 吃饭
   sleep: 睡觉
 
 jack: 
+  # 这里 << 无效, 应该是 yaml-loader 问题
+  # https://www.bejson.com/validators/yaml_editor/
   <<: *people
   age: 
-    ?
-    - complexkey1
-    - complexkey2
-    :
-    - complexvalue1
-    - complexvalue2
+  #   # ?
+    # - complexkey1
+    # - complexkey2
+    # :
+    # - complexvalue1
+    # - complexvalue2

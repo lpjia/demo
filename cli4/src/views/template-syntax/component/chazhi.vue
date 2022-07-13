@@ -25,7 +25,7 @@
       {{ msg.split('').reverse().join('') }}
       {{ Math.random() }}
     </div>
-    <p :id="'list-' + id">list-id</p>
+    <p :id="'list-' + id">list-{{ id }}</p>
     <el-divider></el-divider>
 
   </div>

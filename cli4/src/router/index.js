@@ -192,6 +192,16 @@ export const constantRoutes = [
         meta: { title: '动画' },
       },
       {
+        path: 'CustomEvent',
+        component: () => import('@/views/custom-event/index.vue'),
+        meta: { title: '自定义事件' },
+      },
+      {
+        path: 'CompCommunication',
+        component: () => import('@/views/comp-communication/index.vue'),
+        meta: { title: '组件通信' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
@@ -214,12 +224,6 @@ export const constantRoutes = [
         name: 'gmap',
         component: () => import('@/views/gmap/gmap'),
         meta: { title: 'gmap', }
-      },
-      {
-        path: 'four',
-        name: 'four',
-        component: () => import('@/views/four/four'),
-        meta: { title: 'four', }
       },
       {
         path: 'five/:username',
