@@ -1,25 +1,16 @@
 <script>
-import ChildYi from './components/ChildYi.vue';
-import ChildYiPlus from './components/ChildYiPlus.vue';
+import ChildEr from './components/child-er/ChildEr.vue';
+import ChildSan from './components/child-san/ChildSan.vue';
+import ChildYi from './components/child-yi/ChildYi.vue';
+import ChildYiPlus from './components/child-yi/ChildYiPlus.vue';
+
 export default {
   name: 'CustomEvent', // 自定义事件
   components: {
     ChildYi,
-    ChildYiPlus
-  },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
+    ChildYiPlus,
+    ChildEr,
+    ChildSan
   },
   methods: {
     jiantingChildLifeCycle() {
@@ -41,12 +32,13 @@ export default {
     <ChildYiPlus @hook:mounted="jiantingChildLifeCycle_2" />
     <el-divider></el-divider>
 
-    <!-- <h3>父子组件传参</h3>
-    <p>ChildEr.vue (props 和 $emit 触发自定义事件)</p>
-    <p>----分割线----</p> -->
+    <h3>v-model 本质上是语法糖</h3>
+    <ChildEr />
+
+    <h3>.sync 修饰符</h3>
+    <p>需要对一个 prop 进行“双向绑定”, 常规情况 子直接修改 prop 会报错, 数据流向: 父→子</p>
+    <p>加上 .sync, 则数据流向: 父→子(主动触发 update:xxx 修改父)→父→子(停)</p>
+    <ChildSan />
 
   </div>
 </template>
-
-<style scoped lang="scss">
-</style>

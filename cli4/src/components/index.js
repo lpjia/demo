@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import JsonView from '@/components/JsonView.vue'
+import ElTablePrint from './ElTablePrint.vue'
 
 // 注册全局组件
 Vue.component('JsonView', JsonView)
+Vue.component('ElTablePrint', ElTablePrint)
 /**
  * 当使用 kebab-case (短横线分隔命名) 定义一个组件时，你也必须在引用这个自定义元素时使用 kebab-case，例如 <my-component-name>。
  * 

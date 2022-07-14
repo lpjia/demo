@@ -91,6 +91,15 @@ export const constantRoutes = [
     },
   },
 
+  {
+    path: '/TablePrint',
+    component: () => import('@/views/table-print/index.vue'),
+    meta: {
+      title: '表格打印',
+      icon: 'el-icon-printer',
+    },
+  },
+
   /* 当 lodash 示例变多就单独组一级菜单, 分各种类型
   {
     path: '/LearningLodash',
