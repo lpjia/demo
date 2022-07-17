@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex 布局</title>
+  <style>
+    .flex {
+      /* width: 700px; */
+      width: 300px;
+      margin: 10px;
+      text-align: center;
+      border: 2px solid #9a9a9a;
+
+      display: flex;
+    }
+
+    .flex div {
+      width: 100px;
+      margin: 5px;
+    }
+
+    .flex div.eg1 {
+      background-color: #ffb685;
+      height: 130px;
+    }
+
+    .flex div.eg2 {
+      background-color: #fff7b1;
+      height: 50px;
+      width: 160px;
+    }
+
+    .flex div.eg3 {
+      background-color: #b1ffc8;
+      height: 100px;
+    }
+
+    .flex div.eg4 {
+      background-color: #b1ccff;
+      height: 80px;
+    }
+
+    .flex_2 {
+      /* flex-direction: row-reverse; */
+      /* flex-direction: column; */
+      /* flex-direction: column-reverse; */
+
+      /* align-items: center; */
+      /* align-items: flex-end; */
+      /* align-items: flex-start; */
+
+      /* justify-content: center; */
+      /* justify-content: flex-end; */
+      /* justify-content: space-between; */
+    }
+
+    /* .height {
+      height: 200px;
+    }
+
+    .height>div {
+      height: auto !important;
+    } */
+
+    .flex_3 {
+      height: 600px;
+      /* 不需要全写, 智能识别属性, 最好按顺序写(chrome 自动识别顺序) */
+      /* flex-flow: row-reverse wrap; */
+      /* flex-flow: wrap column; */
+
+      /* flex-wrap: wrap; */
+      /* flex-wrap: wrap-reverse; */
+
+      flex-flow: wrap;
+      /* align-content: flex-start; */
+      /* align-content: flex-end; */
+      /* align-content: center; */
+      /* align-content: space-between; */
+    }
+
+
+    .flex_2>.eg1,
+    .flex_2>.eg4 {
+      /* flex-grow: 1; */
+
+      /* flex-shrink: 1; */
+    }
+
+    .flex_2>.eg2,
+    .flex_2>.eg3 {
+      /* flex-grow: 2; */
+
+      /* flex-shrink: 0; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <div class="eg1">1</div>
+    <div class="eg2">2</div>
+    <div class="eg3">3</div>
+    <div class="eg4">4</div>
+  </div>
+
+  <div class="flex flex_2">
+    <div class="eg1">1</div>
+    <div class="eg2">2</div>
+    <div class="eg3">3</div>
+    <div class="eg4">4</div>
+  </div>
+
+  <div class="flex flex_2 height">
+    <div class="eg1">1(10)</div>
+    <div class="eg2">2(1)</div>
+    <div class="eg3">3(3)</div>
+    <div class="eg4">4(0)</div>
+  </div>
+
+  <div class="flex flex_3 height">
+    <div class="eg1">1</div>
+    <div class="eg2">2</div>
+    <div class="eg3">3</div>
+    <div class="eg4">4</div>
+    <div class="eg1">1</div>
+    <div class="eg2">2</div>
+    <div class="eg3">3</div>
+    <div class="eg4">4</div>
+    <div class="eg1">1</div>
+    <div class="eg2">2</div>
+    <div class="eg3">3</div>
+    <div class="eg4">4</div>
+  </div>
+
+
+</body>
+
+</html>
