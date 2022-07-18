@@ -9,8 +9,8 @@
   <title>flex 布局</title>
   <style>
     .flex {
-      /* width: 700px; */
-      width: 300px;
+      width: 700px;
+      /* width: 300px; */
       margin: 10px;
       text-align: center;
       border: 2px solid #9a9a9a;
@@ -50,7 +50,7 @@
       /* flex-direction: column-reverse; */
 
       /* align-items: center; */
-      /* align-items: flex-end; */
+      align-items: flex-end;
       /* align-items: flex-start; */
 
       /* justify-content: center; */
@@ -58,36 +58,18 @@
       /* justify-content: space-between; */
     }
 
-    /* .height {
+    .height {
       height: 200px;
     }
 
-    .height>div {
-      height: auto !important;
-    } */
-
-    .flex_3 {
-      height: 600px;
-      /* 不需要全写, 智能识别属性, 最好按顺序写(chrome 自动识别顺序) */
-      /* flex-flow: row-reverse wrap; */
-      /* flex-flow: wrap column; */
-
-      /* flex-wrap: wrap; */
-      /* flex-wrap: wrap-reverse; */
-
-      flex-flow: wrap;
-      /* align-content: flex-start; */
-      /* align-content: flex-end; */
-      /* align-content: center; */
-      /* align-content: space-between; */
-    }
-
-
+    /* 新代码 */
     .flex_2>.eg1,
     .flex_2>.eg4 {
       /* flex-grow: 1; */
 
       /* flex-shrink: 1; */
+
+      flex: 1;
     }
 
     .flex_2>.eg2,
@@ -95,6 +77,10 @@
       /* flex-grow: 2; */
 
       /* flex-shrink: 0; */
+
+      /* flex: 2; */
+
+      align-self: flex-start;
     }
   </style>
 </head>
@@ -115,27 +101,11 @@
   </div>
 
   <div class="flex flex_2 height">
-    <div class="eg1">1(10)</div>
-    <div class="eg2">2(1)</div>
-    <div class="eg3">3(3)</div>
-    <div class="eg4">4(0)</div>
-  </div>
-
-  <div class="flex flex_3 height">
-    <div class="eg1">1</div>
-    <div class="eg2">2</div>
-    <div class="eg3">3</div>
-    <div class="eg4">4</div>
-    <div class="eg1">1</div>
-    <div class="eg2">2</div>
-    <div class="eg3">3</div>
-    <div class="eg4">4</div>
     <div class="eg1">1</div>
     <div class="eg2">2</div>
     <div class="eg3">3</div>
     <div class="eg4">4</div>
   </div>
-
 
 </body>
 

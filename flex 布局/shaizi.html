@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex 布局</title>
+  <style>
+    /* 有时间研究下这个写法 */
+    /* 类似于之前的 div[data-id$="xxx"], 引号内是属性值 */
+    [class$="face"] {
+      margin: 16px;
+      padding: 4px;
+
+      background-color: #e7e7e7;
+      width: 104px;
+      height: 104px;
+      object-fit: contain;
+
+      box-shadow:
+        inset 0 5px white,
+        inset 0 -5px #bbb,
+        inset 5px 0 #d7d7d7,
+        inset -5px 0 #d7d7d7;
+
+      border-radius: 10%;
+    }
+
+    .pip {
+      display: block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      margin: 4px;
+
+      background-color: #333;
+      box-shadow: inset 0 3px #111, inset 0 -3px #555;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .first-face {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .second-face {
+      justify-content: space-between;
+    }
+
+    /* .pip:nth-of-type(2)
+    选择每个.pip元素是其父级的第二个.pip元素 */
+    .second-face .pip:nth-of-type(2) {
+      align-self: flex-end;
+    }
+
+    /* .pip:last-child
+    选择每个.pip元素是其父级的最后一个子级 */
+    /* .second-face .pip:last-child { // 
+      align-self: flex-end;
+    } */
+
+    /* 有时间把这些总结下 */
+
+    .third-face {
+      justify-content: space-between;
+    }
+
+    .third-face .pip:nth-of-type(2) {
+      align-self: center;
+    }
+
+    .third-face .pip:last-child {
+      align-self: flex-end;
+    }
+
+
+    /* 自己写的, 错误 s */
+    .four-face {
+      justify-content: space-between;
+    }
+
+    .four-face .column {
+      display: flex;
+    }
+
+    /* 自己写的, 错误 e */
+    /* .four-face .column:nth-of-type(1) .pip:last-child,
+    .four-face .column:nth-of-type(2) .pip:last-child { */
+    .four-face .column:first-child .pip:last-child,
+    .four-face .column:last-child .pip:last-child {
+      align-self: flex-end;
+    }
+
+    /* 正确的, 6和4其实样式是一样的, 就是dom多了两点 */
+    .fourth-face,
+    .fifth-face {
+      justify-content: space-between;
+    }
+
+    .fourth-face .column,
+    .fifth-face .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .fifth-face .column:nth-of-type(2) {
+      justify-content: center;
+    }
+
+    .ninth .column:nth-of-type(2),
+    .eighth .column:nth-of-type(2) {
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="flex first-face">
+    <span class="pip"></span>
+  </div>
+
+  <div class="flex second-face">
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+
+  <div class="flex third-face">
+    <span class="pip"></span>
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+
+  <h3>自己写的错误例子 s</h3>
+  <div class="flex four-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+  <h3>自己写的错误例子 e</h3>
+
+  <div class="flex fourth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <div class="flex fifth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <div class="flex fourth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <h3>增加 7 8 9</h3>
+  <div class="flex fifth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <div class="flex fifth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <div class="flex eighth fifth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+  <div class="flex ninth fifth-face">
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+    <div class="column">
+      <span class="pip"></span>
+      <span class="pip"></span>
+      <span class="pip"></span>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

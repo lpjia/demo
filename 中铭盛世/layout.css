@@ -1,0 +1,12 @@
+.hei_100 {
+  height: 100%;
+}
+
+.hei_100vh {
+  height: 100vh;
+}
+
+.logo_sec {
+  display: flex;
+  justify-content: flex-end;
+}
