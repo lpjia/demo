@@ -1,0 +1,46 @@
+ol,
+ul {
+  list-style: none;
+}
+
+.hei_100 {
+  height: 100%;
+}
+
+.hei_100vh {
+  height: 100vh;
+}
+
+.logo_sec {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.margin_b_100px {
+  margin-bottom: 6.25rem;
+}
+
+.margin_b_80px {
+  margin-bottom: 5rem;
+}
+
+.margin_b_60px {
+  margin-bottom: 3.75rem;
+}
+
+.margin_b_40px {
+  margin-bottom: 2.5rem;
+}
+
+.margin_b_12px {
+  margin-bottom: .75rem;
+}
+
+.margin_b_30px {
+  margin-bottom: 1.875rem;
+}
+
+
+.navbar {
+  background-color: rgba(5, 5, 5, 0.3) !important;
+}
