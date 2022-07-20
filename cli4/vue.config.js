@@ -10,10 +10,8 @@ const customSetting = require('./src/configs/setting')
 
 const title = customSetting.title || 'vuecli4'
 
-// vue-code-location
+// vue-code-location 这是我自己想到的名字
 // const { vueCodeLinkServer, vueCodeLinkLoaderConfig } = require('@linzhinan/vue-code-link')
-
-
 
 
 module.exports = {
@@ -31,11 +29,11 @@ module.exports = {
   } */
 
 
-  // 关闭 eslint 校验
+  // // 关闭 eslint 校验
   // lintOnSave: false,
 
 
-  // 生成 .map 文件
+  // 不生成 .map 文件
   productionSourceMap: false,
 
 
@@ -87,6 +85,7 @@ module.exports = {
         secure: false,
       }
     },
+
     // // 添加监听服务
     // before: vueCodeLinkServer.before
   },
