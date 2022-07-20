@@ -40,6 +40,10 @@ ul {
   margin-bottom: 1.875rem;
 }
 
+.margin_t_120px {
+  margin-top: 7.5rem;
+}
+
 
 .navbar {
   background-color: rgba(5, 5, 5, 0.3) !important;

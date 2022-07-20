@@ -1,0 +1,67 @@
+// header a.logo {
+//   margin-right: 5rem;
+// }
+
+// 子公司介绍 s
+.subcompany {
+  background: url('../img/album/photo.png') no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, .5);
+  // filter: brightness(50%);
+  height: 15rem;
+  margin-bottom: 2.5rem;
+
+  >div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    >div:first-child {
+      margin-right: 1.5rem;
+    }
+
+    .company_name {
+      font-size: 1.5rem;
+      font-family: Poppins-Bold, Poppins;
+      font-weight: bold;
+      color: #FFFFFF;
+      line-height: 2.25rem;
+      margin-bottom: 1rem;
+    }
+
+
+    .address {
+      display: flex;
+
+      >div {
+        font-size: 1rem;
+        font-family: Poppins-Regular, Poppins;
+        color: #FFFFFF;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+// 子公司介绍 e
+
+
+// 相册 s
+.title {
+  font-size: 1.875rem;
+  font-family: Poppins-Bold, Poppins;
+  font-weight: bold;
+  color: #B39700;
+  line-height: 2.8125rem;
+  margin-bottom: 1.875rem;
+}
+
+.album {
+  margin-bottom: 5rem;
+
+  img {
+    margin-bottom: 1.25rem;
+  }
+}
+
+// 相册 e
