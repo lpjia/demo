@@ -499,8 +499,9 @@ body {
 }
 
 .section-wrap .section-3 {
-  background: url('../img/home/sec_3.png') no-repeat;
-  background-size: cover;
+  /* background: url('../img/home/sec_3.png') no-repeat;
+  background-size: cover; */
+  background-color: #0c0b0a;
 }
 
 .section-wrap .section-4 {
