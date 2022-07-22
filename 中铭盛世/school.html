@@ -31,86 +31,16 @@
   <link href="scss/about.css" rel="stylesheet">
   <link href="page/pager.css" rel="stylesheet">
   <link href="scss/school.css" rel="stylesheet">
+  <link href="scss/big_screen.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
 
-  <header id="about">
-
-    <!-- 顶部导航 s -->
-    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-      <div class="row no-gutters w-100">
-        <div class="col-3 logo_sec">
-          <a href="index.html" title="Logo" class="logo scroll">
-            <!--Logo Default-->
-            <img src="img/logo.png" alt="logo" class="logo-dark">
-          </a>
-        </div>
-
-        <!--Nav Links-->
-        <div class="col-6">
-          <div class="collapse navbar-collapse" id="megaone">
-            <div id="about_nav" data-name="school" class="navbar-nav ml-auto mr-auto">
-              <a class="nav-link scroll" href="index.html">首页</a>
-              <a class="nav-link scroll" href="about.html">关于我们</a>
-              <a class="nav-link scroll" href="culture.html">影视文化</a>
-              <a class="nav-link scroll active" href="school.html">中铭学堂</a>
-              <a class="nav-link scroll" href="contact.html">联系我们</a>
-            </div>
-          </div>
-        </div>
-        <!--Side Menu Button-->
-        <div class="col-3">
-          <a href="javascript:void(0)" class="sidemenu_btn" id="sidemenu_toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-
-          <div class="lp_join">
-            <div>加入</div>
-          </div>
-        </div>
-
-      </div>
-    </nav>
-    <!-- 顶部导航 e -->
-
-    <!-- 侧边导航 s -->
-    <div class="side-menu hidden">
-      <div class="inner-wrapper">
-        <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
-        <nav class="side-nav w-100">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link scroll" href="index.html">首页</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link scroll" href="#about">关于我们</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link scroll" href="#our-cast">影视文化</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link scroll" href="#portfolio-sec">中铭学堂</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link scroll" href="#our-blog">联系我们</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link scroll" href="#contact">Contact</a>
-              </li> -->
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <a id="close_side_menu" href="javascript:void(0);"></a>
-    <!-- 侧边导航 e -->
-
-  </header>
+  <!-- 顶部导航 s -->
+  <div id="navbar"></div>
+  <!-- 顶部导航 s -->
 
 
-  <!-- <div class="container" style="background-color: #fff;"> -->
   <div class="container">
     <!-- 筛选条件 s -->
     <div class="cation-content margin_b_60px">
@@ -203,6 +133,13 @@
         <div class="time font">2022-02-28 更新</div>
       </div>
 
+      <div class="sec col-lg-3 col-sm-12">
+        <img src="img/culture/film_4.png" alt="">
+        <div class="name">你好，李焕英</div>
+        <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+        <div class="time font">2022-02-28 更新</div>
+      </div>
+
     </div>
 
     <div class="row lp_page margin_b_80px">
@@ -222,7 +159,7 @@
     <!-- 影片 筛选结果 e -->
 
 
-    <!--  -->
+    <!-- 数据 s  -->
     <div class="latest">
       <div class="first_title container">中铭影视数据报</div>
 
@@ -235,22 +172,63 @@
 
         </div>
 
-        <div class="row img_list">
-          <div class="col-lg-2">
-            <img src="img/culture/showing_1.png" alt="">
+        <div class="row cover">
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_1.png" alt="">
+            <div class="name">失落謎城</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
           </div>
-          <div class="col-lg-2">
-            <img src="img/culture/showing_1.png" alt="">
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_2.png" alt="">
+            <div class="name">捍衛戰士：獨行俠</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
           </div>
-          <div class="col-lg-2">
-            <img src="img/culture/showing_1.png" alt="">
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_3.png" alt="">
+            <div class="name">奇異博士2：失控多重宇宙</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
           </div>
-          <div class="col-lg-2">
-            <img src="img/culture/showing_1.png" alt="">
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_4.png" alt="">
+            <div class="name">你好，李焕英</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
           </div>
-          <div class="col-lg-2">
-            <img src="img/culture/showing_1.png" alt="">
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_4.png" alt="">
+            <div class="name">你好，李焕英</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
           </div>
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_1.png" alt="">
+            <div class="name">失落謎城</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
+          </div>
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_2.png" alt="">
+            <div class="name">捍衛戰士：獨行俠</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
+          </div>
+
+          <div class="sec col-lg-3 col-sm-12">
+            <img src="img/school/datagram_3.png" alt="">
+            <div class="name">奇異博士2：失控多重宇宙</div>
+            <div class="introduce font">制片方与发行方在影片上映前签订的一个失落謎城协议。</div>
+            <div class="time font">2022-02-28 更新</div>
+          </div>
+
         </div>
 
         <ul>
@@ -260,6 +238,7 @@
 
       </div>
     </div>
+    <!-- 数据 e  -->
 
   </div>
 

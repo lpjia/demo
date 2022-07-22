@@ -1,27 +1,31 @@
 $(function () {
 
-  // 修复导航活跃样式 s
-  $(window).on('scroll', function () {
-    let pageName = $('#about_nav').data('name')
-      , idx = null
-    switch (pageName) {
-      case 'about':
-        idx = 1
-        break;
-      case 'culture':
-        idx = 2
-        break;
-      case 'school':
-        idx = 3
-        break;
+  $("#navbar").load('comp/navbar.html', function () {
+    $('#about_nav a').eq(1).addClass('active')
+  })
 
-      default:
-        break;
-    }
+  // // 修复导航活跃样式 s
+  // $(window).on('scroll', function () {
+  //   let pageName = location.pathname ///contact.html
+  //     , idx = null
+  //   switch (pageName) {
+  //     case 'about':
+  //       idx = 1
+  //       break;
+  //     case 'culture':
+  //       idx = 2
+  //       break;
+  //     case 'school':
+  //       idx = 3
+  //       break;
 
-    $('#about_nav a').eq(idx).addClass('active')
-  });
-  // 修复导航活跃样式 e
+  //     default:
+  //       break;
+  //   }
+
+  //   $('#about_nav a').eq(idx).addClass('active')
+  // });
+  // // 修复导航活跃样式 e
 
 
   // 跳转公司详情 s

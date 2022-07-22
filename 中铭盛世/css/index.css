@@ -9,7 +9,7 @@
 }
 
 .navbar-simple .navbar-nav .nav-link {
-  padding: 1.375rem 0.75rem;
+  /* padding: 1.375rem 0.75rem; */
   font-size: 1.375rem;
   color: #A1A1A1;
 }
@@ -20,7 +20,7 @@
 
 .nav-line .navbar-nav .nav-link:before {
   height: 2px;
-  bottom: -4.625rem;
+  top: 71px;
 }
 
 .sidemenu_btn {
@@ -60,10 +60,10 @@
 
 
 
-.footer-style-1 {
+/* .footer-style-1 {
   background-color: #1f1904 !important;
   padding-bottom: 2rem;
-}
+} */
 
 
 
@@ -229,9 +229,9 @@ ul {
   align-self: flex-start;
 }
 
-.jieshao>div:first-child .lp_txt_section {
+/* .jieshao>div:first-child .lp_txt_section {
   text-align: right;
-}
+} */
 
 .jieshao .txt {
   font-size: 1rem;
@@ -499,13 +499,15 @@ body {
 }
 
 .section-wrap .section-3 {
-  /* background: url('../img/home/sec_3.png') no-repeat;
-  background-size: cover; */
-  background-color: #0c0b0a;
+  background: url('../img/home/sec_3.png') no-repeat;
+  background-size: cover;
+  /* background-color: #0c0b0a; */
 }
 
 .section-wrap .section-4 {
-  background-color: #0c0b0a;
+  background: url('../img/home/sec_4.png') no-repeat;
+  background-size: cover;
+  /* background-color: #0c0b0a; */
 }
 
 .section-wrap .section-5 {

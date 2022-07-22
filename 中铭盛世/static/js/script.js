@@ -16,8 +16,9 @@ $(window).on("load", function () {
 
 
 jQuery(function ($) {
-
-
+  $("#navbar").load('comp/navbar.html', function () {
+    $('#about_nav a').eq(0).addClass('active')
+  })
   "use strict";
 
   // $(window).on('scroll', function () {

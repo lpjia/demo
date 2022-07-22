@@ -13,7 +13,8 @@ ul {
 
 .logo_sec {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .margin_b_100px {
@@ -47,4 +48,22 @@ ul {
 
 .navbar {
   background-color: rgba(5, 5, 5, 0.3) !important;
+  display: flex;
+  justify-content: center;
+}
+
+
+.footer-style-1 {
+  background-color: #1f1904 !important;
+  padding-top: 2rem !important;
+  padding-bottom: .75rem !important;
+}
+
+#about_nav>div {
+  display: flex;
+  align-items: center;
+}
+
+#about_nav>div.active {
+  border-bottom: 1px solid red;
 }

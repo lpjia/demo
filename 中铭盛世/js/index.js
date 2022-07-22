@@ -10,8 +10,16 @@ $(function () {
 
   // 隐藏下一屏按钮
   function hideArrow() {
-    i == 4 ? $('.arrow').hide() : $('.arrow').show()
+    let page = location.pathname
+    if (page === '/contact.html') {
+      i == 1 ? $('.arrow').hide() : $('.arrow').show()
+      i == 1 ? $('.lp_join').css('visibility', 'hidden')
+        : $('.lp_join').css('visibility', 'visible')
+    }
+    else
+      i == 4 ? $('.arrow').hide() : $('.arrow').show()
   }
+
 
   // 增加首尾不联动限制
   let isRun = true
@@ -47,7 +55,8 @@ $(function () {
     console.log($wrap.attr("class", "section-wrap"))
     $wrap.attr("class", "section-wrap").addClass(function () {
       return "put-section-" + i;
-    }).find('.section').eq(i).find('.title').addClass('active');
+    })
+    // .find('.section').eq(i).find('.title').addClass('active');
 
   };
 

@@ -775,7 +775,7 @@ header a.logo img {
   color: #ffffff;
   font-weight: 400;
   text-align: center;
-  padding: 0.4rem 1.5rem;
+  /* padding: 0.4rem 1.5rem; */
 }
 
 .nav-box-round .navbar-nav .nav-link {

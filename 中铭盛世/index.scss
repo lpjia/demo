@@ -49,7 +49,7 @@
 
   .r {
     >div {
-      width: 33.75rem;
+      // width: 33.75rem;
       height: 18.75rem;
       background: url('../img/home/sec_1.png') no-repeat;
       background-size: cover;
@@ -86,14 +86,13 @@
 
 
 // 联系我们 s
-#home_foot {
-  display: block;
-  justify-items: auto;
-}
+// #home_foot {
+//   display: block;
+// }
 
-.lp_paddingtop {
-  padding-top: 10rem;
-}
+// .lp_paddingtop {
+//   padding-top: 10rem;
+// }
 
 .lp_contact {
   .contact_ying {
@@ -115,7 +114,7 @@
   }
 
   .icon {
-    >div {
+    .zhu {
       display: flex;
       justify-content: space-between;
       padding: 0 10rem;

@@ -6,13 +6,129 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" type="text/css" href="../global/global.css" /> -->
-  <!-- <link rel="stylesheet" href="css/index.css"> -->
+
+  <style>
+    .mid {
+      display: flex;
+    }
+
+    .navbar-simple .navbar-nav .nav-link {
+      padding: 0 1.5rem;
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>标题</h1>
+  <header id="lp_navbar">
+
+    <!-- 顶部导航 s -->
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+      <!-- <div class="row no-gutters w-100"> -->
+      <div class="row no-gutters container">
+        <!-- <div class="col-3 logo_sec"> -->
+        <div class="logo_sec">
+          <a href="index.html" title="Logo" class="logo scroll">
+            <!--Logo Default-->
+            <img src="img/logo.png" alt="logo" class="logo-dark">
+          </a>
+        </div>
+
+        <!--Nav Links-->
+        <!-- <div class="col-6 mid"> -->
+        <div class="mid">
+          <div class="collapse navbar-collapse" id="megaone">
+            <div id="about_nav" data-name="contact" class="navbar-nav ml-auto mr-auto">
+              <a class="nav-link scroll" href="index.html">首页</a>
+              <a class="nav-link scroll" href="about.html">关于我们</a>
+              <a class="nav-link scroll" href="culture.html">影视文化</a>
+              <a class="nav-link scroll" href="school.html">中铭学堂</a>
+              <a class="nav-link scroll" href="contact.html">联系我们</a>
+              <!-- <a class="nav-link scroll" href="javascript:;">联系我们</a> -->
+            </div>
+          </div>
+        </div>
+        <!--Side Menu Button-->
+        <!-- <div class="col-3"> -->
+        <div>
+          <a href="javascript:void(0)" class="sidemenu_btn" id="sidemenu_toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+
+          <div class="lp_join">
+            <div>加入</div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+    <!-- 顶部导航 e -->
+
+    <!-- 侧边导航 s -->
+    <div class="side-menu hidden">
+      <div class="inner-wrapper">
+        <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+        <nav class="side-nav w-100">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link scroll" href="index.html">首页</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#about">关于我们</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#our-cast">影视文化</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#portfolio-sec">中铭学堂</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link scroll" href="#our-blog">联系我们</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link scroll" href="#contact">Contact</a>
+            </li> -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <a id="close_side_menu" href="javascript:void(0);"></a>
+    <!-- 侧边导航 e -->
+
+  </header>
+
+
+  <script>
+    $(function () {
+
+      // 修复导航活跃样式 s
+      $(window).on('scroll', function () {
+        let pageName = location.pathname // /contact.html
+          , idx = null
+        switch (pageName) {
+          case '/about.html':
+          case '/subcompany.html':
+            idx = 1
+            break;
+          case '/culture.html':
+            idx = 2
+            break;
+          case '/school.html':
+            idx = 3
+            break;
+
+          default:
+            break;
+        }
+
+        $('#about_nav a').eq(idx).addClass('active')
+      });
+      // 修复导航活跃样式 e
+
+    })
+  </script>
 </body>
 
 </html>
