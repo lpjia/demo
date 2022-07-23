@@ -1,3 +1,83 @@
 #lp_navbar .navbar {
-  background-color: #0e0e0e !important;
+  background-color: rgba(11, 10, 10, .5) !important;
+}
+
+
+.rela {
+  position: relative;
+
+  .bg {
+    position: absolute;
+    right: 0;
+    width: 26.25rem;
+    height: 45.5rem;
+    background: url('../img/about/bg.png');
+  }
+
+  .bg_2 {
+    position: absolute;
+    right: 0;
+    top: 85rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_2.png');
+  }
+
+  .bg_3 {
+    position: absolute;
+    left: 0;
+    top: 95rem;
+    width: 38.75rem;
+    height: 87rem;
+    background: url('../img/about/bg_3.png');
+  }
+
+  .bg_4 {
+    position: absolute;
+    left: 0;
+    top: 170rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_4.png');
+  }
+
+
+  // 
+  .bg_5 {
+    position: absolute;
+    left: 0;
+    top: -14rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_4.png');
+  }
+
+  .bg_6 {
+    position: absolute;
+    right: 0;
+    top: 10rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_2.png');
+  }
+
+  // 
+  .bg_7 {
+    position: absolute;
+    left: 0;
+    top: -14rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_4.png');
+  }
+
+  .bg_8 {
+    position: absolute;
+    right: 0;
+    top: 10rem;
+    width: 21.25rem;
+    height: 76.25rem;
+    background: url('../img/about/bg_2.png');
+  }
+
 }
