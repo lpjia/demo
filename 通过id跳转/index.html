@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>通过id跳转</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+
+  <style>
+    a.activeClass {
+      color: red;
+    }
+
+    .sec {
+      color: #fff;
+      height: 100px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 1rem 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#phone" active>phone</a>
+  </nav>
+
+  <div style="height: 5000px;"></div>
+
+  <div id="home" class="sec" style="background-color: #000;">id="home"</div>
+  <div id="about" class="sec" style="background-color: blue;">id="about"</div>
+  <div id="phone" class="sec" style="background-color: green;">id="phone"</div>
+  <div style="height: 1000px;">!!!</div>
+
+  <script src="../lib/jquery@3.3.1.slim.min.js"></script>
+  <!-- <script src="index.js" ></script> -->
+  <script>
+    $(function () {
+      $('nav').on('click', 'a', function (e) {
+        $(this).addClass('activeClass').siblings().removeClass('activeClass')
+      })
+    })
+  </script>
+</body>
+
+</html>

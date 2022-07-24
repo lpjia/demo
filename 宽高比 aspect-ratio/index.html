@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>宽高比 aspect-ratio</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    div {
+      border: 1px solid deepskyblue;
+      box-sizing: content-box;
+    }
+
+    .example {
+      width: 100px;
+      display: inline-block;
+      aspect-ratio: 2/1;
+    }
+
+    .example_2 {
+      display: inline-block;
+      aspect-ratio: 2/1;
+    }
+
+    .example_3 {
+      height: 80px;
+      display: inline-block;
+      aspect-ratio: 2/1;
+    }
+
+    .example_4 {
+      /* height: 1080px; */
+      aspect-ratio: 16/9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 这个属性属于比较新的属性, 暂时在生产项目中不要用, 私活可以试用 -->
+  <!-- 在可编辑的情况下, 会有一些意想不到之处 -->
+
+  <div class="example" contenteditable="true">固定宽度</div>
+  <div class="example_3" contenteditable="true">固定高度</div>
+  <div class="example_2" contenteditable="true">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
+    adipisci!</div>
+
+  <!-- 自己想到的用法, 测试常用分辨率的宽高比 -->
+  <section class="margin_tb">
+
+    <!-- 这种方法想使用, 我用到了 e 只能传入 event, 否则报错 -->
+    <!-- 侵入式 -->
+    <input type="text" id="kuan" placeholder="宽度" name="input_1" oninput="updateValue(event)">
+    <input type="text" id="gao" placeholder="高度" name="input_2" oninput="updateValue(event)">
+
+    <!-- 配合 addEventListener -->
+    <!-- 非侵入式 -->
+    <!-- <input type="text" id="kuan" placeholder="宽度" name="input_1">
+    <input type="text" id="gao" placeholder="高度" name="input_2"> -->
+
+    <select name="select_1" id="select_100">
+      <option value="16:9">16:9</option>
+      <option value="16:10">16:10</option>
+      <option value="4:3">4:3</option>
+    </select>
+    <button onclick="confirm()">确认</button>
+    <button onclick="reset()">清空</button>
+
+  </section>
+  <div class="example_4"></div>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>

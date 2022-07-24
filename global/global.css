@@ -20,6 +20,10 @@ button {
   margin: 20px 0;
 }
 
+.margin_tb {
+  margin: 20px 0;
+}
+
 .flex {
   display: flex;
 }

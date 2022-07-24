@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex 布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .margin_t {
+      margin-top: 20px;
+    }
+
+    .margin_l {
+      margin-left: 20px;
+    }
+
+    .wrapper {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
+    .wrapper_2 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper_3,
+    .wrapper_5,
+    .wrapper_4 {
+      display: flex;
+    }
+
+    .wrapper_3 .item,
+    .wrapper_5 .item,
+    .wrapper_4 .item {
+      width: 100px;
+    }
+
+    .wrapper_4 {
+      align-items: flex-start;
+    }
+
+    .wrapper_5 .item:nth-of-type(2) {
+      align-self: flex-end;
+    }
+
+    .item:nth-of-type(1) {
+      background-color: deepskyblue;
+    }
+
+    .item:nth-of-type(2) {
+      background-color: deeppink;
+    }
+
+    .sec {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>纵向排列</h3>
+  <div class="wrapper">
+    <div class="item" contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quia.
+    </div>
+    <div class="item" contenteditable="true">12345</div>
+  </div>
+
+  <h3 class="margin_t">对比</h3>
+  <!-- 弹性布局, 默认纵向排列, 宽度类似块元素, 100% -->
+  <div class="wrapper_2">
+    <div class="item" contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quia.
+    </div>
+    <div class="item" contenteditable="true">12345</div>
+  </div>
+
+  <div class="sec margin_t">
+    <h3>横向排列</h3>
+    <!-- 弹性布局, 横向排列, 俩高度一致, 因为默认 align-item: stretch; (align-self) -->
+    <div class="wrapper_3">
+      <div class="item" contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium,
+        quia.
+      </div>
+      <div class="item" contenteditable="true">12345</div>
+    </div>
+
+    <h3 class="margin_l">对比</h3>
+    <div class="wrapper_4">
+      <div class="item" contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium,
+        quia.
+      </div>
+      <div class="item" contenteditable="true">12345</div>
+    </div>
+
+    <h3 class="margin_l">对比</h3>
+    <div class="wrapper_5">
+      <div class="item" contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium,
+        quia.
+      </div>
+      <div class="item" contenteditable="true">12345</div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
