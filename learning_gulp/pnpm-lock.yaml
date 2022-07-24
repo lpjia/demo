@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  gulp: '4'
+  gulp: ~4.0.2
 
 dependencies:
   gulp: 4.0.2
