@@ -1,4 +1,310 @@
 
+
+
+温故而知新
+这句话显然说出了知识的真谛
+
+
+有道云笔记
+工作资源.md
+有官方中文文档的, 写成
+vue2 官网(中文)
+
+
+新文件夹	前端工程化工具
+放 nodejs npm nginx pnpm 等前端用到的工程化工具知识
+把其他分散的文件知识统一整理后迁移到这里
+算了, 为了直观的区分, 还是放弃
+改目录名字算了
+
+
+
+(以下官方插件称官方, 自己插件称我)
+开发插件时, 如果有官方, 那么我的功能尽量不要与官方有重复, 我可以增强官方的功能(也就是只开发官方没有的功能), 但是要时刻关注官方的版本更新情况, 如果官方后续更新的版本中, 增加了我的其中一些功能, 那么我后续更新版本中就要增加设置项来关闭这些功能(默认配置项是false, 需要主动开启, disable 某某功能: true), 这样可以避免和官方争夺资源, 减少卡顿
+对于用户更新我, 需要我给用户一个版本更新提示, 务必提醒用户看
+我的介绍页也推荐用户安装官方, 良性互动
+
+
+
+vscode plugin for element-ui vux iview
+针对上面, 其实核心功能很多都是重复的, 比如路径跳转等, 区别 api 不同、标签快捷键不同等, 那么只需要写不同之处, 把相同的功能提取出来, 就可以写了.
+核心功能(比如)可以单独建一个文件夹 core, 不同功能分别建自己的文件夹
+
+
+版本迭代
+向上
+向下兼容
+
+
+-----------------------------------------
+
+
+
+
+看微信收藏
+总结 nodejs api
+process.env.NODE_ENV
+开发 测试 生产环境 配置
+learning_commonJS 导出语法
+
+
+
+vivo 那个生成组件信息文档不错
+https://mp.weixin.qq.com/s?__biz=MzI4NjY4MTU5Nw==&mid=2247491367&idx=2&sn=184b48330e598ab4be2d462823ec17a9&chksm=ebd86fb5dcafe6a38b05f0424baa2642751b7ae32ce5c3d23f5ebac5ab2dea3be1c5e0164a48&scene=178&cur_album_id=1500522652875194368#rd
+
+解决了文档维护的烦恼, 同时为了避免对代码侵入过多，我们还是需要尽量少的添加额外的标识。而入参说明采用了与js-doc相同的格式，主要还是因为这套方案 使用比较普遍，而且代码编辑器都自动支持方便编辑。
+有了数据结构之后, 自己拼接 md 文件内容输出
+
+可以学习
+AST
+生成 md 文件, 拼接内容
+
+
+实现之后发布一个 npm 包
+
+有相似功能的包, 不过配置及其复杂, 对原有 vue 组件代码侵入比较严重
+https://github.com/vue-styleguidist/vue-styleguidist
+https://www.cnblogs.com/mfyngu/p/13050392.html
+https://www.jianshu.com/p/e6745ed87563
+
+
+
+
+看"阅读清单"
+
+
+"main": "gulpfile.js",
+
+
+异步执行
+https://www.gulpjs.com.cn/docs/getting-started/async-completion/
+
+v3 文档
+https://v3.gulpjs.com.cn/docs/api/
+
+
+https://blog.csdn.net/Loonger29/article/details/119180008
+https://blog.csdn.net/weixin_45147894/article/details/115195448
+https://www.fengkx.top/post/gulp-uglify-es6-babel/
+https://blog.csdn.net/sunny_desmond/article/details/107506626
+
+
+
+
+
+
+
+demo 仓库
+开源证书, readme 需要声明一个
+使用须注明
+
+有机会借鉴下其他个人项目
+
+
+
+
+下载
+为何是吴秀在
+已下载, 9
+
+
+
+总结
+fullPage
+
+
+
+
+
+
+
+下次再接项目, 问清楚
+
+是否有
+原型图 原型交互(可无)
+需求文档(可无)
+UI 图
+
+是否
+纯静态页面
+需要对接接口
+
+做什么
+PC 自适应
+PC 响应式
+移动端
+小程序
+app
+
+怎么结算
+先付多少
+尾款结清
+
+
+
+
+还是先学 flex 布局后, 再做项目
+直接用 tailcss 来写 cdn 引入看是否快不快
+
+
+
+cli4
+// 先看有没有相同的 .html, 搜索
+
+
+
+
+
+中铭影视
+项目
+flex boostrap 搭配使用
+找到个模板, 先尝试着改
+
+
+企业官网模板
+https://sc.chinaz.com/moban/GongSiQiYe.html
+
+基于Vue开发的门户网站展示和后台数据管理系统
+https://www.cnblogs.com/wuhuacong/p/16111320.html
+
+
+TablePrint
+写完
+找自己的分页组件, 顺便总结
+
+
+
+
+
+临时
+煮黑豆,查查怎么煮的,当咸菜吃
+有时间了把qq音乐上的歌都挪到网易云音乐上,备用手机下个qq音乐,然后手机直接听歌识曲查
+
+
+长期
+买薄外套
+买电脑耳机
+把婚礼邀请的朋友清单列下来,好了之后拍照保存
+找治疗脚气的方
+制定个计划,每周一到日,晚上下班回去都做什么
+F:\SR\gz截图
+
+
+
+学习 shrink 用法
+收缩的意思
+还是写到 .html
+进行验证
+
+
+我想F12查看样式class定义
+方法定义
+变量定义
+属性定义
+vue-helper 不知道可以否
+
+.vue 文件中
+路径可以跳转
+
+.html 文件中
+样式 class 可以跳转
+
+
+动画
+vue 自带组件
+
+
+事件捕获
+事件冒泡
+
+
+自定义指令
+其他钩子函数
+
+
+增加 @container
+
+
+test-test
+
+
+封装 table
+封装 form
+封装 分页
+
+
+不同环境, 启动, 打包编译
+需要 nginx
+
+
+引入那个会生成代码的低代码平台
+
+
+菜单要绑定角色
+角色分超级管理员 管理员 一般用户 游客
+superAdmin
+admin
+user
+visitor
+简单起见, 实现管理员和游客的查看路由的权限
+管理员有全部路由权限
+游客仅有部分路由权限
+
+
+
+
+动态路由
+
+权限是前端控制还是后台控制
+
+
+路由情况
+  只有父, 无子, 如404
+    children [] undefined '' null
+  父有一子
+  父有多子
+  
+  
+
+
+修电脑充电器
+从断处用锯条烧红，沿着切把断的取出，再拿个旧得拆掉插片焊上去，用胶水封住，
+细砂纸打磨平整，根原装一样，我用了差不多一年了，好得很
+https://www.bilibili.com/video/BV1XV411C7jw?spm_id_from=333.337.search-card.all.click
+
+
+
+二级菜单
+  加样式
+
+一级菜单
+  加上样式
+
+
+
+
+
+
+博客
+	用 github pages, 然后备份一份到 gitee, 但是想让国内访问, 还必须得弄 gitee pages
+	gitee 得登记实名信息
+	
+	用路过图床来存图片, 每篇博文都单独一个文件夹(或者一个系列的单独存一个文件夹)
+	不知道路过图床有容量限制吗?
+	
+	站内搜索, 看 v站, 自己发帖子求了答案
+	首先考虑谷歌, 参考 v站 的搜索
+	
+
+
+
+
+---- 分割线 ----
+
+
+CompositionApi
+
+
 script-setup
 
 setup()
@@ -19,6 +325,7 @@ zuheshi-fcn
 
 选项式
 option
+option-api
 
 
 把目前的 learning-setup 弄成一个组件
