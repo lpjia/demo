@@ -12,7 +12,7 @@ export default {
     return (
       <div>
         <h4 class="inlineB" style="margin-right: 10px;">{this.title}</h4>
-        <span onclick={this.updatTitle} style="cursor: pointer;">编号: {this.id}</span>
+        <span title="点我" onclick={this.updatTitle} style="cursor: pointer;">编号: {this.id}</span>
         <p>{this.$scopedSlots.default()}</p>
       </div>
     )
