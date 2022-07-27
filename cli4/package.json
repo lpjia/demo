@@ -5,6 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:prod": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode development",
+    "build:test": "vue-cli-service build --mode testenv",
     "build:ui": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "new": "plop",

@@ -4,8 +4,9 @@ node_modules
 
 
 # local env files
-.env.local
-.env.*.local
+# .env.local
+# 这里为了测试, 选择不忽略 .local
+# .env.*.local
 
 # Log files
 npm-debug.log*

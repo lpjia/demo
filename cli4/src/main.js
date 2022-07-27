@@ -40,10 +40,6 @@ Vue.use(ElementUI);
 // Vue.use(TableColumn);
 // Vue.prototype.$message = Message;
 
-console.log("process.env.NODE_ENV:",
-  process.env.NODE_ENV
-)
-
 
 // 表格组件
 import 'xe-utils'

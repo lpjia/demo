@@ -12,5 +12,5 @@ ormconfig *.json
 
 # 特定文件, 好像也不论层级
 ormconfig.json
-.env
-.env.prod
+# .env
+# .env.prod
