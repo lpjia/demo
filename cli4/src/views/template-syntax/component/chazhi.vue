@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'Chazhi',
+  name: 'Chazhi', // 插值
   data() {
     return {
       msg: '这是一个基础变量',

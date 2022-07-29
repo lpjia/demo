@@ -48,6 +48,7 @@ export default {
       </div>
     </section>
     <!-- 未完待续 -->
+    <!-- 还有事件传播方式, 冒泡 捕获 -->
 
     <el-divider></el-divider>
   </div>

@@ -44,7 +44,7 @@
 
 <script>
 export default {
-  name: 'Zhiling',
+  name: 'Zhiling', // 指令
   data() {
     return {
       seen: true,

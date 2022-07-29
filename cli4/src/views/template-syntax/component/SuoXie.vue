@@ -13,7 +13,7 @@
     <button v-on:click="clk">v-on:click="clk"</button>
     <button class="marginLB" @click="clk">@click="clk"</button>
     <button class="marginLB" @[dynamicMethod]="clk_2">@[dynamicMethod]="clk_2"</button>
-    <input class="marginLB" v-on="{ blur: blurMehtod, focus: focusMehtod}" />
+    <input class="marginLB" v-on="{ input: inputMethod, blur: blurMehtod, focus: focusMehtod}" placeholder="监听多个方法" />
     <p>----分割线----</p>
     <el-divider></el-divider>
 
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'SuoXie',
+  name: 'SuoXie', // 缩写
   data() {
     return {
       // 动态参数
@@ -38,6 +38,9 @@ export default {
     },
     clk_2() {
       console.log('clk_2()')
+    },
+    inputMethod() {
+      console.log('inputMethod()')
     },
     blurMehtod() {
       console.log('blurMehtod()')
