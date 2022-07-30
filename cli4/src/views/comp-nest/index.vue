@@ -10,7 +10,7 @@
 import NestItem from './components/NestItem.vue'
 
 export default {
-  name: 'CompNest',
+  name: 'CompNest', // 组件嵌套
   components: {
     NestItem
   },

@@ -211,6 +211,11 @@ export const constantRoutes = [
         meta: { title: '组件通信' },
       },
       {
+        path: 'LearningProp',
+        component: () => import('@/views/learning-prop/index.vue'),
+        meta: { title: 'prop' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
