@@ -4,18 +4,12 @@ import capitalize from "lodash/capitalize";
 
 export default {
   name: 'Watcher',
-  components: {
-  },
-  props: {
-  },
   data() {
     return {
       question: '',
       answer: 'I cannot give you an answer until you ask a question!',
       imgUrl: ''
     };
-  },
-  computed: {
   },
   watch: {
     // 如果 `question` 发生改变，这个函数就会运行
@@ -26,8 +20,6 @@ export default {
   },
   created() {
     this.debouncedGetAnswer = debounce(this.getAnswer, 500)
-  },
-  mounted() {
   },
   methods: {
     async getAnswer() {
@@ -64,6 +56,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-</style>
