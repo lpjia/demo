@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+
+    th {
+      cursor: pointer;
+    }
+
+    th:hover {
+      background: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>使表格可排序：点击 th 元素，应按对应的列对表格进行排序</h3>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Age</th>
+        <th data-type="string">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>John</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Pete</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ann</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Eugene</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Ilya</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <script>
+
+    grid.onclick = function (e) {
+      if (e.target.tagName != 'TH') return;
+
+      let th = e.target;
+      // if TH, then sort
+      // cellIndex is the number of th:
+      //   0 for the first column
+      //   1 for the second column, etc
+      sortGrid(th.cellIndex, th.dataset.type);
+    };
+
+
+
+    // 评论区给的简洁代码 s
+    const compare = {
+      number(a, b) {
+        return a - b;
+      },
+      string(a, b) {
+        return a.localeCompare(b);
+      }
+    };
+    function sortGrid(colIndex, type) {
+      // grid.tBodies 返回 HTMLCollection 集合, 有1元素
+      const tBody = grid.tBodies[0];
+
+      let sortedRows = Array.from(tBody.rows)
+        .sort((a, b) => compare[type](a.cells[colIndex].textContent, b.cells[colIndex].textContent));
+
+      tBody.append(...sortedRows);
+    }
+    // 评论区给的简洁代码 e
+
+
+    // 原解决代码 s
+    function sortGrid_2(colNum, type) {
+      let tbody = grid.querySelector('tbody');
+
+      // tbody.rows 返回 HTMLCollection 集合, 有5元素
+      let rowsArray = Array.from(tbody.rows);
+
+      // compare(a, b) compares two rows, need for sorting
+      let compare;
+
+      switch (type) {
+        case 'number':
+          compare = function (rowA, rowB) {
+            // rows[0].cells[0] 返回 tbody 第一行的第一个单元格
+            return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+          };
+          break;
+        case 'string':
+          compare = function (rowA, rowB) {
+            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ? 1 : -1;
+          };
+          break;
+      }
+
+      // sort
+      rowsArray.sort(compare);
+
+      // append 这个方法在插入节点时，如果待插入的节点已经存在于DOMTree中，浏览器则只会将该节点移动顺序。
+      tbody.append(...rowsArray);
+    }
+    // 原解决代码 e
+
+  </script>
+
+</body>
+
+</html>

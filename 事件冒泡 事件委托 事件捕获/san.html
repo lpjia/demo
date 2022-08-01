@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+</head>
+
+<body>
+
+
+  <p>----分割线----</p>
+  <h3>行为: 切换器</h3>
+  <!-- 现在，要向元素添加切换功能 —— 无需了解 JavaScript，只需要使用特性 data-toggle-id 即可。
+    这可能变得非常方便 —— 无需为每个这样的元素编写 JavaScript。只需要使用行为。文档级处理程序使其适用于页面的任意元素。
+    我们也可以组合单个元素上的多个行为。
+    “行为”模式可以替代 JavaScript 的小片段。 -->
+  <button data-toggle-id="subscribe-mail">
+    Show the subscription form
+  </button>
+
+  <form id="subscribe-mail" hidden>
+    Your mail: <input type="email">
+  </form>
+
+
+  <script>
+    document.addEventListener('click', function (event) {
+      let id = event.target.dataset.toggleId;
+      if (!id) return;
+
+      let elem = document.getElementById(id);
+
+      elem.hidden = !elem.hidden;
+    });
+
+  </script>
+
+
+</body>
+
+</html>

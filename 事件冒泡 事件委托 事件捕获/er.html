@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+</head>
+
+<body>
+
+
+  <p>----分割线----</p>
+  <h3>行为: 计数器</h3>
+  <!-- 我们可以根据需要使用 data-counter 特性，多少都可以。
+    我们可以随时向 HTML 添加新的特性。
+    使用事件委托，我们属于对 HTML 进行了“扩展”，添加了描述新行为的特性。 -->
+  Counter: <input type="button" value="1" data-counter>
+  One more counter: <input type="button" value="20" data-counter>
+
+
+
+  <script>
+    /**
+     * 这里用 document 的意思是文档中所有元素都添加了该事件, 
+     * 只有含 data-counter 属性的才会 value++ 。
+     * 对于文档级的处理程序 —— 始终使用的是 addEventListener
+     */
+    document.addEventListener('click', function (event) {
+      // console.log(event)
+      if (event.target.dataset.counter != undefined) { // 如果这个特性存在...
+        event.target.value++;
+      }
+
+    });
+
+  </script>
+</body>
+
+</html>

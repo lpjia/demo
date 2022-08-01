@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+  <style>
+    li span:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>创建一个点击可以显示/隐藏子节点的树形菜单</h3>
+
+  <ul class="tree" id="tree">
+    <li>
+      <span>Animals</span>
+      <ul>
+        <li>
+          <span>Mammals</span>
+          <ul>
+            <li><span>Cows</span></li>
+            <li><span>Donkeys</span></li>
+            <li><span>Dogs</span></li>
+            <li><span>Tigers</span></li>
+          </ul>
+        </li>
+        <li>
+          <span>Other</span>
+          <ul>
+            <li><span>Snakes</span></li>
+            <li><span>Birds</span></li>
+            <li><span>Lizards</span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span>Fishes</span>
+      <ul>
+        <li>
+          <span>Aquarium</span>
+          <ul>
+            <li><span>Guppy</span></li>
+            <li><span>Angelfish</span></li>
+          </ul>
+        </li>
+        <li>
+          <span>Sea</span>
+          <ul>
+            <li><span>Sea trout</span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+
+  <script>
+    tree.onclick = function (e) {
+      let dom = e.target.closest('span')
+        , domToggle = dom?.nextElementSibling
+      if (domToggle)
+        domToggle.hidden = !domToggle.hidden
+    }
+  </script>
+
+</body>
+
+</html>

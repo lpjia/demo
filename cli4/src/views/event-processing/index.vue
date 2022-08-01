@@ -27,9 +27,5 @@ export default {
     <EventModifier />
     <KeyModifier />
     <SystemKey />
-
   </div>
 </template>
-
-<style scoped lang="scss">
-</style>

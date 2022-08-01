@@ -122,7 +122,7 @@ export const constantRoutes = [
     path: '/',
     // name: 'layout',
     component: Layout,
-    redirect: '/CompNest',
+    redirect: '/LearningProp',
     meta: {
       title: '测试',
       icon: 'el-icon-phone',

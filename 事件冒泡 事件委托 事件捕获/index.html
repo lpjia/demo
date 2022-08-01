@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托 事件捕获</title>
+  <!-- <link rel="stylesheet" type="text/css" href="../global/global.css" /> -->
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+  <style>
+    #box {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+
+    #boxone {
+      width: 250px;
+      height: 250px;
+      background-color: yellow;
+    }
+
+    #boxtwo {
+      width: 50px;
+      height: 50px;
+      background-color: gray;
+    }
+
+    .lp_active {
+      color: deepskyblue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>事件冒泡</h3>
+  <div id="box">
+    <div id="boxone">
+      <div id="boxtwo">two</div>
+    </div>
+  </div>
+
+  <p>----分割线----</p>
+  <!-- 冒泡还允许我们利用事件委托——这个概念依赖于这样一个事实，
+    如果你想要在大量子元素中单击任何一个都可以运行一段代码，您可以将事件监听器设置在其父节点上，
+    并让子节点上发生的事件冒泡到父节点上，而不是每个子节点单独设置事件监听器。 -->
+  <!-- 一个很好的例子是一系列列表项，如果你想让每个列表项被点击时弹出一条信息，
+    您可以将click单击事件监听器设置在父元素<ul>上，这样事件就会从列表项冒泡到其父元素<ul>上。 -->
+  <h3>事件委托 jQ</h3>
+  <ul>
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <li>555</li>
+    <li>666</li>
+  </ul>
+
+  <iframe src="yi.html" name="yi_iframe" style="height: 200px;"></iframe>
+  <iframe src="er.html" name="er_iframe" style="height: 200px;"></iframe>
+  <iframe src="san.html" name="san_iframe" style="height: 200px;"></iframe>
+  <iframe src="liu.html" name="liu_iframe" style=" height: 300px;"></iframe>
+  <br>
+  <iframe src="si.html" name="si_iframe" style="width: 45%; height: 600px;"></iframe>
+  <iframe src="wu.html" name="wu_iframe" style="width: 45%; height: 600px;"></iframe>
+  <br>
+  <iframe src="qi.html" name="qi_iframe" style="width: 80%; height: 600px;"></iframe>
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

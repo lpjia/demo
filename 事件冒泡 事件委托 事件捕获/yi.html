@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+</head>
+
+<body>
+
+
+  <p>----分割线----</p>
+  <h3>委托 标记中的行为</h3>
+  <!-- 这里的委托给我们带来了什么好处？
+    我们不需要编写代码来为每个按钮分配一个处理程序。只需要创建一个方法并将其放入标记（markup）中即可。
+    HTML 结构非常灵活，我们可以随时添加/移除按钮。
+    data-action 特性（attribute）在语义上更好。我们也可以在 CSS 规则中使用它。 -->
+  <div id="menu">
+    <button data-action="save">Save</button>
+    <button data-action="load">Load</button>
+    <button data-action="search">Search</button>
+  </div>
+
+
+
+  <script>
+    class Menu {
+      constructor(elem) {
+        this._elem = elem;
+        elem.onclick = this.onClick.bind(this); // (*)
+        /**
+         * 请注意，this.onClick 在 (*) 行中被绑定到了 this。
+         * 这很重要，因为否则内部的 this 将引用 DOM 元素（elem），而不是 Menu 对象，那样的话，this[action] 将不是我们所需要的。
+         */
+      }
+
+      save() {
+        console.log('saving');
+      }
+
+      load() {
+        console.log('loading');
+      }
+
+      search() {
+        console.log('searching');
+      }
+
+      onClick(event) {
+        let action = event.target.dataset.action;
+        // console.log(event)
+        // console.log(event.target.closest('#menu'))
+        if (action) {
+          this[action]();
+        }
+      };
+    }
+
+    new Menu(menu);
+  </script>
+</body>
+
+</html>

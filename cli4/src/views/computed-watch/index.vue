@@ -1,4 +1,5 @@
 <script>
+import AllWatchSyntax from './components/AllWatchSyntax.vue';
 import Computed from './components/Computed.vue';
 import Watcher from './components/Watcher.vue';
 
@@ -7,6 +8,7 @@ export default {
   components: {
     Computed,
     Watcher,
+    AllWatchSyntax,
   },
 };
 </script>
@@ -19,8 +21,8 @@ export default {
 
     <el-divider></el-divider>
     <h3>watch</h3>
+    <AllWatchSyntax />
+    <p>----分割线----</p>
     <Watcher />
-
-    <!-- 下面还要增加关于 计算属性和监听器 -->
   </div>
 </template>

@@ -20,9 +20,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scope>
-.el-divider {
-  background-color: #000;
-}
-</style>

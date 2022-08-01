@@ -1,8 +1,6 @@
 <script>
 export default {
   name: 'UnidirectionalFlow', // 单向数据流
-  components: {
-  },
   props: ['initialCounter'],
   data() {
     return {
@@ -14,12 +12,6 @@ export default {
     computedCounter() {
       return this.initialCounter + 100
     }
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
   },
   methods: {
     subtract() {
@@ -40,6 +32,3 @@ export default {
     <button class="inlineB marginLB">本地计算属性 computedCounter: {{ computedCounter }}</button>
   </div>
 </template>
-
-<style scoped lang="scss">
-</style>
