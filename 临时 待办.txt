@@ -39,13 +39,99 @@ vscode plugin for element-ui vux iview
 -----------------------------------------
 
 
+响应式改造
+整屏滚动
+	用 js 获取屏幕像素来判断
+	去掉整屏滚动事件
+		样式
+	
+适配手机
+
+
+感觉还是用两套页面代码比较好
+或者想办法把页面事件取消掉
+还有页面布局
+
+
+
+总结笔记
+
+事件冒泡
+localeCompare
+
+grid.tBodies 返回 HTMLCollection 集合
+
+tbody.rows 返回 HTMLCollection 集合
+
+rows[0].cells[0] 返回 tbody 第一行的第一个单元格
+
+append 这个方法在插入节点时，如果待插入的节点已经存在于DOMTree中，浏览器则只会将该节点移动顺序。
+tbody.append(...rowsArray);
+
+     tooltipElem = document.createElement('div');
+      tooltipElem.className = 'tooltip';
+      tooltipElem.innerHTML = tooltipHtml;
+      document.body.append(tooltipElem);
+	  
+	  let target = event.target;
+	  target.getBoundingClientRect()
+
+
+    // 这样算更清楚, target 和 tooltipElem 水平居中了
+      // left = coords.left + target.offsetWidth / 2 - tooltipElem.offsetWidth / 2
+      // tooltipElem.左距离 + tooltipElem.一半宽度 = target.左距离 + target.一半宽度
+      let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+      if (left < 0) left = 0; // don't cross the left window edge
+
+      let top = coords.top - tooltipElem.offsetHeight - 5;
+      if (top < 0) { // if crossing the top window edge, show below instead
+        top = coords.top + target.offsetHeight + 5;
+      }
+
+      tooltipElem.style.left = left + 'px';
+      tooltipElem.style.top = top + 'px';
+
+
+
+
+vscode 配合 edge, 修改样式后直接作用于文件
+https://docs.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/sources/opening-sources-in-vscode
+
+
 
 
 看微信收藏
-总结 nodejs api
-process.env.NODE_ENV
-开发 测试 生产环境 配置
-learning_commonJS 导出语法
+
+
+
+
+
+
+谷歌
+腋下有两个孔通着的挤出黑色东西
+
+头条搜索
+腋下毛囊挤出黑色东西
+
+https://zhidao.baidu.com/question/495362289.html
+
+百度
+硬化油脂阻塞物
+
+bing
+硬化油脂阻塞物
+腋下有两个孔通着的挤出黑色东西
+
+https://www.zhihu.com/question/23539493?sort=created
+
+https://www.zhihu.com/question/29548057
+
+https://club.xywy.com/static/20141019/53933886.htm
+
+
+
+
+
 
 
 
@@ -55,10 +141,9 @@ https://mp.weixin.qq.com/s?__biz=MzI4NjY4MTU5Nw==&mid=2247491367&idx=2&sn=184b48
 解决了文档维护的烦恼, 同时为了避免对代码侵入过多，我们还是需要尽量少的添加额外的标识。而入参说明采用了与js-doc相同的格式，主要还是因为这套方案 使用比较普遍，而且代码编辑器都自动支持方便编辑。
 有了数据结构之后, 自己拼接 md 文件内容输出
 
-可以学习
+不限于学习
 AST
 生成 md 文件, 拼接内容
-
 
 实现之后发布一个 npm 包
 
@@ -212,10 +297,6 @@ vue-helper 不知道可以否
 
 动画
 vue 自带组件
-
-
-事件捕获
-事件冒泡
 
 
 自定义指令
