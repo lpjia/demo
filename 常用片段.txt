@@ -1,0 +1,40 @@
+rimraf node_modules
+
+git log --pretty=oneline
+
+<p>----分割线----</p>
+
+<el-divider></el-divider>
+
+pnpm run serve
+pnpm serve
+
+pnpm install
+pnpm i
+
+pnpm run build
+pnpm build
+
+pnpm run lint
+pnpm lint
+
+pnpm add -D xxx
+
+pnpm remove xxx
+
+npm run 脚本
+
+
+浏览器打印台使用
+console.log('---- 分割线 ----\n\n\n')
+
+终端使用
+console.log('---- 分割线 ----\n')
+
+
+测试实参有几个
+handle(e, e2, e3){
+    console.log('e: ', e)
+    console.log('e2: ', e2)
+    console.log('e3: ', e3)
+}

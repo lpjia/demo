@@ -46,13 +46,29 @@
   <div id="phone" class="sec" style="background-color: green;">id="phone"</div>
   <div style="height: 1000px;">!!!</div>
 
-  <script src="../lib/jquery@3.3.1.slim.min.js"></script>
+  <script src="../lib/jquery@3.3.1.min.js"></script>
   <!-- <script src="index.js" ></script> -->
   <script>
     $(function () {
       $('nav').on('click', 'a', function (e) {
         $(this).addClass('activeClass').siblings().removeClass('activeClass')
       })
+
+      // 通过锚点跳转 页面动画效果 s
+      $(document).on('click', 'a[href^="#"]', function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          let $target = $(this.hash);
+          $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');//获取到点击对应id的元素
+          if ($target.length) {
+            let targetOffset = $target.offset().top;
+            $('html,body').animate({   //滑动效果主要用到jq的animate函数
+              scrollTop: targetOffset
+            }, 300);
+            return false;
+          }
+        }
+      });
+      // 通过锚点跳转 页面动画效果 e
     })
   </script>
 </body>
