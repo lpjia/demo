@@ -39,9 +39,19 @@ vscode plugin for element-ui vux iview
 -----------------------------------------
 
 
+
+https://www.zmssmedia.com/
+总结一些动画效果
+
+wow.js用法详解
+https://blog.csdn.net/hsany330/article/details/100019915
+
+
+
 css 翻转没总结完
 
 
+整屏滚动也要总结
 
 
 
@@ -102,6 +112,10 @@ tbody.append(...rowsArray);
 
 vscode 配合 edge, 修改样式后直接作用于文件
 https://docs.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/sources/opening-sources-in-vscode
+
+
+
+
 
 
 
