@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件冒泡 事件委托</title>
+  <style>
+    body {
+      background-color: gray;
+    }
+
+    li {
+      border: 1px solid deepskyblue;
+    }
+
+    li.active {
+      /* color: deepskyblue; */
+      color: white;
+    }
+
+    div,
+    span {
+      background-color: rgb(239, 155, 247);
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul id="list">
+    <li>
+      <span>11111</span>
+      <div>11111div</div>
+    </li>
+    <li>
+      <span>22222</span>
+      <div>22222div</div>
+    </li>
+    <li>
+      <span>33333</span>
+      <div>33333div</div>
+    </li>
+  </ul>
+
+  <h3>作为对比</h3>
+  <ul id="list_2">
+    <li>
+      <span>11111</span>
+      <div>11111div</div>
+    </li>
+    <li>
+      <span>22222</span>
+      <div>22222div</div>
+    </li>
+    <li>
+      <span>33333</span>
+      <div>33333div</div>
+    </li>
+  </ul>
+
+  <script>
+
+    // 当监听的元素里存在子元素时，那么我们点击这个子元素事件会失效
+    list.addEventListener('click', function (e) {
+      if (e.target.tagName === 'LI') {
+        console.log('当前元素事件触发成功')
+
+        const children = e.target.parentNode.children
+        for (const item of children) {
+          item.classList.remove('active')
+        }
+        e.target.classList.add('active')
+      }
+
+    })
+
+
+    // 利用事件冒泡 向上找
+    list_2.addEventListener('click', function (e) {
+      let el = e.target
+
+      //从target（点击）元素向上找currentTarget（监听）元素，找到了想委托的元素就触发事件，没找到就返回null
+
+      while (el.tagName !== 'LI') {
+        el = el.parentNode
+        if (el === list_2) {
+          el = null
+          break;
+        }
+      }
+      if (el) {
+        console.log('你点击了ul里的li')
+
+        const children = el.parentNode.children
+        for (const item of children) {
+          item.classList.remove('active')
+        }
+        el.classList.add('active')
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

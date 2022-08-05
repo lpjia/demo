@@ -45,11 +45,13 @@ window.onload = function () {
 }
 
 
-$(function () {
 
-  function callback(e) {
-    $(this).addClass('lp_active').siblings().removeClass('lp_active')
-  }
+
+function callback(e) {
+  $(this).addClass('lp_active').siblings().removeClass('lp_active')
+}
+
+$(function () {
 
   /**
    * 事件委托
