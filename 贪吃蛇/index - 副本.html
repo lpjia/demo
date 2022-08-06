@@ -21,26 +21,7 @@
       ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
     }
     document.onkeydown = function (e) {
-      // console.log("🚀 ~ e.keyCode", e.keyCode);
-      switch (e.keyCode) {
-        case 65:
-          fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][0] || fx) ? fx : n
-          break;
-        case 87:
-          fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][1] || fx) ? fx : n
-          break;
-        case 68:
-          fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][2] || fx) ? fx : n
-          break;
-        case 83:
-          fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][3] || fx) ? fx : n
-          break;
-        default:
-          fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][(e || event).keyCode - 37] || fx) ? fx : n
-          break;
-      }
-      // fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][(e || event).keyCode - 37] || fx) ? fx : n
-      // console.log("🚀 ~ fx", fx);
+      fx = sn[1] - sn[0] == (n = [-1, -20, 1, 20][(e || event).keyCode - 37] || fx) ? fx : n
     };
     !function () {
       sn.unshift(n = sn[0] + fx);
