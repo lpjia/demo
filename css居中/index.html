@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css居中</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/row_center.css">
+  <link rel="stylesheet" href="css/col_center.css">
+  <link rel="stylesheet" href="css/row_col_center.css">
+</head>
+
+<body>
+
+  <h3>各元素有啥特性, 检查元素</h3>
+  <div class="one wh">块元素, 宽度默认100%, 占满一行, 高度默认是内容高度, border-box下是边框+padding+ctt, padding margin 上下左右都生效</div>
+  <div class="two d_ib wh">行内块, 宽度默认内容宽度, 横向排列, 高度默认是内容高度, border-box下是边框+padding+ctt, padding margin 上下左右都生效</div>
+  <div class="two d_ib wh">行内块, 宽度默认内容宽度, 横向排列, 高度默认是内容高度, border-box下是边框+padding+ctt, padding margin 上下左右都生效</div>
+  <hr>
+  <div class="one">块元素, 宽度默认100%, 占满一行, 高度默认是内容高度, border-box下是边框+padding+ctt, padding margin 上下左右都生效</div>
+  <div class="two d_ib">行内块, 宽度默认内容宽度, 横向排列, 高度默认是内容高度, border-box下是边框+padding+ctt, padding margin 上下左右都生效</div>
+  <hr>
+  <span class="three wh">span行内元素, 宽度默认内容宽度, 横向排列, 除 margin 上下不生效, 宽高不可以指定</span>
+  <span class="three wh">span行内元素, 宽度默认内容宽度, 横向排列, 除 margin 上下不生效, 宽高不可以指定</span>
+  <span class="three wh" style="padding: 0 1rem;">padding 上下生效, 却占用</span>
+  <hr>
+
+
+
+  <!-- 块, 行内块, 行内 -->
+  <h3>水平居中</h3>
+  <div class="yi">div,水平居中text-align: center;</div>
+  <p>----分割线----</p>
+  <div class="yi">
+    <span>div>span,水平居中,父级text-align: center;</span>
+  </div>
+  <p>----分割线----</p>
+  <!-- body 给 text-align: center; -->
+  <!-- <div class="san d_ib">div行内块水平居中</div> -->
+  <div class="san">
+    <div class="d_ib">div>行内块,水平居中,父级text-align: center;</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+
+
+  <div class="er">
+    <div>div>div,水平居中margin: 0 auto;</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+
+  <div class="si">
+    <!-- 行内块内容要水平居中就给 center -->
+    <div class="d_ib">div>行内块,水平居中position: absolute;</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="si">
+    <span>div>span,水平居中position: absolute;</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="si">
+    <div>div>div,水平居中position: absolute;</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+  <div class="wu flex">div,水平居中justify-content: center;</div>
+  <p>----分割线----</p>
+  <div class="wu flex">
+    <span>div>span,水平居中,父级justify-content: center;</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="wu flex">
+    <div class="d_ib">div>行内块,水平居中,父级justify-content: center;</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="wu flex">
+    <div>div>div,水平居中,父级justify-content: center;</div>
+  </div>
+  <hr>
+
+
+
+
+
+
+  <h3>垂直居中 一般都需要指定高度</h3>
+  <div class="shi line_h">块,垂直居中line_h</div>
+  <p>----分割线----</p>
+  <div class="shiyi d_ib h line_h">行内块,垂直居中h line_h</div>
+  <div class="shiyi d_ib h">行内块,垂直居中h</div>
+  <div class="shiyi d_ib line_h">行内块,垂直居中line_h</div>
+  <!-- 这里有 vertical-align 在影响, 默认 baseline  -->
+  <p>----分割线----</p>
+  <div class="shiyi d_ib h">行内块,垂直居中h</div>
+  <p>----分割线----</p>
+
+
+
+
+
+  <div class="shier h">
+    <div>table块>table-cell块,垂直居中,父级h</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="shier h">
+    <span>table块>table-cell行内元素,垂直居中,父级h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="shier h">
+    <div class="d_ib">table块>table-cell行内块,垂直居中,父级h</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+  <div class="shisan h">
+    <div class="d_ib">div>行内块,垂直居中position: absolute;h</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="shisan h">
+    <span>div>span,垂直居中position: absolute;h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="shisan h">
+    <div>div>div,垂直居中position: absolute;h</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+  <div class="shisi flex h">div,垂直居中align-items: center;h</div>
+  <p>----分割线----</p>
+  <div class="shisi flex h">
+    <span>div>span,垂直居中,父级align-items: center;h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="shisi flex h">
+    <div class="d_ib">div>行内块,垂直居中,父级align-items: center;h</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="shisi flex h">
+    <div>div>div,垂直居中,父级align-items: center;h</div>
+  </div>
+  <hr>
+
+
+
+  <h3>水平垂直居中</h3>
+  <div class="ershiyi line_h">块,水平垂直居中text-align: center;line_h</div>
+  <p>----分割线----</p>
+  <div class="ershiyi h line_h">
+    <span>div>span,水平垂直居中,父级text-align: center;h line_h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="ershiyi h line_h">
+    <div class="d_ib">div>行内块,水平垂直居中,父级text-align: center;h line_h</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+  <div class="ershisi h">
+    <div>div>div,水平垂直居中,position: absolute;margin: auto;上下左右偏移0</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+  <b>子级不需要宽高的</b>
+  <div class="ershier flex h">div,水平垂直居中justify-content: center;align-items: center;h</div>
+  <p>----分割线----</p>
+  <div class="ershier flex h">
+    <span>div>span,水平垂直居中,父级justify-content: center;align-items: center;h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="ershier flex h">
+    <div class="d_ib">div>行内块,水平垂直居中,父级justify-content: center;align-items: center;h</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="ershier flex h">
+    <div>div>div,水平垂直居中,父级justify-content: center;align-items: center;h</div>
+  </div>
+  <p>----分割线----</p>
+
+
+
+
+  <div class="ershisan h">
+    <span>div>span,水平垂直居中,position: absolute;,父级h</span>
+  </div>
+  <p>----分割线----</p>
+  <div class="ershisan h">
+    <div class="d_ib">div>行内块,水平垂直居中,position: absolute;,父级h</div>
+  </div>
+  <p>----分割线----</p>
+  <div class="ershisan h">
+    <div>div>div,水平垂直居中,position: absolute;,父级h</div>
+  </div>
+  <p>----分割线----</p>
+
+
+  <!-- <script src="index.js" type="module"></script> -->
+</body>
+
+</html>

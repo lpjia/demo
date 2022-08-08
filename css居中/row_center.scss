@@ -1,0 +1,64 @@
+body {
+  border: 1px solid deepskyblue;
+  // text-align: center;
+}
+
+
+/* 本文件样式是水平居中 */
+
+
+.yi {
+  text-align: center;
+}
+
+.er {
+  >div {
+    background-color: chartreuse;
+    width: 20rem;
+    height: 3rem;
+    /* 有宽高的块水平居中了 */
+    margin: 0 auto;
+
+    /* 里面内容再居中 */
+    // text-align: center;
+  }
+}
+
+.san {
+  text-align: center;
+
+  >div {
+    background-color: cadetblue;
+    /* 给不给宽度都水平居中, 父级给了 center,
+      行内块元素默认内容撑满宽高 */
+    // width: 20rem;
+  }
+}
+
+.si {
+  position: relative;
+  margin-bottom: 1rem;
+
+  >div,
+  >span {
+    background-color: burlywood;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */
+    // width: 30rem;
+    // height: 5rem;
+  }
+}
+
+.wu {
+  justify-content: center;
+
+  >div,
+  >span {
+    background-color: lightcoral;
+    /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */
+    // width: 30rem;
+    // height: 5rem;
+  }
+}

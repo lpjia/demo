@@ -1,0 +1,54 @@
+.h {
+  height: 6rem;
+}
+
+.shi {
+  background-color: yellowgreen;
+}
+
+.shiyi {
+  background-color: rosybrown;
+}
+
+.line_h {
+  line-height: 6rem;
+}
+
+.shier {
+  display: table;
+
+  >div,
+  >span {
+    background-color: orange;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.shisan {
+  position: relative;
+  margin-bottom: 1rem;
+
+  >div,
+  >span {
+    background-color: violet;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */
+    // width: 30rem;
+    // height: 5rem;
+  }
+}
+
+.shisi {
+  align-items: center;
+
+  >div,
+  >span {
+    background-color: gold;
+    /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */
+    // width: 30rem;
+    // height: 5rem;
+  }
+}

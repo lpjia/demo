@@ -17,9 +17,9 @@ window.onload = function () {
 
     /* 如果数组中包含该词, 那么直接 alert 该词, 
       不包含则继续 push, 遍历 */
-    if (cacheArr.includes(word))
+    if (cacheArr.includes(word)){
       alert(node.innerHTML)
-    else {
+    } else {
       arr_2.push(node)
       cacheArr.push(word)
     }

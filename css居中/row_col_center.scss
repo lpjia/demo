@@ -1,0 +1,46 @@
+.ershiyi {
+  background-color: lightgreen;
+  text-align: center;
+
+  >span {
+    background-color: orange;
+  }
+}
+
+.ershisi {
+  background-color: darkkhaki;
+  position: relative;
+
+  >div {
+    background-color: tomato;
+    width: 36rem;
+    height: 3rem;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+
+.ershier {
+  background-color: deepskyblue;
+  justify-content: center;
+  align-items: center;
+}
+
+.ershisan {
+  position: relative;
+
+  div,
+  span {
+    background-color: aquamarine;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

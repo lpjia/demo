@@ -1,0 +1,17 @@
+.one,
+.two,
+.three {
+  background-color: coral;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.two {
+  background-color: darkgoldenrod;
+}
+
+.wh {
+  /* 宽高都可以指定 */
+  width: 20rem;
+  height: 10rem;
+}
