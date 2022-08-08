@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WIFI信号</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/index_2.css">
+  <link rel="stylesheet" href="css/index_3.css">
+  <link rel="stylesheet" href="css/index_11.css">
+  <style>
+    .margin_l {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="xinhao" style="word-spacing: -100px;"> -->
+  <div class="xinhao" style="font-size: 0;">
+
+    <!-- 信号等级从下往上命名, 好扩展 -->
+    <!-- 最终试出来两种方案, 一种是200%均等分, 好算好调, 标准的1/4圆, 参考 #wifi #wifi_2;
+      另一种是以50%为基准固定, 扩展容易, 需要调边框 平移, 参考 #wifi_11 -->
+    <div id="wifi" class="d_ib">
+      <div class="signal">
+        <div class="wrapper">
+          <div class="curve active four "></div>
+          <div class="curve active three"></div>
+          <div class="curve active two"></div>
+          <div class="curve active one"></div>
+        </div>
+      </div>
+      <div class="txt">4级信号 良好</div>
+    </div>
+
+    <div id="wifi_11" class="d_ib margin_l">
+      <div class="signal">
+        <div class="wrapper">
+          <div class="curve active seven"></div>
+          <div class="curve active six"></div>
+          <div class="curve active five"></div>
+          <div class="curve active four"></div>
+          <div class="curve active three"></div>
+          <div class="curve active two"></div>
+          <div class="curve active one"></div>
+        </div>
+      </div>
+      <div class="txt">7级信号 良好</div>
+    </div>
+
+    <div id="wifi_2" class="d_ib margin_l">
+      <div class="signal">
+        <div class="wrapper">
+          <div class="curve active five"></div>
+          <div class="curve active four"></div>
+          <div class="curve active three"></div>
+          <div class="curve active two"></div>
+          <div class="curve active one"></div>
+        </div>
+      </div>
+      <div class="txt">5级信号 良好</div>
+    </div>
+
+    <div id="wifi_3" class="d_ib margin_l">
+      <div class="signal">
+        <div class="wrapper">
+          <div class="curve active six"></div>
+          <div class="curve active five"></div>
+          <div class="curve active four"></div>
+          <div class="curve active three"></div>
+          <div class="curve active two"></div>
+          <div class="curve active one"></div>
+        </div>
+      </div>
+      <div class="txt">6级信号 良好</div>
+    </div>
+
+  </div>
+
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

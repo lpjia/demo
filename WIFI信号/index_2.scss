@@ -1,0 +1,31 @@
+#wifi_2>.signal>.wrapper,
+#wifi_3>.signal>.wrapper {
+
+  /* 超过 200% 就会被截断, 所以要想扩展多级, 以 200 为准几等分 */
+  .five {
+    width: 200%;
+    height: 200%;
+  }
+
+  .four {
+    width: 160%;
+    height: 160%;
+  }
+
+  .three {
+    width: 120%;
+    height: 120%;
+  }
+
+  .two {
+    width: 80%;
+    height: 80%;
+  }
+
+  .one {
+    width: 40%;
+    height: 40%;
+  }
+
+  /* 重复属性我都没有写, 具体需要哪些, 检查元素自己加 */
+}

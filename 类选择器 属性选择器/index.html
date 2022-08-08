@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>类选择器 属性选择器</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <section>
+    <div class="i_b chunk self_one">111</div>
+    <div class="i_b one_plus_houzhui">111后缀</div>
+    <div class="i_b chunk two_self_two_two_two">222</div>
+    <div class="i_b">333</div>
+    <div class="i_b chunk" title>444</div>
+    <div class="i_b chunk" data-idx="5">555</div>
+    <div class="i_b chunk" data-zifu="aaa abc def">666</div>
+    <div class="i_b chunk" data-zifu="qianzhui_def aaa">前缀777</div>
+    <div class="i_b chunk" data-zifu="zh-CN fei">888</div>
+    <div class="i_b chunk" data-zifu="zh">999</div>
+  </section>
+
+
+  <script src="../lib/jquery@3.3.1.slim.min.js"></script>
+  <!-- 解决缓存问题 -->
+  <!-- <script type="text/javascript">
+    let timestamp = new Date().getTime()
+    document.write('<script type="module" src="index.js?ver=' + timestamp + '"></scr' + 'ipt>')
+  </script> -->
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+#wifi_11>.signal>.wrapper {
+  .curve {
+    border-radius: 27%;
+    border-width: 4px;
+    // -webkit-transform: translate(50%, 50%);
+    transform: translate(72%, 72%);
+  }
+
+  /* 最终试出来这样可以无线拓展, 改动少 */
+  .seven {
+    width: 350%;
+    height: 350%;
+  }
+
+  .six {
+    width: 300%;
+    height: 300%;
+  }
+
+  .five {
+    width: 250%;
+    height: 250%;
+  }
+
+  /* 重复属性我都没有写, 具体需要哪些, 检查元素自己加 */
+}

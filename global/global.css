@@ -27,3 +27,7 @@ button {
 .flex {
   display: flex;
 }
+
+.d_ib {
+  display: inline-block;
+}

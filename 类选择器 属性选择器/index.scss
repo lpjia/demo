@@ -1,0 +1,51 @@
+.i_b {
+  display: inline-block;
+  padding: 4px 6px;
+}
+
+.chunk {
+  background-color: gray;
+}
+
+/* 类选择器是属性选择器的一种,
+  字符串类型可以不带"" */
+
+
+// *是只要包含有就匹配, 
+div[class*=self] {
+  color: white;
+}
+
+// $是后缀匹配
+[class$=houzhui] {
+  background-color: green;
+}
+
+// ~是以空格作为分隔的, 有值对应则匹配
+[data-zifu~=abc] {
+  background-color: aqua;
+}
+
+// ^是以值开头的匹配
+[data-zifu^=qianzhui] {
+  color: aqua;
+}
+
+// |是以值(或值-)开头的匹配
+// 以值是全匹配
+// 以值-是开头的匹配
+[data-zifu|=zh] {
+  color: red;
+  border: 1px solid red;
+}
+
+
+div[title] {
+  background-color: burlywood;
+}
+
+// 期望 data-idx 的属性选择器中的字符串常量或标识符
+// div[data-idx=5] 会报错
+div[data-idx="5"] {
+  background-color: purple;
+}
