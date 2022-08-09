@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+}
+
+.cls {
+  width: 100px;
+  height: 100px;
+  background: lightblue;
+  margin: 100px;
+}
+
+.container {
+  overflow: auto;
+}
+
+
+.cls_2 {
+  margin: 1rem 0; // 为了方便看
+  border: 1px solid #000;
+  /* 触发容器的 BFC，那么容器将会包裹着浮动元素。 */
+  overflow: auto;
+
+  >div {
+    width: 100px;
+    height: 100px;
+    background: deepskyblue;
+    float: right;
+  }
+}
+
+
+.cls_3 {
+  height: 100px;
+  width: 100px;
+  float: left;
+  background: lightblue
+}
+
+.cls_4 {
+  /* 这个方法可以用来实现两列自适应布局，效果不错，
+    这时候左边的宽度固定，右边的内容自适应宽度(去掉上面右边内容的宽度)。 */
+  width: 200px;
+  height: 200px;
+  background: deepskyblue;
+  /* 触发 BFC */
+  overflow: auto;
+}
+
+.reset {
+  overflow: visible;
+  width: auto;
+}
+
+.d_flow {
+  display: flow-root;
+}
+
+
+
+/* MDN 例子 */
+section {
+  height: 150px;
+}
+
+.box {
+  background-color: rgb(224, 206, 247);
+  border: 5px solid rebeccapurple;
+}
+
+.box[style] {
+  background-color: aliceblue;
+  border: 5px solid steelblue;
+}
+
+.float {
+  float: left;
+  width: 200px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, .5);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+.float_2 {
+  float: left;
+  overflow: hidden;
+  /* required by resize:both */
+  resize: both;
+  margin-right: 25px;
+  width: 200px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, .75);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+.blue,
+.red-inner {
+  height: 50px;
+  margin: 10px 0;
+}
+
+.blue {
+  background: blue;
+}
+
+.red-outer {
+  overflow: hidden;
+  background: red;
+}
