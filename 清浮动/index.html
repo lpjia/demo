@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>清浮动</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <h3>触发 BFC 方式去清浮动, display: flow-root; 无副作用</h3>
+  <div class="box fahter">
+    <div class="big">big</div>
+    <div class="small">small</div>
+  </div>
+  <hr>
+
+
+
+  <h3>触发 BFC 方式去清浮动, overflow: auto; 或 overflow: hidden; (有副作用)</h3>
+  <div class="box fahter_2 ">
+    <div class="big">big</div>
+    <div class="small">small</div>
+  </div>
+  <hr>
+
+
+
+  <h3>使用after伪元素清浮动, clearfix:after 兼容性最好, 向下兼容到 IE6 7</h3>
+  <div class="box clearfix ">
+    <div class="big">big</div>
+    <div class="small">small</div>
+  </div>
+  <hr>
+
+
+
+  <h3>使用before和after双伪元素清浮动</h3>
+  <div class="box clearfix_2 ">
+    <div class="big">big</div>
+    <div class="small">small</div>
+  </div>
+  <hr>
+
+
+  <!-- <script src="index.js" type="module"></script> -->
+</body>
+
+</html>
