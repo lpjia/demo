@@ -1,0 +1,33 @@
+#nav {
+  width: 800px;
+  height: 50px;
+  line-height: 50px;
+  margin: 20px auto;
+  background-color: darkcyan;
+
+  ul,
+  ol,
+  li {
+    list-style: none;
+  }
+}
+
+
+#nav>ul>li {
+  width: 160px;
+  text-align: center;
+  float: left;
+  list-style: none;
+}
+
+.companyIntroduceUrl {
+  display: none;
+  width: 100px;
+  margin: 0 auto;
+  background-color: lightsteelblue;
+}
+
+.companyIntroduceUrl>li {
+  padding: 0;
+  margin: 0;
+}

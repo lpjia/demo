@@ -31,3 +31,7 @@ button {
 .d_ib {
   display: inline-block;
 }
+
+hr {
+  margin: 1rem 0;
+}

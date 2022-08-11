@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>鼠标移入移出的4个事件</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <h3>矩形越小, 越"孙子</h3>
+  <div id="box">
+    <div id="boxone">
+      <div id="boxtwo">two</div>
+    </div>
+  </div>
+  <p>mouseleave mouseenter 不会冒泡</p>
+  <p>为了性能考虑, 优先用不会冒泡</p>
+  <p>mouseout mouseover 两个o会冒泡</p>
+  <!-- 暂时没比较出来有多大差别 -->
+
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>

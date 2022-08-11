@@ -2,8 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .lpj {
-  margin-top: 160px;
 
   // border: solid 1px deepskyblue;
   ul {
@@ -24,17 +27,6 @@
       border: 1px solid deeppink;
       border-right: none;
 
-      // 直接在下级写伪元素, 无效
-      // :hover .twoLevel {
-      //   display: block;
-      // }
-
-      // 直接在下级写伪元素, 无效
-      // :last-child {
-      //   border-right: 1px solid deeppink;
-      // }
-
-      // 加 & 有效
       &:hover .twoLevel {
         display: block;
       }
@@ -50,15 +42,6 @@
         text-align: center;
       }
     }
-
-    // 被 & 替代了
-    // >li:last-child {
-    //   border-right: 1px solid deeppink;
-    // }
-
-    // >li:hover .twoLevel {
-    //   display: block;
-    // }
   }
 
   .twoLevel {
@@ -68,7 +51,7 @@
     // top: 90px;
     left: -1px;
 
-    .zw {
+    .zhanwei {
       width: 100%;
       height: 40px;
       background-color: transparent;
@@ -79,14 +62,21 @@
       border: 1px solid deepskyblue;
       border-bottom: none;
 
-      :last-child {
+      &:last-child {
         border-bottom: 1px solid deepskyblue;
+      }
+
+      &:hover {
+        a {
+          color: red;
+        }
       }
     }
   }
 
 
   #triangle-up {
+    // display: none;
     width: 0;
     height: 0;
     position: absolute;
