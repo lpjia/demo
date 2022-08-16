@@ -36,12 +36,25 @@ vscode plugin for element-ui vux iview
 向下兼容
 
 
+
+
+
 -----------------------------------------
 
 
+navbar 加滚动后变深色
+暂时不加, 容易
+
+
+加动画, 借鉴原官网
 
 
 
+整理云笔记上的单词
+每天整理3个吧, 多记几遍
+
+
+中铭影视, 加动效
 
 
 https://www.zmssmedia.com/
@@ -51,8 +64,6 @@ wow.js用法详解
 https://blog.csdn.net/hsany330/article/details/100019915
 
 
-
-css 翻转没总结完
 
 
 整屏滚动也要总结
