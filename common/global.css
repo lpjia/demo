@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 2% 6% 0;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+button {
+  padding: 2px 4px;
+}
+
+.up_down {
+  margin: 20px 0;
+}
+
+.margin_tb {
+  margin: 20px 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.d_ib {
+  display: inline-block;
+}
+
+hr {
+  margin: 1rem 0;
+}
