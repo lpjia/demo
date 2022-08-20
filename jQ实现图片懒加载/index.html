@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQ实现图片懒加载</title>
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
+  <style>
+    .page_body {
+      height: 120vh;
+    }
+
+    img {
+      max-width: 160px;
+      max-height: 90px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page_body">
+    <img src="../imgs/loading.gif" data-src="../imgs/firefox-logo.svg">
+  </div>
+  <div class="page_body">
+    第二个作为对照
+    <img src="../imgs/loading.gif" data-src="../imgs/loading.gif">
+  </div>
+  <div class="page_body">
+    <img src="../imgs/loading.gif" data-src="../imgs/gyy.jpeg">
+  </div>
+  <div class="page_body">
+    <img src="../imgs/loading.gif" data-src="../imgs/scenery.jpeg">
+  </div>
+  <div class="page_body">
+    <img src="../imgs/loading.gif" data-src="../imgs/all.png">
+  </div>
+  <div class="page_body">
+    <img src="../imgs/loading.gif" data-src="../imgs/lizard.png">
+  </div>
+
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script src="../lib/lodash@4.17.20.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>

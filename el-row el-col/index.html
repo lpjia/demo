@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>el-row el-col</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.1/lib/theme-chalk/index.css">
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
@@ -26,14 +26,14 @@
           <div class="top">
             <section>
               <div class="bar">
-                <img src="img/alarm.png">
+                <img src="../imgs/img/alarm.png">
                 <span>报警数:</span>
                 <span>6</span>
               </div>
             </section>
             <section>
               <div class="bar">
-                <img src="img/offline.png">
+                <img src="../imgs/img/offline.png">
                 <span>离线数:</span>
                 <span>1</span>
               </div>
@@ -46,7 +46,7 @@
                 <section class="wrap">
                   <div class="head">
                     <div class="title">
-                      <img src="img/tunnel.png"><span>&nbsp;&nbsp;隧道</span>
+                      <img src="../imgs/img/tunnel.png"><span>&nbsp;&nbsp;隧道</span>
                     </div>
                     <div class="count"><b>10</b>&nbsp;&nbsp;<span>条</span></div>
                   </div>
@@ -86,7 +86,7 @@
                       <section class="card2 alarm">
                         <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
                         <div class="card2Main">
-                          <div class="left"><img src="img/gas.png"></div>
+                          <div class="left"><img src="../imgs/img/gas.png"></div>
                           <div class="right oneLine">
                             <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
                           </div>
@@ -106,7 +106,7 @@
                       <section class="card2" :class="x.type">
                         <div class="nameTitle" :title="longName(item)">{{ longName(item) }}</div>
                         <div class="card2Main">
-                          <div class="left"><img :src="'img/'+ item.imgType + '.png'"></div>
+                          <div class="left"><img :src="'../imgs/img/'+ item.imgType + '.png'"></div>
                           <div class="right oneLine">
                             <div class="txt" :title="item.eventDiscription">{{ item.eventDiscription }}</div>
                           </div>
@@ -224,7 +224,6 @@
 
   <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://unpkg.com/element-ui@2.15.1/lib/index.js" type="text/javascript" charset="utf-8"></script>
-  <!-- <script src="m_index.js" type="module"></script> -->
   <script src="index.js" type="module"></script>
 </body>
 
