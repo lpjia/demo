@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>平滑滚动效果(原生js实现此兼容性好)</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      overflow: auto;
+    }
+
+    .box>div {
+      width: 100%;
+      height: 100%;
+      background-color: antiquewhite;
+    }
+
+    #div2 {
+      background-color: bisque;
+      height: 80%;
+    }
+
+    #div3 {
+      background-color: coral;
+    }
+
+    .btn-group {
+      width: 500px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- https://blog.csdn.net/kuBi_MaNong/article/details/123952342 -->
+  <div class="box">
+    <div id="div1">1</div>
+    <div id="div2">2</div>
+    <div id="div3">3</div>
+  </div>
+  <div class="btn-group">
+    <button class="btn" onclick="handleClick(1)">按钮1</button>
+    <button class="btn" onclick="handleClick(2)">按钮2</button>
+    <button class="btn" onclick="handleClick(3)">按钮3</button>
+  </div>
+  <script>
+    let oBox = document.querySelector(".box")
+    let timer;
+    function handleClick(i) {
+      // 网页可见区域高：document.body.clientHeight
+      // 网页正文全文高：document.body.scrollHeight
+      // 网页可见区域高（包括边框的高）：document.body.offsetHeight
+      // 网页被卷去的高：document.body.scrollTop
+
+      // 连续点击先清除定时器
+      clearInterval(timer)
+      let div = document.querySelector('#div' + i)
+      // 21:如果外层盒子距离浏览器顶部有margin(注意包括盒子的边框)
+      let target = div.offsetTop - 21;
+      timer = setInterval(() => {
+        // 步长,速度
+        let speed = (target - oBox.scrollTop) / 5;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+        // console.log(speed)
+        oBox.scrollTop = oBox.scrollTop + speed;
+        // 滚动条是否已经到底: 盒子被卷去的高度+盒子可见区域的高度 = 盒子正文的总高度
+        let isBottom = (oBox.scrollTop + oBox.clientHeight === oBox.scrollHeight)
+        if (speed == 0 || isBottom) {
+          clearInterval(timer)
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>

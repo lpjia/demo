@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>平滑滚动效果</title>
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
+  <link rel="stylesheet" type="text/css" href="../common/mtr.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <!-- 移动端查看 -->
+
+  <!-- 用 flex 实现移动端绝对定位方案 -->
+  <div id="app">
+    <nav>
+      <div class="wrapper flex">
+        <a href="#100">one</a>
+        <a href="#200">two</a>
+        <a href="#300">three</a>
+      </div>
+    </nav>
+
+    <div class="page_body">
+      <button onclick="lp_scrollIntoView()">lp_scrollIntoView() 跳转</button>
+      <button onclick="lp_scrollTop()">lp_scrollTop() 跳转</button>
+      <div v-for="n in 400" :id="addId(n)">{{ n }}</div>
+    </div>
+
+    <footer class="flex">
+      <div v-for="(n, idx) in 5">
+        <svg id="home" @click="activeN = n" t="1660934083675" class="icon" viewBox="0 0 1024 1024" version="1.1"
+          xmlns="http://www.w3.org/2000/svg" p-id="1500" :width="width" :height="height">
+          <path
+            d="M969.6 502.4l-118.4-112-323.2-300.8c-9.6-9.6-22.4-9.6-32 0l-313.6 297.6c-3.2 3.2-6.4 6.4-9.6 9.6l-118.4 112c-9.6 9.6-9.6 22.4 0 32s22.4 9.6 32 0l83.2-80 0 393.6c0 48 41.6 89.6 92.8 89.6l83.2 0c38.4 0 70.4-28.8 70.4-67.2l0-217.6 99.2 0 99.2 0 0 217.6c0 35.2 32 67.2 70.4 67.2l83.2 0c51.2 0 92.8-38.4 92.8-89.6l0-396.8 80 73.6c9.6 9.6 22.4 9.6 32 0C979.2 524.8 979.2 512 969.6 502.4zM809.6 857.6c0 25.6-19.2 44.8-44.8 44.8l-83.2 0c-12.8 0-22.4-9.6-22.4-22.4L659.2 640c0-12.8-9.6-22.4-22.4-22.4l-121.6 0-121.6 0c-12.8 0-22.4 9.6-22.4 22.4l0 240c0 12.8-9.6 22.4-22.4 22.4l-83.2 0c-25.6 0-44.8-19.2-44.8-44.8l0-438.4 294.4-281.6 294.4 281.6L809.6 857.6z"
+            p-id="1501" :fill="idx+1 === activeN ? activeColor : 'iconColor'"></path>
+        </svg>
+      </div>
+      <!-- <div>
+          <svg t="1660934471343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="1188" width="200" height="200">
+            <path
+              d="M585.6 905.6 585.6 905.6c25.6-32 38.4-44.8 41.6-44.8 208-38.4 345.6-198.4 345.6-396.8 3.2-227.2-204.8-406.4-460.8-406.4s-464 179.2-464 406.4c0 198.4 140.8 358.4 345.6 396.8 3.2 0 16 12.8 41.6 44.8l0 0c32 41.6 51.2 64 73.6 64S550.4 947.2 585.6 905.6M620.8 803.2c-19.2 3.2-32 19.2-67.2 64l0 0c-22.4 25.6-41.6 44.8-41.6 44.8l-9.6-9.6c-6.4-6.4-16-19.2-25.6-32-38.4-48-51.2-64-70.4-67.2-185.6-32-307.2-172.8-307.2-345.6 0-192 185.6-352 416-352s416 160 416 352C928 633.6 806.4 771.2 620.8 803.2z"
+              p-id="1189" :fill="iconColor"></path>
+            <path d="M281.6 470.4a1.4 1.5 0 1 0 89.6 0 1.4 1.5 0 1 0-89.6 0Z" p-id="1190" :fill="iconColor"></path>
+            <path d="M467.2 470.4a1.4 1.5 0 1 0 89.6 0 1.4 1.5 0 1 0-89.6 0Z" p-id="1191" :fill="iconColor"></path>
+            <path d="M652.8 470.4a1.4 1.5 0 1 0 89.6 0 1.4 1.5 0 1 0-89.6 0Z" p-id="1192" :fill="iconColor"></path>
+          </svg>
+        </div> -->
+    </footer>
+
+
+    <div class="toTop" onclick="toTop()">
+      <svg t="1660946048378" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1537" :width="width" :height="height">
+        <path
+          d="M873.6 419.2l-355.2-361.6c-9.6-9.6-22.4-9.6-32 0l-355.2 368c-9.6 9.6-9.6 22.4 0 32 9.6 9.6 22.4 9.6 32 0l316.8-329.6 0 828.8c0 12.8 9.6 22.4 22.4 22.4s22.4-9.6 22.4-22.4l0-822.4 310.4 316.8c9.6 9.6 22.4 9.6 32 0C883.2 441.6 883.2 425.6 873.6 419.2z"
+          p-id="1538"></path>
+      </svg>
+    </div>
+  </div>
+
+
+  <script src="../lib/vue@2.6.14.min.js"></script>
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
