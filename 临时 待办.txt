@@ -42,8 +42,29 @@ vscode plugin for element-ui vux iview
 -----------------------------------------
 
 
-navbar 加滚动后变深色
-暂时不加, 容易
+react
+井字棋游戏
+
+类
+
+
+
+
+
+用 bootstrap 写一个
+
+
+
+
+还是学习 ts, 高工资从哪里来? 不就是你会的技能多
+为了高工资学习, 赚的
+
+
+
+总结滚动
+用js去算数值
+https://blog.csdn.net/kuBi_MaNong/article/details/123952342
+
 
 
 加动画, 借鉴原官网
