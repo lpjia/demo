@@ -1,22 +1,10 @@
 <script>
 export default {
   name: 'TransitionComp',
-  components: {
-  },
-  props: {
-  },
   data() {
     return {
       show: true
     };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
   },
   methods: {
     hide() {

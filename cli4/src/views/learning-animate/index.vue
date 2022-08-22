@@ -11,7 +11,7 @@ import TransitionComp from './components/TransitionComp.vue';
 export default {
   name: 'LearningAnimate',
   components: {
-    AnimateCss,
+    // AnimateCss, // 想不起来该组件要做什么
     TransitionComp,
     NativeAnimation,
     NumPingyi,

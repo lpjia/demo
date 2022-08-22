@@ -41,6 +41,7 @@ function createStudent(name) {
 let xm = createStudent('小明2')
 console.log(xm.run())
 console.log(xm)
+// 基于 Student 原型, 所以 ===
 console.log(xm.__proto__ === Student)
 console.log('---- 分割线 ----\n\n\n')
 
@@ -48,15 +49,15 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 // 链式操作
-function Person(){}
+function Person() { }
 Person.prototype = {
-    set(val){
-        this.val = val
-        return this
-    },
-    get(){
-        return this.val
-    }
+  set(val) {
+    this.val = val
+    return this
+  },
+  get() {
+    return this.val
+  }
 }
-var p = new Person()
-p.set(10).get()
+const p = new Person()
+console.log(p.set(10).get())

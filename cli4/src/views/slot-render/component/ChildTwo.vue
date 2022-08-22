@@ -26,7 +26,7 @@ export default {
     return h('section',
       // {}, // 没有绑定任何东西, 就可省略
       {
-        // 普通的 HTML 属性
+        // 普通的 HTML 属性 普通属性
         attrs: {
           data: this.id,
           class: 'bg'

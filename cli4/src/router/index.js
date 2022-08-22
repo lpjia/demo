@@ -255,6 +255,30 @@ export const constantRoutes = [
   },
 
 
+  {
+    path: '/xs',
+    // name: 'layout',
+    component: Layout,
+    // redirect: '/LearningProp',
+    meta: {
+      title: '小山案例',
+      icon: 'el-icon-eleme',
+      // roles: ['admin', 'editor']    
+    },
+    children: [
+      {
+        path: 'XsAnli',
+        name: 'XsAnli',
+        component: () => import('@/views/xs-anli/index.vue'),
+        meta: {
+          title: 'xs案例',
+          // roles: ['admin', 'editor']
+        },
+      },
+    ]
+  },
+
+
   // 404页面必须放在最后
   { path: '*', redirect: '/404', hidden: true }
 ]
