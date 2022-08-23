@@ -12,13 +12,12 @@ export default {
   data() {
     return {
       num: 20,
-      // idx: 1,
+      idx: 1,
     };
   },
   methods: {
     clk() {
       const h = this.$createElement;
-      this.idx++
 
       const that = this
       const ctt = h('el-slider',
@@ -45,12 +44,17 @@ export default {
           },
         },
         // {
-        //   key: this.idx
+        //   key: this.idx++
         // }
       )
       this.$msgbox({
         title: '消息',
         message: ctt,
+
+        // 弹出层的内容可以是 VNode，所以我们能把一些自定义组件传入其中
+        // key 用来保证组件内容变化时正确渲染
+        // message: h(FengZhuangHou, {key: this.idx++ }),
+
         showConfirmButton: false,
         showCancelButton: false,
         beforeClose: (action, instance, done) => {

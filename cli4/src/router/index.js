@@ -216,6 +216,11 @@ export const constantRoutes = [
         meta: { title: 'prop' },
       },
       {
+        path: 'JingZiQi',
+        component: () => import('@/views/jing-zi-qi/index.vue'),
+        meta: { title: '井字棋' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
@@ -261,7 +266,7 @@ export const constantRoutes = [
     component: Layout,
     // redirect: '/LearningProp',
     meta: {
-      title: '小山案例',
+      title: 'xs案例',
       icon: 'el-icon-eleme',
       // roles: ['admin', 'editor']    
     },
@@ -269,6 +274,15 @@ export const constantRoutes = [
       {
         path: 'XsAnli',
         name: 'XsAnli',
+        component: () => import('@/views/xs-anli/index.vue'),
+        meta: {
+          title: 'xs案例',
+          // roles: ['admin', 'editor']
+        },
+      },
+      {
+        path: 'XsAnli2',
+        name: 'XsAnli2',
         component: () => import('@/views/xs-anli/index.vue'),
         meta: {
           title: 'xs案例',

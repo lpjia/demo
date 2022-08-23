@@ -70,7 +70,7 @@ export default {
       this.fullName = name
     },
   },
-  render(h) {
+  render() {
     // 不带实参的语法
     // <p>{this.fullName} <button onclick={this.setFullName}>改变</button></p>
 

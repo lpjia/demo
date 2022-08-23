@@ -8,7 +8,7 @@ export default {
       this.$emit('update:title', '新标题')
     },
   },
-  render(h) {
+  render() {
     return (
       <div>
         <h4 class="inlineB" style="margin-right: 10px;">{this.title}</h4>
