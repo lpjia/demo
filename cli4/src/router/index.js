@@ -216,11 +216,6 @@ export const constantRoutes = [
         meta: { title: 'prop' },
       },
       {
-        path: 'JingZiQi',
-        component: () => import('@/views/jing-zi-qi/index.vue'),
-        meta: { title: '井字棋' },
-      },
-      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
