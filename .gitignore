@@ -6,11 +6,11 @@ dist/
 
 
 # *匹配多个字符
-ormconfig *.json
+# ormconfig *.json
 
 
 
 # 特定文件, 好像也不论层级
-ormconfig.json
+# ormconfig.json
 # .env
 # .env.prod

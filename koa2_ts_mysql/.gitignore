@@ -1,0 +1,4 @@
+# local env files
+# .env.local
+# 这里为了测试, 选择不忽略 .local
+# .env.*.local
