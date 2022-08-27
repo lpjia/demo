@@ -5,6 +5,7 @@ configure(config.log);
 
 export default getLogger();
 export const accessLogger = getLogger('access')
+export const dbLogger = getLogger('db')
 
 
 // // logger.level = "trace";

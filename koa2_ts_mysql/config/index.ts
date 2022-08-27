@@ -18,15 +18,25 @@ export default {
       access: {
         appenders: ["access"], level: "info"
       },
+      db: {
+        appenders: ["db"], level: "info"
+      },
     },
     // 输出源
     appenders: {
       cheese: {
-        type: "file", filename: "logs/cheese.log"
+        type: "file", filename: "log/cheese.log"
       },
       access: {
-        type: "file", filename: "logs/access.log"
+        type: "file", filename: "log/access.log"
+      },
+      db: {
+        type: "file", filename: "log/db.log"
       },
     },
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+    expire: process.env.JWT_EXPIRE,
   }
 }

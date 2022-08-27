@@ -1,5 +1,6 @@
 import { Context } from "koa";
-import logger, { accessLogger } from "../logger";
+// import logger, { accessLogger } from "../logger";
+import AdminService from "../service/AdminService";
 
 // 控制器
 class IndexController {
@@ -13,7 +14,10 @@ class IndexController {
     // accessLogger.error("Cheese is too ripe!");
     // accessLogger.fatal("Cheese was breeding ground for listeria.");
 
-    ctx.body = [1, 2, 3]
+    const admin = await AdminService.getAdmin()
+
+    // ctx.body = [1, 2, 3]
+    ctx.body = admin
   }
 }
 

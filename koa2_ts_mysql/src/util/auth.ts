@@ -1,0 +1,32 @@
+import jwt, { JwtPayload } from "jsonwebtoken"
+import config from "../../config"
+
+// 加密后的签名
+export const sign = (data: JwtPayload) => {
+  return jwt.sign(
+    data,
+    config.jwt.secret as string,
+    { expiresIn: config.jwt.expire, }
+  )
+}
+
+// 验证签名
+export const verify = (token: string) => {
+  try {
+    const decode = jwt.verify(
+      token,
+      config.jwt.secret as string,
+    )
+
+    return {
+      admin: decode,
+      error: null
+    }
+  } catch (error) {
+    return {
+      admin: null,
+      error
+    }
+
+  }
+}

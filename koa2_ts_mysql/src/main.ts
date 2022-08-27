@@ -15,16 +15,10 @@ import AccessLogMiddleware from './middleware/AccessLogMiddleware';
 
 const app = new Koa()
 
+// 在这用中间件, 是全局中间件
 app
   .use(AccessLogMiddleware)
-  .use(router.routes())
-
-// const bootstrap = async () => {
-//   const port = 8820
-//   await app.listen(port)
-//   console.log(`[\x1B[36mRunning\x1B[0m] 服务已启动: http://localhost:${port}`);
-// }
-// export default bootstrap
+  .use(router.routes()) // 启动路由
 
 const port = config.server.port
 

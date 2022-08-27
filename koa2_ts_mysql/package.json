@@ -14,8 +14,10 @@
     "preset": "ts-jest"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.9",
     "dotenv": "^16.0.1",
     "dotenv-expand": "^8.0.3",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-router": "^12.0.0",
     "log4js": "^6.6.1",
