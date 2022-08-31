@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from "jsonwebtoken"
+import jwt, { JsonWebTokenError, JwtPayload, TokenExpiredError } from "jsonwebtoken"
 import config from "../../config"
 
 // 加密后的签名
@@ -11,7 +11,10 @@ export const sign = (data: JwtPayload) => {
 }
 
 // 验证签名
-export const verify = (token: string) => {
+export const verify = (token: string): {
+  admin: JwtPayload | string | null,
+  error: TokenExpiredError | JsonWebTokenError | null
+} => {
   try {
     const decode = jwt.verify(
       token,
@@ -25,8 +28,7 @@ export const verify = (token: string) => {
   } catch (error) {
     return {
       admin: null,
-      error
+      error: error as TokenExpiredError | JsonWebTokenError | null
     }
-
   }
 }

@@ -14,7 +14,7 @@ class IndexController {
     // accessLogger.error("Cheese is too ripe!");
     // accessLogger.fatal("Cheese was breeding ground for listeria.");
 
-    const admin = await AdminService.getAdmin()
+    const admin = await AdminService.getAdminOne()
 
     // ctx.body = [1, 2, 3]
     ctx.body = admin

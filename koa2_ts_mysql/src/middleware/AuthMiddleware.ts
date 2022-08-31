@@ -1,5 +1,6 @@
 import { Context, Next } from "koa";
 import { verify } from "../util/auth";
+import response from "../util/response";
 
 const AuthMiddleware = (ctx: Context, next: Next) => {
   const token = ctx.headers.authorization
@@ -8,10 +9,16 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
     const { error, admin } = verify(token)
     // 验证签名不通过
     if (error) {
-      ctx.body = {
-        msg: error,
-        code: 400
-      }
+      response.err(ctx,
+        {
+          data: error,
+        }
+      )
+
+      // ctx.body = {
+      //   msg: error,
+      //   code: 400
+      // }
     }
     else {
       // 验证签名通过
@@ -21,10 +28,17 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
     }
   } else {
     // token 不存在
-    ctx.body = {
-      msg: 'authorization 不可为空',
-      code: 400
-    }
+    response.err(ctx,
+      {
+        code: 401,
+        data: 'authorization 不可为空'
+      }
+    )
+
+    // ctx.body = {
+    //   msg: 'authorization 不可为空',
+    //   code: 400
+    // }
   }
 }
 

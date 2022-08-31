@@ -8,6 +8,7 @@ class LoginController {
     const admin = await AdminService.getAdmin()
     // 对数据加密
     const token = sign({ admin })
+
     ctx.body = {
       token
     }
