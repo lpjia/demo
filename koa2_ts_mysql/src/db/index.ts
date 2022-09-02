@@ -20,7 +20,7 @@ const sequelize = new Sequelize(name as string, user as string, pawd, {
     // timestamps: true,
     createdAt: 'create_time',
     updatedAt: 'update_time',
-    freezeTableName: true,
+    freezeTableName: true, // 强制表名=模型名, 否则会自动复数化
   },
   models: [
     path.join(__dirname, '..', 'model/**/*.ts'), // 开发加载

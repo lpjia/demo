@@ -1,7 +1,7 @@
 import { Context } from "koa"
 import AdminService from "../service/AdminService"
 import { sign } from "../util/auth"
-import response from "../util/response"
+import resp from "../util/resp"
 
 // 注册和添加用户是一个接口
 
@@ -16,7 +16,7 @@ class UserController {
     //   token
     // }
 
-    response.succ(ctx,
+    resp.succ(ctx,
       {
         data: { token }
       }

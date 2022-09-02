@@ -1,5 +1,6 @@
 import KoaRouter from "koa-router";
 import AdminController from "../controller/AdminController";
+import GoodController from "../controller/GoodController";
 import IndexController from "../controller/IndexController";
 import loginController from "../controller/LoginController";
 import AuthMiddleware from "../middleware/AuthMiddleware";
@@ -12,10 +13,12 @@ const router = new KoaRouter({
 
 // 请求
 // router.get('/login', loginController.two)
-router.get('/login', AdminController.two)
+router.get('/good/getList', GoodController.getGoodList)
+router.get('/good/get', GoodController.getGood)
+router.get('/test', AdminController.two)
 router.use(AuthMiddleware)
 router.use(TestMiddleware)
-router.get('/', IndexController.one) // 二参是传入一个方法, 不需要调用
+// router.get('/', IndexController.one) // 二参是传入一个方法, 不需要调用
 
 
 export default router

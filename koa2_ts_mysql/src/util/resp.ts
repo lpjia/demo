@@ -7,7 +7,7 @@ interface Opti {
   code?: number,
 }
 
-// 统一返回处理
+// 返回响应统一处理
 export default {
   succ(ctx: Context, option: Opti) {
     const { data = null, msg = 'success', code = 200 } = option
