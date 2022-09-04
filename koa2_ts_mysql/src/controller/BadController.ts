@@ -1,10 +1,10 @@
 import { Context } from "koa";
-import GoodService from "../service/GoodService";
+import BadService from "../service/BadService";
 import pagination from "../util/pagination";
 import resp from "../util/resp";
 
-class GoodController {
-  async getGoodList(ctx: Context) {
+class BadController {
+  async getBadList(ctx: Context) {
     const { query } = ctx.request
     const currPage = Number(query.currPage)
     const limit = Number(query.limit) || 15
@@ -12,7 +12,7 @@ class GoodController {
     if (Number.isNaN(currPage) || Number.isNaN(limit))
       return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
-    const { rows, count } = await GoodService.getGoodListByPage(currPage, limit)
+    const { rows, count } = await BadService.getBadListByPage(currPage, limit)
 
     resp.succ(ctx, {
       data: pagination(rows, {
@@ -22,14 +22,6 @@ class GoodController {
       })
     })
   }
-
-
-  async getGood(ctx: Context) {
-    const result = await GoodService.getGood()
-    resp.succ(ctx, {
-      data: result
-    })
-  }
 }
 
-export default new GoodController()
+export default new BadController()
