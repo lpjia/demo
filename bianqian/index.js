@@ -17,7 +17,7 @@ window.onload = function () {
 
     /* 如果数组中包含该词, 那么直接 alert 该词, 
       不包含则继续 push, 遍历 */
-    if (cacheArr.includes(word)){
+    if (cacheArr.includes(word)) {
       alert(node.innerHTML)
     } else {
       arr_2.push(node)
@@ -28,3 +28,11 @@ window.onload = function () {
 
   dom_2.append(...arr_2)
 }
+
+
+document.querySelector('#dplayed_content')
+const a = document.createElement('a');
+document.body.appendChild(a);
+a.href = '#dplayed_content';
+a.click();
+document.body.removeChild(a);

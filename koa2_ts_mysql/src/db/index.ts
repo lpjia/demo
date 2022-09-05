@@ -17,9 +17,10 @@ const sequelize = new Sequelize(name as string, user as string, pawd, {
   // 日志
   logging: msg => dbLogger.info(msg),
   define: {
-    // timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
+    timestamps: false, // 关闭Sequelize的自动添加timestamp的功能
+    /* 关闭后响应数据就不会添加以下两个麻瓜字段 */
+    // createdAt: 'create_time',
+    // updatedAt: 'update_time',
     freezeTableName: true, // 强制表名=模型名, 否则会自动复数化
   },
   models: [

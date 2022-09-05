@@ -5,7 +5,8 @@ interface TimeType {
   updateTime?: string
 }
 
-export function formatDisplayTime<T extends TimeType>(data: T): void {
+export function formatTime<T extends TimeType>(data: T): T {
   if (data && data.createTime) data.createTime = dayjs(data.createTime).format('YYYY-MM-DD HH:mm')
   if (data && data.updateTime) data.updateTime = dayjs(data.updateTime).format('YYYY-MM-DD HH:mm')
+  return data
 }

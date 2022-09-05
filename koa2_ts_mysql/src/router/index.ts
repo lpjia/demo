@@ -1,6 +1,7 @@
 import KoaRouter from "koa-router";
 import AdminController from "../controller/AdminController";
 import BadController from "../controller/BadController";
+import BaseTestController from "../controller/BaseTestController";
 import GoodController from "../controller/GoodController";
 import IndexController from "../controller/IndexController";
 import loginController from "../controller/LoginController";
@@ -15,6 +16,7 @@ const router = new KoaRouter({
 // 请求
 // router.get('/login', loginController.two)
 router.get('/good/getList', GoodController.getGoodList)
+router.get('/base/getList', BaseTestController.getGoodList)
 router.get('/bad/getList', BadController.getBadList)
 router.get('/good/get', GoodController.getGood)
 router.get('/test', AdminController.two)

@@ -1,11 +1,10 @@
 import { Context } from "koa";
-import BadService from "../service/BadService";
+import BaseTestService from "../service/BaseTestService";
 import pagination from "../util/pagination";
 import resp from "../util/resp";
-import { formatTime } from "../util/time";
 
-class BadController {
-  async getBadList(ctx: Context) {
+class BaseTestController {
+  async getGoodList(ctx: Context) {
     const { query } = ctx.request
     const currPage = Number(query.currPage)
     const limit = Number(query.limit) || 15
@@ -13,11 +12,10 @@ class BadController {
     if (Number.isNaN(currPage) || Number.isNaN(limit))
       return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
-    const { rows, count } = await BadService.getBadListByPage(currPage, limit)
-    const result = rows.map(item => formatTime(item))
+    const { rows, count } = await BaseTestService.getGoodListByPage(currPage, limit)
 
     resp.succ(ctx, {
-      data: pagination(result, {
+      data: pagination(rows, {
         currPage,
         limit,
         total: count
@@ -26,4 +24,4 @@ class BadController {
   }
 }
 
-export default new BadController()
+export default new BaseTestController()

@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Column, CreatedAt, Model, Table } from "sequelize-typescript";
+import { Column, Model, Table } from "sequelize-typescript";
 
 @Table
 export default class Good extends Model {
@@ -11,17 +11,10 @@ export default class Good extends Model {
   productName!: string
 
 
-  @Exclude()
+
+  @Exclude() // 不生效, 搞不懂
   @Column({
-    field: 'unit_price'
+    field: 'create_time'
   })
-  unitPrice!: string
-
-  // @Column({
-  //   field: 'create_time'
-  // })
-  // createTime!: string
-
-  // @CreatedAt
-  // createTime!: string;
+  createTime!: string
 }
