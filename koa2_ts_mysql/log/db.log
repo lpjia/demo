@@ -178,3 +178,24 @@
 [2022-09-05T04:31:09.376] [INFO] db - Executing (default): SELECT 1+1 AS result
 [2022-09-05T12:50:38.456] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
 [2022-09-05T12:50:38.457] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;
+[2022-09-05T13:23:03.605] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:23:12.105] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:23:16.348] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
+[2022-09-05T13:23:16.351] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;
+[2022-09-05T13:24:06.967] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:24:30.957] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:25:09.766] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:29:29.407] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:29:37.225] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:31:12.567] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:31:24.682] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
+[2022-09-05T13:31:24.685] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;
+[2022-09-05T13:33:34.068] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:33:37.230] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
+[2022-09-05T13:33:37.233] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;
+[2022-09-05T13:34:56.807] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
+[2022-09-05T13:34:56.809] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;
+[2022-09-05T13:40:55.017] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:41:19.045] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-05T13:41:23.516] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Good` AS `Good`;
+[2022-09-05T13:41:23.519] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime` FROM `Good` AS `Good` LIMIT 0, 3;

@@ -37,7 +37,7 @@
 .clearfix {
   *zoom: 1;
 
-  &:after {
+  &::after {
     content: '';
     clear: both;
     display: block;
@@ -54,13 +54,13 @@
 .clearfix_2 {
   *zoom: 1;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: "";
     display: table;
   }
 
-  &:after {
+  &::after {
     clear: both;
   }
 }

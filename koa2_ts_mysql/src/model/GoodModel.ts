@@ -11,7 +11,6 @@ export default class Good extends Model {
   productName!: string
 
 
-
   @Exclude() // 不生效, 搞不懂
   @Column({
     field: 'create_time'

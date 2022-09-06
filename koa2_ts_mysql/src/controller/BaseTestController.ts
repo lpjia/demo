@@ -4,7 +4,7 @@ import pagination from "../util/pagination";
 import resp from "../util/resp";
 
 class BaseTestController {
-  async getGoodList(ctx: Context) {
+  async getListByPage(ctx: Context) {
     const { query } = ctx.request
     const currPage = Number(query.currPage)
     const limit = Number(query.limit) || 15
@@ -12,7 +12,7 @@ class BaseTestController {
     if (Number.isNaN(currPage) || Number.isNaN(limit))
       return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
-    const { rows, count } = await BaseTestService.getGoodListByPage(currPage, limit)
+    const { rows, count } = await BaseTestService.getListByPage(currPage, limit)
 
     resp.succ(ctx, {
       data: pagination(rows, {

@@ -3,7 +3,7 @@ import BaseService from "./BaseService";
 
 class BaseTestService extends BaseService {
   constructor(model: any) {
-    super(model)
+    super(model);
   }
 }
 
