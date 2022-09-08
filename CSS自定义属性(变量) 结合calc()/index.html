@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS自定义属性(变量) 结合calc()</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="index.css">
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties -->
+  <!-- https://zhuanlan.zhihu.com/p/25714131 -->
+
+  <div class="up_down">
+    calc() 函数常常被用于跨单位的计算<br>
+    CSS 自定义属性(变量) 结合 calc(), calc 只能用声明好的单位去得出结果<br>
+    声明的单位是 px, 计算后的结果就是 px<br>
+    声明的单位是 deg(角度), 计算后的结果就是 deg<br>
+    百分比是在不同的属性里有不同的单位, 具体情况具体分析<br>
+  </div>
+
+
+  <div class="up_down txt">
+    <p class="one">测试 px 单位, 用高度比较直观, 还方便比对数据</p>
+    <p class="two">测试 rem 单位</p>
+    <p class="three">测试 px 单位, 并加上 calc</p>
+    <p class="four">测试 vh 单位</p>
+    <p class="five">测试 vh 单位, 并加上 calc</p>
+  </div>
+
+
+  <div class="up_down txt flex">
+    <div class="triangle-up"></div>
+    <div class="triangle-up rotate"></div>
+    <div class="triangle-up rotate-2"></div>
+  </div>
+
+
+  <div class="up_down">
+    没有 .txt, 有作用域限制, var 第二个参数是缺省值,
+    <div class="triangle-up rotate-3"></div>
+  </div>
+
+
+
+
+
+  <script>
+    // 这里要加上获取窗口的高度, 以便来比对 vh
+    // 应该家里电脑上有一个 demo 是关于这的
+    console.log('浏览器窗口可视区域的高度:', window.innerHeight + 'px')
+  </script>
+
+</body>
+
+</html>
