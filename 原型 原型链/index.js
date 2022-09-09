@@ -15,6 +15,7 @@ let xiaoming = {
 xiaoming.__proto__ = Student
 console.log(xiaoming.name)
 console.log(xiaoming.run())
+console.log(xiaoming.height) // 去原型链上找到该属性
 console.log('---- 分割线 ----\n\n\n')
 
 

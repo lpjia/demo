@@ -9,6 +9,8 @@ class User_2 {
     this.nameIs_3 = 'nameIs_3'
 
     this.nameIs_4 = nameIs
+
+    // console.log(#siyou in this)
   }
 
   sayHi() {
@@ -17,7 +19,12 @@ class User_2 {
     console.log('this.nameIs_4:', this.nameIs_4)
     // 语法要加 #
     console.log(this.#siyou, '内部可以取到');
-    console.log('#siyou' in this);
+
+    // undefined, 这种语法取不到私有字段, 就挺离谱的
+    console.log(this['#siyou'])
+
+    // 这是兼容性问题, chrome 91才支持, 我用的是 90
+    // console.log(#siyou in this);
   }
 
   run(speed) {
@@ -37,5 +44,4 @@ console.log(user_2.nameIs_2)
 console.log(user_2.nameIs_3)
 console.log(user_2.nameIs_4)
 // console.log(user_2.#siyou) // 报错
-console.log('#siyou' in User_2);
 console.log('---- 分割线 ----\n\n\n')

@@ -77,7 +77,6 @@ class Clock_2 {
   }
 }
 
-
 let clock_2 = new Clock_2({ template: 'h:m:s' });
 clock_2.start();
 setTimeout(() => clock_2.stop(), 1000)
@@ -86,5 +85,14 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 class ExtendedClock_2 extends Clock_2 {
+  constructor(options) {
+    super(options)
+    this.precision = options.precision || 1000
+  }
 
+  start() {
+    this.render()
+    this.timer = setInterval(() => this.render(), this.precision)
+  }
 }
+console.log('---- 分割线 ----\n\n\n')
