@@ -14,16 +14,16 @@ const sayHiMixin = {
 }
 
 // 用法
-class User {
+class Human {
   constructor(name) {
     this.name = name
   }
 }
 
 // 浅拷贝
-Object.assign(User.prototype, sayHiMixin)
+Object.assign(Human.prototype, sayHiMixin)
 
-new User('lpjia').sayHi()
+new Human('lpjia').sayHi()
 
 
 
@@ -47,14 +47,14 @@ const sayHiMixin_2 = {
   }
 }
 
-class User_2 {
-  constructor(name) {
-    this.name = name
-  }
+class Human_2 extends Human {
+  // constructor(name) {
+  //   this.name = name
+  // }
 }
 
-Object.assign(User_2.prototype, sayHiMixin_2)
+Object.assign(Human_2.prototype, sayHiMixin_2)
 
-new User_2('lpjia_2').sayHi()
+new Human_2('lpjia_2').sayBye()
 
 console.log('---- 分割线 ----\n\n\n')

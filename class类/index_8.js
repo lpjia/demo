@@ -82,9 +82,13 @@ Object.assign(Menu.prototype, eventMixin)
 
 const menu = new Menu()
 
+const callback = val => console.log(`Val selected: ${val}`)
+const callback_2 = val => console.log(`Val selected: ${val}-${val}`)
+
 // 添加一个事件处理程序(handler), 在被选择时被调用
-menu.on('select', val => console.log(`Val selected: ${val}`))
-menu.on('click', val => console.log(`Val clicked: ${val}`))
+menu.on('select', callback)
+menu.on('select', callback_2)
+// menu.on('click', callback)
 
 // 触发事件 => 运行上述的事件处理程序(handler)并显示
 menu.choose('123')
@@ -94,5 +98,13 @@ console.log(menu)
 // 使用一个对象中的方法(行为), 添加到类中, 不会影响继承链
 
 // 方法对应行为, 属性(数据)对应状态
+
+
+
+
+
+// setTimeout(()=> {
+//   menu.off('select', callback)
+// }, 5000)
 
 console.log('---- 分割线 ----\n\n\n')

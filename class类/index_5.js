@@ -39,13 +39,39 @@ class Rabbit {
 
 let rabbit = new Rabbit('Rab')
 console.log(rabbit.hasOwnProperty('name'))
+console.log(rabbit.name);
 
+
+// 子类构造函数调用super()方法
 class Rabbit_2 extends Object {
   constructor(name) {
     super()
     this.name = name
   }
 }
-let rabbit_2 = new Rabbit_2('Rab')
+let rabbit_2 = new Rabbit_2('Rab_2')
 console.log(rabbit_2.hasOwnProperty('name'))
+console.log(rabbit_2.name);
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+// “extends” 语法会设置两个原型
+// 在构造函数的 "prototype" 之间设置原型（为了获取实例方法）。
+// 在构造函数之间会设置原型（为了获取静态方法）。
+console.log('“extends” 语法会设置两个原型');
+console.log(Rabbit_2.prototype.__proto__ === Object.prototype);
+// 把 Rabbit_2 构造函数的 __proto__ 指向了 Object 构造函数, 本来应该指向 Function.prototype
+console.log(Rabbit_2.__proto__ === Object);
+console.log(Rabbit_2.getOwnPropertyNames({a: 1, b: 2}));
+// Object.getOwnPropertyNames() 是 Object 的静态方法, 不能用于实例
+
+
+console.log('Rabbit 没有继承 Object');
+console.log(Rabbit.prototype.__proto__ === Object.prototype);
+console.log(Rabbit.__proto__ === Object);
+// 所有函数都是默认如此
+console.log(Rabbit.__proto__ === Function.prototype);
+// console.log(Rabbit.getOwnPropertyNames({a: 1, b: 2})); // 报错, Rabbit 没有提供对 Object 的静态方法的访问
+
 console.log('---- 分割线 ----\n\n\n')

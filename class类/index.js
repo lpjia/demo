@@ -6,7 +6,7 @@ class User {
   constructor(nameIs) {
     this.nameIs = nameIs
 
-    this.name_1 = nameIs
+    this.name_11 = nameIs
   }
 
   sayHi() {
@@ -50,7 +50,7 @@ function People() { }
 
 console.log(user);
 
-console.log(typeof User)
+console.log("typeof User: ",typeof User);
 console.log('typeof People:', typeof People);
 
 console.log(User.prototype.constructor === User)

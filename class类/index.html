@@ -1,26 +1,90 @@
 <!doctype html>
 <html lang="zh">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>class 类</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class 类</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../global/global.css" /> -->
+  </head>
 
-<body>
+  <body>
+    <h3>考察知识点</h3>
+    <ol>
+      <li>构造函数</li>
+      <li>
+        <span>类基础知识</span>
+        <ul>
+          <li>new 会自动调用 constructor() 方法，因此我们可以在 constructor() 中初始化对象</li>
+          <li>类字段, 重要的不同之处在于，它们会在每个独立对象中被设好，而不是设在 User.prototype</li>
+        </ul>
+      </li>
+      <li>
+        <span>类继承</span>
+        <ul>
+          <li>extends 注意用复数, 加s</li>
+          <li>关键字 extends 使用了很好的旧的原型机制进行工作。它将 User_3.prototype.__proto__ = User_2.prototype</li>
+          <li>执行 super.method(...) 来调用一个父类方法</li>
+          <li>执行 super(...) 来调用一个父类 constructor（只能在我们的 constructor 中）</li>
+          <li>箭头函数没有 super, 所以在类内部方法里使用箭头函数(参照 this 在箭头函数的指向)需注意</li>
+        </ul>
+      </li>
+      <li>
+        <span>类的静态属性和静态方法</span>
+        <ul>
+          <li>在一个类的声明中，它们以 static 关键字开头</li>
+          <li>静态方法用于实现属于整个类，但不属于该类任何特定对象的函数</li>
+          <li>静态方法可以在类上调用, 而不是在单个对象上</li>
+          <li>静态属性和方法是可被继承的</li>
+          <li>静态方法被用于实现属于整个类的功能。它与具体的类实例无关</li>
+          <li>静态属性被用于当我们想要存储类级别的数据时，而不是绑定到实例</li>
+        </ul>
+      </li>
+      <li>
+        <span>私有的和受保护的属性和方法</span>
+        <ul>
+          <li>内部接口 外部接口</li>
+          <li>私有字段不能通过 this[name] 访问</li>
+          <li>私有字段不能被子类继承</li>
+        </ul>
+      </li>
+      <li>
+        <span>内建类 内建对象</span>
+        <ul>
+          <li>Array Date Number Boolean Object</li>
+          <li>它们相互间不继承静态方法</li>
+          <li>Array 和 Date 都继承自 Object，所以它们的实例都有来自 Object.prototype 的方法。但 Array.__Proto__ 并不指向 Object，所以它们没有例如
+            Array.keys()（或 Date.keys()）这些静态方法</li>
+        </ul>
+      </li>
+      <li>
+        <span>类检查</span>
+        <ul>
+          <li>instanceof 操作符</li>
+          <li>A instanceof B 意思是 B.prototype 在不在 A 的原型链上, 返回 boolean</li>
+        </ul>
+      </li>
+      <li>
+        <span>混入模式</span>
+        <ul>
+          <li>混入行为, 也就是混入方法</li>
+          <li>使用一个对象中的方法(行为), 添加到类中, 不会影响继承链</li>
+          <li>方法对应行为, 属性(数据)对应状态</li>
+        </ul>
+      </li>
+    </ol>
 
-  <!-- 类型冲突,  -->
-  <script src="index.js" type="module"></script>
-  <script src="index_2.js"></script>
-  <script src="index_3.js" type="module"></script>
-  <!-- <script src="index_4.js"></script> -->
-  <script src="index_5.js" type="module"></script>
-  <script src="index_6.js" type="module"></script>
-  <script src="index_7.js" type="module"></script>
-  <script src="index_8.js" type="module"></script>
-</body>
+
+    <script src="index.js"></script>
+    <script src="index_2.js"></script>
+    <script src="index_3.js"></script>
+    <!-- <script src="index_4.js"></script> -->
+    <script src="index_5.js"></script>
+    <script src="index_6.js"></script>
+    <script src="index_7.js"></script>
+    <script src="index_8.js"></script>
+  </body>
 
 </html>

@@ -11,7 +11,7 @@ class CoffeeMachine {
     this._power = power
     // console.log(`Created a coffee-machine, power: ${power}`);
     console.log(this.#siyouziduan)
-    // console.log(this['#siyouziduan']) // undefined, 就离谱
+    console.log(this['#siyouziduan']) // undefined, 就离谱
     // 对于私有字段来说，这是不可能的：this['#name'] 不起作用。这是确保私有性的语法限制。
   }
 
@@ -50,11 +50,13 @@ console.log(coffeeMachine)
 
 class CoffeeMachine_2 extends CoffeeMachine {
   #siyouziduan_2 = 222
-  constructor() {
-    super()
-    // this.siyou = super.#siyouziduan // 报错
-    this.siyou = super._waterAmount
-  }
+  
+  // 隐式调用
+  // constructor() {
+  //   super()
+  //   // this.siyou = super.#siyouziduan // 报错
+  //   this.siyou = super._waterAmount
+  // }
 }
-console.log(new CoffeeMachine_2())
+console.log(new CoffeeMachine_2(10))
 console.log('---- 分割线 ----\n\n\n')
