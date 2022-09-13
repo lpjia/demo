@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  overflow: auto;
+  overflow: hidden;
 }
 
 
@@ -18,7 +18,7 @@ body {
   margin: 1rem 0; // 为了方便看
   border: 1px solid #000;
   /* 触发容器的 BFC，那么容器将会包裹着浮动元素。 */
-  overflow: auto;
+  overflow: hidden;
 
   >div {
     width: 100px;
@@ -43,7 +43,7 @@ body {
   height: 200px;
   background: deepskyblue;
   /* 触发 BFC */
-  overflow: auto;
+  // overflow: hidden;
 }
 
 .reset {
@@ -52,7 +52,7 @@ body {
 }
 
 .d_flow {
-  display: flow-root;
+  // display: flow-root;
 }
 
 
