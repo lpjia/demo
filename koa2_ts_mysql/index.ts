@@ -1,6 +1,3 @@
-// import bootstrap from "./src/main";
-// bootstrap()
-
-import run from "./src/main";
+import run from "./src/app";
 
 run()

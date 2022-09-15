@@ -9,7 +9,6 @@ specifiers:
   '@types/supertest': ^2.0.12
   '@types/validator': ^13.7.5
   async-validator: ^4.2.5
-  class-transformer: ^0.5.1
   dayjs: ^1.11.5
   dotenv: ^16.0.1
   dotenv-expand: ^8.0.3
@@ -30,7 +29,6 @@ specifiers:
 
 dependencies:
   async-validator: 4.2.5
-  class-transformer: 0.5.1
   dayjs: 1.11.5
   dotenv: 16.0.1
   dotenv-expand: 8.0.3
@@ -1222,10 +1220,6 @@ packages:
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
     dev: true
-
-  /class-transformer/0.5.1:
-    resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
-    dev: false
 
   /cliui/7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}

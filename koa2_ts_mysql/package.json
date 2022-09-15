@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "async-validator": "^4.2.5",
-    "class-transformer": "^0.5.1",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.1",
     "dotenv-expand": "^8.0.3",

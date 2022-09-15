@@ -1,4 +1,4 @@
-import Good from "../model/GoodModel";
+import Goods from "../model/GoodsModel";
 import BaseService from "./BaseService";
 
 class BaseTestService extends BaseService {
@@ -7,4 +7,4 @@ class BaseTestService extends BaseService {
   }
 }
 
-export default new BaseTestService(Good)
+export default new BaseTestService(Goods)

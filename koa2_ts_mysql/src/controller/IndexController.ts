@@ -14,10 +14,12 @@ class IndexController {
     // accessLogger.error("Cheese is too ripe!");
     // accessLogger.fatal("Cheese was breeding ground for listeria.");
 
-    const admin = await AdminService.getAdminOne()
 
-    // ctx.body = [1, 2, 3]
+    const admin = await AdminService.getAdminOne()
     ctx.body = admin
+
+    // // 单元测试用
+    // ctx.body = [1, 2, 3]
   }
 }
 

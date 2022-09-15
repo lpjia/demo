@@ -1,9 +1,9 @@
-import { Exclude } from "class-transformer";
+// import { Exclude } from "class-transformer";
 import { Column, Table } from "sequelize-typescript";
-import Good from "./GoodModel";
+import Goods from "./GoodsModel";
 
 // @Table // 继承其他模型则不用写该装饰器
-export default class Bad extends Good {
+export default class Bad extends Goods {
 
   @Column({
     field: 'update_time'
