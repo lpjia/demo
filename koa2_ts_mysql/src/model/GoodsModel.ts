@@ -10,6 +10,21 @@ export default class Goods extends Model {
   })
   productName!: string
 
+  @Column({ field: 'unit_price' })
+  unitPrice!: string
+
+  @Column
+  unit!: string
+
+  @Column({ field: 'shop_name' })
+  shopName!: string
+
+  @Column
+  position!: string
+
+  @Column
+  spec!: string
+
 
   // @Exclude() // 不生效, 搞不懂
   @Column({
