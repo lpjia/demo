@@ -1,3 +1,5 @@
+/* 说明: 此文件工具函数, 用到时再拖到相应的项目工具库 */
+
 // import { message } from '@/utils/resetMessage'
 // import dayjs from 'dayjs'
 
@@ -21,9 +23,12 @@ export const clearStorage = (storage = sessionStorage) => storage.clear()
 // 判断不为空, 用来获取接口数据判断用, 一般不会返回 Symbol 类型
 export function judgeNotEmpty(param) {
   let judgeObj = p => {
-    if (p === null) return false // 是 null
-    else if (Array.isArray(p)) return p.length ? true : false // 是数组
-    else return JSON.stringify(p) === '{}' ? false : true // 是对象
+    if (p === null)
+      return false // 是 null
+    else if (Array.isArray(p))
+      return p.length ? true : false // 是数组
+    else
+      return JSON.stringify(p) === '{}' ? false : true // 是对象
   }
   let type = typeof (param)
   switch (type) {
@@ -33,31 +38,6 @@ export function judgeNotEmpty(param) {
       return judgeObj(param)
     default:
   }
-}
-
-
-// 对象数组转对象
-export function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
-  const objKeyValue = arr.reduce((acc, cur) => {
-    acc[cur[k]] = cur[v]
-    return acc
-  }, {})
-  return objKeyValue
-}
-
-
-// 对象转对象数组
-export function objToArr(obj, { l = 'name', v = 'id', isNum = false } = {}) {
-  let aKey = Object.keys(obj)
-    , aResult = []
-  aKey.map(item => {
-    let model = {
-      [l]: obj[item],
-      [v]: isNum ? Number(item) : item
-    }
-    aResult.push(model)
-  })
-  return aResult
 }
 
 
@@ -450,30 +430,6 @@ export function manyToOne(map) {
 
 
 /**
- * @description 过滤掉对象为空值的字段(不过滤 0 和 false)
- * @param {object} obj
- * @return {object}
- */
-export function removeObjEmptyKey(obj) {
-  for (let item in obj) {
-    if (!obj[item]) {
-      let type = typeof (obj[item])
-      switch (type) {
-        case 'number':
-          Number.isNaN(obj[item]) && delete obj[item];
-          break;
-        case 'boolean':
-          break;
-        default:
-          delete obj[item]
-      }
-    }
-  }
-  return obj
-}
-
-
-/**
  * @description 判断是否为外链(也就是非系统页面路由)
  * @param {string} path
  * @returns {Boolean}
@@ -514,4 +470,94 @@ export function calcWorkingYears(startTime, endTime) {
     , month = currTime.diff(workdayTime, 'month') % 12
     , workingYears = `${year} 年 ${month} 个月`
   return workingYears
+}
+
+
+/**
+ * @description 对象数组转对象
+ * 接口返回的数据结构需要转换成枚举类型
+ * 测试方法目录中有示例
+ * @param {array} arr 
+ * @param {object} @field k 定为对象key的字段名 @field v 定为相应val的字段名
+ * @returns {object}
+ */
+export function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
+  const objKeyValue = arr.reduce((acc, cur) => {
+    acc[cur[k]] = cur[v]
+    return acc
+  }, {})
+  return objKeyValue
+}
+
+
+/**
+ * @description 对象转对象数组
+ * 枚举类型的数据源, 转成 el-select 需要的数据结构
+ * 测试方法目录中有示例
+ * @param {object} obj 
+ * @param {object} @field l 显示文本label的字段名 @field v 需要传值的字段名 @field isNum 是否把值转为number类型
+ * @returns {array}
+ */
+export function objToArr(obj, { l = 'name', v = 'id', isNum = false } = {}) {
+  let aKey = Object.keys(obj)
+    , aResult = []
+  aKey.map(item => {
+    let model = {
+      [l]: obj[item],
+      [v]: isNum ? Number(item) : item
+    }
+    aResult.push(model)
+  })
+  return aResult
+}
+
+
+/**
+ * @description 过滤掉对象为空值的字段(不过滤 0 和 false)
+ * @param {object} obj
+ * @param {array} arr 是否过滤掉空数组、空对象 ['array', 'object]
+ * @return {object}
+ */
+export function removeObjEmptyKey(obj, arr = []) {
+  for (const key in obj) {
+    const val = obj[key]
+    if (!val) {
+      let type = typeof (val)
+      switch (type) {
+        case 'number':
+          Number.isNaN(val) && delete obj[key];
+          break;
+        case 'boolean':
+          break;
+        default:
+          delete obj[key]
+      }
+    } else {
+      if (arr.includes('array') && Array.isArray(val) && val.length === 0)
+        delete obj[key]
+      else if (arr.includes('object') && JSON.stringify(val) === '{}')
+        delete obj[key]
+    }
+  }
+  return obj
+}
+
+
+/**
+ * @description 把对象属性拆分成单独对象, 再push到数组
+ * 测试方法目录中有示例
+ * @param {object} obj
+ * @returns {array}
+ */
+export function objKeyToOrmField(obj = {}) {
+  const newArr = []
+
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      const val = obj[key];
+      newArr.push({ [key]: val })
+    }
+  }
+
+  return newArr
 }

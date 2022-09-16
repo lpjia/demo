@@ -2,7 +2,7 @@ import {
   reverseMapping, objToArr, deepClone,
   factorial, arrangement, combination,
   generateIntArr, getRandomIntInclusive, arrToObj,
-  isExternal,
+  isExternal, removeObjEmptyKey, objKeyToOrmField
 } from '../util/commonMethod.js'
 import { getImgGroupByDevice, fireSensorStatus } from '../util/commonData.js'
 import diff from '../util/diff.js'
@@ -180,7 +180,26 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 
+
+const path_2 = 'https:'
+const testIsExternal_2 = isExternal(path_2)
+console.log('testIsExternal_2:', testIsExternal_2)
+const path_3 = 'http:'
+const testIsExternal_3 = isExternal(path_3)
+console.log('testIsExternal_3:', testIsExternal_3)
+const path_4 = 'files:'
+const testIsExternal_4 = isExternal(path_4)
+console.log('testIsExternal_4:', testIsExternal_4)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+
+
 // 测试数组结构转变的那两个方法
+// 接口返回的数据结构有 renmingArr 对象数组, name 表示显示的文本(对应 label), value 表示需要传的值, 可以直接拿到 el-select 用
+// 接口返回的是枚举类型, 类似 obj, 需要通过
 const renmingArr = [
   { name: 'xm', value: 'k' },
   { name: 'xz', value: 'k2' },
@@ -204,13 +223,28 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 
-const path_2 = 'https:'
-const testIsExternal_2 = isExternal(path_2)
-console.log('testIsExternal_2:', testIsExternal_2)
-const path_3 = 'http:'
-const testIsExternal_3 = isExternal(path_3)
-console.log('testIsExternal_3:', testIsExternal_3)
-const path_4 = 'files:'
-const testIsExternal_4 = isExternal(path_4)
-console.log('testIsExternal_4:', testIsExternal_4)
+
+// 过滤掉为空的 key, 不过滤 0 false
+const includeNullFieldsObj = {
+  emptyObj: {},
+  emptyArr: [],
+  emptyUndefined: undefined,
+  emptyNull: null,
+  emptyNum: NaN,
+  emptyString: '',
+  isFalse: false,
+  num: 0,
+}
+const excludeNullFieldsObj = removeObjEmptyKey(includeNullFieldsObj)
+console.log('excludeNullFieldsObj:', excludeNullFieldsObj)
+const excludeNullFieldsObj_2 = removeObjEmptyKey(deepClone(includeNullFieldsObj), ['array', 'object'])
+console.log('excludeNullFieldsObj_2:', excludeNullFieldsObj_2)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+
+// 把普通对象转换成orm需要的数据结构
+console.log(objKeyToOrmField(excludeNullFieldsObj_2))
 console.log('---- 分割线 ----\n\n\n')

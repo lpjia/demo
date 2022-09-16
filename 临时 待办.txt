@@ -41,8 +41,40 @@ vscode plugin for element-ui vux iview
 
 -----------------------------------------
 
-实例
 
+
+查询时, 处理字段应该写到 controller 还是 service 层?
+前端传值, 没值的字段不要传到后端
+前端处理空值的字段
+
+
+
+
+
+https://jingyan.baidu.com/article/e6c8503c54049ca44f1a18c8.html
+自己弄个离职证明, 仿照着原来华希的, 日期改为9.17号
+如果说公司名字咋对不上, 拿出保密协议 , 21年年底才知道新注册祥煜这家公司
+搞定
+
+offer 也要打印出来并签字
+
+银行工资流水, 到时候自己先去银行打印出来, 然后扫描, 继续 ps
+
+社保方面, 公司那边因为某些问题, 交不成社保, 但是全额发工资+补助
+
+
+
+
+
+实例
+pnpm add async-validator
+
+
+javascript:window.frames[0].document.querySelector('select[name=FONT]').selectedIndex++;window.frames[0].document.querySelector('form').submit();
+
+
+
+javascript:var a = document.createElement('a');document.body.appendChild(a);a.href = '#photo-content-title-text-main';a.click();document.body.removeChild(a);
 
 
 

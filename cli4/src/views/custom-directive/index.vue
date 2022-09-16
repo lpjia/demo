@@ -1,7 +1,7 @@
 <template>
   <div style="position: relative;">
     <!-- <div> -->
-    <input v-focus :value="autoFocus">
+    <input v-focus:value="autoFocus">
 
     <!-- 自定义指令 值 参数 修饰符 表达式 -->
     <button class="marginLB" v-click:canshu.xiushifu="autoFocus" @click="log">自定义指令 注册局部指令 执行方法</button>
