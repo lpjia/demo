@@ -31,4 +31,9 @@ export default class Goods extends Model {
     field: 'create_time'
   })
   createTime!: string
+
+  @Column({
+    field: 'update_time'
+  })
+  updateTime!: string
 }

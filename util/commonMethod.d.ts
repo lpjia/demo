@@ -1,3 +1,5 @@
+// 这种方案还有待验证
+
 declare function moduleLib(options: Options): void;
 
 interface Options {

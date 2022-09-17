@@ -19,7 +19,7 @@ const router = new KoaRouter({
 router.get('/goods/getList', GoodsController.getGoodsList)
 router.get('/goods/getListByPage', GoodsController.getGoodsListByPage)
 // router.get('/base/getList', BaseTestController.getListByPage)
-// router.get('/bad/getList', BadController.getBadList)
+router.get('/bad/getList', BadController.getBadList)
 // router.get('/goods/get', GoodController.getGood)
 // router.get('/test', AdminController.two)
 // router.use(AuthMiddleware)

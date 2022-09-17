@@ -42,6 +42,11 @@ vscode plugin for element-ui vux iview
 -----------------------------------------
 
 
+Op.or
+报错
+
+
+
 
 查询时, 处理字段应该写到 controller 还是 service 层?
 前端传值, 没值的字段不要传到后端
@@ -57,6 +62,8 @@ https://jingyan.baidu.com/article/e6c8503c54049ca44f1a18c8.html
 搞定
 
 offer 也要打印出来并签字
+
+还有其他需要打印的复印件
 
 银行工资流水, 到时候自己先去银行打印出来, 然后扫描, 继续 ps
 

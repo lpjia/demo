@@ -547,14 +547,29 @@ export function removeObjEmptyKey(obj, arr = []) {
  * @description 把对象属性拆分成单独对象, 再push到数组
  * 测试方法目录中有示例
  * @param {object} obj
+ * @param {object} options @field assign 需要合并属性的对象 @field exclude 排除某些字段, 是字符串数组
  * @returns {array}
  */
-export function objKeyToOrmField(obj = {}) {
+export function objKeyToOrmField(obj = {}, options) {
   const newArr = []
+    , newObj = {}
+  Object.assign(newObj, obj)
 
-  for (const key in obj) {
-    if (Object.hasOwnProperty.call(obj, key)) {
-      const val = obj[key];
+  // 增加对象属性
+  if (options?.assign) {
+    Object.assign(newObj, options.assign)
+  }
+
+  // 排除某些字段
+  if (options?.exclude) {
+    for (const item of options.exclude) {
+      delete newObj[item]
+    }
+  }
+
+  for (const key in newObj) {
+    if (Object.hasOwnProperty.call(newObj, key)) {
+      const val = newObj[key];
       newArr.push({ [key]: val })
     }
   }

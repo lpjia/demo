@@ -25,13 +25,13 @@ export default {
     // 输出源
     appenders: {
       cheese: {
-        type: "file", filename: "log/cheese.log"
+        type: "file", filename: "z_log/cheese.log"
       },
       access: {
-        type: "file", filename: "log/access.log"
+        type: "file", filename: "z_log/access.log"
       },
       db: {
-        type: "file", filename: "log/db.log"
+        type: "file", filename: "z_log/db.log"
       },
     },
   },

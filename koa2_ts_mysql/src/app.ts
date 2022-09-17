@@ -9,7 +9,7 @@ db()
 import { Server } from "http";
 import Koa from "koa";
 import router from "./router";
-import config from "../config";
+import config from "../z_config";
 import AccessLogMiddleware from './middleware/AccessLogMiddleware';
 
 

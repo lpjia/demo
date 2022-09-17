@@ -247,4 +247,18 @@ console.log('---- 分割线 ----\n\n\n')
 
 // 把普通对象转换成orm需要的数据结构
 console.log(objKeyToOrmField(excludeNullFieldsObj_2))
+const queryParam = {
+  currPage: '1',
+  limit: '15',
+  produceName: '芹菜',
+  unitPrice: '6',
+}
+const universalQueryFields = objKeyToOrmField(queryParam, {
+  assign: {
+    one: '111',
+    two: '222',
+  },
+  exclude: ['currPage', 'limit']
+})
+console.log('universalQueryFields:', universalQueryFields)
 console.log('---- 分割线 ----\n\n\n')

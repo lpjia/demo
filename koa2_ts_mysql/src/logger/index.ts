@@ -1,5 +1,5 @@
 import { configure, getLogger } from "log4js";
-import config from "../../config";
+import config from "../../z_config";
 
 configure(config.log);
 

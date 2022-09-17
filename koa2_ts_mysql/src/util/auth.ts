@@ -1,5 +1,5 @@
 import jwt, { JsonWebTokenError, JwtPayload, TokenExpiredError } from "jsonwebtoken"
-import config from "../../config"
+import config from "../../z_config"
 
 // 加密后的签名
 export const sign = (data: JwtPayload) => {

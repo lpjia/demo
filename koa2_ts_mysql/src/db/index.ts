@@ -1,6 +1,6 @@
 import path from "path";
 import { Sequelize } from "sequelize-typescript";
-import config from "../../config";
+import config from "../../z_config";
 import { dbLogger } from "../logger";
 
 const { name, host, port, user, pawd } = config.db
@@ -23,6 +23,11 @@ const sequelize = new Sequelize(name as string, user as string, pawd, {
     // updatedAt: 'update_time',
     freezeTableName: true, // 强制表名=模型名, 否则会自动复数化
   },
+  // 方言选项, 也就是不同数据库各自的独有配置
+  dialectOptions: {
+    dateStrings: true // 时间格式化
+  },
+  // 找 model 文件
   models: [
     path.join(__dirname, '..', 'model/**/*.ts'), // 开发加载
     path.join(__dirname, '..', 'model/**/*.js'), // 编译后加载
