@@ -30,5 +30,5 @@ function objKeyToOrmField(obj = {}, options) {
 }
 
 module.exports = {
-  objKeyToOrmField
+  objKeyToOrmField,
 }

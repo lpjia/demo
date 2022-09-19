@@ -2,29 +2,32 @@ import { Context } from "koa";
 import GoodsService from "../service/GoodsService";
 import pagination from "../util/pagination";
 import resp from "../util/resp";
-import { objKeyToOrmField } from "../util/generalTools";
+// import { objKeyToOrmField_2 } from "../util/generalTools";
 // import { objKeyToOrmField } from "../util/generalTools实现TS版";
 
 class GoodsController {
   async getGoodsListByPage(ctx: Context) {
     const { query } = ctx.request
-      , currPage = Number(query.currPage)
-      , limit = Number(query.limit)
-      , universalQueryFields = objKeyToOrmField(query, {
-        exclude: ['currPage', 'limit']
-      })
+      , currPage = Number(query.currPage) // 限制为>0的整数
+      , limit = Number(query.limit) // 限制为>0的整数
+    // 这两个参都必须限制
+    // , universalQueryFields = objKeyToOrmField_2(query, {
+    //   exclude: ['currPage', 'limit']
+    // })
 
-    // console.log('query: ', query)
+    console.log('query: ', query)
     // console.log(universalQueryFields)
 
     if (Number.isNaN(currPage) || Number.isNaN(limit))
       return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
-    const { rows, count } = await GoodsService.getGoodsListByPage({
-      page: currPage,
-      limit,
-      universalQueryFields
-    })
+    // const { rows, count } = await GoodsService.getGoodsListByPage({
+    //   page: currPage,
+    //   limit,
+    //   universalQueryFields
+    // })
+    const param = { ...query, currPage, limit }
+    const { rows, count } = await GoodsService.getGoodsListByPage(param)
 
     resp.succ(ctx, {
       data: pagination(rows, {

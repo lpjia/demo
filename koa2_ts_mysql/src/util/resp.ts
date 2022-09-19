@@ -8,6 +8,7 @@ interface Opti {
 }
 
 // 返回响应统一处理
+// 考虑到方法名都是简写, 且重复率高, 所以用默认导出
 export default {
   succ(ctx: Context, option: Opti) {
     const { data = null, msg = 'success', code = 200 } = option

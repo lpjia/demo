@@ -11,12 +11,14 @@ import Koa from "koa";
 import router from "./router";
 import config from "../z_config";
 import AccessLogMiddleware from './middleware/AccessLogMiddleware';
+import koaBody from 'koa-body'
 
 
 const app = new Koa()
 
 // 在这用中间件, 是全局中间件
 app
+  .use(koaBody())
   .use(AccessLogMiddleware) // 访问日志
   .use(router.routes()) // 启动路由
 

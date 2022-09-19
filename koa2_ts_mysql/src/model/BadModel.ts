@@ -5,10 +5,10 @@ import Goods from "./GoodsModel";
 // @Table // 继承其他模型则不用写该装饰器
 export default class Bad extends Goods {
 
-  @Column({
-    field: 'update_time'
-  })
-  updateTime!: string
+  // @Column({
+  //   field: 'update_time'
+  // })
+  // updateTime!: string
 
 
   // @Column({

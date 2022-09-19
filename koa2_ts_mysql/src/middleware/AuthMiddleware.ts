@@ -14,13 +14,7 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
           data: error,
         }
       )
-
-      // ctx.body = {
-      //   msg: error,
-      //   code: 400
-      // }
-    }
-    else {
+    } else {
       // 验证签名通过
       console.log(admin)
       // 不加 return 就不会去匹配下一个路由
@@ -34,11 +28,6 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
         data: 'authorization 不可为空'
       }
     )
-
-    // ctx.body = {
-    //   msg: 'authorization 不可为空',
-    //   code: 400
-    // }
   }
 }
 

@@ -2,6 +2,7 @@ import jwt, { JsonWebTokenError, JwtPayload, TokenExpiredError } from "jsonwebto
 import config from "../../z_config"
 
 // 加密后的签名
+// 重复率低, 所以用命名导出
 export const sign = (data: JwtPayload) => {
   return jwt.sign(
     data,
