@@ -1,35 +1,28 @@
-import { Column, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { Column, Model, PrimaryKey, Table, Comment, Default, AutoIncrement } from "sequelize-typescript";
 
 // model 不需要导出实例
-
 @Table
 export default class Admin extends Model {
 
-  // @PrimaryKey
-  // @Column
-  // id!: number
-
+  @PrimaryKey
+  @AutoIncrement
   @Column
+  id!: number
+
+  @Comment('这个装饰器是干啥了')
+  @Column // 如果有, 得在最下面
   name!: string
 
-  // @Column
-  // title!: string
+  @Default(1) // 没测
+  @Column
+  level!: number
 
-  // @Column
-  // author!: string
+  @Column
+  gender!: number
 
-  // @Column
-  // content!: string
+  @Column({ field: 'create_time' })
+  createTime!: Date
 
-  // @Column
-  // thumb_url!: string
-
-  // @Column
-  // type!: number
-
-  // @Column
-  // create_time!: string
-
-  // @Column
-  // update_time!: string
+  @Column({ field: 'update_time' })
+  updateTime!: Date
 }

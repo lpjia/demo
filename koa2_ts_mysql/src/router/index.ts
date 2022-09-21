@@ -14,9 +14,10 @@ const router = new KoaRouter({
 })
 
 // 请求
+router.post('/admin/add', AdminController.addAdmin)
 router.post('/login', loginController.login)
-router.use(AuthMiddleware)
-router.use(TestMiddleware)
+// router.use(AuthMiddleware)
+// router.use(TestMiddleware)
 // router.get('/', IndexController.one) // 二参是传入一个方法, 不需要调用
 
 router.get('/goods/getList', GoodsController.getGoodsList)

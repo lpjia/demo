@@ -6,15 +6,15 @@ import { sign } from "../util/auth"
 class LoginController {
   async login(ctx: Context) {
     const a = ctx.request.body
-    console.log('a: ', a)
+    console.log('body: ', a)
 
-    // 拿出一条数据
-    const admin = await AdminService.getAdmin()
-    // 对数据加密
-    const token = sign({ admin })
+    // // 拿出一条数据
+    // const admin = await AdminService.getAdmin()
+    // // 对数据加密
+    // const token = sign({ admin })
 
     resp.succ(ctx, {
-      data: { token }
+      // data: { token }
     })
   }
 

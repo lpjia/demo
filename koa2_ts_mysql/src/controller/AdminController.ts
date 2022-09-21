@@ -36,6 +36,27 @@ class AdminController {
     // }
   }
 
+
+  async addAdmin(ctx: Context) {
+    // 略过校验
+
+    const data = ctx.request.body
+    const row = await AdminService.addAdmin(data)
+    return resp.succ(ctx, {
+      data: row
+    })
+  }
+
+  async updateAdmin(ctx: Context) {
+    // 略过校验
+    const { id } = ctx.request.query
+    const data = ctx.request.body
+    const row = await AdminService.updateAdmin(id, data)
+    return resp.succ(ctx, {
+      data: row
+    })
+  }
+
 }
 
 export default new AdminController()
