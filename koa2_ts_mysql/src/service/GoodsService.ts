@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import Goods from "../model/GoodsModel";
+import GoodsModel from "../model/GoodsModel";
 
 interface OptiByPage {
   currPage: number,
@@ -28,7 +28,7 @@ class GoodsService {
     }
     // console.log(resultObj)
 
-    return Goods.findAndCountAll({
+    return GoodsModel.findAndCountAll({
       // 分页
       offset: (currPage - 1) * limit,
       limit,
@@ -67,7 +67,7 @@ class GoodsService {
 
 
   getGoodsList() {
-    return Goods.findAll()
+    return GoodsModel.findAll()
   }
 }
 

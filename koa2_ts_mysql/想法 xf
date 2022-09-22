@@ -4,6 +4,11 @@
 增加了 admin 的 add 接口
 
 
+增加软删除字段
+拿 admin 表练手
+add 要检索是否存在相同 name 且 未删除(isDelete = 0)
+
+
 
 灵感
 做一个算工期的工具

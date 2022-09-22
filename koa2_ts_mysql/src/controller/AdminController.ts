@@ -41,20 +41,33 @@ class AdminController {
     // 略过校验
 
     const data = ctx.request.body
-    const row = await AdminService.addAdmin(data)
-    return resp.succ(ctx, {
-      data: row
-    })
+    const row = await AdminService.getAdminOne(data)
+    // 如果没找到
+    if (row === null) {
+      // const newRow = await AdminService.addAdmin(data)
+      // return resp.succ(ctx, {
+      //   data: newRow
+      // })
+      return resp.succ(ctx, {
+        msg: '数据库查无此数据!'
+      })
+    } else {
+      return resp.err(ctx, {
+        msg: '数据已重复, 请修改后再传!'
+      })
+    }
   }
 
   async updateAdmin(ctx: Context) {
     // 略过校验
-    const { id } = ctx.request.query
+
+    // const { id } = ctx.request.query
+    const { id } = ctx.params
     const data = ctx.request.body
-    const row = await AdminService.updateAdmin(id, data)
-    return resp.succ(ctx, {
-      data: row
-    })
+    // const row = await AdminService.updateAdmin(id, data)
+    // return resp.succ(ctx, {
+    //   data: row
+    // })
   }
 
 }

@@ -14,7 +14,8 @@ const router = new KoaRouter({
 })
 
 // 请求
-router.post('/admin/add', AdminController.addAdmin)
+router.post('/admin', AdminController.addAdmin)
+router.put('/admin/:id', AdminController.updateAdmin)
 router.post('/login', loginController.login)
 // router.use(AuthMiddleware)
 // router.use(TestMiddleware)

@@ -9,7 +9,7 @@ export default class Admin extends Model {
   @Column
   id!: number
 
-  @Comment('这个装饰器是干啥了')
+  // @Comment('这个装饰器是干啥了')
   @Column // 如果有, 得在最下面
   name!: string
 
@@ -17,8 +17,8 @@ export default class Admin extends Model {
   @Column
   level!: number
 
-  @Column
-  gender!: number
+  // @Column
+  // gender!: number
 
   @Column({ field: 'create_time' })
   createTime!: Date

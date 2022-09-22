@@ -1,48 +1,51 @@
-[2022-09-20T00:12:57.904] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:12:59.833] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%';
-[2022-09-20T00:12:59.839] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `unit`, `shop_name` AS `shopName`, `position`, `spec`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' LIMIT 0, 15;
-[2022-09-20T00:19:11.817] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:20:46.091] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:21:14.391] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:21:45.558] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:21:51.494] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`) VALUES (DEFAULT,?,?,?);
-[2022-09-20T00:24:07.164] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:24:40.904] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:24:41.673] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:25:32.646] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`) VALUES (DEFAULT,?,?,?);
-[2022-09-20T00:26:15.948] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:26:37.354] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:27:41.712] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:28:07.182] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:28:24.768] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:28:47.805] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:29:35.725] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:30:57.538] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:14.032] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:18.629] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:27.789] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:31.089] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:34.381] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:31:37.823] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:34:57.147] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:35:03.033] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:35:40.064] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:35:53.215] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:35:55.306] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:36:04.167] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:36:26.030] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:36:31.997] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:36:48.279] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:36:53.924] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T00:37:00.088] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T00:38:57.793] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:23:25.516] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:24:13.708] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
-[2022-09-20T13:24:36.172] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:24:43.074] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:25:56.850] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:32:48.106] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:33:42.820] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:39:44.485] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:40:02.983] [INFO] db - Executing (default): SELECT 1+1 AS result
-[2022-09-20T13:40:14.978] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-21T23:57:16.372] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-21T23:57:19.755] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-21T23:57:25.644] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`isDelete` = 0 LIMIT 1;
+[2022-09-21T23:57:39.700] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-21T23:57:42.434] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-21T23:57:42.441] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' LIMIT 1;
+[2022-09-21T23:58:53.665] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-21T23:58:53.669] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' LIMIT 1;
+[2022-09-21T23:59:46.070] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-21T23:59:46.075] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' LIMIT 1;
+[2022-09-22T00:00:27.990] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:00:31.503] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:00:31.515] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:00:58.683] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '机力划约界会较' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:00:58.690] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:01:03.135] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '无意在解于' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:01:03.140] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:03:14.339] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '无意在解于' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:03:14.343] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:03:29.982] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:03:37.735] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '确即东已' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:03:37.748] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:04:30.307] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:04:33.021] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '确即东已' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:04:33.042] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:06:34.350] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:06:37.299] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `gender`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '确即东已' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:06:37.320] [INFO] db - Executing (default): INSERT INTO `Admin` (`id`,`name`,`level`,`gender`,`create_time`,`update_time`) VALUES (DEFAULT,?,?,?,?,?);
+[2022-09-22T00:12:31.054] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:13:02.292] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:13:56.791] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:14:06.005] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:14:09.297] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:14:15.134] [INFO] db - Executing (default): SELECT `id`, `name`, `level`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Admin` AS `Admin` WHERE `Admin`.`name` = '确即东已' AND `Admin`.`is_delete` = 0 LIMIT 1;
+[2022-09-22T00:15:02.190] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' AND `Goods`.`shop_name` LIKE '%金%';
+[2022-09-22T00:15:02.192] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `unit`, `shop_name` AS `shopName`, `position`, `spec`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' AND `Goods`.`shop_name` LIKE '%金%' LIMIT 0, 15;
+[2022-09-22T00:15:06.363] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%';
+[2022-09-22T00:15:06.365] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `unit`, `shop_name` AS `shopName`, `position`, `spec`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' LIMIT 0, 15;
+[2022-09-22T00:15:34.656] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:15:35.296] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%';
+[2022-09-22T00:15:35.300] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' LIMIT 0, 15;
+[2022-09-22T00:16:05.604] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:16:07.242] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`unitPrice` LIKE '%6%' AND `Goods`.`product_name` LIKE '%芹菜%';
+[2022-09-22T00:16:07.352] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`unitPrice` LIKE '%6%' AND `Goods`.`product_name` LIKE '%芹菜%' LIMIT 0, 15;
+[2022-09-22T00:16:42.120] [INFO] db - Executing (default): SELECT 1+1 AS result
+[2022-09-22T00:16:45.549] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%';
+[2022-09-22T00:16:45.551] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' LIMIT 0, 15;
+[2022-09-22T00:16:58.232] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%';
+[2022-09-22T00:16:58.233] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' LIMIT 0, 15;
+[2022-09-22T00:17:02.660] [INFO] db - Executing (default): SELECT count(*) AS `count` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%';
+[2022-09-22T00:17:02.663] [INFO] db - Executing (default): SELECT `id`, `product_name` AS `productName`, `unit_price` AS `unitPrice`, `create_time` AS `createTime`, `update_time` AS `updateTime` FROM `Goods` AS `Goods` WHERE `Goods`.`product_name` LIKE '%芹菜%' AND `Goods`.`unit_price` LIKE '%6%' LIMIT 0, 15;

@@ -1,9 +1,14 @@
-import { Optional } from "sequelize/types"
 import AdminModel from "../model/AdminModel"
 
 class AdminService {
-  getAdminOne() {
-    return AdminModel.findOne()
+  getAdminOne(data: any) {
+    console.log('111:', data)
+    return AdminModel.findOne({
+      where: {
+        name: data.name,
+        is_delete: 0
+      }
+    })
   }
 
   getAdmin() {
@@ -16,13 +21,14 @@ class AdminService {
   }
 
 
-  addAdmin(data: Optional<any, string> | undefined) {
+  addAdmin(data: any) {
+    console.log('222:', data)
     return AdminModel.create(data)
   }
 
   // 传id 传修改的字段和值
-  updateAdmin(id: number, data: Optional<any, string> | undefined) {
-    return AdminModel.create(data)
+  updateAdmin(id: number, data: any) {
+    // return AdminModel.create(data)
   }
 }
 

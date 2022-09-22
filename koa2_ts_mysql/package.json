@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "start": "ts-node-dev index.ts",
+    "delete": "rimraf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
