@@ -1,16 +1,3 @@
-
-
-
-温故而知新
-这句话显然说出了知识的真谛
-
-
-有道云笔记
-工作资源.md
-有官方中文文档的, 写成
-vue2 官网(中文)
-
-
 新文件夹	前端工程化工具
 放 nodejs npm nginx pnpm 等前端用到的工程化工具知识
 把其他分散的文件知识统一整理后迁移到这里
@@ -18,12 +5,10 @@ vue2 官网(中文)
 改目录名字算了
 
 
-
 (以下官方插件称官方, 自己插件称我)
 开发插件时, 如果有官方, 那么我的功能尽量不要与官方有重复, 我可以增强官方的功能(也就是只开发官方没有的功能), 但是要时刻关注官方的版本更新情况, 如果官方后续更新的版本中, 增加了我的其中一些功能, 那么我后续更新版本中就要增加设置项来关闭这些功能(默认配置项是false, 需要主动开启, disable 某某功能: true), 这样可以避免和官方争夺资源, 减少卡顿
 对于用户更新我, 需要我给用户一个版本更新提示, 务必提醒用户看
 我的介绍页也推荐用户安装官方, 良性互动
-
 
 
 vscode plugin for element-ui vux iview
@@ -36,23 +21,21 @@ vscode plugin for element-ui vux iview
 向下兼容
 
 
-
-
-
 -----------------------------------------
 
 
-Op.or
-报错
 
 
 
+模糊查询
+是按词来查询, 还是每个字都拆开
+先按词来查
 
-查询时, 处理字段应该写到 controller 还是 service 层?
-前端传值, 没值的字段不要传到后端
-前端处理空值的字段
 
 
+增加一条
+修改
+删除
 
 
 
@@ -118,19 +101,11 @@ javascript:var a = document.createElement('a');document.body.appendChild(a);a.hr
 
 
 
-
-
 类
 
 
 
 用 bootstrap 写一个
-
-
-
-
-还是学习 ts, 高工资从哪里来? 不就是你会的技能多
-为了高工资学习, 赚的
 
 
 
@@ -224,15 +199,7 @@ https://docs.microsoft.com/zh-cn/microsoft-edge/devtools-guide-chromium/sources/
 
 
 
-
-
-
-
-
 看微信收藏
-
-
-
 
 
 
@@ -256,8 +223,6 @@ https://www.zhihu.com/question/23539493?sort=created
 https://www.zhihu.com/question/29548057
 
 https://club.xywy.com/static/20141019/53933886.htm
-
-
 
 
 
