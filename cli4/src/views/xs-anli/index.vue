@@ -6,27 +6,12 @@ export default {
   components: {
     TwoWayBinding
   },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
-  watch: {
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
-  },
 };
 </script>
 
 <template>
   <div>
+    <h3>$msgBox 双向绑定问题</h3>
     <TwoWayBinding />
   </div>
 </template>

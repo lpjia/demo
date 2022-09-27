@@ -216,6 +216,24 @@ export const constantRoutes = [
         meta: { title: 'prop' },
       },
       {
+        path: 'GongyongComp',
+        name: 'GongyongComp_name',
+        component: () => import('@/views/gongyong-comp/index.vue'),
+        meta: { title: '共用组件' },
+      },
+      {
+        path: 'GongyongComp2',
+        name: 'GongyongComp_name2',
+        component: () => import('@/views/gongyong-comp/index.vue'),
+        meta: { title: '共用组件2' },
+      },
+      {
+        path: 'GongyongComp3',
+        name: 'GongyongComp_name3',
+        component: () => import('@/views/gongyong-comp/index.vue'),
+        meta: { title: '共用组件3' },
+      },
+      {
         path: 'one',
         name: 'one',
         component: () => import('@/views/one/one'),
@@ -276,7 +294,7 @@ export const constantRoutes = [
         },
       },
       {
-        path: 'XsAnli2',
+        path: 'XsAnli2', // 为了显示一级菜单
         name: 'XsAnli2',
         component: () => import('@/views/xs-anli/index.vue'),
         meta: {
