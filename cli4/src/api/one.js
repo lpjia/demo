@@ -1,8 +1,16 @@
 import request from '@/utils/request.js'
 
+// export function apiGetHello(query) {
+//   return request({
+//     url: '/api/app/list',
+//     method: 'GET',
+//     params: query
+//   })
+// }
+
 export function apiGetHello(query) {
   return request({
-    url: '/api/app/list',
+    url: '/api/login',
     method: 'GET',
     params: query
   })

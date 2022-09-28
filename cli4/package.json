@@ -13,12 +13,14 @@
     "new": "plop",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
     "postinstall": "patch-package",
-    "dev": "npm run serve"
+    "dev": "npm run serve",
+    "delete": "rimraf node_modules"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "~1.0.1",
     "animate.css": "~4.1.1",
     "axios": "~0.21.4",
+    "babel-polyfill": "^6.26.0",
     "core-js": "~3.19.2",
     "dayjs": "~1.11.3",
     "element-ui": "2.15.9",

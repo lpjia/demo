@@ -33,7 +33,8 @@ export default {
 
 <template>
   <div>
-    {{ $route.path }}
+    <div>{{ $route.path }}</div>
+    <div>都是共用组件</div>
   </div>
 </template>
 

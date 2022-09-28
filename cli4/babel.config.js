@@ -20,5 +20,13 @@
 module.exports = {
   presets: [
     '@vue/cli-plugin-babel/preset',
+    // 需要兼容IE该怎么写
+    // ['@vue/app', { useBuiltIns: "entry" }]
+    // ['@vue/app', {
+    //   polyfills: [
+    //     'es.promise',
+    //     'es.symbol'
+    //   ]
+    // }]
   ],
 }

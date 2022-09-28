@@ -80,7 +80,8 @@ module.exports = {
     // before: require('./mock/mock-server.js')
     proxy: {
       "/api": {
-        target: 'http://localhost:8100',
+        // target: 'http://localhost:8100',
+        target: 'http://localhost:8820',
         changeOrigin: true,
         secure: false,
       }
