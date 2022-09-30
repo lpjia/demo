@@ -1,0 +1,38 @@
+.father {
+  border-bottom: 1px solid deepskyblue;
+
+  >.child {
+    display: inline; // 子元素要为行内元素
+    vertical-align: bottom;
+    line-height: 1;
+  }
+
+  .one {
+    font-size: 40px;
+    // @extend .child // 也可以继承
+  }
+
+  .two {
+    font-size: 12px;
+  }
+
+  .three {
+    font-size: 30px;
+  }
+
+  .four {
+    font-size: 16px;
+  }
+
+  .five {
+    font-size: 24px;
+  }
+}
+
+.father_2 {
+  border-top: 1px solid deepskyblue;
+
+  >.child {
+    vertical-align: top;
+  }
+}

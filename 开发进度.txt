@@ -7,9 +7,10 @@ https://github.com/lpjia/demo/commits/master
 
 
 
-已完成0916
+已完成0928
 
-
+SlotTransmitMethod
+GongyongComp
 koa2_ts_mysql
 nest_mysql
 BFC块级格式化上下文

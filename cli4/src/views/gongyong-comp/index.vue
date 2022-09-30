@@ -1,16 +1,6 @@
 <script>
 export default {
-  name: 'GongyongComp',
-  components: {
-  },
-  props: {
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
-  },
+  name: 'GongyongComp', // 共用组件
   watch: {
     '$route': {
       immediate: true, // 必须有, 要不然监听不到
@@ -21,12 +11,6 @@ export default {
         console.log('from:', from)
       }
     }
-  },
-  created() {
-  },
-  mounted() {
-  },
-  methods: {
   },
 };
 </script>

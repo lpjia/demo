@@ -1,4 +1,21 @@
 rimraf node_modules
+"delete": "rimraf node_modules"
+
+
+// js 常用的小驼峰
+changeCase.camel
+
+// 大驼峰
+pascal
+
+// 小写下划线连接
+snake
+
+// 小写短横线连接
+param
+kebab
+
+
 
 git log --pretty=oneline
 
