@@ -54,3 +54,11 @@ console.log('时间再加一年: ', _date)
 let date8 = formatTime(_date, 'Y-M-D')
 console.log('时间再加一年 date8: ', date8)
 console.log('也就是比当前日期多了一年又一月又一周!')
+
+
+
+
+// 比较时间, 可不用转为时间戳 .getTime()
+console.log(new Date() > new Date('2023'))
+console.log(new Date() > new Date('2022-10'))
+console.log(new Date() - new Date('2022-10'))

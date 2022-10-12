@@ -29,7 +29,7 @@ export default {
       dayjs().format('YYYY-MM-DD')
     )
     console.log(
-      dayjs().format('YYYY-MM-DD hh:mm:ss')
+      dayjs().format('YYYY-MM-DD HH:mm:ss')
     )
     console.log('---- 分割线 ----\n\n\n')
 
