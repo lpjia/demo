@@ -7,5 +7,7 @@ let yiwei = treeToOne(data)
 console.log('yiwei:', yiwei)
 
 // 加深拷贝是为了不影响上面一维数组
-let tree = oneToTree(deepClone(yiwei), { gpId: '0' })
+// let tree = oneToTree(deepClone(yiwei), { gpId: '0' })
+// 增加了默认值
+let tree = oneToTree(deepClone(yiwei))
 console.log('tree:', tree)
