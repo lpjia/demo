@@ -55,3 +55,14 @@ handle(e, e2, e3){
     console.log('e2: ', e2)
     console.log('e3: ', e3)
 }
+
+
+
+this.$nextTick(()=>{
+
+})
+
+
+
+
+let currTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
