@@ -1,4 +1,3 @@
-
 function compare(a, b) {
   return a.localeCompare(b);
 }
@@ -27,8 +26,18 @@ window.onload = function () {
   arr_2.sort((a, b) => compare(a.innerHTML, b.innerHTML))
 
   dom_2.append(...arr_2)
-
 }
+
+
+
+// 自制小工具
+// document.querySelector('#dplayed_content')
+// const a = document.createElement('a');
+// document.body.appendChild(a);
+// a.href = '#dplayed_content';
+// a.click();
+// document.body.removeChild(a);
+
 
 
 // 需求是
@@ -37,12 +46,15 @@ function clearInput() {
   let domHour = document.querySelector('#hour')
   let domMinute = document.querySelector('#minute')
   let domResult = document.querySelector('#new_time')
+  let domTip = document.querySelector('#tip')
+
   domHour.value = ''
   domMinute.value = ''
   domResult.innerHTML = ''
+  domTip.innerHTML = ``
+
+  domHour.focus()
 }
-
-
 function calcNextTime() {
   let domHour = document.querySelector('#hour')
   let domMinute = document.querySelector('#minute')
@@ -57,10 +69,32 @@ function calcNextTime() {
 
 
 
-// 自制小工具
-// document.querySelector('#dplayed_content')
-// const a = document.createElement('a');
-// document.body.appendChild(a);
-// a.href = '#dplayed_content';
-// a.click();
-// document.body.removeChild(a);
+// 点击复制文本
+// function clickForCopy() {
+//   let domResult = document.querySelector('#new_time')
+//   const url = domResult.innerHTML
+//   let oInput = document.createElement('input')
+//   oInput.value = url
+//   document.body.appendChild(oInput)
+//   oInput.select() // 选择对象;
+//   document.execCommand('Copy') // 执行浏览器复制命令
+//   this.$message({
+//     message: '复制成功',
+//     type: 'success'
+//   })
+//   oInput.remove()
+// }
+// 新方法, 兼容性还可以
+async function clickForCopy() {
+  let domResult = document.querySelector('#new_time')
+  await navigator.clipboard.writeText(domResult.innerHTML) // 就是这行代码
+  let domTip = document.querySelector('#tip')
+  domTip.innerHTML = `(复制成功)`
+  setTimeout(() => {
+    domTip.innerHTML = ''
+  }, 2000);
+}
+
+async function copyByClick() {
+  await navigator.clipboard.writeText(domResult.innerHTML)
+}

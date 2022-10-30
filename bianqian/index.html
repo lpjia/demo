@@ -21,17 +21,22 @@
     #sec {
       margin-right: 100px;
     }
+
+    #new_time {
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
 
   <div>
-    <input type="text" id="hour">h
-    <input type="text" id="minute">m
-    <button onclick="calcNextTime()">计算时间</button>
+    <input type="text" id="hour"> h
+    <input style="margin-left: 10px;" type="text" id="minute"> m
+    <button style="margin-left: 10px;" onclick="calcNextTime()">计算时间</button>
     <button onclick="clearInput()">清空</button></button>
-    <div id="new_time"></div>
+    <span id="new_time" onclick="clickForCopy()" title="点击复制"></span>
+    <span id="tip"></span>
   </div>
 
   <hr>
