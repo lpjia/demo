@@ -138,6 +138,16 @@ export const constantRoutes = [
           // roles: ['admin', 'editor']
         },
       },
+      // {
+      //   path: 'TreeComp',
+      //   component: () => import('@/views/tree-comp/index.vue'),
+      //   meta: { title: 'tree组件' },
+      // },
+      {
+        path: 'FormComp',
+        component: () => import('@/views/form-comp/index.vue'),
+        meta: { title: 'form组件' },
+      },
       {
         path: 'ComputedWatch',
         // name: 'computed-watch',

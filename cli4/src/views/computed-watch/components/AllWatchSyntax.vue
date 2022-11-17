@@ -34,12 +34,12 @@ export default {
     // 不需要 deep: true
     'obj.two': {
       immediate: true,
-      handler(val) { // 俩实参, 现在只有一个形参
+      handler(val, oldVal) {
         console.log('val:', val)
+        console.log('oldVal:', oldVal)
       }
     },
     // 监听路由
-    // 竟然可以这样写方法
     '$route': {
       immediate: true, // 必须有, 要不然监听不到
       handler(to, from) {

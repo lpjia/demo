@@ -19,6 +19,12 @@ kebab
 
 git log --pretty=oneline
 
+
+this.$nextTick(() => {
+
+})
+
+
 <p>----分割线----</p>
 
 <el-divider></el-divider>
