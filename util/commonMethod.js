@@ -5,37 +5,39 @@
 
 
 // 默认sessionStorage 存 取 删 删所有
-export const setStorage = (key, val, storage = sessionStorage) => {
+export const setStorage = (key, val, storage = window.sessionStorage) => {
   if (!key) return;
   storage.setItem(key, JSON.stringify(val))
 }
-export const getStorage = (key, storage = sessionStorage) => {
+export const getStorage = (key, storage = window.sessionStorage) => {
   if (!key) return;
   return JSON.parse(storage.getItem(key))
 }
-export const removeStorage = (key, storage = sessionStorage) => {
+export const removeStorage = (key, storage = window.sessionStorage) => {
   if (!key) return;
   storage.removeItem(key)
 }
-export const clearStorage = (storage = sessionStorage) => storage.clear()
+export const clearStorage = (storage = window.sessionStorage) => storage.clear()
 
 
-// 判断不为空, 用来获取接口数据判断用, 一般不会返回 Symbol 类型
-export function judgeNotEmpty(param) {
+/**
+ * @description 判断数据不为空, 也就是有数据, 可处理后端接口返回数据
+ * @description 实际传参应该是值
+ * @param {any} key
+ * @returns {boolean}
+ */
+export function judgeNotEmpty(key) {
   let judgeObj = p => {
-    if (p === null)
-      return false // 是 null
-    else if (Array.isArray(p))
-      return p.length ? true : false // 是数组
-    else
-      return JSON.stringify(p) === '{}' ? false : true // 是对象
+    if (p === null) return !!p // 是 null
+    else if (Array.isArray(p)) return !!(p.length) // 是数组
+    else return !(JSON.stringify(p) === '{}') // 是对象
   }
-  let type = typeof (param)
+  let type = typeof (key)
   switch (type) {
     case 'string': case 'number': case 'undefined': case 'boolean':
-      return !!param
+      return !!key
     case 'object':
-      return judgeObj(param)
+      return judgeObj(key)
     default:
   }
 }
@@ -400,9 +402,9 @@ export function debounce(func, wait, immediate) {
 
 
 /**
- * @description 反向映射, 把 obj 的 KV 调换, 调换后的 V 是数组类型(考虑到调换前的 V 有重复值)
- * @param {object} o 
- * @returns {object}
+ * @description 反向映射, 把 obj 的 KV 调换(考虑到调换前有多对一的可能性, 调换后的 V 是数组类型-一对多)
+ * @param {object} o 调换前的对象, K 和 V 都得是 string 类型
+ * @returns {object} 调换后的对象, V 是数组类型
  */
 export const reverseMapping = o => Object.keys(o).reduce((r, k) =>
   Object.assign(r, { [o[k]]: (r[o[k]] || []).concat(k) }), {})
@@ -410,7 +412,7 @@ export const reverseMapping = o => Object.keys(o).reduce((r, k) =>
 
 /**
  * @description 建立多对一的映射关系, 用法是 manyToOne(map)(key)
- * @param {object} map 
+ * @param {object} map 特殊写法 key 的对象
  * @returns {function}
  */
 export function manyToOne(map) {
@@ -475,8 +477,7 @@ export function calcWorkingYears(startTime, endTime) {
 
 /**
  * @description 对象数组转对象
- * 接口返回的数据结构需要转换成枚举类型
- * 测试方法目录中有示例
+ * @description 接口返回的数据结构需要转换成类似枚举
  * @param {array} arr 
  * @param {object} @field k 定为对象key的字段名 @field v 定为相应val的字段名
  * @returns {object}
@@ -492,8 +493,7 @@ export function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
 
 /**
  * @description 对象转对象数组
- * 枚举类型的数据源, 转成 el-select 需要的数据结构
- * 测试方法目录中有示例
+ * @description 类似枚举的数据源, 转成 el-select 需要的数据结构
  * @param {object} obj 
  * @param {object} @field l 显示文本label的字段名 @field v 需要传值的字段名 @field isNum 是否把值转为number类型
  * @returns {array}
@@ -545,7 +545,6 @@ export function removeObjEmptyKey(obj, arr = []) {
 
 /**
  * @description 把对象属性拆分成单独对象, 再push到数组
- * 测试方法目录中有示例
  * @param {object} obj
  * @param {object} options @field assign 需要合并属性的对象 @field exclude 排除某些字段, 是字符串数组
  * @returns {array}

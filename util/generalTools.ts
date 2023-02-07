@@ -1,4 +1,4 @@
-/* generalTools 通用工具函数 */
+/* generalTools 通用工具库 */
 
 // 现成写好的 js 工具库, 写一个声明文件比重写 ts 版本要快得多
 
