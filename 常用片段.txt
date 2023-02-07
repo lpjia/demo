@@ -54,6 +54,9 @@ console.log('---- 分割线 ----\n\n\n')
 终端使用
 console.log('---- 分割线 ----\n')
 
+vscode 输出使用
+console.log('\n')
+
 
 测试实参有几个
 handle(e, e2, e3){
