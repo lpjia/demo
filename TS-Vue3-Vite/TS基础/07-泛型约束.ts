@@ -14,3 +14,4 @@ let obj: PersonItf<string, string> = {
     return this.name
   },
 }
+console.log(obj)

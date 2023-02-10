@@ -1,30 +1,43 @@
 export { }
 
+
+// // 类修饰符private, 类里面才可以访问, 类外面 子类不可访问
+// private myName: string
+
+// // 类修饰符protected, 类里面 子类可以访问, 类外面不可访问
+// protected myName: string
+
+// // 修饰符readonly, 只读, 给属性用
+// readonly myName: string
+// // 如果 readonly 和其他访问修饰符同时存在的话，readonly放后面
+// public readonly myName: string
+
+
 class Person {
   // 类修饰符public, 类里面 子类 类外面都可以访问
   public myName: string
 
-  // // 类修饰符private, 类里面才可以访问, 类外面 子类不可访问
-  // private myName: string
-
-  // // 类修饰符protected, 类里面 子类可以访问, 类外面不可访问
-  // protected myName: string
-
-  // // 修饰符readonly, 只读, 给属性用
-  // readonly myName: string
-  // // 如果 readonly 和其他访问修饰符同时存在的话，readonly放后面
-  // public readonly myName: string
+  // 静态属性
+  static title: string = '这是title'
 
   constructor(name: string) {
     this.myName = name
   }
 
+  // 类修饰符protected
   protected getName() {
     return this.myName
   }
+
+  // 静态方法
+  static log() {
+    console.log('静态方法 log')
+    return typeof this.log
+  }
+
 }
 
-
+// 继承父类
 class Male extends Person {
   age: number
 
@@ -44,3 +57,7 @@ let man = new Male('xiaohuang', 18)
 console.log(man.myName)
 console.log(man.age)
 console.log(man.getName())
+
+
+console.log(Person.title)
+console.log(Person.log())
