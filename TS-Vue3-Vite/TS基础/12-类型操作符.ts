@@ -31,6 +31,16 @@ let p: P = {
 }
 console.log(p)
 
+// 两个有意思的
+type AnyKeyof = keyof any
+type UnknownKeyof = keyof unknown
+// 基础类型
+type BaseString = keyof string
+type BaseNumber = keyof number
+type BaseBoolean = keyof boolean
+type BaseSymbol = keyof symbol
+type BaseObject = keyof object
+
 
 
 
