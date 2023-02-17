@@ -1,0 +1,81 @@
+<script setup lang='ts'>
+import { computed, reactive, ref, toRefs, watch, watchEffect } from 'vue';
+
+const count = ref(10)
+
+// watch
+// 一参是要监听的响应式数据
+// 二参是数据更新时执行的回调
+watch(count, (val, oldVal) => {
+  console.log('count:', val, oldVal)
+})
+
+
+const count2 = reactive({
+  num: 20
+})
+// 一参传非响应式数据会报错
+// watch(count2.num, (val, oldVal) => {
+//   console.log('count2.num:', val, oldVal)
+// })
+// 两种写法
+// watch(toRefs(count2).num, (val, oldVal) => {
+//   console.log(val, oldVal)
+// })
+// 第二种写法更简单
+// watch(() => count2.num, (val, oldVal) => {
+//   console.log('count2.num:', val, oldVal)
+// })
+// watch([() => count2.num], (val, oldVal) => {
+//   console.log('count2.num:', val, oldVal)
+// })
+
+// 通过方法改变watch监听的数据, 触发watch回调
+const clk = () => {
+  count.value++
+  count2.num++
+}
+
+
+
+
+// watchEffect 会立即侦听
+// 监听里面所有的
+const stopWatchFn = watchEffect((onCleanup) => {
+  count
+  count2
+  console.log(count.value)
+  console.log(count2.num)
+})
+
+
+
+
+
+
+// computed 只有get
+const count3 = ref(10)
+const plusOne = computed(() => count3.value * 1_000)
+console.log(plusOne.value)
+// computed 加上set
+const plusOne2 = computed({
+  get: () => count3.value * 1_000_000,
+  set: (val) => {
+    count3.value = val - 1
+  }
+})
+plusOne2.value = 1_000
+console.log(count3.value)
+
+
+</script>
+
+<template>
+  {{ count }}
+  <button @click="clk">按钮</button>
+  {{ count2.num }}
+  <hr>
+  <button @click="stopWatchFn">按钮2</button>
+</template>
+
+<style scoped lang="scss"></style>
