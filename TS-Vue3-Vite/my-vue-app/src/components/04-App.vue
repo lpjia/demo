@@ -14,18 +14,19 @@ watch(count, (val, oldVal) => {
 const count2 = reactive({
   num: 20
 })
-// 一参传非响应式数据会报错
+// // 一参传非响应式数据会报错
 // watch(count2.num, (val, oldVal) => {
 //   console.log('count2.num:', val, oldVal)
 // })
-// 两种写法
+// // 两种写法
 // watch(toRefs(count2).num, (val, oldVal) => {
 //   console.log(val, oldVal)
 // })
-// 第二种写法更简单
+// // 第二种写法更简单
 // watch(() => count2.num, (val, oldVal) => {
 //   console.log('count2.num:', val, oldVal)
 // })
+// // 也可以用数组类型
 // watch([() => count2.num], (val, oldVal) => {
 //   console.log('count2.num:', val, oldVal)
 // })
@@ -40,7 +41,7 @@ const clk = () => {
 
 
 // watchEffect 会立即侦听
-// 监听里面所有的
+// 监听里面所有数据的变化
 const stopWatchFn = watchEffect((onCleanup) => {
   count
   count2

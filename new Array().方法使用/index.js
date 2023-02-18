@@ -5,40 +5,6 @@ import { deepClone } from '../util/commonMethod.js'
 
 
 
-/**
- * arr.map()
- */
-let idxArr = [
-  { idx: 1 },
-  { idx: 2 },
-  { idx: 3 },
-]
-// map 会返回处理后的数组
-idxArr.map(item => {
-  return { idx: item.idx + 10 }
-})
-
-// arr.forEach()
-// 无返回值, 但是有时会改变引用类型的数据
-idxArr.forEach(item => item.id = 100)
-// 每个对象都多了个 id: 100 的属性
-idxArr
-// 真想改变原数组, 定义一个临时数组, 可以遍历原数组
-// 组装新数据 push 到临时数组存起来, 把临时数组赋值给原数组即可
-
-let arr5 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-arr5.map(String);
-// 返回 ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-let arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-arr7.map(Math.pow);
-// 返回 [1, 2, 9, 64, 625, 7776, 117649, 2097152, 43046721]
-/**
- * 为啥没有返回预期的 [1, 4, 9, ...]
- * 因为 map 方法接收的第一个参是函数, 该函数内的参顺序是 item, idx, arrayItself
- * Math.pow 方法接收的参顺序是 底数, 指数
- * 所以计算结果是按 item 的 idx 次幂算的
- */
 
 
 
@@ -137,15 +103,6 @@ arr8.reduce((total, curr) => {
 
 
 /**
- * arr.every()
- */
-// 未完待续
-
-
-
-
-
-/**
  * arr.sort()
  */
 // 未完待续
@@ -157,8 +114,8 @@ arr8.reduce((total, curr) => {
  * arr.at()
  */
 // idxArr
-let arr = ['red', 'green', 'blue']
-arr.at()
+let arr10 = ['red', 'green', 'blue']
+// arr10.at()
 
 
 
