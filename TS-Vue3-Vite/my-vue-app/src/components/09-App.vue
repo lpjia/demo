@@ -10,6 +10,10 @@ const list = reactive([
 const clk = (i: number) => {
   console.log(list[i])
 }
+const del = (i: number) => {
+  alert('禁止删除')
+  console.log(list[i])
+}
 </script>
 
 <template>
@@ -19,15 +23,15 @@ const clk = (i: number) => {
     <p>这是父组件的p标签, 传送中...</p>
   </Teleport>
   <my-table :list="list">
-    <template #btns="{ i }">
-      <button @click="clk(i)">编辑</button>
+    <template v-slot:btns="scope">
+      <button @click="clk(scope.i)">编辑</button>
     </template>
   </my-table>
   <hr>
   <my-table :list="list">
-    <template #btns>
-      <button>编辑</button>
-      <button>删除</button>
+    <template #btns="{ i }">
+      <button @click="clk(i)">编辑</button>
+      <button @click="del(i)">删除</button>
     </template>
   </my-table>
 </template>

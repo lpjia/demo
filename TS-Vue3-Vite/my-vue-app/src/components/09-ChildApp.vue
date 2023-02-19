@@ -1,13 +1,10 @@
 <script setup lang='ts'>
-interface ListItemItf {
-  name: string,
-  age: number,
-  id: number,
+interface List {
+  list: Table.ListItem[]
 }
-interface ListItf {
-  list: ListItemItf[]
-}
-defineProps<ListItf>()
+/* 接口或对象字面类型可以包含从其他文件导入的类型引用，
+但是，传递给 defineProps 的泛型参数本身不能是一个导入的类型 */
+defineProps<List>()
 /* 减少声明写法 */
 // defineProps<{
 //   list: {

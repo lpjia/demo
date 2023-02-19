@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + Vue + TS</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- 定义全局变量 -->
+  <script>
+    let globalVar = 'globalVar变量'
+    let globalArrItem = { name: '小黑', age: 8, id: 1 }
+    function globalFn() {
+      console.log('执行globalFn')
+    }
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
