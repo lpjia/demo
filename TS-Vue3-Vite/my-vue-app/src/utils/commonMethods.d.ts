@@ -10,6 +10,8 @@ declare namespace moduleLib {
   function getStorage(key: string, storage?: Storage): string
   function removeStorage(key: string, storage?: Storage): void
   function clearStorage(storage?: Storage): void
+
+  function validEmail(email: string): boolean
 }
 
 export = moduleLib; // 这样写兼容性更好

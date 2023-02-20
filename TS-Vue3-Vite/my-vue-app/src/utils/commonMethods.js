@@ -12,3 +12,10 @@ export const removeStorage = (key, storage = window.sessionStorage) => {
   storage.removeItem(key)
 }
 export const clearStorage = (storage = window.sessionStorage) => storage.clear()
+
+
+
+export function validEmail(email) {
+  const reg = /^\w+@\w+\.\w+$/i
+  return reg.test(email)
+}

@@ -15,7 +15,7 @@
           <el-input v-model="ruleForm.mobilePhone" type="text" autocomplete="off" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="loginFn">登录</el-button>
+          <el-button type="primary" @click="registerFn">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -25,7 +25,7 @@
 <script setup lang='ts'>
 import { reactive, ref } from 'vue';
 import { rules } from "./rules";
-import type { FormInstance } from 'element-plus'
+// import type { FormInstance } from 'element-plus'
 
 const ruleForm = reactive({
   username: '',
@@ -36,8 +36,8 @@ const ruleForm = reactive({
 
 // const ruleFormRef = ref<FormInstance>()
 
-const loginFn = () => {
-  console.log('登录中')
+const registerFn = () => {
+  console.log('注册中')
 }
 </script>
 

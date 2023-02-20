@@ -1,6 +1,22 @@
+/* valid 有效的
+validate 验证
+validator 验证器 */
+
+/* 自用的校验规则, 可以先不考虑边缘情况, 直接用 */
 
 
 
+/**
+ * @description 校验合法email
+ * @param {string} email
+ * @returns {boolean}
+ */
+export function validEmail(email) {
+  const reg = /^\w+@\w+\.\w+$/i
+  return reg.test(email)
+}
+
+/* --------------------------------------------------------------------- */
 
 /**
  * @description 验证是否只有数字
@@ -34,7 +50,7 @@ export function removeAllSpace(str) {
 
 /**
  * @description 验证是否为有效的浮点型
- * @param {string / number} str 
+ * @param {string | number} str 
  * @returns {boolean}
  */
 export function validFloat(str) {

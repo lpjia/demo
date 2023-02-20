@@ -1,20 +1,17 @@
 import { reactive } from "vue";
 import type { FormRules } from 'element-plus'
+import { validEmail } from '@/utils/commonMethods.js'
 
-const validateEmail = (rule: unknown, value: unknown, callback: (err?: string | Error) => void) => {
+const validateEmail = (rule: unknown, value: string, callback: (err?: string | Error) => void) => {
   if (value === '') {
     callback(new Error('请输入邮箱'))
-  } else if (true) {
+  } else if (!validEmail(value)) {
     // 回调这里有两种传参形式, 简单点就直接传string
     callback('请输入正确的邮箱')
   } else {
     callback()
   }
 }
-
-
-// 搞一个有正则校验的校验文件
-
 
 export const rules = reactive<FormRules>({
   username: [
@@ -26,6 +23,12 @@ export const rules = reactive<FormRules>({
     { min: 6, message: '密码不少于6位', trigger: 'blur' },
   ],
   email: [
-    { validator: validateEmail, trigger: 'blur' }
+    { required: true, validator: validateEmail, trigger: 'blur' }
+  ],
+  mobilePhone: [
+    { required: true, trigger: 'blur' }
   ]
 })
+
+
+// 搞一个有正则校验的校验文件
