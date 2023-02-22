@@ -122,24 +122,6 @@ let arr10 = ['red', 'green', 'blue']
 
 
 
-
-/**
- * arr.includes()
- */
-let arr = [null, undefined, '', 0, NaN, false, {}, []]
-
-// console.log('arr.includes(null):', arr.includes(null))
-// console.log('arr.includes(undefined):', arr.includes(undefined))
-// console.log('arr.includes(""):', arr.includes(''))
-// console.log('arr.includes(0):', arr.includes(0))
-// console.log('arr.includes(NaN):', arr.includes(NaN))
-// console.log('arr.includes(false):', arr.includes(false))
-// console.log('arr.includes({}):', arr.includes({}))
-// console.log('arr.includes([]):', arr.includes([]))
-
-
-
-
 /**
  * arr.find()
  */
