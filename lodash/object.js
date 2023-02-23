@@ -1,7 +1,8 @@
 /* vue-cli 按需引入 lodash
 import _get from 'lodash/get' */
 
-// https://www.lodashjs.com/docs/lodash.get
+/* https://www.lodashjs.com/docs/lodash.get */
+
 
 const obj = {
   "numSum": 13,
@@ -16,8 +17,8 @@ const obj = {
     },
   ]
 }
-const num = _.get(obj, 'numSum2', 0)
-console.log(num)
-
-const num2 = _.get(obj, 'item[1].count')
-console.log(num2)
+console.log(
+  _.get(obj, 'numSum不存在key', 0),
+  _.get(obj, 'item[1].cityName')
+)
+console.log('---- 分割线 ----\n\n\n')
