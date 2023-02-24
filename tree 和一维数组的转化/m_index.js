@@ -1,4 +1,4 @@
-
+// type="module" 顶层可直接使用await
 import { treeToOne, oneToTree, deepClone } from '../util/commonMethod.js'
 
 const res = await fetch('data.json')
