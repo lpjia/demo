@@ -1,4 +1,4 @@
-/* 依靠本地服务打开html运行js */
+// 改超时时间, 看效果
 
 
 // const controller = new AbortController()
@@ -62,7 +62,7 @@ const url = 'http://rap2api.taobao.org/app/mock/288967/api/random';
 // 一行解决
 createFetch(1000)(url).then(response => response.json().then(res => console.log(res)))
 // 多行解决
-createFetch(1000)(url).then(response => {
+createFetch(10)(url).then(response => {
   response.json().then(res => {
     console.log(res)
   })

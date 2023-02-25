@@ -30,51 +30,6 @@ arr9.flatMap(item => {
 
 
 
-/**
- * arr.filter()
- */
-let arr2 = [0, 1, false, null, '1', 2, undefined, 3, 5, NaN, '', 8]
-let arr6 = arr2.filter(Boolean)
-console.log('arr6: ', arr6)
-
-// filter 和 map 链式操作
-let arr4 = [1, 2, 3, 4];
-let Larry = [];
-let filterArr = arr4.filter((item) => {
-  return item > 2;
-})
-let my = arr4.filter(item => {
-  return item > 2;
-}).map(value => {
-  Larry.push(value * 2)
-  // return value * 10
-})
-console.log(arr4);  		//Array(4) [1, 2, 3, 4]
-console.log(filterArr) // [3, 4]
-console.log(my);   		//Array(2) [undefined, undefined]
-console.log(Larry);		//Array(2) [6, 8]
-
-
-// filter 单独链式操作
-let url = "list.json"
-let response = await fetch(url);
-
-if (!response.ok) throw new Error('response failed')
-let res = await response.json();
-console.log('res: ', res)
-let resArr = res.sectionDataList.filter(item => {
-  return item.sectionID === 71831
-})[0].
-  sensorDataList.filter(item => {
-    const condition = [2, 5, 14]
-    return condition.includes(item.sensorType)
-  })
-console.log('resArr: ', resArr)
-
-let resArr2 = deepClone(resArr)
-  , idx = resArr2.findIndex(curr => curr.sensorType === 2)
-console.log('被删掉的项: ', resArr2.splice(idx, 1))
-console.log('操作后的数组: ', resArr2)
 
 
 
@@ -97,15 +52,6 @@ arr8.reduce((total, curr) => {
 
 
 
-
-
-
-
-
-/**
- * arr.sort()
- */
-// 未完待续
 
 
 

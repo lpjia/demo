@@ -14,6 +14,10 @@ let arr = [
 let result = arr.map(item => {
   return { num: item.num * 10 }
 })
+// 但对于简单数据类型组成的数组, 可以直接 item=>xxx
+console.log(
+  [1, 2, 3, 4, 5, 6, 7, 8, 9].map(item => item + 100)
+)
 
 /* 慎用=>的简写形式, 返回的可能是非预期结果
 有时候也会改变原数据 */

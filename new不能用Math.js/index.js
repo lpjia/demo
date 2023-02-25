@@ -6,14 +6,10 @@ console.log(
   Math.random()
 )
 
-
-
 // 向下取整
 console.log(
   Math.floor(1.8)
 )
-
-
 
 // 向上取整
 console.log(

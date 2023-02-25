@@ -1,0 +1,26 @@
+### 第一个HTTP请求
+// 最原始的写法 搭配插件 文件后缀名是 http
+GET /upload/single HTTP/1.1
+// 请求方式 请求路径 请求版本
+// 不能有空行
+// 请求主机
+Host: duyiedu.com
+// 请求头
+// 消息格式 分隔符
+Content-Type: multipart/form-data; boundary=fen
+// 这里的Content-Type意思是整个请求体是什么格式, 比如用分隔符这样一块一块分割的这么一些字段
+// 请求头和请求体之间要有一个空行
+
+// 请求体
+// --加上分隔符, 作为字段的开始(这个字段不是传参的那个字段)
+// --分隔符--, 表示字段的结束, 多个字段最后写一个结束
+--fen
+// 固定语句 name是字段名(传参的字段) filename是文件名
+Content-Dispositon: form-data; name="avatar"; filename="gyy.jpeg"
+// 这里的Content-Type意思是这个字段下是一个文件, 文件的类型是image/jpeg, MIME类型
+// MIME 的组成结构非常简单；由类型与子类型两个字符串中间用'/'分隔而组成。不允许空格存在
+Content-Type: image/jpeg
+
+// 图片的二进制数据
+< ./gyy.jpeg
+--fen--

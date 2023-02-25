@@ -6,7 +6,8 @@ to 要想象索引0的位置就好记了
 返回新字符串 */
 
 /* 也就是需要取的字符索引, 开始索引(from), 结束索引+1(to)
-或者直接数, 开始个数-1(from), 结束个数(to) */
+或者直接数, 开始个数-1(from), 结束个数(to)
+记的话推荐记个数(符合人的思维), 计算有时需要记索引 */
 
 /* https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substring */
 
