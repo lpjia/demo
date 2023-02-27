@@ -1,6 +1,6 @@
 <template>
   <div>
-    home页面
+    home页面 重新编译部署了 改变轮询时间
   </div>
 </template>
 

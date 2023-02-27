@@ -1,7 +1,8 @@
 import { reactive } from "vue";
 import type { FormRules } from 'element-plus'
-import { validEmail } from '@/utils/commonMethods.js'
+import { validEmail, validMobilePhone } from '@/utils/commonMethods.js'
 
+// rule是此input校验规则
 const validateEmail = (rule: unknown, value: string, callback: (err?: string | Error) => void) => {
   if (value === '') {
     callback(new Error('请输入邮箱'))
@@ -12,7 +13,17 @@ const validateEmail = (rule: unknown, value: string, callback: (err?: string | E
     callback()
   }
 }
+const validateMobilePhone = (rule: unknown, value: string, callback: (err?: string | Error) => void) => {
+  if (value === '') {
+    callback('请输入手机号')
+  } else if (!validMobilePhone(value)) {
+    callback('请输入正确的手机号')
+  } else {
+    callback()
+  }
+}
 
+// 校验规则
 export const rules = reactive<FormRules>({
   username: [
     { required: true, message: '请输入账号', trigger: 'blur' },
@@ -21,14 +32,13 @@ export const rules = reactive<FormRules>({
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 6, message: '密码不少于6位', trigger: 'blur' },
+    // 密码位数一般不能少于6位; 一般还要加(比如包含字母、符号等), 等用到再加;
   ],
   email: [
     { required: true, validator: validateEmail, trigger: 'blur' }
   ],
   mobilePhone: [
-    { required: true, trigger: 'blur' }
+    { required: true, validator: validateMobilePhone, trigger: 'blur' },
+    // 手机号位数一般是11位, 用maxlength限制输入长度, rule限制不了输入;
   ]
 })
-
-
-// 搞一个有正则校验的校验文件

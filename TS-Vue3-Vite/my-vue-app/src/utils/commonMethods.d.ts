@@ -12,6 +12,7 @@ declare namespace moduleLib {
   function clearStorage(storage?: Storage): void
 
   function validEmail(email: string): boolean
+  function validMobilePhone(mobilePhone: string): boolean
 }
 
 export = moduleLib; // 这样写兼容性更好

@@ -19,3 +19,7 @@ export function validEmail(email) {
   const reg = /^\w+@\w+\.\w+$/i
   return reg.test(email)
 }
+export function validMobilePhone(mobilePhone) {
+  const reg = /^1[3-9]\d{9}$/
+  return reg.test(mobilePhone)
+}

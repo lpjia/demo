@@ -1,12 +1,12 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { App } from 'vue'
 import { setStorage, getStorage } from '@/utils/commonMethods.js'
 
 const routes: RouteRecordRaw[] = [
-  // {
-  //   path: '/',
-  //   redirect: '/home'
-  // },
+  {
+    path: '/',
+    redirect: '/home'
+  },
   {
     path: '/login',
     name: 'login',
@@ -44,7 +44,8 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  // history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

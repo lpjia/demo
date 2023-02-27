@@ -4,7 +4,7 @@ import { reverseMapping, manyToOne } from './commonMethod.js'
 export const placeholderTxt = {
   input: '请输入',
   select: '请选择',
-  ip: '请输入正确的IP地址',
+  ip: '请输入IP地址',
 }
 
 

@@ -11,6 +11,10 @@ import router from '@/router'
 
 // import { setStorage, getStorage, removeStorage, clearStorage } from '@/utils/commonMethods.js'
 
+import Updater from '@/utils/Redeploy'
+import { ElNotification } from 'element-plus'
+
+
 
 // createApp(App).use(router).mount('#app')
 const app = createApp(App)
@@ -29,3 +33,26 @@ app.mount('#app')
 // app.use(ElementPlus, {
 //   locale: zhCn,
 // })
+
+
+
+
+// // 实例化该类
+// const up = new Updater({
+//   timer: 3000
+// })
+// // 未更新通知
+// up.on('no-update', () => {
+//   console.log('未更新')
+// })
+// // 更新通知
+// up.on('update', () => {
+//   console.log('更新了')
+// })
+
+// // 定一个全局的更新提示变量来存, 保证单例
+// // const Redeploy: unknown = 
+
+// // class SingleNotificationInstance extends ElNotification {
+
+// // }

@@ -25,9 +25,3 @@ console.log("validEmail('420@qq.com.'):",
   validEmail('420@qq.com.')
 )
 console.log('---- 分割线 ----\n\n\n')
-
-
-/* 
-方便clgd的copy
-validEmail('@420@qq.com')
-*/

@@ -45,6 +45,11 @@
 
   <div class="flex">
     <section id="dom_sort_before">
+      <!-- 约定大于配置, 
+        先写分组, 再写单词, 
+        组与组用一个空行隔开, 小组也用一个空行, 
+        未分组的扔到最后面 -->
+
       <!-- 命名 -->
       <p>k key</p>
       <p>v val value</p>
@@ -80,80 +85,17 @@
       <p>to 到</p>
       <p>go 去, 到</p>
 
-
       <!-- css 命名 -->
       <p>head header 头部</p>
       <p>foot footer tail 底部, 尾部</p>
+      <p>section 部分 sect</p>
 
-
-      <p>current 当前的 curr</p>
-      <p>single 单个的</p>
-      <p>multiple 多个的</p>
-      <p>active 活跃的</p>
-      <p>sub 子 副 替补</p>
-      <p>avatar 头像</p>
-
-
-      <p>exam 考试</p>
-      <p>popover 弹出框</p>
-      <p>blank 空, 填空</p>
+      <!-- css 属性 值 -->
       <p>inherit 继承</p>
       <p>initial 最初的</p>
-      <p>dynamic 动态</p>
-      <p>sticky 粘性</p>
+      <p>flex-wrap 换行</p>
       <p>transition 过渡</p>
       <p>animation 动画</p>
-      <p>infinite 极大数</p>
-      <p>alternate 交替</p>
-      <p>context 上下文 ctx</p>
-      <p>content 内容 ctt</p>
-      <p>syntax 语法</p>
-      <p>flex-wrap 换行</p>
-      <p>pip 色子纸牌骨牌的点</p>
-      <p>siblings 兄弟, 姐妹(复数)</p>
-      <p>preserve 保存</p>
-      <p>flip 翻转</p>
-      <p>stash 储藏</p>
-      <p>cloneNode 克隆节点</p>
-      <p>closest 最近的(close 的不知什么状态)</p>
-      <p>swiper 轮播图插件</p>
-      <p>loop 循环</p>
-      <p>split 分割字符串</p>
-      <p>join 连接成字符串</p>
-      <p>slice 切片</p>
-      <p>company 公司</p>
-      <p>partner 伙伴</p>
-      <p>chunk 块</p>
-      <p>section 部分 sect</p>
-      <p>timestamp 时间戳</p>
-      <p>version 版本 ver v</p>
-      <p>slim 轻量 瘦身</p>
-      <p>nest 嵌套</p>
-      <p>launch 启动</p>
-      <p>roll 启动</p>
-      <p>observe 观察</p>
-      <p>dispatch 派发</p>
-      <p>deploy 部署</p>
-      <p>signal 信号</p>
-      <p>abort 中止</p>
-      <p>notice 通知</p>
-      <p>flow 流</p>
-      <p>visible 可见的</p>
-      <p>corner 边角</p>
-      <p>triangle 三角形</p>
-      <p>interspace 空隙</p>
-      <p>transparent 透明的</p>
-      <p>origin 起源, 原点(数)</p>
-      <p>untracked 未追踪</p>
-      <p>ahead 跑在xxx的前面</p>
-      <p>behind 跑在xxx的后面</p>
-      <p>migration 迁移</p>
-      <p>pipe 管道</p>
-      <p>fadeIn 淡入</p>
-      <p>fadeOut 淡出</p>
-      <p>semantic 语义化</p>
-      <p>iterable 可迭代的</p>
-      <p>singleton 单例</p>
 
       <!-- css 变换 -->
       <p>transform 变换</p>
@@ -161,16 +103,74 @@
       <p>rotate 旋转</p>
       <p>scale 缩放</p>
 
+      <!-- js -->
+      <p>prototype 原型</p>
+      <p>instanceof 实例</p>
+      <p>extends 继承</p>
+      <p>constructor 构造器</p>
+
+      <p>request 请求</p>
+      <p>response 响应 resp</p>
+      <p>raw 未加工的, 原始的</p>
+
+      <p>loop 循环</p>
+      <p>emit 发</p>
+      <p>trigger 触发</p>
+      <p>fetch 读取</p>
+      <p>target 目标</p>
+      <p>syntax 语法</p>
+      <p>dispatch 派发</p>
+      <p>iterable 可迭代的</p>
+      <p>observe 观察</p>
+      <p>deploy 部署</p>
+      <p>signal 信号</p>
+      <p>abort 中止</p>
+      <p>chunk 块</p>
+      <p>timestamp 时间戳</p>
+      <p>version 版本 ver v</p>
+      <p>timeout 超时</p>
+
+      <!-- 大小写等转换 -->
+      <p>camel 驼峰 小</p>
+      <p>snake 下划线</p>
+      <p>constant 常量, XX_XX这种</p>
+      <p>kebab 横线</p>
+      <p>pascal 大驼峰</p>
+      <p>upper 全部字母大写</p>
+      <p>lower 全部字母小写</p>
+      <p>dot 点</p>
+
+      <!-- 组件 -->
+      <p>component 组件 comp</p>
+      <p>popover 弹出框</p>
+
+      <!-- 容易记错 -->
+      <p>alert 警报</p>
+      <p>alter 改变</p>
+
+      <p>context 上下文 ctx</p>
+      <p>content 内容 ctt</p>
+
+      <p>quantity 数量</p>
+      <p>quality 质量</p>
+
+      <!-- git -->
+
+      <!-- github -->
+
       <!-- 算法 -->
       <p>encrypt 加密</p>
       <p>decrypt 解密</p>
       <p>hash 哈希</p>
 
-      <p>backup 备份</p>
-      <p>silent 静默</p>
-
-      <p>bootstrap 引导程序</p>
-      <p>preset 预设</p>
+      <!-- 性别 -->
+      <p>gender 性别</p>
+      <p>male 男性</p>
+      <p>female 女性</p>
+      <p>man 男人</p>
+      <p>woman 女人</p>
+      <p>gentleman 男士(尊称)</p>
+      <p>lady 女士</p>
 
       <!-- 单元测试 -->
       <!-- jest -->
@@ -179,10 +179,6 @@
       <p>expect 预期</p>
       <p>toEqual 等于</p>
       <p>toStrictEqual 严格等于</p>
-
-      <p>expand 扩展</p>
-      <p>component 组件 comp</p>
-      <p>response 响应 resp</p>
 
       <!-- 日志 -->
       <p>categories 范畴(复数) 类型</p>
@@ -199,31 +195,82 @@
       <p>validator 验证器</p>
       <p>decode 解码</p>
 
-      <p>execute 执行</p>
 
-      <p>gender 性别</p>
-      <p>male 男性</p>
-      <p>female 女性</p>
+      <!-- 还没想到分组 -->
+      <p>current 当前的 curr</p>
+      <p>single 单个的</p>
+      <p>multiple 多个的</p>
+      <p>active 活跃的</p>
+      <p>sub 子 副 替补</p>
+      <p>avatar 头像</p>
+      <p>unique 唯一的</p>
+      <p>mobilePhone 手机号</p>
+      <p>telephone 座机号</p>
 
-      <p>prototype 原型</p>
-      <p>instanceof 实例</p>
-      <p>extends 继承</p>
-      <p>constructor 构造器</p>
+      <p>blank 空, 填空</p>
 
-      <p>alert 警报</p>
+      <p>dynamic 动态</p>
+      <p>sticky 粘性</p>
 
-      <p>alter 改变</p>
+      <p>infinite 极大数</p>
+      <p>alternate 交替</p>
+      <p>flip 翻转</p>
+
+      <p>pip 色子纸牌骨牌的点</p>
+      <p>siblings 兄弟, 姐妹(复数)</p>
+      <p>preserve 保存</p>
+
+      <p>stash 储藏</p>
+      <p>cloneNode 克隆节点</p>
+      <p>closest 最近的(close 的不知什么状态)</p>
+      <p>swiper 轮播图插件</p>
+
+      <p>split 分割字符串</p>
+      <p>join 连接成字符串</p>
+      <p>slice 切片</p>
+
+      <p>company 公司</p>
+      <p>partner 伙伴</p>
+
+      <p>slim 轻量 瘦身</p>
+      <p>nest 嵌套</p>
+      <p>launch 启动</p>
+      <p>roll 启动</p>
+
+      <p>notice 通知</p>
+      <p>flow 流</p>
+      <p>visible 可见的</p>
+      <p>corner 边角</p>
+      <p>triangle 三角形</p>
+      <p>interspace 空隙</p>
+      <p>transparent 透明的</p>
+      <p>origin 起源, 原点(数)</p>
+      <p>untracked 未追踪</p>
+      <p>ahead 跑在xxx的前面</p>
+      <p>behind 跑在xxx的后面</p>
+      <p>migration 迁移</p>
+
+      <p>fadeIn 淡入</p>
+      <p>fadeOut 淡出</p>
+      <p>semantic 语义化</p>
+      <p>singleton 单例</p>
 
       <p>Interceptor 拦截器</p>
       <p>Injectable 可注入</p>
+      <p>execute 执行</p>
       <p>ExecutionContext 执行上下文</p>
       <p>transformer 转换器</p>
       <p>plain 普通 朴素 无修饰</p>
+      <p>pipe 管道</p>
+      <p>expand 扩展</p>
 
-      <p>fetch 读取</p>
+      <p>backup 备份</p>
+      <p>silent 静默</p>
 
-      <p>emit 发</p>
-      <p>trigger 触发</p>
+      <p>bootstrap 引导程序</p>
+      <p>pre 预</p>
+      <p>preset 预设</p>
+      <p>preview 预览</p>
 
       <p>proposal 提案</p>
       <p>nutrition 营养</p>
@@ -234,13 +281,11 @@
       <p>psychological 心理</p>
       <p>questionnaire 问卷</p>
       <p>matrixList 矩阵</p>
-
+      <p>exam 考试</p>
       <p>character 字符</p>
       <p>occurrence 发生 存在 出现</p>
-      <p>target 目标</p>
-
       <p>generalTool 通用工具</p>
-      <p>unique 唯一的</p>
+
       <p>boundary 分界线 分隔符</p>
 
     </section>

@@ -5,6 +5,16 @@ validator 验证器 */
 /* 自用的校验规则, 可以先不考虑边缘情况, 直接用 */
 
 
+/**
+ * @description 校验合法手机号
+ * @param {string | number} mobilePhone
+ * @returns {boolean}
+ */
+export function validMobilePhone(mobilePhone) {
+  const reg = /^1[3-9]\d{9}$/
+  return reg.test(mobilePhone)
+}
+
 
 /**
  * @description 校验合法email
@@ -16,7 +26,7 @@ export function validEmail(email) {
   return reg.test(email)
 }
 
-/* --------------------------------------------------------------------- */
+/* ----------------- 分割线 20230227 ---------------------- */
 
 /**
  * @description 验证是否只有数字

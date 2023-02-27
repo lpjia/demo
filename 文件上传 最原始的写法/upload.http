@@ -21,6 +21,6 @@ Content-Dispositon: form-data; name="avatar"; filename="gyy.jpeg"
 // MIME 的组成结构非常简单；由类型与子类型两个字符串中间用'/'分隔而组成。不允许空格存在
 Content-Type: image/jpeg
 
-// 图片的二进制数据
+// 图片的二进制数据, 请求时插件会把图片转为二进制数据
 < ./gyy.jpeg
 --fen--
