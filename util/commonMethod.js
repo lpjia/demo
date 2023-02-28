@@ -304,12 +304,13 @@ export function isContainAllArrItem(goalArr, arr) {
 
 /**
  * @description 去掉字符串中的所有空格
- * @param {string} str #need
+ * @param {string} str
  * @returns {string}
  */
 export function removeAllSpace(str) {
   if (typeof str !== 'string') throw new Error('请传入 string 类型参数')
-  return str.replace(/\s*/g, "")
+  return str.replace(/\s*/g, "") // 兼容性更好
+  // return str.replaceAll(' ', "")
 }
 
 

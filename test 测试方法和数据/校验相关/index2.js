@@ -1,6 +1,6 @@
 import {
   validMobilePhone
-} from '../util/validateRules.js'
+} from '../../util/validateRules.js'
 
 
 /* 11位手机号 */
@@ -27,9 +27,3 @@ console.log("validMobilePhone('157.1234123'):",
 console.log("validMobilePhone('a1571234123'):",
   validMobilePhone('a1571234123')
 )
-
-
-/* 
-方便clgd的copy
-validEmail('@420@qq.com')
-*/
