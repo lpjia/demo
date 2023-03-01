@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
 // import './style.css'
+import '@/styles/index.scss';
 // import App from './components/10-App.vue'
 // import App from '@/components/10-App.vue'
 import App from './App.vue'
 import router from '@/router'
+import myPinia from './stores'
 // import { initRouter } from '@/router'
 
 // import ElementPlus from 'element-plus'
@@ -27,6 +29,7 @@ const app = createApp(App)
 // 注意顺序
 app.use(router)
 // initRouter(app) // 换一种写法, 初始化路由
+app.use(myPinia)
 app.mount('#app')
 
 

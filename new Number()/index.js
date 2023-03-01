@@ -15,6 +15,15 @@ console.log("Number('-456.'):",
 console.log('---- 分割线 ----\n\n\n')
 
 
+// 非数字的字符, Number()转后一般都是 NaN
+// Number('null')
+console.log("Number('null'):",
+  Number('null') // NaN
+)
+console.log("Number('abc123'):",
+  Number('abc123') // NaN
+)
+
 // 其他数据类型转number
 console.log(Number(true)); // 1
 console.log(Number(false)); // 0
@@ -42,17 +51,14 @@ console.log("Number(NaN):",
 console.log('---- 分割线 ----\n\n\n')
 
 
+/* 一般表单输入的数据都是string, 要想判断数字相关的
+先校验非空字符串, 去掉 ''
+由于 [] '' null true false 用Number()都能转成正确的number, 所以先用typeof x判断, number和string留下
+再用Number()转, 结果用Number.isNaN()去判断, 留下非NaN的数据
+再去调自己封装的校验方法 */
 
-// 
 
 
-
-/**
- * 遇见表单等只能输入数字+小数点的时候, 由于表单输入为 string 类型, 可以先转为 number 类型,
- * 只能用 Number.isNaN() 去判断, 不为 NaN 时再去校验
- */
-
-// 非数字的字符, Number()转后一般都是 NaN
 console.log("Number.isNaN(NaN):",
   Number.isNaN(NaN)
 )

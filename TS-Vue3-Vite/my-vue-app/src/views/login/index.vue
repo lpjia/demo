@@ -21,30 +21,37 @@
 
 <script setup lang='ts'>
 import { reactive, ref } from 'vue';
+import Cookies from 'js-cookie';
 import { rules } from "./rules";
 import { placeholderTxt } from '@/utils/commonData'
-import { login } from '@/api/login'
+import { login, getUserInfo } from '@/api/login'
+import { useRouter } from 'vue-router';
 
 const ruleForm = reactive({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '123456',
   // verificationCode: '',
 })
 
 const ruleFormRef = ref()
+const router = useRouter()
 
 const loginFn = () => {
   ruleFormRef.value.validate().then(() => {
     console.log('通过校验')
 
-    const param = {
-      username: 'admin',
-      password: '123456'
+    const apiParams = {
+      username: ruleForm.username,
+      password: ruleForm.password
     }
-    login(param).then(res => {
-      console.log('res:', res)
+    login(apiParams).then(res => {
       if (res.code === 200) {
-        console.log(res.data.token)
+        Cookies.set('token', `${res.data.tokenHead} ${res.data.token}`, { expires: 7 })
+
+        getUserInfo().then(res => {
+          console.log(res.data)
+          router.push('/home')
+        })
       }
     })
   })

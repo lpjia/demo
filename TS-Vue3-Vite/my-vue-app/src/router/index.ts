@@ -5,7 +5,7 @@ import { setStorage, getStorage } from '@/utils/commonMethods.js'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/login'
   },
   {
     path: '/login',

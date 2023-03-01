@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link to="/home">home</router-link>
+    <!-- <router-link to="/home">home</router-link>
     <router-link to="/login">login</router-link>
-    <router-link to="/register">register</router-link>
+    <router-link to="/register">register</router-link> -->
   </div>
   <router-view></router-view>
 </template>
@@ -11,15 +11,19 @@
 </script>
 
 <style>
-* {
+/* * {
   margin: 0;
   padding: 0;
-}
+} */
 
-a {
+/* 两种样式引入方案 */
+/* @import './style.css';
+@import url('./style.css'); */
+
+/* a {
   color: deepskyblue;
   margin-left: 10px;
-}
+} */
 
 /* 不能写到scoped中, 有作用域指纹 */
 /* :root {

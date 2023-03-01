@@ -4,6 +4,7 @@ import { validEmail, validMobilePhone } from '@/utils/commonMethods.js'
 
 // rule是此input校验规则
 const validateEmail = (rule: unknown, value: string, callback: (err?: string | Error) => void) => {
+  // console.log(rule)
   if (value === '') {
     callback(new Error('请输入邮箱'))
   } else if (!validEmail(value)) {

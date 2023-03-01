@@ -6,6 +6,17 @@ validator 验证器 */
 
 
 /**
+ * @description 校验合法https或http://
+ * @param {string} str
+ * @returns {boolean}
+ */
+export function validDomainUrl(str) {
+  const reg = new RegExp("^(http|https)://", "i")
+  return reg.test(str)
+}
+
+
+/**
  * @description 校验合法密码, 得包括大小写字母/数字/特殊字符, 最少6位长度
  * @param {string} str
  * @returns {boolean}
@@ -50,6 +61,17 @@ export function validFloat(num) {
 
 
 /**
+ * @description 校验是否只有数字
+ * @param {string | number} num
+ * @returns {boolean}
+ */
+export function validNum(num) {
+  const reg = /^[0-9]*$/
+  return reg.test(num);
+}
+
+
+/**
  * @description 校验合法手机号
  * @param {string | number} mobilePhone
  * @returns {boolean}
@@ -68,4 +90,15 @@ export function validMobilePhone(mobilePhone) {
 export function validEmail(email) {
   const reg = /^\w+@\w+\.\w+$/i
   return reg.test(email)
+}
+
+
+/**
+ * @description 校验是否包含汉字
+ * @param {string} str
+ * @returns {boolean}
+ */
+export function validIncludesChinese(str) {
+  const reg = new RegExp("[\\u4E00-\\u9FFF]+", "g");
+  return reg.test(str)
 }
