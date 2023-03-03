@@ -17,6 +17,8 @@ import Updater from '@/utils/Redeploy'
 import { ElNotification } from 'element-plus'
 
 
+// console.log(process.env.NODE_ENV)
+
 
 // createApp(App).use(router).mount('#app')
 const app = createApp(App)

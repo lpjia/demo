@@ -41,18 +41,28 @@ interface LoginRes {
 }
 type PromiseRes<T> = Promise<CommonRes<T>>
 
+export interface MenuRes {
+  id: number
+  parentId: number
+  name: string
+  icon: string
+}
+
 interface UserInfoRes {
   username: string
-  roles: string[]
-  menus: unknown[]
+  realname: string
   avatar: string
+  roles: string[]
+  menus: MenuRes[]
 }
 
 // =>简单写法
+// 考虑什么情况下可以省略/api, 统一写
+// nginx代理的话, 又是什么情况, 是否可以统一写
 export const login = (data: LoginData): PromiseRes<LoginRes> =>
-  request.post('/getToken', data)
+  request.post('/api/getToken', data)
 export const getUserInfo = (): PromiseRes<UserInfoRes> =>
-  request.get('/getUserInfo')
+  request.get('/api/getUserInfo')
 
 
 

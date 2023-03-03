@@ -1,14 +1,26 @@
 <template>
   <div class="home_container">
     <div class="wrap">
-      <div class="home_header">头部 {{ haha }}</div>
-      <div class="home_menu">侧边栏{{ haha }}</div>
+      <div class="home_header">头部</div>
+      <div class="home_menu">
+        <el-menu active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" default-active="2"
+          text-color="#fff">
+          <el-sub-menu index="1">
+            <template #title>
+              <span>Navigator One</span>
+            </template>
+            <el-menu-item index="1-4-1">item one</el-menu-item>
+            <el-menu-item index="1-4-1">item one</el-menu-item>
+            <el-menu-item index="1-4-1">item one</el-menu-item>
+          </el-sub-menu>
+        </el-menu>
+      </div>
       <div class="home_content">右侧内容
         <button @click="add">add</button>
         <ul>
-          <li v-for="item, i in arr" :key="i">{{ item.name }}</li>
+          <!-- <li v-for="item, i in arr" :key="i">{{ item.name }}</li> -->
         </ul>
-        <button @click="">changeArr</button>
+        <!-- <button @click="">changeArr</button> -->
       </div>
     </div>
   </div>
@@ -18,10 +30,12 @@
 // import { onMounted, watch } from 'vue';
 // import { useRoute } from 'vue-router';
 
-import { useUserStore } from '@/stores/user';
+// import { useUserStore } from '@/stores/user';
 import { toRefs } from 'vue';
 
 // const route = useRoute()
+
+
 
 
 // onMounted(() => {
@@ -35,12 +49,12 @@ import { toRefs } from 'vue';
 //   console.log('加载新数据...')
 // })
 
-const userStore = useUserStore()
-const { token, hehe, count: haha, arr } = toRefs(userStore)
+// const userStore = useUserStore()
+// const { token, hehe, count: haha, arr } = toRefs(userStore)
 const add = () => {
-  userStore.count++
+  // userStore.count++
 
-  arr.value.pop()
+  // arr.value.pop()
   // userStore.changeArr()
   // changeArr()
 }

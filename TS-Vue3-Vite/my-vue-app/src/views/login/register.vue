@@ -27,6 +27,7 @@
 <script setup lang='ts'>
 import { reactive, ref } from 'vue';
 import type { FormItemProp } from 'element-plus'
+
 import { rules } from "./rules";
 import { placeholderTxt } from '@/utils/commonData'
 import { login } from '@/api/login'

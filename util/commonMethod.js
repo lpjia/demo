@@ -156,7 +156,7 @@ export function createUniqueId(n) {
  * @param {object} @field pKey 父级 id 的字段名 @field cKey 子 id 的字段名 @field gpId 祖父 id 的值
  * @returns {array}
  */
-export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = '0' } = {}) {
+export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = 0 } = {}) {
   let len = list.length
 
   function loop(gpId) {

@@ -23,3 +23,22 @@ export function validMobilePhone(mobilePhone) {
   const reg = /^1[3-9]\d{9}$/
   return reg.test(mobilePhone)
 }
+
+
+export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = '0' } = {}) {
+  let len = list.length
+
+  function loop(gpId) {
+    let res = []
+    for (let i = 0; i < len; i++) {
+      let item = list[i]
+      if (item[pKey] === gpId) {
+        item.children = loop(item[cKey])
+        res.push(item)
+      }
+    }
+    return res
+  }
+
+  return loop(gpId)
+}
