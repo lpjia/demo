@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { MenuRes } from "@/api/login";
+import { oneToTree } from "@/utils/commonMethods";
 
 // 组合式写法, 每一种写法都试试
 export const useUserStore = defineStore('user', () => {
@@ -10,7 +11,9 @@ export const useUserStore = defineStore('user', () => {
   const setMenus = (data: MenuRes[]) => {
     menus.value = data
   }
-  const menusComputed = computed(() => { })
+  // 记得写.value
+  const menusComputed = computed(() => oneToTree(menus.value, { pKey: 'parentId' }))
+
 
   const userInfo = ref({})
   const setUserInfo = (data: Object) => {
@@ -19,7 +22,7 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     menus, // 一定要暴露出这个state, pinia才会使用它
-    userInfo,
+    userInfo, menusComputed,
     setMenus, setUserInfo
   }
 }, {

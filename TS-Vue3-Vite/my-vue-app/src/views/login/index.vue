@@ -17,7 +17,7 @@
       </el-form>
 
       <ul>
-        <li v-for="menu, i in menus">{{ menu.name }}</li>
+        <li v-for="menu, i in menus">{{ menu.title }}</li>
       </ul>
     </div>
   </div>
@@ -28,12 +28,13 @@ import { reactive, ref } from 'vue';
 import Cookies from 'js-cookie';
 import { storeToRefs } from "pinia";
 import { useRouter } from 'vue-router';
-import { isEmpty, isNil } from 'ramda';
+// import { isEmpty, isNil } from 'ramda';
+import * as R from 'ramda';
 import { rules } from "./rules";
 import { placeholderTxt } from '@/utils/commonData'
 import { login, getUserInfo } from '@/api/login'
 import { useUserStore } from '@/stores/user';
-// import { useUserStore } from '@/stores/userForOption';
+// import { useUserStore } from '@/stores/userForOptions';
 
 const ruleForm = reactive({
   username: 'admin',
@@ -45,7 +46,7 @@ const ruleFormRef = ref()
 const router = useRouter() // 实例化router
 
 const userStore = useUserStore() // 实例化某store
-const { menus } = storeToRefs(userStore) // 需要解构时, 使用store的state需要解包, actions则不需要解包
+const { menus } = storeToRefs(userStore) // 需要解构时, 使用store的state和getters需要解包, actions则不需要解包
 const { setMenus } = userStore // 需要解构时, 直接解构
 
 const loginFn = () => {
@@ -60,14 +61,14 @@ const loginFn = () => {
       // 只要接口走到then里面, 就一定有 code msg data 这几个属性
       if (res.code === 200) {
         // 有值
-        if (!isNil(res.data) && !isEmpty(res.data)) {
+        if (!R.isNil(res.data) && !R.isEmpty(res.data)) {
           // 组装好的token存到cookie
           Cookies.set('token', `${res.data.tokenHead} ${res.data.token}`, { expires: 7 })
 
           getUserInfo().then(res => { // 嵌套太多还是容易晕, 用异步标记
             if (res.code === 200) {
               // 有值
-              if (!isNil(res.data) && !isEmpty(res.data)) {
+              if (!R.isNil(res.data) && !R.isEmpty(res.data)) {
                 /* 这样解构方便赋default值, 后台一般查数据, 查不出来的字段可能就不返回给前端了, 前端还得判断有无此字段, 当字段多时, res.data.xxx可能就得写很多遍, 太繁琐 */
                 const { username = '',
                   realname = '',

@@ -10,6 +10,20 @@ const arr = [
   { name: 'Zeros', score: 7 },
   { name: 'Jack', score: 67 },
 ]
+
+
+
+console.log(
+  // 分成长度为3的数组串, 前端分页好使
+  _.chunk(arr, 3)
+)
+console.log(
+  R.splitEvery(3)(arr)
+)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
 console.log(
   // 返回移除的项组成的数组
   // 会改变原数组

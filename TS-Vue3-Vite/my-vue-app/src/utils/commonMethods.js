@@ -25,7 +25,7 @@ export function validMobilePhone(mobilePhone) {
 }
 
 
-export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = '0' } = {}) {
+export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = 0 } = {}) {
   let len = list.length
 
   function loop(gpId) {

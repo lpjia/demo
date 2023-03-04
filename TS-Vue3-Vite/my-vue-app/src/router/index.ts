@@ -1,12 +1,10 @@
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { App } from 'vue'
 import { setStorage, getStorage } from '@/utils/commonMethods.js'
+import Cookies from 'js-cookie'
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
+// 一些公共路由
+const commonRoutes = [
   {
     path: '/login',
     name: 'login',
@@ -18,16 +16,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/login/register.vue')
   },
   {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/views/home/index.vue')
-  },
-  {
-    path: '/about/:id/title/:pname', // 带参数的动态路由匹配
-    name: 'about',
-    component: () => import('@/views/about/index.vue')
-  },
-  {
     path: '/403',
     name: '403',
     component: () => import('@/views/err/403.vue')
@@ -37,10 +25,34 @@ const routes: RouteRecordRaw[] = [
     name: '404',
     component: () => import('@/views/err/404.vue')
   },
+]
+
+// 后台返回的用户路由
+const userOwnRoutes = [
+
+]
+
+const routes: RouteRecordRaw[] = [
   {
-    path: '/:pathMatch(.*)*',
-    redirect: '/404'
+    path: '/',
+    redirect: '/login'
   },
+  ...commonRoutes,
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/home/index.vue')
+  },
+  {
+    path: '/about/:id/title/:pname', // 带参数的动态路由匹配
+    name: 'about',
+    component: () => import('@/views/about/index.vue')
+  },
+  // // 先不拦截路由
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   redirect: '/404'
+  // },
 ]
 
 const router = createRouter({
@@ -56,7 +68,8 @@ const router = createRouter({
 // 再去访问不存在的路由, 页面没有变(还是404页面), 地址栏却变为不存在的路由地址
 // router.beforeEach((to, from, next) => {
 //   const whiteList = ['/login', '/register']
-//   const token = getStorage('token')
+//   // const token = getStorage('token')
+//   const token = Cookies.get('token')
 //   const toPath = to.path
 //   if (token) {
 //     // 在白名单, 跳转到首页
@@ -78,7 +91,7 @@ const router = createRouter({
 
 export default router
 
-// // 把router相关的逻辑全封装在router/index.ts文件中, 暂时不清楚有啥明显优势?
+// // 把router相关的逻辑全封装在router/index.ts文件中, 减少耦合
 // export const initRouter = (app: App) => {
 //   app.use(router)
 // }

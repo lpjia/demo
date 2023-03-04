@@ -13,6 +13,13 @@ declare namespace moduleLib {
 
   function validEmail(email: string): boolean
   function validMobilePhone(mobilePhone: string): boolean
+
+  interface oneToTreeOptions {
+    pKey?: string
+    cKey?: string
+    gpId?: number
+  }
+  function oneToTree(list: unknown[], options: oneToTreeOptions): any[]
 }
 
 export = moduleLib; // 这样写兼容性更好
