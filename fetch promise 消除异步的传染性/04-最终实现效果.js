@@ -1,5 +1,5 @@
-// const url = "http://localhost:8802/api/getUserInfo"
-const url = "http://rap2api.taobao.org/app/mock/288967/api/random"
+const url = "http://127.0.0.1:8802/api/getUserInfo"
+// const url = "http://rap2api.taobao.org/app/mock/288967/api/random"
 
 function getUser() {
   return fetch(url)
