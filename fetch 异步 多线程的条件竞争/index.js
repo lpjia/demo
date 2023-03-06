@@ -1,0 +1,38 @@
+async function fetchCount(id) {
+  // 模拟 ajax 返回 promise
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(id)
+    }, 100);
+  });
+}
+
+// fetchCount(200).then(res => console.log(res))
+
+let count = 0 // 统计设备的月销量
+
+// 好好看这段注释
+/* async function addCount(id) {
+  // ajax 请求
+  count += await fetchCount(id) // 有问题
+  // 上面写法等于
+  // count = count + 等待, 由于是从左到右运算
+  // 把异步的数据和同步的数据进行混合运算
+  // 一旦异步的行为是并发的, 就会出现问题
+  // 下面两次调用
+  // count = 0 + 等待10, 第一次调用完count是10
+  // count = 0 + 等待20, 第二次调用完count是20
+  // 最终结果是20, 不符合预期
+} */
+async function addCount(id) {
+  // ajax 请求
+  // 这类问题不好排查, 所以养成好的编码习惯
+  // 每次遇到就这样分开写, 先拿等待, 再累加
+  const n = await fetchCount(id)
+  count += n
+}
+
+addCount(10)
+addCount(20)
+// 浏览器控制台打印为20, 不符合预期
+// 修改后打印为30, 符合预期了

@@ -40,8 +40,11 @@ function run(fn) {
   // 表示某一次运行中, 调用fetch的次数, 下一次再运行的时候, 要把下标清空
   let i = 0
   // 拿到原来的fetch
+  // 这里是存一份以便后面fetch调用
   const _originalFetch = window.fetch
   // 改动fetch函数
+  // getUser方法中调用了fecth, 执行的就是改动后的window.fetch
+  // 增加自己想要的某些处理, 然后还要调用原来的fetch
   window.fetch = (...args) => {
     // 有缓存
     if (cache[i]) {
@@ -52,7 +55,8 @@ function run(fn) {
         throw cache[i].err
       }
     }
-    // 结果, 一个通信有哪些信息要记录?
+    // 结果
+    // 一个通信有哪些信息要记录?
     // 状态, 通信完成没有, 也就是promise的状态
     // promise完成后的数据是啥
     // 有没有错误
@@ -65,16 +69,21 @@ function run(fn) {
     cache[i++] = result
 
     // 发送请求
-    const promise = _originalFetch(...args).then(res => res.json()).then(
-      resp => {
-        result.status = 'fulfilled'
-        result.data = resp
-      },
-      err => {
-        result.status = 'rejected'
-        result.err = err
-      }
-    )
+    // 调用原来存的window.fetch
+    // then方法才是经常用来获取promise结果的
+    const promise = _originalFetch(...args).then(res => res.json())
+      .then( // 状态一旦从 pending 变为 fulfilled/rejected, 就固定不变了。一直等到接口返回后才会触发then方法
+        // 完成后回调
+        resp => {
+          result.status = 'fulfilled'
+          result.data = resp
+        },
+        // 失败后回调
+        err => {
+          result.status = 'rejected'
+          result.err = err
+        }
+      )
     // 报错
     // 把这个promise作为错误抛出去
     throw promise
