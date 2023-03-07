@@ -20,6 +20,8 @@ declare namespace moduleLib {
     gpId?: number
   }
   function oneToTree(list: unknown[], options: oneToTreeOptions): any[]
+
+  function debounce(fn: Function, delay: number, immediate: boolean): Function
 }
 
 export = moduleLib; // 这样写兼容性更好

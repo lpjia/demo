@@ -60,9 +60,9 @@ interface UserInfoRes {
 // 考虑什么情况下可以省略/api, 统一写
 // nginx代理的话, 又是什么情况, 是否可以统一写
 // 代理的话需要用到/api
-export const login = (data: LoginData): PromiseRes<LoginRes> =>
+export const loginApi = (data: LoginData): PromiseRes<LoginRes> =>
   request.post('/api/getToken', data)
-export const getUserInfo = (): PromiseRes<UserInfoRes> =>
+export const getUserInfoApi = (): PromiseRes<UserInfoRes> =>
   request.get('/api/getUserInfo')
 
 

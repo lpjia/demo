@@ -22,12 +22,8 @@
           </template>
         </el-menu>
       </div>
-      <div class="home_content">右侧内容
-        <button @click="add">btn</button>
-        <ul>
-          <!-- <li v-for="item, i in arr" :key="i">{{ item.name }}</li> -->
-        </ul>
-        <!-- <button @click="">changeArr</button> -->
+      <div class="home_content">
+        <router-view></router-view>
       </div>
     </div>
   </div>

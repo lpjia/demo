@@ -1,3 +1,5 @@
+import _debounce from "lodash/debounce";
+
 // 默认sessionStorage 存 取 删 删所有
 export const setStorage = (key, val, storage = window.sessionStorage) => {
   if (!key) return;
@@ -41,4 +43,9 @@ export function oneToTree(list, { pKey = 'pId', cKey = 'id', gpId = 0 } = {}) {
   }
 
   return loop(gpId)
+}
+
+
+export function debounce(fn, delay, immediate) {
+  return _debounce(fn, delay, immediate ? { leading: true, trailing: false } : undefined)
 }

@@ -30,7 +30,7 @@ import type { FormItemProp } from 'element-plus'
 
 import { rules } from "./rules";
 import { placeholderTxt } from '@/utils/commonData'
-import { login } from '@/api/login'
+import { loginApi } from '@/api/login'
 
 const ruleForm = reactive({
   username: '',
@@ -65,7 +65,7 @@ const registerFn = () => {
       username: 'admin',
       password: '123456'
     }
-    login(param).then(res => {
+    loginApi(param).then(res => {
       console.log('res:', res)
       if (res.code === 200) {
         console.log(res.data.token)

@@ -5,6 +5,7 @@ specifiers:
   '@types/lodash': ^4.14.191
   '@types/mockjs': ^1.0.7
   '@types/node': ^18.14.0
+  '@types/nprogress': ^0.2.0
   '@types/ramda': ^0.28.23
   '@vitejs/plugin-vue': ^4.0.0
   axios: ^1.3.4
@@ -14,6 +15,7 @@ specifiers:
   lodash: ^4.17.21
   mockjs: ^1.1.0
   normalize.css: ^8.0.1
+  nprogress: ^0.2.0
   pinia: ^2.0.30
   pinia-plugin-persistedstate: ^3.1.0
   ramda: ^0.28.0
@@ -34,6 +36,7 @@ dependencies:
   js-cookie: 3.0.1
   lodash: 4.17.21
   normalize.css: 8.0.1
+  nprogress: 0.2.0
   pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
   pinia-plugin-persistedstate: 3.1.0_pinia@2.0.30
   ramda: 0.28.0
@@ -45,6 +48,7 @@ devDependencies:
   '@types/lodash': 4.14.191
   '@types/mockjs': 1.0.7
   '@types/node': 18.14.0
+  '@types/nprogress': 0.2.0
   '@types/ramda': 0.28.23
   '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.47
   mockjs: 1.1.0
@@ -664,6 +668,10 @@ packages:
 
   /@types/node/18.14.0:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
+    dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
     dev: true
 
   /@types/ramda/0.28.23:
@@ -1695,6 +1703,10 @@ packages:
 
   /normalize.css/8.0.1:
     resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
     dev: false
 
   /on-finished/2.3.0:

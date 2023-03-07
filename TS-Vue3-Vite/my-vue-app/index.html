@@ -6,10 +6,23 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + Vue + TS</title>
+  <!-- 有必要则压缩这个css文件 -->
+  <!-- <link rel="stylesheet" href="/public/firstLoadAnimation.css" /> -->
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <!-- <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">正在加载...,请耐心等待
+        <br>
+        <span>V1.3</span>
+      </div>
+    </div> -->
+  </div>
+
   <!-- 定义全局变量 -->
   <script>
     let globalVar = 'globalVar变量'
@@ -18,6 +31,7 @@
       console.log('执行globalFn')
     }
   </script>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 

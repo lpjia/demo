@@ -4,10 +4,12 @@ export default [
   {
     url: '/api/getUserInfo',
     method: 'get',
+    // timeout: 3000, // 配置响应时间
     response: () => {
       return {
         code: 200,
         msg: '操作成功',
+        data2: null,
         data: {
           'username': 'amdin',
           'realname': '@cname',

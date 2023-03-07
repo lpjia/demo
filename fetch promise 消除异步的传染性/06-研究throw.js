@@ -15,6 +15,7 @@ function run(fn) {
   } catch (error) {
     console.log('error:', error)
   }
+  console.log('try catch 之后执行的代码, 是会继续执行的')
 }
 
 run(main)
