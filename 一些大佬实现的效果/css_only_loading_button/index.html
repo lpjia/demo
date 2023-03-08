@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+<body>
+
+<button class="login">
+    <p>登录</p>
+    <div class="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <svg class="check" width='30px' height='30px' stroke='white' fill='none'>
+        <polyline points='2,10 12,18 28,2'></polyline>
+    </svg>
+
+</button>
+
+<script>
+    $($('.login')).click(
+        function () {
+            $(this).toggleClass("active")
+            setTimeout(() => {
+                $(this).toggleClass('verity')
+            }, 2000)
+        }
+    )
+</script>
+</body>
+
+</html>

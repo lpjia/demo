@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BottomBar</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="item active">
+            <ion-icon name="home-outline" class="icon"></ion-icon>
+            <div class="text">Home</div>
+        </div>
+
+        <div class="item">
+            <ion-icon name="chatbubble-outline" class="icon"></ion-icon>
+            <div class="text">Chat</div>
+        </div>
+
+        <div class="item">
+            <ion-icon name="camera-outline" class="icon"></ion-icon>
+            <div class="text">Camera</div>
+        </div>
+
+        <div class="item">
+            <ion-icon name="person-outline" class="icon"></ion-icon>
+            <div class="text">User</div>
+        </div>
+        <div class="indicator"></div>
+    </div>
+
+    <script>
+        const list = document.querySelectorAll('.item')
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'))
+            this.classList.add('active')
+        }
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink))
+    </script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+</body>
+
+</html>

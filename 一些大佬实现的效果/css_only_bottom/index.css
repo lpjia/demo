@@ -1,0 +1,114 @@
+:root {
+    --color: #222327
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--color);
+}
+
+.container {
+    width: 440px;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+}
+
+.icon {
+    position: absolute;
+    font-size: 1.7em;
+    color: var(--color);
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.text {
+    transform: translateY(20px);
+    font-size: 0.75em;
+    font-weight: bold;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.item.active .icon {
+    transform: translateY(-32px);
+    z-index: 1;
+}
+
+.item.active .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #29fd53;
+    left: 35px;
+    top: -50%;
+    border-radius: 50%;
+    border: 6px solid var(--color);
+    transition: 0.5s;
+}
+.indicator::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -10px 0 0 var(--color);
+}
+
+.indicator::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: 0 -10px 0 0 var(--color);
+}
+
+.item:nth-child(1).active ~ .indicator{
+    transform: translateX(calc(100px * 0));
+}
+
+.item:nth-child(2).active ~ .indicator{
+    transform: translateX(calc(100px * 1));
+}
+
+.item:nth-child(3).active ~ .indicator{
+    transform: translateX(calc(100px * 2));
+}
+
+.item:nth-child(4).active ~ .indicator{
+    transform: translateX(calc(100px * 3));
+}

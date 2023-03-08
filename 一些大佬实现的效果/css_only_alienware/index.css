@@ -1,0 +1,74 @@
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.alienware {
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    transform: rotate(45deg);
+    border-radius: 160px 220px 70px 220px;
+    box-shadow: 10px 10px 50px 1px white;
+    transition: 0.5s;
+}
+
+.alienware:hover {
+    box-shadow: 10px 10px 60px 20px white;
+}
+
+.alienware::before {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    border-top-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+    transform: rotate(45deg);
+    box-shadow: inset 1px 1px 8px 1px black, inset -1px -1px 8px 1px black;
+    transition: 0.5s;
+}
+
+.alienware:hover::before {
+    box-shadow: inset 1px 1px 15px 1px black,
+        inset -1px -1px 15px 1px black;
+}
+
+.alienware::after {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    border-top-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+    box-shadow: inset 1px 1px 8px 1px black, inset -1px -1px 8px 1px black;
+    transform: rotate(-45deg);
+    transition: 0.5s;
+}
+
+.alienware:hover:after {
+    box-shadow: inset 1px 1px 15px 1px black, inset -1px -1px 15px 1px black;
+}
+
+.dg {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    z-index: 10;
+    top: 40px;
+    left: 45px;
+    box-shadow: 10px 10px 20px 10px white, 10px 10px 20px 10px white;
+}

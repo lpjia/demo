@@ -1,0 +1,102 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fff;
+}
+
+.login {
+    border: none;
+    outline: none;
+    position: relative;
+    background: #000;
+    color: white;
+    width: 12rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    transition: all 0.5s;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 8px 28px #000;
+    cursor: pointer;
+}
+
+.active.login {
+    width: 5rem;
+    color: transparent;
+}
+
+.loading {
+    opacity: 0;
+    transition: .5s;
+}
+
+.active .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    opacity: 1;
+
+}
+
+.active .loading div {
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: .9s loading ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+    to {
+        transform: translate(0, -1rem);
+    }
+}
+
+.active .loading div:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.active .loading div:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.verity .loading{
+    opacity: 0;
+}
+
+.check {
+    position: absolute;
+    left: 50%;
+    top: 56%;
+    transform: translate(-50%, -50%);
+    stroke-dashoffset: 36px;
+    stroke-dasharray: 36px;
+}
+
+.verity .check {
+    animation: .6s show forwards;
+    animation-delay: .4s;
+}
+
+@keyframes show {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
