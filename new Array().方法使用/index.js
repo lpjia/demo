@@ -62,22 +62,3 @@ arr8.reduce((total, curr) => {
 // idxArr
 let arr10 = ['red', 'green', 'blue']
 // arr10.at()
-
-
-
-
-
-
-/**
- * arr.find()
- */
-const arr3 = [
-  { val: 1, id: '1', },
-  { val: 2, id: '2', },
-  { val: 3, id: '3', },
-  { val: 3, id: '4', },
-  { val: 5, id: '5', },
-];
-// 找到符合条件的就会终止遍历, 只找第一个匹配的, 性能比 filter 好点
-const result = arr3.find(item => item.val === 3)
-// console.log('result: ', result)
