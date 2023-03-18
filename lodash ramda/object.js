@@ -42,13 +42,13 @@ console.log("R.isEmpty(false):",
   R.isEmpty(false),
   _.isEmpty(false)
 )
-console.log("R.isEmpty(''):",
-  R.isEmpty(''),
-  _.isEmpty('')
-)
 console.log("R.isEmpty(0):",
   R.isEmpty(0),
   _.isEmpty(0)
+)
+console.log("R.isEmpty(''):",
+  R.isEmpty(''),
+  _.isEmpty('')
 )
 console.log("R.isEmpty(NaN):",
   R.isEmpty(NaN),

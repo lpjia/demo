@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>汉字拼音带音标</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+</head>
+
+<body>
+
+  <!-- https://github.com/sxei/pinyinjs 
+    https://haoji.me 
+    博客里有一些小工具还是不错的, 还有一些demo -->
+
+  <!-- section标签有语义, 节 适用于文档内容之类的 -->
+  <section id="tv_name">
+    <h2>打开控制台</h2>
+    <p>风骚律师</p>
+    <p>白夜追凶</p>
+    <p>重生之门</p>
+    <!-- 重生的重, 这里还是识别错拼音了 -->
+  </section>
+
+
+
+  <script type="text/javascript" src="ci_ku/pinyin_dict_withtone.js"></script>
+  <script type="text/javascript" src="ci_ku/pinyin_dict_polyphone.js"></script>
+  <script type="text/javascript" src="ci_ku/pinyinUtil.js"></script>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
