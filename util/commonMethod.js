@@ -484,10 +484,13 @@ export function calcWorkingYears(startTime, endTime) {
  * @returns {object}
  */
 export function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
-  const objKeyValue = arr.reduce((acc, cur) => {
-    acc[cur[k]] = cur[v]
-    return acc
-  }, {})
+  const objKeyValue = arr.reduce(
+    (acc, cur) => {
+      acc[cur[k]] = cur[v]
+      return acc
+    },
+    {}
+  )
   return objKeyValue
 }
 

@@ -23,6 +23,7 @@ class User_2 {
     // undefined, 这种语法取不到私有字段, 就挺离谱的
     console.log(this['#siyou'])
 
+
     // 这是兼容性问题, chrome 91才支持, 我用的是 90
     // console.log(#siyou in this);
   }
