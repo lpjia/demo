@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>基础html知识</title>
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
+</head>
+
+<body>
+  <h1>快速生成标签</h1>
+  <!-- >是嵌套子元素, *是乘以个数, []是加属性, {}是普通文本, $是自增占位符, +是兄弟元素, .是class, #是id -->
+
+  <!-- (h${$级标题}+p>lorem10)*3 -->
+  <h1>1级标题</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, veniam!</p>
+  <h2>2级标题</h2>
+  <p>Nisi optio molestias, deserunt numquam minima asperiores commodi libero at?</p>
+  <h3>3级标题</h3>
+  <p>Velit numquam qui doloribus libero esse repellendus, placeat voluptas odio.</p>
+  <hr>
+  <!-- (h$[title="hh$"]{$级标题}+p.cls>lorem10)*3 -->
+  <h1 title="hh1">1级标题</h1>
+  <p class="cls">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, magnam.</p>
+  <h2 title="hh2">2级标题</h2>
+  <p class="cls">Est dicta molestiae quos quis nam voluptas libero nisi delectus?</p>
+  <h3 title="hh3">3级标题</h3>
+  <p class="cls">Qui possimus minus quisquam quidem sint, harum mollitia doloremque placeat?</p>
+
+  <!-- 乱数假文 英文lorem 中文jw -->
+  <hr>
+
+  <h1>pre预格式化元素</h1>
+  <!-- pre元素功能的本质: 有一个默认的css属性(white-space: pre) -->
+  <pre>
+    aaa
+    bbb
+    ccc
+  </pre>
+  <!-- 加上code, 增加语义 -->
+  <code>
+    <pre>
+      const a = 'aaa'
+      const b = 1
+      const c = true
+    </pre>
+  </code>
+  <hr>
+
+  <h1>折叠元素</h1>
+  <details>这是折叠内容</details>
+
+</body>
+
+</html>
