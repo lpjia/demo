@@ -38,7 +38,7 @@ console.log(
 
 
 // 想让cityList按照字典顺序排序, 拼音顺序
-const cityList = ['上海', '北京', '郑州', '广州', '深圳', '新乡']
+const cityList = ['上海', '北京', '郑州', '广州', '深圳', '新乡', '重庆']
 console.log(
   // cityList.sort(), // 不是我们想要的顺序(默认是编码顺序, 不管它, 一般传处理函数)
   cityList.sort((a, b) => a.localeCompare(b)) // 按字典顺序
