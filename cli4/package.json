@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli4",
+  "name": "vuecli4",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
     "new": "plop",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
     "postinstall": "patch-package",
-    "dev": "npm run serve",
-    "delete": "rimraf node_modules"
+    "dev": "vue-cli-service serve",
+    "clean": "rimraf node_modules"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "~1.0.1",
