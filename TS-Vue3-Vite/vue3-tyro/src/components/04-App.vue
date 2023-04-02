@@ -67,6 +67,7 @@ const plusOne2 = computed({
 })
 plusOne2.value = 1_000
 console.log(count3.value)
+console.log(plusOne2.value)
 
 
 </script>

@@ -5,12 +5,12 @@ const props = defineProps({
 })
 // update:xxx 固定写法
 // 不限制类型的最简写法
-const emits = defineEmits(['update:num'])
+const emit = defineEmits(['update:num'])
 
 let n = props.num
 const changeNum = () => {
   n++
-  emits('update:num', n)
+  emit('update:num', n)
 }
 </script>
 

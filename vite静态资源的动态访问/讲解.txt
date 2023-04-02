@@ -1,0 +1,53 @@
+已有的东西
+多个静态资源的图片, 作为背景图
+根据点击按钮来切换对应的图片
+
+
+先 pnpm build 打包看生成的打包结果
+再预览打包结果 pnpm preview
+
+
+构建工具vite处理静态资源, 打包之后
+转换分析的是静态代码, 就是代码它是没有运行的, 它把代码读一遍
+固定的路径写到样式里去, 会自动去转换
+一旦是动态的路径, 就不好分析了, 代码没有运行, 不知道变量会变成什么
+
+
+最笨的方法(不采用, 可以学习其中的知识)
+import name1 from './assets/img/1.png'
+import name2 from './assets/img/2.png'
+打印name1 name2
+/assets/1-132fb197.png
+/assets/2-dbefc10e.png
+是两个打包后的路径, 可以取到静态资源
+
+
+放到public目录, 则会原封不动的生成打包结果
+文件名不变, 使用绝对路径去访问, 则没问题
+但会丢失文件指纹
+
+
+动态导入
+watchEffect(async () => {
+  const module = await import(`./assets/img/${name.value}.png`)
+  console.log(module) // 能取到路径
+})
+把import的路径下的所有图片都生成了打包结果, 也生成冗余的js文件(一个图片一个js)
+同时代码还是异步的, 容易"传染"
+
+
+原生URL构造函数, 推荐
+console.log('import.meta.url:', import.meta.url) // 当前模块的基准路径
+const url = computed(() => {
+  const obj = new URL(`./assets/img/${name.value}.png`, import.meta.url)
+  console.log(obj)
+  return obj.pathname
+})
+
+:style="{ backgroundImage: `url(${url})` }"
+
+单文件组件在打包的时候, 会分析
+<img src="" 静态的 会转换路径
+css backgroundImage 以及其他的一些图片url地址 静态的 会转换路径
+import("") 可以是动态的, 但只能是某一部分是动态的 例如import(`./assets/${name.value}.png`) 会多出很多"不需要"的js文件 动态导入只能导入js
+mew URL(`./assets/${name.value}.png`) 路径下的全部图片都生成打包结果, 但是比上面的好处是没有"不需要"的js文件, 只有纯粹的图片
