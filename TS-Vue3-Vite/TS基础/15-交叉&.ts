@@ -67,3 +67,6 @@ const jx4: JX3 = {
 type UnionA = 'a' | 'b' | 'c' | 'd';
 type UnionB = 'c' | 'd' | 'e' | 'f';
 type UnionC = UnionA & UnionB
+type UnionAa = 'a'
+type UnionCc = 'c'
+type UnionAc = UnionAa & UnionCc
