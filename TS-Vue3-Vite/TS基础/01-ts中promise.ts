@@ -1,20 +1,20 @@
 // 作用域变为本地
 export { }
 
-interface DataItf {
+interface IData {
   id: string
   name: string
 }
 
-interface ResItf {
+interface IRes {
   code: number
-  // data: Array<DataItf> // 泛型写法
-  data: DataItf[] // 简写
+  // data: Array<IData> // 泛型写法
+  data: IData[] // 简写
   // data: { id: string, name: string }[] // 复杂写法
   msg: string
 }
 
-const p = new Promise<ResItf>((resolve, reject) => {
+const p = new Promise<IRes>((resolve, reject) => {
   resolve({
     code: 200,
     data: [
