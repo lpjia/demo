@@ -65,6 +65,14 @@ type Result6 = FX2<string | symbol>
 
 
 
+// 字面量类型
+// 应用场景是把多个字面量类型组合成一个联合类型, 用来描述拥有明确成员的集合
+// 方便传参限制 智能代码提示
+type Union = "success" | "serverError" | "otherError"
+function fnc(p: Union) { }
+fnc('success')
+fnc('serverError')
+fnc('otherError')
 
 
 

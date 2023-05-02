@@ -53,7 +53,7 @@ type Car2Typeof = typeof car2 // 变量的typeof是正确的类型
 let car_: CarTypeof = 'brand'
 let car2_: Car2Typeof = 'xyz'
 
-// 提取对象的类型
+// typeof提取对象的类型
 let car3 = {
   name: '轿车',
   brand: '比亚迪'
@@ -63,3 +63,35 @@ let car4: Car3Typeof = {
   name: 'SUV',
   brand: '吉利'
 }
+
+// typeof提取对象的类型
+let lolo = {
+  name: 'zhanhsan',
+  age: 18,
+  child: {
+    name: 'zhangsansan',
+    like: true,
+    age: 12
+  }
+};
+type Lolo = typeof lolo
+type Lolochild = typeof lolo.child
+
+
+// typeof提取枚举的类型
+// 按
+// 枚举默认 值是number类型
+enum HttpMethod {
+  GET,
+  POST
+}
+type Methods = typeof HttpMethod
+const meth: Methods = {
+  GET: 10,
+  POST: 5
+}
+// keyof取联合类型
+type EnumToUnion = keyof (typeof HttpMethod)
+function fn(p: EnumToUnion) { }
+fn('GET')
+fn('POST')
