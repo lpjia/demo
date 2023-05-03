@@ -21,6 +21,10 @@ switch (code) {
     break;
 }
 
+// 枚举可被遍历, 联合类型不能(当做值)被遍历
+console.log(Object.values(StatusCode))
+// console.log(Object.values(EnumToUnion)) // “EnumToUnion”仅表示类型，但在此处却作为值使用
+
 enum StatusCode2 {
   success,
   serverError = 500,
