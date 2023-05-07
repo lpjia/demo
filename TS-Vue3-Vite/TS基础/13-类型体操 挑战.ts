@@ -1,5 +1,7 @@
 export { }
 
+// https://github.com/type-challenges/type-challenges/blob/main/README.zh-CN.md
+
 {
   /* 实现 Pick */
   type MyPick<T, K extends keyof T> = {
@@ -43,17 +45,20 @@ export { }
 
 
 
+
+{
+  /* 元组转换为对象 */
+  const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+  type TupleToObject<T extends readonly (keyof any)[]> = {
+    [P in T[number]]: P
+  }
+
+  type result = TupleToObject<typeof tuple>
+  // expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}
+}
 {
   // 需要总结, 熟悉元组
   const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
-  type X = typeof tuple
-  console.log()
-
-
-  // const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
-  // type TupleToObject<T extends readonly (string | number)[]> = {
-
-  // }
-  // type result = TupleToObject<typeof tuple>
-  //  // expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}
+  type Params = typeof tuple
+  type Item = typeof tuple[number]
 }

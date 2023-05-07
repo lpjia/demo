@@ -79,7 +79,6 @@ type Lolochild = typeof lolo.child
 
 
 // typeof提取枚举的类型
-// 按
 // 枚举默认 值是number类型
 enum HttpMethod {
   GET,
@@ -95,3 +94,74 @@ type EnumToUnion = keyof (typeof HttpMethod)
 function fn(p: EnumToUnion) { }
 fn('GET')
 fn('POST')
+
+
+
+
+// 类型操作符
+// [] 索引访问 访问属性的类型, 和访问对象的属性是一样的语法
+type User = {
+  id: number
+  name: string
+  address: {
+    street: string
+    city: string
+    country: string
+  }
+}
+type Params = {
+  id: User['id']
+  address: User['address']
+}
+// 访问嵌套属性的类型
+type City = User['address']['city']
+// 通过联合类型一次性获取多个属性的类型
+type IdOrName = User['id' | 'name']
+// 通过keyof和联合类型一次性获取所有属性的类型
+type UserToUnion = User[keyof User]
+
+const MyArray = [
+  { name: "Alice", age: 15 },
+  { name: "Bob", age: 23 },
+  { name: "Eve", age: 38 },
+];
+// 获取数组元素的类型, []的number是因为数组的索引就是number类型
+type Person = typeof MyArray[number]; // 其实是(typeof MyArray)[number]
+// 获取数组类型
+type MyArrayType = typeof MyArray
+
+type Age = typeof MyArray[number]['age']
+type Name = Person['name']
+
+// 作为索引的只能是类型
+// type Person2 = MyArray[number] // 此处MyArray表示值, 不是类型
+// const key = 'age'; type Age2 = Person[key] // key是变量, 不能用作类型
+
+// 可用类型别名
+type Key = 'age'
+type Age2 = Person[Key]
+
+// 一个实战案例:一个页面要用在不同的APP, 根据APP的不同, 调用的底层API不同
+// const APP = ['TaoBao', 'Tmall', 'Alipay'];
+// 想使用约束
+// type App = 'TaoBao' | 'Tmall' | 'Alipay'; // 写两遍感觉冗余
+const APP = ['TaoBao', 'Tmall', 'Alipay'] as const;
+// 使用 as const 将数组变为 readonly 的元组类型
+// 但此时 APP 还是一个值，我们通过 typeof 获取 APP 的类型
+type TypeOfAPP = typeof APP
+// 最后在通过索引访问类型，获取字符串联合类型
+type App = TypeOfAPP[number]
+// 简写
+type App2 = typeof APP[number]
+
+// 一个实战案例:获取某对象的属性, 加上约束, 会有智能提示
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key]
+}
+const user = {
+  id: 15,
+  name: 'John',
+  email: 'john@qq.com',
+  role: 'admin'
+}
+console.log(getProperty(user, 'id'))

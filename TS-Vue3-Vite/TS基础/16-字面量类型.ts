@@ -48,8 +48,8 @@ type Result = `${Actions}${Capitalize<Property>}`
 type InferRoot<T> = T extends `${infer K}${Capitalize<Direction>}` ? K : T
 // 模版字面量可以解构类型
 
-type Result2 = InferRoot<'marginLeft'> // 推断出想要的结果
-type Result3 = InferRoot<'color'> // 非想要的结果
+type Result2 = InferRoot<'marginLeft'> // 推断出预期结果
+type Result3 = InferRoot<'color'> // 非预期结果
 
 
 

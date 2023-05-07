@@ -1,6 +1,12 @@
 export { }
 
 
+// 交叉的应用场景:
+// 合并对象类型(type用&、interface用extends)
+// 合并联合类型
+
+
+
 // 交叉, 用于合并已经存在的对象类型
 // 交叉时, 类型结构得一致
 interface JcItf {
@@ -25,6 +31,7 @@ const jx2: Jc3Itf = {
 }
 
 // 类型结构不一样, 交叉不了, 返回 never 类型
+// 把原始类型、字面量类型、函数类型等原子类型交叉, 会返回never类型
 type BaseJx = string & number
 // 这两个数组类型交叉, 其实返回 never[]
 type BaseJx2 = number[] & string[]
@@ -48,6 +55,22 @@ const jx3: JX2 = {
   name: 'a',
   age: 18
 }
+// 如果同名属性的类型兼容, 交叉后得到子类型
+type Person = {
+  name: string
+  age: number
+} & {
+  age: 18
+  heiget: number
+  weight: number
+}
+const person: Person = {
+  name: 'John',
+  // age: 20, // 不能将类型“20”分配给类型“18”
+  age: 18, // 同名属性的类型兼容, 交叉后得到子类型, 18是number的子类型
+  heiget: 180,
+  weight: 60
+}
 
 interface Jc6Itf {
   age: number
@@ -64,6 +87,7 @@ const jx4: JX3 = {
 
 // 联合类型交叉, 取交集
 // A中每一项都要和B中每一项交叉
+// 无相同类型成员, 交叉得到never类型
 type UnionA = 'a' | 'b' | 'c' | 'd';
 type UnionB = 'c' | 'd' | 'e' | 'f';
 type UnionC = UnionA & UnionB
