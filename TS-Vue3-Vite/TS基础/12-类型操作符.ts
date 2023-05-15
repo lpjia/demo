@@ -78,6 +78,18 @@ type Lolo = typeof lolo
 type Lolochild = typeof lolo.child
 
 
+// typeof提取数组的类型
+const myArr = ['name', 'age', 'sex']
+type MyArr = typeof myArr
+
+// 给一个数组字面量 const 断言，会被推断为 readonly 元组类型
+// 为啥? 因为数组字面量并不能保证item是同一种类型, 所以推断为元组类型更适合
+const myArr2 = ['name', 'age', true] as const
+type MyArr2 = typeof myArr2
+// type MyArr3 = readonly string // 报错, 仅允许对数组和元组字面量类型使用 "readonly" 类型修饰符
+
+type a = ReadonlyArray<string>
+
 // typeof提取枚举的类型
 // 枚举默认 值是number类型
 enum HttpMethod {
@@ -89,7 +101,7 @@ const meth: Methods = {
   GET: 10,
   POST: 5
 }
-// keyof取联合类型
+// 然后keyof再取联合类型
 type EnumToUnion = keyof (typeof HttpMethod)
 function fn(p: EnumToUnion) { }
 fn('GET')
@@ -119,6 +131,8 @@ type City = User['address']['city']
 type IdOrName = User['id' | 'name']
 // 通过keyof和联合类型一次性获取所有属性的类型
 type UserToUnion = User[keyof User]
+// keyof User 获取User所有属性组成的联合类型 'id' | 'name' | 'address'
+// type UserToUnion2 = User['id' | 'name' | 'address']
 
 const MyArray = [
   { name: "Alice", age: 15 },
@@ -146,6 +160,7 @@ type Age2 = Person[Key]
 // 想使用约束
 // type App = 'TaoBao' | 'Tmall' | 'Alipay'; // 写两遍感觉冗余
 const APP = ['TaoBao', 'Tmall', 'Alipay'] as const;
+// as const 是 const类型断言
 // 使用 as const 将数组变为 readonly 的元组类型
 // 但此时 APP 还是一个值，我们通过 typeof 获取 APP 的类型
 type TypeOfAPP = typeof APP
@@ -164,4 +179,4 @@ const user = {
   email: 'john@qq.com',
   role: 'admin'
 }
-console.log(getProperty(user, 'id'))
+console.log(getProperty(user, 'email'))
