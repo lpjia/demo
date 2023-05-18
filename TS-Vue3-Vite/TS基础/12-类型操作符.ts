@@ -88,7 +88,7 @@ const myArr2 = ['name', 'age', true] as const
 type MyArr2 = typeof myArr2
 // type MyArr3 = readonly string // 报错, 仅允许对数组和元组字面量类型使用 "readonly" 类型修饰符
 
-type a = ReadonlyArray<string>
+type zhidu = ReadonlyArray<string>
 
 // typeof提取枚举的类型
 // 枚举默认 值是number类型
@@ -160,7 +160,7 @@ type Age2 = Person[Key]
 // 想使用约束
 // type App = 'TaoBao' | 'Tmall' | 'Alipay'; // 写两遍感觉冗余
 const APP = ['TaoBao', 'Tmall', 'Alipay'] as const;
-// as const 是 const类型断言
+// as const 是 const类型断言, 可以将对象的属性或数组的元素设置为只读, 类型不会扩大
 // 使用 as const 将数组变为 readonly 的元组类型
 // 但此时 APP 还是一个值，我们通过 typeof 获取 APP 的类型
 type TypeOfAPP = typeof APP

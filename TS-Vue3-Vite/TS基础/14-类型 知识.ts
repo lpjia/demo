@@ -76,6 +76,35 @@ let zs = hd as unknown as number
 
 
 
+// const断言
+const arr = [3, 4] as const
+// 相当于
+const arr2: readonly [3, 4] = [3, 4]
+
+// 如果你不喜欢枚举, 可以用const断言来替代
+// 枚举初始化后, 值不能再被改变了, 用const断言后也不能改变
+const page = {
+  home: '/',
+  about: '/about',
+  contact: '/contact'
+} as const // 方便把js对象的属性和值固定不变
+// delete page.home // 报错, "delete" 运算符的操作数不能是只读属性。"delete" 运算符的操作数必须是可选的。
+// page.home = '/home' // 报错, 无法为“home”赋值，因为它是只读属性。
+// page.add = '' // 报错, page上不存在属性“add”。
+
+const pageMenu = ['/aaa', '/bbb']
+const page2 = {
+  home: '/home',
+  menu: pageMenu // 引用外部, 可以改其内容
+} as const
+page2.menu.push('/ccc')
+
+const page3 = {
+  home: '/home',
+  menu: ['/aaa', '/bbb'] // 直接初始化则不能改其内容
+} as const
+// page3.menu.push('/ccc') // 报错, 类型“readonly ["/aaa", "/bbb"]”上不存在属性“push”。
+
 
 
 
