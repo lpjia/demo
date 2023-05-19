@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 // 使用"运行时声明"
 const props = defineProps({
-  num: { type: Number, default: 0 }
+  num: { type: Number, default: 0 } // 比"基于类型的声明"的好处是可直接赋默认值
 })
 // update:xxx 固定写法
 // 不限制类型的最简写法
