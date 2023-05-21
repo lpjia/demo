@@ -1,35 +1,32 @@
-/**
- * 函数的语言里，借助闭包，同样可以封装一个私有变量
- * 在返回的对象中，实现了一个闭包，该闭包携带了局部变量x，
- * 并且，从外部代码根本无法访问到变量x。换句话说，闭包就是携带状态的函数，并且它的状态可以完全对外隐藏起来。
- */
-function create_counter(initial) {
-  let x = initial || 0;
-  return {
-    inc: function () {
-      x += 1;
-      return x;
-    }
+/* 函数的作用:
+避免变量全局污染
+数据私有化, 外部无法修改内部数据
+可以让外部使用内部的私有数据 */
+
+/* 闭包的核心作用:
+使变量/数据驻留在内存中, 不被回收 */
+
+/* 闭包使用过多会造成内存泄漏 */
+
+function fn() {
+  let count = 0
+  return function () {
+    count++
+    console.log(count)
   }
 }
-let c1 = create_counter();
-c1.inc(); // 1
-c1.inc(); // 2
-c1.inc(); // 3
-
-let c2 = create_counter(10)
-c2.inc(); // 11
-c2.inc(); // 12
-c2.inc(); // 13
+let hook = fn()
+hook()
+hook()
+hook()
+hook = null // 用完闭包后手动清除闭包
 
 
 
 
 
-/**
- * 闭包还可以把多参数的函数变成单参数的函数
- * 例如要计算x的y次幂可以用Math.pow(x, y)函数, 这就是2个参
- */
+/* 闭包还可以把多参数的函数变成单参数的函数
+例如要计算x的y次幂可以用Math.pow(x, y)函数, 这就是2个参 */
 function make_pow(n) {
   return function (x) {
     return Math.pow(x, n);
