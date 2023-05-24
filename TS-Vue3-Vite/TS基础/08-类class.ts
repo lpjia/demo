@@ -4,16 +4,25 @@ export { }
 class Person {
   myName: string
 
-  constructor(name: string) {
+  // 类的构造函数中使用解构constructor({age}:{age:number}){}
+  // 不能直接用constructor({ name:string }){}, 这样是解构后重命名的语法
+  constructor({ name, age, gender }:
+    {
+      name: string,
+      age?: number,
+      gender?: string
+    }
+  ) {
     this.myName = name
   }
 
+  // getName():string { // 不写也行, 会自动推断
   getName() {
     return this.myName
   }
 }
 
-let p = new Person('xiaoming')
+let p = new Person({ name: 'xiaoming' })
 console.log(p.myName)
 console.log(p.getName())
 
@@ -21,8 +30,8 @@ console.log(p.getName())
 
 
 let obj: Person = {
-  myName: '',
+  myName: '另一个对象的name',
   getName() {
-    return ''
+    return '返回的是string'
   }
 }
