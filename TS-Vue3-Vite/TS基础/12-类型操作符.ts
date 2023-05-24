@@ -169,8 +169,8 @@ type App = TypeOfAPP[number]
 // 简写
 type App2 = typeof APP[number]
 
-// 一个实战案例:获取某对象的属性, 加上约束, 会有智能提示
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
+// 一个实战案例:获取某对象属性的值, 加上约束, 会有智能提示
+function getValue<T extends object, K extends keyof T>(obj: T, key: K) {
   return obj[key]
 }
 const user = {
@@ -179,4 +179,4 @@ const user = {
   email: 'john@qq.com',
   role: 'admin'
 }
-console.log(getProperty(user, 'email'))
+console.log(getValue(user, 'id'))

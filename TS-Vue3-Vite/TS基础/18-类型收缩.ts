@@ -60,7 +60,7 @@ function sayHello(contact: Contact) {
 }
 
 
-// in 类型收窄
+// in 类型收缩
 type Fish = { swim: () => void };
 type Bird = { fly: () => void };
 
