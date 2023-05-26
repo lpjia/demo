@@ -17,7 +17,7 @@ onMounted(() => {
 })
 
 // 比onMounted先执行
-console.log(op)
+console.log(op) // 取不到.value的值, 没多大用
 console.log('setup: ', op.value) // undefined, 原因是生命周期钩子不对
 
 // nextTick(() => {

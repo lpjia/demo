@@ -7,7 +7,7 @@ const props = defineProps({
 // 不限制类型的最简写法
 const emit = defineEmits(['update:num'])
 
-let n = props.num
+let n = props.num // 用变量保存也能保持响应式
 const changeNum = () => {
   n++
   emit('update:num', n)
