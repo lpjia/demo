@@ -35,5 +35,9 @@ function make_pow(n) {
 let pow2 = make_pow(2)
 let pow3 = make_pow(3)
 
-pow2(5) // 25
-pow3(3) // 27
+console.log(
+  pow2(5) // 25
+)
+console.log(
+  pow3(3) // 27
+)
