@@ -49,6 +49,17 @@ const stopWatchFn = watchEffect((onCleanup) => {
   console.log(count2.num)
 })
 
+const speed = ref(5)
+// watchEffect的异步问题async
+// watchEffect 只收集同步代码的依赖, 也就是说await之前的代码
+// watchEffect 仅会在其同步执行期间，才追踪依赖。在使用异步回调时，只有在第一个 await 正常工作前访问到的属性才会被追踪。
+watchEffect(async () => {
+  speed.value // 不想改动await那块的代码, 就在前面写一个响应式数据让vue收集
+  const url = "http://rap2api.taobao.org/app/mock/288967/api/random"
+  const res = await (await fetch(url)).json(); // 或者有时候可以把await挪出来, 不必每次都重新fetch
+  console.log(res)
+})
+
 
 
 
@@ -78,6 +89,14 @@ console.log(plusOne2.value)
   {{ count2.num }}
   <hr>
   <button @click="stopWatchFn">按钮2</button>
+  <hr>
+  <button @click="speed--">-1</button>
+  <span>速度: {{ speed }}</span>
+  <button @click="speed++">+1</button>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+span {
+  margin: 0 10px;
+}
+</style>

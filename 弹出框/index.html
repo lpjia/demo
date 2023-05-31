@@ -43,8 +43,9 @@
   <script>
 
     $(function () {
-
+      var isOpen = false
       $('button').click(function () {
+        if (isOpen) return false
         var oLogin = $(`<div id="login">
                           <p>用户名：<input type="text"></p>
                           <p>密码：<input type="password"></p>
@@ -52,6 +53,7 @@
                         </div>`)
 
         $('body').append(oLogin)
+        isOpen = true
         oLogin.hide(0, function () {
           oLogin.fadeIn('slow')
         })
@@ -68,6 +70,7 @@
         $('#close').click(function () {
           oLogin.fadeOut('slow', function () {
             oLogin.remove()
+            isOpen = false
           })
         })
 
