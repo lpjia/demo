@@ -67,6 +67,7 @@ obj.sayHello.call(obj2)
 // function test_chuan_can(o, sex, age) {
 //   // console.log(...arguments) // arguments是所有参数组成的类数组
 //   return obj.chuan_can.call(...arguments)
+//   // return obj.chuan_can.apply(arguments) // 也行
 // }
 // test_chuan_can(obj2, 'male', 38)
 
@@ -76,15 +77,16 @@ obj.sayHello.call(obj2)
 //   // console.log(rest) // rest是剩余参数组成的数组
 //   // console.log(...rest)
 //   return obj.chuan_can.call(o, ...rest)
+//   // return obj.chuan_can.apply(o, rest) // 也行
 // }
 // test2_chuan_can(obj2, 'male', 38)
 
 
 /*
-call 语法：  foo.call(this, arg1,arg2, ... ,argn );
-apply 语法： foo.apply(this, [ arg1,arg2, ... ,argn ] );
+call 语法：  foo.call(this, arg1,arg2, ... ,argn ); 会直接运行foo函数
+apply 语法： foo.apply(this, [ arg1,arg2, ... ,argn ] ); 会直接运行foo函数
 bind 语法：  foo.bind(this);
-bind 一般需要再加()调用一次
+bind 绑定后一般需要再加()调用一次才会运行foo函数
 */
 
 
