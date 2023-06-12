@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #666;
+  text-align: center;
+}
+
+audio {
+  width: 450px;
+  margin: 30px 0;
+}
+
+.container {
+  height: 420px;
+  overflow: hidden;
+
+  ul.lrc-list {
+    // 过渡只针对数值类的属性有效
+    transition: .4s;
+    // 变形 平移
+    // transform: translateY(-120px);
+    list-style: none;
+    // border: 1px solid #fff;
+  }
+
+  li.item {
+    height: 30px;
+    line-height: 30px;
+    transition: .4s;
+    // border: 1px solid #fff;
+
+    &.active {
+      // 变形
+      transform: scale(1.5);
+      color: #fff;
+    }
+  }
+}

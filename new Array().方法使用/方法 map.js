@@ -22,7 +22,7 @@ console.log(
 /* 慎用=>的简写形式, 返回的可能是非预期结果
 有时候也会改变原数据 */
 // let result = arr.map((item, idx) => item.id = idx)
-// let result = arr.map((item, idx) => { return item.id = idx }) // 省略return
+// let result = arr.map((item, idx) => { return item.id = idx }) // 其实是省略return的语法
 
 console.log('result:', result)
 console.log('arr:', arr)
@@ -42,7 +42,7 @@ let result3 = arr3.map(Math.pow);
 console.log('result3:', result3)
 /* 为啥没有返回预期的 [1, 4, 9, ...]
 因为 map 方法接收的第一个参是函数, 该函数内的参顺序是 item, idx, arrayItself
-Math.pow 方法接收的参顺序是 底数, 指数
+Math.pow 方法接收的参顺序是 底数(下头的数字), 指数(上头的数字)
 所以计算结果是按 item 的 idx 次幂算的 */
 
 
