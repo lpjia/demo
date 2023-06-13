@@ -51,9 +51,9 @@ const createLrcElements = () => {
 }
 createLrcElements()
 
-let containerHeight = doms.container.clientHeight
-let liHeight = doms.ul.children[0].clientHeight
-let maxOffset = doms.ul.clientHeight - containerHeight
+let containerHeight = doms.container.offsetHeight
+let liHeight = doms.ul.children[0].offsetHeight
+let maxOffset = doms.ul.offsetHeight - containerHeight
 
 const setOffset = () => {
   let index = findIndex()
@@ -75,6 +75,6 @@ doms.audio.addEventListener('timeupdate', setOffset)
 
 // // 这三个得总结
 // let containerHeight = doms.container.clientHeight
-// let containerHeight2 = doms.container.getBoundingClientRect().heigh1t
+// let containerHeight2 = doms.container.getBoundingClientRect().height
 // let containerHeight3 = doms.container.offsetHeight
 // console.log(containerHeight, containerHeight2, containerHeight3)

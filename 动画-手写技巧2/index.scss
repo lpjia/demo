@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 20%;
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: red;
+  margin: 0 auto;
+}
+
+// 显式地定义 CSS 自定义属性
+@property --x {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --y {
+  // syntax: '<length>';
+  syntax: '<angle>';
+  inherits: false;
+  // initial-value: 0px;
+  initial-value: 0deg;
+}
+
+.ball {
+  // --x: 0px;
+  // --y: 0px;
+  // transform: translate(var(--x), var(--y)); // 画眼
+  transform: rotate(var(--y)) translate(var(--x)); // 旋转, 复合变换按从右到左的顺序有效地应用, 这里顺序反了效果就不对了
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
+  // animation: x 2s cubic-bezier(0.5, -800, 0.5, 800) infinite;
+  // 拆开写
+  animation: x 2s, y 8s;
+  animation-timing-function: cubic-bezier(0.5, -800, 0.5, 800);
+  animation-iteration-count: infinite;
+}
+
+@keyframes x {
+  to {
+    // transform: translateX(1px);
+
+    --x: 1px;
+  }
+}
+
+@keyframes y {
+  to {
+    // // 改同一个属性, 肯定共存不了, 使用css变量
+    // transform: translateY(1px);
+
+    // 动画里面css变量是不生效的, 只能是改动属性生效, 而transform可以用css变量
+    // --y: 0.1px;
+    --y: 1deg;
+  }
+}

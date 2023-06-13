@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 20%;
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: red;
+  margin: 0 auto;
+}
+
+@property --x {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --y {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.ball {
+  transform: rotate(var(--y)) translate(var(--x));
+  animation: x 2s, y 8s;
+  animation-timing-function: cubic-bezier(0.5, -800, 0.5, 800);
+  animation-iteration-count: infinite;
+}
+
+@keyframes x {
+  to {
+    --x: 1px;
+  }
+}
+
+@keyframes y {
+  to {
+    --y: 1deg;
+  }
+}
