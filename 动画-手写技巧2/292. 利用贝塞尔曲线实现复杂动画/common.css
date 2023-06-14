@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.debug {
+  position: fixed;
+  left: 0;
+  top: 0;
+  inset: 0;
+}
+.dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  margin-top: -2px;
+  background: #666;
+  border-radius: 50%;
+  animation: fade-out 1s forwards;
+  --d: var(--delay, 15s);
+  animation-delay: var(--d);
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.ball {
+  z-index: 1;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: #fd6058;
+  border-radius: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  left: 50%;
+  top: 30%;
+}

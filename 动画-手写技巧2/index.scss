@@ -29,22 +29,22 @@ body {
 }
 
 @property --y {
-  // syntax: '<length>';
-  syntax: '<angle>';
+  syntax: '<length>';
+  // syntax: '<angle>';
   inherits: false;
-  // initial-value: 0px;
-  initial-value: 0deg;
+  initial-value: 0px;
+  // initial-value: 0deg;
 }
 
 .ball {
   // --x: 0px;
   // --y: 0px;
-  // transform: translate(var(--x), var(--y)); // 画眼
-  transform: rotate(var(--y)) translate(var(--x)); // 旋转, 复合变换按从右到左的顺序有效地应用, 这里顺序反了效果就不对了
+  transform: translate(var(--x), var(--y)); // 画眼
+  // transform: rotate(var(--y)) translate(var(--x)); // 旋转, 复合变换按从右到左的顺序有效地应用, 这里顺序反了效果就不对了
   // animation: name duration timing-function delay iteration-count direction fill-mode;
   // animation: x 2s cubic-bezier(0.5, -800, 0.5, 800) infinite;
   // 拆开写
-  animation: x 2s, y 8s;
+  animation: x 2s, y 1s;
   animation-timing-function: cubic-bezier(0.5, -800, 0.5, 800);
   animation-iteration-count: infinite;
 }
@@ -63,7 +63,7 @@ body {
     // transform: translateY(1px);
 
     // 动画里面css变量是不生效的, 只能是改动属性生效, 而transform可以用css变量
-    // --y: 0.1px;
-    --y: 1deg;
+    --y: 0.1px;
+    // --y: 1deg;
   }
 }

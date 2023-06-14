@@ -1,36 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  padding-top: 20%;
-}
-
-.ball {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: red;
-  margin: 0 auto;
-}
-
+/* hounidi Api */
 @property --x {
   syntax: '<length>';
-  inherits: false;
   initial-value: 0px;
+  inherits: false;
 }
-
 @property --y {
   syntax: '<length>';
-  inherits: false;
   initial-value: 0px;
+  inherits: false;
 }
 
 .ball {

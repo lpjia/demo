@@ -27,14 +27,24 @@
 </head>
 
 <body>
-
+  <!-- <input type="text" id="hour"> h -->
+  <div>
+    <input type="text" id="hour2"> h
+    <input style="margin-left: 10px;" type="text" id="minute2"> m
+    <button style="margin-left: 10px;" onclick="calcRemainingTime(10)">10倍加速</button>
+    <button onclick="calcRemainingTime(24)">24倍加速</button>
+    <button onclick="clearInput2()">清空</button>
+    <span id="new_time2"></span>
+    <span id="tip2"></span>
+  </div>
+  <hr>
   <a href="https://www.cnblogs.com/straybirds/p/9788968.html" target="_blank">一些容易混淆单词</a>
-
+  <hr>
   <div>
     <input type="text" id="hour"> h
     <input style="margin-left: 10px;" type="text" id="minute"> m
     <button style="margin-left: 10px;" onclick="calcNextTime()">计算时间</button>
-    <button onclick="clearInput()">清空</button></button>
+    <button onclick="clearInput()">清空</button>
     <span id="new_time" onclick="clickForCopy()" title="点击复制"></span>
     <span id="tip"></span>
   </div>
@@ -99,6 +109,8 @@
       <p>offset 偏移量</p>
       <p>transition 过渡</p>
       <p>animation 动画</p>
+      <p>keyframe 关键帧</p>
+      <p>frame 帧</p>
 
       <!-- css 变形 -->
       <p>transform 变形</p>
@@ -322,7 +334,7 @@
       <p>inspect 检查 浏览器检查</p>
 
       <p>tyro 初学者</p>
-      <p>plain text 纯文本</p>
+      <p>plain_text 纯文本</p>
 
 
       <!-- 句子 -->

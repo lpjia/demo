@@ -1,0 +1,27 @@
+@property --x {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+@property --y {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+.ball {
+  transform: translateX(var(--x)) translateY(var(--y));
+  animation: x 2s, y 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.5, -800, 0.5, 800);
+}
+
+@keyframes x {
+  to {
+    --x: 1px;
+  }
+}
+@keyframes y {
+  to {
+    --y: 0.1px;
+  }
+}

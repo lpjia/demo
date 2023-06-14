@@ -42,30 +42,55 @@ window.onload = function () {
 
 
 
-// 需求是
-// 输入一个时间后, 计算得到几小时的时间, 精确到分
+const doms = {
+  domHour: document.querySelector('#hour'),
+  domMinute: document.querySelector('#minute'),
+  domResult: document.querySelector('#new_time'),
+  domTip: document.querySelector('#tip'),
+
+  hour: document.querySelector('#hour2'),
+  minute: document.querySelector('#minute2'),
+  result: document.querySelector('#new_time2'),
+  tip: document.querySelector('#tip2'),
+}
+
+
+function clearInput2() {
+  doms.hour.value = ''
+  doms.minute.value = ''
+  doms.result.innerHTML = ''
+  doms.tip.innerHTML = ``
+  doms.hour.focus()
+}
+// 需求是: 输入一个时间, 计算出剩余时间(分钟)
+function calcRemainingTime(speed) {
+  if (!doms.hour.value) {
+    alert('请输入hour')
+    return;
+  }
+  let rawMinute = Number(doms.hour.value) * 60 + (doms.minute.value ? Number(doms.minute.value) : 0)
+  doms.result.textContent = `${Math.floor(rawMinute / speed)}分钟`
+}
+
+
+// 需求是: 输入一个时间后, 计算得到几小时的时间, 精确到分
 function clearInput() {
-  let domHour = document.querySelector('#hour')
-  let domMinute = document.querySelector('#minute')
-  let domResult = document.querySelector('#new_time')
-  let domTip = document.querySelector('#tip')
-
-  domHour.value = ''
-  domMinute.value = ''
-  domResult.innerHTML = ''
-  domTip.innerHTML = ``
-
-  domHour.focus()
+  doms.domHour.value = ''
+  doms.domMinute.value = ''
+  doms.domResult.innerHTML = ''
+  doms.domTip.innerHTML = ``
+  doms.domHour.focus()
 }
 function calcNextTime() {
-  let domHour = document.querySelector('#hour')
-  let domMinute = document.querySelector('#minute')
-  let domResult = document.querySelector('#new_time')
-  if (!domHour.value) return
+  if (!doms.domHour.value) {
+    alert('请输入hour')
+    return;
+  }
   // let currTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
   let currTime = new Date().getTime()
-  let result = currTime + (Number(domHour.value) * 60 + (domMinute.value ? Number(domMinute.value) : 0)) * 60 * 1000
-  domResult.innerHTML = dayjs(result).format('DD号HH:mm')
+  // 小时必须要输入, 否则还得区分用户输入是否有问题
+  let result = currTime + (Number(doms.domHour.value) * 60 + (doms.domMinute.value ? Number(doms.domMinute.value) : 0)) * 60 * 1000
+  doms.domResult.innerHTML = dayjs(result).format('DD号HH:mm')
 }
 
 
@@ -88,15 +113,15 @@ function calcNextTime() {
 // }
 // 新方法, 兼容性还可以
 async function clickForCopy() {
-  let domResult = document.querySelector('#new_time')
-  await navigator.clipboard.writeText(domResult.innerHTML) // 就是这行代码
-  let domTip = document.querySelector('#tip')
-  domTip.innerHTML = `(复制成功)`
+  // let domResult = document.querySelector('#new_time')
+  await navigator.clipboard.writeText(doms.domResult.innerHTML) // 就是这行代码
+  // let domTip = document.querySelector('#tip')
+  doms.domTip.innerHTML = `(复制成功)`
   setTimeout(() => {
-    domTip.innerHTML = ''
+    doms.domTip.innerHTML = ''
   }, 2000);
 }
 
-async function copyByClick() {
-  await navigator.clipboard.writeText(domResult.innerHTML)
-}
+// async function copyByClick() {
+//   await navigator.clipboard.writeText(doms.domResult.innerHTML)
+// }
