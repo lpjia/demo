@@ -14,6 +14,17 @@
   <script>
     function customCallback(resp) {
       console.log(resp)
+      // 进行对数据的操作
+      displayData(resp)
+    }
+
+    // 这里把数据展示到dom
+    function displayData(data) {
+      let frag = document.createDocumentFragment()
+      for (const item of data) {
+        frag.appendChild(document.createTextNode(JSON.stringify(item)))
+      }
+      document.body.appendChild(frag)
     }
 
     function request(url) {

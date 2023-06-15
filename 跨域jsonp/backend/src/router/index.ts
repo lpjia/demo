@@ -9,6 +9,6 @@ const router = new KoaRouter({
 // router.get('/user', (ctx) => {
 //   ctx.body = `customCallback(${[1, 2, 3]})`;
 // })
-router.get('/user', JsonpController.fetchJsonp)
+router.get('/user', JsonpController.fetchJsonp) // jsonp 只能是get请求
 
 export default router
