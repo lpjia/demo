@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>快速生成标签技巧</title>
+</head>
+
+<body>
+  <!-- 
+    * 多个; > 子元素; $ 占位符, 从1自增; + 兄弟元素;
+    # id; . class; = 赋值;
+    {} 内容; () 和js用法一样; [] 属性, 多个属性用空格隔开;
+   -->
+
+  <!-- 生成h1-h6标题, h$*6>{$级标题} -->
+  <h1>1级标题</h1>
+  <h2>2级标题</h2>
+  <h3>3级标题</h3>
+  <h4>4级标题</h4>
+  <h5>5级标题</h5>
+  <h6>6级标题</h6>
+
+  <!-- (h2>{章节$})+p>lorem10 -->
+  <h2>章节1</h2>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, labore.</p>
+
+  <!-- ((h2#chapter$.cls[data-$=$$$]>{章节$})+p>lorem5)*3 -->
+  <h2 id="chapter1" class="cls" data-1="001">章节1</h2>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <h2 id="chapter2" class="cls" data-2="002">章节2</h2>
+  <p>Doloribus impedit harum nisi eaque.</p>
+  <h2 id="chapter3" class="cls" data-3="003">章节3</h2>
+  <p>Placeat voluptas iste animi provident.</p>
+
+  <h3 attr1="1" attr2="01" attr3="001">多个属性</h3>
+</body>
+
+</html>
