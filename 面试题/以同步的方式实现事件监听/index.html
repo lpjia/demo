@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>以同步的方式实现事件监听</title>
+</head>
+
+<body>
+  <button>按钮</button>
+
+  <script>
+    function getElement(cssSelector) {
+      // 请完成该函数, 让后续的程序顺利进行
+      const dom = document.querySelector(cssSelector)
+      const domProxy = new Proxy(dom, {
+        get(target, key) {
+          if (!key.startsWith('wait')) {
+            return target[key]
+          }
+          const event = key.replace('wait', '').toLowerCase()
+          return new Promise((resolve) => {
+            target.addEventListener(event, resolve, { once: true })
+          })
+        }
+      })
+      return domProxy
+    }
+
+    (async () => {
+      const btn = getElement('button')
+
+      // console.log(btn.clientWidth)
+      // await btn.waitMouseOver;
+      // console.log('按钮被点击了')
+
+      // while (1) {
+      //   await btn.waitClick;
+      //   console.log('按钮被点击了')
+      // }
+      for (let n = 0; n < 10; n++) {
+        const e = await btn.waitClick;
+        console.log('按钮被点击了', e)
+      }
+
+    })()
+  </script>
+</body>
+
+</html>
