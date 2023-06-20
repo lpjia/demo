@@ -7,49 +7,75 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BFC块级格式化上下文</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
   <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-  <h3>同一个 BFC 容器下外边距会发生折叠, 容器指&lt;html&gt;, 两个块之间的间距为100px</h3>
-  <div class="cls"></div>
-  <div class="cls"></div>
-  <p>----分割线----</p>
-  <h3>如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中(overflow: hidden;)。两个块之间的间距为200px</h3>
-  <div class="container">
-    <p class="cls"></p>
+  <h3>同一个 BFC 容器下外边距会发生折叠, 这里容器指&lt;html&gt;, 根元素会创建 BFC 容器, 两个块之间的间距为100px</h3>
+  <div class="fang_kuai"></div>
+  <div class="fang_kuai"></div>
+  <p class="marginB100">----分割线----</p>
+  <h3>如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中(overflow: hidden; 可以创建 BFC 容器)。两个块之间的间距为200px</h3>
+  <div class="container overflowHidden border">
+    <p class="fang_kuai"></p>
   </div>
-  <div class="container">
-    <p class="cls"></p>
+  <div class="container overflowHidden border">
+    <p class="fang_kuai"></p>
   </div>
-  <hr>
+  <p class="marginB100">----分割线----</p>
 
-  <h3>BFC 可以包含浮动的元素（清除浮动）</h3>
-  <div class="cls_2">
+  <!-- 触发容器的 BFC，那么容器将会包裹着浮动元素。 -->
+  <h3>BFC 容器可以包含浮动的元素（也就是清除浮动）</h3>
+  <div class="container overflowHidden cls_2">
     <div>111</div>
   </div>
-  <div class="cls_2">
-    <section>222</section>
+  <div class="container cls_2">
+    方便看高度坍塌
+    <div>222 父级容器没有清浮动, 父级容器高度塌陷</div>
   </div>
-  <hr>
+  <p class="marginB100">----分割线----</p>
 
 
-  <h3>BFC 可以阻止元素被浮动元素覆盖</h3>
-  <!-- 第二个元素有部分被浮动元素所覆盖，(但是文本信息不会被浮动元素所覆盖)  -->
-  <div class="cls_3">我是一个左浮动的元素</div>
-  <div class="cls_4">我是一个没有设置浮动,
-    也没有触发 BFC 元素, width: 200px; height:200px; background: #eee;</div>
+  <h3>BFC 可以阻止元素被浮动元素覆盖, 也就是排除外部浮动</h3>
+  <!-- 第二个元素有一部分被浮动元素所覆盖，(但是文本信息不会被浮动元素所覆盖)  -->
+  <div class="container marginB100">
+    <div class="cls_3">我是一个左浮动的元素</div>
+    <div class="cls_4">我是一个没有设置浮动,
+      也没有触发 BFC 元素, width: 200px; height:200px; 块盒没有不规则图形, 只有矩形, 如果看到非矩形, 那就是被其他元素盖住了
+    </div>
+  </div>
+  <h3>作为对比, 排除外部浮动</h3>
+  <div class="container">
+    <div class="cls_3">我是一个左浮动的元素</div>
+    <div class="cls_4 overflowHidden">我是一个没有设置浮动,
+      触发 BFC 元素, 排除外部浮动, width: 200px; height:200px;
+    </div>
+  </div>
+  <p class="marginB100">----分割线----</p>
 
-  <hr>
+
   <h3>用 overflow: hidden; 可能会有副作用</h3>
   <h3>display: flow-root; 完全无副作用, 类似&lt;html&gt;的 BFC-html </h3>
-  <div class="cls_3">我是一个左浮动的元素</div>
-  <div class="cls_4 reset d_flow">我是一个没有设置浮动,
-    也没有触发 BFC 元素, width: 200px; height:200px; background: #eee;</div>
-  <hr>
+  <div class="container">
+    <div class="cls_3">我是一个左浮动的元素</div>
+    <div class="cls_4 reset d_flow">我是一个没有设置浮动,
+      触发 BFC 元素, 排除外部浮动, height:200px;
+    </div>
+  </div>
+  <p class="marginB100">----分割线----</p>
+  <h3>两列布局, 左边固定宽, 右边撑满; 用伪等高方式实现左右等高</h3>
+  <!-- 伪等高: 浮动元素高度定的很高, marginB 给一个很大的负数, 然后盒子总高度其实不高; 容器给一个移除隐藏, 完事; -->
+  <div class="container overflowHidden ">
+    <div class="cls_3 infinityHeight">我是一个左浮动的元素</div>
+    <div class="cls_4 reset d_flow">我是一个没有设置浮动,
+      触发 BFC 元素, 排除外部浮动, height:200px; 容器清浮动了
+    </div>
+  </div>
+  <p class="marginB100">----分割线----</p>
 
 
+  <!-- MDN 例子 -->
   <h1>包含内部浮动</h1>
   <section>
     <div class="box">
@@ -76,13 +102,16 @@
   <section>
     <div class="float_2">Try to resize this outer float</div>
     <div class="box">
-      <p>Normal</p>
+      <p>
+        Normal
+      </p>
     </div>
   </section>
   <section>
     <div class="float_2">Try to resize this outer float</div>
     <div class="box" style="display:flow-root">
-      <p><code>display:flow-root</code>
+      <p>
+        display:flow-root;
       <p>
     </div>
   </section>

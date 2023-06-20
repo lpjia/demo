@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+}
+
+// 属性选择器
+[href] {
+  color: red;
+}
+
+// 字号是继承的, 如果都没有设置, 使用浏览器的基准字号, chrome是16px
+
+
+.dan_hang {
+  background-color: rgb(48, 104, 52);
+  color: #fff;
+  height: 60px;
+  // 单行文本垂直居中
+  line-height: 60px;
+}
+
+.duo_hang {
+  background-color: chocolate;
+  color: #fff;
+  width: 300px;
+  // 多行文本, 行高可以设为数字, 方便维护, 一般1.5比较好, 
+  line-height: 1.5;
+  font-size: 24px;
+}
+
+
+.wei_element {
+  span {
+    color: deepskyblue;
+
+    // 伪元素, 2个冒号
+    &::before {
+      content: '《';
+      color: red;
+    }
+
+    &::after {
+      content: '》';
+      color: red;
+    }
+  }
+}
+
+.xuan_ze_qi_zu_he {
+  list-style: none;
+
+  .special {
+    color: deeppink;
+
+    // + 相邻下一个兄弟元素
+    &+li {
+      color: blueviolet
+    }
+
+    // ~ 后面所有兄弟元素
+    &~li {
+      font-size: 30px;
+    }
+  }
+}
+
+.shou_hang_suo_jin {
+  text-indent: 2em;
+}
+
+.dan_hang_yi_chu {
+  width: 120px;
+  white-space: nowrap; // 不换行
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

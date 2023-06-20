@@ -2,27 +2,48 @@ body {
   margin: 0;
 }
 
-.cls {
+.marginB100 {
+  margin-bottom: 100px;
+  // color: red;
+}
+
+.border {
+  // border: 1px solid;
+}
+
+// .cls {
+.fang_kuai {
   width: 100px;
   height: 100px;
   background: lightblue;
   margin: 100px;
 }
 
-.container {
+.overflowHidden {
   overflow: hidden;
 }
 
 
+
+.bd {
+  border: 1px solid;
+}
+
+@mixin wh($bei_shu: 1) {
+  width: $bei_shu*100px;
+  height: $bei_shu*100px;
+}
+
+@mixin bd($bd_color) {
+  border: 1px solid $bd_color;
+}
+
 .cls_2 {
-  margin: 1rem 0; // 为了方便看
-  border: 1px solid #000;
-  /* 触发容器的 BFC，那么容器将会包裹着浮动元素。 */
-  overflow: hidden;
+  @extend .marginB100;
+  @include bd(deeppink);
 
   >div {
-    width: 100px;
-    height: 100px;
+    @include wh();
     background: deepskyblue;
     float: right;
   }
@@ -30,30 +51,43 @@ body {
 
 
 .cls_3 {
-  height: 100px;
-  width: 100px;
+  @include wh();
   float: left;
   background: lightblue
 }
 
 .cls_4 {
-  /* 这个方法可以用来实现两列自适应布局，效果不错，
-    这时候左边的宽度固定，右边的内容自适应宽度(去掉上面右边内容的宽度)。 */
-  width: 200px;
-  height: 200px;
+  @include wh(2);
   background: deepskyblue;
-  /* 触发 BFC */
-  // overflow: hidden;
-}
-
-.reset {
-  overflow: visible;
-  width: auto;
 }
 
 .d_flow {
-  // display: flow-root;
+  display: flow-root;
 }
+
+/* 这个方法可以用来实现两列自适应布局，效果不错，
+这时候左边的宽度固定，右边的内容自适应宽度(去掉上面右边内容的宽度)。 */
+.reset {
+  width: auto;
+}
+
+.infinityHeight {
+  height: 1e3px;
+  margin-bottom: calc(10px - 1e3px);
+  // 等于盒子总高度才10px, 但是内容很高, 由背景填充
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
 
 
 
@@ -89,9 +123,10 @@ section {
 
 .float_2 {
   float: left;
+  // overflow: visible; 是默认值
   overflow: hidden;
   /* required by resize:both */
-  resize: both;
+  resize: both; // 可调整元素尺寸
   margin-right: 25px;
   width: 200px;
   height: 100px;

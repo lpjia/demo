@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML 标签 CSS 知识</title>
+  <link rel="stylesheet" href="css/index.css">
+  <style></style>
+</head>
+
+<body>
+  <code>
+    <pre>
+      // 语义化
+      if(true){
+        console.log(true)
+      }
+    </pre>
+  </code>
+  <!-- 效果一样 -->
+  <code style="white-space: pre;">
+    // 语义化
+    if(true){
+      console.log(true)
+    }
+  </code>
+
+
+  <a href="https://www.baidu.com" target="_blank">普通链接-跳转百度</a>
+  <a href="#" target="">锚链接</a>
+  <a href="javascript:alert(111);">功能链接-弹出</a>
+
+
+  <header>header</header>
+  <footer>footer</footer>
+  <nav>nav</nav>
+  <aside>aside</aside>
+  <main>main</main>
+  <article>article</article>
+  <section>section 章节</section>
+  <!-- section子元素一般有标题h和内容p -->
+  <code>code</code>
+  <pre>pre</pre>
+  <details>这是折叠内容</details>
+
+  <!-- 行高 单行文本 多行文本 -->
+  <p class="dan_hang">Lorem ipsum dolor sit amet.</p>
+  <p class="duo_hang">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero fugit voluptate iusto provident
+    voluptas eligendi voluptatem tenetur eum corporis. Iusto quod eos tempore commodi nihil fugit nulla facilis porro
+    incidunt.
+  </p>
+
+
+  <!-- 伪元素 -->
+  <p class="wei_element">袁的<span>CSS和JS</span>课程确实有点东西</p>
+
+  <!-- 选择器的组合 -->
+  <ul class="xuan_ze_qi_zu_he">
+    <li>元素1</li>
+    <li>元素2</li>
+    <li class="special">元素3</li>
+    <li>元素4</li>
+    <li>元素5</li>
+    <li>元素6</li>
+  </ul>
+
+  <p class="shou_hang_suo_jin">杨人人吾他整为廿策才骂足如害同尺也种魂，的蒲救者心，将斯小有君知逃，太那家牙不张将你有若远智他自五。</p>
+
+  <p class="dan_hang_yi_chu">俭事了脱但人是陈为够迷下总薪从，十姑招子治搏太洪个掉低得百。</p>
+
+  <!-- 图片的乱数假文 -->
+  <!-- img*3[src="https://picsum.photos/200/300?r=$"] -->
+  <img src="https://picsum.photos/200/300?r=1" alt="">
+  <img src="https://picsum.photos/200/300?r=2" alt="">
+  <img src="https://picsum.photos/200/300?r=3" alt="">
+
+</body>
+
+</html>

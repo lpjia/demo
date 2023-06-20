@@ -1,4 +1,4 @@
-/* 根据规范，对象的属性键只能是字符串类型或者 Symbol 类型。 */
+/* 根据规范，对象的属性键只能是 string 类型或者 Symbol 类型。 */
 let shuxing = Symbol('sx'),
   shuxing2 = Symbol('sx2')
 let obj = {
@@ -10,10 +10,10 @@ let obj = {
   bds: 'bds',
   1: 'one',
   2: 'two',
-  'undefined': 'str undefined',
   undefined: 'undefined',
-  'null': 'str null',
+  'undefined': 'str undefined',
   null: 'null',
+  'null': 'str null',
 }
 console.log("obj:",
   obj
@@ -121,9 +121,9 @@ console.log("myArray.filter(val => Boolean(val)):",
 
 
 // 检查至少一个值是否为真
-const anyTruthy = myArray.some(Boolean);
-console.log("anyTruthy:",
-  anyTruthy // true
+const someTruthy = myArray.some(Boolean);
+console.log("someTruthy:",
+  someTruthy // true
 )
 
 // 检查所有的值是否为真
@@ -148,6 +148,13 @@ console.log("Object.entries(person4):",
   Object.entries(person4) // [['name', '前端小小'], ['age', 20]]
 )
 // 键值对在一个数组里, 返回一个二维数组
+// 二维数组可直接转为Map实例
+const m = new Map(Object.entries(person4))
+console.log(
+  m,
+  m.get('age'),
+  m.get('name'),
+)
 
 Object.keys(person4).forEach((key) => {
   console.log(`遍历Object.keys返回的结果: ${key} is ${person4[key]}`);
@@ -158,3 +165,66 @@ Object.entries(person4).forEach(([key, value]) => {
 });
 // name is 前端小小
 // age is 20
+
+
+
+
+
+// 案例 1：评估结果和使用 === 相同
+Object.is(25, 25); // true
+Object.is("foo", "foo"); // true
+Object.is("foo", "bar"); // false
+Object.is(null, null); // true
+Object.is(undefined, undefined); // true
+Object.is(window, window); // true
+Object.is([], []); // false
+const foo = { a: 1 };
+const bar = { a: 1 };
+const sameFoo = foo;
+Object.is(foo, foo); // true
+Object.is(foo, bar); // false
+Object.is(foo, sameFoo); // true
+
+// 案例 2: 带符号的 0
+Object.is(0, -0); // false
+Object.is(+0, -0); // false
+Object.is(-0, -0); // true
+
+// 案例 3: NaN
+Object.is(NaN, 0 / 0); // true
+Object.is(NaN, Number.NaN); // true
+
+NaN === NaN; // false
++0 === -0; // true
+
+new Set([0, +0, -0]); // Set(1) {0}
+// Set 和 Object.is 的区别就是对于+-0的
+
+
+
+
+/* obj.hasOwnProperty(key) 有可能 obj 自身有 hasOwnProperty 方法, 返回不正确的结果
+Object.prototype.hasOwnProperty.call(obj, key) 替代上面用法, 更保险
+Object.hasOwn() 高版本, 不存在上面两种情况可能出现的问题 */
+
+const foo2 = {
+  hasOwnProperty() {
+    return false;
+  },
+  bar: "Here be dragons",
+};
+console.log("foo2.hasOwnProperty('bar'):",
+  foo2.hasOwnProperty('bar') // false
+)
+console.log("Object.prototype.hasOwnProperty.call(foo2, 'bar'):",
+  Object.prototype.hasOwnProperty.call(foo2, 'bar') // true
+)
+const object1 = {
+  prop: 'exists'
+};
+console.log("Object.hasOwn(object1, 'hasOwnProperty'):",
+  Object.hasOwn(object1, 'hasOwnProperty') // false
+)
+console.log("Object.hasOwn(object1, 'prop'):",
+  Object.hasOwn(object1, 'prop') // true
+)
