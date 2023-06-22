@@ -24,7 +24,7 @@ window.onload = function () {
       });
     }
   }
-  // 默认是事件冒泡
+
 
   let box = document.getElementById("box");
   let boxone = document.getElementById("boxone");
@@ -42,19 +42,66 @@ window.onload = function () {
   });
 
 
+  // 测试冒泡 捕获
+  // 在冒泡中，内部元素的事件会先被触发，然后再触发外部元素
+  // 默认是事件冒泡, 也就是第三个参数是 false
+  // e.stopPropagation() 阻止事件冒泡, 阻止事件向祖先元素传播
+  let isMaopao = false
+  box.addEventListener("click", function () {
+    console.log('box')
+  }, isMaopao)
+  boxone.addEventListener("click", function () {
+    console.log('boxone')
+  }, isMaopao)
+  boxtwo.addEventListener("click", function (e) {
+    // e.stopPropagation()
+    console.log('boxtwo')
+  }, isMaopao)
+
+
+  // 原生 事件委托
+  function random(number) {
+    return Math.floor(Math.random() * number);
+  }
+  function bgChange() {
+    const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+    return rndCol;
+  }
+  const container = document.querySelector("#container");
+  let frag = document.createDocumentFragment();
+  for (let i = 0; i < 20; i++) {
+    let d = document.createElement("div");
+    d.className = 'tile'
+    frag.appendChild(d)
+  }
+  container.appendChild(frag)
+  container.addEventListener("click", function(e){
+    // 事件对象 e 的 target 属性始终是事件刚刚发生的元素
+    console.log('e.target:', e.target) // .tile的dom元素
+
+    // e.currentTarget 获取处理这个事件的元素
+    console.log('e.currentTarget:', e.currentTarget) // #container的dom元素
+
+    // console.log('e:', e)
+    // console.log('this:', this) // 谁监听(注册addEventListener), this就指向谁
+    e.target.style.backgroundColor = bgChange();
+  });
+
 }
 
 
 
 
 function callback(e) {
+  console.log('e.target:', e.target)
+  console.log('e.target.parentNode:', e.target.parentNode)
   $(this).addClass('lp_active').siblings().removeClass('lp_active')
 }
 
 $(function () {
 
   /**
-   * 事件委托
+   * jQ 事件委托
    * 不用每一个 li 都绑定一个事件, 只需借助事件冒泡, 
    * 事件从目标元素向祖先元素传递，依次触发祖先元素上的事件。
    */
