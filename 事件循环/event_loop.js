@@ -24,4 +24,22 @@ Promise.resolve().then(() => {
 })
 console.log('main')
 
-// 这里还要再研究研究
+
+/* 
+渲染主线程 全局
+微队列  
+交互队列
+延时队列
+
+
+main
+2p
+4p
+1t
+1p
+3t
+3p
+2t
+4t
+
+*/
