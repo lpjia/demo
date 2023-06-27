@@ -12,15 +12,30 @@
 <body>
   <button>按钮</button>
 
-  <script>
+  <!-- <script>
+    // 原题目
     function getElement(cssSelector) {
       // 请完成该函数, 让后续的程序顺利进行
+    }
+    (async () => {
+      const btn = getElement('button')
+      while (1) {
+        await btn.waitClick;
+        console.log('按钮被点击了')
+      }
+    })()
+  </script> -->
+
+  <script>
+    function getElement(cssSelector) {
       const dom = document.querySelector(cssSelector)
       const domProxy = new Proxy(dom, {
         get(target, key) {
+          // 非wait开头的属性, 按正常的来
           if (!key.startsWith('wait')) {
             return target[key]
           }
+          // wait开头的属性, 按要求的来
           const event = key.replace('wait', '').toLowerCase()
           return new Promise((resolve) => {
             target.addEventListener(event, resolve, { once: true })
@@ -37,14 +52,21 @@
       // await btn.waitMouseOver;
       // console.log('按钮被点击了')
 
-      // while (1) {
-      //   await btn.waitClick;
-      //   console.log('按钮被点击了')
-      // }
-      for (let n = 0; n < 10; n++) {
-        const e = await btn.waitClick;
-        console.log('按钮被点击了', e)
+      /* js不常见, 传统的强类型语言常见
+      优点是不会有回调 */
+      while (1) {
+        /* await 表达式
+        await 总会同步地对表达式求值并处理，处理的行为与 Promise.resolve() 一致。
+        若表达式的值不是 Promise，await 会把该值转换为已兑现的 Promise，然后返回其结果。
+        Promise.resolve(value)就是对value的包装, 满足期望返回一个promise。 */
+        await btn.waitClick;
+        console.log('按钮被点击了')
       }
+
+      // for (let n = 0; n < 5; n++) {
+      //   const e = await btn.waitClick;
+      //   console.log(`按钮被点击了${n + 1}次`, e)
+      // }
 
     })()
   </script>
