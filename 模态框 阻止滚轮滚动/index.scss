@@ -1,0 +1,16 @@
+.container {
+  height: 2000px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+dialog {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  &::backdrop {
+    background-color: rgba(255, 1, 1, .1);
+  }
+}

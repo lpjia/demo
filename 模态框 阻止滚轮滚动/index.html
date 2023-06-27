@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>模态框 阻止滚轮滚动</title>
+  <link rel="stylesheet" href="../common/reset.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <button class="openBtn">按钮</button>
+  <dialog class="dialog">
+    <div class="win">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <button class="closeBtn">关闭</button>
+      <button class="openChildBtn">子弹窗</button>
+    </div>
+
+    <dialog class="childDialog">
+      <p>子弹窗内容</p>
+      <p>子弹窗内容</p>
+      <p>子弹窗内容</p>
+      <button class="closeChildBtn">关闭</button>
+    </dialog>
+  </dialog>
+
+  <div class="container"></div>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
