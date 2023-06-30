@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue思考</title>
+  <style>
+    .card {
+      width: 300px;
+      border: 2px solid rgb(74, 125, 142);
+      border-radius: 10px;
+      font-size: 2em;
+      padding: 0 20px;
+      background-color: deepskyblue;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <p id="firstName"></p>
+    <p id="lastName"></p>
+    <p id="age"></p>
+  </div>
+
+  <!-- <input type="text" onblur="user.name = this.value">
+  <input type="date" onblur="user.birth = this.value"> -->
+
+  <input type="text" onblur="changeName(event)">
+  <input type="date" onblur="changeBirth(event)">
+
+
+
+  <script src="vvvue.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
