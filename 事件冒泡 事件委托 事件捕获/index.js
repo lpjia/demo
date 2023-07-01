@@ -75,7 +75,7 @@ window.onload = function () {
     frag.appendChild(d)
   }
   container.appendChild(frag)
-  container.addEventListener("click", function(e){
+  container.addEventListener("click", function (e) {
     // 事件对象 e 的 target 属性始终是事件刚刚发生的元素
     console.log('e.target:', e.target) // .tile的dom元素
 
@@ -85,6 +85,11 @@ window.onload = function () {
     // console.log('e:', e)
     // console.log('this:', this) // 谁监听(注册addEventListener), this就指向谁
     e.target.style.backgroundColor = bgChange();
+
+    // 2023-07-01 15:23 星期六
+    /* 看demo的王者荣耀英雄列表, 里面有复杂点的事件委托
+    由于实际情况一般会无意中用到事件委托(鼠标点击的元素不一定是xxx.addEventListener的xxx)
+    用e.target.closest(yyy)去找最近的祖先元素yyy, 然后来操作yyy */
   });
 
 }

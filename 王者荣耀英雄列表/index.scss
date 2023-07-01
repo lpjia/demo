@@ -1,0 +1,162 @@
+input {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.flexColCenter {
+  display: flex;
+  align-items: center;
+}
+
+body {
+  background: url(../img/ny_con_bg.jpg) no-repeat;
+  background-color: #fafafa;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  border: 2px solid #E8E8E8;
+  // padding: 35px 28px;
+  padding: 35px 0;
+
+  .hero-type {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    color: #686869;
+    margin: 0 28px;
+    $typebarH: 52px;
+
+    .title-box {
+      font-size: 16px;
+      width: 80px;
+      color: #fff;
+      background-color: #2C88E2;
+      border-radius: 6px 0 0 6px;
+      text-align: center;
+
+      li {
+        height: $typebarH;
+        line-height: $typebarH;
+      }
+    }
+
+    .options-box {
+
+      .options,
+      .types {
+        @extend .flexColCenter;
+        height: $typebarH;
+
+        li {
+          @extend .flexColCenter;
+          padding-left: 16px;
+          cursor: pointer;
+          font-size: 14px;
+          width: 106px;
+
+          .radio {
+            $wh: 18px;
+            width: $wh;
+            height: $wh;
+            border-radius: 50%;
+            border: 1px solid #B3B3B3;
+            display: inline-block;
+            margin-right: 8px;
+            position: relative;
+
+            .circle {
+              $wh: 12px;
+              width: $wh;
+              height: $wh;
+              position: absolute;
+              border-radius: 50%;
+              left: 2px;
+              top: 2px;
+            }
+          }
+
+          &.active .circle {
+            background-color: #358ADD;
+          }
+
+          label {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .search-box {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 10px;
+
+      .hero-search {
+        border: 1px solid #D2D2D2;
+        width: 220px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+
+        input {
+          font-size: 12px;
+          color: #747475;
+        }
+
+        a {
+          box-sizing: content-box;
+          $wh: 22px;
+          width: $wh;
+          height: $wh;
+          padding-left: 10px;
+          border-left: 1px solid #D5D5D5;
+          background: url(https://game.gtimg.cn/images/yxzj/web201605/page/vl_search_icon.png) no-repeat 10px 2px;
+        }
+      }
+    }
+  }
+
+  .hero-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px 15px 0;
+
+    li {
+      --n: 10;
+      --gap: calc(((100% - 88px * var(--n))) / var(--n) / 2);
+      margin: 16px var(--gap);
+
+      a {
+        text-decoration: none;
+        color: #363636;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      img {
+        $wh: 88px;
+        width: $wh;
+        height: $wh;
+        border: 2px solid #258DF2;
+        border-radius: 10px 0 10px 0;
+      }
+    }
+
+    .highlight {
+      color: red;
+    }
+
+    em {
+      color: red;
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+}
