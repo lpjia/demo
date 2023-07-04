@@ -60,31 +60,6 @@ console.log("person:",
 
 
 
-/* 检查属性是否存在对象中 */
-const person2 = {
-  id: 1,
-  name1: '前端小小',
-  ...(true),
-};
-// 展开 `true` 对对象没有影响
-console.log("person2:",
-  person2 // { id: 1, name: '前端小小' }
-)
-console.log("'id' in person2:",
-  'id' in person2 // true
-)
-console.log("['id'] in person2:",
-  ['id'] in person2 // true
-)
-console.log("['name1'] in person2:",
-  ['name1'] in person2 // true
-)
-console.log("'age' in person2:",
-  'age' in person2 // false
-)
-
-
-
 /* 对象的动态解构 */
 const person3 = { id: 1, name: '前端小小' };
 const { name: personName } = person3;
@@ -199,6 +174,42 @@ NaN === NaN; // false
 
 new Set([0, +0, -0]); // Set(1) {0}
 // Set 和 Object.is 的区别就是对于+-0的
+
+
+
+
+
+/* 检查属性是否存在对象中 */
+const person2 = {
+  id: 1,
+  name1: '前端小小',
+  ...(true),
+};
+// 展开 `true` 对对象没有影响
+console.log("person2:",
+  person2 // { id: 1, name: '前端小小' }
+)
+console.log("'id' in person2:",
+  'id' in person2 // true
+)
+console.log("['id'] in person2:",
+  ['id'] in person2 // true
+)
+console.log("['name1'] in person2:",
+  ['name1'] in person2 // true
+)
+console.log("'age' in person2:",
+  'age' in person2 // false
+)
+console.log("'valueOf' in person2:",
+  'valueOf' in person2 // true, 不是想要的结果, in 把继承来的属性/方法都算上了
+)
+console.log("person2.valueOf() === person2:",
+  person2.valueOf() === person2 // true, valueOf 方法返回
+)
+/* in 能不用就不用
+Object.prototype.hasOwnProperty.call(obj, key) 兼容性好
+Object.hasOwn(obj, key) */
 
 
 
