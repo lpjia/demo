@@ -1,0 +1,64 @@
+@mixin whb($wh, $color) {
+  width: $wh + px;
+  height: $wh + px;
+  border: 2px solid $color;
+}
+
+.changeStyle {
+  @include whb(360, deeppink);
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.changeStyle2 {
+  height: 160px;
+  border: 2px solid deeppink;
+}
+
+.bgContainer {
+  display: flex;
+  flex-wrap: wrap;
+
+  >div {
+    margin-bottom: 20px;
+  }
+}
+
+// /* 关键字 */
+// background-size: cover;
+// background-size: contain;
+
+.bg {
+  background: url(../../imgs/gyy.jpeg) no-repeat;
+}
+
+.bg2 {
+  background: url(../../imgs/gyy.jpeg) no-repeat center;
+}
+
+.bg3 {
+  background: url(../../imgs/gyy.jpeg) no-repeat;
+  background-size: contain;
+}
+
+.bg4 {
+  background: url(../../imgs/gyy.jpeg) no-repeat center;
+  background-size: contain;
+}
+
+.bg5 {
+  background: url(../../imgs/gyy.jpeg) no-repeat;
+  background-size: cover;
+}
+
+
+
+.changeStyle3 {
+  @include whb(160, deepskyblue);
+}

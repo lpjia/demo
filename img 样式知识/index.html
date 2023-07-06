@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>img 样式知识</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <!-- 正经 section 标签用法 -->
+  <section>
+    <h2>img</h2>
+    <p>是可替换元素</p>
+    <p>默认是行盒</p>
+    <p>表现上类似行块盒, 盒模型中的所有尺寸都有效</p>
+  </section>
+
+  <div class="imgContainer">
+    <img src="../imgs/gyy.jpeg" alt="">
+    ←原始图片
+    <!-- 不给宽高, img 默认用图片的宽高 -->
+
+    <img class="changeStyle" src="../imgs/gyy.jpeg" alt="">
+    ←object-fit: fill; 默认
+    <!-- fill 填充满区域, 会打破图片原比例 -->
+
+    <img class="changeStyle contain" src="../imgs/gyy.jpeg" alt="">
+    ←contain
+    <!-- contain 不打破图片原比例, 但要显示完整图片 -->
+
+    <img class="changeStyle cover" src="../imgs/gyy.jpeg" alt="">
+    ←cover
+    <!-- cover 不打破图片原比例, 填充满区域, 只能显示图片部分信息 -->
+
+    <img class="changeStyle2" src="../imgs/gyy.jpeg" alt="">
+    <!-- 只设置宽(高), 则高(宽)会自适应, 保持原比例 -->
+  </div>
+  <hr>
+
+  <section>
+    <h2>bg</h2>
+    <p>以下是背景图, 作对比</p>
+  </section>
+
+  <div class="bgContainer">
+    <div class="changeStyle bg"></div>
+    ←默认靠左上
+    <!-- 区域比背景图片大 -->
+
+    <div class="changeStyle bg2"></div>
+    ←给center
+    <!-- 上下左右都居中 -->
+
+    <div class="changeStyle bg3"></div>
+    ←给contain
+    <!-- 这和上面的 object-fit: contain; 效果不一样, 左右不居中 -->
+
+    <div class="changeStyle bg4"></div>
+    ←给center contain
+    <!-- 这和上面的 object-fit: contain; 效果一样 -->
+
+    <div class="changeStyle bg5"></div>
+    ←给cover
+    <!-- 这和上面的 object-fit: cover; 效果不一样, bg从上面取, img从中间取 -->
+
+
+    <!-- 区域比背景图片小 -->
+    <div class="changeStyle3 bg"></div>
+    ←默认靠左上
+
+    <div class="changeStyle3 bg2"></div>
+    ←给center
+
+    <div class="changeStyle3 bg3"></div>
+    ←给contain
+
+    <div class="changeStyle3 bg4"></div>
+    ←给center contain
+
+    <div class="changeStyle3 bg5"></div>
+    ←给cover
+
+  </div>
+</body>
+
+</html>
