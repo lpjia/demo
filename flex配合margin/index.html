@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex配合margin</title>
+  <link rel="stylesheet" href="../common/reset.css">
+  <link rel="stylesheet" href="../common/mtr.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <h2 style="margin-top: 10px;">flex + auto</h2>
+  <div class="container" style="height: 200px;">
+    <div class="item marginAuto"></div>
+  </div>
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item marginLeft"></div>
+  </div>
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item marginLeft marginRight"></div>
+    <div class="item"></div>
+  </div>
+  <h2>flex + auto 多行</h2>
+  <div class="container duo_hang auto"></div>
+  <h2>flex + space between 多行 对比</h2>
+  <div class="container duo_hang between"></div>
+
+
+  <script>
+    function createElements(dom) {
+      let frag = document.createDocumentFragment();
+      for (let index = 0; index < 26; index++) {
+        let element = document.createElement("div");
+        element.classList.add("item");
+        frag.appendChild(element)
+      }
+      dom.appendChild(frag)
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      let doms = {
+        flexAutoLayout: document.querySelector('.duo_hang.auto'),
+        flexBetweenLayout: document.querySelector('.duo_hang.between'),
+      }
+      createElements(doms.flexAutoLayout)
+      createElements(doms.flexBetweenLayout)
+    });
+  </script>
+</body>
+
+</html>

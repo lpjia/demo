@@ -1,0 +1,56 @@
+.container {
+  width: 1200px;
+  margin: 20px auto;
+  padding: 6px;
+  background-color: #b3b3b3;
+  display: flex;
+
+  .item {
+    $wh: 50px;
+    width: $wh;
+    height: $wh;
+    border: 1px solid;
+
+    &:nth-child(3n+1) {
+      background-color: var(--tseung-kwan-o);
+    }
+
+    &:nth-child(3n+2) {
+      background-color: var(--fo-tan);
+    }
+
+    &:nth-child(3n) {
+      background-color: var(--skek-kip-mei);
+    }
+  }
+
+  .marginAuto {
+    margin: auto;
+  }
+
+  .marginLeft {
+    margin-left: auto;
+  }
+
+  .marginRight {
+    margin-right: auto;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+.duo_hang {
+  flex-wrap: wrap;
+
+  &.auto .item {
+    --n: 6;
+    --gap: calc(((100% - 50px * var(--n))) / var(--n) / 2);
+    margin: 10px var(--gap);
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+}
