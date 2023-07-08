@@ -29,9 +29,26 @@ div {
 }
 
 p {
-  color: #fff;
-
   >span {
     color: deepskyblue;
+  }
+}
+
+
+.hang_he {
+  $wh: 200px;
+  width: $wh;
+  height: $wh;
+  border: 10px dashed red;
+  padding: 30px;
+  background-color: deepskyblue;
+  font-size: 1rem;
+  display: inline-block;
+  /* 行(内)盒其实是主要是文本相关的
+  行(内)盒总容易出现垂直方向的对齐问题, 默认以 baseline 基线对齐
+  效果就是文本基线对齐, 如果文本长度不一致, 容易出现错位 */
+
+  &.align {
+    vertical-align: bottom;
   }
 }

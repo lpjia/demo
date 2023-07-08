@@ -7,17 +7,18 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>img 间距 后跟div间距</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" type="text/css" href="../common/global.css" />
   <link rel="stylesheet" href="css/index.css">
-  <style></style>
 </head>
 
 <body>
+  <!-- 注意 vertical-align 只对行内元素、行内块元素和表格单元格元素生效
+  不能用它垂直对齐块级元素。 -->
 
   <section class="moren">
     <img src="../imgs/bdd.jpeg" alt="">test gh 和下方div会有一个间距
-    <!-- 图片和下方对不齐 -->
     <div></div>
+    <!-- 图片和上div对不齐, 有空隙 -->
   </section>
   <hr class="up_down">
   <img src="../imgs/bdd.jpeg" alt="">test gh
@@ -27,8 +28,16 @@
   <hr class="up_down">
   <!-- 标签之间空格(或换行)也会形成间距, 可以不换行 -->
   <img src="../imgs/bdd.jpeg" alt="">test gh<img src="../imgs/bdd.jpeg" alt="">
+  <hr class="up_down">
 
-  <script></script>
+  <div class="hang_he">Lorem ipsum dolor.</div>
+  <div class="hang_he">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, voluptate.</div>
+  <hr class="up_down">
+
+  <div class="hang_he align">Lorem ipsum dolor.</div>
+  <div class="hang_he align">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, voluptate.</div>
+  <hr class="up_down">
+
 </body>
 
 </html>
