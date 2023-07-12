@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动</title>
+  <link rel="stylesheet" type="text/css" href="../common/reset.css" />
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="float_l">当得蒲老春有不意为不才同性降则，向李的。</div>
+    <div class="float_r">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, sint!</div>
+    <!-- 不设置宽高, 则适应内容宽高 -->
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="float_l noCtt"></div>
+    <div class="float_r noCtt"></div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="normal"></div>
+    <!-- 浮动盒子在包含块中排列时, 会避开常规流块盒
+    也就是常规流块盒在前, 浮动盒子在后, 浮动盒子会老老实实排在常规流块盒之后 -->
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+    <div class="float_l noCtt"></div>
+    <!-- 常规流块盒在排列时, 无视浮动盒子
+    也就是浮动盒子在前, 常规流块盒在后, 常规流块盒会无视浮动盒子, 导致浮动盒子会"盖"在常规流块盒 -->
+    <div class="normal"></div>
+  </div>
+  <hr>
+
+  <!-- 还有一个特性, 看文字环绕 -->
+
+
+  <!-- 因为高度坍塌, 所以放到后面 -->
+  <div class="container2">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <!-- 解决高度坍塌 -->
+    <div class="clearfix_box"></div>
+    <!-- 这个div把高度撑开了, 不是浮动元素撑开的, 因为这个div撑开了外层容器的高度 -->
+    <!-- 这个div是一个常规流盒子, 在所有浮动元素的最下方(最后面) -->
+  </div>
+  <hr>
+
+  <div class="container2">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <!-- 解决高度坍塌 -->
+    <div class="clearfix2_box"></div>
+    <!-- 去掉这个常规流盒子的高度和背景色, 变成了一个空元素, 效果上不影响原有 -->
+    <!-- 不是很完美, 因为要多写一个无意义的空元素 -->
+  </div>
+  <hr>
+
+  <!-- 解决高度坍塌 -->
+  <!-- 最完美方案是在容器上用伪元素, 来代替空元素, 加到最后一个子元素上 -->
+  <!-- 哪个元素坍塌, 就在哪个元素加 clearfix -->
+  <div class="container2 clearfix">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <hr>
+
+  <div class="container2">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <!-- 高度坍塌 -->
+    <div style="height: 30px; background-color: #80e;"></div>
+  </div>
+
+</body>
+
+</html>
