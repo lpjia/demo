@@ -1,0 +1,215 @@
+hr {
+  margin: 30px 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.border {
+  border: 1px solid deeppink;
+}
+
+.flex {
+  display: flex;
+}
+
+
+
+.bg1 {
+  $bd: 2px solid var(--tai-koo);
+  width: 100%;
+  height: 2200px;
+  border: $bd;
+  background: url('../../imgs/scenery.jpeg') no-repeat;
+  // background: url('../../imgs/scenery.jpeg') no-repeat left; // left 是默认值, 写不写都行
+
+  // background: url('../../imgs/scenery.jpeg') no-repeat top; // top 和 bottom 效果一样
+  // background: url('../../imgs/scenery.jpeg') no-repeat bottom;
+
+  // background: url('../../imgs/scenery.jpeg') no-repeat right;
+
+  // background-size: cover; // 无论背景区域有多大, 图片都会自动占满
+
+  /* contain保持图片的宽高比, 图片不会变形, 如图片填充不满容器, 则留出空白 */
+  background-size: contain;
+  background-position: center;
+}
+
+.bg2 {
+  background-color: #000;
+
+  >div {
+    width: 700px;
+    height: 550px;
+    border-right: solid 1px deepskyblue;
+
+    /* 背景图可以多个叠加
+    先写的在上层(靠近用户), 后写的在下层(远离用户)
+    透明底的图片完全可以叠加出很好看的效果 */
+    background: url('../../imgs/all.png') no-repeat -120px -700px,
+      url('../../imgs/lizard.png') no-repeat,
+      url('../../imgs/ink.jpeg') no-repeat;
+
+    // background: url('../../imgs/ink.jpeg') no-repeat,
+    //   url('../../imgs/lizard.png') no-repeat 500px 300px,
+    //   url('../../imgs/all.png') no-repeat -60px -700px;
+  }
+}
+
+.importSvg {
+  width: 100px;
+  height: 100px;
+}
+
+.last {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  // background-color: #000;
+  // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANS等等);
+  background-image: url('../../imgs/all.png');
+  background-repeat: no-repeat;
+  // 偏移量指图片的偏移，一般要给负值
+  // 向左向上偏移(都是负值)
+  background-position: -30px -878px;
+}
+
+.sprit {
+  display: inline-block;
+  background-image: url('../../imgs/all.png');
+  background-repeat: no-repeat;
+}
+
+.smallImg {
+  background-size: 595px 919px;
+}
+
+.four {
+  width: 500px;
+  height: 500px;
+  background-position: -30px -878px;
+}
+
+/* 相当于把图伸缩, 但图的纵横比不变 */
+.five {
+  width: 400px;
+  height: 400px;
+  background-position: -15px -439px;
+  background-size: 595px 919px;
+  /* css可以通过background-size属性来设定背景图片的大小。它可以是像素（px）或者是百分比(%)。
+  如background-size:950px 200px这表示把背景图片大小调整为宽度950像素，高度200像素。 */
+}
+
+.six {
+  width: 15px;
+  height: 15px;
+  background-position: -15px -439px;
+  // background-size: 595px 882px;
+}
+
+/* 还是换成小程序的 rpx 思路, 也就是只用换单位, 数值不变
+记得加 background-size: 1190rpx 1763rpx;
+现在变为 1190 * 1837
+更换图片, 先找原背景图图尺寸, 再看有没有加 background-size 来控制伸缩, 有则同比例伸缩 */
+.seven {
+  margin-top: 20px;
+  width: 690px;
+  height: 200px;
+  // background-position: -108px -1153px;
+  background-position: -416px -787px;
+}
+
+.eight {
+  width: 35px;
+  height: 35px;
+  background-position: -413px -628px;
+}
+
+.nine {
+  width: 33px;
+  height: 33px;
+  background-position: -27px -148px;
+}
+
+.ten {
+  width: 30px;
+  height: 30px;
+  background-position: -30px -807px;
+}
+
+@mixin bgImgHW($px) {
+  width: $px;
+  height: $px;
+}
+
+.eleven {
+  @include bgImgHW(30px);
+  background-position: -30px -736px;
+}
+
+.twelve {
+  @include bgImgHW(33px);
+  background-position: -28px -220px;
+}
+
+.thirteen {
+  @include bgImgHW(55px);
+  background-position: -219px -235px;
+}
+
+.fourteen {
+  @include bgImgHW(30px);
+  background-position: -27px -304px;
+}
+
+.fifteen {
+  @include bgImgHW(70px);
+  background-position: -104px -131px;
+}
+
+.sixteen {
+  @include bgImgHW(70px);
+  background-position: -106px -211px;
+}
+
+.seventeen {
+  @include bgImgHW(70px);
+  background-position: -105px -292px;
+}
+
+.eighteen {
+  @include bgImgHW(70px);
+  background-position: -105px -372px;
+}
+
+.nineteen {
+  @include bgImgHW(104px);
+  background-position: -638px -594px;
+}
+
+.bg3 {
+  width: 100%;
+  height: 200px;
+  overflow: scroll;
+  background: url('../../imgs/lizard.png') no-repeat,
+    url('../../imgs/scenery.jpeg') no-repeat;
+  // 背景图, 默认值scroll, 在其区域内不滚动 
+  // background-attachment: fixed; // 相对视口固定, 锁死
+  // background-attachment: local; // 区域内滚动
+  // 支持多背景图
+  background-attachment: local, scroll;
+}
+
+.bg4 {
+  width: 100%;
+  height: 100vh;
+  background: url('../../imgs/bg_imgs/3.jpg') no-repeat;
+  background-size: 100%;
+  // background-position和background-size最好分开写, 不要简写到background
+  // 真想写, 先位置再大小, 用/分开
+  // 背景图和背景颜色混用, 没有背景的地方会用背景色来填充
+  background-color: #cc7f49;
+}

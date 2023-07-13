@@ -1,0 +1,21 @@
+.fu_gai {
+  $wh: 200px;
+  width: $wh;
+  height: $wh;
+  border: 10px dashed red;
+  padding: 30px;
+  background-color: var(--disneyland-resort);
+  margin-left: 20px;
+  color: #fff;
+
+  // display: inline-block; 
+  /* 行内盒总容易出现垂直方向的对齐问题, 不推荐用 */
+
+  &.contentBox {
+    background-clip: content-box;
+  }
+
+  &.paddingBox {
+    background-clip: padding-box;
+  }
+}
