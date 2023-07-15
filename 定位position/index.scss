@@ -1,0 +1,32 @@
+.common {
+  padding: 30px;
+  border: 2px solid;
+}
+
+.grandFather {
+  @extend .common;
+  width: 1000px;
+  // height: 300px;
+  height: 150vh;
+  // position: relative; // 当定位取消后, child块盒的包含块就变成初始包含块(就是视口)
+}
+
+.father {
+  @extend .common;
+  width: 500px;
+  height: 200px;
+}
+
+.child {
+  width: 100px;
+  height: 100px;
+  background-color: deeppink;
+  position: absolute;
+  // position: fixed;
+
+  // left: 0; // 绝对定位, 相对于祖先中(向上找)第一个定位元素, 该元素的填充盒为其包含块, 填充盒为padding-box;
+  // right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
