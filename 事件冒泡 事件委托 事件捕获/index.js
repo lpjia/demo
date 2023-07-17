@@ -15,7 +15,7 @@ window.onload = function () {
   在ie8及以下的浏览器中没有捕获阶段。
   */
 
-  function bindEvent(dom, eventStr, callback) {
+  /* function bindEvent(dom, eventStr, callback) {
     if (dom.addEventListener) {
       dom.addEventListener(eventStr, callback, false);
     } else if (el.attachEvent) { // 兼容 ie
@@ -23,7 +23,29 @@ window.onload = function () {
         callback.call(dom);
       });
     }
-  }
+  } */
+
+  /* 使用 IIFE 提升性能
+  适合最初就确定了执行环境而不会变化
+  比如不同浏览器只需判断一次不再改变
+  比如node环境和浏览器环境只需判断一次不再改变 */
+  const bindEvent = (function () {
+    if (window.addEventListener) {
+      return function (dom, eventName, handler) {
+        dom.addEventListener(eventName, handler)
+      }
+    }
+    else if (window.attachEvent) {
+      return function (dom, eventName, handler) {
+        dom.attachEvent('on' + eventName, handler)
+      }
+    }
+    else {
+      return function (dom, eventName, handler) {
+        dom['on' + eventName] = handler
+      }
+    }
+  })();
 
 
   let box = document.getElementById("box");
