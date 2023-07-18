@@ -1,31 +1,25 @@
-const vue = new Vue({
+const vm = new Vue({
   el: '#app',
   data: {
     sensorSum: [],
-    parentMessage: 'Parent',
     myObject: {
       title: 'How to do lists in Vue',
       author: 'Jane Doe',
       publishedAt: '2016-04-10'
     }
-
   },
   computed: {
     sensorSumSplit() {
       return this.sensorSum.length > 5 ? 5 : this.sensorSum.length
     },
-
   },
   created() {
-  },
-  mounted() {
     this.init()
     console.log(Object.keys(this.myObject))
   },
+  mounted() {
+  },
   methods: {
-    /**
-     * 
-     */
     init() {
       this.getList()
     },
