@@ -8,11 +8,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>vue2 v-slot render(h)</title>
   <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
-  <link rel="stylesheet" href="../global/global.css" />
+  <link rel="stylesheet" href="../../common/global.css" />
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" v-cloak>
     全局组件: <button-counter></button-counter>
     <el-divider></el-divider>
 
@@ -197,9 +197,9 @@
 
 
 
-  <script src="../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../lib/vue@2.6.14.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../erd 监控局部区域改变宽度 render(h)/components/globalComp.js"></script>
+  <script src="../../erd 监控局部区域改变宽度 render(h)/components/globalComp.js"></script>
   <script>
     // <\/script> 闭合标签在这里影响解析器工作(作为脚本结束标签, 而不是期望的字符串), 所以需要把它断开
     // const jiao = '<script src="components/one.js"></scr' + 'ipt>'
