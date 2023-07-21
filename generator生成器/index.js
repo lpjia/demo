@@ -1,3 +1,18 @@
+/* https://www.liaoxuefeng.com/wiki/1022910821149312/1023024381818112
+https://wangdoc.com/es6/generator.html
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*
+https://www.runoob.com/w3cnote/es6-generator.html */
+
+
+/* 生成器与迭代器
+
+内置可迭代对象
+String、Array、TypedArray、Map 和 Set 都是内置可迭代对象，因为它们的原型对象都拥有一个 Symbol.iterator 方法。
+
+用于可迭代对象的语法
+一些语句和表达式专用于可迭代对象，例如 for-of 循环，展开语法，yield* 和 解构赋值。 */
+
+
 function* gen() {
   yield 10;
   let x = yield 'foo';
@@ -9,7 +24,7 @@ console.log('genObj.next():', genObj.next())
 // 调用 next()方法时，如果传入了参数，那么这个参数会传给上一条执行的 yield语句左边的变量，例如例子中的 x 
 console.log('genObj.next(30):', genObj.next(30))
 console.log('genObj.next():', genObj.next())
-console.log('---- 分割线 ----\n\n\n')
+console.log('---- 分割线 ----\n')
 
 
 /**
@@ -28,7 +43,7 @@ console.log('genObj2.next():', genObj2.next())
 console.log('genObj2.next():', genObj2.next())
 console.log('genObj2.next(50):', genObj2.next(50))
 console.log('genObj2.next():', genObj2.next())
-console.log('---- 分割线 ----\n\n\n')
+console.log('---- 分割线 ----\n')
 
 
 
@@ -53,7 +68,7 @@ console.log(gen3.next().value); // 11
 console.log(gen3.next().value); // 12
 console.log(gen3.next().value); // 13
 console.log(gen3.next().value); // 20
-console.log('---- 分割线 ----\n\n\n')
+console.log('---- 分割线 ----\n')
 
 
 
