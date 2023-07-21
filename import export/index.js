@@ -1,29 +1,24 @@
 // 命名导入/按需导入
-import { obj } from './m_index.js'
+import { obj } from './index2.js'
 console.log('obj.one: ', obj.one)
 
+import { obj2 } from './index2.js'
+console.log('obj2.three: ', obj2.three)
 
-import { aObjj } from './m_index.js'
-console.log('aObjj.three: ', aObjj.three)
-
-
-import { fn } from './m_index.js'
+import { fn } from './index2.js'
 fn()
 
-
 // 命名导入重命名
-import { obj as objj } from './m_index.js'
-console.log('objj.two: ', objj.two)
-
+import { obj as obj3 } from './index2.js'
+console.log('obj3.two: ', obj3.two)
 
 // 默认导入
-import aArr from './m_index.js'
+import aArr from './index2.js'
 console.log('aArr: ', aArr)
 
-
-import * as all from './m_index.js'
+import * as all from './index2.js'
 console.log('all: ', all)
-console.log('all.aObjj: ', all.aObjj)
+console.log('all.obj2: ', all.obj2)
 console.log('all.default: ', all.default)
 console.log('all.fn: ', all.fn)
 console.log('all.fn(): ', all.fn())

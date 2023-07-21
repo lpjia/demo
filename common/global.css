@@ -35,3 +35,14 @@ button {
 hr {
   margin: 1rem 0;
 }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
