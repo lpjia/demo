@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阴影</title>
+  <style>
+    body {
+      padding-bottom: 10vh;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .container {
+      width: 100%;
+      height: 300px;
+      text-align: center;
+    }
+
+    img {
+      height: 100%;
+    }
+
+    .box img {
+      box-shadow: 0 0 10px #000;
+    }
+
+    .drop img {
+      filter: drop-shadow(0 0 10px #000);
+    }
+
+    .duo img {
+      box-shadow: 0 0 20px #000,
+        0 0 0 20px deepskyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>box-shadow, 注意box, 是盒子的阴影</h2>
+  <div class="container box">
+    <img src="../imgs/firefox-logo.svg" alt="">
+  </div>
+
+  <h2>filter drop-shadow, 滤镜 图片本身形状的阴影</h2>
+  <h2>适合给不规则图片加阴影</h2>
+  <div class="container drop">
+    <img src="../imgs/firefox-logo.svg" alt="">
+  </div>
+
+  <h2>原始无阴影</h2>
+  <div class="container">
+    <img src="../imgs/firefox-logo.svg" alt="">
+  </div>
+
+  <h2>box-shadow, 支持多个阴影, drop-shadow不支持多阴影</h2>
+  <div class="container duo">
+    <img src="../imgs/firefox-logo.svg" alt="">
+  </div>
+</body>
+
+</html>
