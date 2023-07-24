@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>伪类 1个冒号</title>
+  <link rel="stylesheet" href="../common/mtr.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h3>:first-child</h3>
+    <ul class="di_yi_ge_zi_yuan_su">
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+    <ul class="di_yi_ge_zi_yuan_su">
+      <!-- 这时候:first-child匹配的第一个子元素(是p元素), 
+      但不是li元素, 所以li:first-child其实没匹配上任何一个元素 -->
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+    <h3>:first-of-type</h3>
+    <ul class="di_yi_ge_type_zi_yuan_su">
+      <!-- 这时候li:first-of-type匹配的第一个该类型的子元素(肯定是li元素) -->
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+    <h3>:last-child</h3>
+    <hr>
+
+    <h3>:last-of-type</h3>
+    <hr>
+
+    <h2>带nth的都有(xxx)</h2>
+
+    <h3>:nth-child(n)</h3>
+    <ul class="di_ji_ge_zi_yuan_su">
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+    <h3>:nth-child(2n)</h3>
+    <ul class="ou_shu_ge_zi_yuan_su">
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+    <h3>:nth-child(2n+1)</h3>
+    <ul class="ji_shu_ge_zi_yuan_su">
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <li>00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+    <h3>:nth-of-type(2n)</h3>
+    <ul class="ou_shu_ge_type_zi_yuan_su">
+      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <li>00001</li>
+      <li>00002</li>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+      <li>00003</li>
+      <li>00004</li>
+      <p>丹东市嘎放大卡十多个看手机的好</p>
+      <li>00005</li>
+      <p>不能作尹留秦由负场法家就，何千洋后，太。</p>
+      <p>国判普谓，我的回场秦天人小俭己，交要瞠。</p>
+      <li>00006</li>
+      <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </ul>
+    <hr>
+
+    <h3>:not()</h3>
+    <h4>选择器1:not(选择器2)</h4>
+    <ul class="not_zi_yuan_su">
+      <li>00001</li>
+      <li class="fei1">00002</li>
+      <li class="fei2">00003</li>
+      <li>00004</li>
+      <li>00005</li>
+    </ul>
+    <hr>
+
+  </div>
+
+
+  <!-- <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      })
+    })
+  </script> -->
+
+</body>
+
+</html>

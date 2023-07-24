@@ -1,0 +1,72 @@
+li:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.di_yi_ge_zi_yuan_su {
+
+  /* 选中li元素, 并且li元素必须是第一个子元素 */
+  li:first-child {
+    background-color: deepskyblue;
+  }
+}
+
+.di_yi_ge_type_zi_yuan_su {
+
+  /* 只看li元素, 选中的是子元素中第一个li元素 */
+  li:first-of-type {
+    background-color: var(--sham-shui-po);
+  }
+
+
+}
+
+/* 对应的有
+:last-child
+:last-of-type */
+
+
+.di_ji_ge_zi_yuan_su {
+
+  /* 必须是li元素, 必须是第四个子元素 */
+  /* 两个分开单独算 */
+  li:nth-child(4) {
+    background-color: deeppink;
+  }
+}
+
+.ou_shu_ge_zi_yuan_su {
+
+  /* 必须是li元素, 必须是偶数个子元素 */
+  /* n从0开始, n=0 时，2n+0=0，第 0 个元素不存在，因为是从 1 开始排序
+  数的话数第一个、第二个, 没有第0个
+  有关键字 even, 不如2n直观, 不用关键字 */
+  li:nth-child(2n) {
+    background-color: var(--skek-kip-mei);
+  }
+}
+
+.ji_shu_ge_zi_yuan_su {
+
+  /* 必须是li元素, 必须是奇数个子元素 */
+  /* n从0开始
+  数的话数第一个、第二个, 没有第0个
+  有关键字 odd */
+  li:nth-child(2n+1) {
+    background-color: var(--wan-chai);
+  }
+}
+
+.ou_shu_ge_type_zi_yuan_su {
+
+  /* 只看li元素, 选中的是子元素中偶数个li元素 */
+  li:nth-of-type(2n) {
+    background-color: var(--tseung-kwan-o);
+  }
+}
+
+.not_zi_yuan_su {
+  li:not(.fei1, .fei2) {
+    background-color: var(--quarry-bay);
+  }
+}
