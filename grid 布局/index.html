@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>grid 布局</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <h3>grid布局, 默认和常规流块盒一样</h3>
+  <div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 每项固定宽高</h3>
+  <div class="container layout2">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 repeat 方便重复</h3>
+  <div class="container layout3">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 不同尺寸大小的布局</h3>
+  <div class="container layout4">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 rows给的过少 由内容撑起</h3>
+  <div class="container layout5" style="grid-template-rows: repeat(2, 100px);">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 rows给的刚好</h3>
+  <div class="container layout5">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 灵活组合</h3>
+  <div class="container layout6">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <hr>
+
+  <h3>grid布局 自定义标识符 直接"画出"布局</h3>
+  <div class="container layout7">
+    <div class="header">header</div>
+    <div class="menu">menu</div>
+    <div class="content">content</div>
+    <div class="footer">footer</div>
+  </div>
+  <hr>
+
+</body>
+
+</html>
