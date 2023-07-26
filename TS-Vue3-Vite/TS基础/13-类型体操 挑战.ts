@@ -13,38 +13,63 @@ export { }
     description: string
     completed: boolean
   }
-
   type TodoPreview = MyPick<Todo, 'title' | 'completed'>
-
   const todo: TodoPreview = {
     title: 'Clean room',
     completed: false,
   }
 }
 
-
-
 {
   /* 实现 Readonly */
   type MyReadonly<T> = {
     readonly [K in keyof T]: T[K]
   }
+
   interface Todo {
     title: string
     description: string
   }
-
   const todo: MyReadonly<Todo> = {
     title: "Hey",
     description: "foobar"
   }
-
   // todo.title = "Hello" // Error: cannot reassign a readonly property
   // todo.description = "barFoo" // Error: cannot reassign a readonly property
 }
 
+{
+  /* 实现 Partial */
+  type MyPartial<T> = {
+    [K in keyof T]?: T[K]
+  }
+
+  interface Todo {
+    title: string
+    description: string
+    completed: boolean
+  }
+  type TodoPreview = MyPartial<Todo>
+  const todo: TodoPreview = {
+    title: 'Clean room',
+    completed: false,
+  }
 
 
+
+
+  /* 实现 Required */
+  type MyRequired<T> = {
+    [K in keyof T]-?: T[K]
+  }
+
+  type TodoPreview2 = MyRequired<TodoPreview>
+  const todo2: TodoPreview2 = {
+    title: 'Clean room',
+    description: '描述',
+    completed: false,
+  }
+}
 
 {
   /* 元组转换为对象 */

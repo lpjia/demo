@@ -3,4 +3,4 @@ declare var globalVar: string
 declare var globalArrItem: Table.ListItem
 
 // 声明全局方法
-declare function globalFn(): void
+declare function globalFn(): string
