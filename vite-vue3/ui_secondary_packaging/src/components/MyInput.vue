@@ -10,8 +10,9 @@
 
 <script>
 import { ElInput } from 'element-plus';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     ElInput,
   },
@@ -32,7 +33,7 @@ export default {
       this[key] = value;
     }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">

@@ -1,3 +1,7 @@
+
+git commit 'img 样式知识/*' 'generator生成器/*' -m '20230707 世界巧克力日'
+
+
 rimraf node_modules
 "clean": "rimraf node_modules"
 
@@ -8,6 +12,11 @@ git log --pretty=oneline
 this.$nextTick(() => {
 
 })
+
+
+、
+。
+（）
 
 
 <p>----分割线----</p>
@@ -43,7 +52,7 @@ vscode 输出使用
 console.log('\n')
 
 
-测试形参有几个
+测试实参有几个
 handle(e, e2, e3){
     console.log('e: ', e)
     console.log('e2: ', e2)
@@ -53,3 +62,15 @@ handle(e, e2, e3){
 
 
 let currTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
+
+
+$wh: 50px;
+width: $wh;
+height: $wh;
+
+@mixin wh($px) {
+  width: $px;
+  height: $px;
+}
+
+@include wh(30px);
