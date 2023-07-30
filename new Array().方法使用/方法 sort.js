@@ -42,7 +42,10 @@ const cityList = ['上海', '北京', '郑州', '广州', '深圳', '新乡', '�
 console.log(
   // cityList.sort(), // 不是我们想要的顺序(默认是编码顺序, 不管它, 一般传处理函数)
   cityList.sort((a, b) => a.localeCompare(b)) // 按字典顺序
-  // localeCompare 方法可以实现排序规则, a b 相对位置一致则升序
+  /* localeCompare 方法可以实现排序规则, a b 相对位置一致则升序, 相对位置意思就是看参数a b和localeCompare那块的a b
+  单看x.localeCompare(y), 当x比y靠前(序号小), 返回<0
+  当x比y靠后(序号大), 返回>0
+  相等则返回0 */
 )
 console.log(
   cityList
