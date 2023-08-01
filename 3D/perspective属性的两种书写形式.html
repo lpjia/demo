@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>perspective属性的两种书写形式</title>
+  <style>
+    body {
+      padding-top: 30px;
+    }
+
+    .container {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 50px;
+      border: 1px solid #bbb;
+    }
+
+    .box {
+      width: 100%;
+      height: 100%;
+      opacity: .75;
+    }
+
+    #darkred .box {
+      background-color: darkred;
+      /* transform: perspective(600px) rotateY(45deg); */
+      animation: zhuan_quan 3s infinite linear;
+    }
+
+    /* 加了立体旋转 */
+    @keyframes zhuan_quan {
+      0% {
+        transform: perspective(600px) rotateY(0deg);
+      }
+
+      50% {
+        transform: perspective(600px) rotateY(90deg);
+      }
+
+      100% {
+        transform: perspective(600px) rotateY(180deg);
+      }
+
+    }
+
+    /* perspective两种写法都行, 翻译为视距
+    perspective是给到父元素
+    perspective()是给当前 */
+    #darkblue {
+      perspective: 600px;
+    }
+
+    #darkblue .box {
+      background-color: darkblue;
+      transform: rotateY(45deg);
+    }
+  </style>
+</head>
+
+<body>
+  <section id="darkred" class="container">
+    <div class="box"></div>
+  </section>
+
+  <section id="darkblue" class="container">
+    <div class="box"></div>
+  </section>
+</body>
+
+</html>
