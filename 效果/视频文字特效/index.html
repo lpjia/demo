@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>视频文字特效</title>
+  <style>
+    .container {
+      color: #000;
+      font-size: 10em;
+      font-weight: bold;
+      font-family: 华文行楷;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+    }
+
+    .txt {
+      position: absolute;
+      inset: 0;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      mix-blend-mode: screen;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <video src="./assets/fire_clip.mp4" autoplay loop muted></video>
+    <div class="txt">三国志</div>
+  </div>
+
+  <script>
+  </script>
+</body>
+
+</html>
