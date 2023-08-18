@@ -1,4 +1,4 @@
-// 点击复制文本
+/* 点击复制文本 */
 // function clickForCopy() {
 //   let domResult = document.querySelector('#new_time')
 //   const url = domResult.innerHTML
@@ -13,7 +13,8 @@
 //   })
 //   oInput.remove()
 // }
-// 新方法, 兼容性还可以
+
+/* 新方法, 兼容性还可以 */
 async function clickForCopy() {
   let domResult = document.querySelector('#new_time')
   await navigator.clipboard.writeText(domResult.innerHTML) // 就是这行代码
