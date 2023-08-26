@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>游离节点导致的内存泄漏</title>
+</head>
+
+<body>
+  <button onclick="createInput(false)">按钮1</button>
+  <button onclick="createInput(true)">按钮2 聚焦</button>
+
+  <script>
+    function createInput(isFocus) {
+      const ipt = document.createElement('input')
+      document.body.appendChild(ipt)
+      isFocus && ipt.focus()
+      setTimeout(() => {
+        ipt.remove()
+      }, 2000);
+    }
+  </script>
+
+</body>
+
+</html>
