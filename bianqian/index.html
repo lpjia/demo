@@ -75,8 +75,9 @@
 
       <p>add 添加</p>
       <p>create 创建</p>
-      <p>update 更新</p>
+      <p>update 更新 upd</p>
       <p>delete 删除 del</p>
+      <p>remove 移除</p>
       <p>button 按钮 btn</p>
       <p>text 文本 txt</p>
       <p>List 接口返回数组的数据类型, 加这个名字, 不要用复数</p>
@@ -95,13 +96,13 @@
       <p>doDelete deleteByAjax</p>
       <!-- 跳转 -->
       <p>jump 跳</p>
-      <p>to 到</p>
+      <p>to 到, 转成</p>
       <p>go 去, 到</p>
 
       <!-- css 命名 -->
       <p>head header 头部</p>
       <p>foot footer tail 底部, 尾部</p>
-      <p>section 部分 sect</p>
+      <p>section 独立章节</p>
       <p>banner 横幅</p>
 
       <!-- css 属性 值 -->
@@ -114,6 +115,10 @@
       <p>animation 动画</p>
       <p>keyframe 关键帧</p>
       <p>frame 帧</p>
+      <p>clip 裁剪</p>
+      <p>vertical 垂直</p>
+      <p>align 对齐</p>
+      <p>fit 适应</p>
 
       <!-- css 变形 -->
       <p>transform 变形</p>
@@ -130,6 +135,11 @@
       <p>extends 继承</p>
       <p>constructor 构造器</p>
 
+      <!-- 改变this指向 -->
+      <p>call 调用</p>
+      <p>apply 应用</p>
+      <p>bind 绑定</p>
+
       <!-- promise -->
       <p>promise 许诺</p>
       <p>fulfill 兑现 fulfilled 已兑现</p>
@@ -140,15 +150,17 @@
       <p>resolve 做出决议 resolved 已决议</p>
 
       <!-- ts -->
-      <p>interface 接口 Itfc</p>
+      <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
+      <p>interface 接口 Itfc 这缩写没必要用在ts</p>
       <p>exhaustiveCheck 穷尽检查</p>
 
-      <p>request 请求</p>
+      <p>request 请求 req</p>
       <p>response 响应 resp</p>
       <p>raw 未加工的, 原始的</p>
 
-      <p></p>
-
+      <p>expose 暴露</p>
+      <p>iterator 迭代器</p>
+      <p>post 提交</p>
       <p>await 等待</p>
       <p>loop 循环</p>
       <p>emit 发</p>
@@ -178,7 +190,7 @@
       <p>name 名字</p>
 
       <!-- 大小写等转换 -->
-      <p>camel 驼峰 小</p>
+      <p>camel 小驼峰</p>
       <p>snake 下划线</p>
       <p>constant 常量, XX_XX这种</p>
       <p>kebab 横线</p>
@@ -202,10 +214,47 @@
       <p>quantity 数量</p>
       <p>quality 质量</p>
 
+      <p>exception 异常</p>
+      <p>expectation 期望</p>
+
+      <p>conversion 转换</p>
+      <p>conversation 交谈</p>
+
+      <!-- mysql -->
+      <p>flush privileges 刷新权限</p>
+      <p>!access denied 拒绝访问</p>
+      <p>grant 授予</p>
+      <p>drop 丢弃 删除</p>
+      <p>identified 确认</p>
+      <p>constraint 约束</p>
+      <p>primary key 主键</p>
+      <p>foreign key 外键</p>
+      <p>unsigned 无符号</p>
+      <p>schema 模式</p>
+      <p>mode 模式</p>
+      <p>transaction 事务</p>
+      <p>rollback 回滚</p>
+      <p>escape 逃脱</p>
+      <p>connection 连接, 一个数据库连接实例 conn</p>
+
+      <!-- 财务 金融 -->
+      <p>account 账户</p>
+      <p>balance 余额</p>
+      <p>trade 交易</p>
+      <p>remitter 汇款人</p>
+      <p>payee 收款人</p>
+      <p>amount 金额</p>
+
       <!-- git -->
+      <p>checkout 签出 检出 自己理解为切换分支</p>
+      <p>discard 丢弃</p>
+      <p>squash 挤压 去除</p>
+      <p>detached 游离</p>
+      <p>fatal 致命的 重大的</p>
 
       <!-- github -->
       <p>issue 提问 念1ʃu</p>
+      <p>archive 存档</p>
 
       <!-- 算法 -->
       <p>encrypt 加密</p>
@@ -232,7 +281,6 @@
       <!-- 日志 -->
       <p>categories 范畴(复数) 类型</p>
       <p>appenders 输出源(复数)</p>
-      <p>fatal 致命的</p>
 
       <!-- 权限 -->
       <p>access 访问</p>
@@ -245,11 +293,16 @@
       <p>decode 解码</p>
 
       <!-- npm -->
-      <p>deprecated 不赞成 反对</p>
+      <p>deprecated 弃用</p>
       <p>uglify 混淆</p>
+      <p>peerDependencies 对等依赖</p>
 
 
       <!-- 还没想到分组 -->
+      <p>suffix 后缀</p>
+      <p>peer 同辈</p>
+      <p>parallel 并行</p>
+
       <p>current 当前的 cur</p>
       <p>single 单个的</p>
       <p>multiple 多个的</p>
@@ -364,6 +417,7 @@
       <p>user agent stylesheet 用户代理样式表, 浏览器默认样式</p>
       <p>inherited from 继承自</p>
       <p>element.style 元素内联样式</p>
+      <p>Manually select features 手动选择功能特性</p>
 
     </section>
 
@@ -371,7 +425,8 @@
   </div>
 
 
-  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <!-- <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script> -->
+  <script src="lib/dayjs.min.js"></script>
   <script src="index.js"></script>
 </body>
 

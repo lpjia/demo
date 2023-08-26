@@ -30,18 +30,6 @@ window.onload = function () {
 
 
 
-// // 自制小工具
-// document.querySelector('#dplayed_content')
-// const dom_a = document.createElement('a');
-// document.body.appendChild(dom_a);
-// dom_a.href = '#dplayed_content';
-// dom_a.click();
-// document.body.removeChild(dom_a);
-
-// javascript: var dom_a = document.createElement('a'); document.body.appendChild(dom_a); dom_a.href = '#dplayed_content'; dom_a.click(); document.body.removeChild(dom_a);
-
-
-
 const doms = {
   domHour: document.querySelector('#hour'),
   domMinute: document.querySelector('#minute'),
@@ -90,28 +78,13 @@ function calcNextTime() {
   let currTime = new Date().getTime()
   // 小时必须要输入, 否则还得区分用户输入是否有问题
   let result = currTime + (Number(doms.domHour.value) * 60 + (doms.domMinute.value ? Number(doms.domMinute.value) : 0)) * 60 * 1000
-  doms.domResult.innerHTML = dayjs(result).format('DD号HH:mm')
+  // doms.domResult.innerHTML = dayjs(result).format('DD号HH:mm')
+  doms.domResult.textContent = dayjs(result).format('DD号HH:mm')
 }
 
 
 
-
-// 点击复制文本
-// function clickForCopy() {
-//   let domResult = document.querySelector('#new_time')
-//   const url = domResult.innerHTML
-//   let oInput = document.createElement('input')
-//   oInput.value = url
-//   document.body.appendChild(oInput)
-//   oInput.select() // 选择对象;
-//   document.execCommand('Copy') // 执行浏览器复制命令
-//   this.$message({
-//     message: '复制成功',
-//     type: 'success'
-//   })
-//   oInput.remove()
-// }
-// 新方法, 兼容性还可以
+/* 新方法, 兼容性还可以 */
 async function clickForCopy() {
   // let domResult = document.querySelector('#new_time')
   await navigator.clipboard.writeText(doms.domResult.innerHTML) // 就是这行代码
@@ -121,7 +94,3 @@ async function clickForCopy() {
     doms.domTip.innerHTML = ''
   }, 2000);
 }
-
-// async function copyByClick() {
-//   await navigator.clipboard.writeText(doms.domResult.innerHTML)
-// }
