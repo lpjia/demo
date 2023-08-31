@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定时器</title>
+</head>
+
+<body>
+
+  <script>
+    function ding_shi_qi(param1, param2) {
+      console.log('打印一参: ', param1)
+      console.log('打印二参: ', param2)
+    }
+    // 直接传实参
+    const timerID = setTimeout(ding_shi_qi, 1000, 'first param', 'second param');
+    console.log('timerID:', timerID)
+
+
+    /* 错误用法
+    setTimeout(ding_shi_qi('first param', 'second param'), 1000)
+    ding_shi_qi函数会立刻执行, 不会等待延时结束才执行 */
+
+
+    // 以前是再包一层函数传实参
+    const timerID2 = setTimeout(() => {
+      ding_shi_qi('first param timerID2', 'second param timerID2')
+    }, 2000);
+    console.log('timerID2:', timerID2)
+  </script>
+</body>
+
+</html>
