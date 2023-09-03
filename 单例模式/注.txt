@@ -1,0 +1,26 @@
+唯一性保证
+错误提示型
+
+
+单例的思考1
+
+多次new ClassName(), 和常规的new区分有心智负担, 放弃
+const ins1 = new ClassName()
+const ins2 = new ClassName()
+判断ins1 === ins2是否成立
+
+
+单例的思考2
+继承, 用到typeof等需要判断类型的时候, 其实得到的是子类的类型
+
+
+单例的思考3
+使用: createSingleton(MyVideo)()
+用模块组装的思路
+
+不能new createSingleton
+也不能new MyVideo
+
+
+createSingleton(MyVideo)(1, 2),
+createSingleton(MyVideo)(1, 2) === createSingleton(MyVideo)(1, 2), 成立
