@@ -12,13 +12,15 @@
 <body>
   <button>点击获取用户</button>
   <script>
+    // 接收数据
     function customCallback(resp) {
       console.log(resp)
-      // 进行对数据的操作
+
+      // 操作数据
       displayData(resp)
     }
 
-    // 这里把数据展示到dom
+    // 把数据展示到dom
     function displayData(data) {
       let frag = document.createDocumentFragment()
       for (const item of data) {
