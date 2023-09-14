@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Proxy Reflect</title>
+</head>
+
+<body>
+
+  <script>
+    const user = {
+      _name: 'user',
+      get name() {
+        return this._name
+      }
+    }
+    const userProxy = new Proxy(user, {
+      get(target, key, receiver) { // receiver = admin
+        /* 这个写法的this指向有问题 */
+        // return target[key]
+
+        /* 反射 Reflect 修正了this指向, receiver起的作用 */
+        // return Reflect.get(target, key, receiver)
+        return Reflect.get(...arguments) // 更简洁的写法
+      }
+    })
+    const admin = {
+      _name: 'admin',
+      __proto__: userProxy
+    }
+    console.log('admin.name:', admin.name)
+    console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+
+    let obj = {
+      name: 'james',
+      age: '38',
+    }
+    /* 代理应该在所有地方都完全替代目标对象。目标对象被代理后，任何人都不应该再引用目标对象 */
+    obj = new Proxy(obj, {
+      get(target, key, receiver) {
+        console.log('执行get', target, key)
+        return target[key]
+      },
+
+      set(target, key, value, receiver) {
+        console.log('执行set', target, key, value)
+        target[key] = value
+      }
+    })
+    // obj已被代理覆盖, 后续操作的全是代理对象
+
+    obj.name
+    obj.age = 1
+    console.log(obj)
+    console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+
+    let obj2 = {
+      name: 'kobe',
+      age: '42',
+    }
+    obj2 = new Proxy(obj2, {
+      get(target, key, receiver) {
+        console.log('执行get', target, key)
+        // Reflect更好更正确
+        return Reflect.get(...arguments)
+      },
+
+      set(target, key, value, receiver) {
+        console.log('执行set', target, key, value)
+        Reflect.set(...arguments)
+      }
+    })
+    obj2.name
+    obj2.age = 0
+    console.log(obj2)
+    console.log('---- 分割线 ----\n\n\n')
+
+
+
+    /* Reflect反射
+    用来调用对象的'基本方法' */
+    let person = {
+      a: 1,
+      b: 2,
+      get c() {
+        return this.a + this.b
+      }
+    }
+    const result = Reflect.get(person, 'c', { a: 10, b: 20 })
+    console.log('result:', result)
+    /* 主要配合代理使用 */
+    person = new Proxy(person, {
+      get(target, key, receiver) {
+        console.log('read:', key)
+        // return target[key] // 读原始对象的c
+        return Reflect.get(...arguments) // 读代理对象的c, 用到了this.a this.b, this指向proxy的receiver, 又读代理对象的a和b
+      }
+    })
+    person.c
+    console.log('---- 分割线 ----\n\n\n')
+
+
+
+    let obj3 = {
+      aa: 11,
+      bb: 22,
+      [Symbol('dd')]: 44
+    }
+    Object.defineProperty(obj3, 'cc', {
+      value: 33,
+      enumerable: false
+    })
+    console.log(
+      // 返回可枚举的字符串键属性组成的数组, 可枚举、字符串键
+      Object.keys(obj3),
+      // 返回目标对象自身的属性键组成的数组, 没限制
+      Reflect.ownKeys(obj3)
+    )
+
+  </script>
+</body>
+
+</html>
