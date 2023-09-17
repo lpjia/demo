@@ -7,7 +7,9 @@ type Result3 = InferType2<number[]>
 type Result4 = InferType2<boolean>
 
 
-// 推断 infer
+// 推断 infer, 可以用来解包
+// infer声明的类型变量只在条件类型的"真值"分支中可用
+// 仅条件类型的 "extends" 子句中才允许 "infer" 声明
 type InferType<T> = T extends Array<infer U> ? U : T
 type Result = InferType<string[]>
 type Result2 = InferType<bigint>
@@ -29,8 +31,8 @@ let concatResult: MyReturnType<Concat>
 
 
 /* PromiseType 获取Promise<xxx>的xxx类型 */
-type PromiseType2<T> = T extends Promise<infer K> ? K : T
-type PromiseType<T> = T extends Promise<infer K> ? PromiseType<K> : T
+type PromiseType2<T> = T extends Promise<infer U> ? U : T
+type PromiseType<T> = T extends Promise<infer U> ? PromiseType<U> : T
 
 type Pt = PromiseType<Promise<Promise<Promise<string>>>>
 
@@ -47,7 +49,42 @@ type Fa = FirstArg<Fn>
 
 
 /* ArrayType 获取 */
-type ArrayType<T> = T extends (infer I)[] ? I : T
+type ArrayType<T> = T extends (infer U)[] ? U : T
 
 type ItemType1 = ArrayType<[number, string]>
 type ItemType2 = ArrayType<boolean[]>
+
+
+
+
+/* 将元组转为联合类型 */
+type TupleToUnion<T> = T extends (infer R)[] ? R : never
+const tuple = ['a', 'b', true]
+type Tp = TupleToUnion<typeof tuple>
+
+type TupleTp = ['tianmao', 'taobao']
+type Union = TupleToUnion<TupleTp>
+
+
+
+
+/* 获取对象类型中，任意层级属性的类型。 */
+type PropType<T, P extends string> = string extends P ? never :
+  P extends keyof T ? T[P] :
+  P extends `${infer U}.${infer R}` ? (U extends keyof T ? PropType<T[U], R> : never) :
+  never;
+
+declare function getPropValue<T, P extends string>(obj: T, path: P): PropType<T, P>
+
+const obj = {
+  a: {
+    b: {
+      c: 666,
+      d: "俺家"
+    }
+  }
+};
+type Tp2 = typeof obj
+let a = getPropValue(obj, "a"); // { b: {c: number, d: string } }
+let ab = getPropValue(obj, "a.b"); // {c: number, d: string }
+let abd = getPropValue(obj, "a.b.d"); // string
