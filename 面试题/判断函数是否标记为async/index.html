@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>判断函数是否标记为async</title>
+</head>
+
+<body>
+
+  <script>
+    function isAsyncFn(fn) {
+      console.dir(fn)
+      console.log(
+        // 第一种方案
+        Object.prototype.toString.call(fn) === '[object AsyncFunction]',
+        Object.prototype.toString.call(fn),
+        // 第二种方案
+        fn[Symbol.toStringTag] === 'AsyncFunction'
+      )
+    }
+    console.log(
+      isAsyncFn(() => { }),
+      isAsyncFn(async () => { })
+    )
+  </script>
+</body>
+
+</html>
