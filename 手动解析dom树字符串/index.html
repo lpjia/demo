@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手动解析dom树字符串</title>
+</head>
+
+<body>
+
+  <script>
+    function removeTag(fragment) {
+      return (new DOMParser().parseFromString(fragment, 'text/html')).body.textContent || ''
+    }
+    const domString = `<ul>
+        <li>Lorem, ipsum dolor.</li>
+        <li>Tempora, quas facilis.</li>
+        <li>Unde, cum quia.</li>
+        <li>Sint, aperiam odit.</li>
+        <li>Similique, distinctio sed.</li>
+        <li>Illo, libero odit.</li>
+      </ul>`
+
+    console.log(removeTag(domString))
+  </script>
+</body>
+
+</html>
