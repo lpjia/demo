@@ -11,7 +11,7 @@ let xiaoming = {
 /**
  * 第一个参是要处理的对象
  * 第二个参可以是筛选过滤, 也可以是方法
- * 第三个参, 数字和字符串空格的效果是一样的
+ * 第三个参, 数字和字符串空格的效果是一样的, 数字表示有几个空格, 上限为10
  * 非空格的话, 会显示字符串内容
  */
 let str = JSON.stringify(xiaoming, null, 2)
@@ -80,4 +80,4 @@ let obj = JSON.parse('{"name":"小明","age":14}', function (key, value) {
   }
   return value;
 });
-console.log(obj)
+console.log('obj:', obj)
