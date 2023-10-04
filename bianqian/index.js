@@ -40,6 +40,65 @@ const doms = {
   minute: document.querySelector('#minute2'),
   result: document.querySelector('#new_time2'),
   tip: document.querySelector('#tip2'),
+
+  monthFee: document.querySelector('#monthFee'),
+  discount: document.querySelector('#discount'),
+  quarterFee: document.querySelector('#quarterFee'),
+  yearFee: document.querySelector('#yearFee'),
+}
+
+function $toFixed(n, d) {
+  let s = n + ''
+  if (!d) d = 0
+  if (s.indexOf('.') === -1) s += '.'
+  s += new Array(d + 1).join('0')
+  if (new RegExp('^(-|\\+)?(\\d+(\\.\\d{0,' + (d + 1) + '})?)\\d*$').test(s)) {
+    s = '0' + RegExp.$2
+    let pm = RegExp.$1
+    let a = RegExp.$3.length
+    let b = true
+    if (a === d + 2) {
+      a = s.match(/\d/g)
+      if (parseInt(a[a.length - 1]) > 4) {
+        for (let i = a.length - 2; i >= 0; i--) {
+          a[i] = parseInt(a[i]) + 1
+          if (a[i] === 10) {
+            a[i] = 0
+            b = i !== 1
+          } else break
+        }
+      }
+      s = a.join('').replace(new RegExp('(\\d+)(\\d{' + d + '})\\d$'), '$1.$2')
+    }
+    if (b) s = s.substr(1)
+    return (pm + s).replace(/\.$/, '')
+  }
+  return this + ''
+}
+// 需求是: 输入月费用, 计算折扣后的季度费用和年费用
+function calcFee() {
+  const discount = doms.discount.value
+  const discountMap = {
+    0: () => 1,
+    1: () => Number(discount) / 10,
+    2: () => Number(discount) / 100,
+  }
+  const dsct = discountMap[discount.length]()
+  const monthFee = Number(doms.monthFee.value) * dsct
+  doms.quarterFee.innerHTML = $toFixed(R.multiply(monthFee, 3), 2)
+  doms.yearFee.innerHTML = $toFixed(R.multiply(monthFee, 12), 2)
+}
+function calcFeeByEnter(e) {
+  if (e.keyCode === 13) {
+    calcFee()
+    return false;
+  }
+}
+function clearInput3() {
+  doms.monthFee.value = ''
+  doms.quarterFee.innerHTML = ''
+  doms.yearFee.innerHTML = ''
+  doms.monthFee.focus()
 }
 
 

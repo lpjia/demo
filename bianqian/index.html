@@ -23,11 +23,25 @@
     #new_time {
       cursor: pointer;
     }
+
+    .hang_he {
+      display: inline;
+    }
   </style>
 </head>
 
 <body>
-  <!-- <input type="text" id="hour"> h -->
+
+
+  <div>
+    月费用 <input type="text" id="monthFee" onkeydown="calcFeeByEnter(event)"> ¥
+    <input type="text" id="discount" onkeydown="calcFeeByEnter(event)" placeholder="折扣" value="">
+    <button style="margin-left: 10px;" onclick="calcFee()">计算费用</button>
+    <button onclick="clearInput3()">清空</button>
+    <span style="margin-left: 10px;">季度费用: <div class="hang_he" id="quarterFee"></div> ¥</span>
+    <span style="margin-left: 10px;">年费用: <div class="hang_he" id="yearFee"></div> ¥</span>
+  </div>
+  <hr>
   <div>
     <input type="text" id="hour2"> h
     <input style="margin-left: 10px;" type="text" id="minute2"> m
@@ -80,6 +94,7 @@
       <p>remove 移除</p>
       <p>button 按钮 btn</p>
       <p>text 文本 txt</p>
+      <!-- 有些英文还是用s, 用List感觉语义有问题 -->
       <p>List 接口返回数组的数据类型, 加这个名字, 不要用复数</p>
       <!-- 方法 -->
       <p>do 做</p>
@@ -100,7 +115,7 @@
       <p>go 去, 到</p>
 
       <!-- css 命名 -->
-      <p>head header 头部</p>
+      <p>head header 顶部, 头部</p>
       <p>foot footer tail 底部, 尾部</p>
       <p>section 独立章节</p>
       <p>banner 横幅</p>
@@ -134,6 +149,8 @@
       <p>instanceof 实例</p>
       <p>extends 继承</p>
       <p>constructor 构造器</p>
+      <p>anonymous 匿名</p>
+      <p>patch 比对</p>
 
       <!-- 改变this指向 -->
       <p>call 调用</p>
@@ -150,14 +167,29 @@
       <p>resolve 做出决议 resolved 已决议</p>
 
       <!-- ts -->
+      <p>declare 声明</p>
       <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
       <p>interface 接口 Itfc 这缩写没必要用在ts</p>
+      <p>never 不存在的类型</p>
       <p>exhaustiveCheck 穷尽检查</p>
+      <p>string_literal 字符串文字</p>
+      <!-- 当有重复的, 可以用下划线来避免 -->
+
 
       <p>request 请求 req</p>
       <p>response 响应 resp</p>
       <p>raw 未加工的, 原始的</p>
 
+      <p>frontend 前端</p>
+      <p>backend 后端</p>
+
+
+      <!-- 在易错那记有该单词, 所以还是注掉 -->
+      <!-- queue 队列 -->
+      <p>enqueue 入列</p>
+      <p>dequeue 出列</p>
+
+      <p>directive 指令</p>
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
       <p>post 提交</p>
@@ -220,9 +252,12 @@
       <p>conversion 转换</p>
       <p>conversation 交谈</p>
 
+      <p>queue 队列, 念q</p>
+      <p>queen 女皇</p>
+
       <!-- mysql -->
       <p>flush privileges 刷新权限</p>
-      <p>!access denied 拒绝访问</p>
+      <!-- access denied 拒绝访问 -->
       <p>grant 授予</p>
       <p>drop 丢弃 删除</p>
       <p>identified 确认</p>
@@ -244,6 +279,8 @@
       <p>remitter 汇款人</p>
       <p>payee 收款人</p>
       <p>amount 金额</p>
+      <p>fee 费用</p>
+      <p>discount 折扣</p>
 
       <!-- git -->
       <p>checkout 签出 检出 自己理解为切换分支</p>
@@ -253,7 +290,7 @@
       <p>fatal 致命的 重大的</p>
 
       <!-- github -->
-      <p>issue 提问 念1ʃu</p>
+      <p>issue 提问, 念1ʃu</p>
       <p>archive 存档</p>
 
       <!-- 算法 -->
@@ -342,6 +379,7 @@
       <p>nest 嵌套</p>
       <p>launch 启动</p>
       <p>roll 启动</p>
+      <p>crash 崩溃</p>
 
       <p>notice 通知</p>
       <p>flow 流</p>
@@ -425,8 +463,8 @@
   </div>
 
 
-  <!-- <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script> -->
-  <script src="lib/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
   <script src="index.js"></script>
 </body>
 
