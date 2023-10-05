@@ -33,7 +33,7 @@ https://juejin.cn/post/6946016272245063716 */
 // const allCharacterToDou = str.replace(/\d/g, ',')
 // console.log('allCharacterToDou:', allCharacterToDou)
 
-/* 前瞻 (?=)
+/* 前瞻 (?=), 建议先看《正则中的前瞻和后顾》
 不会匹配到某一个具体的字符
 在那个位置去往前(匹配的方向)看一看
 看一看后面的东西满不满足规则
@@ -59,7 +59,7 @@ const perThreeNumberToDou = str.replace(/(?=(\d{3})+$)/g, ',')
 console.log('perThreeNumberToDou:', perThreeNumberToDou)
 
 // \b匹配一个单词边界
-// \B匹配非单词边界 大写都是非
+// \B匹配非单词边界 大写都是非, 建议先看《正则知识》
 const result3 = str.replace(/(?=\B(\d{3})+$)/g, ',')
 console.log('result3:', result3)
 
