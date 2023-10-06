@@ -8,6 +8,7 @@ class Video {
 class MyVideo extends Video {
   constructor(...args) {
     // 这样写的优点: 父类给子类传参, 一个不丢, 省事
+    // 这三个点的语义就是“收集剩余的参数并存进指定数组中”
     super(...args)
     // 看这3个的区别
     console.log(...args) // 剩余参数语法, args是一个真正的数组
