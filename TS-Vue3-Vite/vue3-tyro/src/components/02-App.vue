@@ -74,16 +74,18 @@ const count2 = ref(0)
 函数与数据的关联, 不是数据与数据的关联
 哪个函数与哪个数据的关联
 1. 被监控的函数
-    vue2 Watcher    vue3 effect
-    上面是源码里的, 不清楚源码则看下面列举
+    vue2中被Watcher监控的函数    vue3中被effect监控的函数
+    上面是源码里的, 不清楚源码则看下面列举了4种
     render, 也可以说模板
     computed回调
     watchEffect
     watch
 2. 函数运行期间用到了响应式数据
+    一得是响应式数据, 二得在函数中用到(读到/写到)
     ref   reactive
     computed是ref, props是reactive
     响应式数据一定是对象类型, 原始类型不可能成为响应式数据, 原生js做不到的, vue也做不到
+    如果自己封装的话, 传参一定要传整个props, 它才是响应式数据, 举例props.count是个原始值, 不是响应式数据
 3. 响应式数据变化会导致函数重新运行 */
 
 </script>

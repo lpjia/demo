@@ -60,6 +60,15 @@ const props = defineProps<Props>()
 //   return doubleCount
 // }
 // const doubleCount = useDouble(props.count)
+
+
+
+// 6
+// function useDouble(props: Props, propName: keyof Props) {
+//   const doubleCount = computed(() => props[propName] * 2)
+//   return doubleCount
+// }
+// const doubleCount = useDouble(props, 'count')
 </script>
 
 <style scoped lang="scss"></style>
