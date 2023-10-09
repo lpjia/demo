@@ -21,7 +21,7 @@ class Queue {
   enqueue(item) {
     this.#items.push(item)
     /* this.size++ */
-    console.log('this:', this)
+    // console.log('this:', this)
   }
 
   /* 出列 */
@@ -44,8 +44,8 @@ class Queue {
     if (this.#isEmpty()) {
       return null
     }
-    return this.#items[this.#items.length - 1]
-    // return this.#items.at(-1)
+    return this.#items.at(-1)
+    // return this.#items[this.#items.length - 1]
   }
 }
 
