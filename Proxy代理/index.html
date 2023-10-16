@@ -98,6 +98,9 @@
         return this.a + this.b
       }
     }
+    // 常见语法, 是封装过后的调用基本方法
+    console.log('person.c:', person.c)
+    // 调用基本方法, 可以改变this指向
     const result = Reflect.get(person, 'c', { a: 10, b: 20 })
     console.log('result:', result)
     /* 主要配合代理使用 */
