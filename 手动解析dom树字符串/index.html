@@ -23,6 +23,10 @@
         <li>Similique, distinctio sed.</li>
         <li>Illo, libero odit.</li>
       </ul>`
+    console.log(
+      // 拿到dom结构
+      new DOMParser().parseFromString(domString, 'text/html')
+    )
 
     console.log(removeTag(domString))
   </script>
