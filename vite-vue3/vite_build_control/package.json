@@ -1,0 +1,22 @@
+{
+  "name": "vite_build_control",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rimraf node_modules"
+  },
+  "dependencies": {
+    "ramda": "^0.29.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.5",
+    "@types/ramda": "^0.29.6",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}
