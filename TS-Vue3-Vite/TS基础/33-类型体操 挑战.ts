@@ -2,7 +2,12 @@ export { }
 
 // https://github.com/type-challenges/type-challenges/blob/main/README.zh-CN.md
 
-{ /* 联合转元组 */
+
+/* ----类型体操---- */
+
+
+{
+  /* 联合转元组 */
 
   /**
    * 将联合类型转为对应的交叉函数类型
@@ -89,71 +94,92 @@ export { }
   // const no: NoTp = { id: 1 } // 报错, 无法给一个never类型赋值
 }
 
-{
-  /* 实现 Pick */
-  type MyPick<T, K extends keyof T> = {
-    [P in K]: T[P]
-  }
 
-  interface Todo {
-    title: string
-    description: string
-    completed: boolean
-  }
-  type TodoPreview = MyPick<Todo, 'title' | 'completed'>
-  const todo: TodoPreview = {
-    title: 'Clean room',
-    completed: false,
-  }
+/* ----手写系列---- */
+
+
+/* 手写 Pick */
+type MyPick<T, K extends keyof T> = {
+  [P in K]: T[P]
 }
+/* Pick<Type, Keys>
+从Type类型里面挑了一些属性Keys(Keys是字符串字面量 或者 字符串字面量的联合类型) */
 
-{
-  /* 实现 Readonly */
-  type MyReadonly<T> = {
-    readonly [K in keyof T]: T[K]
-  }
 
-  interface Todo {
-    title: string
-    description: string
-  }
-  const todo: MyReadonly<Todo> = {
-    title: "Hey",
-    description: "foobar"
-  }
-  // todo.title = "Hello" // Error: cannot reassign a readonly property
-  // todo.description = "barFoo" // Error: cannot reassign a readonly property
+
+
+/* 手写 Readonly */
+type MyReadonly<T> = {
+  readonly [K in keyof T]: T[K]
 }
-
-{
-  /* 实现 Partial */
-  type MyPartial<T> = {
-    [K in keyof T]?: T[K]
-  }
-
-  interface Todo {
-    title: string
-    description: string
-    completed: boolean
-  }
-  type TodoPreview = MyPartial<Todo>
-  const todo: TodoPreview = {
-    title: 'Clean room',
-    completed: false,
-  }
+/* Readonly<Type>
+构造一个Type下面的所有属性全都设置为只读的类型 */
 
 
 
 
-  /* 实现 Required */
-  type MyRequired<T> = {
-    [K in keyof T]-?: T[K]
-  }
 
-  type TodoPreview2 = MyRequired<TodoPreview>
-  const todo2: TodoPreview2 = {
-    title: 'Clean room',
-    description: '描述',
-    completed: false,
-  }
+/* 手写 Partial */
+type MyPartial<T> = {
+  [K in keyof T]?: T[K]
 }
+/* Partial<Type>
+构造一个Type下面的所有属性都设置为可选的类型 */
+
+
+
+
+
+/* 手写 Required */
+type MyRequired<T> = {
+  [K in keyof T]-?: T[K]
+}
+/* Required<Type>
+构造一个Type下面的所有属性全都设置为必填的类型 */
+
+
+
+
+
+/* 手写 Exclude */
+type MyExclude<T, U> = T extends U ? never : T;
+/* Exclude<UnionType, ExcludedMembers>
+从UnionType联合类型里面排除了所有可以赋给ExcludedMembers的类型 */
+
+
+
+
+/* 手写 Extract */
+type MyExtract<T, U> = T extends U ? T : never
+/* Extract<Type, Union>
+从Type类型里面提取了所有可以赋给Union的类型 */
+
+
+
+
+/* 手写 Omit */
+type MyOmit<T, K extends keyof any> = {
+  [P in Exclude<keyof T, K>]: T[P];
+}
+/* 内置库的语法 */
+type Omit2<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+/* Omit<Type, Keys>
+从Type类型里面过滤了(删除)一些属性Keys(Keys是字符串字面量 或者 字符串字面量的联合类型) */
+
+
+
+
+/* 手写 Record */
+type MyRecord<K extends keyof any, T> = {
+  [P in K]: T;
+};
+/* Record<Keys, Type>
+构造一个对象类型，它所有的key(键)都是Keys类型，它所有的value(值)都是Type类型 */
+
+
+
+
+/* 手写 NonNullable */
+type MyNonNullable<T> = T extends null | undefined ? never : T
+  /* NonNullable<Type>
+构造一个类型，这个类型从Type中排除了所有的null、undefined的类型 */

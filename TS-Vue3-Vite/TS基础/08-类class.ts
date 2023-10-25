@@ -23,7 +23,19 @@ class Person {
   }
 
   getAge() {
+    // this.jump!()
     return this.myAge
+  }
+
+  // 可选成员
+  sayHi?() { }
+
+  // 手动声明类型
+  jump2?: () => void = () => { }
+
+  // 推导类型
+  jump?= () => {
+    console.log('this:', this)
   }
 }
 
