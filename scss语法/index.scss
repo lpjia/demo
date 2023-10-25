@@ -1,0 +1,76 @@
+/* @for $i from 开始值 to 结束值
+不包含结束值 */
+@for $i from 1 to 5 {
+  .container>.item {
+    color: white;
+    font-size: 30px;
+  }
+}
+
+/* @for $i from 开始值 through 结束值
+包含结束值 */
+@for $i from 1 through 10 {
+  .m-#{$i} {
+    margin: $i / 4 rem;
+  }
+}
+
+
+/* 定义数组
+用逗号或空格隔开, 推荐用逗号 */
+$bgColor: #337ab7, #5cb85c, #5bc0de, #f0ad4e, deepskyblue, #d9534f, #cd6562;
+
+/* @each 遍历数组
+$c是项, $bgColor是数组 */
+@each $c in $bgColor {
+  $i: index($bgColor , $c ); // 获取 $c 在数组中的索引，并赋值给 $i, 赋值用冒号
+
+  // SCSS 循环是从 1 开始
+  // #{} 插值语句
+  .container>div:nth-child(#{$i}) {
+    background-color: $c;
+  }
+}
+
+
+
+
+$redC: red;
+
+/* scss文件声明css变量 */
+:root {
+  --likeColor: deepskyblue;
+  --fontSize: 50px;
+  --red-color: #{$redC}; // 声明css变量, 使用scss变量值
+}
+
+$fontWeight: bold;
+$blue-color: var(--likeColor); // 声明scss变量, 使用css变量值
+
+/* scss支持css原生语法, 比如css变量 */
+.likeColor {
+  color: var(--likeColor);
+}
+
+/* css变量, --声明后使用var() */
+// scss变量, $声明后使用#{}
+.try {
+  font-weight: #{$fontWeight};
+  // font-weight: #{$fontWeight};
+  color: var(--likeColor);
+  font-size: var(--fontSize);
+}
+
+.try2 {
+  color: var(--red-color);
+}
+
+.try3 {
+  color: #{$blue-color};
+}
+
+// 2斜杠的单行注释, 转成css后不会被保留, /*/的多行注释会被保留
+$msg: 这是自定义的信息;
+$ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
+/* 可以写一些消息, 转之后会被正确识别
+#{$msg} #{$ver}*/
