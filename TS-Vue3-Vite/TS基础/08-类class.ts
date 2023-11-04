@@ -1,5 +1,10 @@
 export { }
 
+/* 可以看
+class_es6 类字段.js
+来对比js和ts的类的区别 */
+
+
 // 声明类的同时, 也会创建一个同名的类型(实例的类型)
 class Person {
   myName: string
@@ -23,7 +28,6 @@ class Person {
   }
 
   getAge() {
-    // this.jump!()
     return this.myAge
   }
 
@@ -35,24 +39,52 @@ class Person {
 
   // 推导类型
   jump?= () => {
-    console.log('this:', this)
+    console.log('this:', this) // this指向这个类, 没问题
+  }
+
+  // 异步
+  jump4 = async () => {
+    await 1
+  }
+
+  /* 这种写法需要手动指定this类型, 否则会波浪线报错, 不推荐, 推荐jump类成员的语法 */
+  // jump3 = function () {
+  //   console.log('this:', this)
+  // }
+
+  testThis() {
+    console.log('testThis this:', this) // this指向这个类, 没问题
+
+    /* 在koa的controller类中, 这样调用方法, this指向会报错, 提示this是undefined, 没有koa2_ts成员 */
+    // this.koa2_ts()
+
+    /* 写成这样就不报错, jump方法是类字段语法
+    由于jump方法是可选成员, 所以调用时得加非空断言! */
+    // this.jump!()
+  }
+
+  koa2_ts() {
+    console.log('koa2_ts this:', this) // this指向这个类, 没问题
   }
 }
 
 let p = new Person({ name: 'xiaoming' })
-console.log(p.myName)
-console.log(p.getName())
+console.log(
+  // p.myName,
+  // p.getName(),
+  p.testThis(),
+)
 
 
 
 
-let obj: Person = {
-  myName: '另一个对象的name',
-  myAge: 28,
-  getName() {
-    return '返回的是string'
-  },
-  getAge() {
-    return this.myAge
-  },
-}
+// let obj: Person = {
+//   myName: '另一个对象的name',
+//   myAge: 28,
+//   getName() {
+//     return '返回的是string'
+//   },
+//   getAge() {
+//     return this.myAge
+//   },
+// }
