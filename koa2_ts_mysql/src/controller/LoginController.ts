@@ -13,7 +13,7 @@ class LoginController {
     // // 对数据加密
     // const token = sign({ admin })
 
-    resp.succ(ctx, {
+    resp.success(ctx, {
       // data: { token }
     })
   }

@@ -19,7 +19,7 @@ class GoodsController {
     // console.log(universalQueryFields)
 
     if (Number.isNaN(currPage) || Number.isNaN(limit))
-      return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
+      return resp.error(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
     // const { rows, count } = await GoodsService.getGoodsListByPage({
     //   page: currPage,
@@ -29,7 +29,7 @@ class GoodsController {
     const param = { ...query, currPage, limit }
     const { rows, count } = await GoodsService.getGoodsListByPage(param)
 
-    resp.succ(ctx, {
+    resp.success(ctx, {
       data: pagination(rows, {
         currPage,
         limit,
@@ -41,7 +41,7 @@ class GoodsController {
 
   async getGoodsList(ctx: Context) {
     const goodsList = await GoodsService.getGoodsList()
-    resp.succ(ctx, {
+    resp.success(ctx, {
       data: goodsList
     })
   }

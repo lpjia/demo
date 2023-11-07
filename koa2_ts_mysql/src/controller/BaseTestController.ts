@@ -10,11 +10,11 @@ class BaseTestController {
     const limit = Number(query.limit) || 15
 
     if (Number.isNaN(currPage) || Number.isNaN(limit))
-      return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
+      return resp.error(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
     const { rows, count } = await BaseTestService.getListByPage(currPage, limit)
 
-    resp.succ(ctx, {
+    resp.success(ctx, {
       data: pagination(rows, {
         currPage,
         limit,

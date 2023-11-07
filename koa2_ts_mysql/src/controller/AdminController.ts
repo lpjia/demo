@@ -16,20 +16,20 @@ class AdminController {
     const id = Number(param.id)
     // 这个参数校验, 其实不应该放这里
     if (Number.isNaN(id))
-      return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
+      return resp.error(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
     // 从数据库取数据
     const admin = await AdminService.getAdminById(id)
     // 查不出来的就返回 null
     if (admin === null)
-      return resp.err(ctx, { msg: '管理员不存在' })
+      return resp.error(ctx, { msg: '管理员不存在' })
 
     // console.log(admin.name) // admin_2
 
     // 对数据加密
     const token = sign({ admin })
 
-    resp.succ(ctx, { data: { token } })
+    resp.success(ctx, { data: { token } })
 
     // ctx.body = {
     //   token
@@ -45,14 +45,14 @@ class AdminController {
     // 如果没找到
     if (row === null) {
       // const newRow = await AdminService.addAdmin(data)
-      // return resp.succ(ctx, {
+      // return resp.success(ctx, {
       //   data: newRow
       // })
-      return resp.succ(ctx, {
+      return resp.success(ctx, {
         msg: '数据库查无此数据!'
       })
     } else {
-      return resp.err(ctx, {
+      return resp.error(ctx, {
         msg: '数据已重复, 请修改后再传!'
       })
     }
@@ -65,7 +65,7 @@ class AdminController {
     const { id } = ctx.params
     const data = ctx.request.body
     // const row = await AdminService.updateAdmin(id, data)
-    // return resp.succ(ctx, {
+    // return resp.success(ctx, {
     //   data: row
     // })
   }

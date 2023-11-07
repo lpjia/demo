@@ -1,6 +1,9 @@
 import { Server } from "http"
-import run from "../src/app"
+import run from "../src/app";
 import request from "supertest"
+// import db from '../src/db'
+
+/* 进行网络请求 单元测试 */
 
 describe('http', () => {
   let server: Server;
@@ -9,13 +12,15 @@ describe('http', () => {
   beforeAll(async () => {
     await run().then((resp) => {
       server = resp
+
+      // db() // 尝试, 但是无效, 留着以后有机会再看看
     })
   })
 
   // 接口测试
   it('GET /api', () => {
     return request(server)
-      .get('/api/')
+      .get('/api/test')
       .expect(200)
       .then(resp => {
         // expect(resp.body).toStrictEqual([1, 2, 3])

@@ -1,10 +1,13 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
+  '@koa/cors': '3'
   '@types/jest': ^28.1.8
   '@types/jsonwebtoken': ^8.5.9
   '@types/koa': ^2.13.5
   '@types/koa-router': ^7.4.4
+  '@types/koa-static': ^4.0.3
+  '@types/koa__cors': '3'
   '@types/node': ^18.7.13
   '@types/supertest': ^2.0.12
   '@types/validator': ^13.7.5
@@ -17,17 +20,20 @@ specifiers:
   koa: ^2.13.4
   koa-body: 4.2.0
   koa-router: ^12.0.0
+  koa-static: ^5.0.0
   log4js: ^6.6.1
   mysql2: ^2.3.3
+  nanoid: '3'
   reflect-metadata: ^0.1.13
   sequelize: ^6.21.4
-  sequelize-typescript: ^2.1.3
+  sequelize-typescript: ^2.1.5
   supertest: ^6.2.4
   ts-jest: ^28.0.8
   ts-node-dev: ^2.0.0
   typescript: ^4.7.4
 
 dependencies:
+  '@koa/cors': 3.4.3
   async-validator: 4.2.5
   dayjs: 1.11.5
   dotenv: 16.0.1
@@ -36,24 +42,28 @@ dependencies:
   koa: 2.13.4
   koa-body: 4.2.0
   koa-router: 12.0.0
+  koa-static: 5.0.0
   log4js: 6.6.1
   mysql2: 2.3.3
+  nanoid: 3.3.6
   reflect-metadata: 0.1.13
   sequelize: 6.21.4_mysql2@2.3.3
-  sequelize-typescript: 2.1.3_b173eddd584832264c8204ce1024c120
+  sequelize-typescript: 2.1.5_wfz63xkyjazcmtecathbajgbea
 
 devDependencies:
   '@types/jest': 28.1.8
   '@types/jsonwebtoken': 8.5.9
   '@types/koa': 2.13.5
   '@types/koa-router': 7.4.4
+  '@types/koa-static': 4.0.3
+  '@types/koa__cors': 3.3.1
   '@types/node': 18.7.13
   '@types/supertest': 2.0.12
   '@types/validator': 13.7.5
   jest: 28.1.3_@types+node@18.7.13
   supertest: 6.2.4
-  ts-jest: 28.0.8_jest@28.1.3+typescript@4.7.4
-  ts-node-dev: 2.0.0_efe961071de9fd3cd549dd7b2288d771
+  ts-jest: 28.0.8_bi2kohzqnxavgozw3csgny5hju
+  ts-node-dev: 2.0.0_57uwcby55h6tzvkj3v5sfcgxoe
   typescript: 4.7.4
 
 packages:
@@ -224,6 +234,8 @@ packages:
     resolution: {integrity: sha512-dgXcIfMuQ0kgzLB2b9tRZs7TTFFaGM2AbtA4fJgUUYukzGH4jwsS7hzQHEGs67jdehpm22vkgKwvbU+aEflgwg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.18.13
     dev: true
 
   /@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.18.13:
@@ -667,6 +679,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@koa/cors/3.4.3:
+    resolution: {integrity: sha512-WPXQUaAeAMVaLTEFpoq3T2O1C+FstkjJnDQqy95Ck1UdILajsRhu6mhJ8H2f4NFPRBoCNN+qywTJfq/gGki5mw==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      vary: 1.1.2
+    dev: false
+
   /@sinclair/typebox/0.24.28:
     resolution: {integrity: sha512-dgJd3HLOkLmz4Bw50eZx/zJwtBq65nms3N9VBYu5LTjJ883oBFkTyXRlCB/ZGGwqYpJJHA5zW2Ibhl5ngITfow==}
     dev: true
@@ -852,6 +871,19 @@ packages:
       '@types/koa': 2.13.5
     dev: true
 
+  /@types/koa-send/4.1.5:
+    resolution: {integrity: sha512-O2qnxAKr7MoAxHHUitJejMWw45b9QtgTra0pnVDl/XoNdYTdZOgwj8wSVDon0qXg/lrcYHye4LFbAaSfSWwnrg==}
+    dependencies:
+      '@types/koa': 2.13.5
+    dev: true
+
+  /@types/koa-static/4.0.3:
+    resolution: {integrity: sha512-4U9uZwXqYAudDLDVkw1prJM5avn9/lHLVEwoyyI/ITZluWkBdmirkj8EsOLG6kLr0XFZdViR0ZBtQ3oetSsr3g==}
+    dependencies:
+      '@types/koa': 2.13.5
+      '@types/koa-send': 4.1.5
+    dev: true
+
   /@types/koa/2.13.5:
     resolution: {integrity: sha512-HSUOdzKz3by4fnqagwthW/1w/yJspTgppyyalPVbgZf8jQWvdIXcVW5h2DGtw4zYntOaeRGx49r1hxoPWrD4aA==}
     dependencies:
@@ -863,6 +895,12 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 18.7.13
+    dev: true
+
+  /@types/koa__cors/3.3.1:
+    resolution: {integrity: sha512-aFGYhTFW7651KhmZZ05VG0QZJre7QxBxDj2LF1lf6GA/wSXEfKVAJxiQQWzRV4ZoMzQIO8vJBXKsUcRuvYK9qw==}
+    dependencies:
+      '@types/koa': 2.13.5
     dev: true
 
   /@types/mime/3.0.1:
@@ -908,7 +946,7 @@ packages:
     dev: true
 
   /@types/superagent/4.1.15:
-    resolution: {integrity: sha512-iiXaOL2wSbnSY4qg0mFPWJHL9iwyEsoNYwaHF2w58/fsVAQJlj+KUfFAFZu+nzbz+b7dUprJEAc+O9vhHHhQTA==, tarball: '@types/superagent/-/superagent-4.1.14.tgz'}
+    resolution: {integrity: sha512-iiXaOL2wSbnSY4qg0mFPWJHL9iwyEsoNYwaHF2w58/fsVAQJlj+KUfFAFZu+nzbz+b7dUprJEAc+O9vhHHhQTA==, tarball: '@types/superagent/-/superagent-4.1.15.tgz'}
     deprecated: '[WARNING] Use 4.1.14 instead of 4.1.15, reason: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/58445'
     dependencies:
       '@types/cookiejar': 2.1.2
@@ -1211,7 +1249,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /ci-info/3.3.2:
@@ -1332,6 +1370,17 @@ packages:
 
   /dayjs/1.11.5:
     resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
+    dev: false
+
+  /debug/3.2.7:
+    resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
     dev: false
 
   /debug/4.3.4:
@@ -1592,10 +1641,11 @@ packages:
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
-  /fsevents/2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents/2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -1716,6 +1766,16 @@ packages:
       http-errors: 1.8.1
     dev: false
 
+  /http-errors/1.6.3:
+    resolution: {integrity: sha512-lks+lVC8dgGyh97jxvxeYTWQFvh4uw4yC12gVl63Cg30sjPX4wuGcdkICVXDAESr6OJGjqGA8Iz5mkeN6zlD7A==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      depd: 1.1.2
+      inherits: 2.0.3
+      setprototypeof: 1.1.0
+      statuses: 1.5.0
+    dev: false
+
   /http-errors/1.8.1:
     resolution: {integrity: sha512-Kpk9Sm7NmI+RHhnj6OIWDI1d6fIoFAtFt9RLaTMRlg/8w49juAStsrBgp0Dp4OdxdVbRIeKhtCUvoi/RuAhO4g==}
     engines: {node: '>= 0.6'}
@@ -1786,6 +1846,10 @@ packages:
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
+
+  /inherits/2.0.3:
+    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
+    dev: false
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -2063,7 +2127,7 @@ packages:
       micromatch: 4.0.5
       walker: 1.0.8
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /jest-leak-detector/28.1.3:
@@ -2413,6 +2477,27 @@ packages:
       path-to-regexp: 6.2.1
     dev: false
 
+  /koa-send/5.0.1:
+    resolution: {integrity: sha512-tmcyQ/wXXuxpDxyNXv5yNNkdAMdFRqwtegBXUaowiQzUKqJehttS0x2j0eOZDQAyloAth5w6wwBImnFzkUz3pQ==}
+    engines: {node: '>= 8'}
+    dependencies:
+      debug: 4.3.4
+      http-errors: 1.8.1
+      resolve-path: 1.4.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /koa-static/5.0.0:
+    resolution: {integrity: sha512-UqyYyH5YEXaJrf9S8E23GoJFQZXkBVJ9zYYMPGz919MSX1KuvAcycIuS0ci150HCoPf4XQVhQ84Qf8xRPWxFaQ==}
+    engines: {node: '>= 7.6.0'}
+    dependencies:
+      debug: 3.2.7
+      koa-send: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /koa/2.13.4:
     resolution: {integrity: sha512-43zkIKubNbnrULWlHdN5h1g3SEKXOEzoAlRsHOTFpnlDu8JlAOZSMJBLULusuXRequboiwJcj5vtYXKB3k7+2g==}
     engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
@@ -2632,6 +2717,12 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       lru-cache: 4.1.5
+    dev: false
+
+  /nanoid/3.3.6:
+    resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
     dev: false
 
   /natural-compare/1.4.0:
@@ -2861,6 +2952,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /resolve-path/1.4.0:
+    resolution: {integrity: sha512-i1xevIst/Qa+nA9olDxLWnLk8YZbi8R/7JPbCMcgyWaFR6bKWaexgJgEB5oc2PKMjYdrHynyz0NY+if+H98t1w==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      http-errors: 1.6.3
+      path-is-absolute: 1.0.1
+    dev: false
+
   /resolve.exports/1.1.0:
     resolution: {integrity: sha512-J1l+Zxxp4XK3LUDZ9m60LRJF/mAe4z6a4xyabPHk7pvK5t35dACV32iIjJDFeWZFfZlO29w6SZ67knR0tHzJtQ==}
     engines: {node: '>=10'}
@@ -2934,14 +3033,14 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
-  /sequelize-typescript/2.1.3_b173eddd584832264c8204ce1024c120:
-    resolution: {integrity: sha512-0mejGAaLywuCoOOLSXCQs2sMBNudU/QtWZkGY5VT2dfTHToXZi5bOxCa3/CukNNk7wJwXnLuIdeHdlqjvVoj1g==}
+  /sequelize-typescript/2.1.5_wfz63xkyjazcmtecathbajgbea:
+    resolution: {integrity: sha512-x1CNODct8gJyfZPwEZBU5uVGNwgJI2Fda913ZxD5ZtCSRyTDPBTS/0uXciF+MlCpyqjpmoCAPtudQWzw579bzA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       '@types/node': '*'
       '@types/validator': '*'
       reflect-metadata: '*'
-      sequelize: '>=6.8.0'
+      sequelize: '>=6.20.1'
     dependencies:
       '@types/node': 18.7.13
       '@types/validator': 13.7.5
@@ -2999,6 +3098,10 @@ packages:
       wkx: 0.5.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /setprototypeof/1.1.0:
+    resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
     dev: false
 
   /setprototypeof/1.2.0:
@@ -3258,7 +3361,7 @@ packages:
     hasBin: true
     dev: true
 
-  /ts-jest/28.0.8_jest@28.1.3+typescript@4.7.4:
+  /ts-jest/28.0.8_bi2kohzqnxavgozw3csgny5hju:
     resolution: {integrity: sha512-5FaG0lXmRPzApix8oFG8RKjAz4ehtm8yMKOTy5HX3fY6W8kmvOrmcY0hKDElW52FJov+clhUbrKAqofnj4mXTg==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -3291,7 +3394,7 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ts-node-dev/2.0.0_efe961071de9fd3cd549dd7b2288d771:
+  /ts-node-dev/2.0.0_57uwcby55h6tzvkj3v5sfcgxoe:
     resolution: {integrity: sha512-ywMrhCfH6M75yftYvrvNarLEY+SUXtUvU8/0Z6llrHQVBx12GiFk5sStF8UdfE/yfzk9IAq7O5EEbTQsxlBI8w==}
     engines: {node: '>=0.8.0'}
     hasBin: true
@@ -3310,7 +3413,7 @@ packages:
       rimraf: 2.7.1
       source-map-support: 0.5.21
       tree-kill: 1.2.2
-      ts-node: 10.9.1_efe961071de9fd3cd549dd7b2288d771
+      ts-node: 10.9.1_57uwcby55h6tzvkj3v5sfcgxoe
       tsconfig: 7.0.0
       typescript: 4.7.4
     transitivePeerDependencies:
@@ -3319,7 +3422,7 @@ packages:
       - '@types/node'
     dev: true
 
-  /ts-node/10.9.1_efe961071de9fd3cd549dd7b2288d771:
+  /ts-node/10.9.1_57uwcby55h6tzvkj3v5sfcgxoe:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:

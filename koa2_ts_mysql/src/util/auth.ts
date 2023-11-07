@@ -1,5 +1,5 @@
 import jwt, { JsonWebTokenError, JwtPayload, TokenExpiredError } from "jsonwebtoken"
-import config from "../../z_config"
+import config from "../../config"
 
 // 加密后的签名
 // 重复率低, 所以用命名导出

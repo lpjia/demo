@@ -11,12 +11,12 @@ class BadController {
     const limit = Number(query.limit) || 15
 
     if (Number.isNaN(currPage) || Number.isNaN(limit))
-      return resp.err(ctx, { msg: '参数字段/值不符合要求, 请重传' })
+      return resp.error(ctx, { msg: '参数字段/值不符合要求, 请重传' })
 
     const { rows, count } = await BadService.getBadListByPage(currPage, limit)
     const result = rows.map(item => formatTime(item))
 
-    resp.succ(ctx, {
+    resp.success(ctx, {
       data: pagination(result, {
         currPage,
         limit,

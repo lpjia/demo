@@ -10,7 +10,7 @@ interface Opti {
 // 返回响应统一处理
 // 考虑到方法名都是简写, 且重复率高, 所以用默认导出
 export default {
-  succ(ctx: Context, option?: Opti) {
+  success(ctx: Context, option?: Opti) {
     const data = option?.data || null
       , msg = option?.msg || 'success'
       , code = option?.code || 200
@@ -22,7 +22,7 @@ export default {
     }
   },
 
-  err(ctx: Context, option?: Opti) {
+  error(ctx: Context, option?: Opti) {
     // const { data = null, msg = 'fail', code = 400 } = option
     const data = option?.data || null
       , msg = option?.msg || 'fail'

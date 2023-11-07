@@ -1,11 +1,11 @@
 import path from "path";
 import { Sequelize } from "sequelize-typescript";
-import config from "../../z_config";
+import config from "../../config";
 import { dbLogger } from "../logger";
 
-const { name, host, port, user, pawd } = config.db
+const { name, host, port, user, pswd } = config.db
 
-const sequelize = new Sequelize(name as string, user as string, pawd, {
+const sequelize = new Sequelize(name as string, user as string, pswd, {
   host,
   port: port as unknown as number,
   dialect: 'mysql',

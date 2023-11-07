@@ -16,7 +16,7 @@ class UserController {
     //   token
     // }
 
-    resp.succ(ctx,
+    resp.success(ctx,
       {
         data: { token }
       }

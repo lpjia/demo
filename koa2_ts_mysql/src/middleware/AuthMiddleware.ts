@@ -9,7 +9,7 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
     const { error, admin } = verify(token)
     // 验证签名不通过
     if (error) {
-      resp.err(ctx,
+      resp.error(ctx,
         {
           data: error,
         }
@@ -22,7 +22,7 @@ const AuthMiddleware = (ctx: Context, next: Next) => {
     }
   } else {
     // token 不存在
-    resp.err(ctx,
+    resp.error(ctx,
       {
         code: 401,
         data: 'authorization 不可为空'

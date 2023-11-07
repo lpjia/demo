@@ -7,7 +7,7 @@ export default {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     user: process.env.DB_USER,
-    pawd: process.env.DB_PAWD
+    pswd: process.env.DB_PSWD,
   },
   log: {
     // 范畴
@@ -25,13 +25,13 @@ export default {
     // 输出源
     appenders: {
       cheese: {
-        type: "file", filename: "z_log/cheese.log"
+        type: "file", filename: "log/cheese.log"
       },
       access: {
-        type: "file", filename: "z_log/access.log"
+        type: "file", filename: "log/access.log"
       },
       db: {
-        type: "file", filename: "z_log/db.log"
+        type: "file", filename: "log/db.log"
       },
     },
   },

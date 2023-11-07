@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试文件下载 不跨域</title>
+</head>
+
+<body>
+  <!-- // 2023-10-19 15:22 星期四
+  index.html放到/static/upload/目录下
+  访问路径是http://127.0.0.1:7010/upload/index.html -->
+
+
+  <!-- <a href="" download="yy.jpg" id="down">下载文件</a> -->
+  <a href="" download id="down">下载文件</a>
+
+
+  <button onclick="testDownload()">动态创建a标签实现下载功能</button>
+
+  <script>
+    const domA = document.querySelector('#down')
+
+    // 'http://127.0.0.1:7010/upload/90127bb6-2517-4b03-8198-62ac1699f2cb.png'
+    // let fileUrl = '/upload/a81087fd-032f-4b71-be76-8ae787563c44.jpeg';
+    // let fileUrl = '/upload/41126748-ed6d-416e-91f2-3dac97354fdb.jpeg';
+    let fileUrl = '/upload/0dd0a414-01b1-4f8f-a86f-643b6647c0a4.docx';
+    domA.href = fileUrl;
+
+  </script>
+
+
+  <script>
+    /* 从url提取文件名+后缀 */
+    function getFileName(url) {
+      let arr = url.split('/')
+      let fileName = arr[arr.length - 1]
+      return fileName
+    }
+
+    /* 动态创建a标签实现下载功能 */
+    function testDownload() {
+      const a = document.createElement('a') // 创建一个dom元素
+      a.style.display = 'none'
+      a.download = getFileName(fileUrl) // download 属性必须有, 否则 chrome 就跳转
+      a.href = fileUrl
+      document.body.appendChild(a) // 修复firefox中无法触发click
+      a.click()
+      document.body.removeChild(a)
+    }
+  </script>
+</body>
+
+</html>
