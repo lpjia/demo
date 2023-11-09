@@ -46,6 +46,8 @@ console.log('typeof Date:', typeof Date)
 console.log('typeof Number:', typeof Number)
 console.log('typeof String:', typeof String)
 console.log('typeof Boolean:', typeof Boolean)
+console.log('typeof (()=>{}):', typeof (() => { }))
+console.log('typeof (function fn() { }):', typeof (function fn() { }))
 console.log('\n')
 
 
