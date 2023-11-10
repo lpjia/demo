@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>下载文件 跨域</title>
+</head>
+
+<body>
+  <!-- 参考 -->
+  <!-- https://juejin.cn/post/7114099528738799623 -->
+  <!-- <a href="" download="yy.jpg" id="down">下载图片</a> -->
+
+
+
+  <!-- 利用a标签默认的下载行为, 给download属性
+  这种模式下服务器的文件以数据块的形式一点一点的流向浏览器, 但不会保存在浏览器的内存中(临时文件), 会直接写到文件(流向文件), 减轻大文件对内存的压力
+  download 只在同源 URL 或 blob:、data: 协议起作用, 跨域是不行的
+  因此需要先本地化文件，才能下载文件
+  download可以不赋值, 那么下载的文件就是原文件名(一般是加密过的), 也可以赋值指定文件名 -->
+  <!-- <a href="" download id="down">下载文件</a> -->
+  <a download id="down">下载文件</a>
+
+  <!-- 自己实现更友好的方案 -->
+  <button onclick="switchImg()">切换url</button>
+
+  <script>
+    // let fileUrl = 'http://127.0.0.1:7010/upload/41126748-ed6d-416e-91f2-3dac97354fdb.jpeg';
+    let fileUrl = 'http://127.0.0.1:7010/upload/0dd0a414-01b1-4f8f-a86f-643b6647c0a4.docx';
+    const domA = document.querySelector('#down')
+
+    // 参考
+    /* function getLocalUrl(url) {
+      // 因为发送请求是异步执行的，所以使用promise包裹
+      return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest()
+        // 要求响应格式的是blob
+        xhr.responseType = 'blob'
+        xhr.open('get', url, true)
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            // 请求成功，URL.createObjectURL将blob对象转换为本地url
+            resolve(URL.createObjectURL(xhr.response))
+          }
+        }
+        xhr.send()
+      })
+    }
+
+    const domA = document.querySelector('#down')
+    getLocalUrl(url).then(res => {
+      console.log('res:', res)
+      domA.href = res
+    }) */
+
+
+    // 自己实现更友好的方案
+    function switchImg() {
+      let url = 'http://127.0.0.1:7010/upload/a81087fd-032f-4b71-be76-8ae787563c44.jpeg';
+      downloadFile(url)
+    }
+
+    function getLocalUrl(url) {
+      // 因为发送请求是异步执行的，所以使用promise包裹
+      return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest()
+        // 要求响应格式的是blob
+        xhr.responseType = 'blob'
+        xhr.open('get', url, true)
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            // 请求成功，URL.createObjectURL将blob对象转换为本地url
+            resolve(URL.createObjectURL(xhr.response))
+          }
+        }
+        xhr.send()
+      })
+    }
+
+    function downloadFile(url) {
+      getLocalUrl(url).then(res => {
+        console.log('res:', res)
+        domA.href = res
+      })
+    }
+    downloadFile(fileUrl)
+  </script>
+
+</body>
+
+</html>
