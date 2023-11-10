@@ -33,6 +33,7 @@
       __proto__: userProxy
     }
     console.log('admin.name:', admin.name)
+    // 修正了this指向后, admin.name是执行get name()方法, 返回this._name的this指向admin, 等价于admin._name, 值为admin
     console.log('---- 分割线 ----\n\n\n')
 
 
@@ -100,15 +101,15 @@
     }
     // 常见语法, 是封装过后的调用基本方法
     console.log('person.c:', person.c)
-    // 调用基本方法, 可以改变this指向
+    // 调用基本方法, 可以改变this指向, 这就是receiver的作用
     const result = Reflect.get(person, 'c', { a: 10, b: 20 })
     console.log('result:', result)
     /* 主要配合代理使用 */
     person = new Proxy(person, {
       get(target, key, receiver) {
         console.log('read:', key)
-        // return target[key] // 读原始对象的c
-        return Reflect.get(...arguments) // 读代理对象的c, 用到了this.a this.b, this指向proxy的receiver, 又读代理对象的a和b
+        // return target[key] // 只打印了c, 但是c还用到了a和b, 按道理说也应该打印a和b的; 原因就是target[key]语法是读的原始对象, 没有执行get(target, key, receiver)这个方法, 不会打印a和b
+        return Reflect.get(...arguments) // 读代理对象, Reflect.get(target, key, receiver), 参数刚好对应Proxy, receiver把this指向了Proxy, 又读代理对象的a和b
       }
     })
     person.c
@@ -131,7 +132,20 @@
       // 返回目标对象自身的属性键组成的数组, 没限制
       Reflect.ownKeys(obj3)
     )
+    console.log('---- 分割线 ----\n\n\n')
 
+
+
+    // 代理对象转原始对象
+    let obj4 = {
+      a: 1,
+      b: 2,
+      c: 3,
+      d: 4
+    }
+    obj4 = new Proxy(obj4, {})
+    console.log('代理对象 obj4:', obj4)
+    console.log('原始对象 { ...obj4 }:', { ...obj4 })
   </script>
 </body>
 
