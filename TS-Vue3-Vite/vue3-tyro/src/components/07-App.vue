@@ -8,6 +8,7 @@ const num = ref(20)
 <template>
   <h3>父子组件传值 v-model</h3>
   {{ num }}
+  <hr>
   <child-app v-model:num="num"></child-app>
 </template>
 

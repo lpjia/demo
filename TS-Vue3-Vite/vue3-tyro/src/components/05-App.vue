@@ -12,6 +12,7 @@ const changeNum = (val: string) => {
 <template>
   <h3>父子组件传值 props emits 自定义属性和自定义方法</h3>
   {{ num }}
+  <hr>
   <child-app :num="num" @zdy="changeNum"></child-app>
 </template>
 
