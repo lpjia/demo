@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 循环 遍历 */
 /* @for $i from 开始值 to 结束值
 不包含结束值 */
 .container > .item { color: white; font-size: 30px; }
@@ -31,7 +32,7 @@
 
 .m-10 { margin: 2.5 rem; }
 
-/* 定义数组
+/* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */
 /* @each 遍历数组
 $c是项, $bgColor是数组 */
@@ -49,7 +50,7 @@ $c是项, $bgColor是数组 */
 
 .container > div:nth-child(7) { background-color: #cd6562; }
 
-/* scss文件声明css变量 */
+/* 在scss文件声明css变量 */
 :root { --likeColor: deepskyblue; --fontSize: 50px; --red-color: red; }
 
 /* scss支持css原生语法, 比如css变量 */
@@ -64,3 +65,7 @@ $c是项, $bgColor是数组 */
 
 /* 可以写一些消息, 转之后会被正确识别
 这是自定义的信息 x.x.x*/
+/* 简化媒体查询 */
+.nav { display: flex; justify-content: start; align-items: start; gap: 10px; }
+
+.header { width: 100%; display: flex; justify-content: center; align-items: center; }

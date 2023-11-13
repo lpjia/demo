@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* 扩展性相当高 */
+.header { width: 100%; }
+
+@media (min-width: 320px) and (max-width: 480px) { .header { height: 50px; } }
+
+@media (min-width: 481px) and (max-width: 768px) { .header { height: 60px; } }
+
+@media (min-width: 769px) and (max-width: 1024px) { .header { height: 80px; } }
+
+@media (min-width: 1025px) and (max-width: 1200px) { .header { height: 100px; } }
+
+@media (min-width: 1201px) { .header { height: 140px; } }

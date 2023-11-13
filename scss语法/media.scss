@@ -1,0 +1,75 @@
+// 定义一个scss变量, map对象
+// 注意都是(), 不是{}, 是个map结构
+$breakPoints: (
+  // 值为一个数组
+  'phone': (320px, 480px),
+  'pad': (481px, 768px),
+  'notebook': (769px, 1024px),
+  'desktop': (1025px, 1200px),
+  'tv': (1201px),
+);
+
+@mixin respondTo($breakName) {
+  // @media (min-width:320px) and (max-width: 480px) {
+  //   // height: 50px;
+  //   @content;
+  // }
+
+  //  map-get从map对象里取对应的值, 一参是map对象, 二参是key
+  $bp: map-get($breakPoints, $breakName);
+
+  // 获取数据类型
+  @if type-of($bp)=='list' {
+    // nth()返回列表中的特定项
+    $min: nth($bp, 1);
+    $max: nth($bp, 2);
+
+    @media (min-width:$min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width:$bp) {
+      @content;
+    }
+  }
+
+
+  // @if $breakName =='phone' {
+  //   @media (min-width:320px) and (max-width: 480px) {
+  //     @content;
+  //   }
+  // }
+
+  // @else if $breakName =='pad' {
+  //   @media (min-width:481px) and (max-width: 768px) {
+  //     @content;
+  //   }
+  // }
+}
+
+/* 扩展性相当高 */
+.header {
+  width: 100%;
+
+  @include respondTo('phone') {
+    height: 50px;
+  }
+
+  @include respondTo('pad') {
+    height: 60px;
+  }
+
+  @include respondTo('notebook') {
+    height: 80px;
+  }
+
+  @include respondTo('desktop') {
+    height: 100px;
+  }
+
+  @include respondTo('tv') {
+    height: 140px;
+  }
+}

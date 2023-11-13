@@ -1,3 +1,5 @@
+/* 循环 遍历 */
+
 /* @for $i from 开始值 to 结束值
 不包含结束值 */
 @for $i from 1 to 5 {
@@ -10,13 +12,15 @@
 /* @for $i from 开始值 through 结束值
 包含结束值 */
 @for $i from 1 through 10 {
+
+  // 变量和字符拼接时, 需要用#{}
   .m-#{$i} {
     margin: $i / 4 rem;
   }
 }
 
 
-/* 定义数组
+/* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */
 $bgColor: #337ab7, #5cb85c, #5bc0de, #f0ad4e, deepskyblue, #d9534f, #cd6562;
 
@@ -37,15 +41,15 @@ $c是项, $bgColor是数组 */
 
 $redC: red;
 
-/* scss文件声明css变量 */
+/* 在scss文件声明css变量 */
 :root {
   --likeColor: deepskyblue;
   --fontSize: 50px;
-  --red-color: #{$redC}; // 声明css变量, 使用scss变量值
+  --red-color: $redC; // 声明css变量时怎么使用scss变量值?
 }
 
 $fontWeight: bold;
-$blue-color: var(--likeColor); // 声明scss变量, 使用css变量值
+$blue-color: var(--likeColor); // 声明scss变量怎么使用css变量值?
 
 /* scss支持css原生语法, 比如css变量 */
 .likeColor {
@@ -53,10 +57,9 @@ $blue-color: var(--likeColor); // 声明scss变量, 使用css变量值
 }
 
 /* css变量, --声明后使用var() */
-// scss变量, $声明后使用#{}
+// scss变量, $声明后如有必要则使用#{}, 一般可直接用
 .try {
   font-weight: #{$fontWeight};
-  // font-weight: #{$fontWeight};
   color: var(--likeColor);
   font-size: var(--fontSize);
 }
@@ -66,7 +69,7 @@ $blue-color: var(--likeColor); // 声明scss变量, 使用css变量值
 }
 
 .try3 {
-  color: #{$blue-color};
+  color: $blue-color;
 }
 
 // 2斜杠的单行注释, 转成css后不会被保留, /*/的多行注释会被保留
@@ -74,3 +77,35 @@ $msg: 这是自定义的信息;
 $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
 /* 可以写一些消息, 转之后会被正确识别
 #{$msg} #{$ver}*/
+
+
+
+
+
+/* 简化媒体查询 */
+// @mixin flex {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+@mixin flex($layout: center) {
+  // 类似函数内的变量, 作用域不同, 变量赋值 默认值
+  display: flex;
+  justify-content: $layout;
+  align-items: $layout;
+  @content; // @content可以扩展@include大括号内的样式{}
+}
+
+.nav {
+  @include flex(start) {
+    // 函数调用
+    gap: 10px;
+  }
+}
+
+.header {
+  width: 100%;
+  @include flex;
+}
+
+// 更多例子看media.scss
