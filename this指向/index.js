@@ -96,3 +96,15 @@ bind 绑定后一般需要再加()调用一次才会运行foo函数
 // obj.sayHello()()
 
 // obj.sayHello.call(obj2)()
+
+
+
+
+
+function test3_chuan_can(p1, p2, p3) {
+  // const str = arguments.join('-') // arguments是类数组, 不能直接调用数组的方法
+  /* Array.prototype是原型对象, 构造函数的原型对象的方法才是实例的方法 */
+  const str = Array.prototype.join.call(arguments, '-')
+  console.log(str)
+}
+test3_chuan_can('one', 'two', 'three')
