@@ -1,0 +1,22 @@
+// 2023-10-31 17:39 星期二
+AJAX
+用JS语言异步的向服务器发送请求并获取到响应结果, 这就是AJAX技术
+
+
+其中一种实现方式
+XHR
+全称是 XMLHttpRequest
+IE最先实现的, XMLHttpRequest是一个构造函数
+
+
+另一种实现方式
+Fetch API
+
+
+两种浏览器都原生支持
+
+
+第三方库
+Axios
+浏览器环境是用XHR实现的
+node环境是用http实现的
