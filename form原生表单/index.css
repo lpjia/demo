@@ -1,0 +1,51 @@
+.divClass {
+  float: left;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 2px solid red;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.box {
+  height: 30px;
+  width: 200px;
+  border: solid 1px #9999FF;
+  outline: none;
+  border-radius: 10px;
+  padding-left: 5px;
+  color: #CCCCCC;
+}
+
+.btn {
+  height: 30px;
+  width: 200px;
+  background: #CCCCFF;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #FF0000;
+}
+
+label {
+  font-size: 16px;
+  color: #CCCCCC
+}
+
+a {
+  font-size: 10px;
+  text-decoration: none;
+}
