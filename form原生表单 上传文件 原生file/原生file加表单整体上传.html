@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原生file加表单整体上传</title>
+</head>
+
+<body>
+  <form action="http://127.0.0.1:7010/api/upload/single" method="post" target="iframe" enctype="multipart/form-data">
+    <!-- 通过form直接提交, 必须要有name值, 对应的是提交到后端的数据key
+      不会有跨域问题 -->
+    <input type="file" multiple name="inputFile" onchange="handleChange(event)" />
+    <button type="submit">提交</button>
+    <!-- 暂时前端无法判断是否选了文件上传, 以后再解决 -->
+  </form>
+  <iframe id="frame" name="iframe" style="display:none;"></iframe>
+
+  <script>
+    // const domInputFile = document.querySelector('input[type="file"]')
+    function handleChange(e) {
+      // e.target.files
+      const { files } = e.target
+      for (const file of files) {
+        console.log(
+          file.name,
+          file.size,
+          file.type,
+        )
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手动FormData非action上传文件</title>
+</head>
+
+<body>
+  <!-- 文件上传
+    交互上点击选择文件按钮, 选取文件, 选好后点击上传按钮, 调上传接口, 上传成功返回文件的存放路径 -->
+
+
+  <!-- 有form元素包裹一层 -->
+  <!-- <form>
+    <input type="file" name="inputFile" id="file">
+    <button type="submit" onclick="upload(event)">上传文件</button>
+  </form> -->
+
+
+  <!-- 单独 input type="file" -->
+
+  <!-- 单文件 -->
+  <!-- <input type="file" name="inputFile" id="file"> -->
+  <!-- 多文件 -->
+  <input type="file" multiple name="inputFile" id="file">
+  <button onclick="upload3(event)">上传文件</button>
+
+
+  <script>
+    async function upload(e) {
+      e.preventDefault()
+      const doms = {
+        form: document.querySelector('form'),
+        file: document.querySelector('#file')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return false;
+      }
+      // console.log(
+      //   doms.file.files // 返回一个类数组 FileList
+      // )
+      const formData = new FormData(doms.form);
+      // console.log(
+      //   doms.form,
+      //   formData,
+      //   formData.get('inputFile'),
+      // )
+      const url = 'http://127.0.0.1:7010/api/upload/single'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData // 自动修改请求头, formdata的默认请求头的格式是 multipart/form-data
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+
+    /* 单文件 */
+    async function upload2(e) {
+      e.preventDefault()
+      const doms = {
+        file: document.querySelector('#file')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return false;
+      }
+      const formData = new FormData();
+      formData.append("inputFile", doms.file.files[0]);
+      const url = 'http://127.0.0.1:7010/api/upload/single'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+
+    /* 多文件 */
+    async function upload3(e) {
+      e.preventDefault()
+      const doms = {
+        file: document.querySelector('#file')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return false;
+      }
+      const formData = new FormData();
+      // 多文件 共用一个key
+      for (const file of doms.file.files) {
+        formData.append("inputFile", file);
+      }
+      const url = 'http://127.0.0.1:7010/api/upload/multiple'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+  </script>
+
+</body>
+
+</html>

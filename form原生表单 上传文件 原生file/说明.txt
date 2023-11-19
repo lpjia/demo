@@ -1,0 +1,19 @@
+// 2023-10-28 21:53 星期六
+
+上传文件 原生file.html
+这个html用来调试上传, 并没有实现上传功能, 只是调试了上传的交互以及会触发什么事件
+
+
+原生file加表单整体上传.html
+通过form action属性直接提交上传文件
+完成了上传功能
+没有用到js代码, 纯html实现, 不存在跨域问题
+虽然没有跨域问题, 但其实是"跨域了", 前端页面是http://127.0.0.1:8848, 后端服务是http://localhost:7010
+这个方案关键点是action属性 target="iframe" enctype="multipart/form-data" <iframe id="frame" name="iframe" style="display:none;"></iframe>
+如果没有这些关键, 调试发现有默认跳转页面行为
+
+
+koa2_ts_mysql项目还有一个html
+index.html放到/static/upload目录下
+访问路径是http://127.0.0.1:7010/upload/index.html
+调试不跨域的情况下, 通过a标签和download属性实现下载功能

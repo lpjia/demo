@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上传文件 原生file</title>
+</head>
+
+<body>
+  <!-- multiple 多选
+  oninput和onchange在选择文件或重新选择时都会触发 -->
+  <input type="file" multiple oninput="handleInput()" onchange="handleChange(event)" />
+
+  <script>
+    const domInputFile = document.querySelector('input[type="file"]')
+
+    function handleInput() {
+      console.log('调用handleInput')
+    }
+    function handleChange(e) {
+      console.log('调用handleChange')
+      console.log(
+        // domInputFile.value, // 返回已选择文件的路径, 但不是文件的真实路径, 一般不用
+        domInputFile.files,
+        e.target
+      )
+
+      for (const file of domInputFile.files) {
+        console.log(
+          file.name, // 文件名, 包含后缀
+          file.size, // 文件大小, 字节数, 1KB = 1024Byte(字节)
+          file.type, // 文件的 MIME 类型
+        )
+      }
+    }
+  </script>
+</body>
+
+</html>
