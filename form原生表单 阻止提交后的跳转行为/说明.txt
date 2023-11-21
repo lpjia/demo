@@ -1,0 +1,33 @@
+// 2023-10-31 13:54 星期二
+index.html
+完美解决方案
+
+
+index2.html
+e.preventDefault() // 阻止表单提交和页面跳转 默认行为
+
+
+index3.html
+onclick事件
+
+
+----以上全是用form元素、action属性和method属性, 没有显式使用ajax----
+
+
+index4.html
+new FormData(doms.form)创建一个实例
+const formData = new FormData(doms.form)
+
+GET请求
+new URLSearchParams(formData)创建一个实例
+const formDataQuery = new URLSearchParams(formData)
+formDataQuery就可以直接传给后端了
+如果前端想拿到obj结构的数据
+const frontendData = Qs.parse(formDataQuery.toString())
+
+POST等复杂请求
+formData就可以直接传给后端了
+
+两种请求都不需要手动配置请求头的Content-Type
+
+axios和qs在浏览器环境, 挂载到window, 分别是window.axios和window.Qs

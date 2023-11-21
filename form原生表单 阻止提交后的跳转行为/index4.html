@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阻止原生form提交后的跳转行为</title>
+</head>
+
+<body>
+  <!-- 没有action属性和method属性 -->
+  <form>
+    <input type="text" name="cname1" value="v11_index4">
+    <input type="text" name="cname2" value="v22">
+    <!-- event写在哪个标签, 那e.target就是哪个dom -->
+    <button type="submit" onclick="handleSubmit(event)">提交</button>
+  </form>
+
+  <script src="../lib/axios@1.5.1.min.js"></script>
+  <script src="../lib/qs@6.11.2.min.js"></script>
+  <script>
+
+    const service = axios.create({
+      baseURL: 'http://127.0.0.1:7010/api', // koa
+      timeout: 3000 // 1000 * 3
+    })
+
+    // 请求拦截器
+    service.interceptors.request.use(
+      config => {
+        // config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        return config
+      },
+      error => {
+        // 处理请求错误
+        return Promise.reject(error)
+      }
+    )
+
+    // 响应拦截器
+    service.interceptors.response.use(
+      response => {
+        return response.data
+      },
+      error => {
+        return Promise.reject(error)
+      }
+    )
+
+    const doms = {
+      form: document.querySelector('form')
+    }
+
+    /* get请求 */
+    function getStudent(query) {
+      return service({
+        url: '/student',
+        method: 'GET',
+        params: query
+      })
+    }
+
+    /* post等复杂请求 */
+    function updStudent(data) {
+      return service({
+        url: '/student',
+        // method: 'POST',
+        method: 'PUT',
+        // method: 'DELETE',
+        data,
+        // Headers: { 'Content-Type': 'application/json;charset=utf-8' }
+      })
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault()
+      const formData = new FormData(doms.form)
+      /* post等复杂请求 */
+      ti_jiao(formData)
+
+      /* get请求 */
+      // const formDataQuery = new URLSearchParams(formData)
+      // ti_jiao(formDataQuery) // formDataQuery就可以直接传给后端了
+      // const queryString = formDataQuery.toString() // 把对象实例转成了查询字符串
+      // // 拿到前端能直接处理的obj数据, 一般也就是前端传给后端的数据
+      // const frontendData = Qs.parse(formDataQuery.toString())
+      // console.log(
+      //   formDataQuery, // 这说白了还是对象, 不是常见的查询字符串 键值对(k=v&k=v)
+      //   formDataQuery.get('cname2'),
+      //   Qs.parse(queryString), // 把数据转成普通对象
+      //   frontendData,
+      // )
+      // for (const item of formDataQuery) { // formDataQuery和formData遍历是一样的
+      //   console.log(item)
+      // }
+      // console.log('---- 分割线 ----\n\n\n')
+
+      console.log(
+        e.target,
+        doms.form,
+        formData,
+        formData.get('cname1')
+      )
+      // 遍历formData, 等价于遍历formData.entries()
+      for (const [k, v] of formData) {
+        console.log(
+          k,
+          v
+        )
+      }
+    }
+    function ti_jiao(data) {
+      // getStudent(data).then(res => {
+      updStudent(data).then(res => {
+        console.log('res:', res)
+      }, err => {
+        console.log('err:', err)
+      })
+    }
+
+
+  </script>
+</body>
+
+</html>

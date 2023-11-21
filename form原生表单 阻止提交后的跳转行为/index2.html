@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阻止原生form提交后的跳转行为</title>
+</head>
+
+<body>
+  <!-- 表单提交 阻止提交 按钮触发提交 -->
+
+
+  <form action="http://127.0.0.1:7010/api/student" method="post">
+    <input type="text" name="cname1" value="v1_index2">
+    <input type="text" name="cname2" value="v22">
+    <button type="submit" onclick="handleSubmit(event)">提交</button>
+  </form>
+
+  <script>
+    /* 方法名不能是submit, 否则无效 */
+    function handleSubmit(e) {
+      console.log('submit')
+      e.preventDefault()
+      /* 阻止了表单提交等默认行为, 但是也没提交数据到后端
+      得用ajax来完成后续的提交 */
+    }
+
+    /* 其实一般用在表单里有button标签时
+    当button标签触发点击事件时,
+    会被当做默认提交来处理,
+    用了e.preventDefault()就不会被当作提交来处理 */
+
+    /* 同理的解决方案有<button type="button">非提交按钮</button>
+    也不会被当作提交来处理 */
+  </script>
+</body>
+
+</html>

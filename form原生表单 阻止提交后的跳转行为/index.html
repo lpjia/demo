@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>阻止原生form提交后的跳转行为</title>
+</head>
+
+<body>
+  <!-- 表单提交 阻止提交 按钮触发提交 -->
+
+
+  <!-- 解决方案: 可以提交数据到后端, 但不会跳转
+  写个隐藏的iframe，form加个target属性，值为iframe的name的值 -->
+  <form action="http://localhost:7010/api/student" method="post" target="iframe">
+    <input type="text" name="cname1" value="v11_index1">
+    <input type="text" name="cname2" value="v22">
+    <!-- 普通按钮也会触发提交行为, 解决得给type="button" -->
+    <button type="button">非提交按钮</button>
+    <input type="button" value="非提交按钮2">
+    <!-- 提交按钮就显式给type="submit" -->
+    <button type="submit">提交</button>
+  </form>
+  <iframe id="frame" name="iframe" style="display:none;"></iframe>
+
+
+</body>
+
+</html>
