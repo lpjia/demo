@@ -1,0 +1,17 @@
+/* 用户自定义模块 */
+// @use 'scssModule'; // 默认加命名空间, 名字和文件名一样
+@use 'scssModule' as zdy; // 模块重命名
+/* 内置模块 */
+@use 'sass:math';
+
+.cls1 {
+  color: white;
+  background-color: deepskyblue;
+  // border: 1px solid scssModule.$boderColor;
+  border: 1px solid zdy.$boderColor;
+}
+
+.cls2 {
+  margin: 20px * math.sin(30deg);
+  // color: zdy.$_bgColor; // 私有成员, 模块外无法用
+}
