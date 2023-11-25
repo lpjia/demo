@@ -29,7 +29,7 @@ $c是项, $bgColor是数组 */
 @each $c in $bgColor {
   $i: index($bgColor , $c ); // 获取 $c 在数组中的索引，并赋值给 $i, 赋值用冒号
 
-  // SCSS 循环是从 1 开始
+  // SCSS 循环索引是从 1 开始
   // #{} 插值语句
   .container>div:nth-child(#{$i}) {
     background-color: $c;
@@ -81,6 +81,9 @@ $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
 
 
 
+/* @mixin 混入, 类似定义函数, 可带/可不带参
+@include 类似调用函数
+@content 类似调用时多传入的自定义实参, 也要一并用到 */
 
 /* 简化媒体查询 */
 // @mixin flex {
@@ -97,8 +100,9 @@ $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
 }
 
 .nav {
+
+  // 函数调用
   @include flex(start) {
-    // 函数调用
     gap: 10px;
   }
 }
@@ -109,3 +113,43 @@ $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
 }
 
 // 更多例子看media.scss
+
+
+
+
+
+
+/* 用min-width时，小的放上面大的在下面， 
+同理如果是用max-width那么就是大的在上面，小的在下面 */
+
+/* 拼接字符串, scss分带不带引号
+直接+, 注意scss中所有运算符号前后最好手动加空格
+引号字符串在前, 拼接后是带引号的字符串
+谁在+前, 拼接后就是该形式的字符串
+
+如content: "Foo " + Bar;
+font-family: sans- + "serif";
+
+编译后的css样式
+content: "Foo Bar";
+font-family: sans-serif; */
+
+/* 只用scss(不同html和js)实现不同视口下的文字替换效果
+注意看媒体查询那的不同视口的宽度px是怎么处理的 */
+$font: Lorem, ipsum, dolor, sit, amet;
+
+h2::after {
+  text-transform: uppercase;
+  // color: deepskyblue;
+  // content:'a';
+
+  @each $f in $font {
+    $i: index($font, $f);
+
+    // px只用书写一次
+    @media screen and (max-width: (1700 - $i * 200px)) {
+      content: '' + $f;
+      color: nth($bgColor, $i); // nth直接获取数组的某一项, list.nth(数组, 索引)
+    }
+  }
+}

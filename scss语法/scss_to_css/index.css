@@ -65,7 +65,37 @@ $c是项, $bgColor是数组 */
 
 /* 可以写一些消息, 转之后会被正确识别
 这是自定义的信息 x.x.x*/
+/* @mixin 混入, 类似定义函数, 可带/可不带参
+@include 类似调用函数
+@content 类似调用时多传入的自定义实参, 也要一并用到 */
 /* 简化媒体查询 */
 .nav { display: flex; justify-content: start; align-items: start; gap: 10px; }
 
 .header { width: 100%; display: flex; justify-content: center; align-items: center; }
+
+/* 用min-width时，小的放上面大的在下面， 
+同理如果是用max-width那么就是大的在上面，小的在下面 */
+/* 拼接字符串, scss分带不带引号
+直接+, 注意scss中所有运算符号前后最好手动加空格
+引号字符串在前, 拼接后是带引号的字符串
+谁在+前, 拼接后就是该形式的字符串
+
+如content: "Foo " + Bar;
+font-family: sans- + "serif";
+
+编译后的css样式
+content: "Foo Bar";
+font-family: sans-serif; */
+/* 只用scss(不同html和js)实现不同视口下的文字替换效果
+注意看媒体查询那的不同视口的宽度px是怎么处理的 */
+h2::after { text-transform: uppercase; }
+
+@media screen and (max-width: 1500px) { h2::after { content: "Lorem"; color: #337ab7; } }
+
+@media screen and (max-width: 1300px) { h2::after { content: "ipsum"; color: #5cb85c; } }
+
+@media screen and (max-width: 1100px) { h2::after { content: "dolor"; color: #5bc0de; } }
+
+@media screen and (max-width: 900px) { h2::after { content: "sit"; color: #f0ad4e; } }
+
+@media screen and (max-width: 700px) { h2::after { content: "amet"; color: deepskyblue; } }

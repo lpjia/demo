@@ -1,0 +1,89 @@
+/* 切换主题色 */
+$themes: (
+  light: (bgColor: #fff,
+    textColor: #000,
+  ),
+  dark: (bgColor: #000,
+    textColor: #fff,
+  ),
+  // deepskyblue: (...)
+  // 扩展主题色很方便
+);
+// 定义全局变量
+$currTheme: '';
+
+@mixin useTheme {
+
+  // 遍历map结构
+  @each $k,
+  $v in $themes {
+    // 类似js, 分作用域, 局部作用域的变量想覆盖全局作用域的变量, 加!global
+    $currTheme: $k  !global;
+
+    html[data-theme='#{$k}'] & {
+      @content;
+    }
+  }
+
+  // // 遍历map结构
+  // @each $k,
+  // $v in $themes {
+  //   html[data-theme='#{$k}'] & {
+  //     background-color: #fff; // 样式在这里指定缺乏灵活性
+  //     color: #000;
+  //   }
+  // }
+
+  // // &相当于占位符, 得到当前选择器
+  // html[data-theme="light"] & { // 样式扩展困难, 没有用到定义的map结构
+  //   background-color: #fff;
+  //   color: #000;
+  // }
+  // html[data-theme="dark"] & {
+  //   background-color: #000;
+  //   color: #fff;
+  // }
+
+  // 最初的css
+  // html[data-theme="light"] .themeItem { // 类选择器扩展困难
+  //   background-color: #fff;
+  //   color: #000;
+  // }
+  // html[data-theme="dark"] .themeItem {
+  //   background-color: #000;
+  //   color: #fff;
+  // }
+}
+
+@function getVar($paramName) {
+  // 实参肯定是传 对应的样式属性名
+  $themesMap: map-get($themes, $currTheme);
+  // 然后再拿对应的属性值
+  @return map-get($themesMap, $paramName);
+}
+
+.themeItem {
+  line-height: 2;
+  font-size: 20px;
+
+  @include useTheme {
+    background-color: getVar('bgColor');
+    color: getVar('textColor');
+    // 扩展属性很方便
+  }
+}
+
+// .themeItem {
+//   line-height: 2;
+//   font-size: 20px;
+//   @include useTheme {
+//     background-color: #000;
+//     color: #fff;
+//   }
+// }
+
+// .themeItem {
+//   line-height: 2;
+//   font-size: 20px;
+//   @include useTheme;
+// }

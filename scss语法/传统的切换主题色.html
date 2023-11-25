@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- 传统的切换主题色做法 -->
+<html lang="zh" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>根据系统切换主题色</title>
+  <style>
+    /* 传统的切换主题色做法 */
+    .themeItem {
+      line-height: 2;
+      font-size: 20px;
+    }
+
+    html[data-theme="light"] .themeItem {
+      background-color: #fff;
+      color: #000;
+    }
+
+    html[data-theme="dark"] .themeItem {
+      background-color: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 传统的切换主题色做法 -->
+  <ul>
+    <li class="themeItem">Lorem ipsum dolor sit amet.</li>
+    <li class="themeItem">Itaque doloremque omnis dolor quod.</li>
+    <li class="themeItem">Corporis suscipit eligendi ipsum asperiores.</li>
+  </ul>
+  <!-- <button id="switchTheme">切换主题色-当前主题色是light</button> -->
+  <select id="theme">
+    <option value="auto" selected>跟随系统</option>
+    <option value="light">亮色</option>
+    <option value="dark">暗色</option>
+  </select>
+
+  <script>
+    // switchTheme.onclick = function (e) {
+    //   const dom = document.querySelector('html')
+    //   const theme = dom.dataset.theme
+    //   let newTheme = ''
+    //   const txt = '切换主题色-当前主题色是'
+    //   if (theme === 'light') {
+    //     newTheme = 'dark'
+    //   }
+    //   else if (theme === 'dark') {
+    //     newTheme = 'light'
+    //   }
+    //   dom.dataset.theme = newTheme
+    //   e.target.textContent = txt + newTheme
+    // }
+  </script>
+
+
+  <script>
+    /* 根据系统切换主题色
+    https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme
+    https://developer.mozilla.org/zh-CN/docs/Web/API/MediaQueryList */
+    const prefers = matchMedia('(prefers-color-scheme: dark)')
+    // console.log(prefers) // prefers.matches返回true/false, 表示与媒体查询列表匹配是否一致
+    function followOS() {
+      document.documentElement.dataset.theme = prefers.matches ? 'dark' : 'light'
+    }
+    function isFollowOS(e) {
+      if (e.target.value === 'auto') {
+        prefers.addEventListener('change', followOS)
+        followOS()
+      } else {
+        prefers.removeEventListener('change', followOS)
+        document.documentElement.dataset.theme = e.target.value
+      }
+    }
+    theme.addEventListener('change', isFollowOS)
+    // theme.onchange = isFollowOS
+    theme.dispatchEvent(new Event('change'))
+  </script>
+</body>
+
+</html>
