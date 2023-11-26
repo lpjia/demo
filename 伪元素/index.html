@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>伪元素 2个冒号</title>
+  <style>
+    p.ying_wen::first-letter,
+    p.zhong_wen::first-letter {
+      color: red;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    p.duohang_en::first-line,
+    p.duohang_zh::first-line {
+      color: deepskyblue;
+    }
+
+    div.duohang_en::selection {
+      color: deeppink;
+      background-color: limegreen;
+      /* 不是所有属性都有效, 通常颜色可以 */
+    }
+
+    div.bfo::before {
+      content: 'before伪元素';
+      color: deeppink;
+    }
+
+    /* before和after这两个伪元素都是行盒 */
+    div.aft::after {
+      content: 'after伪元素';
+      color: deepskyblue;
+    }
+
+    .chui_xu span::before {
+      content: "《";
+      color: red;
+    }
+
+    .chui_xu span::after {
+      content: "》";
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="ying_wen">Lorem ipsum dolor sit amet consectetur.</p>
+  <p class="zhong_wen">王迷己己主保了，他。</p>
+  <p class="duohang_en">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis beatae quod veritatis dolorum
+    quae consectetur debitis harum voluptas, nulla alias aut mollitia. Commodi sit quia possimus eaque voluptatem.
+    Minima ex quidem, ad labore quas voluptatum, quaerat laudantium laboriosam, fugiat exercitationem molestiae dolores
+    sunt optio
+    cupiditate, nobis placeat optio quod, labore et eum totam dignissimos tempore a nesciunt laboriosam rerum repellat.
+    Quasi ut ducimus similique iste nisi provident sint esse laboriosam eos nobis exercitationem, enim quia dicta et
+    doloribus, sequi eaque aspernatur dignissimos maxime ab magni? Delectus quos doloribus aliquam nulla saepe, magnam
+    nemo labore a veritatis dolorem reprehenderit exercitationem neque totam animi, minus obcaecati voluptates quisquam
+    facilis quas tempore! Debitis harum nulla similique.</p>
+  <p class="duohang_zh">
+    他且游妙登何这选知洪五训大才土之变死，人的会，色考得啦高招仍无，头皇才人畴可承己即有此间帅，身为关可路骂起的怎，保圣谭方秦远她找、呼助预招俭范感一处，吞破派褒打出此么上一一后之德兼愿，呼刑的磊若让见的鲜家，为使太反回极承斗，普娟人冈情自可君洋，解洪而一太官郭不君，掸皇丈，谓韩秦倒风他烦十才不，自快动轻骂不丑家者才尘上，文说我作光，是者回命找生山保诗是出了重不秦，叹于下遗找单是逃帝有一，他国活他十办从者慷单逝情哥览仃，法郭爱她国下有，子畴会非竟大重是甲我有宫历把太回便巴守，尘设重重导商快成太才文胆，之了才应衣说丑远不人，卞是谭虑洞先而后属光畴讨，找责了重人褒有皇想胸出，帅才导娘榜完丈命何而区土下评中不，教航秦才力定慧在向时非太挟得乐，价越当惶白不子才与尹十血应张与会帮于，快慨于他是从着时量人，白大作大三胜谓法开的负愿又好守了虑不下，罪也不快保下也承词之生远世，将人游奔是身回在承好蒲气极李兼们说论倒，疾因全而冷养烦穿说洪不姑你，丈没特的承色救，关得活他来身太二朗贼略死土土国答，也的吴高战帝他国也作才天，那才的见报如传仃尺是至在辜夹太郭志令，起妙才，的变相骂家得韩弟皮使与更的恨在先火光，尝。
+  </p>
+  <div class="duohang_en">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci tempora eligendi architecto
+    laudantium commodi, perferendis nobis facilis vel. Consequatur ratione accusamus tempora at facere obcaecati,
+    eveniet odit rerum distinctio atque quisquam sunt impedit velit id non neque culpa eum ullam necessitatibus
+    aspernatur? Esse, omnis minus beatae fugiat a tempora eveniet, voluptates quae velit expedita accusantium corporis.
+    cupiditate
+    quae. Ullam cumque earum labore laborum, tempora, animi libero rem et nisi qui deleniti vero vel veniam nesciunt
+    similique sit minima pariatur. Soluta doloremque, inventore, architecto voluptates veniam fuga laudantium, repellat
+    suscipit recusandae excepturi aperiam facere sint fugit deleniti libero quas alias porro tenetur! Ab quidem dolor
+    doloremque ratione earum temporibus aut facere qui obcaecati quasi repellendus voluptas aperiam quaerat, dolorem
+    iusto quis doloribus. Quos soluta nemo esse reiciendis illum praesentium tenetur.</div>
+  <hr>
+  <div class="bfo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, obcaecati!</div>
+  <div class="aft">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, dicta!</div>
+  <p class="chui_xu">袁小头的<span>CSS和JS</span>有点东西哈</p>
+</body>
+
+</html>
