@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>包含块</title>
+  <style>
+    .parent {
+      background-color: lightblue;
+      width: 300px;
+      height: 200px;
+      border: 2px solid;
+      padding: 30px;
+    }
+
+    .child {
+      border: 2px solid;
+      height: 100px;
+      background-color: red;
+
+      /* 宽度不给, 则为auto, width把剩余空间吸收掉 */
+    }
+
+    .child2 {
+      border: 2px solid;
+      height: 100px;
+      background-color: red;
+
+      /* 定宽了, 还有剩余空间, 被margin-right占满 */
+      width: 100px;
+    }
+
+    .child3 {
+      border: 2px solid;
+      height: 100px;
+      background-color: red;
+
+      /* 左右margin都吸收剩余空间, 两边吸收空间相等, 所以效果上是水平居中的
+      条件是 常规流 块盒 定宽 左右margin是auto */
+      width: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      /* 还有一种书写 */
+      /* margin: 0 auto; */
+    }
+
+    .parent2 {
+      background-color: lightblue;
+      width: 600px;
+      height: 1000px;
+      border: 2px solid;
+      padding: 30px;
+    }
+
+    .child4 {
+      border: 2px solid;
+      width: 100px;
+      background-color: red;
+      margin: 0 auto;
+      /* 50%是相对于包含块的宽度 */
+      margin-top: 50%;
+    }
+
+    div.child4 {
+      width: 50%;
+      margin-left: 60%;
+    }
+
+    .parent3 {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>child</h3>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+  <hr>
+  <h3>child2</h3>
+  <div class="parent">
+    <div class="child2"></div>
+  </div>
+  <hr>
+  <h3>child3</h3>
+  <div class="parent">
+    <div class="child3"></div>
+  </div>
+  <hr>
+  <h3>child4</h3>
+  <div class="parent2">
+    <div class="child4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate eos quaerat
+      sapiente nemo amet doloremque mollitia facere saepe illo!</div>
+  </div>
+  <hr>
+  <h3>parent3</h3>
+  <div class="parent2 parent3">
+    <div class="child4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate eos quaerat
+      sapiente nemo amet doloremque mollitia facere saepe illo!</div>
+  </div>
+</body>
+
+</html>

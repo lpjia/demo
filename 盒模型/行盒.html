@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>行盒</title>
+  <style>
+    p,
+    span {
+      border: 1px solid #000;
+      background-color: deepskyblue;
+      line-height: 2;
+    }
+
+    span {
+      /* 宽高无效, 行盒不能设置宽高 */
+      /* width: 100px;
+      height: 20px; */
+
+      /* 增加上下padding, 多行文字之间的间距不变, 没影响到内容(行盒以内容延伸) */
+      padding: 0 10px;
+
+      /* 同上, 只影响左右, 不影响上下 */
+      /* border-width: 1px; */
+
+      /* 同上, 只影响左右, 不影响上下 */
+      /* margin: 0 0; */
+    }
+  </style>
+</head>
+
+<body>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In excepturi consectetur distinctio dolor quae alias quod
+    voluptates maiores esse ex et veniam rerum provident iusto quia, reprehenderit, vel dignissimos. Alias minima
+    expedita minus vel quisquam repellat architecto nesciunt accusamus eaque ad reprehenderit deleniti obcaecati numquam
+    magni, eos beatae tempore illo culpa. Ullam molestiae, vero est delectus fugit impedit minus perspiciatis.
+  </p>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In excepturi consectetur distinctio dolor quae alias quod
+    voluptates maiores esse ex et veniam rerum provident iusto quia, reprehenderit, vel dignissimos. Alias minima
+    expedita minus vel quisquam repellat architecto nesciunt accusamus eaque ad reprehenderit deleniti obcaecati numquam
+    magni, eos beatae tempore illo culpa. Ullam molestiae, vero est delectus fugit impedit minus perspiciatis.
+  </p>
+  <span>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio vero cum mollitia voluptates accusantium quibusdam
+    illo nisi nemo ad pariatur et quae ullam nesciunt, odit sit porro ducimus aliquam a repellendus laboriosam soluta
+    quis! Optio officia alias exercitationem nemo, perferendis quos soluta non? Ex, explicabo officiis delectus
+    assumenda iure maxime obcaecati eveniet magni consequatur possimus maiores facere sunt aperiam quo.
+  </span>
+  <span>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio vero cum mollitia voluptates accusantium quibusdam
+    illo nisi nemo ad pariatur et quae ullam nesciunt, odit sit porro ducimus aliquam a repellendus laboriosam soluta
+    quis! Optio officia alias exercitationem nemo, perferendis quos soluta non? Ex, explicabo officiis delectus
+    assumenda iure maxime obcaecati eveniet magni consequatur possimus maiores facere sunt aperiam quo.
+  </span>
+</body>
+
+</html>
