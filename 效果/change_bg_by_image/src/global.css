@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 切换图片hover会闪烁 */
+/* :root {
+  --c1: transparent;
+  --c2: transparent;
+  --c3: transparent;
+} */
+
+@property --c1 {
+  syntax: '<color>';
+  initial-value: transparent;
+  inherits: false;
+}
+
+@property --c2 {
+  syntax: '<color>';
+  initial-value: transparent;
+  inherits: false;
+}
+
+@property --c3 {
+  syntax: '<color>';
+  initial-value: transparent;
+  inherits: false;
+}
+
+html {
+  background: linear-gradient(to bottom,
+      var(--c1) 33%,
+      var(--c2) 66%,
+      var(--c3) 100%);
+  transition-property: --c1, --c2, --c3;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+  min-height: 100vh;
+}
