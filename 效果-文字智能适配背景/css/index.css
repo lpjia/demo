@@ -1,1 +1,0 @@
-.banner{width:500px;height:200px;border:2px solid #000;display:flex;justify-content:center;align-items:center;background:linear-gradient(60deg, #000 50%, #fff 50%);color:#fff}.banner .title{transition:.5s;mix-blend-mode:difference;color:#fff}.banner:hover .title{transform:translateX(-40px)}
