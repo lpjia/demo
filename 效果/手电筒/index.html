@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手电筒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .spotlight {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+          hsl(70, 80%, 80%) 20%,
+          rgba(0, 0, 0, 0.96) 30%);
+      mix-blend-mode: multiply;
+    }
+
+    .scene {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url('../../imgs/scenery.jpeg') center center;
+      background-size: cover;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scene"></div>
+  <div class="spotlight"></div>
+
+
+  <script>
+    const spotlight = document.querySelector('.spotlight');
+
+    function move(e) {
+      if (e.clientX || e.touches) {
+        isUserMotion = true;
+        spotlight.style.setProperty('--x', (e.clientX || e.touches[0].clientX) + 'px');
+        spotlight.style.setProperty('--y', (e.clientY || e.touches[0].clientY) + 'px');
+      }
+    }
+
+    if (window.PointerEvent) {
+      spotlight.addEventListener('pointermove', move);
+    } else {
+      spotlight.addEventListener('touchmove', move);
+      spotlight.addEventListener('mousemove', move);
+    }
+  </script>
+</body>
+
+</html>
