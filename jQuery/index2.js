@@ -98,4 +98,15 @@ $(function () {
     $("#id")
   )
 
+
+
+  /* $().prop('xxx') 操作的是元素内置属性, 相当于dom.xxx
+  <a target="_blank" href="//cart.jd.com/cart.action">我的购物车</a>
+  比如a元素的href, dom.href得到'https://cart.jd.com/cart.action'
+  $().prop('href')返回dom.href的结果, 他俩其实是一个api效果
+
+  $().attr('xxx') 操作的是元素的自定义属性, 相当于dom.getAttribute('xxx')
+  元素的属性值书写啥就是啥, 原封不动的拿到
+  比如上面的a元素, $().attr('href')返回的就是'//cart.jd.com/cart.action' */
+
 })
