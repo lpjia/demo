@@ -8,8 +8,6 @@
     margin: 10px;
     padding: 30px;
     border: 2px solid #fff;
-    // margin: auto; // 为0, 跟常规流块盒吃掉剩余空间不一样
-    // padding: 3%; // 百分比和常规流一样
   }
 }
 
@@ -34,8 +32,7 @@
 
 .container2 {
   background-color: lightblue;
-  padding: 30px;
-  // 高度为0, 但是因为有padding, 所以依然能看到
+  padding: 30px; // 撑开了高度
 
   .item {
     @extend .noCtt;

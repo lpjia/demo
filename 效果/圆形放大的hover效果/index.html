@@ -16,10 +16,13 @@
       position: relative;
     }
 
+    /* 用伪元素来实现三层叠加的效果 */
     .avatar::before,
     .avatar::after {
       content: '';
       position: absolute;
+      /* inset 为简写属性，对应于 top、right、bottom 和 left 属性
+      和 magin 类似 */
       inset: 0;
       border-radius: inherit;
     }
@@ -30,6 +33,7 @@
 
     .avatar::after {
       background: inherit;
+      /* clip-path 裁剪整个盒子 */
       clip-path: circle(0 at 50% 50%);
       transition: .5s;
     }

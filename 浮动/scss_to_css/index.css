@@ -1,0 +1,21 @@
+.container { height: 200px; background-color: deepskyblue; color: #fff; }
+
+.container > div { background-color: deeppink; margin: 10px; padding: 30px; border: 2px solid #fff; }
+
+.float_l { float: left; }
+
+.float_r { float: right; }
+
+.noCtt, .container2 .item { width: 100px; height: 100px; }
+
+.normal { height: 60px; border-color: #000 !important; }
+
+.container2 { background-color: lightblue; padding: 30px; }
+
+.container2 .item { background-color: red; margin: 6px; float: left; }
+
+.container2 .clearfix_box { height: 60px; background-color: darkcyan; clear: both; }
+
+.container2 .clearfix2_box { clear: both; }
+
+.clearfix::after { content: ""; display: block; clear: both; }
