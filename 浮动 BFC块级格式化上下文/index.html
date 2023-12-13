@@ -7,11 +7,16 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>BFC块级格式化上下文</title>
-  <link rel="stylesheet" type="text/css" href="../common/global.css" />
-  <link rel="stylesheet" href="css/index.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../common/reset.css" /> -->
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
+  <!-- BFC 有三个作用
+  包含内部浮动元素, 效果类似after伪元素清浮动
+  排除外部浮动, 也就是兄弟元素如果有浮动, 阻止元素被浮动元素覆盖, 达到清浮动的效果
+  阻止margin重叠 -->
+
   <h3>同一个 BFC 容器下外边距会发生折叠, 这里容器指&lt;html&gt;, 根元素会创建 BFC 容器, 两个块之间的间距为100px</h3>
   <div class="fang_kuai"></div>
   <div class="fang_kuai"></div>
@@ -65,7 +70,8 @@
   </div>
   <p class="marginB100">----分割线----</p>
   <h3>两列布局, 左边固定宽, 右边撑满; 用伪等高方式实现左右等高</h3>
-  <!-- 伪等高: 浮动元素高度定的很高, marginB 给一个很大的负数, 然后盒子总高度其实不高; 容器给一个移除隐藏, 完事; -->
+  <!-- 伪等高: 左侧浮动元素(浮动后是块盒)高度定的很高, 再给margin-bottom很大的负数, 容器给一个溢出隐藏, 完事;
+    由于左右布局一般左边内容少, 右边内容多, 导致左边背景那块无法与右边等高(视觉上对齐) -->
   <div class="container overflowHidden ">
     <div class="cls_3 infinityHeight">我是一个左浮动的元素</div>
     <div class="cls_4 reset d_flow">我是一个没有设置浮动,
