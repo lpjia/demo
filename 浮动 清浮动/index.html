@@ -7,11 +7,11 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>清浮动</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
+  <!-- 清浮动, 本质上是两种方案, 一种是触发BFC, 一种是用伪元素 -->
 
   <h3>触发 BFC 方式去清浮动, display: flow-root; 无副作用</h3>
   <div class="box fahter">
@@ -47,8 +47,6 @@
   </div>
   <hr>
 
-
-  <!-- <script src="index.js" type="module"></script> -->
 </body>
 
 </html>

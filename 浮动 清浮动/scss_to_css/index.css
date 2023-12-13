@@ -1,0 +1,19 @@
+.box { width: 400px; border: 1px solid deepskyblue; }
+
+.big { width: 200px; height: 200px; background: darkorange; float: left; }
+
+.small { width: 120px; height: 120px; background: chartreuse; float: left; }
+
+.fahter { display: flow-root; }
+
+.fahter_2 { overflow: auto; }
+
+.clearfix { *zoom: 1; }
+
+.clearfix::after { content: ''; clear: both; display: block; font-size: 0; height: 0; visibility: hidden; }
+
+.clearfix_2 { *zoom: 1; }
+
+.clearfix_2::before, .clearfix_2::after { content: ""; display: table; }
+
+.clearfix_2::after { clear: both; }
