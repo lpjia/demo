@@ -1,0 +1,9 @@
+.container { width: 600px; margin: 10px auto; padding: 20px 30px; background-color: #ece4dd; border-radius: 4px; }
+
+.container .news-type { width: fit-content; display: flex; border-radius: 4px; padding: 10px; align-items: center; background-color: #2f4363; }
+
+.container .news-type > .text { margin-right: 6px; font-size: 26px; color: #e1dfdf; }
+
+.container .news-type > .more { color: #afadad; }
+
+.container .news-content { border-radius: 4px; background-color: #f4cbc1; width: 100%; height: 200px; margin-top: 20px; }

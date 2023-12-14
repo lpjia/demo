@@ -1,0 +1,34 @@
+.container {
+  width: 600px;
+  margin: 10px auto;
+  padding: 20px 30px;
+  background-color: #ece4dd;
+  border-radius: 4px;
+
+  .news-type {
+    width: fit-content; // 关键
+    display: flex;
+    border-radius: 4px;
+    padding: 10px;
+    align-items: center;
+    background-color: #2f4363;
+
+    >.text {
+      margin-right: 6px;
+      font-size: 26px;
+      color: rgb(225, 223, 223);
+    }
+
+    >.more {
+      color: rgb(175, 173, 173);
+    }
+  }
+
+  .news-content {
+    border-radius: 4px;
+    background-color: #f4cbc1;
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+  }
+}
