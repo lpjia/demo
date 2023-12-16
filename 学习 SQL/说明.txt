@@ -1,1 +1,0 @@
-只能把 init-test-data 中的 sql 语句粘到 Workbench 中运行才不会报错
