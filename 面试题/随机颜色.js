@@ -1,3 +1,5 @@
+/* 随机颜色 */
+
 // 中规中矩
 function randomColor() {
   let r = Math.floor(Math.random() * 256),

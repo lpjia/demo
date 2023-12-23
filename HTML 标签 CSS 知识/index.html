@@ -82,61 +82,6 @@
   <!-- 属性名不区分大小写, 一律会转为小写, 建议用-连接
   属性值区分大小写, css选择器也能正确匹配 -->
   <div class="xiaoTuoFeng">class值为小驼峰写法, css选择器也能正确匹配, 给样式</div>
-
-
-  <h2>直接写在标签上的事件的this指向该dom</h2>
-  <input type="text" data-i="ni_ming"
-    oninput="console.log(this);console.log(this.value);console.log(typeof this.value);">
-  <input type="date" oninput="console.log(this);console.log(this.value);console.log(typeof this.value);">
-  <input type="text" data-i="you_ming">
-  <input type="text" data-i="addEventListener">
-  <br>
-  <script>
-    // 会覆盖标签上的oninput事件的代码
-    // 之所以this指向没有指向window, 原因在于oninput事件
-    let domNiMing = document.querySelector('input[type="text"][data-i="ni_ming"]')
-    domNiMing.oninput = function (e) {
-      console.log('e:', e)
-      console.log('this:', this) // 指向该dom
-      console.log('this.value:', this.value)
-      // console.log(e.target === this) // true
-      console.log('---- 分割线 ----\n\n\n')
-    }
-
-    function you_ming(e) {
-      console.log('e:', e)
-      console.log('this:', this) // 指向该dom
-      console.log('this.value:', this.value)
-      // console.log(e.target === this) // true
-      console.log('---- 分割线 ----\n\n\n')
-    }
-    let domYouMing = document.querySelector('input[type="text"][data-i="you_ming"]')
-    domYouMing.oninput = you_ming
-
-
-    function callback(e) {
-      console.log('e:', e)
-      console.log('this:', this) // 指向该dom
-      console.log('this.value:', this.value)
-      // console.log(e.target === this) // true
-      console.log('---- 分割线 ----\n\n\n')
-    }
-    let domAddEventListener = document.querySelector('input[type="text"][data-i="addEventListener"]')
-    domAddEventListener.addEventListener('input', callback)
-    /* 以上三种写法效果是一样的, this指向都是正确的 */
-  </script>
-
-  <!-- 这种写法this指向就有问题了, changVal的实参必须是event -->
-  <input type="text" oninput="changVal(event)">
-  <script>
-    function changVal(e) {
-      console.log('e:', e)
-      console.log('e.target:', e.target)
-      console.log('e.target.value:', e.target.value)
-      console.log('this:', this) // 指向window
-      console.log('---- 分割线 ----\n\n\n')
-    }
-  </script>
 </body>
 
 </html>
