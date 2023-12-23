@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件对象event</title>
+</head>
+
+<body>
+
+  <h2>直接写在标签上的事件的this指向该dom</h2>
+  <input type="text" data-i="ni_ming" value="ni_ming" oninput="
+    console.log(this);
+    console.log(this.value);
+    console.log(typeof this.value);  
+    console.log('---- 分割线 ----\n\n\n');">
+  <input type="date" oninput="
+    console.log(this);
+    console.log(this.value);
+    console.log(typeof this.value);
+    console.log('---- 分割线 ----\n\n\n');">
+  <input type="text" data-i="you_ming" value="you_ming">
+  <input type="text" data-i="addEventListener" value="addEventListener">
+  <input type="text" data-i="addEventListener 箭头函数" value="addEventListener 箭头函数">
+  <br>
+  <script>
+    // // 会覆盖标签上的oninput事件的代码
+    // // 之所以this指向没有指向window, 原因在于oninput事件
+    // let domNiMing = document.querySelector('input[type="text"][data-i="ni_ming"]')
+    // domNiMing.oninput = function (e) {
+    //   console.log('e:', e)
+    //   console.log('this:', this) // 指向该dom
+    //   console.log('this.value:', this.value)
+    //   console.log(e.target === this) // true
+    //   console.log('---- 分割线 ----\n\n\n')
+    // }
+
+    function you_ming(e) {
+      console.log('e:', e)
+      console.log('this:', this) // 指向该dom
+      console.log('this.value:', this.value)
+      console.log(e.target === this) // true
+      console.log('---- 分割线 ----\n\n\n')
+    }
+    let domYouMing = document.querySelector('input[type="text"][data-i="you_ming"]')
+    domYouMing.oninput = you_ming
+
+
+    function callback(e) {
+      console.log('e:', e)
+      console.log('this:', this) // 指向该dom
+      console.log('this.value:', this.value)
+      console.log(e.target === this) // true
+      console.log('---- 分割线 ----\n\n\n')
+    }
+    let domAddEventListener = document.querySelector('input[type="text"][data-i="addEventListener"]')
+    domAddEventListener.addEventListener('input', callback)
+    /* 以上三种写法效果是一样的, this指向都是正确的 */
+
+
+    let domAddEventListener箭头函数 = document.querySelector('input[type="text"][data-i="addEventListener 箭头函数"]')
+    domAddEventListener箭头函数.addEventListener('input', (e) => {
+      console.log('e:', e)
+      console.log('e.target:', e.target)
+      console.log('e.target.value:', e.target.value)
+      console.log('this:', this) // 指向window, 箭头函数没有自己的this
+      console.log('---- 分割线 ----\n\n\n')
+    })
+  </script>
+
+  <!-- 这种写法this指向就有问题了, changVal的实参必须是event
+  要想形参e有值, 得显式传入实参event -->
+  <input type="text" oninput="changVal(event)">
+  <script>
+    function changVal(e) {
+      console.log('e:', e)
+      console.log('e.target:', e.target)
+      console.log('e.target.value:', e.target.value)
+      console.log('this:', this) // 指向window
+      console.log('---- 分割线 ----\n\n\n')
+    }
+  </script>
+
+
+
+  <script src="../lib/jquery@3.3.1.min.js"></script>
+  <h2>jQ的this和e</h2>
+  <div class="latest">
+    <ul>
+      <li>
+        <text>1</text>
+      </li>
+      <li>
+        <text>2</text>
+      </li>
+      <li>
+        <text>3</text>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // 事件委托
+    // jQ很少使用e.target, 一般都用this, 指向很明确, 或者用e.currentTarget, 永远指向this
+    // 一参'click', 二参'li', 三参回调
+    $('.latest ul').on('click', 'li', function (e) {
+      console.log('e:', e) // e是jQ封装后的 事件对象, 非原生event
+      console.log('this:', this) // this指向原生dom(二参li元素)
+      console.log('e.currentTarget === this:', e.currentTarget ===
+        this) // 永远===, 仅限jQ的event.currentTarget, 原生的event不用currentTarget
+      console.log('e.target === this:', e.target ===
+        this) // 注意点击的元素, 点击li元素这个表达式才返回true, 所以jQ很少使用e.target, 一般都用this, 指向很明确
+      console.log('$(this):', $(this)) // $(this) 指向一个包含 li 的 jQ 对象集合, 但只有当前 li
+      console.log('$(this).length:', $(this).length)
+      $(this).css('backgroundColor', 'deepskyblue')
+      console.log('---- 分割线 ----\n\n\n');
+    })
+  </script>
+
+  <div class="el">元素el
+    <span>子元素</span>
+  </div>
+  <script>
+    // $('.el').click(function (e) { // 不传实参的写法
+    $('.el').click({
+      msg: '这是实参'
+    }, function (e) {
+      console.log('e:', e) // jQ 封装的 event 对象
+      console.log('e.currentTarget === this:', e.currentTarget === this) // jQ用 e.currentTarget
+      console.log('e.target === this:', e.target === this) // 原生js用 e.target
+      console.log('e.data:', e.data)
+      console.log(this)
+      console.log('---- 分割线 ----\n\n\n');
+    })
+  </script>
+</body>
+
+</html>
