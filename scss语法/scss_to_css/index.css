@@ -12,25 +12,25 @@
 
 /* @for $i from 开始值 through 结束值
 包含结束值 */
-.m-1 { margin: 0.25 rem; }
+.m-1 { margin: 0.25rem; }
 
-.m-2 { margin: 0.5 rem; }
+.m-2 { margin: 0.5rem; }
 
-.m-3 { margin: 0.75 rem; }
+.m-3 { margin: 0.75rem; }
 
-.m-4 { margin: 1 rem; }
+.m-4 { margin: 1rem; }
 
-.m-5 { margin: 1.25 rem; }
+.m-5 { margin: 1.25rem; }
 
-.m-6 { margin: 1.5 rem; }
+.m-6 { margin: 1.5rem; }
 
-.m-7 { margin: 1.75 rem; }
+.m-7 { margin: 1.75rem; }
 
-.m-8 { margin: 2 rem; }
+.m-8 { margin: 2rem; }
 
-.m-9 { margin: 2.25 rem; }
+.m-9 { margin: 2.25rem; }
 
-.m-10 { margin: 2.5 rem; }
+.m-10 { margin: 2.5rem; }
 
 /* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */

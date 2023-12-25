@@ -13,9 +13,24 @@
 包含结束值 */
 @for $i from 1 through 10 {
 
-  // 变量和字符拼接时, 需要用#{}
+  // 变量和字符拼接时, 需要用#{}, 也可以 #{$i}px
   .m-#{$i} {
-    margin: $i / 4 rem;
+    // css不支持数字和单位分开, 也就是不能有空格
+    // 巧记, 把所有css当成字符串就行了
+
+    // 带变量的只记这一种
+    margin: #{$i/4}rem; // 合法 { margin: 2rem; }
+    // margin: $i/4rem; // 编译失败
+    // margin: $i / 4rem; // 编译失败
+    // margin: $i/4 rem; // 非法, 编译成功但是css不认识 { margin: 2 rem; } 编译结果2和rem不应该有空格
+    // margin: $i / 4 rem; // 非法, 编译成功但是css不认识, 同上
+    // margin: #{$i}/4rem; // 非法, 编译成功但是css不认识 { margin: 8/4rem; }
+    // margin: #{$i}rem/4; // 非法, 编译成功但是css不认识 { margin: 8rem/4; }
+
+    // 以下都合法
+    // font-size: (64px/2);
+    // top: 50px+100px;
+    // right: $var * 10%;
   }
 }
 

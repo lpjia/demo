@@ -1,0 +1,82 @@
+@charset "UTF-8";
+.btn { /* 清除默认边框 */ border: 0; outline: none; /*清除默认背景 */ background-color: transparent; width: 3rem; height: 2rem; border-radius: 4px; cursor: pointer; }
+
+.btn.type_1 { background-color: #409eff; color: #fff; }
+
+.btn.type_1:hover { background-color: #73b8ff; }
+
+.btn.type_1:active { background-color: #0d84ff; }
+
+.btn.type_1:disabled { background-color: #a6d2ff; }
+
+.btn.type_2 { background-color: #67c23a; color: #fff; }
+
+.btn.type_2:hover { background-color: #85cf60; }
+
+.btn.type_2:active { background-color: #529b2e; }
+
+.btn.type_2:disabled { background-color: #a3db87; }
+
+.btn.type_3 { background-color: #8b590f; color: #fff; }
+
+.btn.type_3:hover { background-color: #b97614; }
+
+.btn.type_3:active { background-color: #5d3c0a; }
+
+.btn.type_3:disabled { background-color: #e6941a; }
+
+.btn.type_4 { background-color: #f54343; color: #fff; }
+
+.btn.type_4:hover { background-color: #f87373; }
+
+.btn.type_4:active { background-color: #f21313; }
+
+.btn.type_4:disabled { background-color: #faa4a4; }
+
+.btn.type_5 { background-color: #6c6d71; color: #fff; }
+
+.btn.type_5:hover { background-color: #85868b; }
+
+.btn.type_5:active { background-color: #535457; }
+
+.btn.type_5:disabled { background-color: #9fa0a4; }
+
+.btn.type_11 { background-color: #409eff; color: #fff; }
+
+.btn.type_11:hover { background-color: #73b8ff; }
+
+.btn.type_11:active { background-color: #0d84ff; }
+
+.btn.type_11:disabled { background-color: #a6d2ff; }
+
+.btn.type_22 { background-color: #67c23a; color: #fff; }
+
+.btn.type_22:hover { background-color: #85cf60; }
+
+.btn.type_22:active { background-color: #529b2e; }
+
+.btn.type_22:disabled { background-color: #a3db87; }
+
+.btn.type_33 { background-color: #8b590f; color: #fff; }
+
+.btn.type_33:hover { background-color: #b97614; }
+
+.btn.type_33:active { background-color: #5d3c0a; }
+
+.btn.type_33:disabled { background-color: #e6941a; }
+
+.btn.type_44 { background-color: #f54343; color: #fff; }
+
+.btn.type_44:hover { background-color: #f87373; }
+
+.btn.type_44:active { background-color: #f21313; }
+
+.btn.type_44:disabled { background-color: #faa4a4; }
+
+.btn.type_55 { background-color: #6c6d71; color: #fff; }
+
+.btn.type_55:hover { background-color: #85868b; }
+
+.btn.type_55:active { background-color: #535457; }
+
+.btn.type_55:disabled { background-color: #9fa0a4; }

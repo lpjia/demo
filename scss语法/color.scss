@@ -1,0 +1,85 @@
+.btn {
+  /* 清除默认边框 */
+  border: 0;
+  outline: none;
+  /*清除默认背景 */
+  background-color: transparent;
+
+  width: 3rem;
+  height: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+$btnColors: #409eff, #67c23a, #8b590f, #f54343, #6c6d71;
+
+@each $c in $btnColors {
+  $i: index($btnColors , $c );
+
+  .btn.type_#{$i} {
+    $bgColor: $c;
+    background-color: $bgColor;
+    color: #fff;
+
+    &:hover {
+      // lighten 更亮, 也就是颜色更淡
+      background-color: lighten($bgColor, 10%);
+    }
+
+    &:active {
+      // darken 更暗, 也就是颜色更深
+      background-color: darken($bgColor, 10%);
+    }
+
+    &:disabled {
+      background-color: lighten($bgColor, 20%);
+    }
+  }
+}
+
+@for $i from 1 through length($btnColors) {
+  $c: nth($btnColors, $i);
+
+  .btn.type_#{$i}#{$i} {
+    $bgColor: $c;
+    background-color: $bgColor;
+    color: #fff;
+
+    &:hover {
+      // lighten 更亮, 也就是颜色更淡
+      background-color: lighten($bgColor, 10%);
+    }
+
+    &:active {
+      // darken 更暗, 也就是颜色更深
+      background-color: darken($bgColor, 10%);
+    }
+
+    &:disabled {
+      background-color: lighten($bgColor, 20%);
+    }
+  }
+}
+
+
+
+
+// .btn.type_1 {
+//   $bgColor: deepskyblue;
+//   background-color: $bgColor;
+//   color: #fff;
+
+//   &:hover {
+//     // lighten 更亮, 也就是颜色更淡
+//     background-color: lighten($bgColor, 10%);
+//   }
+
+//   &:active {
+//     // darken 更暗, 也就是颜色更深
+//     background-color: darken($bgColor, 10%);
+//   }
+
+//   &:disabled {
+//     background-color: lighten($bgColor, 20%);
+//   }
+// }

@@ -1,0 +1,82 @@
+// 看编译结果
+// 当class之间有"继承"关系时, 最好使用scss的继承, 有助于减小编译后的css代码体积
+
+
+/* 占位符, 可进一步减小编译后的css代码体积
+其实.tip2类样式其实没用, 只是用来让其他类样式来继承的
+使用%占位符, 基础类样式编译后就不存在了 */
+%tip3 {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: .8;
+  text-decoration: underline;
+}
+
+.tip3-warning {
+  @extend %tip3;
+  color: orange;
+}
+
+.tip3-error {
+  @extend %tip3;
+  color: red;
+}
+
+.tip3-success {
+  @extend %tip3;
+  color: green;
+}
+
+
+
+
+/* 使用extend继承, 明显比mixin混入编译后的css代码体积小多了 */
+.tip2 {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: .8;
+  text-decoration: underline;
+}
+
+.tip2-warning {
+  @extend .tip2;
+  color: orange;
+}
+
+.tip2-error {
+  @extend .tip2;
+  color: red;
+}
+
+.tip2-success {
+  @extend .tip2;
+  color: green;
+}
+
+
+/* 使用mixin混入, 编译后的css代码体积还是挺大的 */
+@mixin common {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: .8;
+  text-decoration: underline;
+}
+
+.tip {
+  @include common;
+}
+
+.tip-warning {
+  @include common;
+  color: orange;
+}
+
+.tip-error {
+  @include common;
+  color: red;
+}
+
+.tip-success {
+  @include common;
+  color: green;
+}

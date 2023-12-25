@@ -15,10 +15,9 @@ $currTheme: '';
 @mixin useTheme {
 
   // 遍历map结构
-  @each $k,
-  $v in $themes {
+  @each $k, $v in $themes {
     // 类似js, 分作用域, 局部作用域的变量想覆盖全局作用域的变量, 加!global
-    $currTheme: $k  !global;
+    $currTheme: $k !global;
 
     html[data-theme='#{$k}'] & {
       @content;
@@ -26,8 +25,7 @@ $currTheme: '';
   }
 
   // // 遍历map结构
-  // @each $k,
-  // $v in $themes {
+  // @each $k, $v in $themes {
   //   html[data-theme='#{$k}'] & {
   //     background-color: #fff; // 样式在这里指定缺乏灵活性
   //     color: #000;

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* 占位符, 可进一步减小编译后的css代码体积
+其实.tip2类样式其实没用, 只是用来让其他类样式来继承的
+使用%占位符, 基础类样式编译后就不存在了 */
+.tip3-warning, .tip3-error, .tip3-success { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; }
+
+.tip3-warning { color: orange; }
+
+.tip3-error { color: red; }
+
+.tip3-success { color: green; }
+
+/* 使用extend继承, 明显比mixin混入编译后的css代码体积小多了 */
+.tip2, .tip2-warning, .tip2-error, .tip2-success { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; }
+
+.tip2-warning { color: orange; }
+
+.tip2-error { color: red; }
+
+.tip2-success { color: green; }
+
+/* 使用mixin混入, 编译后的css代码体积还是挺大的 */
+.tip { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; }
+
+.tip-warning { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; color: orange; }
+
+.tip-error { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; color: red; }
+
+.tip-success { margin: 1em 0; font-size: 0.8em; opacity: .8; text-decoration: underline; color: green; }
