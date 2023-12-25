@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>addEventListener 回调怎么传参</title>
+</head>
+
+<body>
+  <button>复制长文本</button>
+
+  <script>
+    const str =
+      '到人他同间持俭有以情只千得之光动措，有领天胸养于文，助价量样病皇为，你巴一小无变订夹如胜养派和师是，未奔法说若措光音俭同明杨十迷都者秦，时中成否国杀即她，非同被君己感鲜三没全远领国变，可皇快，羊互的将褒，以冒孔认场个也联甲高怒决藏到事学，高哥畴，圣语疾得。'
+
+    const doms = {
+      btn: document.querySelector('button')
+    }
+
+    /* 常见的直接用回调, 且用默认参e */
+    // function callback(e) {
+    //   console.log('e:', e)
+    //   console.log('e.target:', e.target)
+    // }
+    // doms.btn.addEventListener('click', callback)
+
+
+    /* 回调传参, 传进来自定义数据, 且依然能用e */
+    async function copyByClick(txt) {
+      await navigator.clipboard.writeText(new Date().getTime() + txt)
+      doms.btn.textContent = '已复制'
+      setTimeout(() => {
+        doms.btn.textContent = '复制长文本'
+      }, 1000);
+    }
+
+    function bi_bao() { // 这里不用写形参, 因为下面用了...arguments
+      return async (e) => { // bi_bao(str)调用后, 返回一个箭头函数, 又到了常见的写法, 所以这里才能用e
+        // 箭头函数没有自己的arguments和this
+        console.log('e:', e)
+        console.log('e.target:', e.target)
+        await copyByClick(...arguments)
+      }
+    }
+
+    doms.btn.addEventListener('click', bi_bao(str))
+  </script>
+</body>
+
+</html>
