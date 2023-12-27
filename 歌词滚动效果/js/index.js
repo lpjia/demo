@@ -59,22 +59,22 @@ const setOffset = () => {
   let index = findIndex()
   let offset = (liHeight * index + liHeight / 2) - containerHeight / 2
   // 边界情况
-  if (offset < 0) offset = 0
-  if (offset > maxOffset) offset = maxOffset
+  if (offset < 0) {
+    offset = 0
+  }
+  if (offset > maxOffset) {
+    offset = maxOffset
+  }
   doms.ul.style.transform = `translateY(-${offset}px)`
 
   let activeLi = doms.ul.querySelector('li.active')
-  if (activeLi) activeLi.classList.remove('active')
+  if (activeLi) {
+    activeLi.classList.remove('active')
+  }
   let li = doms.ul.children[index]
-  if (li) li.classList.add('active')
+  if (li) {
+    li.classList.add('active')
+  }
 }
 
 doms.audio.addEventListener('timeupdate', setOffset)
-
-
-
-// // 这三个得总结
-// let containerHeight = doms.container.clientHeight
-// let containerHeight2 = doms.container.getBoundingClientRect().height
-// let containerHeight3 = doms.container.offsetHeight
-// console.log(containerHeight, containerHeight2, containerHeight3)
