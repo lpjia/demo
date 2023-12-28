@@ -1,13 +1,13 @@
-// 解析歌词字符串, 处理成对象
+// 解析歌词字符串, 处理成对象, 方便后续处理
 const parseLrc = () => {
   return lrc.split('\n').map((line) => {
     let parts = line.split(']')
     let timeStr = parts[0].substring(1)
     let words = parts[1]
     let times = timeStr.split(':')
-    let allTimes = Number(times[0]) * 60 + Number(times[1])
+    let timeBySecond = Number(times[0]) * 60 + Number(times[1])
     return {
-      time: allTimes,
+      time: timeBySecond,
       words
     }
   });
@@ -31,7 +31,8 @@ const findIndex = () => {
   }
 
   // 边界情况
-  // 0s, 没有歌词与之对应, 返回-1
+  // 0s, 没有歌词与之对应, 返回-1, 符合情况return index - 1
+
   // 最后时间, 应该对应最后一句歌词, 返回最后一个索引
   return lrcList.length - 1
 }
@@ -51,6 +52,7 @@ const createLrcElements = () => {
 }
 createLrcElements()
 
+// ul是变动区域
 let containerHeight = doms.container.offsetHeight
 let liHeight = doms.ul.children[0].offsetHeight
 let maxOffset = doms.ul.offsetHeight - containerHeight
