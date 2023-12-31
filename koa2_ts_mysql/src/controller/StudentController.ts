@@ -88,7 +88,7 @@ class StudentController {
       const ext = extname(file.name!)
 
       // 随机字符
-      let urlObj = URL.createObjectURL(new Blob())
+      let urlObj = URL.createObjectURL(new Blob()) // 返回一个string
       let randomStr = urlObj.slice(-36)
 
       const filePath = `/upload/${randomStr}${ext}`

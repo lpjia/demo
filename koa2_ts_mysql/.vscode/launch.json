@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "launch_koa2_ts",
+      "type": "node",
+      "program": "${workspaceFolder}/main.ts",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "request": "launch",
+      "runtimeArgs": [
+        "--loader",
+        "ts-node/esm",
+      ],
+      "cwd": "${workspaceRoot}",
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}

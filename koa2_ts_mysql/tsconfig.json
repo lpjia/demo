@@ -1,4 +1,13 @@
 {
+  /* // 网上找的配置, 但是尝试了发现不需要 
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJs",
+      "types": [
+        "node"
+      ]
+    }
+  }, */
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     /* Basic Options */
