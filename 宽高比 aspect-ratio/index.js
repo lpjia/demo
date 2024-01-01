@@ -18,9 +18,7 @@ function updateValue(e) {
     which = null
   }
 
-  // 注释的也能达到效果, 区别可以查 MDN
-  // domDiv.textContent = e.srcElement.value;
-  domDiv.innerHTML = e.target.value; // 推荐
+  domDiv.textContent = e.target.value; // 推荐
 }
 
 function confirm() {
