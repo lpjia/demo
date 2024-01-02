@@ -15,7 +15,8 @@ const parseLrc = () => {
 
 const lrcList = parseLrc()
 
-const doms = {
+// doms一般认为是复数, 可遍历, 这里还是用单数吧
+const dom = {
   audio: document.querySelector('audio'),
   ul: document.querySelector('.container ul'),
   container: document.querySelector('.container'),
@@ -23,7 +24,7 @@ const doms = {
 
 // 找到当前播放的那行歌词索引
 const findIndex = () => {
-  let curTime = doms.audio.currentTime
+  let curTime = dom.audio.currentTime
   for (let index = 0; index < lrcList.length; index++) {
     if (curTime < lrcList[index].time) {
       return index - 1
@@ -38,6 +39,7 @@ const findIndex = () => {
 }
 
 const createLrcElements = () => {
+  // 插入DOM, 为防止多次插入 多次reflow, 提高性能
   // 创建文档片段
   let frag = document.createDocumentFragment()
 
@@ -48,14 +50,14 @@ const createLrcElements = () => {
     frag.appendChild(li)
   }
 
-  doms.ul.appendChild(frag)
+  dom.ul.appendChild(frag)
 }
 createLrcElements()
 
 // ul是变动区域
-let containerHeight = doms.container.offsetHeight
-let liHeight = doms.ul.children[0].offsetHeight
-let maxOffset = doms.ul.offsetHeight - containerHeight
+let containerHeight = dom.container.offsetHeight
+let liHeight = dom.ul.children[0].offsetHeight
+let maxOffset = dom.ul.offsetHeight - containerHeight
 
 const setOffset = () => {
   let index = findIndex()
@@ -67,16 +69,16 @@ const setOffset = () => {
   if (offset > maxOffset) {
     offset = maxOffset
   }
-  doms.ul.style.transform = `translateY(-${offset}px)`
+  dom.ul.style.transform = `translateY(-${offset}px)`
 
-  let activeLi = doms.ul.querySelector('li.active')
+  let activeLi = dom.ul.querySelector('li.active')
   if (activeLi) {
     activeLi.classList.remove('active')
   }
-  let li = doms.ul.children[index]
+  let li = dom.ul.children[index]
   if (li) {
     li.classList.add('active')
   }
 }
 
-doms.audio.addEventListener('timeupdate', setOffset)
+dom.audio.addEventListener('timeupdate', setOffset)

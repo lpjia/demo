@@ -5,6 +5,7 @@ ts基础 08-类class.ts
 class User {
   /* 类字段, 会在每个独立对象中被设好, 而不是设在 User.prototype */
   gender = 'male'
+  log = () => console.log('log()') // 语法和jump2一样, 类字段可以是属性或者方法
 
   constructor(name) {
     this.name = name
