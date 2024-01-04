@@ -13,7 +13,7 @@ function randomColor() {
 
 // 剑走偏锋
 function randomColor2() {
-  // toString可以转为字符串, 参是x进制
+  // Number.prototype.toString()可以把数字转为字符串, 参是x进制
   let str = Math.random().toString(16).substring(2, 8) // 有可能位数不够
   // 学会使用 while 循环, 很方便
   while (str.length < 6) {
