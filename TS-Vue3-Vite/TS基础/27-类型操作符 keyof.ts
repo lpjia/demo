@@ -25,6 +25,21 @@ type XyzT = typeof xyz
 
 
 
+interface Todo {
+  name: string
+  like: boolean,
+  open: boolean;
+  lessons: {
+    title: string;
+  }[];
+}
+/* 看区别, 有意思的来了 */
+type A1 = ShowMe<keyof (Car | Todo)>
+type A2 = ShowMe<keyof Car | keyof Todo>
+/* 看"联合类型和交叉类型的本质" */
+type A3 = ShowMe<keyof (Car & Todo)>
+
+
 
 /* 索引签名
 索引签名参数类型必须是 “string”、“number”、“symbol”或模板文本类型。 */

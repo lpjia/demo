@@ -72,4 +72,7 @@ class Man extends M {
 
 }
 let m = new Man()
+console.log(
+  m
+)
 // m.age = 2

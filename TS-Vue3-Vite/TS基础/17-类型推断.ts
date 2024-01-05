@@ -60,6 +60,7 @@ type ItemType2 = ArrayType<boolean[]>
 /* 将元组转为联合类型 */
 type TupleToUnion<T> = T extends (infer R)[] ? R : never
 const tuple = ['a', 'b', true]
+type TypeofTuple = typeof tuple
 type Tp = TupleToUnion<typeof tuple>
 
 type TupleTp = ['tianmao', 'taobao']

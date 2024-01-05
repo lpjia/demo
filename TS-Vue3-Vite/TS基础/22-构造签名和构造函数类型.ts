@@ -31,7 +31,7 @@ new Point2D(1, 2)
 
 
 // 工厂函数
-// 其实使用ts, 一般写好参数类型就行, 有返回值类型, 则可以用类型推断推导出来
+// 其实使用ts, 一般写好参数类型就行, 有返回值类型的可以用类型推导出来
 function newPoint(pointC: PointConstructor, x: number, y: number) {
   /* 构造函数的类型
   pointC其实是构造函数, 其类型要有构造签名 */
