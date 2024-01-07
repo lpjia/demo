@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "checkJs": true
+  },
+
+  // 位于此目录下的文件不进行静态检查和智能提示
+  "exclude": [
+      "node_modules",
+      "**/node_modules/*"
+  ]
+}
+
+
+添加jsconfig.json文件
+编译选项如上代码
+启用类型检查
+而不用在每个js文件加
+// @ts-check
+// 文件首行增加注释会引入ts的类型检查
