@@ -15,8 +15,8 @@ const parseLrc = () => {
 
 const lrcList = parseLrc()
 
-// doms一般认为是复数, 可遍历, 这里还是用单数吧
-const dom = {
+
+const doms = {
   audio: document.querySelector('audio'),
   ul: document.querySelector('.container ul'),
   container: document.querySelector('.container'),
@@ -24,7 +24,7 @@ const dom = {
 
 // 找到当前播放的那行歌词索引
 const findIndex = () => {
-  let curTime = dom.audio.currentTime
+  let curTime = doms.audio.currentTime
   for (let index = 0; index < lrcList.length; index++) {
     if (curTime < lrcList[index].time) {
       return index - 1
@@ -50,14 +50,14 @@ const createLrcElements = () => {
     frag.appendChild(li)
   }
 
-  dom.ul.appendChild(frag)
+  doms.ul.appendChild(frag)
 }
 createLrcElements()
 
 // ul是变动区域
-let containerHeight = dom.container.offsetHeight
-let liHeight = dom.ul.children[0].offsetHeight
-let maxOffset = dom.ul.offsetHeight - containerHeight
+let containerHeight = doms.container.offsetHeight
+let liHeight = doms.ul.children[0].offsetHeight
+let maxOffset = doms.ul.offsetHeight - containerHeight
 
 const setOffset = () => {
   let index = findIndex()
@@ -69,16 +69,16 @@ const setOffset = () => {
   if (offset > maxOffset) {
     offset = maxOffset
   }
-  dom.ul.style.transform = `translateY(-${offset}px)`
+  doms.ul.style.transform = `translateY(-${offset}px)`
 
-  let activeLi = dom.ul.querySelector('li.active')
+  let activeLi = doms.ul.querySelector('li.active')
   if (activeLi) {
     activeLi.classList.remove('active')
   }
-  let li = dom.ul.children[index]
+  let li = doms.ul.children[index]
   if (li) {
     li.classList.add('active')
   }
 }
 
-dom.audio.addEventListener('timeupdate', setOffset)
+doms.audio.addEventListener('timeupdate', setOffset)
