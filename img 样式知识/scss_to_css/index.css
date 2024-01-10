@@ -1,0 +1,31 @@
+.changeStyle { width: 360px; height: 360px; border: 2px solid deeppink; }
+
+.contain { object-fit: contain; }
+
+.cover { object-fit: cover; }
+
+.changeStyle2 { height: 160px; border: 2px solid deeppink; }
+
+.bgContainer { display: flex; flex-wrap: wrap; }
+
+.bgContainer > div { margin-bottom: 20px; }
+
+.bg { background: url(../../imgs/gyy.jpeg) no-repeat; }
+
+.bg2 { background: url(../../imgs/gyy.jpeg) no-repeat center; }
+
+.bg3 { background: url(../../imgs/gyy.jpeg) no-repeat; background-size: contain; }
+
+.bg4 { background: url(../../imgs/gyy.jpeg) no-repeat center; background-size: contain; }
+
+.bg5 { background: url(../../imgs/gyy.jpeg) no-repeat; background-size: cover; }
+
+.changeStyle3 { width: 160px; height: 160px; border: 2px solid deepskyblue; }
+
+.dui_die_container { margin: 0 auto; width: 600px; }
+
+.dui_die_container .bg-top { width: 100%; }
+
+.dui_die_container .main { background-color: #feb328; width: 100%; height: 800px; text-align: center; color: #fff; padding-top: 60px; }
+
+.dui_die_container img { vertical-align: bottom; }

@@ -62,3 +62,28 @@
 .changeStyle3 {
   @include whb(160, deepskyblue);
 }
+
+
+.dui_die_container {
+  margin: 0 auto;
+  width: 600px;
+
+  .bg-top {
+    width: 100%;
+    // display: block; // 消除img和块盒的上下间隙
+  }
+
+  .main {
+    background-color: #feb328;
+    width: 100%;
+    height: 800px;
+    text-align: center;
+    color: #fff;
+    padding-top: 60px;
+
+  }
+
+  img {
+    vertical-align: bottom; // 消除img和块盒的上下间隙 // 推荐
+  }
+}

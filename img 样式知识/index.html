@@ -7,10 +7,53 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>img 样式知识</title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
+  <!-- 借助这里的 img, 增加 可替换元素 和 堆叠上下文 的知识
+  
+    可替换元素 <iframe> <video> <img>, 仅在特定情况下被作为可替换元素处理 <option> <audio> <canvas> <object>
+    CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容
+    简单来说，它们的内容不受当前文档的样式的影响
+    
+    它们外观的渲染，是独立于 CSS 的
+    外观和内容是分开渲染的(元素本身和元素内容), 比如img, 内容由src决定, 元素本身有宽、高、填充区、外边距等
+
+
+    堆叠上下文 也叫层叠上下文 想想z-index能帮助理解
+    同一个堆叠上下文里面, 所有的元素是一层一层一起刷的
+    元素和元素内容是分开刷的
+    先刷第一层, 元素本身刷出来
+    再刷内容
+    奥德赛
+    
+
+    想解决这个bug, 只能把.bg-top和.main这两个元素分开到不同的堆叠上下文
+    transform 可以
+    z-index 可以, 不过这个属性只应用在定位元素
+    两种方案
+
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context
+
+  占位 -->
+
+  <h2>元素的绘制顺序</h2>
+  <div class="dui_die_container">
+    <img src="../imgs/bg_imgs/1.jpg" class="bg-top">
+    <!-- margin-top给负值就出现bug了, 这里写在style只为了方便调试
+      z-index: 1; position: relative;
+      transform: translateY(-200px); 不用加margin-top属性给负值 // 推荐
+      或者是加margin-top属性给负值且 transform: scale(1); 给放大倍数1, 元素尺寸不变
+    占位 -->
+    <div class="main" style="margin-top: 0;">
+      <img src="../imgs/present.png">
+      <div class="user-name">游客</div>
+    </div>
+  </div>
+
+
+
   <!-- 正经 section 标签用法 -->
   <section>
     <h2>img</h2>
