@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>四角线框的跟随移动 蒙层</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* 每行3个, 间距相等 */
+    .item {
+      width: 30%;
+      text-align: center;
+      margin: calc(10% / 6);
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      aspect-ratio: 1/1;
+    }
+
+    .pointer {
+      position: absolute;
+      /* 边框的长度 */
+      --l: 30px;
+      /* 间距 */
+      --g: 15px;
+      /* 粗细 */
+      --t: 3px;
+      /* 框住的元素大小 */
+      --s: 0px;
+      --x: 0px;
+      --y: 0px;
+      width: calc(var(--s) + var(--g) * 2);
+      height: calc(var(--s) + var(--g) * 2);
+      border: var(--t) solid #fff;
+      left: calc(var(--x) - var(--g));
+      top: calc(var(--y) - var(--g));
+      transition: .5s;
+      /* 锥形渐变, 顺时针方向变换颜色 */
+      /* background: conic-gradient(blue, red); */
+      /* background: conic-gradient(at 50px 50px, blue, red); */
+      /* background: conic-gradient(blue 75%, red 75%); */
+      /* background: conic-gradient(at 50px 50px, blue 75%, red 75%); */
+      /* background: conic-gradient(at 50px 50px, blue 75%, red 75%) 0 0/calc(100% - 50px) calc(100% - 50px) no-repeat; */
+      /* background: conic-gradient(at 50px 50px, blue 75%, red 75%) 0 0/calc(100% - 50px) calc(100% - 50px); */
+      /* background: conic-gradient(at 50px 50px, transparent 75%, red 75%) 0 0/calc(100% - 50px) calc(100% - 50px); */
+      /* background: conic-gradient(at var(--l) var(--l), transparent 75%, red 75%) 0 0/calc(100% - var(--l)) calc(100% - var(--l)); */
+      --mask: conic-gradient(at var(--l) var(--l), transparent 75%, red 75%) 0 0/calc(100% - var(--l)) calc(100% - var(--l));
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+      /* 蒙层的作用是给一张图片, 只在这个图片不透明的区域才显示出来, 透明的区域不显示, 依旧透明
+      mask-clip: border-box; // 类似 background-clip, 默认值是border-box
+      本例中, 显示出来的区域是4个角, 这4个角只有border, 所以只能显示出来border */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="pointer"></div>
+    <div class="item">
+      <img src="../../imgs/bg_imgs/1.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/bg_imgs/2.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/bg_imgs/3.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/bg_imgs/4.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/img_die_jia/bg.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/img_die_jia/man.jpg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/bdd.jpeg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/gyy.jpeg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/scenery.jpeg">
+    </div>
+    <div class="item">
+      <img src="../../imgs/scenery2.jpg">
+    </div>
+  </div>
+
+
+  <script>
+    const imgs = document.querySelectorAll('.container img')
+    const pointer = document.querySelector('.pointer')
+    for (const img of imgs) {
+      img.onmouseenter = () => {
+        pointer.style.setProperty('--x', img.offsetLeft + 'px')
+        pointer.style.setProperty('--y', img.offsetTop + 'px')
+        pointer.style.setProperty('--s', img.offsetWidth + 'px')
+      }
+    }
+  </script>
+</body>
+
+</html>

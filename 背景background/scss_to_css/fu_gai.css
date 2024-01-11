@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.fu_gai { width: 300px; height: 300px; border: 10px dashed red; padding: 30px; background-color: var(--disneyland-resort); margin-left: 20px; color: #fff; line-height: 2; /* 行内盒总容易出现垂直方向的对齐问题, 不推荐用 */ }
+
+.fu_gai.contentBox { background-clip: content-box; }
+
+.fu_gai.paddingBox { background-clip: padding-box; }
