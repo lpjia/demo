@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>尺寸 盒子 相关计算</title>
+  <link rel="stylesheet" href="scss_to_css/index.css">
+</head>
+
+<body>
+  <div class="pack">
+    <div class="container one">one</div>
+    <div class="container one2">one2</div>
+  </div>
+  <hr>
+  <div class="pack">
+    <div class="container two">two</div>
+    <div class="container two2">two2</div>
+    <div>滚动条的宽度是17px</div>
+  </div>
+  <hr>
+  <div class="pack">
+    <div class="container three">
+      <div class="childScroll">three子元素</div>
+    </div>
+    <div class="container three2">
+      <div class="childScroll">three2子元素</div>
+    </div>
+  </div>
+  <hr>
+  <div class="pack">
+    <div class="container four">four</div>
+    <div class="container four2">
+      <div class="childScroll">four2子元素</div>
+    </div>
+    <div class="container four3">
+      <div class="childScroll">four3子元素</div>
+    </div>
+    <button onclick="addGap()" style="align-self: center; margin-left: 30px;">增大间距</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

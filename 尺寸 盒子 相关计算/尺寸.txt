@@ -1,0 +1,31 @@
+window.getComputedStyle(dom).width
+CSSOM树
+拿到的不一定是界面上的尺寸
+
+
+dom.style.width
+dom树
+拿到的是元素style属性的值, 也就是行内样式书写的样式, 如果没书写在行内, 那可能就拿不到
+读出来没啥用
+但是赋值有时候会用到, 值类型是string, 带单位
+
+
+
+clientWidth
+offsetWidth  常用
+scrollWidth
+layout树, 上面3种
+尺寸, 返回的都是number类型
+
+
+const rect = dom.getBoundingClientRect()
+rect.width
+浏览器渲染最后一步画
+transform变形/变换
+
+
+
+window.innnerWidth
+只读
+视口的尺寸
+如果你需要获取除去滚动条和边框的窗口宽度，请使用根元素 <html> 的 clientWidth 属性。

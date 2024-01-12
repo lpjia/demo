@@ -1,0 +1,59 @@
+.pack {
+  display: flex;
+  gap: 10px;
+}
+
+.container {
+  width: 100px;
+  height: 100px;
+  background-color: deepskyblue;
+}
+
+.one2 {
+  padding: 10px;
+}
+
+.two {
+  border: 5px solid #000;
+}
+
+.two2 {
+  overflow: scroll;
+}
+
+.three {
+  overflow: scroll;
+
+  .childScroll {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.three2 {
+  border: 5px solid #000;
+
+  .childScroll {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.four2 {
+  overflow: scroll;
+
+  .childScroll {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.four3 {
+  overflow: scroll;
+  transform: rotate(45deg);
+
+  .childScroll {
+    width: 200px;
+    height: 200px;
+  }
+}
