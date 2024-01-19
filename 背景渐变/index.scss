@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
 .banner {
   width: 500px;
   height: 200px;
@@ -5,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 
   .title {
     transition: .5s;
@@ -17,7 +29,11 @@
   }
 }
 
-.jian {
+.jian0 {
+  background: linear-gradient(red, deepskyblue);
+}
+
+.jian1 {
   // 有明显分界线
   background: linear-gradient(60deg, cyan 50%, palegoldenrod 50%);
 }
@@ -33,4 +49,14 @@
 
 .jian4 {
   background: linear-gradient(90deg, #976b3f, #e4c995);
+}
+
+.jian5 {
+  // 建议书写渐变方向, 清晰明了
+  background: linear-gradient(to bottom, #84cc3b, #c20a48);
+}
+
+.jian6 {
+  // to bottom left 这种方向, 不是严格的45倾斜角, 而是根据盒子模型的对角线来定的
+  background: linear-gradient(to bottom left, #84cc3b 50%, #c20a48 50%);
 }

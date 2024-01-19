@@ -1,0 +1,23 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { padding-left: 20px; padding-top: 20px; }
+
+.banner { width: 500px; height: 200px; border: 2px solid #000; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+
+.banner .title { transition: .5s; }
+
+.banner:hover .title { transform: translateX(-40px); }
+
+.jian0 { background: linear-gradient(red, deepskyblue); }
+
+.jian1 { background: linear-gradient(60deg, cyan 50%, palegoldenrod 50%); }
+
+.jian2 { background: linear-gradient(90deg, #000, #fff); }
+
+.jian3 { background: linear-gradient(0deg, cyan 50%, palegoldenrod 50%); }
+
+.jian4 { background: linear-gradient(90deg, #976b3f, #e4c995); }
+
+.jian5 { background: linear-gradient(to bottom, #84cc3b, #c20a48); }
+
+.jian6 { background: linear-gradient(to bottom left, #84cc3b 50%, #c20a48 50%); }
