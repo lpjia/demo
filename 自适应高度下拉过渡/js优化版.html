@@ -62,7 +62,10 @@
     /* 这里是两个事件配合, 移入事件清除定时器, 移出事件重新加定时器
     另一个用法看"平滑滚动效果(原生js实现此兼容性好)" */
     doms.btn.onmouseenter = function (e) {
-      clearTimeout(timerId) // 清除定时器得先, 判断搁后
+      // 先清除定时器
+      clearTimeout(timerId)
+      // 后判断, 消除抖动
+      // 抖动是因为重新执行了后续代码, height重新发生了一遍变化, 所以出现抖动现象
       if (doms.inner.style.display === 'block') { // 防抖动的关键
         return;
       }

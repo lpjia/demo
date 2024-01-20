@@ -29,3 +29,37 @@ window.innnerWidth
 只读
 视口的尺寸
 如果你需要获取除去滚动条和边框的窗口宽度，请使用根元素 <html> 的 clientWidth 属性。
+
+
+
+box-sizing: content-box;
+width赋值500px, 即content宽度
+其实 = 真的内容显示区域 + 滚动条自身宽度17px
+但滚动条最特殊的地方在于它显示在 padding 的外侧
+
+
+box-sizing: border-box;
+width赋值500px, border内都算上
+
+
+
+
+
+可编辑文本在
+尺寸.txt
+
+
+clientTop	当前元素 上border的值
+clientLeft	当前元素 左border的值
+
+
+offsetParent 祖先中最近的定位元素或者body, table, td, th元素
+
+offsetTop 从当前元素的border外面开始算(也就是margin)到offsetParent的margin(包含margin)
+
+同一个BFC内部要考虑margin重叠的计算
+
+
+scrollTop
+当元素的内容不生成垂直滚动条时，其 scrollTop 值为 0
+从元素的边框(不包含border)开始算
