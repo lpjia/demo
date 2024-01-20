@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应高度下拉过渡 max-height</title>
+  <style>
+    .btn {
+      background-color: deepskyblue;
+      color: #fff;
+      width: fit-content;
+      padding: 20px;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .detail {
+      position: absolute;
+      left: 0;
+      top: 62px;
+      background-color: rgb(0, 103, 137);
+      width: 300px;
+      border-radius: 3px;
+      cursor: default;
+    }
+
+    .inner {
+      padding: 20px;
+    }
+
+    .ctt {
+      max-height: 0;
+      transition: .5s;
+    }
+
+    /* 会出现展开和收缩的不同步问题
+    原因: 针对的是max-height属性来变化, max-height值很大, 展开时很快, 收缩时会有停顿, 看"演示" */
+    .btn:hover .ctt {
+      max-height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="btn">
+    hover me
+    <div class="detail">
+      <div class="ctt">
+        <div class="inner">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aliquid rem officia laboriosam pariatur,
+          molestias, non blanditiis porro accusamus est consequatur. Reprehenderit odio, odit similique quam dignissimos
+          laborum distinctio hic!
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

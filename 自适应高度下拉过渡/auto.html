@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应高度下拉过渡 auto</title>
+  <style>
+    .btn {
+      background-color: deepskyblue;
+      color: #fff;
+      width: fit-content;
+      padding: 20px;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .detail {
+      position: absolute;
+      left: 0;
+      top: 62px;
+      background-color: rgb(0, 103, 137);
+      width: 300px;
+      border-radius: 3px;
+      cursor: default;
+    }
+
+    .inner {
+      /* 不影响外面盒子的尺寸 */
+      padding: 20px;
+    }
+
+    .ctt {
+      height: 0;
+      transition: .5s;
+    }
+
+    /* transition过渡对非数值的变化不生效 */
+    .btn:hover .ctt {
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="btn">
+    hover me
+    <div class="detail">
+      <div class="ctt">
+        <div class="inner">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aliquid rem officia laboriosam pariatur,
+          molestias, non blanditiis porro accusamus est consequatur. Reprehenderit odio, odit similique quam dignissimos
+          laborum distinctio hic!
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

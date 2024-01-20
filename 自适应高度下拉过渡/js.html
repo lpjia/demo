@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应高度下拉过渡 js</title>
+  <style>
+    .btn {
+      background-color: deepskyblue;
+      color: #fff;
+      width: fit-content;
+      padding: 20px;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .detail {
+      position: absolute;
+      left: 0;
+      top: 62px;
+      background-color: rgb(0, 103, 137);
+      width: 300px;
+      border-radius: 3px;
+      cursor: default;
+      min-height: 0;
+      line-height: 1.5;
+      height: 0;
+    }
+
+    .inner {
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="btn btn1 btn2">
+    hover me
+    <div class="detail">
+      <div class="ctt">
+        <div class="inner">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aliquid rem officia laboriosam pariatur,
+          molestias, non blanditiis porro accusamus est consequatur. Reprehenderit odio, odit similique quam dignissimos
+          laborum distinctio hic!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const doms = {
+      btn: document.querySelector('.btn'),
+      detail: document.querySelector('.detail'),
+    }
+    doms.btn.onmouseenter = function () {
+      // 首先让内容显示出来, 并把高度弄成自动, 否则不知道高度要变为多少
+      doms.detail.style.height = 'auto'
+      const { height } = doms.detail.getBoundingClientRect()
+      doms.detail.style.height = 0
+      /* height 先渲染为auto, 再渲染为0, 以最后的渲染为准来渲染
+      设置不会导致reflow, 读会立即reflow
+      读offsetHeight, 那么就必须完成渲染, 页面上才会绘制 */
+      doms.detail.style.transition = 'height .5s'
+      doms.detail.offsetHeight
+      doms.detail.style.height = height + 'px'
+    }
+    doms.btn.onmouseleave = function () {
+      doms.detail.style.height = 0
+    }
+  </script>
+</body>
+
+</html>
