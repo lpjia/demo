@@ -1,4 +1,8 @@
-/* 说明: 此文件工具函数, 用到时再拖到相应的项目工具库 */
+/* 说明: 此文件工具函数, 用到时再拖到相应的项目工具库文件中
+注释是给自己看的, 拖过去不用带注释
+由于是自己用, 没有做什么边界条件判断, 凑合用, 主要是减少依赖
+jsDoc写的有问题的, 暂时搁置
+如果需要学习jsDoc, 可以顺便完善这些工具函数的注释 */
 
 // import { message } from '@/utils/resetMessage'
 // import dayjs from 'dayjs'
@@ -21,31 +25,53 @@ export const clearStorage = (storage = window.sessionStorage) => storage.clear()
 
 
 /**
- * @description 判断数据不为空, 也就是有数据, 可处理后端接口返回数据
- * @description 实际传参应该是值
- * @param {any} key
+ * @description 判断数据不为空, 也就是有数据, 主要处理后端接口返回的数据
+ * {} [] 也判定是空
+ * 不考虑Function Symbol BigInt, json数据不包含这些js特有的数据类型
+ * @param {any} val
  * @returns {boolean}
  */
-export function judgeNotEmpty(key) {
-  let judgeObj = p => {
-    if (p === null) return !!p // 是 null
+export function judgeNotEmpty(val) {
+  let judgeObj = (p) => {
+    if (p === null) return !!p // 是null
     else if (Array.isArray(p)) return !!(p.length) // 是数组
     else return !(JSON.stringify(p) === '{}') // 是对象
   }
-  let type = typeof (key)
+  let type = typeof (val)
   switch (type) {
-    case 'string': case 'number': case 'undefined': case 'boolean':
-      return !!key
+    case 'string': case 'number': case 'boolean': case 'undefined':
+      return !!val
     case 'object':
-      return judgeObj(key)
+      return judgeObj(val)
     default:
   }
 }
 
 
 /**
+ * @description 判断值是否为对象
+ * @param {any} value 
+ * @returns {boolean}
+ */
+export function isObject(value) {
+  return typeof value === 'object' && value !== null;
+}
+
+
+/**
+ * @description 判断两个值是否相等
+ * @param {any} x
+ * @param {any} y
+ * @returns {boolean}
+ */
+export function hasChanged(x, y) {
+  return Object.is(x, y);
+}
+
+
+/**
  * @description 把时间戳格式化
- * @param {number / date} number 
+ * @param {number | Date} number 
  * @param {string} format
  * @returns {string}
  */
@@ -73,18 +99,18 @@ function formatNumber(n) {
 }
 
 
-// 格式化 ISO 时间
-export function timeFormat(timeString) {
-  if (!judgeNotEmpty(timeString)) return ''
-  if (typeof timeString !== 'string') throw new Error('时间数据类型错误!')
-  return formatTime(timeString, 'Y-M-D h:m:s')
-}
+// // 格式化 ISO 时间
+// export function timeFormat(timeString) {
+//   if (!judgeNotEmpty(timeString)) return ''
+//   if (typeof timeString !== 'string') throw new Error('时间数据类型错误!')
+//   return formatTime(timeString, 'Y-M-D h:m:s')
+// }
 
 
 /**
  * @description 深拷贝
- * @param {array / object} source 
- * @returns {array / object}
+ * @param {array | object} source 
+ * @returns {array | object}
  */
 export function deepClone(source) {
   if (!source && typeof source !== 'object') {
@@ -117,36 +143,6 @@ export function msgWarn(msg) {
 } */
 
 
-/**
- * @description 生成唯一 id
- * @param {number} n 生成的个数
- * @returns {array}
- */
-export function createUniqueId(n) {
-  let random = function () { // 生成10-12位不等的字符串
-    return Number(Math.random().toString().substr(2)).toString(36) // 转换成十六进制
-  }
-  let arr = []
-
-  function createId() {
-    let num = random()
-    let _bool = false
-    arr.forEach(v => {
-      if (v === num) _bool = true
-    })
-    if (_bool) {
-      createId()
-    } else {
-      arr.push(num)
-    }
-  }
-  let i = 0
-  while (i < n) {
-    createId()
-    i++
-  }
-  return arr
-}
 
 
 
@@ -206,7 +202,7 @@ export function treeToOne(node) {
 
 /**
  * @description 四舍五入, 修复 js 精度问题, 正负数都可以
- * @param {number / string} n 四舍五入的数, 必传
+ * @param {number | string} n 四舍五入的数, 必传
  * @param {number} d 不传则默认 0, 取整
  * @returns {string}
  */
@@ -364,7 +360,7 @@ export function combination(n, m) {
  * @param {Function} func
  * @param {number} wait
  * @param {boolean} immediate
- * @return {*}
+ * @return {Function}
  */
 export function debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
@@ -414,7 +410,7 @@ export const reverseMapping = o => Object.keys(o).reduce((r, k) =>
 /**
  * @description 建立多对一的映射关系, 用法是 manyToOne(map)(key)
  * @param {object} map 特殊写法 key 的对象
- * @returns {function}
+ * @returns {Function}
  */
 export function manyToOne(map) {
   const MAP = {};
@@ -435,7 +431,7 @@ export function manyToOne(map) {
 /**
  * @description 判断是否为外链(也就是非系统页面路由)
  * @param {string} path
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export function isExternal(path) {
   return /^(https?:|mailto:|tel:)/.test(path)
@@ -578,4 +574,21 @@ export function objKeyToOrmField(obj = {}, options) {
   }
 
   return newArr
+}
+
+
+// 2023-10-19 12:05 星期四
+
+/**
+ * @description 获取文件后缀
+ * @param {string} filenameStr 
+ * @param {boolean} isRemovePoint 是否去掉点, 默认false
+ * @returns 
+ */
+export function getFileSuffix(filenameStr, isRemovePoint = false) {
+  if (typeof filenameStr !== 'string') throw new Error('filenameStr must be string');
+  let i = filenameStr.lastIndexOf(".")
+  if (i < 0) return '';
+  let splitNum = isRemovePoint ? 1 : 0;
+  return filenameStr.substring(i + splitNum);
 }

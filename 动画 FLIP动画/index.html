@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画 FLIP动画</title>
+  <link rel="stylesheet" href="scss_to_css/index.css">
+</head>
+
+<body>
+
+  <!-- FLIP动画
+  不是一个第三方库, 也不是框架,
+  是一种动画的实现思路, 专门针对元素结构变化而实现的动画方案, 
+  F First 记录要监控的元素位置, 参与动画的元素都要记录
+  L Last 记录元素结构变化后的位置
+  I Invert 倒装 移动元素到First的位置
+  P Play 使用动画还原元素到本来的位置
+  换行占位 -->
+
+  <button>排序</button>
+  <ul class="list">
+    <li class="item active">HTML + CSS</li>
+    <li class="item">JavaScript</li>
+    <li class="item">网络</li>
+    <li class="item">移动端</li>
+    <li class="item">框架</li>
+    <li class="item">NodeJS</li>
+    <li class="item">工程化</li>
+  </ul>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+button {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  color: #fff;
+  background-color: deepskyblue;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list {
+  border-radius: 10px;
+  border: 2px solid gray;
+  width: 240px;
+  margin-top: 10px;
+
+  .item {
+    background-color: #73ad4c;
+    border: 2px solid #000;
+    padding: 0 30px;
+    color: #fff;
+    line-height: 2;
+    border-radius: 999990px;
+    width: 120px;
+    margin: 20px auto;
+
+    &.active {
+      color: #d84023;
+    }
+  }
+}
