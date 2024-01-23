@@ -65,7 +65,7 @@ export function isObject(value) {
  * @returns {boolean}
  */
 export function hasChanged(x, y) {
-  return Object.is(x, y);
+  return !Object.is(x, y);
 }
 
 

@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  $wh: 100px;
+  width: $wh;
+  height: $wh;
+  border-radius: 50%;
+  line-height: $wh;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#css_dong_hua {
+  margin-left: 20px;
+  background-color: var(--lam-tin);
+  // animation: lai_hui linear 20s infinite;
+  // animation: lai_hui linear 10s forwards;
+  animation: lai_hui linear 10s;
+  animation-fill-mode: both;
+}
+
+#jsq {
+  background-color: var(--kam-sheung-road);
+  position: absolute;
+  left: 20px;
+  top: 140px;
+}
+
+#raf {
+  background-color: var(--disneyland-resort);
+  position: absolute;
+  left: 20px;
+  top: 280px;
+}
+
+@keyframes lai_hui {
+  0% {
+    transform: translateX(0);
+  }
+
+  // 50% {
+  //   transform: translateX(600px);
+  // }
+
+  100% {
+    // transform: translateX(0);
+    transform: translateX(600px);
+  }
+}
