@@ -64,7 +64,9 @@
       clearInterval(timer)
       let div = document.querySelector('#div' + i)
       // 21:如果外层盒子距离浏览器顶部有margin(注意包括盒子的边框)
-      let target = div.offsetTop - 21;
+      // let target = div.offsetTop - 21;
+      /* 自己改进的 */
+      let target = div.offsetTop - (oBox.offsetTop + (oBox.offsetHeight - oBox.clientHeight) / 2)
       timer = setInterval(() => {
         // 步长,速度
         let speed = (target - oBox.scrollTop) / 5;
