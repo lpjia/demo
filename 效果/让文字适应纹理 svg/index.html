@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>让文字适应纹理</title>
+</head>
+
+<body>
+  <div id="app">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <input type="text" v-model="txt">
+      <input type="color" :value="color" @input="changeColor" style="margin: 20px;">
+      <button @click="changeImg">换图</button>
+    </div>
+
+    <!-- PS 可以用滤镜来做
+  css filter 不够强大, 实现不了
+  svg filter 强大, css filter是其子集 -->
+    <svg viewBox="0 0 600 330">
+      <defs>
+        <filter id="conform">
+          <feImage :href="currImgUrl" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none"
+            result="ORIGIN_IMAGE">
+          </feImage>
+          <feColorMatrix in="ORIGIN_IMAGE" type="saturate" values="0" result="GRAY_IMAGE"></feColorMatrix>
+          <feDisplacementMap in="SourceGraphic" in2="GRAY_IMAGE" scale="15" xChannelSelector="R" yChannelSelector="R"
+            result="TEXTURED_TEXT"></feDisplacementMap>
+          <feImage :href="currImgUrl" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="BG">
+          </feImage>
+          <feColorMatrix in="TEXTURED_TEXT" result="OPACITY_TEXT" type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 .9 0"></feColorMatrix>
+          <feBlend in="BG" in2="OPACITY_TEXT" mode="multiply" result="BLENDED_TEXT"></feBlend>
+        </filter>
+      </defs>
+      <image :href="currImgUrl" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none"></image>
+      <text x="50%" y="50%" font-size="10rem" font-weight="bold" text-anchor="middle" alignment-baseline="middle"
+        :fill="color" filter="url(#conform)">{{ txt }}</text>
+    </svg>
+  </div>
+
+  <script>
+    const imgs = ['1.jpg', '2.jpg', '3.jpg']
+  </script>
+
+  <!-- <script src="../../lib/vue@2.6.14.min.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          txt: 'LOGO',
+          color: '#000',
+          currImgIndex: 0,
+          currImgUrl: '1.jpg',
+        }
+      },
+      methods: {
+        changeColor(e) {
+          this.color = e.target.value
+        },
+        changeImg() {
+          this.currImgIndex++
+          if (this.currImgIndex > imgs.length - 1) {
+            this.currImgIndex = 0
+          }
+          this.currImgUrl = imgs[this.currImgIndex]
+        }
+      }
+    })
+  </script> -->
+
+  <script src="../../lib/vue@3.2.29.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+    createApp({
+      setup() {
+        const txt = ref('LOGO')
+        const color = ref('#000')
+        const currImgIndex = ref(0)
+        const currImgUrl = ref('1.jpg')
+        const changeColor = (e) => {
+          color.value = e.target.value
+        }
+        const changeImg = () => {
+          currImgIndex.value++
+          if (currImgIndex.value > imgs.length - 1) {
+            currImgIndex.value = 0
+          }
+          currImgUrl.value = imgs[currImgIndex.value]
+        }
+
+        return {
+          txt,
+          color,
+          currImgUrl,
+          changeColor,
+          changeImg
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
