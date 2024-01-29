@@ -3,7 +3,7 @@
 
 // 单件商品的数据
 class UIGoods {
-  choose = 0
+  choose = 0 // 明确指出这是类的一部分, 而不是外面传参进来的
 
   constructor(g) {
     this.data = g
@@ -31,14 +31,17 @@ class UIGoods {
   }
 }
 
+
 // 整个界面的数据
 class UIData {
   deliveryThreshold = 30 // 起送门槛
   deliveryPrice = 5 // 配送价格
 
-  constructor() {
-    this.uiGoods = goods.map(item => new UIGoods(item))
-  }
+  uiGoods = goods.map(item => new UIGoods(item))
+
+  // constructor() {
+  //   this.uiGoods = goods.map(item => new UIGoods(item))
+  // }
 
   getTotalPrice() {
     return this.uiGoods.reduce((acc, item) => {
@@ -55,7 +58,12 @@ class UIData {
     this.uiGoods[index].decrease()
   }
 
-  getTotalChooseNumber() {
+  isChoose(index) {
+    return this.uiGoods[index].isChoose()
+  }
+  // 以上4个方法, 也对应了UIGoods类的4个方法
+
+  getTotalChoose() {
     return this.uiGoods.reduce((acc, item) => {
       acc += item.choose
       return acc
@@ -64,16 +72,12 @@ class UIData {
 
   // 购物车有没有东西
   hasGoodsInCar() {
-    return this.getTotalChooseNumber() > 0
+    return this.getTotalChoose() > 0
   }
 
   // 是不是跨过了起送门槛
   isCrossDeliveryThreshold() {
     return this.getTotalPrice() >= this.deliveryThreshold
-  }
-
-  isChoose(index) {
-    return this.uiGoods[index].isChoose()
   }
 
   // calcDiffDeliveryThreshold() {
@@ -192,14 +196,14 @@ class UI {
       this.doms.car.classList.remove('active')
     }
 
-    this.doms.badge.textContent = this.uiData.getTotalChooseNumber()
+    this.doms.badge.textContent = this.uiData.getTotalChoose()
 
     if (this.uiData.isCrossDeliveryThreshold()) {
       this.doms.footerPay.classList.add('active')
     }
     else {
       this.doms.footerPay.classList.remove('active')
-      const diff = new Big(this.uiData.deliveryThreshold - total).round()
+      const diff = new Big(this.uiData.deliveryThreshold - total).round(2)
       this.doms.footerPayInnerSpan.textContent = `还差￥${diff}元起送`
     }
   }

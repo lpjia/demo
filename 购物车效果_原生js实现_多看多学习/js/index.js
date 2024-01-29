@@ -2,8 +2,8 @@ console.log('goods:', goods)
 
 function createUIGoods(g) {
   return {
-    choose: 0,
-    data: g
+    choose: 0, // 为了和原始数据区分, 这是后加的数据, 缺了选中数量
+    data: g // 原始数据
   }
 }
 const uig = createUIGoods(goods[0])

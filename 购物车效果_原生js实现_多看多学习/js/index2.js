@@ -2,7 +2,7 @@
 
 function UIGoods(g) {
   this.data = g
-  this.choose = 5
+  this.choose = 8
 }
 UIGoods.prototype.getTotalPrice = function () {
   return this.data.price * this.choose
