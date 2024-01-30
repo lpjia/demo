@@ -20,9 +20,16 @@
 
     button {
       position: fixed;
-      bottom: 10px;
       left: 10px;
       padding: 2px 4px;
+    }
+
+    #toTop {
+      bottom: 10px;
+    }
+
+    #scrollTop {
+      bottom: 50px;
     }
 
     html {
@@ -44,11 +51,13 @@
     <img src="../imgs/bg_imgs/3.jpg" alt="">
     <img src="../imgs/bg_imgs/4.jpg" alt="">
   </div>
-  <button>返回顶部</button>
+  <button id="toTop">返回顶部</button>
+  <!-- 获取滚动条位置 滚动到哪了 -->
+  <button id="scrollTop" onclick="console.log(document.documentElement.scrollTop)">读 scrollTop</button>
 
   <script>
-    const btn = document.querySelector('button')
-    btn.onclick = () => {
+    const toTop = document.querySelector('#toTop')
+    toTop.onclick = () => {
       // window.scrollTo(0, 0)
 
       // 第二种 js方式, window也可以换成其他区域
