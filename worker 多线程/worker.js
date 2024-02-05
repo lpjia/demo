@@ -1,24 +1,20 @@
-function add() {
-  for (let i = 0; i < 5000; i++) {
-    a++
-    b++
-  }
+console.log('worker全局this:', this)
+console.log('worker全局对象self === this:', self === this)
+const that = this
+function fn(num) {
+  console.log(num);
 }
-// add()
-
-let c = null
 
 self.onmessage = function (e) {
-  console.log("🚀 ~ file: worker.js ~ line 10 ~ e", e);
-  console.log("🚀 ~ file: worker.js ~ line 15 ~ e.data", e.data);
-  c = e.data;
-  fn(c);
+  console.log('e:', e)
+  console.log('e.data:', e.data)
+  fn(e.data);
 
-  console.log("🚀 ~ file: worker.js ~ line 18 ~ self", self);
-  console.log("🚀 ~ file: worker.js ~ line 20 ~ self.location", self.location);
-  console.log("🚀 ~ file: worker.js ~ line 22 ~ navigator", navigator);
-}
+  console.log('self.location:', location)
+  console.log('self.navigator:', navigator)
 
-function fn(num) {
-  console.log("🚀 ~ file: worker.js ~ line 23 ~ fn ~ num", num);
+  console.log('函数内this:', this) // 类似主线程函数this指向window对象, worker指向self
+  console.log('that === this:', that === this)
+
+  postMessage('从worker.js返回的字符串信息')
 }
