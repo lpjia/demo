@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>丝滑的标题动画</title>
+  <link rel="stylesheet" href="scss_to_css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <p class="title">这是一个</p>
+    <p class="title">长长的</p>
+    <p class="title">标题文字</p>
+  </div>
+
+
+  <script>
+    const doms = {
+      container: document.querySelector('.container'),
+      ps: document.querySelectorAll('p')
+    }
+    doms.ps.forEach((p) => {
+      const result = p.textContent
+        .split('')
+        .map((letter) => `<span>${letter}</span>`)
+        .join('')
+      console.log(result);
+      p.innerHTML = result
+    });
+    doms.spans = document.querySelectorAll('.title span')
+    doms.spans.forEach((span, i) => {
+      span.style.setProperty('--delay', i * 0.2 + 's')
+    })
+
+  </script>
+</body>
+
+</html>

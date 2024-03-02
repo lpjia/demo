@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>交错排列的文字</title>
+  <style>
+    @font-face {
+      font-family: 'Luckiest Guy';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(../../font/font.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    body {
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      font-size: 80px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .overlap {
+      font-family: 'Luckiest Guy';
+      letter-spacing: -10px;
+
+      /* 利用旋转? */
+      /* transform-style: preserve-3d; */
+      /* 父元素变弹性盒? 字母不能换行了
+      加wrap, 没有按单词换行且不居中
+      加center, 还是没有按单词换行, 还是得保证span是行盒才行 */
+      /* display: flex;
+      flex-wrap: wrap;
+      justify-content: center; */
+    }
+
+    .overlap span {
+      /* 直接在右边加阴影, 没效果, 原因是右边的元素覆盖住左边的元素了(靠后的覆盖靠前的), 在左边加阴影就生效(需求是在右边加阴影) */
+      text-shadow: 10px 0 10px #000;
+
+      /* 利用旋转? 没效果, span元素是行盒, transform对块盒有效 */
+      /* transform: perspective(700px) rotateY(-1deg); */
+      /* 变成块盒? 每个字母换行了, 不行 */
+      /* display: block; */
+
+      /* 还是用最原始的方案 z-index 改变层级 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="overlap">Hello World</h1>
+
+
+  <script>
+    const overlap = document.querySelector('.overlap')
+    overlap.innerHTML = overlap.textContent
+      .split('')
+      .map((c, i, arr) => `<span style="z-index: ${arr.length - i}">${c}</span>`)
+      .join('')
+  </script>
+</body>
+
+</html>

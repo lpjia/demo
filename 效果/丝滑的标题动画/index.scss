@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(to bottom, #4d4c4c, #6f6f75);
+}
+
+.container {
+  margin-top: 100px;
+
+  >.title {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 42px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    transform: rotate(-10deg);
+    display: flex;
+    justify-content: center;
+
+    span {
+      text-shadow: 1px 1px #533d4a, 2px 2px #533d4a,
+        3px 3px #533d4a, 4px 4px #533d4a,
+        5px 5px #533d4a, 6px 6px #533d4a;
+      transform: skew(-10deg);
+      animation: move 1s cubic-bezier(0.46, 0.04, 0.62, 1.54) var(--delay) forwards;
+      opacity: 0;
+    }
+
+    &:nth-child(1) {
+      color: #e55643;
+    }
+
+    &:nth-child(2) {
+      color: #2b9f5e;
+    }
+
+    &:nth-child(3) {
+      color: #f1c83c;
+    }
+  }
+}
+
+@keyframes move {
+  from {
+    opacity: 0;
+    // 由于span元素有transform: skew(-10deg); 所以动画也要加, 否则状态对不上
+    transform: skew(-10deg) translateY(300%);
+  }
+
+  to {
+    opacity: 1;
+    transform: skew(-10deg) translateY(0);
+  }
+}
