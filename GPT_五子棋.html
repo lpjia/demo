@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋</title>
+<style>
+  body{background: rgba(0, 0, 0, .5);}
+  .board {
+    display: grid;
+    grid-template-columns: repeat(15, 30px);
+  }
+  .cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="board" class="board"></div>
+<script>
+const board = document.getElementById('board');
+let currentPlayer = 'black';
+const grid = Array.from({ length: 15 }, () => Array.from({ length: 15 }, () => ''));
+
+function drawBoard() {
+  board.innerHTML = '';
+  for (let i = 0; i < 15; i++) {
+    for (let j = 0; j < 15; j++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.row = i;
+      cell.dataset.col = j;
+      cell.addEventListener('click', handleClick);
+      board.appendChild(cell);
+    }
+  }
+}
+
+function handleClick(event) {
+  const { row, col } = event.target.dataset;
+  if (grid[row][col] === '') {
+    grid[row][col] = currentPlayer;
+    event.target.style.backgroundColor = currentPlayer;
+    checkWin(parseInt(row), parseInt(col));
+    currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+  }
+}
+
+function checkWin(row, col) {
+  const directions = [[1, 0], [0, 1], [1, 1], [1, -1]];
+  for (const [dx, dy] of directions) {
+    let count = 1;
+    let x = row + dx, y = col + dy;
+    while (x >= 0 && x < 15 && y >= 0 && y < 15 && grid[x][y] === currentPlayer) {
+      count++;
+      x += dx;
+      y += dy;
+    }
+    x = row - dx;
+    y = col - dy;
+    while (x >= 0 && x < 15 && y >= 0 && y < 15 && grid[x][y] === currentPlayer) {
+      count++;
+      x -= dx;
+      y -= dy;
+    }
+    if (count >= 5) {
+      alert(`${currentPlayer.toUpperCase()} wins!`);
+      resetGame();
+      return;
+    }
+  }
+}
+
+function resetGame() {
+  currentPlayer = 'black';
+  grid.forEach(row => row.fill(''));
+  drawBoard();
+}
+
+drawBoard();
+</script>
+</body>
+</html>
