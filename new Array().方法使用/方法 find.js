@@ -20,4 +20,5 @@ const arr = [
 console.log(
   // 找到第一个及格的数据就返回, 不再往后找了
   arr.find(item => item.score >= 60)
+  // 找不到则返回undefined
 )
