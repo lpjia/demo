@@ -110,37 +110,30 @@ console.log("allTruthy:",
 
 
 
-/* 使用 Object.entries 来获取键和值 */
-const person4 = {
-  name: '前端小小',
-  age: 20
-};
 
-console.log("Object.keys(person4):",
-  Object.keys(person4) // ['name', 'age']
-)
-console.log("Object.entries(person4):",
-  Object.entries(person4) // [['name', '前端小小'], ['age', 20]]
-)
-// 键值对在一个数组里, 返回一个二维数组
-// 二维数组可直接转为Map实例
-const m = new Map(Object.entries(person4))
-console.log(
-  m,
-  m.get('age'),
-  m.get('name'),
-)
 
-Object.keys(person4).forEach((key) => {
-  console.log(`遍历Object.keys返回的结果: ${key} is ${person4[key]}`);
-});
-// 使用 entries 获取键和值, 使用解构
-Object.entries(person4).forEach(([key, value]) => {
-  console.log(`遍历Object.entries返回的结果: ${key} is ${value}`);
-});
-// name is 前端小小
-// age is 20
 
+/* 几种严格相等
+Object.is(x, y) 推荐
+arr.includes() 和 new Set()
+===
+
+区别是
+=== 对带符号的0看作是相等, 对NaN看作是不等, 讲道理两个都是有问题的
+arr.includes() 和 new Set(), 对NaN看作是相等, 其他和===一样
+Object.is() 0不等于-0, NaN看作是相等, 符合逻辑
+
+0和+0是一样的, 但是-0和0不一样, 因为1/0=Infinity, 1/-0=-Infinity, 正负无穷大, 是两个数
+换行占位 */
+
+
+null === null; // true
+undefined === undefined; // true
+/* === 对下面2个判断有问题 */
+NaN === NaN; // false
++0 === -0; // true
+
+new Set([0, +0, -0]); // Set(1) {0}
 
 
 
@@ -166,14 +159,9 @@ Object.is(+0, -0); // false
 Object.is(-0, -0); // true
 
 // 案例 3: NaN
-Object.is(NaN, 0 / 0); // true
+Object.is(NaN, 0 / 0); // true, 0/0是NaN
 Object.is(NaN, Number.NaN); // true
 
-NaN === NaN; // false
-+0 === -0; // true
-
-new Set([0, +0, -0]); // Set(1) {0}
-// Set 和 Object.is 的区别就是对于+-0的
 
 
 
