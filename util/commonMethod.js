@@ -26,23 +26,24 @@ export const clearStorage = (storage = window.sessionStorage) => storage.clear()
 
 /**
  * @description 判断数据不为空, 也就是有数据, 主要处理后端接口返回的数据
- * {} [] 也判定是空
+ * {} [] 在这也判定是空, 按JS标准来说不算空
  * 不考虑Function Symbol BigInt, json数据不包含这些js特有的数据类型
+ * isNotEmptyForRespData 命名如何?
  * @param {any} val
  * @returns {boolean}
  */
 export function judgeNotEmpty(val) {
   let judgeObj = (p) => {
-    if (p === null) return !!p // 是null
-    else if (Array.isArray(p)) return !!(p.length) // 是数组
-    else return !(JSON.stringify(p) === '{}') // 是对象
+    if (p === null) return p; // 是null
+    else if (Array.isArray(p)) return p.length; // 是数组
+    else return !(JSON.stringify(p) === '{}'); // 是对象
   }
   let type = typeof (val)
   switch (type) {
     case 'string': case 'number': case 'boolean': case 'undefined':
-      return !!val
+      return !!val;
     case 'object':
-      return judgeObj(val)
+      return judgeObj(val);
     default:
   }
 }
