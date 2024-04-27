@@ -6,7 +6,10 @@ import { deepClone } from '../util/commonMethod.js'
 
 
 
-
+/* 稀疏数组, 数组中的空元素和undefined还不一样, 空元素表示没有东西, undefined表示有东西, 但值为 undefined
+[10, 20, 30, empty × 2] */
+const arr7 = [10, 20, 30, , ,] // 最后一个逗号后面不算, 只算前面
+const arr71 = [10, 20, 30, undefined, undefined,] // 和上一个数组里的项就不是等价的
 
 
 
