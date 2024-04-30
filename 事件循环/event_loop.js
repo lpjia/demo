@@ -33,6 +33,7 @@ console.log('main')
 延时队列:
 
 
+打印
 main
 2p
 4p
