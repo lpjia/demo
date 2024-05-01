@@ -1,0 +1,17 @@
+.interspace { margin-bottom: 2rem; }
+
+.triangle-up { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid red; }
+
+.triangle-down { transform: rotate(180deg); }
+
+.triangle-left { transform: rotate(-90deg); }
+
+.triangle-right { transform: rotate(90deg); }
+
+.triangle-left-bottom { width: 0; height: 0; border-right: 100px solid transparent; border-bottom: 100px solid red; }
+
+.triangle-right-bottom { transform: rotate(-90deg); }
+
+.triangle-right-top { transform: rotate(180deg); }
+
+.triangle-left-top { transform: rotate(90deg); }
