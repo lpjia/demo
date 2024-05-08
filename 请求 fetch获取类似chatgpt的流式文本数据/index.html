@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fetch获取类似chatgpt的流式文本数据</title>
+</head>
+
+<body>
+
+  <script type="module">
+    // chatgpt使用的是SSE, 我用koa2实现的不是SSE, 只是流式获取数据的示意
+
+    const ctt = '传给后端一段文本';
+    const url = 'http://localhost:7010/api/chatgpt'
+    const resp = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({ ctt })
+    });
+    if (!resp.ok) throw new Error('resp failed')
+
+    const reader = resp.body.getReader()
+    // 需要解码
+    const decoder = new TextDecoder()
+    while (1) {
+      // 一次读出一块数据, 数据量大小根据后端控制, 也和操作系统的缓存区有关
+      const { done, value } = await reader.read()
+      if (done) break;
+      const txt = decoder.decode(value)
+      console.log(txt)
+    }
+
+    // const { done, value } = await reader.read()
+    // const txt = decoder.decode(value)
+    // console.log(
+    //   done,
+    //   value,
+    //   txt,
+    // )
+
+  </script>
+</body>
+
+</html>
