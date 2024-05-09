@@ -194,6 +194,15 @@ class StudentController {
     // 结束流
     stream.end();
   }
+
+
+  tryUpload(ctx: Context) {
+    ctx.body = {
+      code: 0,
+      msg: 'success',
+      data: null
+    }
+  }
 }
 
 export default new StudentController()

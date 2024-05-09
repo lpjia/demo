@@ -47,4 +47,7 @@ router.post('/chatgpt', StudentController.chatGptText) // 配合类字段
 // router.post('/chatgpt', ctx => StudentController.chatGptText(ctx)) // 包一层
 
 
+router.post('/upload', StudentController.tryUpload)
+
+
 export default router
