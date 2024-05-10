@@ -1,0 +1,27 @@
+.father { border-bottom: 1px solid deepskyblue; }
+
+.father > .child { display: inline; vertical-align: bottom; line-height: 1; }
+
+.father .one { font-size: 40px; }
+
+.father .two { font-size: 12px; }
+
+.father .three { font-size: 30px; }
+
+.father .four { font-size: 16px; }
+
+.father .five { font-size: 24px; }
+
+.father .yi, .father .er { vertical-align: baseline; }
+
+.father_2 { border-top: 1px solid deepskyblue; }
+
+.father_2 > .child { vertical-align: top; }
+
+.father_3 { border-bottom: 1px solid deepskyblue; }
+
+.father_3 > .child { display: inline; vertical-align: baseline; line-height: 1; }
+
+.father_3 .one { font-size: 40px; }
+
+.father_3 .two { font-size: 12px; }
