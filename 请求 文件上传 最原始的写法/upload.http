@@ -1,0 +1,10 @@
+POST /api/upload HTTP/1.1
+Host: 127.0.0.1:7010
+Content-Type: multipart/form-data; boundary=fen;
+
+--fen
+Content-Dispositon: form-data; name="inputFile"; filename="gyy.jpeg"
+Content-Type: image/jpeg
+
+< ../imgs/gyy.jpeg
+--fen--
