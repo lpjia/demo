@@ -1,0 +1,22 @@
+// 2024-05-08 23:55 星期三
+可以用脚本命令
+"dev": "nodemon app.js",
+
+
+
+https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616
+
+
+
+可以新建一个try.js文件来运行某些api
+
+
+
+
+require('node:fs')
+这个语法的最低支持版本是 Node.js 12.13.0
+用于引入 Node.js 内置模块
+
+
+
+// 回调用法 ->

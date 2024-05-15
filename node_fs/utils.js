@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('node:fs')
 
 /* 获取文件夹下所有文件 */
 const getFileList = (pathStr) => {
