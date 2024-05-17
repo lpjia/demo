@@ -1,36 +1,55 @@
 export { }
 
 
-// extends
-// 窄类型 和 宽类型
-// 这里 Zhai 属性多(限制多)范围小, 属窄类型
-// Kuan 属性少(限制少)范围大, 属宽类型
-type Zhai = {
+// 类型范围
+
+
+/* 基本类型
+顶层类型"top type", 底层类型"bottom type"
+TypeScript 有两个“顶层类型”（any和unknown），但是“底层类型”只有never唯一一个
+any、unknown类型范围很大, unknown类型更安全(推荐用)
+never类型是所有类型的子类型 */
+
+
+/* 宽类型  窄类型
+窄类型 extends 宽类型, 窄类型是宽类型的子类型 */
+
+
+type LianHeJiBen = string | number | boolean
+// A extends B, 可以翻译为 A是不是B的子类型
+type PD21 = string extends LianHeJiBen ? true : false
+
+type PD22 = unknown extends never ? true : false
+type PD23 = never extends object ? true : false // never类型是所有类型的子类型
+type PD24 = number extends number ? true : false // 自身是自身的子类型
+type PD25 = 1 extends number ? true : false // 值类型是其基本类型的子类型
+type PD26 = 'abc' extends string ? true : false // 值类型是其基本类型的子类型
+// 以上 ? true : false 中的 true或false 就是值类型
+
+
+
+/* 对于对象类型
+属性(成员)越多, 圈越大
+
+成员多  多key类型  大圈类型
+成员少  少key类型  小圈类型 */
+
+interface XiaoQuan {
   name: string,
+}
+interface DaQuan extends XiaoQuan {
   age: number,
 }
-type Kuan = {
-  name: string,
-}
+/* 对于对象类型, 成员多, 大圈类型
+A extends B, 可以翻译为 A圈是不是套住B圈 */
+type PD31 = DaQuan extends XiaoQuan ? true : false
 
-// extends 其实在这里被翻译成赋值, 也就是窄类型可以赋值给宽类型, 反过来不行
-// 其实也可以理解为继承, 原理是一样的, 都是子继承父(子窄父宽), 窄赋值给宽
-// 结合三元运算符
-type Panduan = Kuan extends Zhai ? true : false // 常量类型
-const panduanResult: Panduan = false // 只能赋值常量
-// 窄类型赋值给宽类型, 判定为真值
-type Panduan2 = Zhai extends Kuan ? true : false
-const panduanResult2: Panduan2 = true
 
-// 接口一样
-interface ZhaiItf {
-  name: string,
-  age: number,
-}
-interface KuanItf {
-  name: string
-}
-type Panduan3 = ZhaiItf extends KuanItf ? true : false
+
+/* 结合三元运算符
+extends 翻译为继承, 原理是一样的, 子继承父(子窄父宽)  */
+
+
 
 type Animal = {
   name: string
@@ -40,30 +59,26 @@ type Dog = {
   skill: string,
 }
 type PD = Dog extends Animal ? number : string
-// Dog窄 Animal宽
-
-// 拿联合类型举例, 联合类型不分先后
-type XJ = string // 窄类型
-type HDR = string | number // 宽类型
-const hdr: HDR extends XJ ? string : boolean = false
-const xj: XJ extends HDR ? string : boolean = 'jlp'
-
-type LH2 = string | number | boolean
-type FX<T> = T extends LH2 ? string : symbol
-type Result = FX<number>
-type Result2 = FX<number[]>
-type Result3 = FX<Array<boolean>>
-// 用联合类型, 赋值(extends)是分别赋值来比较
-// symbol和LH2 boolean和LH2 object和LH2
-// 由于FX<T>最多产生两种类型(是/否), 所以结果是 string | symbol
-type Result4 = FX<symbol | boolean | object>
-// 想要完整匹配 加[]
-type FX2<T> = [T] extends [LH2] ? string : symbol
-// string | number 和LH2比较, 结果就一个
-type Result5 = FX2<string | number>
-type Result6 = FX2<string | symbol>
+// Dog圈大  Animal圈小
 
 
+
+/* T extends LianHeJiBen, T是不是LianHeJiBen的子类型
+联合类型, 分别来比较, 有一个成立就可以
+Result的number类型参数, number和string比较、number和number比较、number和boolean比较, 有一个成立
+Result2的number[]类型参数, number[]和string比较、number[]和number比较、number[]和boolean比较, 没有成立的
+Result3的symbol | boolean | object类型参数, 该类型参数也是联合类型, 那就依次比较(共比较3*3=9次), 有成立的和没有成立的, 所以Result3得到的也是联合类型
+由于FanXing<T>最多产生两种类型(是/否), 所以结果最多是两种类型来联合
+Result4的string | number类型参数, 该类型参数也是联合类型, 那就依次比较(共比较2*3=6次), 有成立的 */
+type FanXing<T> = T extends LianHeJiBen ? symbol : bigint
+type Result = FanXing<number>
+type Result2 = FanXing<number[]>
+type Result3 = FanXing<symbol | boolean | object>
+type Result4 = FanXing<string | number>
+/* 想要完整匹配, 就是整体来比较, 加[], 组装成元组类型
+Result3和Result5的类型不一样, 整体比较的只会得到一种类型 */
+type FanXing2<T> = [T] extends [LianHeJiBen] ? symbol : bigint
+type Result5 = FanXing2<symbol | boolean | object>
 
 
 
@@ -75,6 +90,23 @@ let zs = hd as unknown as number
 // 直接类型断言会报错, string 类型的变量不会赋值给 number 类型的变量
 
 
+/* unknown类型的变量，不能直接赋值给其他类型的变量（除了any类型和unknown类型） */
+let v: unknown = 123;
+// let v1: boolean = v; // 报错
+let v2: unknown = 'abc';
+
+let v11: unknown = v
+let v12: any = v
+
+
+// const命令声明的变量，如果代码里面没有注明类型，就会推断该变量是值类型
+const v21 = 123
+
+// const命令声明的变量，如果赋值为对象，并不会推断为值类型
+const v22 = {
+  name: 'v22',
+  value: 'v22'
+}
 
 // const断言
 const arr = [3, 4] as const

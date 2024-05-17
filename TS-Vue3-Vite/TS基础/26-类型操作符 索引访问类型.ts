@@ -34,21 +34,21 @@ type UserToUnion = User[keyof User]
 
 
 
-const MyArray = [
+const myArray = [
   { name: "Alice", age: 15 },
   { name: "Bob", age: 23 },
   { name: "Eve", age: 38 },
 ];
 // 获取数组元素的类型, []的number是因为数组的索引就是number类型
-type Person = typeof MyArray[number]; // 其实是(typeof MyArray)[number]
+type Person = typeof myArray[number]; // 其实是(typeof myArray)[number]
 // 获取数组类型
-type MyArrayType = typeof MyArray
+type MyArrayType = typeof myArray
 
-type Age = typeof MyArray[number]['age']
+type Age = typeof myArray[number]['age']
 type Name = Person['name']
 
 // 作为索引的只能是类型
-// type Person2 = MyArray[number] // 此处MyArray表示值, 不是类型
+// type Person2 = myArray[number] // 此处myArray表示值, 不是类型
 // const key = 'age'; type Age2 = Person[key] // key是变量, 不能用作类型
 
 // 可用类型别名
@@ -69,6 +69,31 @@ type App = TypeOfAPP[number]
 // 简写
 type App2 = typeof APP[number]
 
+
+
+
+// 元组类型和数组类型的区别
+
+type StringArr = string[]
+/* 等价于
+type StringArr = {
+  [index: number]: string;
+  length: number;
+} */
+
+type Tuple = [string, number]
+/* 等价于
+type TupleObj = {
+  length: 2;
+  0: string;
+  1: number;
+} */
+
+type StringArrType = StringArr['length']
+type TupleType = Tuple['length']
+
+// 元组可以转联合类型
+type LianHe = Tuple[number]
 
 
 

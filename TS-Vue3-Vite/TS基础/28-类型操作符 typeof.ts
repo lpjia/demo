@@ -44,17 +44,18 @@ type Lolochild = typeof lolo.child
 
 
 
-// typeof提取枚举的类型
-// 枚举的值是number类型
+/* typeof提取枚举的类型
+枚举的值是number类型
+默认从0开始, 依次加1 */
 enum HttpMethod {
   GET,
   POST
 }
-type Methods = typeof HttpMethod
-type MethodsShow = ShowMe<typeof HttpMethod>
-const meth: Methods = {
-  GET: 10,
-  POST: 5
+type Method = typeof HttpMethod
+type MethodShow = ShowMe<typeof HttpMethod>
+const mthd: Method = {
+  GET: 0,
+  POST: 1
 }
 // 然后keyof再取联合类型
 type EnumToUnion = keyof (typeof HttpMethod)

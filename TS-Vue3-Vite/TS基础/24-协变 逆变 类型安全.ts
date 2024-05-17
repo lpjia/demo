@@ -11,12 +11,12 @@ export { }
 其实对于对象而言, 成员越多, 限制越多, 类型范围其实越窄
 转变下思路
 (对象类型)属性越多, 圈越大
-子类型成员多, 圈越大
+子类型成员多, 圈大
 相当于TS说是JS的超集一样, TS能用的东西(成员)比JS多
 
 
-跟以前记忆的说法对照
-窄类型  多key类型  大圈类型  超集
+跟以前记忆的说法对照, 主要是对象类型
+窄类型  多key类型  大圈类型
 宽类型  少key类型  小圈类型
 
 
@@ -83,6 +83,7 @@ const transform: Transform = subTransform
 给: IKun 小圈类型
 收: SuperIKun 大圈类型
 不符合
+上面描述的是下一行的举例
 type SubTransform = (x: SuperIKun) => SuperIKun // 报错 */
 
 
@@ -92,6 +93,7 @@ type SubTransform = (x: SuperIKun) => SuperIKun // 报错 */
 给: Fans 小圈类型
 收: IKun 大圈类型
 不符合
+上面描述的是下一行的举例
 type SubTransform = (x: Fans) => Fans // 报错 */
 
 // transform()

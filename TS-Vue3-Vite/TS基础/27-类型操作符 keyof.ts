@@ -49,7 +49,7 @@ interface CarKeys {
   [props: string]: string // 单独这个, CarKeysK类型为string | number, 直观难理解, 其实想到js的属性名可以用数字(会被隐式转为数字字符串), 比如{carName: '奔驰', 1: '编号'}, 恍然大悟, ts其实尽可能兼容js的写法, 所以得到联合类型
   // [props: number]: string // 单独这个, CarKeysK类型为number, 符合直观
   // [props: symbol]: string // 单独这个, CarKeysK类型为symbol, 符合直观
-
+  // [props: number]: number // 对象可以同时有多种类型的属性名索引，比如同时有数值索引和字符串索引。但是，数值索引不能与字符串索引发生冲突，必须服从后者，这是因为在 JavaScript 语言内部，所有的数值属性名都会自动转为字符串属性名。
 }
 type CarKeysK = keyof CarKeys
 type CarKeysKShow = ShowMe<keyof CarKeys>
@@ -183,4 +183,4 @@ Object 是对TypeScript对JavaScript Object.prototype原型对象的定义，是
 同时，由于JavaScript的拆箱装箱机制，Object类型的变量可以被赋予原始值，而基本类型也可以访问Object中定义的属性/方法。
 {} 是一个没有任何成员的对象类型，它可以访问Object中定义的属性/方法，也可以被赋予原始值。
 在约束对象类型时，我们应该始终使用object！
-TypeScript的原始类型（number、string、bigint、boolean、symbol、null、undefined、object）, 在开发中，我们应当始终使用这些原始类型 */
+TypeScript的原始类型（number、string、boolean、bigint、symbol、null、undefined、object）, 在开发中，我们应当始终使用这些原始类型 */
