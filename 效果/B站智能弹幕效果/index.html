@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>遮罩mask-image 显著优化PNG图片的尺寸</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    hr {
+      margin: 2rem 0;
+    }
+
+    /* blk是block块的意思 */
+    .blk {
+      width: 50%;
+      min-width: 400px;
+      padding: 10px;
+      background: radial-gradient(closest-side, gray, transparent), conic-gradient(red, magenta, blue, aqua, lime, yellow, red);
+      text-align: center;
+    }
+
+    .mask_image img {
+      /* 这个base64是纯黑背景的图 */
+      --mask-url: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZQAAAJ8BAMAAAArFErhAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAASAQCkAAAABnRSTlMKPam81se4yTyxAAADc0lEQVR42uzYMUqDQRRG0SSC9R8La0WwFgWX4DqM4Ox/CbZaOGnvJOfs4FaP7+3+OrytY9tNHcY6Hq4m5Was40zK7VjHy+WkfM5T7sc6zqQ8j3Wc5invYx1f85SxkmnJfqxku5Sz8t9h+RgL+5YSJKVISpGUIilFUoqkFP1O2a806Scb7Hj3NFb3+njcb0u9i6ZOUoKkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpRVKKpBRJKZJSJKVISpGUIilFUoqkFEkpklIkpUhKkZQiKUVSiqQUSSmSUiSlSEqRlCIpP+zPsQAAAADAIH/raXQsg0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0RXRFdEV0S1Yy8nDAMxEIZnE8h53YFJIOeQIlJH/FL/JRjfjA06z6zn6+C/SEhOYeQURk2loHSvUPftKio25R3K5oqdXwhb4BQ+TmHkFEZOYeQURk5h5BRGC3B2DyU9EiWUVGRCyISU0mU8tpMyICP1Svoj9QgduxT1afxpJ6VH6hY6LpTy1HFc9isiYS/oBPlGYwAAAABJRU5ErkJggg==);
+
+      -webkit-mask-image: var(--mask-url);
+      mask-image: var(--mask-url);
+      -webkit-mask-size: 300px;
+      mask-size: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- https://www.zhangxinxu.com/wordpress/2020/05/css-mask-compress-png-image/
+    
+  mask-image遮罩有这样一个功能，只有遮罩图片存在的区域才显示
+  那岂不是如果是一个边角透明的任意遮罩图，就可以让JPG图片边角的白色透明了
+
+  PNG图片之所以尺寸大，就是因为色彩过于丰富，如果我们变成纯色，尺寸可以降低100倍不止
+
+  不增加网络负担, 还是加载单张图片, 另一个遮罩用的base64
+
+  B站智能弹幕效果, 弹幕不会遮挡视频中的人物, 用的也是mask-image
+  弹幕的整个大div盖在视频上(按道理是弹幕会遮挡人物), 然后获取视频中有人物的那帧图片(应该是后端处理好给的, 把人物区域挖掉, 其他区域用纯黑), 使用蒙层mask-image, 把弹幕区域限制在纯黑区域, 达到弹幕不会遮挡人物的效果
+    
+  -->
+
+  <div class="blk mask_image">
+    <img src="../../imgs/b_zhan/card.jpg" width="300">
+  </div>
+  <h4>这是jpg格式的小图片+纯色遮罩背景图(base64格式), 实现了png格式的大图片的效果, 四个角是透明的</h4>
+  <hr>
+  <div class="blk">
+    <img src="../../imgs/b_zhan/card.png" width="300">
+  </div>
+  <h4>这是png格式的图片, 图片较大, 四个角是透明的</h4>
+  <hr>
+  <div class="blk">
+    <img src="../../imgs/b_zhan/card.jpg" width="300">
+  </div>
+  <h4>这是jpg格式的图片, 图片较小, 四个角是纯色的</h4>
+  <hr>
+  <div class="blk">
+    <img src="../../imgs/b_zhan/card-mask-min.png" width="300">
+  </div>
+  <h4>这是png格式的遮罩图片, 四个角是透明的, 因图片很小, 所以上面用的base64格式</h4>
+
+</body>
+
+</html>
