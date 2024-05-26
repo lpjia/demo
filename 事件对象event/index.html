@@ -17,11 +17,13 @@
     console.log(this.value);
     console.log(typeof this.value);  
     console.log('---- 分割线 ----\n\n\n');">
+
   <input type="date" oninput="
     console.log(this);
     console.log(this.value);
     console.log(typeof this.value);
     console.log('---- 分割线 ----\n\n\n');">
+
   <input type="text" data-i="you_ming" value="you_ming">
   <input type="text" data-i="addEventListener" value="addEventListener">
   <input type="text" data-i="addEventListener 箭头函数" value="addEventListener 箭头函数">
@@ -85,8 +87,8 @@
   </script>
 
 
-
   <script src="../lib/jquery@3.3.1.min.js"></script>
+  <hr>
   <h2>jQ的this和e</h2>
   <div class="latest">
     <ul>
@@ -102,16 +104,14 @@
     </ul>
   </div>
   <script>
-    // 事件委托
-    // jQ很少使用e.target, 一般都用this, 指向很明确, 或者用e.currentTarget, 永远指向this
-    // 一参'click', 二参'li', 三参回调
+    /* 事件委托
+    jQ很少使用e.target, 一般都用this, 指向很明确, 或者用e.currentTarget, 永远指向this
+    一参 'click', 二参 'li', 三参 回调 */
     $('.latest ul').on('click', 'li', function (e) {
       console.log('e:', e) // e是jQ封装后的 事件对象, 非原生event
       console.log('this:', this) // this指向原生dom(二参li元素)
-      console.log('e.currentTarget === this:', e.currentTarget ===
-        this) // 永远===, 仅限jQ的event.currentTarget, 原生的event不用currentTarget
-      console.log('e.target === this:', e.target ===
-        this) // 注意点击的元素, 点击li元素这个表达式才返回true, 所以jQ很少使用e.target, 一般都用this, 指向很明确
+      console.log('e.currentTarget === this:', e.currentTarget === this) // 永远===, 仅限jQ的event.currentTarget, 原生的event不用currentTarget
+      console.log('e.target === this:', e.target === this) // 注意点击的元素, 点击li元素这个表达式才返回true, 所以jQ很少使用e.target, 一般都用this, 指向很明确
       console.log('$(this):', $(this)) // $(this) 指向一个包含 li 的 jQ 对象集合, 但只有当前 li
       console.log('$(this).length:', $(this).length)
       $(this).css('backgroundColor', 'deepskyblue')
@@ -119,6 +119,7 @@
     })
   </script>
 
+  <hr>
   <div class="el">元素el
     <span>子元素</span>
   </div>
@@ -134,6 +135,24 @@
       console.log(this)
       console.log('---- 分割线 ----\n\n\n');
     })
+  </script>
+
+  <div class="el_2">元素el_2
+    <span>子元素</span>
+  </div>
+  <script>
+    function callback2(e) {
+      console.log('e:', e) // jQ 封装的 event 对象
+      console.log('e.currentTarget === this:', e.currentTarget === this) // jQ用 e.currentTarget
+      console.log('e.target === this:', e.target === this) // 原生js用 e.target
+      console.log('e.data:', e.data)
+      console.log(this)
+      console.log('---- 分割线 ----\n\n\n');
+    }
+    // 更常见的用法, 给回调传数据
+    $('.el_2').click({
+      msg: '传的数据'
+    }, callback2)
   </script>
 </body>
 
