@@ -5,10 +5,11 @@ vue-cli
     *.png   file-loader
     *.dataurl   raw-loader, 得安装 pnpm add raw-loader
 
-// vue.config.js配置
+// vue.config.js配置, vuecli4没有defineConfig, 5才有
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+
   configureWebpack: { // 这里
     module: {
       rules: [
@@ -26,9 +27,11 @@ module.exports = defineConfig({
 vite
   已考虑到这种自定义文件格式, 所以不用配置, 直接在路径后加?raw, 举例
   import dataurl from './img.dataurl?raw'
+  将资源作为字符串引入
 
 
 
+不推荐
 另一种思路还是用js文件, 不需要配置了
-把base64字符串导出, 然后引入该文件, 举例
-src\assets\base64\img.dataurl.js
+把base64字符串导出, 然后引入该文件, 举例vuecli5_vue2
+src/assets/base64/img.dataurl.js
