@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BFF</title>
+</head>
+
+<body>
+
+  <script>
+    const data = {
+      username: 'admin',
+      password: 'abc888888'
+    }
+    const xhr = new XMLHttpRequest()
+    xhr.open('POST', 'http://localhost:7010/api/bff')
+    xhr.setRequestHeader("Content-Type", 'application/json;charset=utf-8')
+    xhr.responseType = 'json'
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        /* xhr.responseType = 'json' */
+        const res = xhr.response // 响应体
+        console.log('res:', res)
+      }
+      else if (xhr.readyState === 4 && xhr.status !== 200) {
+        console.log('err:', xhr.status)
+      }
+    }
+    /* 请求体是string, obj结构得转成json字符串 */
+    xhr.send(JSON.stringify(data));
+
+  </script>
+</body>
+
+</html>
