@@ -27,25 +27,27 @@
     .hang_he {
       display: inline;
     }
+
+    .marginLeft {
+      margin-left: 10px;
+    }
   </style>
 </head>
 
 <body>
-
-
   <div>
     月费用 <input type="text" id="monthFee" onkeydown="calcFeeByEnter(event)"> ¥
     <input type="text" id="discount" onkeydown="calcFeeByEnter(event)" placeholder="折扣" value="">
-    <button style="margin-left: 10px;" onclick="calcFee()">计算费用</button>
+    <button class="marginLeft" onclick="calcFee()">计算费用</button>
     <button onclick="clearInput3()">清空</button>
-    <span style="margin-left: 10px;">季度费用: <div class="hang_he" id="quarterFee"></div> ¥</span>
-    <span style="margin-left: 10px;">年费用: <div class="hang_he" id="yearFee"></div> ¥</span>
+    <span class="marginLeft">季度费用: <div class="hang_he" id="quarterFee"></div> ¥</span>
+    <span class="marginLeft">年费用: <div class="hang_he" id="yearFee"></div> ¥</span>
   </div>
   <hr>
   <div>
     <input type="text" id="hour2"> h
-    <input style="margin-left: 10px;" type="text" id="minute2"> m
-    <button style="margin-left: 10px;" onclick="calcRemainingTime(10)">10倍加速</button>
+    <input class="marginLeft" type="text" id="minute2"> m
+    <button class="marginLeft" onclick="calcRemainingTime(10)">10倍加速</button>
     <button onclick="calcRemainingTime(24)">24倍加速</button>
     <button onclick="clearInput2()">清空</button>
     <span id="new_time2"></span>
@@ -56,8 +58,8 @@
   <hr>
   <div>
     <input type="text" id="hour"> h
-    <input style="margin-left: 10px;" type="text" id="minute"> m
-    <button style="margin-left: 10px;" onclick="calcNextTime()">计算时间</button>
+    <input class="marginLeft" type="text" id="minute"> m
+    <button class="marginLeft" onclick="calcNextTime()">计算时间</button>
     <button onclick="clearInput()">清空</button>
     <span id="new_time" onclick="clickForCopy()" title="点击复制"></span>
     <span id="tip"></span>
@@ -69,8 +71,8 @@
     <section id="dom_sort_before">
       <!-- 约定大于配置, 
         先写分组, 再写单词, 
-        组与组用一个空行隔开, 小组也用一个空行, 
-        未分组的扔到最后面 -->
+        组与组用两个空行隔开, 小组也用一个空行, 
+        未分组的扔到最后 -->
 
       <!-- 命名 -->
       <p>k key</p>
@@ -91,7 +93,7 @@
       <p>create 创建</p>
       <p>update 更新 upd</p>
       <p>delete 删除 del</p>
-      <p>remove 移除</p>
+      <p>remove 移除 rm</p>
       <p>button 按钮 btn</p>
       <p>text 文本 txt</p>
       <!-- 有些英文还是用s, 用List感觉语义有问题 -->
@@ -105,6 +107,7 @@
       <p>is 是不是 isNotEmpty</p>
       <p>has 有没有</p>
       <p>can 能不能</p>
+      <p>should 本应, 应该</p>
       <p>choose 选择</p>
       <p>load 加载</p>
       <!-- 调接口, 比如删除, 先删除操作(准备/处理数据) doDelete, 再调删除接口 deleteByAjax -->
@@ -114,35 +117,62 @@
       <p>to 到, 转成</p>
       <p>go 去, 到</p>
 
+      <p>by 通过</p>
+      <p>for 就什么而言, 为了</p>
+      <p>of A of B, B的A, 属于B</p>
+
+
       <!-- css 命名 -->
       <p>head header 顶部, 头部</p>
       <p>foot footer tail 底部, 尾部</p>
       <p>section 独立章节</p>
       <p>banner 横幅</p>
 
+
       <!-- css 属性 值 -->
-      <p>wrap 换行</p>
+      <p>wrap 换行 包一层</p>
+      <!-- wrapper 包装器 -->
+      <p>nowrap 不换行</p>
       <p>inherit 继承</p>
       <p>initial 最初的</p>
-      <p>flex-wrap 换行</p>
       <p>offset 偏移量</p>
       <p>transition 过渡</p>
       <p>animation 动画</p>
       <p>keyframe 关键帧</p>
       <p>frame 帧</p>
-      <p>clip 裁剪</p>
+      <p>clip 裁剪, 剪切</p>
       <p>vertical 垂直</p>
       <p>align 对齐</p>
       <p>fit 适应</p>
+      <p>ellipsis 省略</p>
+      <p>overflow 溢出</p>
+      <p>text-decoration 下划线</p>
+      <p>viewport 视口</p>
+      <p>smooth 平滑的</p>
+      <p>linear-gradient 线性渐变</p>
+      <p>letter 字母</p>
+      <p>letter-spacing 文本字符的间距</p>
+      <p>text-transform 文字大小写</p>
+      <p>filter 滤镜, 过滤器</p>
+      <p>visible 可见的, overflow的默认值, 只显示可见区域</p>
+      <p>mix-blend-mode 混合模式, screen混合模式, 国内称为“滤色”</p>
+
 
       <!-- css 变形 -->
-      <p>transform 变形</p>
+      <p>transform 变形, 当盒子是非可替换元素的行盒时, 变形失效</p>
       <p>translate 平移</p>
       <p>rotate 旋转</p>
       <p>scale 缩放</p>
+      <p>skew 倾斜, 盒子都变倾斜了, 和旋转还不一样</p>
+
 
       <!-- flex -->
       <p>shrink 缩小</p>
+      <p>flex-grow 放大</p>
+      <p>flex-wrap 换行</p>
+      <p>stretch 拉伸</p>
+      <p>evenly 均匀 justify-content: space-evenly; 两边和子项间距都一样</p>
+
 
       <!-- js -->
       <p>prototype 原型</p>
@@ -150,44 +180,16 @@
       <p>extends 继承</p>
       <p>constructor 构造器</p>
       <p>anonymous 匿名</p>
-      <p>patch 比对</p>
+      <p>append 附加</p>
+      <p>entries 条目 一般用来遍历map结构(obj和Map), 项是[k, v]</p>
+      <p>referrer 来源, 来路</p>
+      <p>reference 引用</p>
+      <p>assign 分配</p>
+      <p>reduce 减少数组项</p>
 
-      <!-- 改变this指向 -->
-      <p>call 调用</p>
-      <p>apply 应用</p>
-      <p>bind 绑定</p>
-
-      <!-- promise -->
-      <p>promise 许诺</p>
-      <p>fulfill 兑现 fulfilled 已兑现</p>
-      <p>reject 拒绝 rejected 已拒绝</p>
-      <p>pending 待定 初始状态，既没有被兑现，也没有被拒绝</p>
-      <p>then 然后</p>
-      <p>settled 已敲定</p>
-      <p>resolve 做出决议 resolved 已决议</p>
-
-      <!-- ts -->
-      <p>declare 声明</p>
-      <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
-      <p>interface 接口 Itfc 这缩写没必要用在ts</p>
-      <p>never 不存在的类型</p>
-      <p>exhaustiveCheck 穷尽检查</p>
-      <p>string_literal 字符串文字</p>
-      <!-- 当有重复的, 可以用下划线来避免 -->
-
-
-      <p>request 请求 req</p>
-      <p>response 响应 resp</p>
-      <p>raw 未加工的, 原始的</p>
-
-      <p>frontend 前端</p>
-      <p>backend 后端</p>
-
-
-      <!-- 在易错那记有该单词, 所以还是注掉 -->
-      <!-- queue 队列 -->
-      <p>enqueue 入列</p>
-      <p>dequeue 出列</p>
+      <p>split 字符串分割/拆分成数组 </p>
+      <p>join 连接, 数组项连接成字符串, 关联(sql)</p>
+      <p>slice 切片, 分片</p>
 
       <p>directive 指令</p>
       <p>expose 暴露</p>
@@ -197,7 +199,6 @@
       <p>loop 循环</p>
       <p>emit 发</p>
       <p>trigger 触发</p>
-      <p>fetch 读取</p>
       <p>target 目标 目标元素</p>
       <p>capture 捕获</p>
       <p>syntax 语法</p>
@@ -205,10 +206,13 @@
       <p>iterable 可迭代的</p>
       <p>observe 观察</p>
       <p>deploy 部署</p>
+      <p>refactor 重构</p>
       <p>signal 信号</p>
       <p>abort 中止</p>
       <p>manual 手动的</p>
-      <p>chunk 块, 包</p>
+      <p>chunk 块, 包, 分片</p>
+      <p>vendor 供应商</p>
+      <p>manifest 清单</p>
       <p>timestamp 时间戳</p>
       <p>version 版本 ver v</p>
       <p>timeout 超时</p>
@@ -221,6 +225,106 @@
       <p>currentValue 当前值</p>
       <p>title 名称</p>
       <p>name 名字</p>
+      <p>struct 结构体</p>
+      <p>utils 工具</p>
+      <p>lib 库 library</p>
+      <p>sel 选择器 selector</p>
+      <p>parameter 参数 param params(复数) p</p>
+      <p>Normalize 归一化</p>
+
+
+      <!-- vue -->
+      <p>track 追踪</p>
+      <!-- <p>trigger 触发</p> -->
+      <p>dep 依赖 deps(复数) dependence</p>
+      <p>scheduler 调度器</p>
+      <p>effect 副作用, 作用</p>
+      <p>shallow 浅的</p>
+      <p>patch 补丁, 更新</p>
+
+
+      <!-- 改变this指向 -->
+      <p>call 调用</p>
+      <p>apply 应用</p>
+      <p>bind 绑定</p>
+
+
+      <!-- promise -->
+      <p>promise 许诺</p>
+      <p>fulfill 兑现 fulfilled 已兑现</p>
+      <p>reject 拒绝 rejected 已拒绝</p>
+      <p>pending 待定 初始状态，既没有被兑现，也没有被拒绝</p>
+      <p>then 然后</p>
+      <p>settled 已敲定</p>
+      <p>resolve 做出决议 resolved 已决议</p>
+
+
+      <!-- ts -->
+      <p>revoke 撤销, 释放</p>
+      <p>omit 省略, 去掉</p>
+      <p>declare 声明</p>
+      <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
+      <p>interface 接口 Itfc 这缩写没必要用在ts</p>
+      <p>never 不存在的类型</p>
+      <p>exhaustiveCheck 穷尽检查</p>
+      <!-- extends 继承 -->
+      <p>implements 实现</p>
+      <!-- 当有重复的, 可以用下划线来避免 -->
+      <p>string_literal 字符串文字</p>
+      <p>noImplicit 无隐式的</p>
+
+
+      <!-- 请求 -->
+      <p>network 网络</p>
+      <p>request 请求 req</p>
+      <p>response 响应 resp</p>
+      <p>raw 未加工的, 原始的</p>
+      <p>parse 解析</p>
+      <p>payload 有效载荷</p>
+
+
+      <!-- 一组词 -->
+      <p>frontend 前端</p>
+      <p>backend 后端</p>
+
+      <!-- 在"易错"那记有该词, 所以还是注掉 -->
+      <!-- queue 队列 -->
+      <p>enqueue 入列</p>
+      <p>dequeue 出列</p>
+
+      <p>fadeIn 淡入</p>
+      <p>fadeOut 淡出</p>
+
+      <p>pre 预</p>
+      <p>preset 预设</p>
+      <p>preview 预览</p>
+
+      <p>prefix 前缀</p>
+      <p>suffix 后缀</p>
+
+      <p>single 单个的</p>
+      <p>multiple 多个的</p>
+
+      <p>ahead 跑在xxx的前面</p>
+      <p>behind 跑在xxx的后面</p>
+
+      <p>import 导入</p>
+      <p>export 导出</p>
+
+      <p>publish 发布</p>
+      <p>subscribe 订阅</p>
+
+      <p>even 偶数</p>
+      <p>odd 奇数</p>
+
+
+      <!-- 句子 -->
+      <p>new dependencies optimized 新的依赖关系已优化</p>
+      <p>user agent stylesheet 用户代理样式表, 浏览器默认样式</p>
+      <p>inherited from 继承自</p>
+      <p>element.style 元素内联样式</p>
+      <p>Manually select features 手动选择功能特性</p>
+
 
       <!-- 大小写等转换 -->
       <p>camel 小驼峰</p>
@@ -231,13 +335,23 @@
       <p>upper 全部字母大写</p>
       <p>lower 全部字母小写</p>
       <p>dot 点</p>
+      <!-- 自己命名的工具函数 -->
+      <p>toLowerCase 全小写字母</p>
+      <p>toUpperCase 全大写字母</p>
+      <p>toUnderlineCase 加下划线</p>
+      <!-- hump 驼峰 -->
+      <p>toSmallHump 小驼峰</p>
+      <p>toBigHump 大驼峰</p>
+
 
       <!-- 组件 -->
       <p>component 组件 comp</p>
+      <p>popper 弹层</p>
       <p>popover 弹出框</p>
       <p>modal 模态框</p>
 
-      <!-- 容易记错 -->
+
+      <!-- 容易记错 易错 一组词 -->
       <p>alert 警报</p>
       <p>alter 改变</p>
 
@@ -256,22 +370,58 @@
       <p>queue 队列, 念q</p>
       <p>queen 女皇</p>
 
+      <p>boundary 分界线, 分隔符</p>
+      <p>binary 二进制的</p>
+
+      <p>steam 一个游戏平台叫这名</p>
+      <p>stream 流</p>
+
+      <!-- radian 弧度 -->
+      <p>angle 角度</p>
+      <p>angel 天使</p>
+
+
       <!-- mysql -->
-      <p>flush privileges 刷新权限</p>
-      <!-- access denied 拒绝访问 -->
-      <p>grant 授予</p>
-      <p>drop 丢弃 删除</p>
-      <p>identified 确认</p>
-      <p>constraint 约束</p>
-      <p>primary key 主键</p>
-      <p>foreign key 外键</p>
-      <p>unsigned 无符号</p>
+      <p>flush_privileges 刷新权限 FLUSH_PRIVILEGES</p>
+      <p>access_denied 拒绝访问 ACCESS_DENIED</p>
+      <p>grant 授予 GRANT</p>
+      <!-- alter 改变 -->
+      <p>drop 丢弃 删除 DROP</p>
+      <p>truncate 清空表数据 TRUNCATE</p>
+      <p>identified 确认 IDENTIFIED</p>
+      <p>primary_key 主键 PRIMARY_KEY</p>
+      <p>foreign_key 外键 FOREIGN_KEY</p>
+      <p>unsigned 无符号 UNSIGNED</p>
       <p>schema 模式</p>
       <p>mode 模式</p>
+      <p>duplicate 重复的 Duplicate</p>
       <p>transaction 事务</p>
       <p>rollback 回滚</p>
-      <p>escape 逃脱</p>
+      <p>escape 逃脱, 避免</p>
       <p>connection 连接, 一个数据库连接实例 conn</p>
+      <p>gt 大于 greater_than</p>
+      <p>lt 小于 less_than</p>
+      <p>optimize 充分利用</p>
+      <p>tiny 极小的 TINY</p>
+      <p>user_info 用户基本信息</p>
+      <p>user_detail 用户详细信息</p>
+      <p>unique 唯一的 UNIQUE</p>
+      <p>constraint 约束 CONSTRAINT</p>
+      <p>distinct 消除重复行 DISTINCT</p>
+      <p>exists 存在 EXISTS(复数)</p>
+      <p>Packet 数据包</p>
+      <p>comment 注释 COMMENT</p>
+      <p>incorrect 不合规的</p>
+
+
+
+      <!-- ORM -->
+      <p>Op operation 操作</p>
+      <p>associate 关联 联合</p>
+      <p>destroy() 删除记录</p>
+      <p>create()</p>
+      <p>save()</p>
+
 
       <!-- 财务 金融 -->
       <p>account 账户</p>
@@ -283,21 +433,68 @@
       <p>fee 费用</p>
       <p>discount 折扣</p>
 
+
+      <!-- 月份 -->
+      <p>January 1月 Jan.</p>
+      <p>February 2月 Feb.</p>
+      <p>March 3月 Mar.</p>
+      <p>April 4月 Apr.</p>
+      <p>May 5月 May.</p>
+      <p>June 6月 Jun.</p>
+      <p>July 7月 Jul.</p>
+      <p>August 8月 Aug.</p>
+      <p>September 9月 Sep.</p>
+      <p>October 10月 Oct.</p>
+      <p>November 11月 Nov.</p>
+      <p>December 12月 Dec.</p>
+
+
+      <!-- 星期 -->
+      <p>Monday 周一 Mon.</p>
+      <p>Tuesday 周二 Tue.</p>
+      <p>Wednesday 周三 Wed.</p>
+      <p>Thursday 周四 Thu.</p>
+      <p>Friday 周五 Fri.</p>
+      <p>Saturday 周六 Sat.</p>
+      <p>Sunday 周日 Sun.</p>
+
+
       <!-- git -->
       <p>checkout 签出 检出 自己理解为切换分支</p>
       <p>discard 丢弃</p>
       <p>squash 挤压 去除</p>
       <p>detached 游离</p>
       <p>fatal 致命的 重大的</p>
+      <p>push 推送</p>
+      <p>fetch 拉取, 获取</p>
+      <p>merge 合并</p>
+      <p>pull 拉取, 等同于git fetch + git merge</p>
+      <p>bare 裸</p>
+      <p>remote 远程, 远端</p>
+      <p>reused 重复使用</p>
+      <!-- 新单词放此行之上 -->
+      <!-- git 文件改动标识符 -->
+      <p>git_A 增加</p>
+      <p>git_M 修改</p>
+      <p>git_D 删除</p>
+
 
       <!-- github -->
       <p>issue 提问, 念1ʃu</p>
-      <p>archive 存档</p>
+      <p>archive 存档, 也就是不再维护了</p>
+      <p>chore 例行工作, 日常事务</p>
+      <p>release 发行</p>
+      <p>inactive 不活跃的</p>
+
 
       <!-- 算法 -->
       <p>encrypt 加密</p>
       <p>decrypt 解密</p>
       <p>hash 哈希</p>
+      <p>seed 种子</p>
+      <p>encode 编码 encoding</p>
+      <p>decode 解码</p>
+
 
       <!-- 性别 -->
       <p>gender 性别</p>
@@ -308,7 +505,9 @@
       <p>gentleman 男士(尊称)</p>
       <p>lady 女士</p>
 
+
       <!-- 单元测试 -->
+      <p>assert 断言</p>
       <!-- jest -->
       <p>spec 规格 .spec.ts 单元测试文件</p>
       <p>describe 描述</p>
@@ -316,9 +515,11 @@
       <p>toEqual 等于</p>
       <p>toStrictEqual 严格等于</p>
 
+
       <!-- 日志 -->
       <p>categories 范畴(复数) 类型</p>
       <p>appenders 输出源(复数)</p>
+
 
       <!-- 权限 -->
       <p>access 访问</p>
@@ -328,7 +529,10 @@
       <p>valid 有效的</p>
       <p>validate 验证</p>
       <p>validator 验证器</p>
-      <p>decode 解码</p>
+      <p>secret_key 秘钥</p>
+      <p>expires 过期时间, 是个时间点, 非时间段, 也可用 maxAge</p>
+      <p>invalid 无效的</p>
+
 
       <!-- npm pnpm -->
       <p>deprecated 弃用</p>
@@ -336,20 +540,36 @@
       <p>peerDependencies 对等依赖</p>
       <p>hoist 提升</p>
       <p>shamefully 可耻的, 不体面的</p>
+      <p>prune 精简</p>
+
+
+      <!-- webpack -->
+      <p>entry 入口</p>
+      <p>bundle 捆绑包</p>
 
 
       <!-- 还没想到分组 -->
-      <p>suffix 后缀</p>
+      <p>factory 工厂</p>
+      <p>abbr 缩写</p>
+      <p>addition 附加</p>
+      <p>directory 目录</p>
+
+
+
+      <p>batch 批, 批量</p>
+      <p>person 人</p>
+      <p>rate 评级, 率</p>
+      <p>protocol 协议, HTTP的P</p>
+      <p>recursion 递归</p>
+
       <p>peer 同辈</p>
       <p>parallel 并行</p>
 
       <p>current 当前的 cur</p>
-      <p>single 单个的</p>
-      <p>multiple 多个的</p>
+
       <p>active 活跃的</p>
       <p>sub 子 副 替补</p>
       <p>avatar 头像</p>
-      <p>unique 唯一的</p>
       <p>mobilePhone 手机号</p>
       <p>telephone 座机号</p>
 
@@ -371,10 +591,6 @@
       <p>closest 最近的(close 的不知什么状态)</p>
       <p>swiper 轮播图插件</p>
 
-      <p>split 字符串分割成数组</p>
-      <p>join 数组项连接成字符串</p>
-      <p>slice 切片, 分片</p>
-
       <p>company 公司</p>
       <p>partner 伙伴</p>
 
@@ -386,19 +602,15 @@
 
       <p>notice 通知</p>
       <p>flow 流</p>
-      <p>visible 可见的</p>
       <p>corner 边角</p>
       <p>triangle 三角形</p>
       <p>interspace 空隙</p>
       <p>transparent 透明的</p>
       <p>origin 起源, 原点(数)</p>
       <p>untracked 未追踪</p>
-      <p>ahead 跑在xxx的前面</p>
-      <p>behind 跑在xxx的后面</p>
+
       <p>migration 迁移</p>
 
-      <p>fadeIn 淡入</p>
-      <p>fadeOut 淡出</p>
       <p>semantic 语义化</p>
       <p>singleton 单例</p>
 
@@ -408,17 +620,16 @@
       <p>execute 执行</p>
       <p>ExecutionContext 执行上下文</p>
       <p>transformer 转换器</p>
-      <p>plain 普通 朴素 无修饰</p>
-      <p>pipe 管道</p>
+      <p>plain 无格式 普通 朴素 无修饰</p>
+      <p>pipe 管道 管线</p>
       <p>expand 扩展</p>
+      <p>extend 扩展</p>
 
       <p>backup 备份</p>
       <p>silent 静默</p>
 
       <p>bootstrap 引导程序</p>
-      <p>pre 预</p>
-      <p>preset 预设</p>
-      <p>preview 预览</p>
+
 
       <p>proposal 提案</p>
       <p>nutrition 营养</p>
@@ -435,10 +646,9 @@
       <p>generalTool 通用工具</p>
       <p>folder 文件夹</p>
       <p>lyric 歌词 lrc</p>
+      <p>padding 垫, 填充</p>
+      <p>respond 回应</p>
 
-      <p>boundary 分界线 分隔符</p>
-
-      <p>comment 注释</p>
       <p>persistent 持久的</p>
       <p>persist 持久</p>
       <p>communication 通信</p>
@@ -451,15 +661,33 @@
       <p>tyro 初学者</p>
       <p>plain_text 纯文本</p>
       <p>stopPropagation 停止传播</p>
+      <p>preventDefault 阻止默认行为, 比如提交、跳转</p>
 
+      <p>pure 纯净的</p>
+      <p>slide 滑动</p>
+      <p>tile 瓷砖块</p>
+      <p>charset 字符集</p>
+      <p>compose 组成</p>
+      <p>resume 中断后恢复</p>
+      <p>dashboard 面板, 指示板, 类似于主界面</p>
+      <p>image 镜像</p>
+      <p>package 包</p>
+      <p>circular_dependency 循环依赖</p>
+      <p>chain 链式</p>
+      <p>bucket 桶, 全家桶</p>
+      <p>not_compatible 不兼容的</p>
+      <p>agent 代理</p>
+      <p>kernel 内核</p>
+      <p>Paragraph 段</p>
+      <p>coordinate 坐标</p>
+      <p>overlap 重叠</p>
+      <p>destination 目的地</p>
+      <p>community_edition 社区版</p>
 
-      <!-- 句子 -->
-      <p>new dependencies optimized 新的依赖关系已优化</p>
-      <p>user agent stylesheet 用户代理样式表, 浏览器默认样式</p>
-      <p>inherited from 继承自</p>
-      <p>element.style 元素内联样式</p>
-      <p>Manually select features 手动选择功能特性</p>
+      <p>Internal_method 内部方法</p>
+      <p>Corresponding_trap 对应陷阱</p>
 
+      <!-- 最后 zui -->
     </section>
 
     <section id="dom_sort_after"></section>
@@ -469,8 +697,13 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script> -->
   <!-- <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script> -->
   <!-- unpkg比jsdelivr加载明显快多了 -->
-  <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
-  <script src="https://unpkg.com/ramda@0.29.1/dist/ramda.min.js"></script>
+  <!--  <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>-->
+  <!--  <script src="https://unpkg.com/ramda@0.29.1/dist/ramda.min.js"></script>-->
+  <!-- 用字节的cdn -->
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/dayjs/1.10.8/dayjs.min.js"
+    type="application/javascript"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/ramda/0.28.0/ramda.min.js"
+    type="application/javascript"></script>
   <script src="index.js"></script>
 </body>
 
