@@ -1,16 +1,15 @@
-# 不论层级, 只要是该目录下的文件一概忽视
-node_modules/
-dist/
-新建文件夹/
+node_modules
+dist
+新建文件夹
 
 
 
-# *匹配多个字符
-# ormconfig *.json
 
-
-
-# 特定文件, 好像也不论层级
-# ormconfig.json
-# .env
-# .env.prod
+# 日志
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
