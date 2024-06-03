@@ -1,0 +1,64 @@
+<mxfile host="65bd71144e">
+    <diagram id="Lu83tjWo-Wz-DkkKe9Yt" name="第 1 页">
+        <mxGraphModel dx="1411" dy="968" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="" style="edgeStyle=none;html=1;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="用户" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-148" y="-59" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="edgeStyle=none;html=1;" parent="1" source="3" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="角色" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="39" y="-59" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="权限&lt;br&gt;菜单" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="226" y="-59" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="租户" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-254" y="222" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="租户管理员" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-74" y="222" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="超级管理员" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-296" y="97" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="管理员" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-162" y="97" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="业务员" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-28" y="97" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="客服" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="106" y="97" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="普通用户" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-254" y="378" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="客户" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-290" y="189" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="客户" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-302" y="342" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="租户业务员" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="72" y="222" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="租户客服" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="218" y="222" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="访客" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="259" y="97" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="租户访客" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="359" y="222" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

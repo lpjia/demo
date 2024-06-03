@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "try",
+    "password": "try",
+    "database": "try",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "try",
+    "password": "try",
+    "database": "test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

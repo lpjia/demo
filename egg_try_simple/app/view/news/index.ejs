@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    这是<%= pageName %>页面
+  </title>
+  <link rel="stylesheet" href="public/css/<%= pageName %>.css" />
+</head>
+
+<body>
+  <!-- 相对路径 -->
+  <%- include("../header/index.html"); %>
+    <ul>
+      <% list.forEach((item)=>{ %>
+        <li>
+          <a href="<%= item.url %>">
+            <%= item.title %>
+          </a>
+          <span onclick="log()" style="color:deepskyblue;">
+            <%= helper.relativeTime(item.time) %>
+          </span>
+        </li>
+        <% }) %>
+    </ul>
+
+    <div id="app">
+      <h3 @click="handle">{{ message }}</h3>
+      <ul @click="add">
+        <li v-for="item,i in arr" :key="i">{{ item.id }}-{{ item.name }}</li>
+      </ul>
+    </div>
+
+    <!-- <%- include("../footer/index.html"); %> -->
+    <!-- 绝对路径竟然是从view文件夹开始的 -->
+    <%- include("/footer/index.html"); %>
+
+      <script src="public/lib/vue@3.3.4.prod.js"></script>
+      <script src="public/js/<%= pageName %>.js"></script>
+</body>
+
+</html>

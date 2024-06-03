@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    li {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><button onclick="request('POST')">添加</button></li>
+    <li><button onclick="request('DELETE')">删除</button></li>
+    <li><button onclick="request('PUT')">更新</button></li>
+    <li><button onclick="request('GET')">查询</button></li>
+  </ul>
+
+  <script>
+    const request = (method) => {
+      fetch('/api/cookie', {
+        method,
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      })
+    }
+  </script>
+</body>
+
+</html>

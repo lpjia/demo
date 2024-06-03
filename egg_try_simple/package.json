@@ -1,0 +1,52 @@
+{
+  "name": "egg_try_simple",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "dayjs": "^1.11.10",
+    "egg": "^3.17.5",
+    "egg-cors": "^3.0.0",
+    "egg-jwt": "^3.1.7",
+    "egg-mysql": "^4.0.0",
+    "egg-scripts": "2",
+    "egg-sequelize": "^6.0.0",
+    "egg-validate": "^2.0.2",
+    "lodash": "^4.17.21",
+    "mysql2": "^3.9.3",
+    "nanoid": "^3.3.7"
+  },
+  "devDependencies": {
+    "egg-bin": "6",
+    "egg-mock": "5",
+    "egg-view-ejs": "^3.0.0",
+    "egg-view-nunjucks": "^2.3.0",
+    "eslint": "8",
+    "eslint-config-egg": "13",
+    "factory-girl": "^5.0.4",
+    "sequelize-cli": "^6.6.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-egg_try_simple",
+    "stop": "egg-scripts stop --title=egg-server-egg_try_simple",
+    "dev": "egg-bin dev",
+    "test": "npm run lint -- --fix && npm run test:local",
+    "test:local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "set NODE_ENV=test npx sequelize db:migrate && egg-bin cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT"
+}
