@@ -6,21 +6,43 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>手写二级菜单</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="css/first.css">
-  <link rel="stylesheet" href="css/second.css">
-  <link rel="stylesheet" href="css/third.css">
+  <title>手写二级菜单 导航</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      padding-bottom: 20rem;
+    }
+
+    ul,
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="scss_to_css/col_menu.css"> -->
+  <link rel="stylesheet" href="scss_to_css/col_menu2.css">
+  <link rel="stylesheet" href="scss_to_css/row_menu.css">
+  <link rel="stylesheet" href="scss_to_css/jq_hover_slideDown.css">
 </head>
 
 <body>
 
-  <h3>用定时器(延时)解决二级菜单闪烁(消失)问题</h3>
-  <h3>没实现, 暂搁置</h3>
-  <div id="menu">
-    <ul>
-      <li class="link"><a href="javascript:;">首页</a></li>
-      <li class="link">
+  <h3>CSS方案, 伪元素::before、伪类:hover、过渡动画</h3>
+  <div>
+    <!-- col_menu2.scss 样式对应这块dom -->
+    <ul id="menu">
+      <li><a href="javascript:;">首页</a>
+      </li>
+      <li>
         <a href="javascript:;">赛事指南</a>
         <ul>
           <li><a href="javascript:;">竞赛规程</a></li>
@@ -29,7 +51,7 @@
           <li><a href="javascript:;">比赛路线</a></li>
         </ul>
       </li>
-      <li class="link">
+      <li>
         <a href="javascript:;">赛事介绍</a>
         <ul>
           <li><a href="javascript:;">赛事111</a></li>
@@ -41,9 +63,8 @@
           <li><a href="javascript:;">特色活动</a></li>
           <li><a href="javascript:;">精彩回顾</a></li>
         </ul>
-
       </li>
-      <li class="link">
+      <li>
         <a href="javascript:;">赛事报名</a>
         <ul>
           <li><a href="javascript:;">我的报名</a></li>
@@ -53,7 +74,7 @@
           <li><a href="javascript:;">照片查询</a></li>
         </ul>
       </li>
-      <li class="link">
+      <li>
         <a href="javascript:;">合作伙伴</a>
         <ul>
           <li><a href="javascript:;">冠名赞助商</a></li>
@@ -68,7 +89,9 @@
 
 
   <h3 style="margin-top: 7rem;">用占位div和三角形来解决, 三角没有也行(调整占位div)</h3>
-  <section class="lpj">
+  <p>CSS方案, 每个二级菜单组设置不同高度、伪元素::before、伪类:hover、过渡效果</p>
+  <!-- row_menu.scss 样式对应这块dom -->
+  <div class="lpj">
     <ul class="oneLevel">
       <li>
         <a href="javascript:;">首页</a>
@@ -76,8 +99,8 @@
       <li>
         <a href="javascript:;">赛事指南</a>
         <ul class="twoLevel">
-          <div id="triangle-up"></div>
-          <div class="zhanwei"></div>
+          <div class="triangle-up"></div>
+          <!-- <div class="zhanwei"></div> -->
           <li><a href="javascript:;">竞赛规程</a></li>
           <li><a href="javascript:;">报名须知</a></li>
           <li><a href="javascript:;">参赛声明</a></li>
@@ -86,8 +109,7 @@
       </li>
       <li><a href="javascript:;">赛事介绍</a>
         <ul class="twoLevel">
-          <div id="triangle-up"></div>
-          <div class="zhanwei"></div>
+          <div class="triangle-up"></div>
           <li><a href="javascript:;">赛事简介</a></li>
           <li><a href="javascript:;">特色活动</a></li>
           <li><a href="javascript:;">精彩回顾</a></li>
@@ -96,8 +118,7 @@
       </li>
       <li><a href="javascript:;">赛事报名</a>
         <ul class="twoLevel">
-          <div id="triangle-up"></div>
-          <div class="zhanwei"></div>
+          <div class="triangle-up"></div>
           <li><a href="javascript:;">我的报名</a></li>
           <li><a href="javascript:;">号码查询</a></li>
           <li><a href="javascript:;">成绩查询</a></li>
@@ -107,8 +128,7 @@
       </li>
       <li><a href="javascript:;">合作伙伴</a>
         <ul class="twoLevel">
-          <div id="triangle-up"></div>
-          <div class="zhanwei"></div>
+          <div class="triangle-up"></div>
           <li><a href="javascript:;">冠名赞助商</a></li>
           <li><a href="javascript:;">官方赞助商</a></li>
           <li><a href="javascript:;">赛事支持商</a></li>
@@ -117,39 +137,41 @@
         </ul>
       </li>
     </ul>
-  </section>
-
-
-  <h3 style="margin-top: 15rem;">在每个有二级菜单的li绑定事件</h3>
-  <div id="nav">
-    <ul>
-      <li><a href="#">首页</a></li>
-      <li onmouseover="onOver(this)" onmouseout="onOut(this)">
-        <a href="#">公司介绍</a>
-        <ul class="companyIntroduceUrl">
-          <li><a href="#">走进我们</a></li>
-          <li><a href="#">悠久历史</a></li>
-          <li><a href="#">公司理念</a></li>
-          <li><a href="#">经理致辞</a></li>
-        </ul>
-      </li>
-      <li onmouseover="onOver(this)" onmouseout="onOut(this)">
-        <a href="#">公司介绍</a>
-        <ul class="companyIntroduceUrl">
-          <li><a href="#">公司理念</a></li>
-          <li><a href="#">经理致辞</a></li>
-        </ul>
-      </li>
-      <li><a href="#">产品展示</a></li>
-      <li><a href="#">联系我们</a></li>
-      <!-- <li><a href="#">招贤纳士</a></li> -->
-    </ul>
   </div>
 
 
 
+  <!-- 二级菜单总高度是没给的, 滑动显示/隐藏全靠js来获取 -->
+  <h3 style="margin-top: 25rem;">使用jQ的hover方法、slideDown方法、slideUp方法</h3>
+  <div>
+    <!-- jq_hover_slideDown.scss 样式对应这块dom -->
+    <ul id="nav" class="clearfix">
+      <li><a href="javascript:;">首页</a></li>
+      <!-- <li onmouseover="onOver(this)" onmouseout="onOut(this)"> -->
+      <li>
+        <a href="javascript:;">公司介绍</a>
+        <ul class="companyIntroduceUrl">
+          <li><a href="javascript:;">走进我们</a></li>
+          <li><a href="javascript:;">悠久历史</a></li>
+          <li><a href="javascript:;">公司理念</a></li>
+          <li><a href="javascript:;">经理致辞</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:;">公司介绍</a>
+        <ul class="companyIntroduceUrl">
+          <li><a href="javascript:;">公司理念</a></li>
+          <li><a href="javascript:;">经理致辞</a></li>
+        </ul>
+      </li>
+      <li><a href="javascript:;">产品展示</a></li>
+      <li><a href="javascript:;">联系我们</a></li>
+      <!-- <li><a href="javascript:;">招贤纳士</a></li> -->
+    </ul>
+  </div>
 
-  <script src="../lib/jquery@3.3.1.min.js"></script>
+
+  <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
   <script src="index.js"></script>
 
 </body>

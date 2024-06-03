@@ -1,20 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  overflow-y: scroll;
-}
-
 .lpj {
-
-  // border: solid 1px deepskyblue;
-  ul {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-  }
-
   .oneLevel {
     width: 600px;
     height: 60px;
@@ -27,8 +11,25 @@ body {
       border: 1px solid deeppink;
       border-right: none;
 
+      // 精确给高度, 防止出现幽灵hover
+      &:nth-child(2):hover .twoLevel {
+        height: 290px;
+      }
+
+      &:nth-child(3):hover .twoLevel {
+        height: 230px;
+      }
+
+      // &:nth-child(4):hover .twoLevel {
+      //   height: 350px;
+      // }
+
+      // &:nth-child(5) .twoLevel {
+      //   height: 350px;
+      // }
+
       &:hover .twoLevel {
-        display: block;
+        height: 350px;
       }
 
       &:last-child {
@@ -45,18 +46,31 @@ body {
   }
 
   .twoLevel {
-    display: none;
+    // start 高度为0, 移除隐藏
+    height: 0;
+    overflow: hidden;
+    // end
+    transition: all .5s;
+
     position: absolute;
     top: 56px;
-    // top: 90px;
     left: -1px;
 
-    .zhanwei {
+    // 用伪元素代替占位元素
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: transparent;
+    }
+
+    /* .zhanwei {
       width: 100%;
       height: 40px;
       background-color: transparent;
       // border: 1px solid red;
-    }
+    } */
 
     >li {
       border: 1px solid deepskyblue;
@@ -75,8 +89,7 @@ body {
   }
 
 
-  #triangle-up {
-    // display: none;
+  .triangle-up {
     width: 0;
     height: 0;
     position: absolute;

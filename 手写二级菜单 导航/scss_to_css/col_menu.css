@@ -1,0 +1,16 @@
+@charset "UTF-8";
+#menu { width: 100px; }
+
+#menu li { border: 1px solid grey; border-bottom: none; background-color: #74B8FF; padding: 0px 8px; height: 26px; line-height: 26px; cursor: pointer; position: relative; }
+
+#menu li:last-child { border-bottom: 1px solid grey; }
+
+#menu li:hover > ul { display: block; }
+
+#menu li:hover > a { color: red; }
+
+#menu ul { position: absolute; width: 100px; display: none; left: 98px; top: -1px; /* 加了动画 */ }
+
+/* 加了动画 */
+@keyframes move { 0% { transform: translateX(-20px) scale(0.6); }
+  100% { transform: translateX(0) scale(1); } }

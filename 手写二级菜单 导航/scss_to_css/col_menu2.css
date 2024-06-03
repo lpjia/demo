@@ -1,0 +1,19 @@
+@charset "UTF-8";
+#menu { width: 100px; }
+
+#menu li { border: 1px solid grey; border-bottom: none; background-color: #74B8FF; padding: 0px 8px; height: 26px; line-height: 26px; cursor: pointer; position: relative; }
+
+#menu li:last-child { border-bottom: 1px solid grey; }
+
+#menu li:hover > ul { display: block; }
+
+#menu li:hover > a { color: red; }
+
+#menu ul { position: absolute; width: 100px; display: none; left: 128px; top: -1px; /* 加了动画 */ animation: move .5s; /* 加上三角, 中间有空隙间隔开一、二级菜单 */ }
+
+#menu ul::before { content: ''; width: 0; height: 0; position: absolute; top: 3px; left: -30px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-right: 37px solid deepskyblue; }
+
+/* 加了动画 */
+/* 加三角的 */
+@keyframes move { 0% { transform: translate(-40px, -10px) scale(0.6); }
+  100% { transform: translate(0, 0) scale(1); } }

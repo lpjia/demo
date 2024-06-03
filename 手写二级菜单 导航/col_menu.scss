@@ -1,0 +1,54 @@
+#menu {
+  width: 100px;
+
+  li {
+    border: 1px solid grey;
+    border-bottom: none;
+    background-color: #74B8FF;
+    padding: 0px 8px;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    position: relative;
+
+    &:last-child {
+      border-bottom: 1px solid grey;
+    }
+
+    // 都是用的 li:hover
+    // 也可以直接绑定事件
+    &:hover {
+
+      // 二级菜单
+      >ul {
+        display: block;
+      }
+
+      >a {
+        color: red;
+      }
+    }
+  }
+
+  ul {
+    position: absolute;
+    width: 100px;
+    display: none;
+    left: 98px;
+    top: -1px;
+
+    /* 加了动画 */
+    // animation: move .5s;
+  }
+}
+
+/* 加了动画 */
+@keyframes move {
+  0% {
+    transform: translateX(-20px) scale(.6);
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
