@@ -8,7 +8,7 @@ const data = {
   k222: 'v222',
 }
 
-xhr.responseType = 'json'
+xhr.responseType = 'json' // responseType默认值"text"
 xhr.onreadystatechange = function () {
   console.log(xhr.readyState)
   console.log('XMLHttpRequest.DONE:', XMLHttpRequest.DONE)
@@ -22,7 +22,7 @@ xhr.onreadystatechange = function () {
     // )
 
     /* xhr.responseType = 'json' */
-    const res = xhr.response
+    const res = xhr.response // 响应体
     console.log(
       res
     )
