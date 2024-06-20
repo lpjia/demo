@@ -1,0 +1,53 @@
+m1: fulfilled 1
+m2: pending 输出1后, 变为fulfilled 2
+m3: fulfilled 3
+
+
+微队列: 输出1 输出3 输出1
+
+
+又重新运行m3, 重新开内存
+m1: fulfilled 1
+m2: pending 再输出1后, 变为fulfilled 2
+m3: fulfilled 3
+
+
+
+打印输出的顺序:
+n3: Promise { <pending> }
+n3: Promise { <pending> }
+4
+n2: 1
+n: 3
+n2: 1
+
+
+
+---- 换一种表示 ----
+
+微队列: n2:1 n:3 n2:1
+交互队列:
+延时队列: 
+
+
+运行流程:
+运行m3的同步代码
+  运行m2的同步代码
+    运行m1的同步代码
+      返回1, m1完成
+    m1完成后将输出n2推入微队列
+    返回2
+  不用等待m2完成, 输出n3, 此时m2还没完成
+  返回3, m3完成
+m3完成后将输出n推入微队列
+运行m3的同步代码, 重复
+输出4
+
+
+打印输出的顺序:
+n3: Promise {} pending
+n3: Promise {} pending
+4
+n2:1
+n:3
+n2:1
