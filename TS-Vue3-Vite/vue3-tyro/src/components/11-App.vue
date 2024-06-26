@@ -1,3 +1,11 @@
+<template>
+  <div>pos: {{ x }}, {{ y }}</div>
+  <!-- <div>{{ isDark }}</div> -->
+  <div>{{ store }}</div>
+  <div>{{ store.color }}</div>
+  <!-- <div>{{ title }}</div> -->
+</template>
+
 <script setup lang="ts">
 import { watch, computed } from 'vue'
 import {
@@ -51,11 +59,3 @@ const store = useLocalStorage(
 const { x, y } = useMouse({ eventFilter: debounceFilter(1000) })
 
 </script>
-
-<template>
-  <div>pos: {{ x }}, {{ y }}</div>
-  <!-- <div>{{ isDark }}</div> -->
-  <div>{{ store }}</div>
-  <div>{{ store.color }}</div>
-  <!-- <div>{{ title }}</div> -->
-</template>

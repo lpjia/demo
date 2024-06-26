@@ -1,3 +1,12 @@
+<template>
+  <input type="checkbox" v-model="checkAll"> 全选/全不选
+  <ul>
+    <li v-for="item, i in numList" :key="i">
+      <input type="checkbox" v-model="item.isCheck"> {{ item.label }}
+    </li>
+  </ul>
+</template>
+
 <script setup lang='ts'>
 import { computed, reactive, ref } from 'vue';
 
@@ -16,10 +25,13 @@ const checkAll = computed({
     return numList.every((item) => item.isCheck)
   },
   set(val) {
+    console.log('val:', val)
+
     /* for...of */
     // for (const item of numList) {
     //   item.isCheck = val
     // }
+
     /* forEach 练练这个 */
     numList.forEach(item => {
       item.isCheck = val
@@ -27,14 +39,5 @@ const checkAll = computed({
   }
 })
 </script>
-
-<template>
-  <input type="checkbox" v-model="checkAll"> 全选/全不选
-  <ul>
-    <li v-for="item, i in numList" :key="i">
-      <input type="checkbox" v-model="item.isCheck"> {{ item.label }}
-    </li>
-  </ul>
-</template>
 
 <style scoped lang="scss"></style>

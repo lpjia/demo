@@ -14,7 +14,14 @@
       "DOM"
     ],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    // 路径配置
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",

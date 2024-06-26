@@ -1,3 +1,10 @@
+<template>
+  <div>
+    这是子组件props.num的值 {{ props.num }}, 可以不用声明props, 直接用num {{ num }}
+  </div>
+  <button @click="emit('zdy', '从子组件传过来的值')">按钮</button>
+</template>
+
 <script setup lang='ts'>
 // 使用"基于类型的声明"
 interface NumItf {
@@ -8,7 +15,13 @@ interface NumItf {
 /* 几种语法 */
 // const props = defineProps(['num'])
 
-const props = defineProps<NumItf>()
+// const props = defineProps<NumItf>()
+
+// 可利用withDefaults宏来赋默认值
+const props = withDefaults(defineProps<NumItf>(), {
+  // num: 999 // 可直接写对应类型的值
+  num: () => 999 // 也可以写函数, 更灵活
+})
 
 // const props = defineProps({
 //   num: Number
@@ -46,12 +59,5 @@ const emit = defineEmits<OneItf>()
 // })
 
 </script>
-
-<template>
-  <div>
-    这是子组件 {{ props.num }}, 可以不用声明props变量(直接用num){{ num }}
-  </div>
-  <button @click="emit('zdy', '从子组件传过来的值')">按钮</button>
-</template>
 
 <style scoped lang="scss"></style>

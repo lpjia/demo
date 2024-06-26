@@ -2,14 +2,15 @@
 使用类似obj.xxx */
 declare namespace Table {
   interface ListItem {
+    id: number,
     name: string,
     age: number,
-    id: number,
   }
 }
 
-// // 导出还没试过, 不过猜测是和ES6一样, 这里只想要全局的声明, 不想写按需导入
-// // 按需导出
+/* 如果再写了按需导出
+09-ChildApp.vue会报错
+找不到命名空间“Table” */
 // export interface ListItem {
 //   name: string,
 //   age: number,

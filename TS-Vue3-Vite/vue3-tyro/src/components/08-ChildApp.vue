@@ -8,9 +8,13 @@
 </template>
 
 <script setup lang='ts'>
-import { ref } from "vue";
+import { ref, useSlots } from "vue";
 
 const num = ref(30)
+
+/* useSlots 用在插槽组件, 而不是template组件 */
+const slots = useSlots()
+console.log('slots:', slots)
 </script>
 
-
+<style scoped lang="scss"></style>

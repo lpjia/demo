@@ -21,8 +21,10 @@
 </template>
 
 <script setup lang='ts'>
-// import ChildApp from "./08-ChildApp.vue";
-import ChildApp from "./08-ChildApp"; // 方便分析插槽内部函数
+import ChildApp from "./08-ChildApp.vue";
+/* 对应的是ts文件 */
+// import ChildApp from "./08-ChildApp"; // 方便分析插槽内部函数
+
 
 // import { ref } from "vue";
 // const chacao = ref('slot_1')

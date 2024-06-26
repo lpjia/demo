@@ -1,6 +1,10 @@
 <template>
   <div>得到传入的属性: {{ count }}</div>
   <!-- <div>doubleCount: {{ doubleCount }}</div> -->
+
+  <!-- render函数关联了
+  props.count
+  doubleCount.value -->
 </template>
 
 <script setup lang='ts'>

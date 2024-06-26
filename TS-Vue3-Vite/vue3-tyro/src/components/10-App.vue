@@ -1,3 +1,9 @@
+<template>
+  <div>
+
+  </div>
+</template>
+
 <script setup lang='ts'>
 import { onMounted } from 'vue';
 
@@ -6,11 +12,5 @@ onMounted(() => {
   console.log(globalVar, globalArrItem, globalFn())
 })
 </script>
-
-<template>
-  <div>
-
-  </div>
-</template>
 
 <style scoped lang="scss"></style>

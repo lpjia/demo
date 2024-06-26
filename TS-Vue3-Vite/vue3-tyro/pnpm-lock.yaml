@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^20.14.7
   '@vitejs/plugin-vue': ^4.1.0
   '@vueuse/core': ^10.4.1
   sass: ^1.60.0
@@ -14,10 +15,11 @@ dependencies:
   vue: 3.2.47
 
 devDependencies:
+  '@types/node': 20.14.7
   '@vitejs/plugin-vue': 4.1.0_vite@4.2.1+vue@3.2.47
   sass: 1.60.0
   typescript: 4.9.5
-  vite: 4.2.1_sass@1.60.0
+  vite: 4.2.1_37swfl7bzxgaakmxm4ltdoxsbm
   vue-tsc: 1.2.0_typescript@4.9.5
 
 packages:
@@ -243,6 +245,12 @@ packages:
     dev: true
     optional: true
 
+  /@types/node/20.14.7:
+    resolution: {integrity: sha512-uTr2m2IbJJucF3KUxgnGOZvYbN0QgkGyWxG6973HCpMYFy2KfcgYuIwkJQMQkt1VbBMlvWRbpshFTLxnxCZjKQ==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
   /@types/web-bluetooth/0.0.17:
     resolution: {integrity: sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==}
     dev: false
@@ -254,7 +262,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.2.1_sass@1.60.0
+      vite: 4.2.1_37swfl7bzxgaakmxm4ltdoxsbm
       vue: 3.2.47
     dev: true
 
@@ -666,7 +674,11 @@ packages:
     hasBin: true
     dev: true
 
-  /vite/4.2.1_sass@1.60.0:
+  /undici-types/5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
+  /vite/4.2.1_37swfl7bzxgaakmxm4ltdoxsbm:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -691,6 +703,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.14.7
       esbuild: 0.17.15
       postcss: 8.4.21
       resolve: 1.22.1

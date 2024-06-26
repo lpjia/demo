@@ -1,3 +1,10 @@
+<template>
+  <div>
+    <span>01-App</span>
+    <b>{{ num }}</b>
+  </div>
+</template>
+
 <script lang="ts">
 import { defineComponent, onBeforeMount, onMounted } from 'vue'
 
@@ -22,13 +29,6 @@ export default defineComponent({
   }
 })
 </script>
-
-<template>
-  <div>
-    <span>01-App</span>
-    <b>{{ num }}</b>
-  </div>
-</template>
 
 <style scoped lang="scss">
 div {

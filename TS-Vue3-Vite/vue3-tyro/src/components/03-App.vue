@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <p ref="op">这是p标签</p>
+  </div>
+</template>
+
 <script setup lang='ts'>
 import { ref, onMounted, nextTick } from 'vue'
 
@@ -25,12 +31,6 @@ console.log('setup: ', op.value) // undefined, 原因是生命周期钩子不对
 // })
 
 </script>
-
-<template>
-  <div>
-    <p ref="op">这是p标签</p>
-  </div>
-</template>
 
 <style scoped lang="scss">
 p {
