@@ -33,6 +33,5 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 // 严谨写法
-window.console && console.log('%c 添加背景图片', `color:#fff;font-size:50px;
-background:url("http://nowre.com/uploads/feature/feature_header_1435686903_FEATURE-TOP17.jpg");background-size:100%`)
+window.console && console.log('%c 前面有空格的效果', 'color:deepskyblue;font-size:50px;')
 console.log('---- 分割线 ----\n\n\n')

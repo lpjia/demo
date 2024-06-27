@@ -7,14 +7,10 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>vue3 动态组件</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="style.css">
-  <style></style>
 </head>
 
 <body>
-  <!-- https://v3.cn.vuejs.org/guide/component-dynamic-async.html#%E5%9C%A8%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8-keep-alive -->
   <div id="dynamic-component-demo" class="demo">
     <button v-for="tab in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]"
       @click="currentTab = tab">
@@ -23,14 +19,13 @@
 
     <component :is="currentTabComponent" class="tab"></component>
 
-    <keep-alive>
+    <keep-alive v-show="currentTabComponent === 'tab-posts'">
       <component :is="currentTabComponent" class="tab"></component>
     </keep-alive>
   </div>
 
-  <script src="../lib/vue@3.2.29.global.js"></script>
-  <!-- <script src="../lib/lodash@4.17.20.min.js"></script> -->
-  <script src="index.js" type="module"></script>
+  <script src="../../lib/vue@3.2.29.global.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
