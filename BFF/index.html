@@ -10,28 +10,48 @@
 </head>
 
 <body>
+  <button onclick="getDataByFetch()">发起请求</button>
 
   <script>
     const data = {
       username: 'admin',
       password: 'abc888888'
     }
-    const xhr = new XMLHttpRequest()
-    xhr.open('POST', 'http://localhost:7010/api/bff')
-    xhr.setRequestHeader("Content-Type", 'application/json;charset=utf-8')
-    xhr.responseType = 'json'
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        /* xhr.responseType = 'json' */
-        const res = xhr.response // 响应体
-        console.log('res:', res)
-      }
-      else if (xhr.readyState === 4 && xhr.status !== 200) {
-        console.log('err:', xhr.status)
-      }
+
+    /* xhr写的有点多 */
+    // const getDataByXHR = function () {
+    //   const xhr = new XMLHttpRequest()
+    //   xhr.open('POST', 'http://localhost:7010/api/bff')
+    //   xhr.setRequestHeader("Content-Type", 'application/json;charset=utf-8')
+    //   xhr.responseType = 'json'
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //       /* xhr.responseType = 'json' */
+    //       const res = xhr.response // 响应体
+    //       console.log('res:', res)
+    //     }
+    //     else if (xhr.readyState === 4 && xhr.status !== 200) {
+    //       console.log('err:', xhr.status)
+    //     }
+    //   }
+    //   /* 请求体是string, obj结构得转成json字符串 */
+    //   xhr.send(JSON.stringify(data));
+    // }
+
+
+    /* 换fetch */
+    const getDataByFetch = async function () {
+      const res = await (
+        await fetch('http://localhost:7010/api/bff', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(data)
+        })
+      ).json()
+      console.log('res:', res)
     }
-    /* 请求体是string, obj结构得转成json字符串 */
-    xhr.send(JSON.stringify(data));
 
   </script>
 </body>
