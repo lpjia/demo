@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>知识-层叠</title>
+  <style>
+    .aFather {
+      color: red;
+    }
+
+    .qiang_zhi {
+      color: inherit;
+    }
+
+    .impt {
+      color: deepskyblue !important;
+    }
+
+    .font {
+      font-size: 10rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 对样式表有冲突的声明使用层叠规则 -->
+
+  <!-- css属性值的计算过程
+    第一步: 确定声明值
+    第二步: 层叠 冲突
+    第三步: 继承
+    第四步: 使用默认值
+  占位 -->
+
+  <!-- a元素样式继承问题
+    没有继承父元素的字体颜色
+    原因是, 第一步是声明值, 包括作者样式表和浏览器默认样式表中的样式都算作声明值
+    只有浏览器默认样式表声明了color, 样式表没有冲突, 到第一步就结束了
+  占位 -->
+  <div class="aFather">
+    <a href="javascript:;">a元素1</a>
+  </div>
+
+  <!-- 要想实现强制继承父元素的字体颜色的效果(非第三步继承)
+    这时候作者样式表声明了a元素的color, 此时产生了冲突, 进入第二步层叠
+    1. 比较重要性 !importtant
+    2. 比较权重
+    3. 比较源次序
+    在1就比较出来了, 确定应用此属性color: inherit; 值是继承父元素, 所以color应该是red
+  占位 -->
+  <div class="aFather">
+    <a href="javascript:;" class="qiang_zhi">a元素2</a>
+  </div>
+
+  <!-- !importtant 样式的重要性最高 -->
+  <div class="aFather">
+    <a href="javascript:;" class="qiang_zhi impt">a元素3</a>
+  </div>
+
+  <!-- 对于没有声明值的属性
+    会直接进入第三步继承
+    比如父元素的font-size: 10rem; 子元素没有声明, 则继承父元素的
+  占位 -->
+  <div class="aFather font">
+    <a href="javascript:;">a元素4</a>
+  </div>
+</body>
+
+</html>
