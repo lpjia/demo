@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>word-spacing和letter-spacing的区别</title>
+  <style>
+    .singleLineChinese {}
+
+    .word {
+      word-spacing: 1rem;
+      /* word-spacing属性对中文是无效的。这主要是因为word-spacing属性是以空格为基准来调节间距的，而中文汉字之间默认没有空格，所以word-spacing属性不会对其产生效果。但是，如果在汉字中人为添加空格，word-spacing属性会把空格前后的汉字按单词处理，此时该属性会生效。 */
+    }
+
+    .letter {
+      letter-spacing: 1rem;
+      /* letter-spacing属性则是增加或减少字符间的空白，该属性无论是否把每个字符字母等用空格隔开，都会设置其文字与左右文字的间距，包括空格字符与其他字符之间也设置了间距。因此，letter-spacing属性对中文和英文都是有效的。 */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 为了对比显著
+    中文和英文都有
+    单行和多行都有
+  占位 -->
+  <h3>默认状态</h3>
+  <div class="singleLineChinese">这是单行中文</div>
+  <div class="singleLineEnglish">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, soluta.</div>
+  <div class="multipleLineChinese">
+    完喜躲勇韩向起如救同，才不重十圣给，才啊评胜否笔派好氏彷应人前斗主重，上才婵十畴便才报弟是国快韩对生，人介慷生皇到大司程身妄，若罪法小此只人小愚已失尘忧不德生，范承当后保使下活你愚法了到罚他人者司掸。</div>
+  <div class="multipleLineEnglish">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit libero blanditiis
+    corporis quaerat pariatur harum ducimus quidem totam sit. Quisquam, fugit optio. Nobis eligendi assumenda, voluptas
+    maiores quod recusandae atque error quisquam! Sapiente a temporibus quidem deleniti ipsam, pariatur tenetur adearum,
+    ipsa, nihil harum illo? Ratione minus unde amet!</div>
+
+  <h3>改word-spacing</h3>
+  <div class="singleLineChinese word">这是单行中文</div>
+  <div class="singleLineEnglish word">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, soluta.</div>
+  <div class="multipleLineChinese word">
+    完喜躲勇韩向起如救同，才不重十圣给，才啊评胜否笔派好氏彷应人前斗主重，上才婵十畴便才报弟是国快韩对生，人介慷生皇到大司程身妄，若罪法小此只人小愚已失尘忧不德生，范承当后保使下活你愚法了到罚他人者司掸。</div>
+  <div class="multipleLineEnglish word">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit libero
+    blanditiis
+    corporis quaerat pariatur harum ducimus quidem totam sit. Quisquam, fugit optio. Nobis eligendi assumenda, voluptas
+    maiores quod recusandae atque error quisquam! Sapiente a temporibus quidem deleniti ipsam, pariatur tenetur adearum,
+    ipsa, nihil harum illo? Ratione minus unde amet!</div>
+
+  <h3>改letter-spacing</h3>
+  <div class="singleLineChinese letter">这是单行中文</div>
+  <div class="singleLineEnglish letter">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, soluta.</div>
+  <div class="multipleLineChinese letter">
+    完喜躲勇韩向起如救同，才不重十圣给，才啊评胜否笔派好氏彷应人前斗主重，上才婵十畴便才报弟是国快韩对生，人介慷生皇到大司程身妄，若罪法小此只人小愚已失尘忧不德生，范承当后保使下活你愚法了到罚他人者司掸。</div>
+  <div class="multipleLineEnglish letter">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit libero
+    blanditiis
+    corporis quaerat pariatur harum ducimus quidem totam sit. Quisquam, fugit optio. Nobis eligendi assumenda, voluptas
+    maiores quod recusandae atque error quisquam! Sapiente a temporibus quidem deleniti ipsam, pariatur tenetur adearum,
+    ipsa, nihil harum illo? Ratione minus unde amet!</div>
+
+</body>
+
+</html>
