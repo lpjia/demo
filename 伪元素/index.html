@@ -46,10 +46,16 @@
       content: "》";
       color: red;
     }
+
+    /* marker伪元素, 默认是黑色圆点 */
+    .newsList li::marker {
+      color: red;
+    }
   </style>
 </head>
 
 <body>
+
   <p class="ying_wen">Lorem ipsum dolor sit amet consectetur.</p>
   <p class="zhong_wen">王迷己己主保了，他。</p>
   <p class="duohang_en">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis beatae quod veritatis dolorum
@@ -78,6 +84,14 @@
   <div class="bfo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, obcaecati!</div>
   <div class="aft">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, dicta!</div>
   <p class="chui_xu">袁小头的<span>CSS和JS</span>有点东西哈</p>
+  <hr>
+  <ul class="newsList">
+    <li>很好的抗癌食物</li>
+    <li>如何一夜暴富</li>
+    <li>震惊, 万万没想到</li>
+    <li>好消息! 好消息!</li>
+  </ul>
+
 </body>
 
 </html>
