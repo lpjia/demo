@@ -18,6 +18,7 @@
   "dependencies": {
     "@koa/cors": "3",
     "async-validator": "^4.2.5",
+    "axios": "^1.7.2",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.1",
     "dotenv-expand": "^8.0.3",

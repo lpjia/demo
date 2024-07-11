@@ -5,6 +5,7 @@ import { Context } from "koa"
 import { File } from '../../node_modules/.pnpm/@types+formidable@1.2.5/node_modules/@types/formidable/index';
 import StudentService from "../service/StudentService"
 import { sendMessage } from "./fn";
+import axios from "axios";
 
 
 class StudentController {
@@ -34,7 +35,7 @@ class StudentController {
     const result = await StudentService.getStudent({ id: query.id })
     console.log(
       // query.id,
-      result,
+      result?.toJSON(),
     )
     ctx.body = {
       code: 0,
@@ -195,12 +196,20 @@ class StudentController {
     stream.end();
   }
 
-
-  tryUpload(ctx: Context) {
-    ctx.body = {
-      code: 0,
-      msg: 'success',
-      data: null
+  /* BFF, backend-for-frontend */
+  async tryBFF(ctx: Context) {
+    try {
+      const axiosResp = await axios.post('http://localhost:7001/api/admin/users/login', ctx.request.body)
+      const resp = axiosResp.data
+      if (axiosResp.status === 200 && resp.code === 0) {
+        ctx.body = {
+          code: 0,
+          msg: 'success',
+          data: resp.data
+        }
+      }
+    } catch (error) {
+      console.log('error:', error)
     }
   }
 }

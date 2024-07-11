@@ -30,8 +30,8 @@ router.get('/bad/getList', BadController.getBadList)
 // router.get('/test', AdminController.two)
 
 
-// router.get('/student', StudentController.getStudent);
-router.get('/student', StudentController.test);
+router.get('/student', StudentController.getStudent);
+// router.get('/student', StudentController.test);
 router.get('/test', StudentController.test);
 // router.post('/student', StudentController.addStudent);
 router.post('/student', StudentController.updStudent);
@@ -47,7 +47,7 @@ router.post('/chatgpt', StudentController.chatGptText) // 配合类字段
 // router.post('/chatgpt', ctx => StudentController.chatGptText(ctx)) // 包一层
 
 
-router.post('/upload', StudentController.tryUpload)
+router.post('/bff', StudentController.tryBFF)
 
 
 export default router
