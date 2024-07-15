@@ -127,6 +127,7 @@ Object.is() 0不等于-0, NaN看作是相等, 符合逻辑
 换行占位 */
 
 
+// 三等号
 null === null; // true
 undefined === undefined; // true
 /* === 对下面2个判断有问题 */
