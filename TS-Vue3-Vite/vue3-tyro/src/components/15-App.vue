@@ -5,18 +5,18 @@
       {{ tab }}
     </button>
 
-    <component :is="currentTabComponent" class="tab"></component>
+    <Component :is="currentTabComponent" class="tab"></Component>
 
     <keep-alive v-show="currentTab === 'Posts'">
-      <component :is="currentTabComponent" class="tab"></component>
+      <Component :is="currentTabComponent" class="tab"></Component>
     </keep-alive>
 
-    <!-- <component :is="TabHome" style="margin-top: 10rem;"></component> -->
+    <!-- <Component :is="TabHome" style="margin-top: 10rem;"></Component> -->
   </div>
 </template>
 
 <script setup lang='ts'>
-import { computed, reactive, ref, DefineComponent } from 'vue';
+import { computed, ref } from 'vue';
 
 /* 注册局部组件, 结合动态组件
 :is直接赋值为导入的组件对象

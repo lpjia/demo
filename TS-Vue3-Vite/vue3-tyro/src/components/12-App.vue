@@ -7,7 +7,7 @@
 import AppChild from './12-ChildApp.vue'
 
 function fn(v: string, more: string) {
-  console.log('触发自定义事件', v, more)
+  console.log('子触发自定义事件', v, more)
 }
 </script>
 

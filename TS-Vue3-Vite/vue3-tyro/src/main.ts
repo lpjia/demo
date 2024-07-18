@@ -1,7 +1,7 @@
 import { createApp, DirectiveBinding } from 'vue'
 // import './style.css'
 // import App from './App.vue'
-import App from '@/components/16-App.vue'
+import App from '@/components/12-App.vue'
 
 const app = createApp(App)
 
