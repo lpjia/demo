@@ -17,11 +17,11 @@
   排除外部浮动, 也就是兄弟元素如果有浮动, 阻止元素被浮动元素覆盖, 达到清浮动的效果
   阻止margin重叠 -->
 
-  <h3>同一个 BFC 容器下外边距会发生折叠, 这里容器指&lt;html&gt;, 根元素会创建 BFC 容器, 两个块之间的间距为100px</h3>
+  <h3>同一个 BFC 容器下, 块盒外边距会发生折叠, 这里容器指&lt;html&gt;根元素, 它会创建 BFC 容器, 两个块盒之间的间距为100px</h3>
   <div class="fang_kuai"></div>
   <div class="fang_kuai"></div>
   <p class="marginB100">----分割线----</p>
-  <h3>如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中(overflow: hidden; 可以创建 BFC 容器)。两个块之间的间距为200px</h3>
+  <h3>如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中(overflow: hidden; 可以创建 BFC 容器)。两个块盒之间的间距为200px</h3>
   <div class="container overflowHidden border">
     <p class="fang_kuai"></p>
   </div>

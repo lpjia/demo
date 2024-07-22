@@ -9,21 +9,27 @@
   <title>浮动</title>
   <link rel="stylesheet" type="text/css" href="../common/reset.css" />
   <link rel="stylesheet" href="scss_to_css/index.css">
+  <style>
+    h1 {
+      font-size: 2rem;
+    }
+  </style>
 </head>
 
 <body>
+  <h1>为了更清晰的区分 下面是第1个</h1>
   <div class="container">
     <div class="float_l">左浮动</div>
     <div class="float_r">右浮动</div>
   </div>
   <hr>
-
+  <h1>下面是第2个</h1>
   <div class="container">
     <div class="float_l noCtt"></div>
     <div class="float_r noCtt"></div>
   </div>
   <hr>
-
+  <h1>下面是第3个</h1>
   <div class="container">
     <div class="normal"></div>
     <!-- 浮动盒子在包含块中排列时, 会避开常规流块盒
@@ -34,7 +40,7 @@
     <div class="float_l noCtt"></div>
   </div>
   <hr>
-
+  <h1>下面是第4个</h1>
   <div class="container">
     <div class="float_l noCtt"></div>
     <div class="float_l noCtt"></div>
@@ -48,7 +54,7 @@
 
   <!-- 还有一个特性, 看文字环绕 -->
 
-
+  <h1>下面是第5个</h1>
   <h3>解决高度坍塌</h3>
   <div class="container2">
     <div class="item"></div>
@@ -67,7 +73,7 @@
       方案不友好 -->
   </div>
   <hr>
-
+  <h1>下面是第6个</h1>
   <div class="container2">
     <div class="item"></div>
     <div class="item"></div>
@@ -85,7 +91,7 @@
       不友好, 因为要多写一个无意义的空元素 -->
   </div>
   <hr>
-
+  <h1>下面是第7个</h1>
   <!-- 解决高度坍塌 -->
   <!-- 最友好方案是在容器上用伪元素, 来代替空元素, 加到最后一个子元素上
     哪个元素高度坍塌, 就在哪个元素加 clearfix -->
@@ -102,7 +108,7 @@
     <div class="item"></div>
   </div>
   <hr>
-
+  <h1>下面是第8个</h1>
   <h3>高度坍塌</h3>
   <div class="container2">
     <div class="item"></div>
