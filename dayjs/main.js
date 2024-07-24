@@ -1,16 +1,16 @@
 import dayjs from "dayjs";
 
-// import relativeTime from 'dayjs/plugin/relativeTime'; // npm导入
-import relativeTime from 'dayjs/plugin/relativeTime.js'; // pnpm导入, 与npm的区别是得加后缀.js, 否则报错
-// import relativeTime from './node_modules/dayjs/plugin/relativeTime.js'; // pnpm导入
-// import relativeTime from './node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/relativeTime.js'; // pnpm导入
-dayjs.extend(relativeTime)
+// // import relativeTime from 'dayjs/plugin/relativeTime'; // npm导入
+// import relativeTime from 'dayjs/plugin/relativeTime.js'; // pnpm导入, 与npm的区别是得加后缀.js, 否则报错
+// // import relativeTime from './node_modules/dayjs/plugin/relativeTime.js'; // pnpm导入
+// // import relativeTime from './node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/relativeTime.js'; // pnpm导入
+// dayjs.extend(relativeTime)
 
-import duration from 'dayjs/plugin/duration.js'
-dayjs.extend(duration)
+// import duration from 'dayjs/plugin/duration.js'
+// dayjs.extend(duration)
 
-import 'dayjs/locale/zh-cn.js'
-dayjs.locale('zh-cn') // 全局使用
+// import 'dayjs/locale/zh-cn.js'
+// dayjs.locale('zh-cn') // 全局使用
 
 console.log(
   /* 创建并返回一个当前实例 */
@@ -51,4 +51,8 @@ console.log(
   // dayjs('2008-08-08').diff(undefined, 'y'),
   // dayjs().diff('2008-08-08', 'year'), // 返回整数, 直接截去小数那部分, 相当于向0取整
   // dayjs().diff('2008-08-08', 'year', true), // 三参传true, 保留小数
+
+
+  // dayjs('2023-01-01').add(1, 'day'), // 返回的是Dayjs对象, 得格式化后才能用
+  dayjs('2023-01-01').add(1, 'day').format('YYYY-MM-DD HH:mm:ss'),
 )
