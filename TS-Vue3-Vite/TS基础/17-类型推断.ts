@@ -66,6 +66,16 @@ type Tp = TupleToUnion<typeof tuple>
 type TupleTp = ['tianmao', 'taobao']
 type Union = TupleToUnion<TupleTp>
 
+/* 扑克牌例子 */
+const colors = ['♥', '♠', '♣', '♦'] as const
+const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'] as const
+/* 想得到一个元组的联合类型, 不用手动傻傻的去写 */
+type Colors = typeof colors[number]
+type Values = typeof values[number]
+function createCard(value: Values, color: Colors) { }
+/* 调函数, 参数会得到正确的代码提示 */
+// createCard('', '')
+
 
 
 
