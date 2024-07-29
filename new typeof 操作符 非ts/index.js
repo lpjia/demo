@@ -42,12 +42,18 @@ console.log('\n')
 console.log('typeof Array:', typeof Array)
 console.log('typeof Object:', typeof Object)
 console.log('typeof Date:', typeof Date)
+console.log('typeof Map:', typeof Map)
+console.log('typeof WeakMap:', typeof WeakMap)
+console.log('typeof Set:', typeof Set)
+console.log('typeof WeakSet:', typeof WeakSet)
 
 console.log('typeof Number:', typeof Number)
 console.log('typeof String:', typeof String)
 console.log('typeof Boolean:', typeof Boolean)
+
 console.log('typeof (()=>{}):', typeof (() => { }))
 console.log('typeof (function fn() { }):', typeof (function fn() { }))
+console.log('typeof class A { }:', typeof class A { })
 console.log('\n')
 
 
