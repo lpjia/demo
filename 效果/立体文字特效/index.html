@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>立体文字特效</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(223, 140, 132);
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 5rem;
+      /* 只能模拟, 不能真正实现一个3D效果
+      旋转会出问题, 所以不能旋转
+      也不能放大, 会有锯齿, 放大后很明显 */
+      text-shadow: -1px 1px #bbb,
+        -2px 2px #bbb,
+        -3px 3px #bbb,
+        -4px 4px #bbb,
+        -5px 5px #bbb,
+        -10px 10px 3px #000b;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>立体文字</h1>
+</body>
+
+</html>
