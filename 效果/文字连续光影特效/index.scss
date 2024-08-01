@@ -1,0 +1,28 @@
+body {
+  background-color: #000;
+  font-family: 'Roboto Mono';
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+
+  >span {
+    color: #faebd7;
+    animation: colorChange 1s infinite alternate;
+    margin: 0 1rem;
+  }
+
+  @for $i from 1 through 8 {
+    span:nth-child(#{$i}) {
+      animation-delay: ($i - 1) * 0.2s;
+    }
+  }
+}
+
+@keyframes colorChange {
+  to {
+    color: #ff0266;
+  }
+}
