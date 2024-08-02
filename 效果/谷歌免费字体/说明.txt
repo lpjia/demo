@@ -1,0 +1,8 @@
+谷歌免费好看字体举例
+https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+font-family: 'Roboto Mono';
+
+样式里可以这样引入
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+font-family: 'Luckiest Guy';
