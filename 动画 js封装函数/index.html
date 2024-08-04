@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画 js封装函数</title>
+  <style>
+    .resetBtn {
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    .btn {
+      color: #fff;
+      background-color: deepskyblue;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      cursor: pointer;
+    }
+
+    .btn:active {
+      opacity: .8;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .kuai {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(210, 102, 102);
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <label>价格: 2999.00</label>
+    <button class="resetBtn btn">打折</button>
+  </div>
+
+  <!-- 尝试其它动画, 验证封装的函数是不是通用 -->
+  <div class="kuai"></div>
+
+
+  <script src="animation.js"></script>
+  <script type="module">
+    import { $toFixed } from '../utils/commonMethod.js'
+    const doms = {
+      label: document.querySelector('label'),
+      btn: document.querySelector('.btn'),
+      kuai: document.querySelector('.kuai'),
+    }
+    doms.btn.addEventListener('click', () => {
+      animation({
+        duration: 1000,
+        from: 2999,
+        to: 299
+      }, (val) => {
+        doms.label.textContent = `价格: ${$toFixed(val, 2)}`
+      })
+
+      animation({
+        duration: 2000,
+        from: 0,
+        to: 600
+      }, (val) => {
+        doms.kuai.style.left = `${$toFixed(val)}px`
+      })
+    })
+  </script>
+</body>
+
+</html>
