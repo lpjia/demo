@@ -1,16 +1,42 @@
 
+pnpm create vite commodity_price_frontend --template vue-ts
+
+
+ffmpeg -i videoplayback.mp4 -i videoplayback.weba -map 0:v -map 1:a -c:v copy -c:a copy output.mp4
 
 
 ffmpeg -i v.mp4 -i a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy output.mp4
 
+
 ffmpeg -i vdo.mp4 -ss 00:00:04 -to 01:49:00 -c copy output.mp4
+
+
+ffmpeg -i input.mp4 -ss 00:00:01.000 -vframes 1 output.jpg
+
+
+ffplay -f lavfi -i "movie=input.mp4,delogo=x=11:y=22:w=33:h=44:show=1"
+ffplay -f lavfi -i "movie=input.mp4,delogo=x=1:y=1150:w=320:h=120:show=1,delogo=x=500:y=890:w=210:h=168:show=1"
+
+
+ffmpeg -i input.mp4 -vf "delogo=x=714:y=28:w=130:h=50" -c:a copy output.mp4
+ffmpeg -i input.mp4 -vf "delogo=x=1:y=1150:w=320:h=120,delogo=x=500:y=890:w=210:h=168" -c:a copy output.mp4
 
 
 git commit 'img 样式知识/*' 'generator生成器/*' -m '20230707 世界巧克力日'
 
 
+----以下为之前的----
+
+
 --------
 ----以上内容置顶----
+
+
+Ctrl
+Shift
+Ctrl Shift
+Alt
+Alt Shift
 
 
 <%=  %>
@@ -37,6 +63,7 @@ this.$nextTick(() => {
 （）
 ——
 上一行是中文的双横线
+→
 
 
 <p>----分割线----</p>
@@ -55,7 +82,7 @@ pnpm build
 pnpm run lint
 pnpm lint
 
-pnpm add -D xxx
+pnpm add xxx -D
 
 pnpm remove xxx
 
@@ -79,6 +106,12 @@ handle(p1, p2, p3){
     console.log('p1: ', p1)
     console.log('p2: ', p2)
     console.log('p3: ', p3)
+}
+回调, 直接拿过去用
+function (p1, p2, p3) {
+  console.log('p1: ', p1)
+  console.log('p2: ', p2)
+  console.log('p3: ', p3)
 }
 
 
