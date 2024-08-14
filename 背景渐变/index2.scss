@@ -1,0 +1,38 @@
+// 圆形渐变 径向渐变
+:root {
+  --redColor: #ed6a5e;
+  --changDu: 100px;
+}
+
+.blk {
+  width: var(--changDu);
+  height: var(--changDu);
+  background: var(--redColor);
+  margin-bottom: 20px;
+}
+
+.jingXiang {
+  // 从圆心开始渐变
+  background: radial-gradient(blue, red);
+}
+
+.jingXiang2 {
+  // 从左上角开始渐变
+  background: radial-gradient(circle at 0 0, blue, red);
+}
+
+.jingXiang3 {
+  // 颜色由透明渐变到红色
+  background: radial-gradient(circle at 0 0, transparent, var(--redColor));
+}
+
+.jingXiang4 {
+  // 从100px再开始渐变
+  // 由于是圆形渐变, 是以0 0位置 100px长度为半径画圆弧
+  background: radial-gradient(circle at 0 0, transparent var(--changDu), var(--redColor));
+}
+
+.jingXiang5 {
+  // 相当于画圆弧切割形成一个看似实心的区域, 可以做一些不规则图形
+  background: radial-gradient(circle at 0 0, transparent var(--changDu), var(--redColor) var(--changDu));
+}

@@ -1,0 +1,13 @@
+:root { --redColor: #ed6a5e; --changDu: 100px; }
+
+.blk { width: var(--changDu); height: var(--changDu); background: var(--redColor); margin-bottom: 20px; }
+
+.jingXiang { background: radial-gradient(blue, red); }
+
+.jingXiang2 { background: radial-gradient(circle at 0 0, blue, red); }
+
+.jingXiang3 { background: radial-gradient(circle at 0 0, transparent, var(--redColor)); }
+
+.jingXiang4 { background: radial-gradient(circle at 0 0, transparent var(--changDu), var(--redColor)); }
+
+.jingXiang5 { background: radial-gradient(circle at 0 0, transparent var(--changDu), var(--redColor) var(--changDu)); }
