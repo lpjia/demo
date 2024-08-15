@@ -1,0 +1,9 @@
+:root { --bgColor: #b5b5b5; --color: #000; --active-bgColor: #ed6a5e; --active-color: #fff; --chiCun: 10px; }
+
+.tab { width: 150px; height: 40px; margin: 0 auto; border-radius: var(--chiCun) var(--chiCun) 0 0; background-color: var(--bgColor); position: relative; transform: perspective(40px) rotateX(30deg); transform-origin: center bottom; }
+
+.tab::before, .tab::after { content: ''; position: absolute; width: var(--chiCun); height: var(--chiCun); background-color: #000; bottom: 0; }
+
+.tab::before { left: -10px; background: radial-gradient(circle at 0 0, transparent var(--chiCun), var(--bgColor) var(--chiCun)); }
+
+.tab::after { right: -10px; background: radial-gradient(circle at var(--chiCun) 0, transparent var(--chiCun), var(--bgColor) var(--chiCun)); }

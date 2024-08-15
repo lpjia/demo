@@ -1,0 +1,45 @@
+.tabContainer {
+  display: flex;
+
+  .tabBox {
+    position: relative;
+    cursor: pointer;
+
+    &:hover:not(.active) {
+      opacity: .8;
+    }
+
+    .txt {
+      position: absolute;
+      bottom: 2px;
+      width: 150px;
+      text-align: center;
+      color: var(--color);
+    }
+
+    &:nth-child(2) {
+      margin-left: -30px;
+    }
+
+    // 激活
+    &.active {
+      z-index: 10;
+
+      .txt {
+        color: var(--active-color);
+      }
+
+      .tab {
+        background-color: var(--active-bgColor);
+
+        &::before {
+          background: radial-gradient(circle at 0 0, transparent var(--chiCun), var(--active-bgColor) var(--chiCun));
+        }
+
+        &::after {
+          background: radial-gradient(circle at var(--chiCun) 0, transparent var(--chiCun), var(--active-bgColor) var(--chiCun));
+        }
+      }
+    }
+  }
+}

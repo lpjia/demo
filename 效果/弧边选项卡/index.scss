@@ -1,85 +1,38 @@
-.tab_container {
-  >.wrap {
-    .tab_box {
-      width: 200px;
-      position: absolute;
-      cursor: pointer;
-      top: 0;
+:root {
+  --bgColor: rgb(181, 181, 181);
+  --color: #000;
+  --active-bgColor: #ed6a5e;
+  --active-color: #fff;
+  --chiCun: 10px;
+}
 
-      &.active {
-        z-index: 10;
-      }
+.tab {
+  width: 150px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: var(--chiCun) var(--chiCun) 0 0;
+  background-color: var(--bgColor);
+  position: relative;
+  transform: perspective(40px) rotateX(30deg);
+  transform-origin: center bottom;
 
-      >.wrap {
-        position: relative;
-      }
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: var(--chiCun);
+    height: var(--chiCun);
+    background-color: #000;
+    bottom: 0;
+  }
 
-      --bgColor:rgb(181, 181, 181);
-      --color:#000;
-      --active-bgColor:#ed6a5e;
-      --active-color:#fff;
+  &::before {
+    left: -10px;
+    background: radial-gradient(circle at 0 0, transparent var(--chiCun), var(--bgColor) var(--chiCun));
+  }
 
-
-
-      /* 原来的 */
-      .tab {
-        width: 150px;
-        height: 40px;
-        margin: 0 auto;
-        border-radius: 10px 10px 0 0;
-        background-color: var(--bgColor);
-        position: relative;
-        transform-origin: center bottom;
-        transform: perspective(40px) rotateX(30deg);
-
-        &.active {
-          background-color: var(--active-bgColor);
-
-          &::before {
-            background: radial-gradient(circle at 0 0,
-                transparent 10px, var(--active-bgColor) 10px);
-          }
-
-          &::after {
-            background: radial-gradient(circle at 10px 0,
-                transparent 10px, var(--active-bgColor) 10px);
-          }
-        }
-
-        &::before,
-        &::after {
-          content: '';
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background-color: #000;
-          bottom: 0;
-        }
-
-        &::before {
-          left: -10px;
-          background: radial-gradient(circle at 0 0,
-              transparent 10px, var(--bgColor) 10px);
-        }
-
-        &::after {
-          right: -10px;
-          background: radial-gradient(circle at 10px 0,
-              transparent 10px, var(--bgColor) 10px);
-        }
-      }
-
-      .txt {
-        color: var(--color);
-        position: absolute;
-        top: 66%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        &.active {
-          color: var(--active-color);
-        }
-      }
-    }
+  &::after {
+    right: -10px;
+    background: radial-gradient(circle at var(--chiCun) 0, transparent var(--chiCun), var(--bgColor) var(--chiCun));
   }
 }
