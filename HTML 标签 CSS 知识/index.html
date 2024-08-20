@@ -7,7 +7,7 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HTML 标签 CSS 知识</title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="scss_to_css/index.css">
   <style></style>
 </head>
 
@@ -82,6 +82,31 @@
   <!-- 属性'名'不区分大小写, 一律会转为小写, 建议用-连接
   属性'值'区分大小写, css选择器也能正确匹配 -->
   <div class="xiaoTuoFeng">class值为小驼峰写法, css选择器也能正确匹配, 给样式</div>
+
+
+  <!-- 布尔属性 -->
+  <input type="checkbox" checked />
+  <input type="checkbox" checked="checked" />
+  <input type="checkbox" checked="true" />
+  <!-- 布尔属性, 只要写了属性名, 就生效 -->
+  <input type="checkbox" checked="false" />
+  <input type="checkbox" />
+
+  <input type="text" value="abc" readonly />
+
+  <select>
+    <option value="111">111</option>
+    <option value="222" selected>222</option>
+    <option value="333">333</option>
+  </select>
+
+
+  <!-- contenteditable 是内容可编辑的意思
+  spellcheck 是拼写检查 -->
+  <!-- https://www.runoob.com/tags/ref-standardattributes.html -->
+
+
+
 </body>
 
 </html>

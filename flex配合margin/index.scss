@@ -1,3 +1,7 @@
+:root {
+  --wh: 50px;
+}
+
 .container {
   width: 1200px;
   margin: 20px auto;
@@ -6,9 +10,8 @@
   display: flex;
 
   .item {
-    $wh: 50px;
-    width: $wh;
-    height: $wh;
+    width: var(--wh);
+    height: var(--wh);
     border: 1px solid;
 
     &:nth-child(3n+1) {
@@ -46,7 +49,7 @@ h2 {
 
   &.auto .item {
     --n: 6;
-    --gap: calc(((100% - 50px * var(--n))) / var(--n) / 2);
+    --gap: calc(((100% - var(--wh) * var(--n))) / var(--n) / 2);
     margin: 10px var(--gap);
   }
 

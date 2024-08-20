@@ -1,0 +1,30 @@
+@charset "UTF-8";
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { margin: 10px; padding: 10px; border: 1px solid; }
+
+[href] { color: red; }
+
+.dan_hang { background-color: #306834; color: #fff; height: 60px; line-height: 60px; }
+
+.duo_hang { background-color: chocolate; color: #fff; width: 300px; line-height: 1.5; font-size: 24px; }
+
+.wei_element span { color: deepskyblue; }
+
+.wei_element span::before { content: '《'; color: red; }
+
+.wei_element span::after { content: '》'; color: red; }
+
+.xuan_ze_qi_zu_he { list-style: none; }
+
+.xuan_ze_qi_zu_he .special { color: deeppink; }
+
+.xuan_ze_qi_zu_he .special + li { color: blueviolet; }
+
+.xuan_ze_qi_zu_he .special ~ li { font-size: 30px; }
+
+.shou_hang_suo_jin { text-indent: 2em; }
+
+.dan_hang_yi_chu { width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.xiaoTuoFeng { color: deepskyblue; padding: 10px 20px; margin: 10px 0; border: 2px solid; border-radius: 8px; }

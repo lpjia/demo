@@ -1,4 +1,4 @@
-# 元素 标签
+# 元素 标签 属性
 
 ## pre
 
@@ -50,6 +50,17 @@ target的取值:
 
 - _self: 在当前页面窗口中打开, 默认值
 - _blank: 在新窗口中打开
+
+## 布尔属性
+
+checked
+controls
+disabled
+selected
+readonly
+
+只要写了属性名, 就生效
+
 
 # 路径的书写
 
