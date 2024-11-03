@@ -1,1 +1,1 @@
-console.log('这是普通脚本')
+console.log('这是普通脚本, 后引入')
