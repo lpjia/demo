@@ -7,6 +7,8 @@ class JsonpController {
       { id: 2, name: "xh" },
       { id: 3, name: "xz" },
     ]
+
+    // 响应体, 使用json字符串返回给前端数据
     ctx.body = `customCallback(${JSON.stringify(dataList)})`
   }
 }

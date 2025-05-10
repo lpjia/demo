@@ -14,13 +14,13 @@
   <script>
     // 接收数据
     function customCallback(resp) {
+      // 拿到数据了
       console.log(resp)
 
-      // 操作数据
+      // 额外操作
       displayData(resp)
     }
 
-    // 把数据展示到dom
     function displayData(data) {
       let frag = document.createDocumentFragment()
       for (const item of data) {
@@ -29,6 +29,7 @@
       document.body.appendChild(frag)
     }
 
+    // 通过<script src="">拿到数据, 而不是ajax
     function request(url) {
       const domScript = document.createElement('script');
       domScript.src = url;
