@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MutationObserver DOM变化监听接口</title>
+</head>
+
+<body>
+  <div id="app">你好，我是目标节点！</div>
+
+
+
+  <script>
+    // 定义回调函数
+    function fn(mutationsList, observer) {
+      // mutationsList 是一个数组，包含所有发生的DOM变动
+      // debugger
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          console.log('子节点被添加或删除。');
+        } else if (mutation.type === 'attributes') {
+          console.log('属性 ' + mutation.attributeName + ' 被修改。');
+        }
+      }
+    }
+
+    const targetNode = document.querySelector('#app');
+    // 创建一个链接到回调函数的观察者实例
+    const observer = new MutationObserver(fn); // 当targetNode发生变化时, fn函数被加入到微任务队列
+
+    // 开始观察目标节点的配置突变
+    // 我们将观察 childList 更改和属性更改。
+    observer.observe(targetNode, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    });
+
+
+
+    // 现在，让我们对 targetNode 进行一些更改以触发观察者
+    // 1. 更改属性
+    targetNode.setAttribute('data-test', '测试值');
+
+    /* 打印结果
+    属性 data-test 被修改。
+    子节点被添加或删除。
+    fnPromise
+    fnQueue */
+    /* 可以看出都是添加到微队列执行回调, 但是 MutationObserver 是收集一段时间内发生的所有DOM变动，然后通过一次回调来集中处理，
+    而不是每次微小的DOM变动都立即触发一次同步回调，那样可能会导致性能瓶颈 */
+
+    function fnPromise() {
+      console.log('fnPromise');
+    }
+    Promise.resolve().then(fnPromise)
+
+    function fnQueue() {
+      console.log('fnQueue');
+    }
+    queueMicrotask(fnQueue)
+
+
+    // 2. 添加一个子元素
+    const newElement = document.createElement('p');
+    newElement.textContent = '一个新的段落。';
+    targetNode.appendChild(newElement);
+
+    // 停止观察:
+    // observer.disconnect();
+  </script>
+</body>
+
+</html>
