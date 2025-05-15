@@ -1,15 +1,20 @@
 
 net start mysql
 net stop mysql
+
 nvm use 18.14.0
 nvm use 16.14.2
 nvm use 10.24.1
 nvm ls
+
 pn dev
 pn i
 pn clean
 pn add -D
 pn remove
+
 net start mongodb
 net stop mongodb
+
 rimraf node_modules
+rimraf '**/node_modules'

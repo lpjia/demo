@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>重置浏览器button默认样式</title>
+  <style>
+    /* 重置样式 */
+    .resetBtn {
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    /* 符合现代主流审美的按钮样式 */
+    .btn {
+      color: #fff;
+      background-color: deepskyblue;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    /* 悬浮时样式 */
+    .btn:hover {
+      cursor: pointer;
+    }
+
+    /* 点击时样式 */
+    .btn:active {
+      opacity: .8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button>打折</button>
+
+  <button class="btn resetBtn">打折</button>
+
+</body>
+
+</html>

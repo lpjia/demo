@@ -2,13 +2,17 @@
 pnpm create vite commodity_price_frontend --template vue-ts
 
 
-ffmpeg -i videoplayback.mp4 -i videoplayback.weba -map 0:v -map 1:a -c:v copy -c:a copy output.mp4
+ffmpeg -f concat -i vdo.txt -c copy concat.mp4
 
 
-ffmpeg -i v.mp4 -i a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy output.mp4
+ffmpeg -i videoplayback.mp4 -i videoplayback.weba -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
 
 
-ffmpeg -i vdo.mp4 -ss 00:00:04 -to 01:49:00 -c copy output.mp4
+ffmpeg -i 1v.mp4 -i 1a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy 2output.mp4
+ffmpeg -i v.mp4 -i a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
+
+
+ffmpeg -i vdo.mp4 -ss 00:00:04 -to 01:49:00 -c copy z_output.mp4
 
 
 ffmpeg -i input.mp4 -ss 00:00:01.000 -vframes 1 output.jpg
