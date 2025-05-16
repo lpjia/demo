@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.container { background-color: deepskyblue; padding: 30px; position: relative; }
+
+main { background-color: var(--ma-on-shan); margin-left: 300px; margin-right: 200px; }
+
+/* 左右边栏 宽度固定 */
+.left { background-color: var(--tin-hau); width: 300px; position: absolute; left: 30px; top: 30px; }
+
+.right { background-color: var(--sheung-shui); width: 200px; position: absolute; right: 30px; top: 30px; }

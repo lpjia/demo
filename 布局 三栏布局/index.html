@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三栏布局 浮动</title>
+  <link rel="stylesheet" href="../common/reset.css">
+  <link rel="stylesheet" href="../common/mtr.css">
+  <style>
+    .container {
+      background-color: deepskyblue;
+    }
+
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: block;
+      height: 0;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+  </style>
+
+  <link rel="stylesheet" href="scss_to_css/index.css">
+</head>
+
+<body>
+
+  <header>这是头部</header>
+
+  <!-- 如果不清浮动, 容器高度坍塌, 
+    一般有浮动元素, 记着容器都加上清浮动, 减轻心智负担 -->
+  <div class="container clearfix">
+    <!-- 想要有间隙, 设置浮动盒子的margin才可以 -->
+
+    <!-- 三栏布局, 左区域和右区域由于浮动, 会避开常规流块盒, 所以主区域书写在了后面 -->
+    <aside class="left">
+      三栏布局 左区域Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, aliquid quam quisquam suscipit
+      facere modi tenetur expedita adipisci amet placeat voluptates nobis voluptatibus nihil impedit distinctio. Eos
+      doloribus est modi.
+    </aside>
+    <aside class="right">
+      右区域Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, aliquid quam quisquam suscipit
+      facere modi tenetur expedita adipisci amet placeat voluptates nobis voluptatibus nihil impedit distinctio. Eos
+      doloribus est modi.
+    </aside>
+    <main>
+      主区域Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quia? Sed natus labore ducimus magni
+      recusandae saepe mollitia unde doloremque reiciendis perferendis libero hic, consectetur beatae nobis culpa,
+      tempore aut animi repellendus obcaecati, quo rerum in commodi quis ea! Dolorum sed provident saepe? Adipisci,
+      quisquam quia delectus vitae exercitationem voluptatem veritatis ducimus beatae temporibus corporis quo dolorem
+      atque consequatur, a id alias nisi, nesciunt neque sequi quos eos repudiandae consectetur amet ratione. Voluptates
+      est id nostrum omnis, consectetur incidunt fugiat autem, ea neque expedita eaque? Placeat eligendi sint facere
+      ipsum? Autem corporis quo repellat mollitia tenetur fugiat voluptatum, laboriosam minus alias hic ullam quia porro
+      dignissimos obcaecati vero optio natus laudantium distinctio aspernatur possimus labore explicabo? Reprehenderit
+      fugiat fugit laboriosam expedita provident laudantium, autem ut magni ea cumque corporis libero facere odit,
+      deserunt ipsam dolor et ducimus? Autem fugit molestiae voluptas sint reiciendis? Dolorum repellendus inventore,
+      laudantium animi beatae distinctio, reprehenderit vel repellat sequi modi quod magni nisi laboriosam velit
+      in at corporis repellat quae delectus impedit autem quia nihil. Similique esse beatae
+      sint modi temporibus, consequatur vel facere ratione ipsum rem mollitia ea velit? Totam in quae eligendi voluptas
+      commodi delectus corporis? Exercitationem autem cumque culpa sed, optio, pariatur, blanditiis et quibusdam
+      molestias ut architecto nulla doloremque commodi eveniet voluptate aut asperiores sit natus! Debitis, iure.
+      Repellat esse odit iusto, necessitatibus doloremque natus tempora, ratione dicta maiores optio culpa quo numquam
+      quas excepturi doloribus! Illum libero necessitatibus corporis culpa doloribus inventore possimus fuga?
+      Consectetur modi expedita ipsa tempore itaque magnam eaque eum impedit at! Harum ad odit eos? Enim fugiat sunt
+      aperiam? Iste harum eveniet optio illo, accusantium hic. Molestiae ratione similique laborum inventore reiciendis
+      optio quisquam aliquid, eligendi ab, deleniti facilis reprehenderit illo beatae non ipsa minima assumenda sed
+      obcaecati nemo magni iusto. Cumque neque totam necessitatibus deserunt eos?
+    </main>
+  </div>
+
+  <footer>这是尾部</footer>
+
+</body>
+
+</html>

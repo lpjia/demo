@@ -1,0 +1,7 @@
+.container { background-color: deepskyblue; display: flex; }
+
+main { background-color: var(--ma-on-shan); order: 2; }
+
+.left { background-color: var(--tin-hau); width: 300px; flex-shrink: 0; order: 1; }
+
+.right { background-color: var(--sheung-shui); width: 200px; flex-shrink: 0; order: 3; }

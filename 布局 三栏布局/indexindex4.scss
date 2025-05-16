@@ -1,0 +1,24 @@
+.container {
+  background-color: deepskyblue;
+  display: flex;
+  // min-width: 1200px; // 容器定宽, 给min-width
+}
+
+main {
+  background-color: var(--ma-on-shan);
+  order: 2;
+}
+
+.left {
+  background-color: var(--tin-hau);
+  width: 300px;
+  flex-shrink: 0;
+  order: 1;
+}
+
+.right {
+  background-color: var(--sheung-shui);
+  width: 200px;
+  flex-shrink: 0;
+  order: 3;
+}

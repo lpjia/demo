@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* 三栏布局, 一般左右侧都定宽且左右浮动 */
+.left { background-color: var(--tin-hau); width: 300px; float: left; }
+
+.right { background-color: var(--sheung-shui); width: 200px; float: right; }
+
+main { background-color: var(--ma-on-shan); display: flow-root; }

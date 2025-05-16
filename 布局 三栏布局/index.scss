@@ -1,0 +1,22 @@
+/* 三栏布局, 一般左右侧都定宽且左右浮动 */
+.left {
+  background-color: var(--tin-hau);
+  width: 300px;
+  float: left;
+}
+
+.right {
+  background-color: var(--sheung-shui);
+  width: 200px;
+  float: right;
+}
+
+main {
+  background-color: var(--ma-on-shan);
+  display: flow-root; // 创建BFC, 排除外部浮动 // overflow: hidden;
+}
+
+.container {
+  // 不给宽度就自适应宽度
+  // min-width: 1200px; // 容器定宽, 给min-width
+}
