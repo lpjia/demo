@@ -1,0 +1,11 @@
+html, body { margin: 0; width: 100%; height: 100%; }
+
+.app { width: 100%; height: 100%; background-color: deepskyblue; color: #fff; display: flex; flex-direction: column; }
+
+header { height: 60px; color: #fff; background-color: #000; line-height: 60px; padding-left: 10px; }
+
+.container { width: 100%; height: calc(100% - 60px); display: flex; }
+
+.container aside { background-color: var(--tin-hau); width: 200px; height: 100%; flex-shrink: 0; padding: 10px; box-sizing: border-box; overflow: auto; }
+
+.container main { background-color: var(--ma-on-shan); height: 100%; padding: 10px; box-sizing: border-box; overflow: auto; }

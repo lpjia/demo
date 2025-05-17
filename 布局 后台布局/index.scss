@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.app {
+  /* 固定定位, 包含块是视口, 宽高是已知确定的, 所以可以直接用100% */
+  position: fixed;
+  width: 100%;
+  height: 100%; // 百分比高度(父元素是视口, 高度有了)
+  background-color: deepskyblue;
+}
+
+header {
+  height: 60px;
+  color: #fff;
+  background-color: #000;
+  line-height: 60px;
+  padding-left: 10px;
+}
+
+.container {
+  width: 100%;
+  // height: 100%; // 百分比高度(父元素是.app, 高度有了, 给100%其实高度是多了
+  height: calc(100% - 60px); // 动态计算高度
+
+  aside {
+    background-color: var(--tin-hau);
+    float: left;
+    width: 200px;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  main {
+    background-color: var(--ma-on-shan);
+    display: flow-root;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+}
