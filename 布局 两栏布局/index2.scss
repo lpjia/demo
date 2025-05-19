@@ -1,0 +1,17 @@
+aside {
+  background-color: var(--tin-hau);
+  /* 左右两栏布局, 一般左侧 定宽 左浮动 */
+  width: 300px;
+  float: left;
+}
+
+main {
+  background-color: var(--ma-on-shan);
+  /* 右侧只给浮动, 不给宽度, 宽度auto, 默认独占一行
+  右侧给了宽度, 才实现两栏布局 */
+  float: right; // 右浮动靠右, 左浮动的话靠左(定宽)
+  // width: 500px; // 右侧定宽
+  width: calc(100% - 300px); // 右侧撑满
+}
+
+// 第二种两栏布局, 左侧定宽且左浮动, 右侧给宽度且右浮动

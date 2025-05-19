@@ -1,0 +1,4 @@
+@charset "UTF-8";
+aside { background-color: var(--tin-hau); /* 左右两栏布局, 一般左侧 定宽 左浮动 */ width: 300px; float: left; /* 宽度100%无效 */ }
+
+main { background-color: var(--ma-on-shan); /* 右侧不给浮动, 文字环绕效果 */ display: flow-root; }

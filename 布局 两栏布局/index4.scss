@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+aside {
+  background-color: var(--tin-hau);
+  width: 300px;
+  flex-shrink: 0;
+}
+
+main {
+  background-color: var(--ma-on-shan);
+  // 不给宽度就默认右侧撑满
+  // width: 500px; // 右侧定宽
+}

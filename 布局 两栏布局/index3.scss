@@ -1,0 +1,21 @@
+aside {
+  background-color: var(--tin-hau);
+  width: 300px;
+  float: left;
+  height: 1e4px;
+  margin-bottom: calc(10px - 1e4px);
+  /* 实际盒子的尺寸才10px高, 盒子的总尺寸是margin+border+padding+content */
+}
+
+.container {
+  overflow: hidden;
+}
+
+main {
+  background-color: var(--ma-on-shan);
+  float: right;
+  // width: 500px;
+  width: calc(100% - 300px);
+}
+
+// 左右等高 伪等高, 由于左右布局一般左边内容少, 右边内容多, 导致左边背景那块无法与右边等高(视觉上对齐)

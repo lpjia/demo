@@ -1,0 +1,4 @@
+@charset "UTF-8";
+aside { background-color: var(--tin-hau); /* 左右两栏布局, 一般左侧 定宽 左浮动 */ width: 300px; float: left; }
+
+main { background-color: var(--ma-on-shan); /* 右侧只给浮动, 不给宽度, 宽度auto, 默认独占一行 右侧给了宽度, 才实现两栏布局 */ float: right; width: calc(100% - 300px); }

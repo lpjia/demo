@@ -1,0 +1,6 @@
+@charset "UTF-8";
+aside { background-color: var(--tin-hau); width: 300px; float: left; height: 1e4px; margin-bottom: calc(10px - 1e4px); /* 实际盒子的尺寸才10px高, 盒子的总尺寸是margin+border+padding+content */ }
+
+.container { overflow: hidden; }
+
+main { background-color: var(--ma-on-shan); float: right; width: calc(100% - 300px); }
