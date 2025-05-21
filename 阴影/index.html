@@ -6,14 +6,32 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>阴影</title>
+  <title>阴影 图片 文字阴影</title>
   <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap'); */
+    @font-face {
+      font-family: 'Luckiest Guy';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(../font/font.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
     body {
       padding-bottom: 10vh;
+      /* 背景渐变不能用background-color, 得用background */
+      background: linear-gradient(45deg, #bfbfbf, #e6e6e6);
     }
 
     h2 {
       text-align: center;
+      margin-top: 10rem;
+    }
+
+    h2+h2,
+    h2:first-of-type {
+      margin-top: 0;
     }
 
     .container {
@@ -37,6 +55,20 @@
     .duo img {
       box-shadow: 0 0 20px #000,
         0 0 0 20px deepskyblue;
+    }
+
+    .wen_zi {
+      font-family: 'Luckiest Guy';
+      font-size: 10vh;
+      line-height: 1;
+      margin: 0;
+      letter-spacing: 5px;
+      color: #e6e6e6;
+      text-align: center;
+      text-shadow: 1px -1px #fff, -1px 1px #999,
+        -10px 10px #80808080;
+      /* -10px 10px 5px #80808080; */
+      /* 我喜欢不加模糊半径的 */
     }
   </style>
 </head>
@@ -62,6 +94,11 @@
   <div class="container duo">
     <img src="../imgs/firefox-logo.svg" alt="">
   </div>
+
+  <h2>漂亮的文字阴影</h2>
+  <div class="wen_zi">shadow</div>
+  <div class="wen_zi">text</div>
+  <div class="wen_zi">effect</div>
 </body>
 
 </html>

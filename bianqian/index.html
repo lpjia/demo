@@ -119,13 +119,34 @@
 
       <p>by 通过</p>
       <p>for 就什么而言, 为了</p>
-      <p>of A of B, B的A, 属于B</p>
+      <p>A of B, B的A, 属于B</p>
+
+
+      <!-- html 块盒 行盒 元素 -->
+      <p>header 头部</p>
+      <p>footer 尾部</p>
+      <p>nav 导航</p>
+      <p>main 主区域</p>
+      <p>section 区块, 独立章节</p>
+      <p>div 块盒</p>
+      <p>span 行盒</p>
+      <p>p 段落文本</p>
+      <p>aside 边栏</p>
+      <p>article 文章</p>
+      <p>table 表格</p>
+      <p>tr 表格行</p>
+      <p>th 表格头单元</p>
+      <p>td 表格单元</p>
+      <p>form 表单, 是块盒, 很多表单元素是行盒, 比如input button radio select option</p>
+      <p>label 标签, 是行盒</p>
+      <p>h1-6 标题</p>
+      <p>ul 无序列表</p>
+      <p>li 列表项</p>
 
 
       <!-- css 命名 -->
       <p>head header 顶部, 头部</p>
       <p>foot footer tail 底部, 尾部</p>
-      <p>section 独立章节</p>
       <p>banner 横幅</p>
 
 
@@ -136,26 +157,25 @@
       <p>inherit 继承</p>
       <p>initial 最初的</p>
       <p>offset 偏移量</p>
-      <p>transition 过渡</p>
-      <p>animation 动画</p>
-      <p>keyframe 关键帧</p>
-      <p>frame 帧</p>
       <p>clip 裁剪, 剪切</p>
       <p>vertical 垂直</p>
       <p>align 对齐</p>
       <p>fit 适应</p>
+      <p>opacity 不透明度, 也就是值为1是显示(对应字面意思1为true), 值为0则不显示(透明)</p>
       <p>ellipsis 省略</p>
       <p>overflow 溢出</p>
       <p>text-decoration 下划线</p>
       <p>viewport 视口</p>
       <p>smooth 平滑的</p>
       <p>linear-gradient 线性渐变</p>
+      <p>radial-gradient 径向渐变, 圆形渐变</p>
       <p>letter 字母</p>
       <p>letter-spacing 文本字符的间距</p>
       <p>text-transform 文字大小写</p>
       <p>filter 滤镜, 过滤器</p>
       <p>visible 可见的, overflow的默认值, 只显示可见区域</p>
-      <p>mix-blend-mode 混合模式, screen混合模式, 国内称为“滤色”</p>
+      <p>mix-blend-mode 混合模式, screen混合模式, 国内称为“滤色”, 有些翻译为“屏幕”</p>
+      <p>multiply混合模式, 国内称为“正片叠底”, 有些翻译为“相乘”</p>
 
 
       <!-- css 变形 -->
@@ -165,10 +185,35 @@
       <p>scale 缩放</p>
       <p>skew 倾斜, 盒子都变倾斜了, 和旋转还不一样</p>
 
+      <!-- 动画 -->
+      <p>transition 过渡</p>
+      <p>animation 动画</p>
+      <p>keyframe 关键帧</p>
+      <p>frame 帧</p>
+      <p>linear 线性的</p>
+      <p>ease_in 渐入, 缓入</p>
+      <p>infinite 无穷大</p>
+      <p>alternate 交替</p>
+      <p>flip 翻转</p>
+      <p>forwards 向前 向前进方向</p>
+      <p>backwards 向后</p>
+      <p>duration 时长</p>
+      <p>delay 延迟</p>
+      <p>reverse 反向</p>
+
+
+      <!-- cursor -->
+      <p>cursor 光标</p>
+      <p>prompt 提示</p>
+      <p>composer 代码生成器</p>
+      <p>manual 手动的</p>
+      <p>agent 代理</p>
+      <p>user-agent 浏览器标识</p>
+
 
       <!-- flex -->
-      <p>shrink 缩小</p>
-      <p>flex-grow 放大</p>
+      <p>flex-grow 伸展</p>
+      <p>shrink 收缩</p>
       <p>flex-wrap 换行</p>
       <p>stretch 拉伸</p>
       <p>evenly 均匀 justify-content: space-evenly; 两边和子项间距都一样</p>
@@ -176,7 +221,9 @@
 
       <!-- js -->
       <p>prototype 原型</p>
-      <p>instanceof 实例</p>
+      <!-- new String(123) instanceof String -->
+      <p>instanceof 实例 (必须是对象才可以, 字面量不行, 得包装一层)</p>
+      <p>typeof 类型, typeof 456</p>
       <p>extends 继承</p>
       <p>constructor 构造器</p>
       <p>anonymous 匿名</p>
@@ -185,20 +232,28 @@
       <p>referrer 来源, 来路</p>
       <p>reference 引用</p>
       <p>assign 分配</p>
-      <p>reduce 减少数组项</p>
 
       <p>split 字符串分割/拆分成数组 </p>
       <p>join 连接, 数组项连接成字符串, 关联(sql)</p>
       <p>slice 切片, 分片</p>
 
-      <p>directive 指令</p>
+      <p>match 匹配</p>
+      <p>replace 替换</p>
+
+      <p>digit 数字 正则的d</p>
+      <p>global 全局 正则的g</p>
+      <p>pattern 模式 正则中的正则表达式</p>
+
+      <p>fill 填充</p>
+      <p>splice 拼接(数组删除、替换、添加元素)</p>
+      <p>reduce 减少数组项</p>
+
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
       <p>post 提交</p>
       <p>await 等待</p>
       <p>loop 循环</p>
       <p>emit 发</p>
-      <p>trigger 触发</p>
       <p>target 目标 目标元素</p>
       <p>capture 捕获</p>
       <p>syntax 语法</p>
@@ -209,7 +264,6 @@
       <p>refactor 重构</p>
       <p>signal 信号</p>
       <p>abort 中止</p>
-      <p>manual 手动的</p>
       <p>chunk 块, 包, 分片</p>
       <p>vendor 供应商</p>
       <p>manifest 清单</p>
@@ -219,7 +273,6 @@
       <p>flat 扁平</p>
       <p>debounce 防抖</p>
       <p>throttle 节流</p>
-      <p>immediate 立即的 立刻的</p>
       <p>initialValue 初始值</p>
       <p>accumulator 累加器</p>
       <p>currentValue 当前值</p>
@@ -231,16 +284,33 @@
       <p>sel 选择器 selector</p>
       <p>parameter 参数 param params(复数) p</p>
       <p>Normalize 归一化</p>
+      <p>task 任务 tasks(复数)</p>
+      <p>build 构建</p>
+      <p>lint 代码检查</p>
+      <p>process 进程</p>
 
 
       <!-- vue -->
       <p>track 追踪</p>
-      <!-- <p>trigger 触发</p> -->
+      <p>trigger 触发</p>
       <p>dep 依赖 deps(复数) dependence</p>
       <p>scheduler 调度器</p>
       <p>effect 副作用, 作用</p>
       <p>shallow 浅的</p>
-      <p>patch 补丁, 更新</p>
+      <p>patch 更新, 补丁</p>
+      <p>mount 挂载 mounted</p>
+      <p>immediate 立即, 立刻</p>
+      <p>deep 深</p>
+      <p>directive 指令</p>
+      <p>generic 通用的, 声明泛型类型参数</p>
+      <p>route 路由</p>
+      <p>router 路由器</p>
+      <p>missing 丢失</p>
+      <p>provide 提供</p>
+      <p>inject 注入</p>
+      <p>Suspense 悬念</p>
+      <p>Teleport 传送</p>
+      <p>Composition 组合式</p>
 
 
       <!-- 改变this指向 -->
@@ -251,12 +321,12 @@
 
       <!-- promise -->
       <p>promise 许诺</p>
-      <p>fulfill 兑现 fulfilled 已兑现</p>
+      <p>resolve 完成 解析 解决 resolved 已完成</p>
       <p>reject 拒绝 rejected 已拒绝</p>
+      <p>fulfill 兑现 fulfilled 已兑现</p>
       <p>pending 待定 初始状态，既没有被兑现，也没有被拒绝</p>
       <p>then 然后</p>
       <p>settled 已敲定</p>
-      <p>resolve 做出决议 resolved 已决议</p>
 
 
       <!-- ts -->
@@ -267,11 +337,8 @@
       <p>interface 接口 Itfc 这缩写没必要用在ts</p>
       <p>never 不存在的类型</p>
       <p>exhaustiveCheck 穷尽检查</p>
-      <!-- extends 继承 -->
       <p>implements 实现</p>
       <!-- 当有重复的, 可以用下划线来避免 -->
-      <p>string_literal 字符串文字</p>
-      <p>noImplicit 无隐式的</p>
 
 
       <!-- 请求 -->
@@ -281,6 +348,23 @@
       <p>raw 未加工的, 原始的</p>
       <p>parse 解析</p>
       <p>payload 有效载荷</p>
+
+
+      <!-- 重排, 重新计算 layout 树
+        几何信息(包括尺寸、位置等)
+        获取属性则立即 reflow
+
+        layout 树是要找到每个节点的几何信息
+        伪元素节点不在 dom 树, 但它们拥有几何信息，所以会生成到布局树中
+        (文本)内容必须在行盒中, 行盒和块盒不能相邻
+        匿名行盒、匿名块盒
+        layout 树里的对象是c++对象, js获取不到, 可间接获取一些信息, 比如clientWidth、offsetWidth、scrollWidth, 都是 layout 树
+
+        重绘, 当改动了可见样式后，就需要重新计算，会引发 repaint
+        由于元素的布局信息也属于可见样式，所以 reflow 一定会引起 repaint
+       -->
+      <p>reflow 重排</p>
+      <p>repaint 重绘</p>
 
 
       <!-- 一组词 -->
@@ -318,12 +402,20 @@
       <p>odd 奇数</p>
 
 
-      <!-- 句子 -->
-      <p>new dependencies optimized 新的依赖关系已优化</p>
-      <p>user agent stylesheet 用户代理样式表, 浏览器默认样式</p>
-      <p>inherited from 继承自</p>
+      <!-- 多词 -->
+      <p>new_dependencies_optimized 新的依赖关系已优化</p>
+      <p>user_agent_stylesheet 用户代理样式表, 浏览器默认样式</p>
+      <p>inherited_from 继承自</p>
       <p>element.style 元素内联样式</p>
-      <p>Manually select features 手动选择功能特性</p>
+      <p>Manually_select_features 手动选择功能特性</p>
+      <p>circular_dependency 循环依赖</p>
+      <p>not_compatible 不兼容的</p>
+      <p>out_of_bounds 越界</p>
+      <p>community_edition 社区版</p>
+      <p>Internal_method 内部方法</p>
+      <p>Corresponding_trap 对应陷阱</p>
+      <p>string_literal 字符串文字</p>
+      <p>noImplicit 无隐式的</p>
 
 
       <!-- 大小写等转换 -->
@@ -411,7 +503,7 @@
       <p>exists 存在 EXISTS(复数)</p>
       <p>Packet 数据包</p>
       <p>comment 注释 COMMENT</p>
-      <p>incorrect 不合规的</p>
+      <p>incorrect 不正确的, 不合规的</p>
 
 
 
@@ -421,6 +513,7 @@
       <p>destroy() 删除记录</p>
       <p>create()</p>
       <p>save()</p>
+      <p>findByPk 通过主键查</p>
 
 
       <!-- 财务 金融 -->
@@ -432,6 +525,8 @@
       <p>amount 金额</p>
       <p>fee 费用</p>
       <p>discount 折扣</p>
+      <p>discount_price 折扣价</p>
+      <p>discount_rate 打几折</p>
 
 
       <!-- 月份 -->
@@ -465,12 +560,15 @@
       <p>squash 挤压 去除</p>
       <p>detached 游离</p>
       <p>fatal 致命的 重大的</p>
+      <p>stage 暂存</p>
       <p>push 推送</p>
       <p>fetch 拉取, 获取</p>
       <p>merge 合并</p>
       <p>pull 拉取, 等同于git fetch + git merge</p>
       <p>bare 裸</p>
       <p>remote 远程, 远端</p>
+      <p>origin 起源, 原点(数), 一般用于默认的git远程仓库名</p>
+      <p>original 原始的, 原来的</p>
       <p>reused 重复使用</p>
       <!-- 新单词放此行之上 -->
       <!-- git 文件改动标识符 -->
@@ -485,6 +583,7 @@
       <p>chore 例行工作, 日常事务</p>
       <p>release 发行</p>
       <p>inactive 不活跃的</p>
+      <p>fix 修复</p>
 
 
       <!-- 算法 -->
@@ -531,21 +630,23 @@
       <p>validator 验证器</p>
       <p>secret_key 秘钥</p>
       <p>expires 过期时间, 是个时间点, 非时间段, 也可用 maxAge</p>
-      <p>invalid 无效的</p>
+      <p>invalid 无效的 Invalid</p>
 
 
       <!-- npm pnpm -->
       <p>deprecated 弃用</p>
       <p>uglify 混淆</p>
       <p>peerDependencies 对等依赖</p>
-      <p>hoist 提升</p>
+      <!-- shamefully-hoist=true 强制提升所有依赖到根node_modules 强制扁平化 -->
       <p>shamefully 可耻的, 不体面的</p>
+      <p>hoist 提升</p>
       <p>prune 精简</p>
+      <p>available 可用的</p>
 
 
       <!-- webpack -->
       <p>entry 入口</p>
-      <p>bundle 捆绑包</p>
+      <p>bundle 打包文件, 捆绑包</p>
 
 
       <!-- 还没想到分组 -->
@@ -554,6 +655,18 @@
       <p>addition 附加</p>
       <p>directory 目录</p>
 
+
+      <!-- 电报 -->
+      <p>block 块盒</p>
+      <p>block_user 阻止用户</p>
+      <!-- <p>archive 归档</p> -->
+      <p>mutual 相互的</p>
+      <p>restricted 受限制的 </p>
+      <p>mute 静音</p>
+      <p>reply 回复</p>
+      <p>forward 转发</p>
+      <p>subscriber 订阅者, 用户</p>
+      <p>permanently 永久的</p>
 
 
       <p>batch 批, 批量</p>
@@ -573,14 +686,11 @@
       <p>mobilePhone 手机号</p>
       <p>telephone 座机号</p>
 
-      <p>blank 空, 填空</p>
+      <p>blank 空, 填空, 空白页</p>
 
       <p>dynamic 动态</p>
       <p>sticky 粘性</p>
 
-      <p>infinite 极大数</p>
-      <p>alternate 交替</p>
-      <p>flip 翻转</p>
 
       <p>pip 色子纸牌骨牌的点</p>
       <p>siblings 兄弟, 姐妹(复数)</p>
@@ -594,7 +704,7 @@
       <p>company 公司</p>
       <p>partner 伙伴</p>
 
-      <p>slim 轻量 瘦身</p>
+      <p>slim 轻量 瘦身 精简版</p>
       <p>nest 嵌套</p>
       <p>launch 启动</p>
       <p>roll 启动</p>
@@ -606,7 +716,6 @@
       <p>triangle 三角形</p>
       <p>interspace 空隙</p>
       <p>transparent 透明的</p>
-      <p>origin 起源, 原点(数)</p>
       <p>untracked 未追踪</p>
 
       <p>migration 迁移</p>
@@ -663,6 +772,11 @@
       <p>stopPropagation 停止传播</p>
       <p>preventDefault 阻止默认行为, 比如提交、跳转</p>
 
+      <p>gateway 网关</p>
+      <p>shortcut 快捷方式</p>
+      <p>keyboard 键盘</p>
+      <p>legacy 遗产</p>
+      <p>migrate 迁移</p>
       <p>pure 纯净的</p>
       <p>slide 滑动</p>
       <p>tile 瓷砖块</p>
@@ -672,20 +786,16 @@
       <p>dashboard 面板, 指示板, 类似于主界面</p>
       <p>image 镜像</p>
       <p>package 包</p>
-      <p>circular_dependency 循环依赖</p>
       <p>chain 链式</p>
       <p>bucket 桶, 全家桶</p>
-      <p>not_compatible 不兼容的</p>
-      <p>agent 代理</p>
+      <p>detect 检测, 发现 detected</p>
       <p>kernel 内核</p>
       <p>Paragraph 段</p>
       <p>coordinate 坐标</p>
       <p>overlap 重叠</p>
       <p>destination 目的地</p>
-      <p>community_edition 社区版</p>
-
-      <p>Internal_method 内部方法</p>
-      <p>Corresponding_trap 对应陷阱</p>
+      <p>commodity 商品</p>
+      <p>note 备注</p>
 
       <!-- 最后 zui -->
     </section>
