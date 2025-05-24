@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>五子棋</title>
+  <style>
+    body {
+      background: rgb(248, 204, 179);
+      margin: 0;
+    }
+
+    canvas {
+      border: solid 2px red;
+      margin: 50px;
+    }
+
+    #ti_shi {
+      font-size: 50px;
+      margin-left: 50px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="canvas" height="600" width="600"></canvas>
+  <div style="margin-left: 50px;">
+    <button id="hui_qi" onclick="goback()">悔棋</button>
+  </div>
+  <div id="ti_shi"></div>
+
+  <script>
+    let qi_ju = []
+    let qi_ju_row = 15 // 横线条数
+    let qi_ju_col = 15 // 纵线条数
+    let domCanvas = document.querySelector('canvas')
+    let ctx = domCanvas.getContext('2d')
+
+    /* 初始化棋盘 */
+    for (let y = 0; y < qi_ju_row; y++) {
+      qi_ju.push([]) // 二维数组, 画棋局
+      for (let x = 0; x < qi_ju_col; x++) {
+        qi_ju[y].push(0) // 添加棋子，0是空，1是黑棋，2是白棋
+        if (x < 14 && y < 14) {
+          ctx.strokeStyle = 'black'
+          ctx.strokeRect(x * 40 + 20, y * 40 + 20, 40, 40)
+        }
+      }
+    }
+
+    // console.log(domCanvas, ctx)
+    // console.log(qi_ju)
+
+    let winFlag = false // 一方胜利了
+    let curr_zi = 1 // 当前是黑棋还是白棋
+    let colors = [, 'black', 'white']
+    let cachePlayedPoints = [] // 缓存落子顺序
+
+    function draw_qi_zi(x, y, r, color) {
+      ctx.beginPath();
+      ctx.arc((x * 40) + 20, (y * 40) + 20, r, 0, 2 * Math.PI);
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowColor = "#747371";
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowColor = "black";
+    }
+    function redraw() {
+      ctx.clearRect(0, 0, domCanvas.width, domCanvas.height) // 擦除整个画布
+      for (let y = 0; y < qi_ju_row; y++) {
+        for (let x = 0; x < qi_ju_col; x++) {
+          /* 重画棋局 */
+          if (x < 14 && y < 14) {
+            ctx.strokeStyle = 'black'
+            ctx.strokeRect(x * 40 + 20, y * 40 + 20, 40, 40)
+          }
+          /* 已下的棋子画出来 */
+          if (qi_ju[y][x] !== 0) {
+            draw_qi_zi(x, y, 15, colors[qi_ju[y][x]])
+          }
+        }
+      }
+    }
+    /* 悔棋 */
+    function goback() {
+      let point = cachePlayedPoints.pop()
+      if (!point) {
+        return;
+      }
+      qi_ju[point[0]][point[1]] = 0
+      curr_zi = point[2]
+      redraw()
+    }
+
+    /* 判断该位置是否有效 */
+    function isValid(board, point, color) {
+      const row_length = board.length // 横线条数
+      const col_length = board[0].length // 纵线条数
+      const [x, y] = point
+      if (x < 0 || x >= col_length || y < 0 || y >= row_length) {
+        return false; // 超出棋局的位置无效
+      }
+      return board[y][x] === color // 是否同色
+    }
+    /* 单个指针移动的次数 */
+    function moveCount(board, point, move, color) {
+      let count = 0
+      let p = move(point) // 指针按指定顺序移动, p是移动后的新位置
+      while (isValid(board, p, color)) { // 当该位置有效时
+        count++
+        p = move(p)
+      }
+      return count
+    }
+    /* 创建闭包 */
+    function createIsWin(zhi_zhen1_move, zhi_zhen2_move) { // zhi_zhen1_move, zhi_zhen2_move是函数
+      return (board, point, color) => {
+        // let count = 1
+        // 处理第一个指针
+        // 处理第二个指针
+        const count = 1 +
+          moveCount(board, point, zhi_zhen1_move, color) + // 双指针各自移动
+          moveCount(board, point, zhi_zhen2_move, color) // 双指针各自移动
+        return count >= 5
+      }
+    }
+    /* 双指针, 各自移动 */
+    const is_heng_xiang_win = createIsWin(
+      ([x, y]) => [x + 1, y], // zhi_zhen1_move 是函数
+      ([x, y]) => [x - 1, y] // zhi_zhen2_move 也是函数
+    )
+    const is_zong_xiang_win = createIsWin(
+      ([x, y]) => [x, y + 1],
+      ([x, y]) => [x, y - 1]
+    )
+    const is_xie_xiang_win = createIsWin(
+      ([x, y]) => [x - 1, y + 1],
+      ([x, y]) => [x + 1, y - 1]
+    )
+    const is_fan_xie_xiang_win = createIsWin(
+      ([x, y]) => [x + 1, y + 1],
+      ([x, y]) => [x - 1, y - 1]
+    )
+    /* 判断胜利 */
+    function isWin(board, point, color) {
+      return ( // 4个方向上的
+        is_heng_xiang_win(board, point, color) ||
+        is_zong_xiang_win(board, point, color) ||
+        is_xie_xiang_win(board, point, color) ||
+        is_fan_xie_xiang_win(board, point, color)
+      )
+    }
+
+
+    domCanvas.onclick = function (e) {
+      if (winFlag) {
+        return;
+      }
+      let y = parseInt((e.pageY - 50) / 40)
+      let x = parseInt((e.pageX - 50) / 40)
+      // console.log(y, x)
+      /* 有空闲位置才画棋子, xy不要超出棋局 */
+      if (y < qi_ju_row && x < qi_ju_col && qi_ju[y][x] === 0) {
+        qi_ju[y][x] = curr_zi
+        cachePlayedPoints.push([y, x, curr_zi]) // 缓存落子顺序和棋子颜色
+
+        if (isWin(qi_ju, [x, y], curr_zi)) {
+          winFlag = true
+          const domMsg = document.querySelector('#ti_shi')
+          domMsg.innerHTML = `${curr_zi === 1 ? '黑棋' : '白棋'}获胜!!!!!`
+          domMsg.style.display = 'block'
+          document.querySelector('#hui_qi').style.display = 'none'
+        }
+        else {
+          curr_zi = curr_zi === 1 ? 2 : 1
+        }
+        redraw()
+      }
+    }
+    domCanvas.onmousemove = function (e) {
+      if (winFlag) {
+        return;
+      }
+      // console.log(e.pageY, e.pageX)
+      /* 计算落点区域 */
+      let y = parseInt((e.pageY - 50) / 40)
+      let x = parseInt((e.pageX - 50) / 40)
+      // console.log(y, x)
+      redraw()
+      /* 有空闲位置才画棋子, xy不要超出棋局 */
+      if (y < qi_ju_row && x < qi_ju_col && qi_ju[y][x] === 0) {
+        draw_qi_zi(x, y, 20, colors[curr_zi])
+      }
+    }
+  </script>
+</body>
+
+</html>

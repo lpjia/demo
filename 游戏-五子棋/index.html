@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS五子棋</title>
+  <style>
+
+  </style>
+</head>
+
+<body style="background: rgb(248, 204, 179);">
+  <canvas style="border:solid 2px red;margin: 50px;" id="can" height="600" width="600"></canvas>
+  <div id="ts" style="font-size: 50px;display: none;"></div>
+  <script>
+    var qi_juHeight = 15;//棋盘的横线个数
+    var qi_juWidth = 15;//棋盘的竖线个数
+    var qi_ju = [];//定义一个储存棋子位置的变量 棋局
+    /** @type {HTMLCanvasElement} */
+    var can = document.getElementById("can");//获取canvas标签
+    var ctx = can.getContext("2d");//把他转换成2d画布
+    for (var y = 0; y < qi_juHeight; y++) {//绘制棋盘Y上的格子
+      qi_ju.push([]);//在数组里面添加数组以充当Y轴
+      for (var x = 0; x < qi_juWidth; x++) {//绘制棋盘X上的格子
+        qi_ju[y].push(0);//在二维数组里面添加棋子，0是空，1是黑棋，2是白棋
+        if (y < 14 && x < 14) {//
+          ctx.strokeStyle = "black";//设置格子的颜色
+          //绘制每个格子的位置，因为画布比棋盘大40像素，我们要把棋盘居中就需要在XY上面加20像素-
+          ctx.strokeRect(x * 40 + 20, y * 40 + 20, 40, 40);
+        }
+      }
+    }
+    console.log(qi_ju);
+    var ssss = 0;
+    var curr_zi = 1;//当前是黑棋还是白棋
+    can.onclick = function (e) {
+      if (ssss == 1) {
+        return;
+      }
+      var Y = parseInt((e.pageY - 50) / 40);
+      var X = parseInt((e.pageX - 50) / 40);
+      if (qi_ju[Y][X] == 0) {
+        qi_ju[Y][X] = curr_zi;
+        pd(Y, X, curr_zi);
+        curr_zi = curr_zi == 1 ? 2 : 1;
+        if (ssss == 1) {
+          return;
+        }
+        ht();
+      }
+    }
+    var color = ["green", "black", "white"];//颜色数组
+    function ht() {
+      ctx.clearRect(0, 0, can.width, can.height);
+      for (var y = 0; y < qi_juHeight; y++) {
+        for (var x = 0; x < qi_juWidth; x++) {
+          if (y < 14 && x < 14) {//
+            ctx.strokeStyle = "black";//设置格子的颜色
+            //绘制每个格子的位置，因为画布比棋盘大40像素，我们要把棋盘居中就需要在XY上面加20像素-
+            ctx.strokeRect(x * 40 + 20, y * 40 + 20, 40, 40);
+          }
+          if (qi_ju[y][x] != 0) {
+            hz(x, y, 15, color[qi_ju[y][x]])
+          }
+        }
+      }
+    }
+    function hz(x, y, r, co) {
+      ctx.beginPath();
+      ctx.arc((x * 40) + 20, (y * 40) + 20, r, 0, 2 * Math.PI);
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowColor = "#747371";
+      ctx.fillStyle = co;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowColor = "black";
+    }
+    var fx = [[0, -1], [-1, -1], [-1, 0], [-1, 1]];//左 左上 上 右上
+    var fx2 = [[0, 1], [1, 1], [1, 0], [1, -1]];//左 左上 上 右上
+    var lsgs = 1;//连着的个数，因为要算上下的那颗棋子，所以默认为1
+    var cfhs = [];//存放获胜的数组
+    function pd(y, x, curr_zi) {
+      for (var i = 0; i < 4; i++) {
+        pdfx(y, x, curr_zi, i, 1);
+        pdfx(y, x, curr_zi, i, 2);
+        if (lsgs >= 5) {
+          var msg = "";
+          msg = curr_zi == 1 ? "黑棋" : "白棋";
+          document.getElementById("ts").innerHTML = msg + "获胜!!!!!";
+          document.getElementById("ts").style.display = "block";
+          cfhs.push([y, x]);
+          //获胜特效
+          for (var j = 0; j < cfhs.length; j++) {
+            hz(cfhs[j][1], cfhs[j][0], 20, color[curr_zi]);
+          }
+          //
+          ssss = 1;
+          return;
+        } else {
+          lsgs = 1;
+          cfhs = [];
+        }
+      }
+    }
+    //四个参数，xy方向，黑白棋子，哪个方向,哪个部分
+    function pdfx(y, x, curr_zi, i, sx) {//判断方向
+      var fxy;//当前的位置加上方向后的位置
+      var fxx;//当前的位置加上方向后的位置
+      if (sx == 1) {//上半部分
+        fxy = fx[i][0] + y;//加上方向后的位置
+        fxx = fx[i][1] + x;//加上方向后的位置
+        if (fxy < 0 || fxx < 0) {//如果方向后的位置是棋谱外，直接放回连接的棋子个数
+          return lsgs;
+        }
+      } else {//下半部分
+        fxy = fx2[i][0] + y;//加上方向后的位置
+        fxx = fx2[i][1] + x;//加上方向后的位置
+        if (fxy > qi_juHeight - 1 || fxx > qi_juWidth - 1) {//如果方向后的位置是棋谱外，直接放回连接的棋子个数
+          return lsgs;
+        }
+      }
+      if (qi_ju[fxy][fxx] == curr_zi) {//如果方向后的位置，还是跟下的棋子颜色一样，递归调用，延申方向
+        lsgs++;//连接个数加1
+        cfhs.push([fxy, fxx]);//存放连起来的数组；
+        pdfx(fxy, fxx, curr_zi, i, sx)//递归
+      }
+    }
+    can.onmousemove = function (e) {
+      if (ssss == 1) {
+        return;
+      }
+      var Y = parseInt((e.pageY - 50) / 40);
+      var X = parseInt((e.pageX - 50) / 40);
+      ht();
+      if (qi_ju[Y][X] == 0) {
+        hz(X, Y, 20, color[curr_zi])
+      }
+    }
+  </script>
+</body>
+
+</html>

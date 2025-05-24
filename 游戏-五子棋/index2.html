@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gobang</title>
+  <style>
+    .gobang {
+      width: 640px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .header .btns button {
+      margin-left: 10px;
+      padding: 0 5px;
+    }
+
+    #my-canvas {
+      background-color: #e6a23c;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gobang">
+    <div class="header">
+      <span class="tips">当前：黑子</span>
+      <div class="btns">
+        <button onclick="restart()">重新开始</button>
+        <button :disabled="!cacheIndex || gameOver" onclick="popStack()">悔棋</button>
+      </div>
+    </div>
+    <canvas id="my-canvas" width="640" height="640" onclick="canvasClick(event)"></canvas>
+  </div>
+
+  <script>
+    /**
+     * 规则：
+     * 大小为 20 * 20
+     * 棋盘数据采用稀疏数组
+     * 棋子：1 为白色， 0 为黑色
+     * 可以悔棋
+     * 结束规则，棋盘填满或者有同色棋子连续占领 5 个位置
+     */
+    const canvasRef = document.querySelector('#my-canvas')
+    const ctx = canvasRef.getContext('2d')
+
+    const tipsRef = document.querySelector('.tips')
+
+    const rcs = 20
+    const gap = 30
+    const radius = 12
+    const padding = 20
+    let gameOver = false
+    let current = 1
+
+    let data = new Array(rcs + 1).fill(0).map(() => new Array(rcs + 1))
+
+    const restart = () => {
+      data = new Array(rcs + 1).fill(0).map(() => new Array(rcs + 1))
+      cacheIndex = 0
+      cacheData.length = 1
+      current = 1
+      gameOver = false
+      init()
+    }
+
+    const canvasClick = (e) => {
+      if (gameOver) {
+        return
+      }
+      const { offsetX, offsetY } = e
+      const posi = getPostions(
+        offsetX, offsetY, gap, padding, radius
+      )
+      // 当前位置在放置棋子范围内且没有放置棋子
+      if (posi && !data[posi[0]][posi[1]]) {
+        data[posi[0]][posi[1]] = current
+        init()
+        pushStack(data)
+        const res = isOver(data, posi)
+        if (res) {
+          gameOver = true
+          setTimeout(() => {
+            const msg = (Array.isArray(res) ? `${data[res[0]][res[1]] ? '白' : '黑'}方获胜！` : '平局！')
+            alert('游戏结束，' + msg)
+          }, 50)
+        }
+      }
+    }
+
+    /**
+     * Description: 五子棋脚本
+     * Created Date: 2022-07-02 23:17:51
+     * Author: Kang Dong
+     */
+
+    //           右上      左下       右      左          右下    左上        下      上
+    const ds = [[[-1, 1], [1, -1]], [[0, 1], [0, -1]], [[1, 1], [-1, -1]], [[1, 0], [-1, 0]]]
+
+    /**
+     * 判读当前坐标是否满足结束要求
+     * @param {GobangData} data 棋盘数据
+     * @param {number} x x 轴
+     * @param {number} y y 轴
+     * @param {number} m 最大行数
+     * @param {number} n 最大列数
+     * @returns {boolean}
+     */
+    function getPostionResult(data, x, y, m, n) {
+      const val = data[x][y]
+
+      for (let i = 0; i < ds.length; i++) {
+        const [[lx, ly], [rx, ry]] = ds[i]
+        let nx = x, ny = y, cnt = 1
+        for (let j = 0; j < 4; j++) {
+          nx += lx
+          ny += ly
+          if (!(nx >= 0 && nx < m && ny >= 0 && ny < n) || data[nx][ny] !== val) {
+            break
+          }
+          cnt++
+        }
+
+        nx = x
+        ny = y
+        for (let j = 0; j < 4; j++) {
+          nx += rx
+          ny += ry
+          if (!(nx >= 0 && nx < m && ny >= 0 && ny < n) || data[nx][ny] !== val) {
+            break
+          }
+          cnt++
+        }
+        if (cnt >= 5) {
+          return true
+        }
+      }
+      return false
+    }
+
+    /**
+     * 判断是否结束
+     * 从当前点查询八个方向的连续5个位置是否能连城线
+     * 所有格子是否全部填满
+     * 最后下棋的坐标是否连城线
+     * @param {GobangData} data 棋盘数据
+     * @param {[number, number]} posi 最后一个是否满足结束的坐标点
+     */
+    const isOver = (data, posi) => {
+      const m = data.length, n = data[0].length
+      let nullCnt = m * n
+
+      // 先判断最后一个点是否满足结束
+      if (getPostionResult(data, posi[0], posi[1], m, n)) {
+        return posi
+      }
+
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (data[i][j] !== undefined) {
+            nullCnt--
+          }
+        }
+      }
+
+      return !nullCnt
+    }
+
+    /**
+     * 绘制棋盘
+     * @param ctx canvas的2d实例
+     * @param number 行列数
+     * @param gap 行列间隔距离
+     * @param padding 棋盘边距
+     */
+    const drawChessboard = (ctx, rcs, gap, padding) => {
+      ctx.beginPath()
+      ctx.lineWidth = 1
+
+      // 行
+      for (let i = 0; i <= rcs; i++) {
+        ctx.moveTo(padding + gap * i, padding)
+        ctx.lineTo(padding + gap * i, padding + gap * rcs)
+      }
+      // 列
+      for (let i = 0; i <= rcs; i++) {
+        ctx.moveTo(padding, padding + gap * i)
+        ctx.lineTo(padding + gap * rcs, padding + gap * i)
+      }
+      ctx.strokeStyle = '#000'
+      ctx.stroke()
+      ctx.closePath()
+
+      // 绘制中心圆点  
+      ctx.beginPath()
+      ctx.arc(
+        padding + gap * rcs / 2, padding + gap * rcs / 2, 5, 0, 2 * Math.PI
+      )
+      ctx.fillStyle = '#000'
+      ctx.fill()
+      ctx.closePath()
+    }
+
+    // 绘制白子
+    function drawWhitePieces(ctx, ci, cj, si, sj, radius = 12) {
+      ctx.beginPath()
+      const lg2 = ctx.createRadialGradient(
+        ci, cj, 5, ci, cj, 20
+      )
+      // 向圆形渐变上添加颜色 
+      lg2.addColorStop(0.1, '#fff')
+      lg2.addColorStop(0.9, '#ddd')
+      ctx.fillStyle = lg2
+      ctx.arc(
+        si, sj, radius, 0, 2 * Math.PI
+      )
+      ctx.fill()
+      ctx.closePath()
+    }
+
+    // 绘制黑子
+    function drawBlackPieces(ctx, ci, cj, si, sj, radius = 12) {
+      ctx.beginPath()
+      const lg2 = ctx.createRadialGradient(
+        ci, cj, 5, ci, cj, 20
+      )
+      // 向圆形渐变上添加颜色 
+      lg2.addColorStop(0.1, '#666')
+      lg2.addColorStop(0.9, '#000')
+      ctx.fillStyle = lg2
+      ctx.arc(
+        si, sj, radius, 0, 2 * Math.PI
+      )
+      ctx.fill()
+      ctx.closePath()
+    }
+
+    /**
+     * 绘制棋子，先循环列，再循环行
+     * @param ctx canvas的2d实例
+     * @param data 棋盘数据
+     * @param number 行列数
+     * @param gap 行列间隔距离
+     * @param padding 棋盘边距
+     * @param radius 棋子的半径
+     */
+    const drawPieces = (ctx, data, gap, padding, radius = 12) => {
+      const m = data.length, n = data[0].length
+      for (let i = 0; i < m; i++) {
+        // 列坐标
+        const cj = i * gap + padding + 6 - padding
+        const sj = padding + i * gap
+        for (let j = 0; j < n; j++) {
+          if (data[i][j] === undefined) {
+            continue
+          }
+          // 行坐标
+          const ci = j * gap + padding + 6 - padding
+          const si = padding + j * gap
+          if (!data[i][j]) {
+            drawBlackPieces(
+              ctx, ci, cj, si, sj, radius
+            )
+          } else {
+            drawWhitePieces(
+              ctx, ci, cj, si, sj, radius
+            )
+          }
+        }
+      }
+    }
+
+    /**
+     * 根据点击的坐标来获取棋盘数据的坐标
+     * @param offsetX 相对于父级元素的 x => 列位置
+     * @param offsetY 相对于父级元素的 Y => 行位置
+     * @param gap 行列间隔距离
+     */
+    const getPostions = (offsetX, offsetY, gap, padding, r = 12) => {
+      const x = Math.round((offsetY - padding) / gap)
+      const y = Math.round((offsetX - padding) / gap)
+      // x1, y1 为圆心坐标
+      const x1 = x * gap + padding, y1 = y * gap + padding
+      const nr = Math.pow(Math.pow(x1 - offsetY, 2) + Math.pow(y1 - offsetX, 2), 0.5)
+      if (nr <= r) {
+        return [x, y]
+      }
+      return false
+    }
+
+    // 深拷贝稀疏数组
+    const cloneDeep = (data) => {
+      const m = data.length, n = data[0].length
+      const res = new Array(m).fill(0).map(() => new Array(n))
+
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          if (data[i][j] !== undefined) {
+            res[i][j] = data[i][j]
+          }
+        }
+      }
+
+      return res
+    }
+
+    // 缓存
+    const cacheData = [cloneDeep(data)]
+    let cacheIndex = 0
+
+    const pushStack = (data) => {
+      cacheData.push(cloneDeep(data))
+      cacheIndex++
+    }
+    const popStack = () => {
+      if (cacheIndex && !gameOver) {
+        data = cloneDeep(cacheData[--cacheIndex])
+        cacheData.length = cacheIndex + 1
+        init()
+      }
+    }
+
+    function init() {
+      canvasRef.width = 640
+      drawChessboard(ctx, rcs, gap, padding)
+      drawPieces(ctx, data, gap, padding, radius)
+      // 换手
+      current ^= 1
+      tipsRef.innerHTML = `当前：${current ? '白子' : '黑子'}`
+    }
+    init()
+  </script>
+</body>
+
+</html>
