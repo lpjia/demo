@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>密码生成器</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px 40px 40px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .options {
+      margin: 20px 0;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .result {
+      margin: 20px 0;
+      font-size: 1.2em;
+      word-break: break-all;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    .length-input {
+      width: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>密码生成器</h2>
+    <div class="options">
+      <label><input type="checkbox" id="symbols" checked> 符号 (~!@#$%&.)</label>
+      <label><input type="checkbox" id="numbers" checked> 数字 (23456789)</label>
+      <label><input type="checkbox" id="lowercase" checked> 小写字母 (abcdefghjkmnpqrstuvwxyz)</label>
+      <label><input type="checkbox" id="uppercase" checked> 大写字母 (ABCDEFGHJKMNPQRSTUVWXYZ)</label>
+      <label>密码长度：<input type="number" id="length" class="length-input" min="4" max="32" value="10"></label>
+    </div>
+    <button onclick="generatePassword()">生成密码</button>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="result" id="result" style="cursor:pointer;flex:1;" onclick="copyPassword()" title="点击复制密码"></div>
+      <span id="copyTip" style="color:#28a745;font-size:1em;"></span>
+    </div>
+  </div>
+  <script>
+    const SYMBOLS = '~!@#$%&.';
+    const NUMBERS = '23456789';
+    const LOWERCASE = 'abcdefghjkmnpqrstuvwxyz';
+    const UPPERCASE = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generatePassword() {
+      const useSymbols = document.getElementById('symbols').checked;
+      const useNumbers = document.getElementById('numbers').checked;
+      const useLowercase = document.getElementById('lowercase').checked;
+      const useUppercase = document.getElementById('uppercase').checked;
+      const length = parseInt(document.getElementById('length').value, 10);
+
+      let charTypes = [];
+      if (useSymbols) charTypes.push(SYMBOLS);
+      if (useNumbers) charTypes.push(NUMBERS);
+      if (useLowercase) charTypes.push(LOWERCASE);
+      if (useUppercase) charTypes.push(UPPERCASE);
+
+      if (charTypes.length === 0) {
+        document.getElementById('result').textContent = '请至少选择一种字符类别！';
+        return;
+      }
+      if (length < charTypes.length) {
+        document.getElementById('result').textContent = `密码长度不能小于所选类别数（${charTypes.length}）！`;
+        return;
+      }
+
+      // 先保证每类至少一个
+      let passwordArr = charTypes.map(charset => charset[Math.floor(Math.random() * charset.length)]);
+      // 剩余位数
+      let allChars = charTypes.join('');
+      for (let i = passwordArr.length; i < length; i++) {
+        passwordArr.push(allChars[Math.floor(Math.random() * allChars.length)]);
+      }
+      // 打乱顺序
+      passwordArr = shuffle(passwordArr);
+      document.getElementById('result').textContent = passwordArr.join('');
+    }
+
+    function copyPassword() {
+      const resultDiv = document.getElementById('result');
+      const password = resultDiv.textContent;
+      if (!password || password.includes('请选择') || password.includes('不能小于')) return;
+      navigator.clipboard.writeText(password).then(() => {
+        const tip = document.getElementById('copyTip');
+        tip.textContent = '已复制!';
+        setTimeout(() => { tip.textContent = ''; }, 1000);
+      });
+    }
+  </script>
+</body>
+
+</html>
