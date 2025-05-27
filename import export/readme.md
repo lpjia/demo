@@ -1,1 +1,0 @@
-### 直接在commonJS环境执行ESM语法, 需要mjs后缀, js不行
