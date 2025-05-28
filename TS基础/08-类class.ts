@@ -10,15 +10,9 @@ class Person {
   myName: string
   myAge: number = 18 // 不需要构造函数也能赋初始值
 
-  // 类的构造函数中使用解构constructor({age}:{age:number}){}
-  // 不能直接用constructor({ name:string }){}, 这样是解构后重命名的语法
-  constructor({ name, age, gender }:
-    {
-      name: string,
-      age?: number,
-      gender?: string
-    }
-  ) {
+  /* 形参解构 constructor({ age }: { age:number }){}
+  不能直接用 constructor({ name:string }){}, 这样是解构后重命名的语法 */
+  constructor({ name, age, gender }: { name: string, age?: number, gender?: string }) {
     this.myName = name
   }
 
@@ -38,7 +32,7 @@ class Person {
   jump2?: () => void = () => { }
 
   // 推导类型
-  jump?= () => {
+  jump? = () => {
     console.log('this:', this) // this指向这个类, 没问题
   }
 
