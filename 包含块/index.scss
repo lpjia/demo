@@ -4,28 +4,45 @@
   box-sizing: border-box;
 }
 
-.container {
+%commonItem {
+  width: 300px;
+  height: 150px;
+  border: 5px solid #000;
+  margin-left: 100px;
+}
+
+%commonItem2 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+@mixin commonContainer($position: static) {
   width: 500px;
   height: 300px;
   background-color: skyblue;
   margin-left: 200px;
-  position: relative;
+  position: $position;
+  @content;
 
   .item {
-    width: 300px;
-    height: 150px;
-    border: 5px solid;
-    margin-left: 100px;
+    @extend %commonItem;
   }
 
   .item2 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: absolute;
-    left: 10px;
-    top: 10px;
+    @extend %commonItem2;
   }
+}
+
+.container {
+  @include commonContainer;
+}
+
+.container1 {
+  @include commonContainer(relative);
 }
 
 hr {
@@ -33,28 +50,11 @@ hr {
 }
 
 .container2 {
-  width: 500px;
-  height: 300px;
-  background-color: skyblue;
-  margin-left: 200px;
-  position: relative;
+  @include commonContainer(relative);
 
   .item {
-    width: 300px;
-    height: 150px;
-    border: 5px solid;
-    margin-left: 100px;
     /* 新增代码 */
     transform: rotate(0deg);
-  }
-
-  .item2 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: absolute;
-    left: 10px;
-    top: 10px;
   }
 }
 

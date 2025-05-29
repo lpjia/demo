@@ -19,7 +19,9 @@ range[Symbol.iterator] = function () {
     // 3. next() 在 for..of 的每一轮循环迭代中被调用
     next() {
       // 4. 它将会返回 {done:.., value :...} 格式的对象
-      return this.current <= this.last ? { done: false, value: this.current++ } : { done: true }
+      return this.current <= this.last ?
+        { done: false, value: this.current++ } :
+        { done: true }
     }
   }
 }

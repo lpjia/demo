@@ -35,30 +35,6 @@ arr9.flatMap(item => {
 
 
 
-
-
-/**
- * arr.reduce()
- * [x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
- */
-let arr8 = [
-  { id: 'one', name: 'yi' },
-  { id: 'two', name: 'er' },
-  { id: 'three', name: 'san' },
-]
-arr8.reduce((total, curr) => {
-  total[curr.id] = curr.name
-  return total
-}, {})
-// 返回 {one: 'yi', two: 'er', three: 'san'}
-// 把对象数组变为对象
-
-
-
-
-
-
-
 /**
  * arr.at()
  */

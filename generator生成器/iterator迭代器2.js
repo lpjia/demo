@@ -12,7 +12,9 @@ let range = {
   },
 
   next() {
-    return this.current <= this.to ? { done: false, value: this.current++ } : { done: true }
+    return this.current <= this.to ?
+      { done: false, value: this.current++ } :
+      { done: true }
   }
 }
 
