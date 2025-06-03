@@ -52,10 +52,11 @@ String、Array、TypedArray、Map 和 Set 都是内置可迭代对象，因为�
 // }
 
 
-// /* ES6最简装比写法 */
+// /* ES6最简装b写法 */
 // Object.prototype[Symbol.iterator] = function* () {
 //   return yield* Object.values(this)
 // }
+// /* yield* 会迭代执行另一个可迭代对象/生成器，逐个yield其值 */
 
 
 // var [a, b] = { a: 1, b: 2 }
