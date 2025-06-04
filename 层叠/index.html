@@ -6,7 +6,7 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>知识-层叠</title>
+  <title>层叠</title>
   <style>
     .aFather {
       color: red;
@@ -48,9 +48,9 @@
   <!-- 要想实现强制继承父元素的字体颜色的效果(非第三步继承)
     这时候作者样式表声明了a元素的color, 此时产生了冲突, 进入第二步层叠
     1. 比较重要性 !importtant
-    2. 比较权重
+    2. 比较特殊性 计算4位数
     3. 比较源次序
-    在1就比较出来了, 确定应用此属性color: inherit; 值是继承父元素, 所以color应该是red
+    在1就比较出来了(作者样式表 > 浏览器默认样式表), 确定应用此属性color: inherit; 值是继承父元素, 所以color应该是red
   占位 -->
   <div class="aFather">
     <a href="javascript:;" class="qiang_zhi">a元素2</a>
