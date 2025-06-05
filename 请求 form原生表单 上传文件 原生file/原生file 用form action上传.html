@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原生file 用form action上传</title>
+</head>
+
+<body>
+  <!-- 通过form的action属性直接提交, 必须要有name值, 对应的是提交到后端的字段key
+    不会有跨域问题
+    不用js
+    Network 上传文件成功后, 暂时无法从iframe获取到响应数据
+    跨域 从7010端口加载了内容 本地页面服务在5500端口
+    这种上传文件方式看不到任何实际意义
+  占位 -->
+  <form action="http://127.0.0.1:7010/api/upload/single" method="post" target="iframe" enctype="multipart/form-data">
+    <input type="file" name="inputFile" onchange="handleChange(event)" />
+    <button type="submit">提交</button>
+  </form>
+  <iframe id="frame" name="iframe" style="display:none;"></iframe>
+
+
+  <script>
+    function handleChange(e) {
+      // e.target.files
+      const { files } = e.target
+      for (const file of files) {
+        console.log(
+          file.name,
+          file.size,
+          file.type,
+        )
+      }
+    }
+  </script>
+</body>
+
+</html>

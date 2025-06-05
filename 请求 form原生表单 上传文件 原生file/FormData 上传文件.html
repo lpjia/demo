@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FormData 上传文件</title>
+</head>
+
+<body>
+  <!-- 文件上传
+    交互 点击选择文件按钮, 选取文件, 选好后点击上传按钮, 调上传接口, 上传成功返回文件的存放路径
+  占位 -->
+
+
+  <!-- 有form元素包裹一层, 推荐
+    用 live server 打开html文件, 需该目录是根目录, 否则 e.preventDefault() 不生效
+  占位 -->
+  <form class="form1" onsubmit="upload(event)">
+    <input type="file" name="inputFile" id="file1">
+    <button>上传文件</button>
+    <!-- <button type="button">上传文件</button> -->
+    <!-- <button type="submit">上传文件</button> -->
+    <!-- 只有一个button时, 默认该button是提交按钮, 不需要显式书写 type="submit"
+    多个button时可以用type来区分, type="button"是普通按钮, 不会触发submit事件 -->
+  </form>
+  <hr>
+
+  <!-- <form onsubmit="upload2(event)">
+    <input type="file" id="file2">
+    <button>上传文件</button>
+  </form> -->
+  <!-- <form onsubmit="upload3(event)">
+    <input type="file" multiple id="file3">
+    <button>上传文件</button>
+  </form> -->
+
+
+  <!-- 单独 input type="file"
+    使用普通的点击事件来触发, formData.append来添加key和value
+  占位 -->
+  <!-- <input type="file" id="file2">
+  <button onclick="upload2(event)">上传文件</button> -->
+
+
+  <script>
+    /* form 整体提交, 有name属性 单文件提交 */
+    async function upload(e) {
+      e.preventDefault();
+      const doms = {
+        form: document.querySelector('.form1'),
+        file: document.querySelector('#file1')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return;
+      }
+      console.log(
+        doms.file.files // 返回一个类数组 FileList
+      )
+      /* new FormData(doms.form) 默认把所有的表单元素加进来, 数据格式是{ name值: value值 }
+      formData.get('inputFile') get方法可获取属性值
+      标签上显式书写name属性就有用处了 */
+      const formData = new FormData(doms.form);
+      console.log(
+        doms.form,
+        formData,
+        formData.get('inputFile'), // 对应name属性的值 <input type="file" name="inputFile" />
+      )
+      const url = 'http://127.0.0.1:7010/api/upload/single'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData // 自动修改请求头, formdata的默认请求头的格式是 multipart/form-data
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+
+    /* 单文件 */
+    async function upload2(e) {
+      e.preventDefault()
+      const doms = {
+        file: document.querySelector('#file2')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return;
+      }
+      const formData = new FormData();
+      // formData.append 把字段inputFile手动加进来, 可省略显式书写input元素的name属性
+      formData.append("inputFile", doms.file.files[0]);
+      console.log(
+        formData,
+        formData.get('inputFile'),
+      )
+      const url = 'http://127.0.0.1:7010/api/upload/single'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+
+    /* 多文件 */
+    async function upload3(e) {
+      e.preventDefault()
+      const doms = {
+        file: document.querySelector('#file3')
+      }
+      if (doms.file.files.length === 0) {
+        alert("请选择文件")
+        return;
+      }
+      const formData = new FormData();
+      // 多文件 共用一个key
+      for (const file of doms.file.files) {
+        formData.append("inputFile", file);
+      }
+      const url = 'http://127.0.0.1:7010/api/upload/multiple'
+      const resp = await fetch(url, {
+        method: "POST",
+        body: formData
+      })
+      const res = await resp.json();
+      console.log(
+        res
+      )
+    }
+  </script>
+
+</body>
+
+</html>
