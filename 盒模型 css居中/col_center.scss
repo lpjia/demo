@@ -6,7 +6,7 @@
   background-color: yellowgreen;
 }
 
-.shiyi {
+.shi_yi {
   background-color: rosybrown;
 }
 
@@ -14,7 +14,7 @@
   line-height: 6rem;
 }
 
-.shier {
+.shi_er {
   display: table;
 
   >div,
@@ -25,9 +25,9 @@
   }
 }
 
-.shisan {
+.shi_san {
   position: relative;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
 
   >div,
   >span {
@@ -35,13 +35,10 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */
-    // width: 30rem;
-    // height: 5rem;
   }
 }
 
-.shisi {
+.shi_si {
   align-items: center;
 
   >div,

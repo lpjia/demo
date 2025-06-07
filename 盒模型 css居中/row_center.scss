@@ -1,0 +1,37 @@
+body {
+  border: 1px solid deepskyblue;
+}
+
+.yi {
+  text-align: center;
+}
+
+.er {
+  >div {
+    background-color: chartreuse;
+    width: 20rem;
+    /* 有宽的块盒才水平居中 */
+    margin: 0 auto;
+  }
+}
+
+.si {
+  position: relative;
+
+  >div,
+  >span {
+    background-color: burlywood;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.wu {
+  justify-content: center;
+
+  >div,
+  >span {
+    background-color: lightcoral;
+  }
+}

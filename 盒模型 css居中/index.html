@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css居中</title>
+  <link rel="stylesheet" type="text/css" href="../global/global.css" />
+  <link rel="stylesheet" href="scss_to_css/index.css">
+  <link rel="stylesheet" href="scss_to_css/row_center.css">
+  <link rel="stylesheet" href="scss_to_css/col_center.css">
+  <link rel="stylesheet" href="scss_to_css/row_col_center.css">
+</head>
+
+<body>
+
+  <h3>各元素有啥特性, 检查元素</h3>
+
+
+  <div class="one">块盒, 宽度默认100%, 占满一行, 高度默认是内容高度, padding margin 上下左右都生效, 看背景就知道占满一行了</div>
+  <div class="one" style="background-clip: content-box;">
+    块盒, 宽度默认100%, 占满一行, 高度默认是内容高度, border-box下是border + padding + content, padding margin 上下左右都生效, 背景裁剪content-box
+  </div>
+  <div class="one wh">
+    块盒, 宽度默认100%, 占满一行, 高度默认是内容高度, 固定宽高了, padding margin 上下左右都生效
+  </div>
+  <p>----分割线----</p>
+
+
+  <div class="two display_ib">
+    行内块, 宽度默认内容宽度, 横向排列, 高度默认是内容高度, padding margin 上下左右都生效
+  </div>
+  <div class="two display_ib wh">
+    行内块, 固定宽高了, 横向排列, border-box下是border + padding + content, padding margin 上下左右都生效
+  </div>
+  <p style="margin: 2rem 0;">----分割线----</p>
+
+
+  <span class="three wh">
+    span行盒, 不能指定宽高(宽高无效), 宽度默认内容宽度, 横向排列, margin、border、padding左右赋值有效, 上下无效。上下padding只会影响背景, 不会实际占据空间
+  </span>
+  <p>
+    <span class="three" style="background-color: transparent; border: 2px solid red;">
+      span行盒, 上面的行盒上下padding没有占据空间, 否则padding区域不会重叠。但是内容不会重叠, 文字不重叠
+    </span>
+  </p>
+  <p style="margin: 2rem 0;">----分割线----</p>
+
+
+  <span class="three">span行盒, 宽度默认内容宽度, 横向排列, 宽高不可以指定</span>
+  <span class="three">span行盒, 宽度默认内容宽度, 横向排列, 宽高不可以指定</span>
+  <p>----分割线----</p>
+  <hr>
+
+
+  <h3>水平居中</h3>
+  <div class="yi">div, 水平居中text-align: center;</div>
+  <!-- 内容 行盒(行块盒)相关的所有子元素, text-align: center 都水平居中 -->
+  <p>----分割线----</p>
+
+  <div class="er">
+    <div>div>div, 水平居中margin: 0 auto;</div>
+    <!-- 块盒水平居中了, 文本得用text-align: center 居中 -->
+  </div>
+  <p>----分割线----</p>
+
+  <div class="si">
+    <span>div>任何, 水平居中position: absolute; 结合transform translateX</span>
+    <!-- absolute定位(自动都变为块盒)配合relative定位 -->
+  </div>
+  <p style="margin: 2rem 0;">----分割线----</p>
+
+
+  <div class="wu flex">div, flex布局, 水平居中justify-content: center;</div>
+  <p>----分割线----</p>
+  <div class="wu flex">
+    <span>div>任何, flex布局, 水平居中, 父级justify-content: center;</span>
+  </div>
+  <hr>
+
+
+  <h3>垂直居中 一般都需要指定高度</h3>
+  <div class="shi line_h">内容, 垂直居中 line_h</div>
+  <!-- 内容 垂直居中, line-height给值就行 -->
+  <p>----分割线----</p>
+
+  <div class="shi_yi display_ib h line_h">行内块, 垂直居中 h line_h</div>
+  <div class="shi_yi display_ib h">行内块, 垂直居中 h</div>
+  <div class="shi_yi display_ib line_h">行内块, 垂直居中 line_h</div>
+  <!-- 这里 vertical-align 在影响, 默认 baseline  -->
+  <p>----分割线----</p>
+
+  <div class="shi_yi display_ib h line_h">行内块, 垂直居中 h line_h</div>
+  <div class="shi_yi display_ib h" style="vertical-align: bottom;">行内块, 垂直居中 h</div>
+  <div class="shi_yi display_ib line_h">行内块, 垂直居中 line_h</div>
+  <p>----分割线----</p>
+
+  <div class="shi_yi display_ib h">行内块, 垂直居中 h</div>
+  <p>----分割线----</p>
+
+
+  <div class="shi_er line_h">table盒子>文字, 垂直居中, 父级给 line_h</div>
+  <!-- 内容 垂直居中, line-height给值就行 -->
+  <div class="shi_er h">
+    <span>table盒子>任何table-cell盒子, 垂直居中, 父级给 h, table-cell盒子vertical-align: middle;</span>
+    <!-- table-cell盒子(table布局), vertical-align: middle; -->
+  </div>
+  <p>----分割线----</p>
+
+
+  <div class="shi_san h">
+    <span>div>任何, 垂直居中position: absolute; 父级给 h, 结合transform translateY</span>
+    <!-- absolute定位(自动都变为块盒)配合relative定位 -->
+  </div>
+  <p>----分割线----</p>
+
+
+  <div class="shi_si flex h">div, flex布局, 垂直居中align-items: center; h</div>
+  <p>----分割线----</p>
+  <div class="shi_si flex h">
+    <span>div>任何, flex布局, 垂直居中, 父级align-items: center; h</span>
+  </div>
+  <hr>
+
+
+  <h3>水平垂直居中</h3>
+  <div class="er_shi_yi line_h">块盒, 水平垂直居中text-align: center; line_h</div>
+  <p>----分割线----</p>
+  <div class="er_shi_yi line_h">
+    <span>div>行盒(行块盒), 水平垂直居中, 父级text-align: center; line_h</span>
+  </div>
+  <p>----分割线----</p>
+
+  <div class="er_shi_si h">
+    <div>div>div, 水平垂直居中, position: absolute;margin: auto;上下左右偏移0</div>
+  </div>
+  <p>----分割线----</p>
+
+
+  <b>子级不需要宽高的</b>
+  <div class="er_shi_er flex h">div, 水平垂直居中justify-content: center;align-items: center; h</div>
+  <p>----分割线----</p>
+  <div class="er_shi_er flex h">
+    <span>div>任何, 水平垂直居中, 父级justify-content: center;align-items: center; h</span>
+  </div>
+  <p>----分割线----</p>
+
+
+  <div class="er_shi_san h">
+    <span>div>任何, 水平垂直居中, position: absolute; 上左给50% 父级给 h, 结合transform translate 给双-50%</span>
+    <!-- absolute定位(自动都变为块盒)配合relative定位 -->
+  </div>
+  <p>----分割线----</p>
+
+
+</body>
+
+</html>

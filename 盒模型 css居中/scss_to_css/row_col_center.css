@@ -1,0 +1,13 @@
+.er_shi_yi { background-color: lightgreen; text-align: center; }
+
+.er_shi_yi > span { background-color: orange; }
+
+.er_shi_si { background-color: darkkhaki; position: relative; }
+
+.er_shi_si > div { background-color: tomato; width: 36rem; height: 3rem; margin: auto; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+
+.er_shi_er { background-color: deepskyblue; justify-content: center; align-items: center; }
+
+.er_shi_san { position: relative; }
+
+.er_shi_san div, .er_shi_san span { background-color: aquamarine; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.h { height: 6rem; }
+
+.shi { background-color: yellowgreen; }
+
+.shi_yi { background-color: rosybrown; }
+
+.line_h { line-height: 6rem; }
+
+.shi_er { display: table; }
+
+.shi_er > div, .shi_er > span { background-color: orange; display: table-cell; vertical-align: middle; }
+
+.shi_san { position: relative; }
+
+.shi_san > div, .shi_san > span { background-color: violet; position: absolute; top: 50%; transform: translateY(-50%); }
+
+.shi_si { align-items: center; }
+
+.shi_si > div, .shi_si > span { background-color: gold; /* 这里如果加宽高, 就用到了 BFC 块级格式化上下文 */ }
