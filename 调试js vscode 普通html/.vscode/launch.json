@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Chrome调试html",
+      "url": "http://127.0.0.1:5500/index.html",
+      "runtimeExecutable": "C:/Users/jiajiajia/AppData/Local/Chromium/Application/chrome.exe",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
