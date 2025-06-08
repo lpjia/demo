@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>page_three</title>
+  <link rel="stylesheet" href="./react-ts-project-pageone/src/index.css">
+  <link rel="stylesheet" href="./react-ts-project-pageone/src/App.css">
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div>
+      <a href="https://vite.dev" target="_blank">
+        <img src="./react-ts-project-pageone/public/vite.svg" class="logo" alt="Vite logo" />
+      </a>
+      <a href="https://react.dev" target="_blank">
+        <img src="./react-ts-project-pageone/src/assets/react.svg" class="logo react" alt="React logo" />
+      </a>
+    </div>
+    <h1>html页面</h1>
+    <div style="border: solid 2px deepskyblue; border-radius: 20px;">
+      <h3>页面3</h3>
+      <button onclick="handleClear()">清空数据</button>
+      <p>当前数值: 0</p>
+    </div>
+  </div>
+
+
+  <script>
+    const doms = {
+      p: document.querySelector('p')
+    }
+    const socket = new WebSocket('ws://localhost:8003')
+    function handleClear() {
+      socket.send('Hello Server from page3')
+    }
+
+    socket.addEventListener('message', (e) => {
+      console.log(typeof e.data)
+      doms.p.textContent = `当前数值: ${Number(e.data)}`
+    })
+  </script>
+</body>
+
+</html>
