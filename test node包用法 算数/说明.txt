@@ -1,0 +1,9 @@
+// 2025-06-07 16:27 星期六
+big.js、bignumber.js 和 decimal.js 之间有什么区别？
+https://github.com/MikeMcl/big.js/wiki
+
+
+bignumber.js 可能更适合金融应用程序，因为用户不必担心丢失精度，除非使用涉及除法的运算。
+
+
+decimal.js 可能更适合更科学的应用，因为它可以更高效地处理非常小或非常大的值。
