@@ -1,3 +1,13 @@
+/* 外层 requestAnimationFrame 会在下一帧执行其回调。
+内层 requestAnimationFrame 会再延迟一帧执行 callback。
+最终效果‌：callback 会在 ‌两帧后‌ 执行，而不是立即执行。
+
+可用于确保某些操作（如 DOM 更新）在浏览器完成布局计算后再执行。
+
+function raf(callback) {
+  window.requestAnimationFrame(callback); // 直接单帧延迟
+}
+占位 */
 function raf(callback) {
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(callback)
