@@ -1,0 +1,4 @@
+call 语法：  foo.call(whoThis, arg1,arg2, ... ,argn ); 会直接运行foo函数
+apply 语法： foo.apply(whoThis, [ arg1,arg2, ... ,argn ] ); 会直接运行foo函数
+bind 语法：  foo.bind(whoThis);
+bind 绑定后一般需要再加()调用一次才会运行foo函数
