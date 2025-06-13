@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上传图片并预览 图片转base64</title>
+</head>
+
+<body>
+  <!-- data:content/type;base64, -->
+
+  <!-- 注意逗号 -->
+  <!-- <script src="data:application/javascript,alert(123);"></script> -->
+
+  <!-- 注意最后面没有分号, 因为base64里面没有;这个字符 -->
+  <!-- <script src="data:application/javascript;base64,YWxlcnQoMTIzKQ=="></script> -->
+
+
+  <h3>../imgs/bdd.jpeg</h3>
+  <img src="../imgs/bdd.jpeg" alt="">
+  <!-- 图片是二进制数据 -->
+
+
+  <h3>data:image/jpeg;base64,xxxx</h3>
+  <img id="importBase64">
+  <!-- 把图片转成base64 -->
+
+
+  <h3>上传图片并预览</h3>
+  <input type="file">
+  <img id="preview">
+
+
+  <script type="module">
+    import dataUrl from './dataUrlBase64.js'
+    importBase64.src = dataUrl
+
+
+    const domInputFile = document.querySelector('input[type=file]')
+
+    // /* base64 方案 */
+    // domInputFile.onchange = (e) => {
+    //   const file = e.target.files[0] // 拿到file对象
+    //   // 读取文件是一个IO操作, 在js里面需要时间, 是一个异步操作
+    //   const reader = new FileReader()
+    //   reader.onload = (e) => {
+    //     preview.src = e.target.result
+
+    //     console.log(e.target) // FileReader实例
+    //     console.log(e.target.result); // 拿到图片的base64数据
+    //     const domImg = document.createElement('img')
+    //     domImg.setAttribute('src', e.target.result)
+    //     document.body.append(domImg)
+    //   }
+    //   reader.readAsDataURL(file) // 读取文件, 当做data url
+    // }
+
+
+    // /* URL.createObjectURL 方案 */
+    // let urlObjStr = ''
+    // domInputFile.onchange = async (e) => {
+    //   if (urlObjStr) {
+    //     // 手动释放内存
+    //     URL.revokeObjectURL(urlObjStr)
+    //     urlObjStr = ''
+    //   }
+    //   const file = e.target.files[0] // 拿到file对象
+    //   urlObjStr = URL.createObjectURL(file); // 返回一个string
+    //   preview.src = urlObjStr
+    //   console.log(urlObjStr)
+    // }
+
+  </script>
+</body>
+
+</html>
