@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>btoa atob ASCII base64 encodeURIComponent</title>
+</head>
+
+<body>
+
+
+  <script>
+    /* btoa 进行编码, 仅支持传入 ASCII 字符(128个字符), 不包含中文等其他字符
+    atob 进行解码
+
+    btoa = "binary to ASCII"
+      b 代表 ‌binary‌（原始二进制数据）
+      toa 代表 ‌to ASCII‌（转换为 ASCII 编码）
+    将原始字符串编码为 Base64 格式的 ASCII 字符串
+    强调输入是 ‌原始二进制数据‌（虽以字符串形式传递），输出是 ‌ASCII 编码的文本‌（Base64）
+
+    atob = "ASCII to binary"
+    将 Base64 字符串解码为原始数据
+
+    占位 */
+    const str = window.btoa('Hello, world')
+    console.log(str)
+    console.log(
+      window.atob(str)
+    )
+
+
+    /* 如果非要对中文等字符进行 btoa
+    可先用 encodeURIComponent 转义
+    再btoa
+    
+    占位 */
+    const str2 = encodeURIComponent('你好世界')
+    const str3 = window.btoa(str2)
+    const str4 = window.atob(str3)
+    const str5 = decodeURIComponent(str4)
+    console.log(str2)
+    console.log(str3)
+    console.log(str4)
+    console.log(str5)
+  </script>
+</body>
+
+</html>
