@@ -1,10 +1,14 @@
-
 /* 对象解构
-重命名用冒号:, 冒号后面是新变量名, 重命名后原变量名无效, 读原变量名会报错未定义
-解构对象没有某个属性时, 那它的值就是undefined, 等于有这个属性但值为undefined
+
+解构 对象没有的某个属性时, 那它的值就是undefined, 等于在这个对象上新加了个属性且值为undefined
 只有值为undefined时, 用默认赋值才有效, null则不行
+
+默认赋值用=
+重命名用:冒号, 冒号后面是新变量名, 重命名后原变量名无效, 读原变量名会报错未定义
 不能解构null和undefined, 所以一般obj || {}, 提高程序健壮性
-深层解构, 用冒号和{} */
+
+深层解构, 用冒号和{}
+占位 */
 const obj = {
   ename: 'objName',
   money: 100 ** 3,
@@ -21,8 +25,8 @@ const {
   noExistWithDefaultValue = '默认赋值',
   undefinedVar = '赋值后',
   nullVar = false,
-  address: addr = '中国' /* 有原属性 address, 所以默认赋值无效 */,
-  city: town = 'zhonghe' /* 无原属性 city, 默认赋值有效, 还是符合"只有值为undefined时, 用默认赋值才有效, null则不行" */,
+  address: addr = '中国' /* 有对象属性 address, 所以默认赋值无效 */,
+  city: town = 'zhonghe' /* 无对象属性 city, 默认赋值有效, 还是符合"只有值为undefined时, 用默认赋值才有效, null则不行" */,
 } = obj || {}
 console.log('ename: ', ename)
 console.log('money: ', money)
