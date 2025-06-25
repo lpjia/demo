@@ -23,7 +23,9 @@
       },
       body: JSON.stringify({ ctt })
     });
-    if (!resp.ok) throw new Error('resp failed')
+    if (!resp.ok) {
+      throw new Error('resp failed')
+    }
 
     const reader = resp.body.getReader()
     // 需要解码
@@ -31,18 +33,13 @@
     while (1) {
       // 一次读出一块数据, 数据量大小根据后端控制, 也和操作系统的缓存区有关
       const { done, value } = await reader.read()
-      if (done) break;
+      if (done) {
+        break;
+      }
       const txt = decoder.decode(value)
       console.log(txt)
+      // console.log(done, vlaue, text)
     }
-
-    // const { done, value } = await reader.read()
-    // const txt = decoder.decode(value)
-    // console.log(
-    //   done,
-    //   value,
-    //   txt,
-    // )
 
   </script>
 </body>
