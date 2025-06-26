@@ -9,9 +9,13 @@ nvm ls
 
 pn dev
 pn i
-pn clean
+pn add
 pn add -D
 pn remove
+
+pn store prune
+
+pn clean
 
 net start mongodb
 net stop mongodb
