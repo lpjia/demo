@@ -13,9 +13,8 @@ const car = {
   [symb]: symb // 属性加[], 里面可以写表达式, 更灵活
 };
 
-
+console.log(car)
 console.log(
-  // car,
   "make" in car, // true
   ["make"] in car, // true
   'symb' in car, // true
