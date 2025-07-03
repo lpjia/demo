@@ -43,12 +43,6 @@ let date3 = formatTime(new Date(arr), 'Y-M-D')
 console.log('date3: ', date3)
 
 
-/* 数组形式转参数形式, 作对比, 不推荐这样用 */
-let param = Date.apply(null, arr)
-let date4 = formatTime(param, 'Y-M-D')
-console.log('date4: ', date4)
-
-
 /* 自动校准功能, 处理年月日等, 不用再麻烦的处理
 先get 再set */
 let date10 = new Date(dateObj)
@@ -85,8 +79,14 @@ let m = date13.getMonth() + 2
 let d = date13.getDate() + 21
 console.log('比当前日期多了一年又两月又三周:', formatTime(new Date(y, m, d), 'Y-M-D'))
 console.log(
-  formatTime(new Date([y, m + 1, d]), 'Y-M-D'), // 数组形式传参, 月份要按实际月份传, getMonth()得到的得加1
-  formatTime(new Date(...[y, m, d]), 'Y-M-D'), // 解构数组, 转成了new Date(y, m, d)传参形式
+  null,
+  y
+  , m
+  , d
+  /* 数组里的值, 超出了Date的合法范围, 属于无效日期
+  new Date(y, m, d) 年月日按参数形式传, 入参范围比数组大得多 */
+  , formatTime(new Date([y, m + 1, d]), 'Y-M-D') // 数组形式传参, 月份要按实际月份传, getMonth()得到的值得加1
+  , formatTime(new Date(...[y, m, d]), 'Y-M-D') // 解构数组, 转成了new Date(y, m, d)传参形式
 )
 
 
