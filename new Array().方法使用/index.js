@@ -1,7 +1,37 @@
-import { deepClone } from '../util/commonMethod.js'
 
-// 不用打印, 把代码直接粘贴到控制台中运行
-// 简洁高效
+// 快速创建数组, 数组项是批量搞的
+// Array(定数组长度).fill(填充数组项)
+console.log(
+  Array(6).fill('3') // ['3', '3', '3', '3', '3', '3']
+)
+console.log('---- 分割线 ----\n\n\n')
+
+// 2025-06-18 10:27 星期三
+// 以上内容是这个时间点写的
+
+
+
+
+
+
+const myArray = [null, false, 'Hello', undefined, 0];
+
+// 过滤虚值
+const filtered = myArray.filter(Boolean);
+filtered // ['Hello']
+// 等价于上面, Boolean 函数本身接受一个参数，并根据参数的真实性返回 true 或 false
+myArray.filter(val => Boolean(val)) // ['Hello']
+
+// 检查至少一个值是否为真
+const someTruthy = myArray.some(Boolean);
+someTruthy // true
+
+// 检查所有的值是否为真
+const allTruthy = myArray.every(Boolean);
+allTruthy // false
+
+
+
 
 
 
@@ -30,14 +60,3 @@ arr9.flatMap(item => {
 })
 // 返回 [ { name: 'five', val: 5 }, { name: 'four', val: 4 }, ]
 // 实际上这个例子算是 map + filter + flat 的结合
-
-
-
-
-
-/**
- * arr.at()
- */
-// idxArr
-let arr10 = ['red', 'green', 'blue']
-// arr10.at()

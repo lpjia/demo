@@ -12,6 +12,12 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
 /* reduce 的核心思想是通过遍历数组，将多个值“归并”为一个结果 */
 
+/* reduce {从左到右} 和 reduceRight {从右到左}
+最好要传初始值, 否则数组第一项不会参与回调(直接作为初始值, 跳过这次回调)
+reduce 数组第一项不参与回调
+reduceRight 数组最后一项不参与回调 */
+
+/* 一般给初始值initialValue, 回调内无法退出循环, 不能用break; */
 
 // 数字运算
 const array1 = [1, 2, 3, 4];
@@ -21,8 +27,24 @@ const sumWithInitial = array1.reduce(
   (accumulator, currentValue) => accumulator + currentValue,
   initialValue
 );
-sumWithInitial
-
+const sumWithInitial_2 = array1.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.toString(10),
+  initialValue
+);
+const sumWithInitial_3 = array1.reduceRight(
+  (accumulator, currentValue) => accumulator + currentValue.toString(10),
+  initialValue
+);
+const sumWithInitial_4 = array1.reduceRight(
+  (accumulator, currentValue) => accumulator + currentValue.toString(10),
+) + '0'
+console.log(
+  sumWithInitial // 10
+  , sumWithInitial_2 // '01234'
+  , sumWithInitial_3 // '04321'
+  , sumWithInitial_4 // '43210'
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
 
@@ -37,15 +59,19 @@ function arrToObj(arr, { k = 'value', v = 'name' } = {}) {
   )
 }
 const arr = [
-  { name: '这是name', value: 'kkk' },
   { name: '这是name2', value: 'kkk2' },
+  { name: '这是name', value: 'kkk' },
   { name: '这是name3', value: 'kkk3' },
 ]
-arrToObj(arr);
+console.log(
+  arrToObj(arr) // {kkk2: '这是name2', kkk: '这是name', kkk3: '这是name3'}
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
 
 
+console.log();
 `
 // 商品累加
 // 这里是伪代码, 只看用法

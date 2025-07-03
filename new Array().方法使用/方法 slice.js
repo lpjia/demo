@@ -11,16 +11,25 @@ slice(x, -y), slice方法始终排除指定的最后一个索引处的元素，�
 
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-arr.slice()
+console.log(
+  arr.slice() // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
-arr.slice(0, 3)
-// 返回 [1, 2, 3]
+console.log(
+  arr.slice(0, 3) // 返回 [1, 2, 3]
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
-arr.slice(-2)
-// 返回 [8, 9]
+console.log(
+  arr.slice(-2) // 返回 [8, 9]
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
-arr.slice(2, -3)
-// 返回 [3, 4, 5, 6]
+console.log(
+  arr.slice(2, -3) // 返回 [3, 4, 5, 6]
+)
+console.log('---- 分割线 ----\n\n\n')

@@ -9,9 +9,9 @@
 
 const arr1 = ['a', 'b', 'c']
 const arr2 = ["d", "e", "f"]
-const arr3 = arr1.concat(arr2)
-const arr4 = arr1.concat(arr2, { name: 'dui_xiang' }, '0', [1, 2, 3], 444)
+
 console.log(
-  arr3, '\n',
-  arr4, '\n',
+  arr1.concat(arr2)
+  , arr1.concat(arr2, { name: 'dui_xiang' }, '0', [1, 2, 3], 444)
+  , arr1.concat(111)
 )
