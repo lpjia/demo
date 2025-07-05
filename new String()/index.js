@@ -1,19 +1,42 @@
 
 
 /**
- * 查找元素
+ * 构建重复字符串
+ * 可组装大字符串数据用来测试
  */
-let str = 'hello'
-str.at()
-
-
-
+console.log(
+  'abc'.repeat(30)
+)
+console.log('---- 分割线 ----\n\n\n')
 
 
 
 /**
- * 查找索引
+ * 查找元素, 参是索引
+ * 只能找单个字符
+ * at(-x), -x表示从右向左计数, -1表示倒数第1个, -2表示倒数第2个
  */
+let str = 'ProductTable.module.scss'
+const arr = str.split('.')
+console.log(
+  str.at(-3) // 'c'
+  , str.at(80) // undefined 
+)
+console.log('---- 分割线 ----\n\n\n')
+
+console.log(
+  // 数组也有at方法 arr.at(), 用法和 str.at() 一致
+  arr // ['ProductTable', 'module', 'scss']
+  , arr.at(-1) // 'scss'
+  , arr[arr.length - 1] // 'scss'
+)
+console.log('---- 分割线 ----\n\n\n')
+
+
+// 2025-06-18 04:51 星期三
+// 以上内容是这个时间点写的
+
+
 
 
 
