@@ -35,6 +35,25 @@
 }
 
 
+/* 带单位的变量参与运算, 为了避免出现10 deg等<数字和单位之间多了个空格>
+建议用#{里面放变量参与运算}
+原因是除法和/, scss区分不开, 有些css速写属性值包含/ */
+$n: 3;
+$deg: 360deg / $n;
+$deg2: #{(360 / $n)}deg; // 作为对比, (360 / $n)deg编译后是120 deg, 多了个空格
+
+@for $i from 1 through $n {
+  .dot {
+    transform: rotate(($i - 1) * $deg);
+    transform-origin: ($i * 10px);
+  }
+
+  .dot2 {
+    transform: rotate($deg2);
+  }
+}
+
+
 /* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */
 $bgColor: #337ab7, #5cb85c, #5bc0de, #f0ad4e, deepskyblue, #d9534f, #cd6562;
@@ -45,7 +64,7 @@ $c是项, $bgColor是数组 */
   $i: index($bgColor , $c ); // 获取 $c 在数组中的索引，并赋值给 $i, 赋值用冒号
 
   // SCSS 循环索引是从 1 开始
-  // #{} 插值语句
+  // #{} 插值语法
   .container>div:nth-child(#{$i}) {
     background-color: $c;
   }
@@ -72,7 +91,7 @@ $blue-color: var(--likeColor); // 声明scss变量怎么使用css变量值?
 }
 
 /* css变量, --声明后使用var() */
-// scss变量, $声明后如有必要则使用#{}, 一般可直接用
+/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用${}包裹变量 */
 .try {
   font-weight: #{$fontWeight};
   color: var(--likeColor);
@@ -120,6 +139,10 @@ $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
   @include flex(start) {
     gap: 10px;
   }
+}
+
+.bd {
+  @include flex(start);
 }
 
 .header {

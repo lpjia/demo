@@ -32,6 +32,21 @@
 
 .m-10 { margin: 2.5rem; }
 
+/* 带单位的变量参与运算, 为了避免出现10 deg等<数字和单位之间多了个空格>
+建议用里面放变量参与运算
+原因是除法和/, scss区分不开, 有些css速写属性值包含/ */
+.dot { transform: rotate(0deg); transform-origin: 10px; }
+
+.dot2 { transform: rotate(120deg); }
+
+.dot { transform: rotate(120deg); transform-origin: 20px; }
+
+.dot2 { transform: rotate(120deg); }
+
+.dot { transform: rotate(240deg); transform-origin: 30px; }
+
+.dot2 { transform: rotate(120deg); }
+
 /* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */
 /* @each 遍历数组
@@ -57,6 +72,7 @@ $c是项, $bgColor是数组 */
 .likeColor { color: var(--likeColor); }
 
 /* css变量, --声明后使用var() */
+/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用${}包裹变量 */
 .try { font-weight: bold; color: var(--likeColor); font-size: var(--fontSize); }
 
 .try2 { color: var(--red-color); }
@@ -70,6 +86,8 @@ $c是项, $bgColor是数组 */
 @content 类似调用时多传入的自定义实参, 也要一并用到 */
 /* 简化媒体查询 */
 .nav { display: flex; justify-content: start; align-items: start; gap: 10px; }
+
+.bd { display: flex; justify-content: start; align-items: start; }
 
 .header { width: 100%; display: flex; justify-content: center; align-items: center; }
 
