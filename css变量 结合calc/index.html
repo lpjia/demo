@@ -6,23 +6,29 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CSS自定义属性(变量) 结合calc()</title>
+  <title>css变量 结合calc()</title>
   <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="scss_to_css/index.css">
   <style>
   </style>
 </head>
 
 <body>
   <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties -->
-  <!-- https://zhuanlan.zhihu.com/p/25714131 -->
+  <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/--* -->
+
+  <!-- css变量, 官方叫'css自定义属性'
+    --xxx, 命名区分大小写
+    有作用域, 支持嵌套作用域
+    全局和局部
+    js可直接操作, 通过 getPropertyValue 方法和 setProperty 方法
+  占位 -->
 
   <div class="up_down">
     calc() 函数常常被用于跨单位的计算<br>
     CSS 自定义属性(变量) 结合 calc(), calc 只能用声明好的单位去得出结果<br>
     声明的单位是 px, 计算后的结果就是 px<br>
     声明的单位是 deg(角度), 计算后的结果就是 deg<br>
-    百分比是在不同的属性里有不同的单位, 具体情况具体分析<br>
   </div>
 
 
@@ -39,23 +45,17 @@
     <div class="triangle-up"></div>
     <div class="triangle-up rotate"></div>
     <div class="triangle-up rotate-2"></div>
+    <div class="triangle-up rotate-4 jsop"></div>
   </div>
 
 
   <div class="up_down">
-    没有 .txt, 有作用域限制, var 第二个参数是缺省值,
+    没有.txt, 有作用域限制, var() 第二个参数是缺省值,
     <div class="triangle-up rotate-3"></div>
   </div>
 
 
-
-
-
-  <script>
-    // 这里要加上获取窗口的高度, 以便来比对 vh
-    // 应该家里电脑上有一个 demo 是关于这的
-    console.log('浏览器窗口可视区域的高度:', window.innerHeight + 'px')
-  </script>
+  <script src="index.js"></script>
 
 </body>
 

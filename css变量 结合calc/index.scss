@@ -1,24 +1,26 @@
-// 全局声明
+/* 全局声明css变量
+:root是伪类, 相当于html元素
+比html特殊性更高 */
+
 :root {
-  --height: 30px; // 自定义属性, 声明
+  --height: 30px;
 }
 
 
 .txt {
+  /* 局部css变量 */
+  --height-2: 3rem;
+  --height-3: calc(var(--height) * 2);
+  --height-4: 10vh;
+  --height-5: calc(var(--height-4) * 2);
+
+  --rotate: 45deg;
+  --rotate-2: calc(var(--rotate) * 2);
 
   >p {
     border: 1px solid gray;
     margin-bottom: 5px;
   }
-
-  --height-2: 3rem;
-  --height-3: calc(2 * var(--height));
-  --height-4: 10vh;
-  --height-5: calc(2 * var(--height-4));
-
-  --rotate: 45deg;
-  --rotate-2: calc(2 * var(--rotate));
-
 }
 
 .one {
@@ -44,6 +46,7 @@
 
 
 .triangle-up {
+  // 三角形 朝上
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
@@ -62,4 +65,11 @@
 .rotate-3 {
   // transform: rotate(var(--rotate-2, var(--rotate-n))); // 可以嵌套, 不能并列
   transform: rotate(var(--rotate-2, -90deg));
+  // rotate 如果为正数，则旋转方向为顺时针
+}
+
+.rotate-4 {
+  --rotate-2: 90deg;
+  transform: rotate(var(--rotate-2));
+  transition: transform .5s;
 }

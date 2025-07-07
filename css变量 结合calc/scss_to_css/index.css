@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* 全局声明css变量
+:root是伪类, 相当于html元素
+比html特殊性更高 */
+:root { --height: 30px; }
+
+.txt { /* 局部css变量 */ --height-2: 3rem; --height-3: calc(var(--height) * 2); --height-4: 10vh; --height-5: calc(var(--height-4) * 2); --rotate: 45deg; --rotate-2: calc(var(--rotate) * 2); }
+
+.txt > p { border: 1px solid gray; margin-bottom: 5px; }
+
+.one { height: var(--height); }
+
+.two { height: var(--height-2); }
+
+.three { height: var(--height-3); }
+
+.four { height: var(--height-4); }
+
+.five { height: var(--height-5); }
+
+.triangle-up { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid red; }
+
+.rotate { transform: rotate(var(--rotate)); }
+
+.rotate-2 { transform: rotate(var(--rotate-2)); }
+
+.rotate-3 { transform: rotate(var(--rotate-2, -90deg)); }
+
+.rotate-4 { --rotate-2: 90deg; transform: rotate(var(--rotate-2)); transition: transform .5s; }
