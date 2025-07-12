@@ -1,54 +1,116 @@
 import { jsonstringify } from './testModule.js'
-// 这里模块先测试, 不急于放到 commonMethods.js
 
 // 1. 测试一下基本输出
-console.log(jsonstringify(undefined)) // undefined 
-console.log(jsonstringify(() => { })) // undefined
-console.log(jsonstringify(Symbol('前端胖头鱼'))) // undefined
-console.log(jsonstringify((NaN))) // null
-console.log(jsonstringify((Infinity))) // null
-console.log(jsonstringify((null))) // null
-console.log(jsonstringify({
-  name: '前端胖头鱼',
+// 2. 和原生的JSON.stringify转换进行比较
+
+// 每次打印第一个null, 是为了看后面数据的类型
+console.log(
+  null,
+  jsonstringify(undefined)
+  , JSON.stringify(undefined)
+  // undefined
+)
+console.log(
+  null,
+  jsonstringify(() => { })
+  , JSON.stringify(() => { })
+  // undefined
+)
+console.log(
+  null,
+  jsonstringify(Symbol('前端'))
+  , JSON.stringify(Symbol('前端'))
+  // undefined
+)
+console.log(
+  null,
+  jsonstringify(NaN)
+  , JSON.stringify(NaN)
+  // 'null'
+)
+console.log(
+  null,
+  jsonstringify(Infinity)
+  , JSON.stringify(Infinity)
+  // 'null'
+)
+console.log(
+  null,
+  jsonstringify(null)
+  , JSON.stringify(null)
+  // 'null'
+)
+
+let ooo = {
+  name: '前端',
   toJSON() {
     return {
-      name: '前端胖头鱼2',
+      name: this.name,
       sex: 'boy'
     }
   }
-}))
-// {"name":"前端胖头鱼2","sex":"boy"}
+}
+console.log(
+  null,
+  jsonstringify(ooo) === JSON.stringify(ooo)
+  , jsonstringify(ooo)
+  , JSON.stringify(ooo)
+  // '{"name":"前端","sex":"boy"}'
+)
+console.log(
+  null,
+  jsonstringify(false)
+  , JSON.stringify(false)
+  // 'false'
+)
 
+let str = "前端";
+console.log(
+  null,
+  jsonstringify(str) === JSON.stringify(str)
+  , jsonstringify(str)
+  , JSON.stringify(str)
+  // '"前端"'
+)
 
-
-// 2. 和原生的JSON.stringify转换进行比较
-console.log(jsonstringify(null) === JSON.stringify(null));
-// true
-console.log(jsonstringify(undefined) === JSON.stringify(undefined));
-// true
-console.log(jsonstringify(false) === JSON.stringify(false));
-// true
-console.log(jsonstringify(NaN) === JSON.stringify(NaN));
-// true
-console.log(jsonstringify(Infinity) === JSON.stringify(Infinity));
-// true
-let str = "前端胖头鱼";
-console.log(jsonstringify(str) === JSON.stringify(str));
-// true
 let reg = new RegExp("\w");
-console.log(jsonstringify(reg) === JSON.stringify(reg));
-// true
+console.log(
+  null,
+  jsonstringify(reg) === JSON.stringify(reg)
+  , jsonstringify(reg)
+  , JSON.stringify(reg)
+  // '{}'
+)
+
 let date = new Date();
-console.log(jsonstringify(date) === JSON.stringify(date));
-// true
-let sym = Symbol('前端胖头鱼');
-console.log(jsonstringify(sym) === JSON.stringify(sym));
-// true
+console.log(
+  null,
+  jsonstringify(date) === JSON.stringify(date)
+  , jsonstringify(date)
+  , JSON.stringify(date)
+  // '"2025-06-23T04:07:43.689Z"'
+)
+
+let sym = Symbol('前端');
+console.log(
+  null,
+  jsonstringify(date) === JSON.stringify(date)
+  , jsonstringify(sym)
+  , JSON.stringify(sym)
+  // undefined
+)
+
 let array = [1, 2, 3];
-console.log(jsonstringify(array) === JSON.stringify(array));
-// true
+console.log(
+  null,
+  jsonstringify(array) === JSON.stringify(array)
+  , jsonstringify(array)
+  , JSON.stringify(array)
+  // '[1,2,3]'
+)
+
 let obj = {
-  name: '前端胖头鱼',
+  name: '前端',
   age: 18,
   attr: ['coding', 123],
   date: new Date(),
@@ -65,25 +127,23 @@ let obj = {
   },
   pakingObj: {
     boolean: new Boolean(false),
-    string: new String('前端胖头鱼'),
+    string: new String('前端'),
     number: new Number(1),
   }
 }
-console.log(jsonstringify(obj) === JSON.stringify(obj))
-// true
-console.log((jsonstringify(obj)))
-// {"name":"前端胖头鱼","age":18,"attr":["coding",123],"date":"2021-10-06T14:59:58.306Z","info":{"age":16,"intro":{"job":null}},"pakingObj":{"boolean":false,"string":"前端胖头鱼","number":1}}
-console.log(JSON.stringify(obj))
-// {"name":"前端胖头鱼","age":18,"attr":["coding",123],"date":"2021-10-06T14:59:58.306Z","info":{"age":16,"intro":{"job":null}},"pakingObj":{"boolean":false,"string":"前端胖头鱼","number":1}}
-
-
+console.log(
+  null,
+  jsonstringify(obj) === JSON.stringify(obj)
+  , JSON.stringify(obj)
+  // '{"name":"前端","age":18,"attr":["coding",123],"date":"2025-06-23T04:25:19.154Z","info":{"age":16,"intro":{"job":null}},"pakingObj":{"boolean":false,"string":"前端","number":1}}'
+)
 
 // 3. 测试可遍历对象
 let enumerableObj = {}
 
 Object.defineProperties(enumerableObj, {
   name: {
-    value: '前端胖头鱼',
+    value: '前端',
     enumerable: true
   },
   sex: {
@@ -91,20 +151,31 @@ Object.defineProperties(enumerableObj, {
     enumerable: false
   },
 })
-
-console.log(jsonstringify(enumerableObj))
-// {"name":"前端胖头鱼"}
-
+Object.defineProperty(enumerableObj, 'age', {
+  value: 18,
+  enumerable: false
+})
+// 不可枚举的属性, 会被丢掉
+console.log(
+  null,
+  jsonstringify(enumerableObj) === JSON.stringify(enumerableObj)
+  , JSON.stringify(enumerableObj)
+  // '{"name":"前端"}'
+)
 
 
 // 4. 测试循环引用和Bigint
 
-let obj1 = { a: 'aa' }
-let obj2 = { name: '前端胖头鱼', a: obj1, b: obj1 }
+let obj1 = { a: 'b' }
+let obj2 = { name: '前端', c: obj1 }
 obj2.obj = obj2
 
+console.log(obj2)
+
+// console.log(JSON.stringify(obj2))
 // console.log(jsonstringify(obj2))
 // // TypeError: Converting circular structure to JSON
 
+// console.log(JSON.stringify(BigInt(1)))
 // console.log(jsonstringify(BigInt(1)))
 // // TypeError: Do not know how to serialize a BigInt

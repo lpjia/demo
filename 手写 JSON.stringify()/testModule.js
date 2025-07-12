@@ -7,19 +7,19 @@ export const jsonstringify = (data) => {
 
     const detect = (obj) => {
       // 不是对象类型的话，可以直接跳过
-      if (obj && typeof obj != 'object') {
-        return
+      if (obj && typeof obj !== 'object') {
+        return;
       }
       // 当要检查的对象已经存在于stackSet中时，表示存在循环引用
       if (stackSet.has(obj)) {
         return detected = true
       }
-      // 将当前obj存如stackSet
+      // 将当前obj存入stackSet
       stackSet.add(obj)
 
       for (let key in obj) {
         // 对obj下的属性进行挨个检测
-        if (obj.hasOwnProperty(key)) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
           detect(obj[key])
         }
       }
@@ -55,7 +55,7 @@ export const jsonstringify = (data) => {
   }
 
   const type = typeof data
-  const commonKeys1 = ['undefined', 'function', 'symbol']
+  const commonKeys = ['undefined', 'function', 'symbol']
   const getType = (s) => {
     return Object.prototype.toString.call(s).replace(/\[object (.*?)\]/, '$1').toLowerCase()
   }
@@ -69,37 +69,44 @@ export const jsonstringify = (data) => {
       result = 'null'
       // 特性一：
       // `undefined`、`任意的函数`以及`symbol值`被`单独转换`时，会返回 undefined
-    } else if (commonKeys1.includes(type)) {
+    }
+    else if (commonKeys.includes(type)) {
       // 直接得到undefined，并不是一个字符串'undefined'
       return undefined
-    } else if (type === 'string') {
+    }
+    else if (type === 'string') {
       result = '"' + data + '"'
     }
 
     return String(result)
-  } else if (type === 'object') {
+  }
+  else if (type === 'object') {
     // 特性五:
     // 转换值如果有 toJSON() 方法，该方法定义什么值将被序列化
     // 特性六:
     // Date 日期调用了 toJSON() 将其转换为了 string 字符串（同Date.toISOString()），因此会被当做字符串处理。
     if (typeof data.toJSON === 'function') {
       return jsonstringify(data.toJSON())
-    } else if (Array.isArray(data)) {
+    }
+    else if (Array.isArray(data)) {
       let result = data.map((it) => {
         // 特性一:
         // `undefined`、`任意的函数`以及`symbol值`出现在`数组`中时会被转换成 `null`
-        return commonKeys1.includes(typeof it) ? 'null' : jsonstringify(it)
+        return commonKeys.includes(typeof it) ? 'null' : jsonstringify(it)
       })
 
       return `[${result}]`.replace(/'/g, '"')
-    } else {
+    }
+    else {
       // 特性二：
       // 布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值。
       if (['boolean', 'number'].includes(getType(data))) {
         return String(data)
-      } else if (getType(data) === 'string') {
+      }
+      else if (getType(data) === 'string') {
         return '"' + data + '"'
-      } else {
+      }
+      else {
         let result = []
         // 特性八
         // 其他类型的对象，包括 Map/Set/WeakMap/WeakSet，仅会序列化可枚举的属性
@@ -110,7 +117,7 @@ export const jsonstringify = (data) => {
             const value = data[key]
             // 特性一
             // `undefined`、`任意的函数`以及`symbol值`，出现在`非数组对象`的属性值中时在序列化过程中会被忽略
-            if (!commonKeys1.includes(typeof value)) {
+            if (!commonKeys.includes(typeof value)) {
               result.push(`"${key}":${jsonstringify(value)}`)
             }
           }
