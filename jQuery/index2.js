@@ -100,13 +100,60 @@ $(function () {
 
 
 
-  /* $().prop('xxx') 操作的是元素内置属性, 相当于dom.xxx
-  <a target="_blank" href="//cart.jd.com/cart.action">我的购物车</a>
-  比如a元素的href, dom.href得到'https://cart.jd.com/cart.action'
-  $().prop('href')返回dom.href的结果, 他俩其实是一个api效果
+  /* 取值 赋值 都行
+  $().prop() 得到的值是任意类型的数据
+  本身特有的属性 checked disabled
 
-  $().attr('xxx') 操作的是元素的自定义属性, 相当于dom.getAttribute('xxx')
-  元素的属性值书写啥就是啥, 原封不动的拿到
-  比如上面的a元素, $().attr('href')返回的就是'//cart.jd.com/cart.action' */
+  $().attr() 得到的值是string类型的数据
+  一般属性 */
+
+  /* <a class="myCart" target="_blank" href="//cart.jd.com/cart.action">我的购物车</a> */
+  console.log(
+    null,
+    /* prop方法 href属性值 自动补全 */
+    $('.myCart').prop('href') // 'http://cart.jd.com/cart.action'
+
+    /* attr方法 href属性值 书写啥就是啥 原封不动的拿到 */
+    , $('.myCart').attr('href') // '//cart.jd.com/cart.action'
+  )
+
+
+  setTimeout(() => {
+    $('.form1 input').eq(0).prop('checked', true)
+
+    console.log(
+      null,
+      $('.form1 input').eq(0).prop('checked') // true 布尔类型
+      , $('.form1 input').eq(0).attr('checked') // undefined
+    )
+  }, 2000)
+
+  const its = $('.form1 input[checked]') // 得到原生dom
+  console.log(
+    null,
+    /* 本身特有的属性 checked 得到布尔类型的数据 */
+    $(its[0]).prop('checked') // true 布尔类型
+
+    /* checked 只能得到string类型的数据 */
+    , $(its[0]).attr('checked') // 'checked' string类型
+  )
+  const its2 = $('.form2 input[type="text"]')
+  its2[0].oninput = (e) => {
+    $(its2[1]).val($(e.target).val())
+
+    console.log(
+      null,
+      /* 获取用户输入的值
+      value属性的值, 一般用val() */
+      $(e.target).val()
+
+      /* 获取用户输入的值 */
+      , $(e.target).prop('value')
+
+      /* 获取初始值 value="111" */
+      , $(e.target).attr('value')
+    )
+  }
+
 
 })
