@@ -61,6 +61,10 @@ readonly
 
 只要写了属性名, 就生效
 
+或者写 属性名="属性名"
+
+js 就写 dom.xxx = true/false
+
 
 # 路径的书写
 
