@@ -71,7 +71,7 @@ function callback(e) {
 btn.addEventListener('click', myDebounce(callback, 1000))
 /* 当没有用func.apply(this, args), callback函数内的作用域的this指向window, 是"直接调用"情况
 使用了apply方法, 把func函数(也就是callback函数)的this显式绑定到①的作用域的this
-myDebounce(callback, 1000)中的this应指向btn, 也就是myDebounce()返回的函数, ①的作用域
+myDebounce(callback, 1000)中的this是指向btn, 也就是myDebounce()返回的函数, ①的作用域
 callback函数内的作用域的this就指向btn
 这就解决了this指向
 参数问题也就解释了 */
