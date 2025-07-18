@@ -1,0 +1,36 @@
+@charset "UTF-8";
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { margin: 2% 6% 0; }
+
+hr { margin: 1rem 0; }
+
+.skew_rotate p { font-size: 42px; }
+
+.skew_rotate p:nth-child(1) { /* 向右倾斜, 角度为负的, 注意!!! */ transform: skew(-20deg); }
+
+.skew_rotate p:nth-child(2) { transform: rotate(10deg); /* 以某点旋转盒子, 默认是盒子中心点 center */ transform-origin: top left; }
+
+/*水平翻转*/
+.flipx { -moz-transform: scaleX(-1); -webkit-transform: scaleX(-1); -o-transform: scaleX(-1); transform: scaleX(-1); }
+
+/*垂直翻转*/
+.flipy { -moz-transform: scaleY(-1); -webkit-transform: scaleY(-1); -o-transform: scaleY(-1); transform: scaleY(-1); }
+
+/*水平翻转*/
+.flipx_2 { transform: rotateY(180deg); }
+
+/*垂直翻转*/
+.flipy_2 { transform: rotateX(180deg); }
+
+.sect { height: 20rem; background-color: #000; position: relative; /* 注释代码为 flex 布局实现居中 */ }
+
+.sect .container { background-color: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30rem; height: 10rem; }
+
+.sect .container .main { font-size: 4rem; line-height: 2.5; text-align: center; color: #c7120a; }
+
+.sect .container .corner { position: absolute; top: 0; right: 0; }
+
+.sect .container .corner .triangle { width: 0; height: 0; border-top: 100px solid #c7120a; border-left: 100px solid transparent; }
+
+.sect .container .corner p { position: absolute; top: 24px; right: 0; color: #fff; transform: rotate(45deg); }

@@ -1,3 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 2% 6% 0;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
+
+.skew_rotate p {
+  font-size: 42px;
+
+  &:nth-child(1) {
+    /* 向右倾斜, 角度为负的, 注意!!! */
+    transform: skew(-20deg);
+  }
+
+  &:nth-child(2) {
+    transform: rotate(10deg);
+    /* 以某点旋转盒子, 默认是盒子中心点 center */
+    transform-origin: top left;
+  }
+}
+
 /*水平翻转*/
 .flipx {
   -moz-transform: scaleX(-1);
@@ -6,8 +36,6 @@
   transform: scaleX(-1);
 }
 
-
-
 /*垂直翻转*/
 .flipy {
   -moz-transform: scaleY(-1);
@@ -15,8 +43,6 @@
   -o-transform: scaleY(-1);
   transform: scaleY(-1);
 }
-
-
 
 /*水平翻转*/
 .flipx_2 {
@@ -27,9 +53,6 @@
 .flipy_2 {
   transform: rotateX(180deg);
 }
-
-
-
 
 .sect {
   height: 20rem;
