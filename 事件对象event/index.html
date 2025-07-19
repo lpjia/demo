@@ -10,24 +10,29 @@
 </head>
 
 <body>
+  <!-- 在JavaScript中，当使用addEventListener绑定事件处理函数时，(非箭头函数)
+    函数内的this默认会指向触发事件的DOM元素（这里是btn）。这是浏览器事件系统的默认行为。
+    相当于btn.callback(e)这样的隐式绑定
+  占位 -->
+
 
   <h2>直接写在标签上的事件的this指向该dom</h2>
   <input type="text" data-i="ni_ming" value="ni_ming" oninput="
     console.log(this);
     console.log(this.value);
     console.log(typeof this.value);  
-    console.log('---- 分割线 ----\n\n\n');">
+    console.log('---- 分割线 ----\n\n\n');" />
 
   <input type="date" oninput="
     console.log(this);
     console.log(this.value);
     console.log(typeof this.value);
-    console.log('---- 分割线 ----\n\n\n');">
+    console.log('---- 分割线 ----\n\n\n');" />
 
-  <input type="text" data-i="you_ming" value="you_ming">
-  <input type="text" data-i="addEventListener" value="addEventListener">
-  <input type="text" data-i="addEventListener 箭头函数" value="addEventListener 箭头函数">
-  <br>
+  <input type="text" data-i="you_ming" value="you_ming" />
+  <input type="text" data-i="addEventListener" value="addEventListener" />
+  <input type="text" data-i="addEventListener 箭头函数" value="addEventListener 箭头函数" />
+  <br />
   <script>
     // // 会覆盖标签上的oninput事件的代码
     // // 之所以this指向没有指向window, 原因在于oninput事件
@@ -75,7 +80,7 @@
 
   <!-- 这种写法this指向就有问题了, changVal的实参必须是event
   要想形参e有值, 得显式传入实参event -->
-  <input type="text" oninput="changVal(event)">
+  <input type="text" oninput="changVal(event)" />
   <script>
     function changVal(e) {
       console.log('e:', e)
@@ -87,8 +92,8 @@
   </script>
 
 
-  <script src="../lib/jquery@3.3.1.min.js"></script>
-  <hr>
+  <script src="../lib/jquery/jquery-3.7.1.min.js"></script>
+  <hr />
   <h2>jQ的this和e</h2>
   <div class="latest">
     <ul>
@@ -119,7 +124,7 @@
     })
   </script>
 
-  <hr>
+  <hr />
   <div class="el">元素el
     <span>子元素</span>
   </div>
@@ -150,9 +155,7 @@
       console.log('---- 分割线 ----\n\n\n');
     }
     // 更常见的用法, 给回调传数据
-    $('.el_2').click({
-      msg: '传的数据'
-    }, callback2)
+    $('.el_2').click({ msg: '传的数据' }, callback2)
   </script>
 </body>
 
