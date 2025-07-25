@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>始终保持一张图片的清晰度</title>
+  <style>
+    img {
+      width: 50vw;
+      height: 50vw;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 改动原始尺寸和样式尺寸, 保证等式成立就可以保证清晰度 -->
+
+
+  <!-- 样式尺寸不!!!固定
+    srcset写多个值, set集合
+    字符串格式, 逗号隔开, 几x是指定DPR是几则匹配哪个
+
+    sizes表示不同的情况下, 样式尺寸是多少
+    使用媒体查询, () 后面的尺寸 表示这张图片在页面中最终显示的 期望宽度 为 多少px
+
+    比如视口是969px, 满足第4个媒体查询, 样式尺寸给了50vw, 期望宽度给了400px, DPR是1, 400px*1=400px, 匹配450w的那张图
+    比如视口是310px, 满足第2个媒体查询, 样式尺寸给了50vw, 期望宽度给了200px, DPR是4, 200px*4=800px, 匹配750w的那张图
+  占位 -->
+  <img srcset="
+    https://picsum.photos/id/93/150 150w,
+    https://picsum.photos/id/93/300 300w,
+    https://picsum.photos/id/93/450 450w,
+    https://picsum.photos/id/93/750 750w,
+    https://picsum.photos/id/93/900 900w,
+    https://picsum.photos/id/93/1500 1500w,
+  " sizes="
+    (max-width: 300px) 100px,
+    (max-width: 600px) 200px,
+    (max-width: 900px) 300px,
+    (max-width: 1200px) 400px,
+  " alt="">
+
+  <div>
+    <!-- 浏览器可缩放, 操作系统也可以缩放 -->
+    <button onclick="console.log(window.devicePixelRatio);">打印DPR</button>
+  </div>
+
+</body>
+
+</html>
