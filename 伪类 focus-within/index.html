@@ -6,17 +6,51 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>伪类 focus-within</title>
-  <link rel="stylesheet" type="text/css" href="../global/global.css" />
-  <link rel="stylesheet" href="css/index.css">
+  <title>伪类 :focus-within</title>
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
-  <section>
-    <div class="wrapper">
+  <div class="container">
+    <div class="wrap">
       <input type="text">
     </div>
-  </section>
+  </div>
+
+
+  <div class="af">
+    <div><span>姓名</span></div>
+    <div><span>地址</span></div>
+    <div><span>电话</span></div>
+  </div>
+
+
+  <div class="center">
+    <!-- 这个form元素结构可以当作最简且最佳 -->
+    <div class="form-container">
+      <div class="form-block">
+        <label class="label">
+          <span>姓名</span>
+          <input type="text" class="txt" data-required>
+        </label>
+      </div>
+      <div class="form-block">
+        <label class="label">
+          <span>地址</span>
+          <input type="text" class="txt">
+        </label>
+      </div>
+      <div class="form-block">
+        <label class="label">
+          <span>电话</span>
+          <input type="text" class="txt">
+        </label>
+      </div>
+      <div class="form-submit">
+        <button class="btn">提交</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 

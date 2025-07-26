@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.wrap { padding: 20px; margin: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); transition: box-shadow 0.5s; }
+
+.wrap:focus-within { box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
+
+/* 伪元素 ::after */
+.af span::after { content: '*'; color: #f40; }
+
+.center { display: flex; justify-content: center; }
+
+.form-container .form-block { transition: 0.5s; /* : focus-within 自身聚焦或自身后代元素聚焦, 都能够选中 */ /* :has 伪类 + 相邻的下一个兄弟元素 [] 属性选择器 ::after 伪元素 */ }
+
+.form-container .form-block:focus-within { background-color: #ccc; }
+
+.form-container .form-block .label { display: flex; padding: 10px 40px; height: 26px; }
+
+.form-container .form-block .label span { display: block; line-height: 26px; width: 60px; }
+
+.form-container .form-block .label input { width: 300px; outline: none; border: none; border: solid 2px #ccc; border-radius: 4px; }
+
+.form-container .form-block .label input:focus { border-color: deepskyblue; }
+
+.form-container .form-block .label span:has( + input[data-required])::after { content: '*'; color: #f40; }
+
+.form-container .form-submit { padding: 10px 40px; }
+
+.form-container .form-submit .btn { outline: none; border: none; margin: 0; padding: 0; background-color: deepskyblue; color: #fff; border-radius: 2px; box-shadow: 0 0 4px rgba(0, 191, 255, 0.8); cursor: pointer; width: 100px; height: 26px; line-height: 26px; margin-left: 60px; }

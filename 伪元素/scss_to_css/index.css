@@ -1,0 +1,24 @@
+@charset "UTF-8";
+p.ying_wen::first-letter, p.zhong_wen::first-letter { color: red; font-size: 2rem; font-weight: bold; }
+
+p.duohang { line-height: 2; font-size: 1.2em; color: #333; /* ::selection 伪元素 */ }
+
+p.duohang::first-letter { text-transform: uppercase; font-size: 4em; float: left; line-height: 1; margin-right: 10px; }
+
+p.duohang::selection { background-color: #000; color: #fff; text-decoration: underline; }
+
+p.duohang_en::first-line, p.duohang_zh::first-line { color: deepskyblue; }
+
+div.duohang_en::selection { color: deeppink; background-color: limegreen; /* 不是所有属性都有效, 通常颜色可以 */ }
+
+div.bfo::before { content: 'before伪元素'; color: deeppink; }
+
+/* before和after这两个伪元素都是行盒 */
+div.aft::after { content: 'after伪元素'; color: deepskyblue; }
+
+.chui_xu span::before { content: "《"; color: red; }
+
+.chui_xu span::after { content: "》"; color: red; }
+
+/* marker伪元素, 默认是黑色圆点 */
+.newsList li::marker { color: red; }

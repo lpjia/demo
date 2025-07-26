@@ -7,57 +7,24 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>伪元素 2个冒号</title>
-  <style>
-    p.ying_wen::first-letter,
-    p.zhong_wen::first-letter {
-      color: red;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    p.duohang_en::first-line,
-    p.duohang_zh::first-line {
-      color: deepskyblue;
-    }
-
-    div.duohang_en::selection {
-      color: deeppink;
-      background-color: limegreen;
-      /* 不是所有属性都有效, 通常颜色可以 */
-    }
-
-    div.bfo::before {
-      content: 'before伪元素';
-      color: deeppink;
-    }
-
-    /* before和after这两个伪元素都是行盒 */
-    div.aft::after {
-      content: 'after伪元素';
-      color: deepskyblue;
-    }
-
-    .chui_xu span::before {
-      content: "《";
-      color: red;
-    }
-
-    .chui_xu span::after {
-      content: "》";
-      color: red;
-    }
-
-    /* marker伪元素, 默认是黑色圆点 */
-    .newsList li::marker {
-      color: red;
-    }
-  </style>
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
 
   <p class="ying_wen">Lorem ipsum dolor sit amet consectetur.</p>
   <p class="zhong_wen">王迷己己主保了，他。</p>
+  <!-- 这里首个单词的首字母是小写, 使用css样式变为了大写 -->
+  <p class="duohang">lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis beatae quod
+    veritatis dolorum
+    quae consectetur debitis harum voluptas, nulla alias aut mollitia. Commodi sit quia possimus eaque voluptatem.
+    Minima ex quidem, ad labore quas voluptatum, quaerat laudantium laboriosam, fugiat exercitationem molestiae dolores
+    sunt optio
+    cupiditate, nobis placeat optio quod, labore et eum totam dignissimos tempore a nesciunt laboriosam rerum repellat.
+    Quasi ut ducimus similique iste nisi provident sint esse laboriosam eos nobis exercitationem, enim quia dicta et
+    doloribus, sequi eaque aspernatur dignissimos maxime ab magni? Delectus quos doloribus aliquam nulla saepe, magnam
+    nemo labore a veritatis dolorem reprehenderit exercitationem neque totam animi, minus obcaecati voluptates quisquam
+    facilis quas tempore! Debitis harum nulla similique.</p>
   <p class="duohang_en">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis beatae quod veritatis dolorum
     quae consectetur debitis harum voluptas, nulla alias aut mollitia. Commodi sit quia possimus eaque voluptatem.
     Minima ex quidem, ad labore quas voluptatum, quaerat laudantium laboriosam, fugiat exercitationem molestiae dolores
