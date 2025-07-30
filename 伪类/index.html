@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>伪类 1个冒号</title>
   <link rel="stylesheet" href="../common/mtr.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="scss_to_css/index.css">
 </head>
 
 <body>
@@ -24,9 +24,7 @@
     </ul>
     <hr>
     <ul class="di_yi_ge_zi_yuan_su">
-      <!-- 这时候:first-child匹配的第一个子元素(是p元素), 
-      但不是li元素, 所以li:first-child其实没匹配上任何一个元素 -->
-      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <p>这是个p元素。作为对比, 这时候:first-child匹配的第一个子元素是p元素, 但不是li元素, 所以li:first-child其实没匹配上任何一个元素</p>
       <li>00001</li>
       <li>00002</li>
       <li>00003</li>
@@ -37,8 +35,7 @@
 
     <h3>:first-of-type</h3>
     <ul class="di_yi_ge_type_zi_yuan_su">
-      <!-- 这时候li:first-of-type匹配的第一个该类型的子元素(肯定是li元素) -->
-      <p>鲜磊帝他不升句订愿却往畴与承，选那谢拿。</p>
+      <p>这是个p元素。这时候li:first-of-type匹配的第一个该类型的子元素(肯定是li元素)</p>
       <li>00001</li>
       <li>00002</li>
       <li>00003</li>
@@ -52,8 +49,6 @@
 
     <h3>:last-of-type</h3>
     <hr>
-
-    <h2>带nth的都有(xxx)</h2>
 
     <h3>:nth-child(n)</h3>
     <ul class="di_ji_ge_zi_yuan_su">
@@ -105,6 +100,7 @@
     </ul>
     <hr>
 
+    <!-- 暂时放这里, 多了就单独拿出来 -->
     <h3>:not()</h3>
     <h4>选择器1:not(选择器2)</h4>
     <ul class="not_zi_yuan_su">
