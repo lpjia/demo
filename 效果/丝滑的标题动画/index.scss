@@ -27,9 +27,12 @@ body {
     justify-content: center;
 
     span {
-      text-shadow: 1px 1px #533d4a, 2px 2px #533d4a,
-        3px 3px #533d4a, 4px 4px #533d4a,
-        5px 5px #533d4a, 6px 6px #533d4a;
+      text-shadow: 1px 1px #533d4a,
+        2px 2px #533d4a,
+        3px 3px #533d4a,
+        4px 4px #533d4a,
+        5px 5px #533d4a,
+        6px 6px #533d4a;
       transform: skew(-10deg);
       animation: move 1s cubic-bezier(0.46, 0.04, 0.62, 1.54) var(--delay) forwards;
       opacity: 0;
