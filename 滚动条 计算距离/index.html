@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>滚动条 计算距离</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      position: fixed;
+      padding: 2px 4px;
+    }
+
+    #scrollTop {
+      left: 10px;
+      bottom: 10px;
+    }
+
+    #divInnerScrollTop {
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .container {
+      height: 1000px;
+      overflow-y: scroll;
+      margin: 200px 0;
+      border: 2px solid deepskyblue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+  </div>
+  <!-- 获取滚动条位置 滚动到哪了 -->
+  <button id="scrollTop">读 scrollTop</button>
+  <button id="divInnerScrollTop">div内部读 scrollTop</button>
+
+  <script>
+    const container = document.querySelector('.container')
+    // 创建文档片段
+    let frag = document.createDocumentFragment()
+    for (let index = 0; index < 1000; index++) {
+      let li = document.createElement('li')
+      li.textContent = index
+      frag.appendChild(li)
+    }
+    container.appendChild(frag)
+
+    const scrollTop = document.querySelector('#scrollTop')
+    scrollTop.onclick = () => {
+      /* 整个html滚动位置
+      document.documentElement获取根元素, 推荐
+      不能用document.body.scrollTop, 永远为0 */
+      let scrollTop = document.documentElement.scrollTop
+      console.log('scrollTop:', scrollTop)
+    }
+
+    const divInnerScrollTop = document.querySelector('#divInnerScrollTop')
+    divInnerScrollTop.onclick = () => {
+      /* 某元素内滚动位置 */
+      let scrollTop = container.scrollTop
+      console.log('div scrollTop:', scrollTop)
+    }
+  </script>
+</body>
+
+</html>
