@@ -6,7 +6,7 @@ const path = require('node:path')
 
 /* 返回 解析为绝对路径 */
 const targetPath = path.resolve(__dirname, './one')
-// d:\demo\node_fs_new\one
+// d:\demo\node_fs\one
 
 
 /* 返回 读取目录的内容, 包括文件和文件夹
@@ -20,7 +20,7 @@ files.forEach((file) => {
   /* 获取文件信息 */
   const stats = fs.statSync(targetPath + '/' + file)
   // console.log(stats)
-  // console.log(targetPath + '/' + file) // d:\demo\node_fs_new\one/oneFile.js
+  // console.log(targetPath + '/' + file) // d:\demo\node_fs\one/oneFile.js
 
 
   /* 是不是文件夹 */
