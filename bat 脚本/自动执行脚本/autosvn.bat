@@ -4,31 +4,33 @@
 
 @echo author: lpjia
 
+@echo autosvn.bat
+
 @echo =========================
 
-rem SVNå®‰è£…ç›®å½•
+rem SVN°²×°Ä¿Â¼
 set svn_home=C:\z_software\SVN\bin
 
-rem SVNå·¥ä½œç›®å½•
+rem SVN¹¤×÷Ä¿Â¼
 set svn_work=C:\items_zj
 
-rem SVNæ—¥å¿—ç›®å½•, æ‰§è¡Œå®Œä¼šç”Ÿæˆæ—¥å¿—
+rem SVNÈÕÖ¾Ä¿Â¼, Ö´ĞĞÍê»áÉú³ÉÈÕÖ¾
 set setup_path=D:\
 
-:: æ—¥å¿—å
+:: ÈÕÖ¾Ãû
 set log_name=autoUpdate
 
-@echo æ­£åœ¨æ›´æ–°ç›®å½• %svn_work%
+@echo ÕıÔÚ¸üĞÂÄ¿Â¼ %svn_work%
 
 if exist %svn_work% GOTO :gengxin else GOTO :MK
 
 :MK
 
-@echo è¯·æ£€æŸ¥æ‚¨çš„å·¥ä½œç›®å½•æ˜¯å¦æ­£ç¡®
+@echo Çë¼ì²éÄúµÄ¹¤×÷Ä¿Â¼ÊÇ·ñÕıÈ·
 
 echo & pause GOTO :END
 
-@echo æ›´æ–°å®Œæˆé€€å‡º
+@echo ¸üĞÂÍê³ÉÍË³ö
 
 goto :END
 
@@ -42,10 +44,10 @@ if exist "%setup_path%"\%log_name%.log (echo update:   %svn_work%   %date% %time
 
 "%svn_home%"\TortoiseProc.exe/command:update /path:"%svn_work%" /notempfile /closeonend:1
 
-:: å»¶æ—¶, å•ä½æ˜¯ç§’
+:: ÑÓÊ±, µ¥Î»ÊÇÃë
 choice /t 10 /d y /n >nul
 
-:: æ‰“å¼€æ—¥å¿—
+:: ´ò¿ªÈÕÖ¾
 start %setup_path%\%log_name%.log
 
 exit

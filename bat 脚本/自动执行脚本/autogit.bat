@@ -4,6 +4,8 @@
 
 @echo author: lpjia
 
+@echo autogit.bat
+
 @echo =========================
 
 
