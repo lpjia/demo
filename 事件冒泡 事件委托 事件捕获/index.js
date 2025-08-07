@@ -82,12 +82,11 @@ window.onload = function () {
 
 
   // 原生 事件委托
-  function random(number) {
+  function generateRandom(number) {
     return Math.floor(Math.random() * number);
   }
-  function bgChange() {
-    const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
-    return rndCol;
+  function generateRandomBg() {
+    return `rgb(${generateRandom(255)}, ${generateRandom(255)}, ${generateRandom(255)})`;
   }
   const container = document.querySelector("#container");
   let frag = document.createDocumentFragment();
@@ -100,13 +99,15 @@ window.onload = function () {
   container.addEventListener("click", function (e) {
     // 事件对象 e 的 target 属性始终是事件刚刚发生的元素
     console.log('e.target:', e.target) // .tile的dom元素
+    /* 想找某元素, 就找该元素的特征, 比如dataset、tagName、className、 */
+    // e.target.tagName === 'LI' // 标签名是大写
 
     // e.currentTarget 获取处理这个事件的元素
     console.log('e.currentTarget:', e.currentTarget) // #container的dom元素
 
     // console.log('e:', e)
     // console.log('this:', this) // 谁监听(注册addEventListener), this就指向谁
-    e.target.style.backgroundColor = bgChange();
+    e.target.style.backgroundColor = generateRandomBg();
 
     // 2023-07-01 15:23 星期六
     /* 看demo的王者荣耀英雄列表, 里面有复杂点的事件委托
