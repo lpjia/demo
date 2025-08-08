@@ -1,25 +1,4 @@
 
-交错排列的文字
-滚动条 计算距离
-bat 脚本
-
-
-css 翻转 对称 镜像 旋转
-丝滑的标题动画
-
-阴影
-vite-vue3/*
-动画
-ts_project
-请求 一堆文件改了名字
-data_URL 上传图片并预览
-
-事件委托
-符号绑定
-布局, 多个布局文件夹
-
-
-
 学习 mocha 自动化测试/*
 OCR/*
 
@@ -30,64 +9,27 @@ OCR/*
 请求 fetch 异步await/*
 
 
-禁止打开F12调试工具/*
-
-
-
-
-
-
-// 2025-07-15 21:11 星期二
-
-
-始终保持一张图片的清晰度/*
-
-
-commonJS 语法/*
-面试题/*
-
-
-请求/*
-
-
-img 样式知识/*
-
-
-事件对象event/*
-函数防抖/*
-
-
-
-css 翻转 对称 镜像 旋转/*
-
-
-css 通过 @import 引入/*
-
+// 2025-08-07 21:55 星期四
 
 
 react/*
 
 
-
 7010端口是koa2
-7001端口是
+7001端口是egg
 
 
 
 git commit '' -m '2025'
-git commit '' -m '202507'
-git commit '' -m '202507'
-git commit '' -m '202507'
-git commit '' -m '202507'
-git commit 'css笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '20250716'
-
-
+git commit '' -m '202508'
+git commit '' -m '202508'
+git commit '事件冒泡 事件委托 事件捕获/*' -m '20250807'
 
 
 
 git commit '' -m '2025'
 
-git commit 'css笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '2025'
+git commit 'TS笔记.md' 'css笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '20250808'
 
 git add 'generator生成器/*'
 

@@ -207,7 +207,7 @@ span、div等, 表示选中所有该元素
 3) :hover 鼠标悬停状态
 4) :active 激活状态, 鼠标按下状态
 
-巧记: 爱恨原则
+巧记: 爱恨原则 love(l v) hate(h a)
 
 7. 伪元素选择器
 
@@ -651,38 +651,55 @@ z-index可以是负数, 如果是负数, 则遇到常规流、浮动元素, 则�
 
 ## 更多伪类选择器
 
-1. first-child
+1. :first-child
 
 选择第一个子元素
 
 first-of-type, 选中子元素中第一个指定类型的元素
 
-2. last-child
+2. :last-child
 
 last-of-type
 
-3. nth-child
+3. :nth-child()
 
 选中指定的第几个子元素
 
 even: 关键字, 等同于2n
 odd: 关键字, 等同于2n+1
 
-4. nth-of-type
+4. :nth-of-type()
 
 选中指定的子元素中第几个某类型的元素
 
-## 更多的伪元素选择器
+5. :focus-within
 
-1. first-letter
+自身聚焦或自身后代元素聚焦, 都能够选中
+
+6. :not()
+
+> 选择器1:not(选择器2, 选择器3等)
+
+选中选择器1里面不包括选择器2 选择器3等
+
+7. :has()
+
+> 选择器1:has(选择器2, 选择器3等)
+
+选中选择器1里面包括选择器2 选择器3等
+
+
+## 更多伪元素选择器
+
+1. ::first-letter
 
 选中元素中的第一个字母(中文就是第一个汉字)
 
-2. first-line
+2. ::first-line
 
 选中元素中的第一行的文字(始终选择, 不管怎么变)
 
-3. selection
+3. ::selection
 
 选中被用户框选的文字
 
@@ -750,3 +767,68 @@ background-size: auto auto; 默认
 通常用它控制背景图是否固定
 
 6. 背景图和背景颜色混用
+
+
+
+# 文字
+
+## text-align 文字对齐
+
+水平方向的
+
+## text-shadow 文字阴影
+
+值参考box-shadow
+
+box-shadow是盒子阴影
+
+## text-transform 文字转换 文本大小写
+
+none 初始值
+uppercase 全大写
+lowercase 全小写
+capitalize 单词首字母大写
+
+## text-stroke 文字描边
+
+-webkit-text-stroke
+
+是简写, 值有粗细和颜色
+
+none 初始值
+
+## text-decoration 文字装饰
+
+是简写, 值有装饰线(line)、粗细、颜色、线的类型(style)
+
+装饰线分
+none 初始值
+underline 下划线
+line-through 删除线
+overline 上划线
+
+线的类型分
+solid 实线, 初始值
+dashed 虚线
+dotted 点线
+wavy 波浪线
+
+
+# 滤镜模糊
+
+## filter: blur(3px);
+
+元素自身变模糊, 背后的东西不模糊
+
+## backdrop-filter: blur(3px);
+
+元素背后的东西变模糊, 元素自身不模糊
+
+数值越大越模糊
+
+# 不知道命名
+
+## mix-blend-mode 混合模式
+
+screen混合模式, 国内称为“滤色”, 有些翻译为“屏幕”
+multiply混合模式, 国内称为“正片叠底”, 有些翻译为“相乘”
