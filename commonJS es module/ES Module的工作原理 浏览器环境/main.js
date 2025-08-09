@@ -4,9 +4,10 @@ import bar from './bar.js'
 /* 动态导入语法
 import('./dynamic.js') */
 
-import('./dynamic.js').then((m) => {
-  console.log('main:', m.default)
-  console.log('m:', m)
+import('./dynamic.js').then((...args) => {
+  console.log('args:', args)
+  const m = args[0]
+  console.log('main.js:', m.default, m.mingMing)
 })
 
-console.log('main:', foo, bar)
+console.log('main.js:', foo, bar)

@@ -1,3 +1,3 @@
-console.log('bar')
+console.log('bar.js')
 
 export default 'bar'

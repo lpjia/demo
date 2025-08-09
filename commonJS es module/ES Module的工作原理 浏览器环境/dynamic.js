@@ -2,6 +2,8 @@
 
 import bar from "./bar.js";
 
-console.log('dynamic:', bar)
+console.log('dynamic.js:', bar)
+
+export const mingMing = 'ming_ming_export'
 
 export default 'dynamic'
