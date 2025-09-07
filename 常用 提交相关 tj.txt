@@ -12,24 +12,20 @@ OCR/*
 // 2025-08-07 21:55 星期四
 
 
-react/*
-
-
-7010端口是koa2
-7001端口是egg
-
-
 
 git commit '' -m '2025'
-git commit '' -m '202508'
-git commit '' -m '202508'
-git commit '事件冒泡 事件委托 事件捕获/*' -m '20250807'
+git commit '' -m '202509'
+git commit '常用 提交相关 tj.txt' -m '20250908'
+
+
+
+git commit 'MCP 前置知识/*' -m '20250818'
 
 
 
 git commit '' -m '2025'
 
-git commit 'TS笔记.md' 'css笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '20250808'
+git commit 'TS笔记.md' 'css笔记.md' '常用 笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '20250808'
 
 git add 'generator生成器/*'
 
