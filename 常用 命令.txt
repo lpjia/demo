@@ -3,9 +3,8 @@ net start mysql
 net stop mysql
 
 nvm use 18.14.0
-nvm use 16.14.2
-nvm use 10.24.1
 nvm ls
+nvm install 18.20.8
 
 pn dev
 pn i
