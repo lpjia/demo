@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>脚本加载失败如何重试</title>
+  <!-- 3. 使用事件委托, 前置到head
+    事件没有触发, 原因是监控的window, 必须冒泡上来才行
+    脚本的错误不会冒泡
+  -->
+  <!-- <script>
+    window.addEventListener('error', (e) => {
+      console.log('error:', e)
+    })
+  </script> -->
+
+
+
+  <!-- 4. 使用事件委托, 前置到head, 在捕获阶段
+    事件正常触发
+    捕获的错误范围很大
+      脚本加载的错误 Event类型
+      包括js运行中的代码错误
+    比如 throw new Error('222') , console.log('error:', e)会多次打印
+      throw new Error('222')是ErrorEvent类型
+    限定错误范围, 这里只处理脚本的错误
+  -->
+  <script>
+    const backupDomainArr = [
+      '124585345.com',
+      '@$%$&*&%$.com',
+      'backup.com',
+    ]
+    let index = 0
+    const nextDomain = {} // 映射表
+    /* {
+      '/js/1.js'  0
+    } */
+
+    window.addEventListener('error', (e) => {
+      if (e instanceof ErrorEvent || e.target.tagName !== 'SCRIPT') {
+        return;
+      }
+      const url = new URL(e.target.src)
+      const pathname = url.pathname
+      // 先判断没有的
+      if (!nextDomain[pathname]) {
+        // 给不同的pathname加各自的映射关系, 没有则赋值0
+        nextDomain[pathname] = 0
+      }
+      const index = nextDomain[pathname]
+      // 终止条件, 如果已经越界了
+      if (index >= backupDomainArr.length) {
+        return;
+      }
+      const domain = backupDomainArr[index]
+      url.hostname = domain // 改url的hostname
+      const newUrl = url.toString() // 得到新的url, 是字符串
+      // 创建新的script, 加到原始script之前
+      const script = document.createElement('script')
+      script.src = newUrl
+      e.target.parentElement.insertBefore(script, e.target) // e.target的父元素里面, 添加到e.target的前面, 也就是增加一个兄弟元素
+      nextDomain[pathname]++ // 继续增加index
+    }, true)
+  </script>
+
+</head>
+
+<body>
+
+  <!-- 不能运行, 就看代码 -->
+
+  <!-- 什么时间重试?
+    如何重试?
+  -->
+
+  <script src="http://static.com/js/1.js"></script>
+  <script src="http://abcdefg.com/js/2.js"></script>
+  <script src="http://static.com/js/3.js"></script>
+
+
+
+  <!-- 1. 可以打印出错误, 但是不够理想
+    工程化的环境, 一般是自动生成这些js, 能干预但是没必要
+    不能统一处理这类错误
+  -->
+  <!-- <script onerror="console.log(111)" src="http://static.com/js/1.js"></script>
+  <script onerror="console.log(111)" src="http://abcdefg.com/js/2.js"></script>
+  <script onerror="console.log(111)" src="http://static.com/js/3.js"></script> -->
+
+
+
+  <!-- 2. 使用事件委托
+    事件没有触发
+  -->
+  <!-- <script src="http://static.com/js/1.js"></script>
+  <script src="http://abcdefg.com/js/2.js"></script>
+  <script src="http://static.com/js/3.js"></script>
+  <script>
+    // 当运行到这行代码时, 前面的script已经加载失败了, 来不及监听了
+    window.addEventListener('error', (e) => {
+      console.log('error:', e)
+    })
+  </script> -->
+
+</body>
+
+</html>
