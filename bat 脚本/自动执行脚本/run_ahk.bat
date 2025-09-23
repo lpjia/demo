@@ -12,6 +12,6 @@
 
 timeout /t 10 /nobreak >nul
 
-start C:\hot_key.ahk
+start C:\z_software\hot_key.ahk
 
 exit

@@ -5,4 +5,4 @@ WScript.Sleep 10000 ' 延时, 单位是毫秒
 
 set ws=WScript.CreateObject("WScript.Shell")
 
-ws.Run "C:\hot_key.ahk",0
+ws.Run "C:\z_software\hot_key.ahk",0
