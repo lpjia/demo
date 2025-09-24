@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "tsx watch ./src/app.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^24.5.2",
+    "fastify": "4"
+  },
+  "devDependencies": {
+    "tsx": "3"
+  }
+}
