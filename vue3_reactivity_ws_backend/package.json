@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "@types/ws": "^8.18.1",
-    "tsx": "^4.19.4"
+    "tsx": "4"
   }
 }
