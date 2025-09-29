@@ -30,6 +30,27 @@ console.log('---- 分割线 ----\n\n\n')
 
 
 
+/* 从最前面取几个字符 substring(0, 几)
+从第几个开始取 substring(0, 几 - 1)
+
+
+常用的处理有 日期 时间
+对于YYYY-MM-DD hh:mm:ss这种时间格式,统一用这个
+日期长度是10, 时间长度是8
+str.substring(0, 10)
+str.substring(11)
+*/
+const strTime = '2023-02-22 12:24:36'
+console.log(
+  strTime.substring(0, 10) // 日期
+)
+console.log(
+  strTime.substring(11) // 时分秒
+)
+console.log('---- 分割线 ----\n\n\n')
+
+
+
 // 字符串没有固定长度, 比如取文件名(不带后缀)
 // 找准某个截取点的索引
 const fileName = 'sjghkhakg.xml'
@@ -47,22 +68,4 @@ console.log(
   // 不带.点
   fileName.substring(fileName.lastIndexOf('.') + 1), // xml
   fileName2.substring(fileName2.lastIndexOf('.') + 1), // scss
-)
-console.log('---- 分割线 ----\n\n\n')
-
-
-
-
-/* 常用的处理有 日期 时间
-对于YYYY-MM-DD hh:mm:ss这种时间格式,统一用这个
-日期长度是10, 时间长度是8
-str.substring(0, 10)
-str.substring(11)
-*/
-const strTime = '2023-02-22 12:24:36'
-console.log(
-  strTime.substring(0, 10) // 日期
-)
-console.log(
-  strTime.substring(11) // 时分秒
 )
