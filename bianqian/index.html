@@ -196,6 +196,13 @@
       <p>skew 倾斜, 盒子都变倾斜了, 和旋转还不一样</p>
 
 
+      <!-- css 方法 -->
+      <p>calc() 计算</p>
+      <p>url() 背景图常用</p>
+      <p>var() css变量</p>
+      <p>clamp() 夹</p>
+
+
       <!-- 动画 -->
       <p>transition 过渡</p>
       <p>animation 动画</p>
@@ -225,6 +232,7 @@
       <!-- flex -->
       <p>flex-grow 伸展</p>
       <p>shrink 收缩</p>
+      <p>flex-basis 自身内容尺寸 默认值auto</p>
       <p>flex-wrap 换行</p>
       <p>stretch 拉伸</p>
       <p>evenly 均匀 justify-content: space-evenly; 两边和子项间距都一样</p>
@@ -245,11 +253,11 @@
       <!-- new String(123) instanceof String -->
       <p>instanceof 实例 (必须是对象才可以, 字面量不行, 得包装一层)</p>
       <p>typeof 类型, typeof 456</p>
-      <p>extends 继承</p>
+      <p>extends 继承(复数) extend</p>
       <p>constructor 构造器</p>
       <p>anonymous 匿名</p>
       <p>append 添加, 附加</p>
-      <p>entries 条目 一般用来遍历map结构(obj和Map), 项是[k, v]</p>
+      <p>entries 条目 Entries 一般用来遍历map结构(obj和Map), 项是[k, v]</p>
       <p>referrer 来源, 来路</p>
       <p>reference 引用</p>
       <p>assign 分配</p>
@@ -273,6 +281,10 @@
       <!-- 字符串和数组都有这个方法, 返回 子串/子数组 -->
       <p>concat 拼接字符串, 连接合并数组</p>
       <!-- 字符串和数组都有这个方法, 返回 新数组 -->
+
+      <p>domain 域名</p>
+      <p>host 主机</p>
+      <!-- hash 哈希 -->
 
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
@@ -337,6 +349,7 @@
 
 
       <!-- vue -->
+      <p>ref 引用</p>
       <p>track 追踪</p>
       <p>trigger 触发</p>
       <p>dep 依赖 deps(复数) dependence</p>
@@ -398,11 +411,12 @@
       <!-- 请求 -->
       <p>network 网络</p>
       <p>request 请求 req</p>
-      <p>response 响应 resp</p>
+      <p>response 响应 res resp</p>
       <p>raw 未加工的, 原始的</p>
       <p>parse 解析</p>
       <p>payload 有效载荷</p>
       <p>token 令牌, 词元(大模型用的)</p>
+      <p>Initiator 发起人</p>
 
 
       <!-- 重排, 本质是重新计算 layout 树
@@ -462,30 +476,8 @@
       <p>prev 上一个</p>
       <p>next 下一个</p>
 
-
-      <!-- 大小写等转换 -->
-      <p>camel 小驼峰</p>
-      <p>snake 下划线</p>
-      <p>constant 常量, XX_XX这种</p>
-      <p>kebab 横线</p>
-      <p>pascal 大驼峰</p>
-      <p>upper 全部字母大写</p>
-      <p>lower 全部字母小写</p>
-      <p>dot 点</p>
-      <!-- 自己命名的工具函数 -->
-      <p>toLowerCase 全小写字母</p>
-      <p>toUpperCase 全大写字母</p>
-      <p>toUnderlineCase 加下划线</p>
-      <!-- hump 驼峰 -->
-      <p>toSmallHump 小驼峰</p>
-      <p>toBigHump 大驼峰</p>
-
-
-      <!-- 组件 -->
-      <p>component 组件 comp</p>
-      <p>popper 弹层</p>
-      <p>popover 弹出框</p>
-      <p>modal 模态框</p>
+      <p>increase 加</p>
+      <p>decrease 减</p>
 
 
       <!-- 容易记错 易错 一组词 -->
@@ -521,6 +513,31 @@
       <p>shallow 浅的</p>
 
 
+      <!-- 大小写等转换 -->
+      <p>camel 小驼峰</p>
+      <p>snake 下划线</p>
+      <p>constant 常量, XX_XX这种</p>
+      <p>kebab 横线</p>
+      <p>pascal 大驼峰</p>
+      <p>upper 全部字母大写</p>
+      <p>lower 全部字母小写</p>
+      <p>dot 点</p>
+      <!-- 自己命名的工具函数 -->
+      <p>toLowerCase 全小写字母</p>
+      <p>toUpperCase 全大写字母</p>
+      <p>toUnderlineCase 加下划线</p>
+      <!-- hump 驼峰 -->
+      <p>toSmallHump 小驼峰</p>
+      <p>toBigHump 大驼峰</p>
+
+
+      <!-- 组件 -->
+      <p>component 组件 comp</p>
+      <p>popper 弹层</p>
+      <p>popover 弹出框</p>
+      <p>modal 模态框</p>
+
+
       <!-- mysql -->
       <p>flush_privileges 刷新权限 FLUSH_PRIVILEGES</p>
       <p>access_denied 拒绝访问 ACCESS_DENIED</p>
@@ -549,11 +566,10 @@
       <p>unique 唯一的 UNIQUE</p>
       <p>constraint 约束 CONSTRAINT</p>
       <p>distinct 消除重复行 DISTINCT</p>
-      <p>exists 存在 EXISTS(复数)</p>
+      <p>exists 存在(复数) EXISTS(大写)</p>
       <p>Packet 数据包</p>
       <p>comment 注释 COMMENT</p>
       <p>incorrect 不正确的, 不合规的</p>
-
 
 
       <!-- ORM -->
@@ -631,10 +647,12 @@
       <!-- github -->
       <p>issue 提问, 念1ʃu</p>
       <p>archive 存档, 也就是不再维护了</p>
+      <p>Public_archive 公共档案</p>
       <p>chore 例行工作, 日常事务</p>
       <p>release 发行</p>
       <p>inactive 不活跃的</p>
       <p>fix 修复</p>
+      <p>feature 特性 feat</p>
 
 
       <!-- 算法 -->
@@ -684,7 +702,7 @@
       <p>invalid 无效的 Invalid</p>
 
 
-      <!-- npm pnpm nvm -->
+      <!-- npm pnpm nvm volta -->
       <p>deprecated 弃用</p>
       <p>uglify 混淆</p>
       <p>peerDependencies 对等依赖</p>
@@ -697,6 +715,10 @@
       <p>Extracting 正在提取</p>
       <p>refuse 拒绝</p>
       <p>untouched 未改动的</p>
+      <p>activate 激活</p>
+      <p>pin 固定</p>
+      <p>image 镜像</p>
+      <p>toolchain 工具链</p>
 
 
       <!-- webpack -->
@@ -705,10 +727,7 @@
       <p>bundle 打包, 打包文件, 捆绑包</p>
 
 
-      <!-- 还没想到分组 -->
-      <p>factory 工厂</p>
-      <p>abbr 缩写</p>
-      <p>addition 附加</p>
+      <!-- 操作系统 -->
       <p>directory 目录</p>
       <!-- 程序运行需要内存空间, 简单理解那就是进程
         而负责运行代码的就是线程, 俗称干活的人
@@ -716,6 +735,9 @@
       <p>Process 进程</p>
       <p>Thread 线程</p>
       <!-- ThreadLocal 线程 -->
+      <p>child_process 子进程</p>
+      <p>spawn 孕育</p>
+      <p>Roaming 漫游</p>
 
 
       <!-- 电报 -->
@@ -725,10 +747,28 @@
       <p>mutual 相互的</p>
       <p>restricted 受限制的 </p>
       <p>mute 静音</p>
-      <p>reply 回复</p>
+      <p>reply 回复, 回应</p>
       <p>forward 转发</p>
       <p>subscriber 订阅者, 用户</p>
       <p>permanently 永久的</p>
+
+
+      <!-- chrome调试工具, 单词之间加下划线是为了不冲突 -->
+      <!-- Sources 选项卡 -->
+      <p>top 顶层</p>
+      <p>resume 恢复执行, 直到下一个断点</p>
+      <p>step_over 跳过此行代码的执行</p>
+      <p>step_into 跳入</p>
+      <p>step_out 跳出</p>
+      <p>step 单步执行</p>
+      <p>Deactivate_breakpoints 停用断点</p>
+      <p>Scope 作用域</p>
+      <!-- Elements 选项卡 -->
+      <p>Event_Listeners 事件监听器</p>
+      <p>Ancestors 祖先</p>
+      <p>Styles 书写样式</p>
+      <p>Computed 计算后的最终样式</p>
+
 
 
       <p>batch 批, 批量</p>
@@ -847,9 +887,7 @@
       <p>tile 瓷砖块</p>
       <p>charset 字符集</p>
       <p>compose 组成</p>
-      <p>resume 中断后恢复</p>
       <p>dashboard 面板, 指示板, 类似于主界面</p>
-      <p>image 镜像</p>
       <p>package 包</p>
       <p>chain 链, 链式</p>
       <p>bucket 桶, 全家桶</p>
@@ -864,6 +902,25 @@
       <p>Annually 每年</p>
       <p>heartbeat 心跳</p>
       <p>generate 生成</p>
+      <p>result 结果(不要用什么简写)</p>
+
+      <p>factory 工厂</p>
+      <p>abbr 缩写</p>
+      <p>addition 附加</p>
+
+      <p>studio 工作室 制作室</p>
+
+      <p>comic 漫画</p>
+      <p>champion 冠军</p>
+      <p>runner_up 亚军</p>
+      <p>playoffs 季后赛</p>
+      <p>distination 目的地</p>
+      <p>register 注册</p>
+      <p>compatible 兼容的</p>
+      <p>upgrade 升级</p>
+      <p>distance 距离 dis</p>
+      <p>distribution 分发 dist vue项目打包后的目录</p>
+
 
 
       <!-- 多词 句子等

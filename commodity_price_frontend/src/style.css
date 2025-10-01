@@ -1,0 +1,8 @@
+button {
+  padding-inline: 6px;
+  padding-block: 1px;
+}
+
+button.el-picker-panel__icon-btn {
+  margin-top: 0 !important;
+}

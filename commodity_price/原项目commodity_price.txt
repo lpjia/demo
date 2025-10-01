@@ -1,0 +1,13 @@
+commodity_price_frontend
+本地环境
+5173
+
+
+commodity_price_backend
+本地环境
+7001
+
+
+数据库
+本地环境
+3306

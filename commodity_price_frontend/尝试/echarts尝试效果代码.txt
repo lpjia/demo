@@ -1,0 +1,145 @@
+option = {
+  grid: {
+    bottom: 80
+  },
+  tooltip: {
+    trigger: 'axis',
+    enterable: true,
+    // formatter: (params) => {
+    //   console.log(params);
+    //   const c = params[0].color;
+    //   const t = params[0].value[0];
+    //   const v = params[0].value[1];
+    //   const u = params[0].value[2];
+    //   const html = `${t}<br>
+    //   <span style='color:${c}'>●</span>
+    //   <span style='color:red;'>${v}</span> ${u}}<br>
+    //   <div data-val='${v}'>查看详情</div>`;
+    //   return html;
+    // }
+    formatter: (params) => {
+      console.log(params);
+      const c = params[0].color;
+      const t = params[0].name;
+      const v = params[0].value;
+      const u = params[0].data.unitName;
+      const html = `${t}<br>
+      <span style='color:${c}'>●</span>
+      <span style='color:red;'>${v}</span> ${u}<br>
+      <div data-val='${v}'>查看详情</div>`;
+      return html;
+    }
+  },
+  xAxis: {
+    type: 'category',
+    // data: props.data.xdata,
+    data: [
+      '2024-01-01',
+      '2024-02-02',
+      '2024-02-09',
+      '2024-03-02',
+      '2024-03-12',
+      '2024-04-02',
+      '2024-05-02'
+    ],
+
+    axisLabel: {
+      interval: 0,
+      rotate: -40
+    },
+    axisTick: {
+      alignWithLabel: true
+    },
+    axisLine: {
+      symbol: ['none', 'arrow']
+    }
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      // data: props.data.ydata,
+      // data: [150, 230, 224, 218, 135, 147, 260],
+      // data: [
+      //   ['2020-05-11', 12.6, '元/kg'],
+      //   ['2020-05-12', 3.3, '元/kg'],
+      //   ['2020-05-13', 23.8, '元/kg'],
+      //   ['2020-05-15', 13.4, '元/kg']
+      // ],
+      data: [
+        {
+          value: 820,
+          buyTime: '2024-01-01',
+          price: 820,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 901,
+          buyTime: '2024-02-02',
+          price: 901,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 934,
+          buyTime: '2024-02-09',
+          price: 934,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 1290,
+          buyTime: '2024-03-02',
+          price: 1290,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 1330,
+          buyTime: '2024-03-12',
+          price: 1330,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 1320,
+          buyTime: '2024-04-02',
+          price: 1320,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        },
+        {
+          value: 932,
+          buyTime: '2024-05-02',
+          price: 932,
+          unitName: '元/kg',
+          spec: '',
+          note: ''
+        }
+      ],
+      label: {
+        show: true,
+        formatter: (param) => {
+          // console.log(param);
+          return param.data[1];
+        },
+        color: 'red'
+      },
+      type: 'line',
+      lineStyle: {
+        color: 'deepskyblue' //折线的颜色
+      },
+      itemStyle: {
+        color: 'deepskyblue' //圆的颜色
+      }
+    }
+  ]
+};
