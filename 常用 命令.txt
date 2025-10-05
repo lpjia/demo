@@ -21,3 +21,4 @@ net stop mongodb
 
 rimraf node_modules
 rimraf '**/node_modules'
+pnpx rimraf node_modules
