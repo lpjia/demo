@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
+    "dev:net": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "clean": "rimraf node_modules"

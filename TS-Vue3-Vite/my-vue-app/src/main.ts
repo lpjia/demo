@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 // import './style.css'
-import '@/styles/index.scss';
+// import '@/styles/index.scss';
 // import App from './components/10-App.vue'
-// import App from '@/components/10-App.vue'
-import App from './App.vue'
-import router from '@/router'
-import myPinia from './stores'
+import App from '@/components/02-App.vue'
+// import App from './App.vue'
+// import router from '@/router'
+// import myPinia from './stores'
 // import { initRouter } from '@/router'
 
 // import ElementPlus from 'element-plus'
@@ -13,8 +13,8 @@ import myPinia from './stores'
 
 // import { setStorage, getStorage, removeStorage, clearStorage } from '@/utils/commonMethods.js'
 
-import Updater from '@/utils/Redeploy'
-import { ElNotification } from 'element-plus'
+// import Updater from '@/utils/Redeploy'
+// import { ElNotification } from 'element-plus'
 
 
 // console.log(process.env.NODE_ENV)
@@ -28,10 +28,10 @@ const app = createApp(App)
 // app.config.globalProperties.$removeStorage = removeStorage
 // app.config.globalProperties.$clearStorage = clearStorage
 
-// 注意顺序
-app.use(router)
+// // 注意顺序
+// app.use(router)
 // initRouter(app) // 换一种写法, 初始化路由
-app.use(myPinia)
+// app.use(myPinia)
 app.mount('#app')
 
 
@@ -56,7 +56,7 @@ app.mount('#app')
 // })
 
 // // 定一个全局的更新提示变量来存, 保证单例
-// // const Redeploy: unknown = 
+// // const Redeploy: unknown =
 
 // // class SingleNotificationInstance extends ElNotification {
 
