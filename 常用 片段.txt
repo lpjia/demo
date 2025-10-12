@@ -95,6 +95,11 @@ function (...args){
 
 
 
+win10 开机启动地址
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+
+
+
 let currTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
 
 
