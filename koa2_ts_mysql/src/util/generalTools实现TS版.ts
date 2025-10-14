@@ -6,12 +6,12 @@ interface Obj {
   [key: string]: any
 }
 
-interface Opti {
+interface Option {
   assign?: Object
   exclude?: string[]
 }
 
-export function objKeyToOrmField(obj: Obj = {}, options?: Opti) {
+export function objKeyToOrmField(obj: Obj = {}, options?: Option) {
   const newArr: object[] = []
     , newObj: Obj = {}
   Object.assign(newObj, obj)

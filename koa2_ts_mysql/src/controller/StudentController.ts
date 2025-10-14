@@ -6,6 +6,7 @@ import { File } from '../../node_modules/.pnpm/@types+formidable@1.2.5/node_modu
 import StudentService from "../service/StudentService"
 import { sendMessage } from "./fn";
 import axios from "axios";
+import dayjs from 'dayjs'
 
 
 class StudentController {
@@ -78,11 +79,12 @@ class StudentController {
       const imgTypeSet = new Set(['image/jpeg', 'image/jpg', 'image/gif', 'image/png'])
       if (!imgTypeSet.has(fileType!)) {
         /* 如需提前响应, 用return ctx.body */
-        return ctx.body = {
+        ctx.body = {
           code: 1,
           msg: '文件类型错误',
           data: null
         }
+        return;
       }
 
       // 得到扩展名, 带.
@@ -107,13 +109,14 @@ class StudentController {
       URL.revokeObjectURL(urlObj)
       urlObj = ''
 
-      return ctx.body = {
+      ctx.body = {
         code: 0,
         msg: 'success',
         data: {
           // filePath
         }
       }
+      return;
     }
 
     ctx.body = {
@@ -146,19 +149,25 @@ class StudentController {
 
         filePathList.push(filePath)
       }
+
+      ctx.body = {
+        code: 0,
+        msg: 'success',
+        data: filePathList
+      }
+      return;
     }
 
     ctx.body = {
-      code: 0,
-      msg: 'success',
-      data: filePathList
+      code: 1,
+      msg: 'error',
     }
   }
 
   /* 文本数据的流式获取, chatgpt的对话响应方式
   https://juejin.cn/post/7212270321622286394 */
   // async chatGptText(ctx: Context) {
-  chatGptText = async (ctx: Context) => { // 类字段写法
+  chatGptText = async (ctx: Context) => { // 类字段 箭头函数 写法
     // 1. 设置响应头
     ctx.set({
       'Connection': 'keep-alive',
@@ -211,6 +220,45 @@ class StudentController {
     } catch (error) {
       console.log('error:', error)
     }
+  }
+
+
+  trySSE(ctx: Context) {
+    // 1. 设置响应头
+    ctx.set({
+      'Connection': 'keep-alive',
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'text/event-stream', // 表示返回数据是个 stream
+    });
+
+    // 2. 创建流、并作为接口数据进行返回
+    const stream = new PassThrough();
+    ctx.body = stream;
+
+    // 3. 定时发送数据
+    const timer = setInterval(() => {
+      try {
+        // 标准SSE格式：data + 双换行
+        stream.write(`data: ${JSON.stringify({ time: dayjs().format('YYYY-MM-DD HH:mm:ss'), heartbeat: true })}\n\n`);
+
+        // 每5秒发送心跳注释
+        if (Date.now() % 5000 < 1000) {
+          stream.write(':ping\n\n');
+        }
+      } catch (err) {
+        clearInterval(timer);
+      }
+    }, 6000);
+
+    setTimeout(() => {
+      stream.write(`event: custom_event\nid: 最后一个事件的id值\ndata: ${JSON.stringify({ ctt: '自定义的发一次试试', once: true })}\n\n`)
+    }, 2000);
+
+    // 4. 连接关闭处理
+    ctx.req.on('close', () => {
+      clearInterval(timer);
+      stream.end();
+    });
   }
 }
 

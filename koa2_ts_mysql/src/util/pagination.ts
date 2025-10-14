@@ -1,7 +1,7 @@
 import { Model } from "sequelize-typescript"
 import { formatTime } from "./time"
 
-interface Opti {
+interface Option {
   currPage: number
   limit: number
   total: number
@@ -9,7 +9,7 @@ interface Opti {
 }
 
 // 分页统一处理
-export default function pagination<T extends Model[]>(data: T, option: Opti) {
+export default function pagination<T extends Model[]>(data: T, option: Option) {
   const { currPage, limit, total } = option
   // let dataList = data.map(item => formatTime(item)) // 多余
 

@@ -42,10 +42,12 @@ router.put('/student', StudentController.updStudent);
 router.post('/upload/single', StudentController.uploadSingle)
 router.post('/upload/multiple', StudentController.uploadMultiple)
 
-router.post('/chatgpt', StudentController.chatGptText) // 配合类字段
-// router.post('/chatgpt', StudentController.chatGptText.bind(StudentController)) // 绑定this
+/* 搜demo/this指向, 有具体案例 */
+router.post('/chatgpt', StudentController.chatGptText) // 配合类字段 箭头函数 写法
+// router.post('/chatgpt', StudentController.chatGptText.bind(StudentController)) // 重新绑定this
 // router.post('/chatgpt', ctx => StudentController.chatGptText(ctx)) // 包一层
 
+router.get('/sse', StudentController.trySSE)
 
 router.post('/bff', StudentController.tryBFF)
 
