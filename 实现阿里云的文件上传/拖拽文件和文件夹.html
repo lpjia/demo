@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        border: 1px solid;
+        width: 100%;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      const div = document.querySelector('.container');
+
+      div.ondragenter = (e) => {
+        e.preventDefault();
+      };
+      div.ondragover = (e) => {
+        e.preventDefault();
+      };
+      div.ondrop = (e) => {
+        e.preventDefault();
+        for (const item of e.dataTransfer.items) {
+          const entry = item.webkitGetAsEntry();
+          if (entry.isDirectory) {
+            // 目录
+            const reader = entry.createReader();
+            reader.readEntries((en) => {
+              console.log(en);
+            });
+          } else {
+            // 文件
+            entry.file((f) => {
+              console.log(f);
+            });
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

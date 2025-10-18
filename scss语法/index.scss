@@ -91,7 +91,7 @@ $blue-color: var(--likeColor); // 声明scss变量怎么使用css变量值?
 }
 
 /* css变量, --声明后使用var() */
-/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用${}包裹变量 */
+/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用#{}包裹变量 */
 .try {
   font-weight: #{$fontWeight};
   color: var(--likeColor);

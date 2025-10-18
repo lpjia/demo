@@ -3,6 +3,22 @@
 // 2024-03-30 14:00 星期六
 
 
+需要解决几个问题
+
+1. 部署
+1. 权限
+1. 日志
+1. egg-jwt
+egg-base-admin-api-egg
+这里有关于权限的代码
+用户表怎么设计
+第三方登录又怎么设计
+1. base64, 如果是很小的图片, 转换后的字符串也巨长, 存到数据库不适用
+存到文件服务器, 图片服务器
+本地开发就存到一个单独的文件夹来模拟文件服务器, 获取到绝对地址再存到mysql
+
+
+
 ### 修改记录
 1. UserController 尝试egg-sequelize和model来操作数据库
 1. NewsController 尝试view模版引擎
@@ -17,6 +33,9 @@
 1. GoodsService 更新数据, 考虑重名后不能改成功
 1. ClassService 类型转换、分页的数据处理放到Service层, 与GoodsController区分开
 1. ClassService 表字段, 下划线与小驼峰互转
+一般是在查数据库时, 字段名需要下划线的, 这时候前端传过来的小驼峰就得转成下划线
+处理前端传的参数, 一般是对象的key, 很少传数组, 就算传数组, 遍历数组后一样处理
+然后就是从数据库返回的字段名有下划线的, 通过中间件来转成小驼峰
 1. 中间件underlineToCamel, 把响应的下划线字段全转为小驼峰
 1. AccountController 事务, 手动控制, 成功与否, 自动控制
 1. AccountService 直接执行sql语句, 拼接来自前端传的数据, 防止sql注入

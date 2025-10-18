@@ -1,0 +1,29 @@
+{
+  "name": "electron_koa2_try",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.example.eggvue",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "main.js",
+      "backend/**/*",
+      "frontend/dist/**/*"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^37.2.4",
+    "electron-builder": "^26.0.12"
+  }
+}

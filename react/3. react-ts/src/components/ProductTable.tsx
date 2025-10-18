@@ -29,7 +29,7 @@ function ProductTable({ products, filterText, inStockOnly }: ProductTableProps) 
   const rows: JSX.Element[] = []
   let lastCategory: null | string = null
 
-  products.map((product) => {
+  products.forEach((product) => {
     /* 找不到对应的子串就跳过, 遍历下一个 */
     /* if (product.name.toLocaleLowerCase().indexOf(filterText.toLocaleLowerCase()) === -1) {
       return; // indexOf(sub_str) 找不到则返回-1。includes(sub_str) 找不到则返回false
@@ -53,17 +53,19 @@ function ProductTable({ products, filterText, inStockOnly }: ProductTableProps) 
   })
 
   return (
-    <table className={styles.tb}>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows}
-      </tbody>
-    </table>
+    <>
+      <table className={styles.tb}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </>
   )
 }
 

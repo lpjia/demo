@@ -11,10 +11,9 @@ pn i
 pn add
 pn add -D
 pn remove
+pn clean
 
 pn store prune
-
-pn clean
 
 net start mongodb
 net stop mongodb

@@ -1,0 +1,48 @@
+.tableCellGreen {
+  color: green;
+}
+
+.tableCellRed {
+  color: red;
+}
+
+.tableCell {
+  background-color: #000;
+}
+
+
+
+
+
+
+a {
+  cursor: pointer;
+}
+
+a.active {
+  /* background-color: #ed6d00; */
+  background-color: #ed6d00;
+  color: #fff;
+}
+
+a.active2 {
+  background-color: deepskyblue;
+  color: #fff;
+}
+
+a.active3 {
+  background-color: #000;
+  color: #fff;
+}
+
+a.active4 {
+  border: 1px solid deepskyblue;
+}
+
+a.color-c {
+  color: #fff;
+}
+
+a.bgColor {
+  background-color: rgb(105, 30, 30);
+}

@@ -5,7 +5,7 @@ https://www.yuque.com/moyanfs/js/qwxnnt
 
 占位 */
 
-import { formatTime } from '../utils/commonMethod.js'
+import { formatTime } from '../util/commonMethod.js'
 
 let dateObj = new Date()
   , year = dateObj.getFullYear()
@@ -41,6 +41,10 @@ console.log('date2: ', date2)
 let arr = [year, month, day]
 let date3 = formatTime(new Date(arr), 'Y-M-D')
 console.log('date3: ', date3)
+// /* 数组形式转参数形式, 作对比, 不推荐这样用 */
+// let param = Date.apply(null, arr)
+// let date4 = formatTime(param, 'Y-M-D')
+// console.log('date4: ', date4)
 
 
 /* 自动校准功能, 处理年月日等, 不用再麻烦的处理

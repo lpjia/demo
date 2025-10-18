@@ -15,13 +15,16 @@ export const setStorage = (key, val, storage = window.sessionStorage) => {
 }
 export const getStorage = (key, storage = window.sessionStorage) => {
   if (!key) return;
-  return JSON.parse(storage.getItem(key))
+  const item = storage.getItem(key)
+  return item ? JSON.parse(item) : null
 }
 export const removeStorage = (key, storage = window.sessionStorage) => {
   if (!key) return;
   storage.removeItem(key)
 }
-export const clearStorage = (storage = window.sessionStorage) => storage.clear()
+export const clearStorage = (storage = window.sessionStorage) => {
+  storage.clear()
+}
 
 
 /**

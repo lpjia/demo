@@ -1,5 +1,6 @@
 ###
-POST http://127.0.0.1:7010/api/upload/single HTTP/1.1
+POST /api/upload/single HTTP/1.1
+Host: 127.0.0.1:7010
 Content-Type: multipart/form-data; boundary=fen
 
 --fen

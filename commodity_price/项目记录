@@ -1,0 +1,301 @@
+
+
+
+Reflect.get(target, prop, receiver) 
+vue 响应式的实现
+
+
+
+
+
+
+
+id, 自增
+商品id  product_id  // 关联到商品表的商品ID, 外键
+单价  price // 商品价格（假设保留两位小数）
+折扣价  discount_price
+折扣  discount_rate
+规格  spec
+buy_time  // 价格生效的日期
+
+
+
+
+
+
+id, 自增
+商品名  product_name  花生
+别名  product_alias
+// 单价  unit_price  1.5
+// 计价单位  unit  元/kg, 元/斤, 元/g    // 和unit_map表关联, unit_id
+// 折扣价  discount_price  // 比如直接给折扣价卖东西, 那就用这个字段, 如果是打5折之类的,
+// 折扣  discount_rate 几折, 9.5折
+规格  spec  5斤装, 4.5L, 36cm, 4个, 10包, 2大瓶,
+// 商品有不同的规格该怎么办? 不知道, 先搁置
+// 规格不一样, 价格也不一样, 比如同样的一箱饮料, 有6瓶的和18瓶的
+// 只能是商品名加编号处理了, -2, 录入时以数字大的在上
+// 不同规格的怎么查历史价格? 单瓶?
+商店名  shop_name // 商店和商品是一对多的关系, 这里用shop_id 外键
+商店位置  position
+// 购买时间  buy_time    // 可以录入的时候, 时间选择当前时间, 存的话还是存时间戳, 显示可以只显示日期
+
+
+// 自动生成
+创建时间  create_time
+更新时间  update_time
+删除时间  delete_time
+// 软删除
+
+
+
+
+// 商店名和位置或地址应该是绑定的
+店和位置是一一对应的, 有可能是多对一, 暂时当作一一
+位置可能会重复, 比如2商店挨着是邻居
+
+id, 自增
+商店名  shop_name
+商店位置  position
+
+考虑用户使用时的录入
+比如我需要录入我附近的商超等
+商店名, string 长度50
+商店别名, 选填, 长度20
+
+商店位置, string 长度100
+位置别名, 选填, 长度20
+
+
+
+
+
+
+
+
+// 2024-06-28 02:55 星期五
+
+后台用eggjs来做项目
+
+
+unocss
+
+
+顺便全面学习apifox
+
+
+
+vitest
+v1版本得用vite5
+单元测试要覆盖
+等找到工作后再补充
+
+
+
+### 后台
+
+egg_try_simple
+可以有很多注释, 包括尝试很多的想法和技术
+很多中间件有点多余, 比如下划线 还有统一处理时间
+统一处理某些字段的中间件好像还有用
+
+
+commodity_price_backend
+适当注释, 无关注释尽量不要有
+
+
+
+
+等会用sql直接创建表和数据
+
+表名还是用单数吧, 保持一致性
+英文的复数形式很多, 不好记, 中国人的英文水平不一致, 容易带来困扰
+
+字段名还是尽可能的带上表名
+否则返回给前端的时候得一个个改, 麻烦
+
+
+
+### 前端
+
+前端用vite5+vue3+ts来做项目
+
+
+
+
+commodity_price_frontend
+
+
+
+
+
+
+
+需要解决几个问题
+
+1. 部署
+1. 权限
+1. 日志
+1. jwt
+
+
+
+
+### 修改记录
+1. UserController尝试egg-sequelize和model来操作数据库
+1. NewsController尝试view模版引擎
+1. CustomerController尝试egg-mysql, 抛出错误, 框架捕获, 自定义报错, 提示信息
+1. Controller基类来实现响应统一格式, 之前的控制器就不再改了
+1. GoodsController尝试把响应统一格式, 完善Service操作数据库逻辑
+1. 中间件notFoundHandler, 实现自定义404页面
+1. GoodsController 参数校验, 封装到单独文件,
+1. GoodsController 对象解构, 忽略某属性后重新组成新对象
+1. cookie 和 session, 获取config的配置信息
+1. GoodsController 分页查询, 组装分页的结构(在控制层组装), 封装page到offset的转换
+1. ClassService 类型转换、分页的数据处理放到Service层, 与GoodsController区分开
+1. ClassService 表字段, 下划线与小驼峰互转
+1. 中间件underlineToCamel, 把响应的下划线字段全转为小驼峰
+1. AccountController 事务, 手动控制, 成功与否, 自动控制
+1. AccountService 直接执行sql语句, 拼接来自前端传的数据, 防止sql注入
+
+
+
+
+
+
+
+
+
+### 推荐用这个模版
+// 2024-03-30 14:00 星期六
+
+
+### 修改记录
+1. UserController 尝试egg-sequelize和model来操作数据库
+1. NewsController 尝试view模版引擎
+1. CustomerController 尝试egg-mysql, 抛出错误, 框架捕获, 自定义报错, 提示信息
+1. Controller基类 来实现响应统一格式, 之前的控制器就不再改了
+1. GoodsController 尝试把响应统一格式, 完善Service操作数据库逻辑
+1. 中间件notFoundHandler, 实现自定义404页面
+1. GoodsController 参数校验, 封装到单独文件,
+对象解构, 忽略某属性后重新组成新对象
+1. cookie 和 session, 获取config的配置信息
+1. GoodsController 分页查询, 组装分页的结构(在控制层组装), 封装page到offset的转换
+1. GoodsService 更新数据, 考虑重名后不能改成功
+1. ClassService 类型转换、分页的数据处理放到Service层, 与GoodsController区分开
+1. ClassService 表字段, 下划线与小驼峰互转
+1. 中间件underlineToCamel, 把响应的下划线字段全转为小驼峰
+1. AccountController 事务, 手动控制, 成功与否, 自动控制
+1. AccountService 直接执行sql语句, 拼接来自前端传的数据, 防止sql注入
+1. 在test目录下放一些本地开发用来测试的文件, 比如csv文件数据等
+这样做的好处是使测试资源与代码文件分离，便于管理和维护。同时，在开发和测试过程中，也能更方便地使用这些测试资源。
+1. utils文件夹放一些工具函数, 如果模板需要, 那么在helper.js中导入工具函数后再导出即可使用
+1. CsvController 解析csv文件数据, 封装了parseCSV方法作为工具函数, 支持await
+1. jwt, 增加了很多admin_开头的文件, 增加 BaseService基类
+1. AdminUserService getUserList方法 主模型和关联模型, 一对多的关系
+还有查询条件, 好像很复杂, 还没研究, 包括分页的处理
+响应返回的分页字段有 total page perPageSize list, 前端传page limit, 后续最好是统一
+1. AdminUserService Model.create方法, await解析成功则插入成功
+1. AdminUserService Model.save方法, 有问题那, 得参考GoodsService的update实现
+username和mobile不能重复(2个唯一索引字段), 增加查询判断逻辑, 确保无重复值
+1. AdminUserController userInfo方法, 获取登录用户信息, by token
+由于ctx.request.header.authorization的值为"Bearer "+token
+根据authMiddleware其中的一段解析逻辑, 封装个工具函数解析出token
+1. AdminUserService getUserInfo方法, 原始查询Model.query方法, 占位符
+user模型实例给查询结果增加键来组装数据, user.roles = roles; user.menus = menu;
+1. AdminUserController 查单个用户id的信息, 查出来的数据想去掉password字段
+delete user.dataValues.password, 不能省略dataValues
+增加手机号脱敏, user.mobile = maskPhoneNumber(user.mobile)
+1. 增加性别、账号状态的枚举值
+1. 搞清楚auth中间件的作用
+1. EnumController 定枚举数据的接口, 方便前端获取
+
+
+
+
+
+需要解决几个问题
+1. 复杂的查询, 怎么写orm
+或者用sql?
+1. 自己账号可以把自己删了, 这点要限制! shan
+删之前判断是不是登录账号, 通过token拿到userId
+就算删也得有高低等级的限制, 低等级账号不能删高等级账号
+低等级账号不能编辑、删除比自己高的账户等级(包括自己)
+
+
+
+1. 经理-主管-职员
+
+userId
+  多个roleId [2, 3, 4]
+roleId
+  多个menuId 4 -> [8, 10], 2 -> [4, 11, 17]
+menuId
+
+用户表
+  userId
+    小王 -> roleId [ 2 ]
+    小李 -> roleId [ 3 ]
+角色表
+  roleId
+    1 -> 超级管理员
+    2 -> 管理员 -> menuId [1, 2, 3, 4]
+    3 -> 经理 -> menuId [1, 2, 3, 4]
+    4 -> 主管 -> menuId [1, 2]
+    5 -> 业务员 -> menuId [ 1 ]
+菜单表
+  menuId
+    1 -> 用户管理 用户列表 查用户
+    2 -> 新增用户
+    3 -> 编辑用户
+    4 -> 删除用户
+
+当前登录账号是小李, 他无意中点错了, 想删小王的账号
+理论上肯定是删不了的, 因为管理员角色比经理角色权限高
+但是实际上角色分配的权限一样, 怎么避免发生呢?
+加一个权重level
+
+超级管理员  0001
+管理员  0002
+经理  3
+主管  4
+业务员  5
+客服  6
+普通用户  7
+访客  8
+
+租户管理员  1001
+租户经理  1002
+租户主管  1003
+租户业务员  1004
+租户客服  1005
+租户普通用户  1006
+租户访客  1007
+
+1. 还差个刷新token
+1. 用位运算实现权限组合, 看怎么和菜单等权限结合一下?
+前端页面怎么搞?
+前端路由控制和菜单权限结合怎么结合?
+1. 用户表怎么设计
+第三方登录又怎么设计
+权限设计
+权限继承?
+1. base64, 如果是很小的图片, 转换后的字符串也巨长, 存到数据库不适用
+存到文件服务器, 图片服务器
+本地开发就存到一个单独的文件夹来模拟文件服务器, 获取到绝对地址再存到mysql
+1. 部署
+1. 日志
+1. 页面级权限 组件级权限, 一般SPA前端控制, 接口后端这还要验证, 双重控制
+页面权限 操作权限
+1. 使用EJS实现一键自动化生成代码模版
+https://juejin.cn/post/7096124894169006087
+
+
+
+
+
+id, 自增
+单位名  name  元/kg, /斤, /g, /瓶, /个, /包, /条, /组, /箱, /提
+// 这个说白了是个map结构
+
+
+

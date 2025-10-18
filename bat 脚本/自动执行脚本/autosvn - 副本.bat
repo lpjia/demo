@@ -1,0 +1,54 @@
+@echo off
+
+@echo =========================
+
+@echo author: lpjia
+
+@echo autosvn.bat
+
+@echo =========================
+
+rem SVN安装目录
+set svn_home=C:\z_software\SVN\bin
+
+rem SVN工作目录
+set svn_work=C:\items_zj
+
+rem SVN日志目录, 执行完会生成日志
+set setup_path=D:\
+
+:: 日志名
+set log_name=autoUpdate
+
+@echo 正在更新目录 %svn_work%
+
+if exist %svn_work% GOTO :gengxin else GOTO :MK
+
+:MK
+
+@echo 请检查您的工作目录是否正确
+
+echo & pause GOTO :END
+
+@echo 更新完成退出
+
+goto :END
+
+:END
+
+exit
+
+:gengxin
+
+if exist "%setup_path%"\%log_name%.log (echo update:   %svn_work%   %date% %time%  >> "%setup_path%"\%log_name%.log) else echo create:   %svn_work%   %date% %time% >"%setup_path%"\%log_name%.log
+
+"%svn_home%"\TortoiseProc.exe/command:update /path:"%svn_work%" /notempfile /closeonend:1
+
+:: 延时, 单位是秒
+choice /t 10 /d y /n >nul
+
+:: 打开日志
+start %setup_path%\%log_name%.log
+
+exit
+

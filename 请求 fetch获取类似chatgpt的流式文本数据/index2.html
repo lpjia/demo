@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SSE EventSource 获取类似chatgpt的流式文本数据</title>
+</head>
+
+<body>
+  <!-- SSE 协议, 单工, 服务端推数据到客户端, 长连接
+    整个数据以流的形式传字符串
+    event: 自定义事件名\n
+    id: 最后一个事件ID\n
+    data: 数据内容\n\n
+
+    \n\n结束一次推送
+    自定义事件名, 前端监听该事件获取数据
+    数据内容, 一般传JSON字符串, 得解析
+    
+  占位 -->
+
+  <button onclick="handleClose()">关闭连接</button>
+  <button onclick="connectSSE()">重新连接</button>
+
+  <script>
+    let eventSourceObj = null;
+
+    function connectSSE() {
+      eventSourceObj = new EventSource('http://localhost:7010/api/sse');
+      console.log(eventSourceObj)
+      console.log(eventSourceObj.readyState) // 0未连接, 1打开连接了, 2关闭连接了
+
+      eventSourceObj.addEventListener('open', (e) => {
+        console.log('open')
+        // console.log(e)
+      })
+      eventSourceObj.addEventListener('error', (e) => {
+        console.log('error')
+      })
+      eventSourceObj.addEventListener('message', (e) => {
+        // console.log('message')
+        // console.log(e)
+        console.log(e.data)
+      })
+      eventSourceObj.addEventListener('custom_event', (e) => {
+        console.log('custom_event')
+        console.log(JSON.parse(e.data))
+      })
+    }
+
+    connectSSE()
+
+    function handleClose() {
+      eventSourceObj.close()
+      console.log(eventSourceObj.readyState)
+    }
+
+  </script>
+
+</body>
+
+</html>

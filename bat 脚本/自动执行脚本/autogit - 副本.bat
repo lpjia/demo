@@ -1,0 +1,53 @@
+@echo off
+
+@echo =========================
+
+@echo author: lpjia
+
+@echo autogit.bat
+
+@echo =========================
+
+
+set git_work=C:\demo
+
+set setup_path=D:\
+
+set log_name=autoPush
+
+
+
+@echo Pushing %git_work%
+
+if exist %git_work% GOTO :gengxin else GOTO :MK
+
+:MK
+
+@echo Please check if your working directory is correct
+
+echo & pause GOTO :END
+
+@echo Pushed and exit
+
+goto :END
+
+:END
+
+exit
+
+:gengxin
+
+
+cd %git_work%
+
+
+if exist "%setup_path%"\%log_name%.log (echo update:   %git_work%   %date% %time%  >> "%setup_path%"\%log_name%.log) else echo create:   %git_work%   %date% %time% >"%setup_path%"\%log_name%.log
+
+git push
+
+choice /t 10 /d y /n >nul
+
+start %setup_path%\%log_name%.log
+
+exit
+

@@ -19,22 +19,49 @@
     download 只在同源URL、blob:、data: 协议起作用, 跨域是不行的
     因此需要先本地化文件，才能下载文件
     download可以不赋值, 那么下载的文件就是原文件名(一般是加密过的), 也可以赋值指定文件名
-  占位 -->
+  -->
   <a download id="down">下载文件</a>
 
+  <!-- 自己实现更友好的方案 -->
+  <button onclick="switchImg()">切换url</button>
 
   <script>
     // let fileUrl = 'http://127.0.0.1:7010/upload/41126748-ed6d-416e-91f2-3dac97354fdb.jpeg';
     let fileUrl = 'http://127.0.0.1:7010/upload/0dd0a414-01b1-4f8f-a86f-643b6647c0a4.docx';
     const domA = document.querySelector('#down')
-    let urlObjStr = ''
+
+    // 参考
+    /* function getLocalUrl(url) {
+      // 因为发送请求是异步执行的，所以使用promise包裹
+      return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest()
+        // 要求响应格式的是blob
+        xhr.responseType = 'blob'
+        xhr.open('get', url, true)
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            // 请求成功，URL.createObjectURL将blob对象转换为本地url
+            resolve(URL.createObjectURL(xhr.response))
+          }
+        }
+        xhr.send()
+      })
+    }
+
+    const domA = document.querySelector('#down')
+    getLocalUrl(url).then(res => {
+      console.log('res:', res)
+      domA.href = res
+    }) */
+
+
+    // 自己实现更友好的方案
+    function switchImg() {
+      let url = 'http://127.0.0.1:7010/upload/a81087fd-032f-4b71-be76-8ae787563c44.jpeg';
+      downloadFile(url)
+    }
 
     function getLocalUrl(url) {
-      if (urlObjStr) {
-        // 手动释放内存
-        URL.revokeObjectURL(urlObjStr)
-        urlObjStr = ''
-      }
       // 因为发送请求是异步执行的，所以使用promise包裹
       return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest()
@@ -52,11 +79,13 @@
       })
     }
 
-    getLocalUrl(fileUrl).then(res => {
-      console.log('res:', res)
-      domA.href = res
-    })
-
+    function downloadFile(url) {
+      getLocalUrl(url).then(res => {
+        console.log('res:', res)
+        domA.href = res
+      })
+    }
+    downloadFile(fileUrl)
   </script>
 
 </body>

@@ -1,0 +1,63 @@
+/* 不要在 vscode 中编辑保存, 会被格式化的很丑 */
+* {
+  box-sizing: border-box;
+}
+
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form,
+fieldset, table, td, img, div, dl, dt, dd, input, a {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+}
+
+img {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+
+table, td, th {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+input, select, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}

@@ -79,19 +79,18 @@ class StudentController {
       const imgTypeSet = new Set(['image/jpeg', 'image/jpg', 'image/gif', 'image/png'])
       if (!imgTypeSet.has(fileType!)) {
         /* 如需提前响应, 用return ctx.body */
-        ctx.body = {
+        return ctx.body = {
           code: 1,
           msg: '文件类型错误',
           data: null
         }
-        return;
       }
 
       // 得到扩展名, 带.
       const ext = extname(file.name!)
 
-      // 随机字符
-      let urlObj = URL.createObjectURL(new Blob()) // 返回一个string
+      // 随机字符串
+      let urlObj = URL.createObjectURL(new Blob())
       let randomStr = urlObj.slice(-36)
 
       const filePath = `/upload/${randomStr}${ext}`
@@ -109,14 +108,13 @@ class StudentController {
       URL.revokeObjectURL(urlObj)
       urlObj = ''
 
-      ctx.body = {
+      return ctx.body = {
         code: 0,
         msg: 'success',
         data: {
           // filePath
         }
       }
-      return;
     }
 
     ctx.body = {
