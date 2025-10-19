@@ -1,0 +1,36 @@
+https://github.com/apollographql/apollo-server
+
+
+pnpm add @apollo/server graphql
+pnpm add typescript @types/node -D
+
+
+改成pnpm命令
+"start": "pnpm run compile && node ./dist/index.js"
+
+
+装扩展 Apollo GraphQL
+
+
+schema 模式
+
+
+
+启动服务后, 访问7020端口
+会打开一个sandbox沙盒, 展示UI
+
+
+查询语句
+query GetBooks {
+  books {
+    title
+    author
+  }
+}
+
+
+列表字段
+[Arr]
+[[]] 嵌套
+
+String! 

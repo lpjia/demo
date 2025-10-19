@@ -1,0 +1,22 @@
+{
+  "name": "apollo_server",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "volta": {
+    "node": "20.19.5"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "start": "pnpm run compile && node ./dist/index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "typescript": "^5.9.3"
+  }
+}
