@@ -302,7 +302,6 @@
       <p>deploy 部署</p>
       <p>refactor 重构</p>
       <p>signal 信号</p>
-      <p>abort 中止</p>
       <p>chunk 块, 包, 分片</p>
       <p>vendor 供应商</p>
       <p>manifest 清单</p>
@@ -640,10 +639,28 @@
       <p>git_U 未跟踪 untracked</p>
       <p>git_R 已重命名 rename</p>
       
-      <!-- git -->
+      <!-- git 命令 -->
+      <p>clone 克隆</p>
       <p>unset 取消设置</p>
       <p>recursively 递归的 -r</p>
       <p>force 强制 -f</p>
+      <p>rebase 变基</p>
+      <!-- git rebase -->
+      <p>bare 空的, 裸</p>
+      <p>amend 修正</p> 
+      <p>abort 中止</p>
+      <p>graph 图</p>
+      <p>merge 合并</p>
+      <p>branch 分支</p>
+      <p>checkout 检出, 也可以切换分支</p>
+      <p>push 推送</p>
+      <p>fetch 拉取, 获取</p>
+      <p>pull 拉取, git pull等同于git fetch + git merge</p>
+      <p>remote 远程, 远端</p>
+      <!-- git remote 操作远程仓库
+      远程仓库别名是什么, 一般默认是 origin -->
+      <p>origin 起源, 原点(数), 一般用于默认的git远程仓库别名</p>
+      <!-- original 原始的, 原来的 -->
 
       <!-- 提示信息 -->
       <p>fatal 致命的, 重大的</p>
@@ -652,24 +669,22 @@
       <p>integrate 整合</p>
       <p>conflict 冲突</p>
       <p>hint 提示</p>
+      <p>upstream 上游</p>
+      <!-- invalid 无效的 -->
 
-      <p>branch 分支</p>
-      <p>checkout 签出 检出 也可以切换分支</p>
+      <!-- 分支名 -->
+      <p>master 主分支 main</p>
+      <p>develop 开发分支 dev</p>
+      <!-- feature 特性, 功能分支 feat -->
+      <!-- release 预发布分支 -->
+      <!-- fixbug 修bug分支 -->
+
+      
+      
       <p>discard 丢弃</p>
       <p>squash 挤压 去除</p>
       <p>detached 游离</p>
       <p>stage 暂存</p>
-      <p>push 推送</p>
-      <p>fetch 拉取, 获取</p>
-      <p>merge 合并</p>
-      <p>pull 拉取, git pull等同于git fetch + git merge</p>
-      <p>bare 裸</p>
-      <p>remote 远程, 远端</p>
-      <!-- git remote 操作远程仓库
-      远程仓库别名是什么, 一般默认是 origin -->
-      <p>origin 起源, 原点(数), 一般用于默认的git远程仓库别名</p>
-      <p>original 原始的, 原来的</p>
-      <p>reused 重复使用</p>
 
 
       <!-- 算法 -->
@@ -738,8 +753,8 @@
       <p>toolchain 工具链</p>
       <p>subdependencies 子依赖项 subdependency</p>
       <p>specifier 说明符</p>
-      <!-- resolved 已解析 -->
-      <!-- reused 已复用 -->
+      <p>resolved 已解析</p>
+      <p>reused 已复用</p>
       <p>downloaded 已下载</p>
       <p>added 已添加</p>
       <p>done 已完成</p>
