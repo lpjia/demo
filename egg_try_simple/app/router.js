@@ -9,9 +9,11 @@ module.exports = app => {
   router.get('/api', controller.home.index);
 
   /* crud
-  resources方法, 一参是路由名, 可以任意写
-  二参是匹配路径名, 也就是前端请求路径
-  三参就是controller, 对应的是controller下的文件名 */
+  resources方法, 
+    一参是路由名, 可以任意写
+    二参是匹配路径名, 也就是前端请求路径
+    三参就是controller, 对应的是controller下的文件名
+  */
   router.resources('users', '/api/users', controller.user);
   /* 单个写是
   router.post('/api/users', controller.user.create) */
@@ -77,6 +79,7 @@ module.exports = app => {
   // 登录
   router.post('/api/admin/users/login', controller.adminUser.login);
   // 用户管理
+  // router.get('/api/admin/users', auth('get@users'), permissionLevel({ opt1: 'o1', opt2: 'o2' }), controller.adminUser.userList);
   router.get('/api/admin/users', auth('get@users'), controller.adminUser.userList);
   // router.get('/api/admin/users', auth(), controller.adminUser.userList);
   // router.get('/api/admin/users', controller.adminUser.userList);

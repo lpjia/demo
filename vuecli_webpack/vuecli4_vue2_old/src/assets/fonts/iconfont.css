@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "iconfont";
+  /* Project id 2243419 */
+  src: url('iconfont.woff2?t=1636706468854') format('woff2'),
+    url('iconfont.woff?t=1636706468854') format('woff'),
+    url('iconfont.ttf?t=1636706468854') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-link:before {
+  content: "\e615";
+}
+
+.icon-watch:before {
+  content: "\e6dd";
+}
+
+.icon-fire:before {
+  content: "\e6ae";
+}
+
+.icon-wellLid:before {
+  content: "\e6b1";
+}
+
+.icon-sensor:before {
+  content: "\e8df";
+}
+
+.icon-alarm:before {
+  content: "\e694";
+}
+
+.icon-running:before {
+  content: "\e611";
+}
+
+.icon-offline:before {
+  content: "\e912";
+}
+
+.icon-temp:before {
+  content: "\e722";
+}
+
+.icon-video:before {
+  content: "\ea40";
+}
+
+.icon-tunnel:before {
+  content: "\e8de";
+}
+
+.icon-host:before {
+  content: "\e664";
+}
+
+.icon-home:before {
+  content: "\e606";
+}
+
+.icon-device:before {
+  content: "\e64b";
+}
+
+.icon-sys:before {
+  content: "\e67b";
+}
+
+.icon-log:before {
+  content: "\e67e";
+}
+
+.icon-user:before {
+  content: "\e600";
+}

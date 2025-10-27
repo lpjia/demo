@@ -32,7 +32,7 @@
 
 .container2 {
   background-color: lightblue;
-  padding: 30px; // 撑开了高度
+  padding: 30px; // 撑开了高度 // 高度为0, 但是因为有padding, 所以依然能看到
 
   .item {
     @extend .noCtt;

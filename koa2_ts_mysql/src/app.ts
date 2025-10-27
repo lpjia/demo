@@ -17,34 +17,39 @@ import koaStatic from "koa-static";
 
 
 const allowedOrigins = ['http://127.0.0.1:8848', 'http://127.0.0.1:5500']
+// const allowedOrigins = ['http://127.0.0.1:8848']
 // const allowedOrigins = ['http://127.0.0.1:8848', 'http://127.0.0.1:5500', 'http://localhost:5173', 'http://localhost:8080']
 
 const app = new Koa()
 
 // 在这用中间件, 是全局中间件
 app
-  .use(koaBody({
-    multipart: true,
-    parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE']
-  }))
-  .use(cors({
-    /* origin() { //设置允许来自指定域名请求
-      return 'http://127.0.0.1:8848'; //只允许这个域名的请求
-    }, */
-    origin(ctx) {
-      // 允许多个域名的请求, 但不用*
-      const requestOrigin = ctx.request.header.origin!;
-      if (allowedOrigins.includes(requestOrigin)) {
-        return requestOrigin;
-      }
-      return ''; // 不允许跨域请求
-    },
-    maxAge: 86400, //指定本次预检请求的有效期，单位为秒。
-    credentials: true, //是否允许发送Cookie
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], //设置所允许的HTTP请求方法
-    allowHeaders: ['Content-Type', 'Authorization', 'Accept'], //设置服务器支持的所有头信息字段
-    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'] //设置获取其他自定义字段
-  }))
+  .use(
+    koaBody({
+      multipart: true,
+      parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE']
+    })
+  )
+  .use(
+    cors({
+      /* origin() { //设置允许来自指定域名请求
+        return 'http://127.0.0.1:8848'; //只允许这个域名的请求
+      }, */
+      origin(ctx) {
+        // 允许多个域名的请求, 但不用*
+        const requestOrigin = ctx.request.header.origin!;
+        if (allowedOrigins.includes(requestOrigin)) {
+          return requestOrigin;
+        }
+        return ''; // 不允许跨域请求
+      },
+      maxAge: 86400, //指定本次预检请求的有效期，单位为秒。
+      credentials: true, //是否允许发送Cookie
+      allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], //设置所允许的HTTP请求方法
+      allowHeaders: ['Content-Type', 'Authorization', 'Accept'], //设置服务器支持的所有头信息字段
+      exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'] //设置获取其他自定义字段
+    })
+  )
   .use(koaStatic(__dirname + '/../static')) // 找static目录, 作为访问文件资源的根目录
   .use(AccessLogMiddleware) // 访问日志
   .use(router.routes()) // 启动路由

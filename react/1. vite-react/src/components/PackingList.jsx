@@ -22,7 +22,7 @@ function Item({ name, isPacked }) {
 
 export default function PackingList() {
   return (
-    <section>
+    <section style={{ 'textAlign': 'left' }}>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
         <Item

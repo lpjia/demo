@@ -73,6 +73,16 @@ class ProductService extends BaseService {
     }
     */
 
+    // if (product.shopMap) {
+    //   // 先把 Shop 模型, 原始查询结果的字段转为小驼峰
+    //   product.shopMap = toSmallHump(product.shopMap.dataValues)
+    //   // 模型实例.dataValues 拿到常见的json对象, 给json对象增加属性shopName
+    //   product.dataValues.shopName = product.shopMap.shopName;
+    //   // 给json对象删除属性shopMap
+    //   // delete product.dataValues.shopMap
+    //   delete product.shopMap
+    // }
+
     return product;
   }
 
@@ -134,7 +144,8 @@ class ProductService extends BaseService {
 
   /* 怎么判断PriceHistory表的数据是否重复?
   只要buyTime有值且日期不重复, 不管时间, 就表示不一样
-  productId price unitId */
+  productId price unitId
+  先不管 折扣价和折扣, 规格也不管 */
   async hasDuplicateHistory(productId, bd) {
     const { app } = this
     const { price, unitId, buyTime } = bd

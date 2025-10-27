@@ -3,16 +3,17 @@
 
 
 /* 解构, 要求=右边是可迭代对象就行
-解构的本质是 迭代器的next().value 赋值给对应的变量 */
+String、Array、TypedArray、Map 和 Set 都是内置可迭代对象，因为它们的原型对象都拥有一个 Symbol.iterator 方法。
+解构的本质是迭代器的next().value赋值给对应的变量 */
 
 
 /* 满足可迭代协议
-对象有一个Symbol.iterator属性, 是个函数, 无参, 返回一个迭代器
-{
-  [Symbol.iterator]: function() {
-    return 迭代器
-  }
-} */
+对象有一个Symbol.iterator属性, 是个函数, 无参, 返回一个迭代器 */
+// {
+//   [Symbol.iterator]: function() {
+//     return 迭代器
+//   }
+// }
 
 
 // /* 最简单实现, 直接添加Symbol.iterator方法, 返回迭代器

@@ -1,4 +1,5 @@
 /* 双指针 */
+console.time('双指针')
 function is_hui_wen(str) {
   let left = 0
     , right = str.length - 1
@@ -13,13 +14,16 @@ function is_hui_wen(str) {
   return true
 }
 is_hui_wen('1565487649467845651')
+console.timeEnd('双指针')
 
 
 
 
 
 /* 颠倒比对 */
+console.time('颠倒比对')
 function is_hui_wen2(str) {
   return str === str.split('').reverse().join('')
 }
 is_hui_wen2('1565487649467845651')
+console.timeEnd('颠倒比对')

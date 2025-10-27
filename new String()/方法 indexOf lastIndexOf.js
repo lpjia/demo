@@ -69,7 +69,8 @@ arr.indexOf 和 arr.lastIndexOf 这两个一般不用(不好找复杂结构的�
 
 
 /* arr.findIndex()
-一参是回调, 二参是执行回调时用作this的值(可选)
+一参是回调, 二参(可选)是执行回调时用作this的值
+
 一参中的回调会被自动传入三个参数：数组元素，元素索引，原数组本身
 
 从左到右查, 第一个满足回调返回true的数组项的索引
@@ -116,3 +117,26 @@ console.log(
   , arr2.findLast(item => item.score < 60) // { name: 'Jack', score: 57 }
 )
 console.log('---- 分割线 ----\n\n\n')
+
+
+
+
+/* 所有都得重新总结 */
+
+
+
+/* arr.indexOf()
+一参是要查的数组的项, 二参是从某索引开始查
+返回索引 */
+
+/* indexOf和lastIndexOf适合查简单数据类型组成的数组, 方便判断=== */
+
+const arr3 = [0, 1, false, null, '1', 2, undefined, 3, 5, NaN, '', 8]
+console.log(
+  arr3.indexOf(2),
+  arr3.lastIndexOf(false)
+)
+
+/* arr.lastIndexOf()
+一参是要查的数组的项, 二参是从某索引开始查
+返回索引 */0

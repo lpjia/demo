@@ -58,7 +58,7 @@ function romanToInt(s) {
 }
 
 console.log(
-  romanToInt("MCMXCIV")
+  romanToInt("MCMXCIV"), romanToInt("III")
 )
 
 let s = "III" // 1 1 1

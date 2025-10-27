@@ -5,7 +5,7 @@ import App from '@/components/12-App.vue'
 
 const app = createApp(App)
 
-/* 应用层提供依赖, 一般常用语插件 */
+/* 应用层提供依赖, 一般常用于插件 */
 app.provide('appVal', 'app value')
 
 /* 注册全局自定义指令 */
