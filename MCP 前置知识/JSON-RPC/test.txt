@@ -1,4 +1,0 @@
-{"jsonrpc":"2.0","method":"sum","params":{"a":5,"b":6},"id":1}
-
-
-{"jsonrpc":"2.0","method":"createFile","params":{"filename":"./wen_ben.txt","content":"Hello MCP"},"id":2}

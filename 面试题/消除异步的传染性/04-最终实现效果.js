@@ -48,7 +48,8 @@ function run(fn) {
     cache[i++] = result
     debugger
 
-    const promise = _originalFetch(...args).then(res => res.json())
+    const promise = _originalFetch(...args)
+      .then(res => res.json())
       .then(
         resp => {
           console.log('完成回调')

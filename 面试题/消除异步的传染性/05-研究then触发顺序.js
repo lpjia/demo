@@ -37,7 +37,8 @@ const reRun = () => {
 
 
 
-const promise = fetch(url).then(res => res.json())
+const promise = fetch(url)
+  .then(res => res.json())
   .then(
     resp => {
       console.log('完成回调')

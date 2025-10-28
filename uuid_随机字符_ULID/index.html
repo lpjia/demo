@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>uuid_随机字符_ULID</title>
+</head>
+
+<body>
+
+  <script type="module">
+    /* import { v4 as uuidv4 } from 'uuid'
+    上面是常用引入写法 */
+    import { v4 as uuidv4 } from 'https://unpkg.com/uuid'
+    const uuid = uuidv4()
+    console.log('uuid: ', uuid)
+    console.log('uuid.length: ', uuid.length)
+  </script>
+
+
+  <script type="module">
+    import { ulid as ulidv3, monotonicFactory, isValid } from 'https://unpkg.com/ulid'
+    const ulid = ulidv3()
+    console.log('ulid: ', ulid)
+    console.log('ulid.length: ', ulid.length)
+
+
+    // 时间部分会保持不变
+    const seedTime = 1760662644111 // 种子时间, 是个时间戳, 13个数字
+    console.log(ulidv3(seedTime)) // 01K7QTQSCF83PKB7C5EK7RF8RE
+    console.log(ulidv3(seedTime)) // 01K7QTQSCFFQCZPQE4YJ9T73ZV
+    console.log(ulidv3(seedTime)) // 01K7QTQSCFYK73J537H0GPJZW3
+
+
+    // 生成单调递增
+    const num = 1000
+    const ulid2 = monotonicFactory();
+    console.log(ulid2(num)) // 00000000Z8EQXHRNFXWGADYAZM
+    console.log(ulid2(num)) // 00000000Z8EQXHRNFXWGADYAZN
+    console.log(ulid2(num)) // 00000000Z8EQXHRNFXWGADYAZP
+    console.log(ulid2(num)) // 00000000Z8EQXHRNFXWGADYAZQ
+    console.log(ulid2(num)) // 00000000Z8EQXHRNFXWGADYAZR
+
+
+    // 校验是否为合法的ULID值
+    console.log(isValid('01K7QVBK0EACJQJRFWTCZDBPK9'))
+  </script>
+
+
+  <script type="module">
+    // 使用加密安全随机数生成器生成 v4 UUID
+    const randomUUID = crypto.randomUUID()
+    console.log('randomUUID: ', randomUUID)
+    console.log('randomUUID.length: ', randomUUID.length)
+  </script>
+</body>
+
+</html>

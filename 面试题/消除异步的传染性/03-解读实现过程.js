@@ -71,7 +71,8 @@ function run(fn) {
     // 发送请求
     // 调用原来存的window.fetch
     // then方法才是经常用来获取promise结果的
-    const promise = _originalFetch(...args).then(res => res.json())
+    const promise = _originalFetch(...args)
+      .then(res => res.json())
       .then( // 状态一旦从 pending 变为 fulfilled/rejected, 就固定不变了。一直等到接口返回后才会触发then方法
         // 完成后回调
         resp => {
