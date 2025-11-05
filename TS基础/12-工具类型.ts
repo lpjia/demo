@@ -235,3 +235,13 @@ type Ti_Qu = Extract<LianHeType, string | object>
 type Pai_Chu = Exclude<string | number | boolean, symbol | boolean>
 
 
+
+
+
+/* NoInfer 类型 */
+// 暂时不知道有啥用
+function createStreetLight<C extends string>(colors: C[], defaultColor?: NoInfer<C>) {
+
+}
+createStreetLight(["red", "yellow", "green"], "red");  // OK
+// createStreetLight(["red", "yellow", "green"], "blue");  // Error

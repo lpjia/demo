@@ -76,14 +76,24 @@ function handler(r: SuccessMessage | ErrorMessage) {
 
 
 
+
 interface Person {
   name: string;
   age: number;
   location: string;
+  [key: symbol]: string; // 允许任何 Symbol 作为键
 }
 /* 因为 keyof T 返回的类型可能会包含 symbol 类型，而 Capitalize 工具类型要求处理的类型需要是 string 类型的子类型，所以需要通过交叉运算符进行类型过滤。 */
-// 通过交叉把类型参数进行类型约束
+// 通过交叉把类型参数进行类型约束, K & string
 type ChangeKey<T> = {
   [K in keyof T as `get${Capitalize<K & string>}`]: () => T[K]
 }
 type Person2 = ChangeKey<Person>
+
+/* const mySymbol = Symbol('mySymbol');
+interface Person {
+  name: string;
+  age: number;
+  location: string;
+  [mySymbol]: boolean; // 某Symbol作为键
+} */

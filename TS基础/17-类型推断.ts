@@ -1,15 +1,16 @@
 export { }
 
-// 不用infer
-// 传入的类型是一个数组, 则返回数组元素的类型, 否则返回该传入类型
+/* 不用infer
+传入的类型是一个数组, 则返回数组元素的类型, 否则返回该传入类型
+这里只能固定返回number类型的数组项类型 */
 type InferType2<T> = T extends any[] ? T[number] : T
 type Result3 = InferType2<number[]>
 type Result4 = InferType2<boolean>
 
 
-// 推断 infer, 可以用来解包
-// infer声明的类型变量只在条件类型的"真值"分支中可用
-// 仅条件类型的 "extends" 子句中才允许 "infer" 声明
+/* 推断 infer, 可以用来解包
+infer声明的类型变量只在条件类型的"真值"分支中可用
+仅条件类型的 "extends" 子句中才允许 "infer" 声明 */
 type InferType<T> = T extends Array<infer U> ? U : T
 type Result = InferType<string[]>
 type Result2 = InferType<bigint>

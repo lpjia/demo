@@ -119,7 +119,7 @@ const page = {
   home: '/',
   about: '/about',
   contact: '/contact'
-} as const // 方便把js对象的属性和值固定不变
+} as const // 断言为 “不可变的字面量类型”, 强制 TypeScript 保留最精确的类型信息
 // delete page.home // 报错, "delete" 运算符的操作数不能是只读属性。"delete" 运算符的操作数必须是可选的。
 // page.home = '/home' // 报错, 无法为“home”赋值，因为它是只读属性。
 // page.add = '' // 报错, page上不存在属性“add”。
