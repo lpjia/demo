@@ -1,0 +1,10 @@
+{
+  "name": "my-site",
+  "range": "0.1.0",
+  "nodes": [
+    "."
+  ],
+  "depChains": [],
+  "problems": [],
+  "severity": "info"
+}

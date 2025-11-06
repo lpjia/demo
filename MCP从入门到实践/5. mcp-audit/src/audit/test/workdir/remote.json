@@ -1,0 +1,75 @@
+{
+  "actions": [
+    {
+      "isMajor": false,
+      "action": "install",
+      "resolves": [
+        {
+          "id": 1098366,
+          "path": "ejs",
+          "dev": false,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "module": "ejs",
+      "target": "3.1.10"
+    }
+  ],
+  "advisories": {
+    "1098366": {
+      "findings": [
+        {
+          "version": "3.1.9",
+          "paths": [
+            "ejs"
+          ]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://nvd.nist.gov/vuln/detail/CVE-2024-33883\n- https://github.com/mde/ejs/commit/e469741dca7df2eb400199e1cdb74621e3f89aa5\n- https://github.com/mde/ejs/compare/v3.1.9...v3.1.10\n- https://security.netapp.com/advisory/ntap-20240605-0003\n- https://github.com/advisories/GHSA-ghr5-ch3p-vcr6",
+      "created": "2024-04-28T18:30:31.000Z",
+      "id": 1098366,
+      "npm_advisory_id": null,
+      "overview": "The ejs (aka Embedded JavaScript templates) package before 3.1.10 for Node.js lacks certain pollution protection.",
+      "reported_by": null,
+      "title": "ejs lacks certain pollution protection",
+      "metadata": null,
+      "cves": [
+        "CVE-2024-33883"
+      ],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "ejs",
+      "vulnerable_versions": "<3.1.10",
+      "github_advisory_id": "GHSA-ghr5-ch3p-vcr6",
+      "recommendation": "Upgrade to version 3.1.10 or later",
+      "patched_versions": ">=3.1.10",
+      "updated": "2024-08-02T15:45:54.000Z",
+      "cvss": {
+        "score": 4,
+        "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      },
+      "cwe": [
+        "CWE-693",
+        "CWE-1321"
+      ],
+      "url": "https://github.com/advisories/GHSA-ghr5-ch3p-vcr6"
+    }
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 1,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 1
+  }
+}

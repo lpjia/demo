@@ -1,0 +1,31 @@
+在此根目录启动终端, 运行
+pnpx @modelcontextprotocol/inspector
+
+
+启动文件路径是
+src/server.js
+
+
+
+inputSchema 字段
+使用zod库来实现校验字段
+
+
+
+注册工具函数, 第三个参
+不能随便写console.log, 这是标准输出 process.stdout.write, 会被网页客户端捕获
+需要调试用console.error
+
+
+
+添加到AI编辑器的MCP配置:
+{
+  "mcpServers": {
+    "MCP_try_server": {
+      "command": "node",
+      "args": [
+        "D:/demo/MCP从入门到实践/4. sdk/src/server.js"
+      ]
+    }
+  }
+}

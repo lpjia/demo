@@ -1,0 +1,46 @@
+安全审计
+pnpm audit
+
+
+
+
+临时切换到官方 npm 源
+pnpm audit --registry=https://registry.npmjs.org
+
+
+
+
+
+添加到AI编辑器的MCP配置:
+{
+  "mcpServers": {
+    "前端工程安全审计服务": {
+      "command": "node",
+      "args": [
+        "D:/demo/MCP从入门到实践/5. mcp-audit/src/mcpServer.js"
+      ]
+    }
+  }
+}
+
+
+
+包名
+
+severity 字段
+漏洞等级
+
+
+via 字段, 是个数组, 意思是经由
+当数组项是字符串时, 说明不是自己本身有漏洞, 是其依赖项xxx有漏洞
+当数组项是对象时, 说明是自己本身的漏洞
+我在用谁
+
+
+effects 字段, 是个数组
+这个漏洞会影响到哪些包
+谁在用我
+
+
+nodes 字段
+路径, 包可能有多个版本, 多个路径

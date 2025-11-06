@@ -4,7 +4,7 @@ process.stdin.on('data', (data) => {
   const req = JSON.parse(data)
   let result;
 
-  if (req.method === 'tools/call') {
+  if (req.method === 'tools/call') { // 调用工具方法
     result = tools[req.params.name](req.params.arguments)
   }
   else if (req.method in utils) {
