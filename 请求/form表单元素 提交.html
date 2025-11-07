@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form表单元素 提交</title>
+</head>
+
+<body>
+
+  <!-- 所有表单元素, 推荐用form包住一层
+    只有一个button元素时, 默认该button是提交按钮, 不需要显式书写 type="submit"
+    多个button时可以用type来区分
+      type="button"是普通按钮, 不会触发submit事件
+      type="submit"是提交按钮
+      type="reset"是复位按钮, 清空表单元素的值, 有value则恢复到value默认值
+    表单默认提交行为
+      刷新页面
+      地址栏url后会拼接?问号
+    e.preventDefault(); // 阻止表单默认提交行为
+    enter事件会自动绑定到input元素, 回车会自动触发提交事件, 不用再手动绑定回车事件了
+  -->
+
+  <form>
+    <input type="text" value="mo_ren_zhi" />
+    <button onclick="handleSubmit(event)">按钮</button>
+  </form>
+
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault()
+      console.log(111)
+    }
+
+    /* 手动绑定回车事件, 比较呆 */
+    /* <input type="text" onkeydown="calcFeeByEnter(event)" />
+    function calcFeeByEnter(e) {
+      if (e.keyCode === 13) {
+        calcFee()
+        return false;
+      }
+    } */
+
+  </script>
+
+</body>
+
+</html>
