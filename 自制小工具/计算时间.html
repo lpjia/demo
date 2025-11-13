@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算时间</title>
+  <style>
+    #new_time {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" id="hour"> h?
+    <input type="text" id="minute"> m?
+    <button type="submit" onclick="calcNextTime(event)">计算时间</button>
+    <button type="button" onclick="clearInput()">清空</button>
+    <span id="new_time" onclick="clickForCopy()" title="点击复制"></span>
+    <span id="tip"></span>
+  </form>
+  <hr>
+
+
+
+  <form>
+    <input type="text" id="hour2" /> h?
+    <input type="text" id="minute2"> m?
+    <button type="button" onclick="calcRemainingTime(10)">10倍加速</button>
+    <button type="button" onclick="calcRemainingTime(24)">24倍加速</button>
+    <button type="button" onclick="clearInput2()">清空</button>
+    <span id="new_time2"></span>
+    <span id="tip2"></span>
+  </form>
+  <hr>
+
+  <script>
+    const doms = {
+      hour: document.querySelector('#hour'),
+      minute: document.querySelector('#minute'),
+      result: document.querySelector('#new_time'),
+      tip: document.querySelector('#tip'),
+
+      hour2: document.querySelector('#hour2'),
+      minute2: document.querySelector('#minute2'),
+      result2: document.querySelector('#new_time2'),
+      tip2: document.querySelector('#tip2'),
+    }
+
+    /* 需求是: 输入一个时间后, 计算得到下次时间, 精确到分 */
+    function calcNextTime(e) {
+      e.preventDefault();
+      if (!doms.hour.value) {
+        alert('请输入hour')
+        return;
+      }
+      let currTime = new Date().getTime()
+      // 小时必须要输入, 否则还得区分用户输入是否有问题
+      let result = currTime + (Number(doms.hour.value) * 60 + (doms.minute.value ? Number(doms.minute.value) : 0)) * 60 * 1000
+      doms.result.textContent = dayjs(result).format('DD号HH:mm')
+    }
+
+    function clearInput() {
+      doms.hour.value = ''
+      doms.minute.value = ''
+      doms.result.innerHTML = ''
+      doms.tip.innerHTML = ``
+      doms.hour.focus()
+    }
+
+    // 新方法, 兼容性还可以
+    async function clickForCopy() {
+      await navigator.clipboard.writeText(doms.result.innerHTML) // 就是这行代码
+      doms.tip.innerHTML = `(复制成功)`
+      setTimeout(() => {
+        doms.tip.textContent = ''
+      }, 2000);
+    }
+
+
+
+    /* 需求是: 输入一个时间, 计算出剩余时间(分钟) */
+    function calcRemainingTime(speed) {
+      if (!doms.hour2.value) {
+        alert('请输入hour')
+        return;
+      }
+      let rawMinute = Number(doms.hour2.value) * 60 + (doms.minute2.value ? Number(doms.minute2.value) : 0)
+      doms.result2.textContent = `${Math.floor(rawMinute / speed)}分钟`
+    }
+
+    function clearInput2() {
+      doms.hour2.value = ''
+      doms.minute2.value = ''
+      doms.result2.textContent = ''
+      doms.tip2.innerHTML = ``
+      doms.hour2.focus()
+    }
+  </script>
+  <script src="https://unpkg.com/dayjs"></script>
+
+</body>
+
+</html>
