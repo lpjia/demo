@@ -17,5 +17,9 @@
   "devDependencies": {
     "@types/ws": "^8.18.1",
     "tsx": "4"
+  },
+  "volta": {
+    "node": "18.14.2",
+    "pnpm": "7.33.7"
   }
 }
