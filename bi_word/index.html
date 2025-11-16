@@ -19,71 +19,24 @@
     #dom_sort_before {
       margin-right: 100px;
     }
-
-    #new_time {
-      cursor: pointer;
-    }
-
-    .hang_he {
-      display: inline;
-    }
-
-    .marginLeft {
-      margin-left: 10px;
-    }
   </style>
 </head>
 
 <body>
-  <div>
-    月费用 <input type="text" id="monthFee" onkeydown="calcFeeByEnter(event)"> ¥
-    <input type="text" id="discount" onkeydown="calcFeeByEnter(event)" placeholder="折扣" value="">
-    <button class="marginLeft" onclick="calcFee()">计算费用</button>
-    <button onclick="clearInput3()">清空</button>
-    <span class="marginLeft">季度费用: <div class="hang_he" id="quarterFee"></div> ¥</span>
-    <span class="marginLeft">年费用: <div class="hang_he" id="yearFee"></div> ¥</span>
-  </div>
-  <hr>
-  <div>
-    <input type="text" id="hour2"> h
-    <input class="marginLeft" type="text" id="minute2"> m
-    <button class="marginLeft" onclick="calcRemainingTime(10)">10倍加速</button>
-    <button onclick="calcRemainingTime(24)">24倍加速</button>
-    <button onclick="clearInput2()">清空</button>
-    <span id="new_time2"></span>
-    <span id="tip2"></span>
-  </div>
-  <hr>
-  <a href="https://www.cnblogs.com/straybirds/p/9788968.html" target="_blank">一些容易混淆单词</a>
-  <hr>
-  <div>
-    <input type="text" id="hour"> h
-    <input class="marginLeft" type="text" id="minute"> m
-    <button class="marginLeft" onclick="calcNextTime()">计算时间</button>
-    <button onclick="clearInput()">清空</button>
-    <span id="new_time" onclick="clickForCopy()" title="点击复制"></span>
-    <span id="tip"></span>
-  </div>
-  <hr>
-
 
   <div class="flex">
     <section id="dom_sort_before">
-      <!-- 约定大于配置, 
-        先写分组, 再写单词, 
-        组与组用两个空行隔开, 小组也用一个空行, 
-        未分组的扔到最后 -->
 
       <!-- 命名 -->
-      <p>k key</p>
-      <p>v val value</p>
+      <p>k key 键</p>
+      <p>v val value 值</p>
       <p>i idx index 索引</p>
       <p>str string</p>
       <p>num number</p>
-      <p>bool boolean</p>
+      <p>bol boolean</p>
       <p>obj object</p>
       <p>arr array</p>
-      <p>symb symbol</p>
+      <p>syb symbol</p>
       <p>get</p>
       <p>set</p>
       <p>null</p>
@@ -95,7 +48,7 @@
       <p>delete 删除 del</p>
       <p>remove 移除 rm</p>
       <p>button 按钮 btn</p>
-      <p>text 文本 txt</p>
+      <p>text 文本</p>
       <!-- 有些英文还是用s, 用List感觉语义有问题 -->
       <p>List 接口返回数组的数据类型, 加这个名字, 不要用复数</p>
       <!-- 方法 -->
@@ -110,8 +63,11 @@
       <p>should 本应, 应该</p>
       <p>choose 选择</p>
       <p>load 加载</p>
-      <!-- 调接口, 比如删除, 先删除操作(准备/处理数据) doDelete, 再调删除接口 deleteByAjax -->
-      <p>doDelete deleteByAjax</p>
+      <p>handler 处理程序</p>
+      <p>handle 处理</p>
+      <!-- 调接口, 比如删除, 先删除操作(准备/处理数据) doDelete, 再调删除接口 deleteByAjax
+      如果重复代码不多, 没有封装多个函数的价值, 直接函数handleXXX连准备带调API一气呵成 -->
+      <p>handleDelete doDelete deleteByAjax</p>
       <!-- 跳转 -->
       <p>jump 跳</p>
       <p>to 到, 转成</p>
@@ -123,8 +79,6 @@
 
 
 
-
-      
 
       <!-- html 块盒 行盒 元素 -->
       <p>header 头部</p>
@@ -178,7 +132,7 @@
       <p>opacity 不透明度, 也就是值为1是显示(对应字面意思1为true), 值为0则不显示(透明)</p>
       <p>ellipsis 省略</p>
       <p>overflow 溢出</p>
-	  
+
       <p>viewport 视口</p>
       <p>smooth 平滑的</p>
       <p>linear-gradient 线性渐变</p>
@@ -203,8 +157,21 @@
       <p>overline 上划线</p>
 
 
+      <!-- 重排, 本质是重新计算 layout 树
+        几何信息(包括尺寸、位置等)
+        获取属性则立即 reflow
 
+        layout 树是要找到每个节点的几何信息
+        伪元素节点不在 dom 树, 但它们拥有几何信息，所以会生成到布局树中
+        (文本)内容必须在行盒中, 行盒和块盒不能相邻
+        匿名行盒、匿名块盒
+        layout 树里的对象是c++对象, js获取不到, 可间接获取一些信息, 比如clientWidth、offsetWidth、scrollWidth, 都是 layout 树
 
+        重绘, 当改动了可见样式后，就需要重新计算，会引发 repaint
+        由于元素的布局信息也属于可见样式，所以 reflow 一定会引起 repaint
+      -->
+      <p>reflow 重排 重新排版</p>
+      <p>repaint 重绘 重新绘制</p>
 
 
       <!-- css 变形 -->
@@ -296,7 +263,7 @@
       <!-- new String(123) instanceof String -->
       <p>instanceof 实例 (必须是对象才可以, 字面量不行, 得包装一层)</p>
       <p>typeof 类型, typeof 456</p>
-      <p>extends 继承(复数) extend</p>
+      <!-- extends 继承(复数) extend -->
       <p>constructor 构造器</p>
       <p>anonymous 匿名</p>
       <p>append 添加, 附加</p>
@@ -329,6 +296,8 @@
       <p>host 主机</p>
       <!-- hash 哈希 -->
 
+      <p>async 异步</p>
+      <p>sync 同步 synchronize</p>
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
       <p>post 提交</p>
@@ -344,7 +313,6 @@
       <p>signal 信号</p>
       <p>chunk 块, 包, 分片</p>
       <p>vendor 供应商</p>
-      <p>manifest 清单</p>
       <p>timestamp 时间戳</p>
       <p>version 版本 ver v</p>
       <p>timeout 超时</p>
@@ -369,8 +337,8 @@
       <p>fragment 片段</p>
       <p>JSON.stringify 字符串化, 又叫序列化</p>
       <p>yield 暂停执行并返回当前值</p>
-      <p>handle 处理</p>
-      <p>handler 处理程序</p>
+      <p>plain 无格式 普通 朴素 无修饰</p>
+      <p>invoke 调用 执行</p>
 
       <p>loop 循环</p>
       <p>continue; 跳过当次循环</p>
@@ -399,7 +367,7 @@
       <p>trigger 触发</p>
       <p>dep 依赖 deps(复数) dependence</p>
       <p>scheduler 调度器</p>
-      <p>effect 副作用, 作用</p>
+      <p>effect 副作用</p>
       <p>patch 补丁</p>
       <p>mount 挂载 mounted</p>
       <p>immediate 立即, 立刻</p>
@@ -428,6 +396,18 @@
       <p>immutable 不可变的</p>
       <p>mutation 突变</p>
       <p>sibling 兄弟姐妹</p>
+      <p>useEffect 副作用, 相对于纯函数来讲</p>
+      <!-- 副作用：（不符合）预期的后果
+        看云笔记的"react设计哲学"
+      -->
+
+
+
+
+
+      <!-- uniapp -->
+      <p>manifest 清单</p>
+
 
 
 
@@ -455,16 +435,28 @@
 
 
 
-      <!-- ts -->
+      <!-- ts typescript -->
       <p>revoke 撤销, 释放</p>
-      <p>omit 省略, 去掉</p>
-      <p>declare 声明</p>
+      <p>Omit 省略, 去掉</p>
+      <p>declare 声明, 类型描述</p>
       <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
-      <p>interface 接口 Itfc 这缩写没必要用在ts</p>
+      <p>interface 接口</p>
+      <!-- user interface 用户界面 UI -->
+      <!-- extends 泛型约束 -->
       <p>never 不存在的类型</p>
       <p>exhaustiveCheck 穷尽检查</p>
       <p>implements 实现</p>
-      <!-- 当有重复的, 可以用下划线来避免 -->
+      <p>satisfies 满足(满足...约束)</p>
+      <p>abstract 抽象类</p>
+      <p>Infer 推断</p>
+      <!-- reference 引用 -->
+      <p>Record 记录</p>
+      <p>Extract 提取</p>
+      <p>Utility_Types 实用工具类型</p>
+      <p>intrinsic 固有的, 内置</p>
+
+
+
 
 
 
@@ -480,27 +472,7 @@
       <p>Initiator 发起人</p>
 
 
-
-
-
-      <!-- 重排, 本质是重新计算 layout 树
-        几何信息(包括尺寸、位置等)
-        获取属性则立即 reflow
-
-        layout 树是要找到每个节点的几何信息
-        伪元素节点不在 dom 树, 但它们拥有几何信息，所以会生成到布局树中
-        (文本)内容必须在行盒中, 行盒和块盒不能相邻
-        匿名行盒、匿名块盒
-        layout 树里的对象是c++对象, js获取不到, 可间接获取一些信息, 比如clientWidth、offsetWidth、scrollWidth, 都是 layout 树
-
-        重绘, 当改动了可见样式后，就需要重新计算，会引发 repaint
-        由于元素的布局信息也属于可见样式，所以 reflow 一定会引起 repaint
-       -->
-      <p>reflow 重排 重新排版</p>
-      <p>repaint 重绘 重新绘制</p>
-
-
-      <!-- 一组词 -->
+      <!-- 一组词 分组 组别 -->
       <p>frontend 前端</p>
       <p>backend 后端</p>
 
@@ -542,9 +514,14 @@
 
       <p>increase 加</p>
       <p>decrease 减</p>
+      <p>multiply 乘</p>
+      <p>divide 除</p>
 
+      <p>expand 扩展</p>
+      <p>extend 扩展</p>
 
       <!-- 容易记错 易错 一组词 -->
+      <!-- https://www.cnblogs.com/straybirds/p/9788968.html 一些容易混淆单词 -->
       <p>alert 警报</p>
       <p>alter 改变</p>
 
@@ -556,6 +533,7 @@
 
       <p>exception 异常</p>
       <p>expectation 期望</p>
+      <p>execution 执行</p>
 
       <p>conversion 转换</p>
       <p>conversation 交谈</p>
@@ -576,6 +554,8 @@
       <p>shadow 阴影</p>
       <p>shallow 浅的</p>
 
+      <p>model 模型</p>
+      <p>modal 模态框</p>
 
 
 
@@ -609,9 +589,7 @@
       <p>component 组件 comp</p>
       <p>popper 弹层</p>
       <p>popover 弹出框</p>
-      <p>modal 模态框</p>
-
-
+      <!-- modal 模态框 -->
 
 
 
@@ -619,6 +597,7 @@
 
 
       <!-- mysql -->
+      <p>primaryKey 主键</p>
       <p>flush_privileges 刷新权限 FLUSH_PRIVILEGES</p>
       <p>access_denied 拒绝访问 ACCESS_DENIED</p>
       <p>grant 授予 GRANT</p>
@@ -632,6 +611,7 @@
       <p>mode 模式</p>
       <p>duplicate 重复的 Duplicate</p>
       <!-- 副本(非游戏副本), 复制一个一模一样的东西 -->
+
       <p>transaction 事务</p>
       <p>rollback 回滚</p>
       <p>escape 逃脱, 避免</p>
@@ -651,18 +631,24 @@
       <p>incorrect 不正确的, 不合规的</p>
 
 
-
-
-
-
-
-      <!-- ORM -->
-      <p>Op operation 操作</p>
+      <!-- orm sequelize -->
+      <p>Op 操作 operation</p>
       <p>associate 关联 联合</p>
       <p>destroy() 删除记录</p>
       <p>create()</p>
       <p>save()</p>
       <p>findByPk 通过主键查</p>
+      <p>paranoid 偏执的, paranoid: true 软删除</p>
+
+
+      <!-- typeorm -->
+      <!-- get命名, 前端和后台好统一, 好搜索
+        find命名, 用到crud里即可
+      -->
+      <p>find() 查询</p>
+      <!-- findOne
+        findAndCount
+      -->
 
 
 
@@ -720,18 +706,23 @@
 
 
 
-
       <!-- github -->
       <p>issue 提问, 念1ʃu</p>
       <p>archive 存档, 也就是不再维护了</p>
       <p>Public_archive 公共档案</p>
       <p>chore 例行工作, 日常事务</p>
       <p>release 发行</p>
+      <p>stable 稳定版本</p>
       <p>inactive 不活跃的</p>
       <p>fix 修复</p>
       <p>feature 特性 feat</p>
 
-       
+
+
+
+      <!-- SourceTree -->
+      <p>External 外部的</p>
+
 
 
 
@@ -740,9 +731,9 @@
       <p>git_A 已增加 add</p>
       <p>git_M 已修改 modify</p>
       <p>git_D 已删除 delete</p>
-      <p>git_U 未跟踪 untracked</p>
+      <p>git_U 未追踪 untracked</p>
       <p>git_R 已重命名 rename</p>
-      
+
       <!-- git 命令 -->
       <p>clone 克隆</p>
       <p>unset 取消设置</p>
@@ -751,7 +742,7 @@
       <p>rebase 变基</p>
       <!-- git rebase -->
       <p>bare 空的, 裸</p>
-      <p>amend 修正</p> 
+      <p>amend 修正</p>
       <p>abort 中止</p>
       <p>graph 图</p>
       <p>merge 合并</p>
@@ -778,20 +769,24 @@
       <p>hint 提示</p>
       <p>upstream 上游</p>
       <!-- invalid 无效的 -->
+      <p>staged 已暂存的</p>
+      <p>insertions 插入(复数)</p>
+      <p>deletions 删除(复数)</p>
 
       <!-- 分支名 -->
       <p>master 主分支 main</p>
       <p>develop 开发分支 dev</p>
       <!-- feature 特性, 功能分支 feat -->
       <!-- release 预发布分支 -->
-      <!-- fixbug 修bug分支 -->
+      <!-- hotfix 修bug分支 -->
 
-      
-      
+
+
+      <!-- 这3个先搁置 -->
       <p>discard 丢弃</p>
       <p>squash 挤压 去除</p>
       <p>detached 游离</p>
-      <p>stage 暂存</p>
+
 
 
 
@@ -872,6 +867,7 @@
       <!-- shamefully-hoist=true 强制提升所有依赖到根node_modules 强制扁平化 -->
       <p>shamefully 可耻的, 不体面的</p>
       <p>hoist 提升</p>
+      <!-- hoisted 已提升 -->
       <p>prune 精简</p>
       <p>available 可用的</p>
       <p>prepare 准备</p>
@@ -889,6 +885,24 @@
       <p>downloaded 已下载</p>
       <p>added 已添加</p>
       <p>done 已完成</p>
+      <!-- Please ensure the correct version is specified. 请确保指定了正确的版本 -->
+      <!-- Already up to date 已经是最新的 -->
+      <!-- content-addressable store 内容寻址仓库 -->
+      <!-- Lockfile is up to date 锁文件是最新的 -->
+
+
+
+
+      <!-- 审计 -->
+      <p>audit 审计</p>
+      <p>Package 包</p>
+      <p>Vulnerable_versions 漏洞存在的版本范围</p>
+      <p>Patched_versions 已修复的版本范围</p>
+      <p>severity 漏洞等级</p>
+      <p>critical 严重的</p>
+      <p>moderate 中等的</p>
+      <p>via 经由</p>
+      <p>effects 影响到哪些包</p>
 
 
 
@@ -905,7 +919,7 @@
 
 
 
-      <!-- 操作系统 -->
+      <!-- 操作系统 node -->
       <p>directory 目录</p>
       <!-- 程序运行需要内存空间, 简单理解那就是进程
         而负责运行代码的就是线程, 俗称干活的人
@@ -916,6 +930,35 @@
       <p>child_process 子进程</p>
       <p>spawn 孕育</p>
       <p>Roaming 漫游</p>
+
+
+      <p>Attach 附加</p>
+      <p>debug 调试</p>
+
+
+      <!-- crud -->
+      <!-- 传统 API 是 “动作导向”（我要执行什么操作），而 CRUD 是 “资源导向”（我要操作什么对象） -->
+
+
+
+      <!-- nestjs -->
+      <p>express 快速</p>
+      <p>bootstrap 引导程序</p>
+      <p>Injectable 可注入的</p>
+      <p>InjectRepository 注入存储库</p>
+      <p>Repository 存储库</p>
+      <p>Entity 实体</p>
+      <!-- Exception 异常 -->
+      <p>Interceptor 拦截器</p>
+      <p>ExecutionContext 执行上下文</p>
+      <p>execute 执行</p>
+      <!-- Transform 转换 -->
+      <p>transformer 转换器</p>
+      <p>pipe 管道, 管线</p>
+      <p>Observable 可观察的</p>
+      <p>Test_Suites 测试套件</p>
+      <!-- numeric string is expected 预期为数字字符串 -->
+      <p>schema 架构, 模式</p>
 
 
 
@@ -959,10 +1002,24 @@
 
 
 
-      
 
 
-      <p>schema 模式, 结构</p>
+      <!-- GraphQL -->
+      <p>scalar 标量</p>
+      <!-- schema 模式 -->
+
+
+
+
+
+      <!-- MCP -->
+      <p>inspector 检查员</p>
+      <p>Notifications 通知(复数)</p>
+
+
+
+
+
       <p>batch 批, 批量</p>
       <p>person 人</p>
       <p>rate 评级, 率</p>
@@ -990,7 +1047,7 @@
       <p>siblings 兄弟, 姐妹(复数)</p>
       <p>preserve 保存</p>
 
-      
+
       <p>cloneNode 克隆节点</p>
       <p>closest 最近的(close 的不知什么状态)</p>
       <p>swiper 轮播图插件</p>
@@ -1016,21 +1073,10 @@
       <p>semantic 语义化</p>
       <p>singleton 单例</p>
 
-      <p>Interceptor 拦截器</p>
-      <p>Injectable 可注入</p>
-      <p>invoke 调用 执行</p>
-      <p>execute 执行</p>
-      <p>ExecutionContext 执行上下文</p>
-      <p>transformer 转换器</p>
-      <p>plain 无格式 普通 朴素 无修饰</p>
-      <p>pipe 管道 管线</p>
-      <p>expand 扩展</p>
-      <p>extend 扩展</p>
 
       <p>backup 备份</p>
       <p>silent 静默</p>
 
-      <p>bootstrap 引导程序</p>
 
       <p>Architecture 硬件架构 arch</p>
 
@@ -1079,7 +1125,7 @@
       <p>charset 字符集</p>
       <p>compose 组成</p>
       <p>dashboard 面板, 指示板, 类似于主界面</p>
-      <p>package 包</p>
+
       <p>chain 链, 链式</p>
       <p>bucket 桶, 全家桶</p>
       <p>detect 检测, 发现 detected</p>
@@ -1099,7 +1145,7 @@
       <p>abbr 缩写</p>
       <p>addition 附加</p>
 
-      <p>studio 工作室 制作室</p>
+      <p>studio 工作室, 制作室</p>
 
       <p>comic 漫画</p>
       <p>champion 冠军</p>
@@ -1111,7 +1157,8 @@
       <p>upgrade 升级</p>
       <p>distance 距离 dis</p>
       <p>distribution 分发 dist vue项目打包后的目录</p>
-
+      <p>compare 比较 Comparator 比较器</p>
+      <p>goods 商品, 货物</p>
 
 
       <!-- 多词 句子等
