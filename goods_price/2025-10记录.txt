@@ -1,0 +1,24 @@
+2025-10-10 07:31
+查计价单位列表
+  查出来的数据在前端排序
+查商店列表
+  查出来的数据在前端排序
+查商品列表
+  查出来的数据不用排序
+  前端有模糊搜索, 组件功能
+
+
+
+eggjs项目从2025-10-12不再增加功能, 可以研究相关代码以及注释
+转为在nestjs项目增加新功能
+
+
+2025-10-23
+由于原api已改, 新的api只适用于nestjs后端
+  nest端口7100, goods_price_backend_nestjs
+  vite端口5173, goods_price_frontend_nestjs
+  连接blog数据库(测试)
+拷贝一份前端, 使用原api
+  egg端口7001, goods_price_backend_eggjs
+  vite端口5180, goods_price_frontend_eggjs
+  连接goods数据库(正式)

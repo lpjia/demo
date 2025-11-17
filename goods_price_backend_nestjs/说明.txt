@@ -1,0 +1,147 @@
+2025-10-08 06:17
+重新总结后的第一个nestjs项目
+有示例和实际项目
+
+
+使用ormconfig.json连接数据库失败, 可能原因是不能自动读取该文件
+
+
+posts模块是第一个示例, 改成了article模块(尝试功能用的)
+顺序:
+unit模块
+shop模块
+product模块
+
+
+
+表关系:
+product (多对一) shop
+product_history (多对一) product
+product_history (多对一) unit
+  同一个单位但是规格不同, 价格也不同
+补充:
+product (多对多) shop
+
+
+swaggerUI
+http://localhost:7100/docs
+
+
+
+界面功能梳理:
+新增提交 👌
+  buyTime 字段为null时, 允许插入1条商品价格数据, 不允许插入2条
+查所有店列表 👌
+查所有商品列表 👌
+查所有计价单位列表 👌
+通过商品名精准查询各个店的各个时间的价格 👌
+  不同店、不同时间
+通过商品名模糊查询商品 👌
+  1个或多个商品、不同店
+查某商品的历史价格 👌
+  以购买时间为准
+
+
+
+新增提交功能
+界面必传字段: 
+  商品名 productName
+    一般是新商品名, productId 数据和 productName 一致, 都是string
+    如果已有同类商品, 这里确定唯一性是 productName + shopId
+  单价 price
+    string类型(可表示小数)
+  计价单位 unitId
+  商店名 shopId
+  位置 position
+    不用传, 和shopId一一对应
+可选字段
+  购买时间 buyTime
+  规格 spec
+  备注 note
+  商品别名 productAlias
+禁止录入字段
+  商店别名 shopAlias
+  位置别名 positionAlias
+
+
+前端必传的字段:
+  productName
+  price
+  unitId
+  shopId
+可选字段
+  buyTime
+  spec
+  note
+  productAlias
+
+
+
+
+功能细节梳理:
+swaggerUI 展示了响应结构 👌
+实体类和DTO之间的配合 👌
+
+swaggerUI 没有验证auth
+
+没有实现单元测试
+没有实现全流程测试
+
+
+
+路由:
+/api 公共前缀
+
+必须用到的API
+GET /unit/list
+GET /shop/list
+GET /shop/:id
+GET /shop/:id/productList
+GET /product/list
+GET /product/name?likeFlag=xxx&fieldValue=yyy
+  模糊查, 不需要历史价格
+  精确查, 需要历史价格
+GET /product/:id
+GET /product/:id/priceHistory
+POST /product
+
+
+
+
+参数校验: 几种情况
+没传字段(字段不存在)
+传了字段, 但没值
+  原始http GET请求 , query和path上的字段和值都是字符串类型
+传了字段, 也传值
+
+
+
+curd
+传统 API 是 “动作导向”（我要执行什么操作），而 CRUD 是 “资源导向”（我要操作什么对象）
+
+基础增删改查场景：优先用 CRUD API（如用户、商品、订单的基本操作），享受其一致性和扩展性
+复杂业务操作：用传统命名更清晰（如/payOrder、/refundOrder、/batchDeleteUsers），不必硬套 CRUD
+
+CRUD 的价值:当项目有上百个接口时，统一的规则能大幅减少 “记接口名” 的心智负担
+
+
+方法命名
+ShopController 查某列表 findAll
+  查某 findOne
+  新增某 create
+  编辑 修改 更新 update
+  移除 软删除 remove
+
+
+
+方法实现顺序:
+getProductById
+  没有处理时间格式化 👌
+  shopInfo.deleteTime字段存在 👌
+  priceHistoryList[].deleteTime字段存在 👌
+  priceHistoryList[].unitInfo.deleteTime字段存在 👌
+
+
+
+try尝试
+  
