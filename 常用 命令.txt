@@ -6,6 +6,14 @@ nvm use 18.14.0
 nvm ls
 nvm install 18.20.8
 
+volta install node@20
+volta pin node@20
+volta pin node@18.20.8
+volta pin node@18.14.2
+volta pin node@16.20.2
+volta pin pnpm@8.15.9
+volta pin pnpm@7.33.7
+
 pn dev
 pn i
 pn add

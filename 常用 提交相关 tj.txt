@@ -1,29 +1,34 @@
 
-git commit '' -m '202510'
-git commit '' -m '202510'
-git commit '' -m '202510'
-git commit '' -m '202510'
-git commit -m '20251018'
-git commit 'BFF/*' 'bi_movie_tv_comic/*' 'bianqian/*' 'TS基础/*' '面试题/*' -m '20251017'
-git commit 'fetch 异步 多线程的条件竞争/*' 'bianqian/*' -m '20251016'
-git commit 'bi_movie_tv_comic/*' -m '202510'
+页面调试/* 还没完
+
+计算本地文件md5/*
+'node_api/*'
+react/*
+'md-image-checker 检测/*'
+
+
+'常用 提交相关 tj.txt'
+'常用 命令.txt'
+'常用 片段.txt'
+
+
+git commit '' -m '202511'
+git commit '' -m '202511'
+git commit commodity_price/* commodity_price_electron_desktop/* -m '202511'
+
+git commit goods_price_frontend_nestjs/* goods_price_frontend_eggjs/* goods_price_electron_desktop/* goods_price_backend_nestjs/* goods_price_backend_eggjs/* 'egg_try_simple/*' 'commodity_price_backend/*' 'commodity_price_backend_nestjs/*' 'commodity_price_frontend/*' egg_simple_try/* goods_price/* -m '20251118'
+git commit 'nest_mysql/*' 'bi_movie_tv_comic/*' 'bi_word/*' -m '20251117'
+git commit 'vue3_reactivity_ws_frontend/*' 'vue3_reactivity_ws_backend/*' 'vue3_reactivity_ws/*' -m '20251116'
+git commit  '唯一ID uuid/*' '学习正则/*' '正则例子/*' -m '20251115'
+git commit '请求/*' '自制小工具/*' -m '20251114'
+git commit '方法劫持/*' -m '20251108'
+git commit 'MCP从入门到实践/*' -m '20251107'
+git commit 'TS基础/*' -m '20251106'
+git commit 'MCP 前置知识/*' '面试题/*' 'uuid_随机字符_ULID/*' -m '20251029'
+git commit 'BFF/*' 'TS基础/*'  -m '20251017'
+git commit 'fetch 异步 多线程的条件竞争/*'  -m '20251016'
 git commit 'TS-Vue3-Vite/*' -m '20251011'
-
-
-
-
-git commit 'MCP 前置知识/*' -m '20250818'
-
-
-
-git commit '' -m '2025'
-
-git commit 'TS笔记.md' 'css笔记.md' '常用 笔记.md' '常用 提交相关 tj.txt' 'bi_movie_tv_comic/*' 'bi_music/*' 'bianqian/*' -m '20250808'
-
+git commit 'TS笔记.md' 'css笔记.md' '常用 笔记.md' 'bi_music/*'  -m '20250808'
 git add 'generator生成器/*'
-
 git commit 'flex 布局/*' 'generatePassword/*'  -m '20250526'
-
-git commit 'css笔记.md' -m '20250520'
-
 git commit '游戏-五子棋/*' -m '20250525'
