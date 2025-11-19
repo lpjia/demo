@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "go": "node md-image-checker.js",
+    "godel": "node md-image-checker.js --delete"
+  }
+}
