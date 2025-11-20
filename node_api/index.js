@@ -54,3 +54,25 @@ console.log('nextTick was set!');
 process.on('exit', function (code) {
   console.log('about to exit with code: ' + code);
 });
+
+
+/* 
+const fs = require('fs');
+const path = require('path');
+
+class MdImageComparator {
+  ...
+}
+
+function main() {
+  ...
+}
+
+// 当直接运行此文件时(node md-image-checker.js), 就是主模块, 才执行main()
+// 作为模块导入时, 不执行main() // const MdImageComparator = require('./md-image-checker');
+if (require.main === module) {
+  main();
+}
+
+module.exports = MdImageComparator;
+*/
