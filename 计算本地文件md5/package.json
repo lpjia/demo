@@ -4,7 +4,7 @@
   "description": "一个用于计算本地文件MD5值的Node.js工具",
   "main": "file-md5.js",
   "scripts": {
-    "start": "node file-md5.js"
+    "go": "node file-md5.js"
   },
   "keywords": [
     "md5",
@@ -12,6 +12,6 @@
     "nodejs",
     "hash"
   ],
-  "author": "",
+  "author": "lpjia",
   "license": "MIT"
 }
