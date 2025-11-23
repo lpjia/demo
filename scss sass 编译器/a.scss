@@ -1,0 +1,14 @@
+$n: 3;
+$deg: calc(360deg / $n);
+$deg2: #{calc(360 / $n)}deg;
+
+@for $i from 1 through $n {
+  .dot {
+    transform: rotate(($i - 1) * $deg);
+    transform-origin: ($i * 10px);
+  }
+
+  .dot2 {
+    transform: rotate($deg2);
+  }
+}
