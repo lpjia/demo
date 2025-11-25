@@ -1,0 +1,106 @@
+@use 'sass:math';
+@use 'sass:list';
+
+// EasySass插件还不支持@use 'sass:math';
+// 用sass编译器没问题 pnpx sass index.scss index.css --no-source-map -w
+
+html {
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  font-family: 'lato', sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  letter-spacing: 10px;
+  margin-top: -60px;
+  padding-left: 10px;
+  background: linear-gradient(white, #38495a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+// @function createShadow($n) {
+//   $shadow: '10vw 10vh #fff';
+//   @for $i from 2 through $n {
+//     $shadow: '#{$shadow}, #{$i*10}vw #{$i*10}vh #fff';
+//   }
+//   @return unquote($shadow); // 拼接字符串, 最后要去掉引号
+// }
+
+
+// @function createShadow($n) {
+//   $shadow: ();
+//   @for $i from 1 through $n {
+//     $x: math.random(100) * 1vw;
+//     $y: math.random(100) * 1vh;
+//     $shadow: list.append($shadow, $x $y #fff, comma); // list.append(列表$list, 值$val, 分隔符$separator: auto) // comma逗号 space空格 slash斜线 auto默认值
+//   }
+//   @return $shadow;
+// }
+
+
+@function createShadow($n) {
+  $shadow: math.random(100)*1vw math.random(100)*1vh #fff;
+
+  @for $i from 2 through $n {
+    $shadow: $shadow, math.random(100)*1vw math.random(100)*1vh #fff; // 不用引号也能拼接, 因为css本质上就是字符串
+  }
+
+  @return $shadow;
+}
+
+$count: 1000;
+$duration: 400s;
+
+@for $i from 1 through 5 {
+  $count: math.floor(calc($count/2));
+  $duration: math.floor(calc($duration/2));
+  @debug $count;
+  @debug $duration;
+
+  .layer#{$i} {
+    $size: #{$i}px;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    // 阴影可以加很多个
+    // box-shadow: 10vw 10vh #fff,
+    //   20vw 20vh #fff,
+    //   30vw 30vh #fff,
+    //   40vw 40vh #fff;
+    box-shadow: createShadow($count);
+    animation: moveUp $duration linear infinite;
+
+    &::after {
+      content: '';
+      position: inherit;
+      top: 100vh;
+      left: inherit;
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      box-shadow: inherit;
+    }
+  }
+}
+
+@keyframes moveUp {
+  100% {
+    transform: translateY(-100vh);
+  }
+}
