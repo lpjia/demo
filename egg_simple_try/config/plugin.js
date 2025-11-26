@@ -8,11 +8,11 @@ module.exports = {
 
   /* 数据库 ORM */
   sequelize: {
-    enable: true,
+    enable: false,
     package: 'egg-sequelize',
   },
   mysql: {
-    enable: false,
+    enable: true,
     package: 'egg-mysql'
   },
 
