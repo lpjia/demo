@@ -1,0 +1,21 @@
+{
+  "name": "postcss_try",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "license": "GPL",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [],
+  "scripts": {
+    "compile": "postcss src/**/*.css -d dist -w --no-map"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-modules": "^6.0.1",
+    "postcss-preset-env": "^10.4.0",
+    "tailwindcss": "^4.1.17"
+  }
+}

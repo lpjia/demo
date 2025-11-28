@@ -1,0 +1,15 @@
+@tailwindcss/postcss
+tailwindcss
+v4需要的
+
+
+
+postcss-preset-env
+加厂商前缀
+兼容多浏览器
+
+
+
+postcss-modules
+加类名哈希
+{"container":"_container_ve476_9"}
