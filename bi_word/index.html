@@ -118,11 +118,11 @@
 
 
       <!-- css 属性 值 -->
+      <!-- inherit、initial、unset、revert -->
+
       <p>wrap 换行 包一层</p>
       <!-- wrapper 包装器 -->
       <p>nowrap 不换行</p>
-      <p>inherit 继承</p>
-      <p>initial 最初的</p>
       <p>offset 偏移量</p>
       <p>clip 裁剪, 剪切</p>
       <p>vertical 垂直</p>
@@ -180,7 +180,7 @@
       <p>rotate 旋转</p>
       <p>scale 缩放</p>
       <p>skew 倾斜, 盒子都变倾斜了, 和旋转还不一样</p>
-
+      <p>transform-origin 变形原点, 默认正中心</p>
 
 
 
@@ -190,9 +190,17 @@
       <p>calc() 计算</p>
       <p>url() 背景图常用</p>
       <p>var() css变量</p>
-      <p>clamp() 夹</p>
+      <p>clamp() 夹, 限制在什么范围内</p>
 
 
+
+
+
+      <!-- sass scss -->
+      <p>unquote() 只去除最外层的引号</p>
+      <p>compile 编译</p>
+      <!-- compiler 编译器 -->
+      <p>through 直到</p>
 
 
 
@@ -204,7 +212,7 @@
       <p>frame 帧</p>
       <p>linear 线性的</p>
       <p>ease_in 渐入, 缓入</p>
-      <p>infinite 无穷大</p>
+      <p>infinite 无限循环, 无穷大</p>
       <p>alternate 交替</p>
       <p>flip 翻转</p>
       <p>forwards 向前 向前进方向</p>
@@ -213,6 +221,32 @@
       <p>delay 延迟</p>
       <p>reverse 反向</p>
 
+
+
+
+      <!-- tailwindcss -->
+      <!-- 常用 -->
+      <!-- flex -->
+      <!-- block -->
+      <!-- hover: -->
+      <!-- relative 相对定位 absolute 绝对定位 -->
+      <!-- shadow -->
+      <p>rounded 圆角 border-radius</p>
+      <!-- rounded-lg、rounded-full、rounded-md -->
+      <p>h-full 高度100%</p>
+      <!-- h-16 默认1是4px, 16就是64px -->
+      <p>bg-gray-800 背景颜色/不透明度</p>
+      <p>text-gray-300 字体颜色/不透明度</p>
+      <p>items-center 垂直居中 align-items: center</p>
+      <p>ring 边框</p>
+      <!-- ring-1 边框宽度 ring-black/5 边框颜色/不透明度, 不透明度的单位在这是5% -->
+      <p>scale-0 缩放, 0相当于隐藏</p>
+      <!-- scale-100 是100%, 显示 -->
+      <p>duration-300 过渡、动画300ms</p>
+      <p>group 组, 定义类似hover效果, 但触发在这, 变化的不在这</p>
+      <!-- group-hover:scale-100 变化的在这 -->
+      <p>origin-top-right 变形原点 transform-origin:100% 0;</p>
+      <!-- 从左到右0->100%, 从上到下0->100%, 都是这样的基准来计算的 -->
 
 
 
@@ -273,7 +307,7 @@
       <p>assign 分配</p>
 
       <p>split 字符串分割/拆分成数组 </p>
-      <p>join 连接, 数组项连接成字符串</p>
+      <p>join 连接, (arr.join)数组项连接成字符串</p>
       <!-- sql中的join翻译为关联 -->
 
       <p>match 匹配</p>
@@ -294,13 +328,15 @@
 
       <p>domain 域名</p>
       <p>host 主机</p>
+      <p>path 路径</p>
+      <p>query 查询</p>
       <!-- hash 哈希 -->
 
       <p>async 异步</p>
       <p>sync 同步 synchronize</p>
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
-      <p>post 提交</p>
+      <p>post 发送</p>
       <p>await 等待</p>
       <p>emit 发</p>
       <p>target 目标 目标元素</p>
@@ -316,7 +352,8 @@
       <p>timestamp 时间戳</p>
       <p>version 版本 ver v</p>
       <p>timeout 超时</p>
-      <p>flat 扁平</p>
+      <p>polyfill 填充物, 有些叫垫片(这个不好理解)</p>
+      <p>flat 扁平化</p>
       <p>debounce 防抖</p>
       <p>throttle 节流</p>
       <p>initialValue 初始值</p>
@@ -339,6 +376,7 @@
       <p>yield 暂停执行并返回当前值</p>
       <p>plain 无格式 普通 朴素 无修饰</p>
       <p>invoke 调用 执行</p>
+      <p>terminate 终止</p>
 
       <p>loop 循环</p>
       <p>continue; 跳过当次循环</p>
@@ -368,7 +406,7 @@
       <p>dep 依赖 deps(复数) dependence</p>
       <p>scheduler 调度器</p>
       <p>effect 副作用</p>
-      <p>patch 补丁</p>
+      <p>patch 更新, 打补丁</p>
       <p>mount 挂载 mounted</p>
       <p>immediate 立即, 立刻</p>
       <p>deep 深</p>
@@ -430,6 +468,7 @@
       <p>pending 待定 初始状态，既没有被兑现，也没有被拒绝</p>
       <p>then 然后</p>
       <p>settled 已敲定</p>
+      <p>executor 执行器</p>
 
 
 
@@ -556,6 +595,9 @@
 
       <p>model 模型</p>
       <p>modal 模态框</p>
+
+      <p>Correct 正确的</p>
+      <p>Incorrect 错误的</p>
 
 
 
@@ -736,7 +778,7 @@
 
       <!-- git 命令 -->
       <p>clone 克隆</p>
-      <p>unset 取消设置</p>
+      <!-- unset 取消设置 -->
       <p>recursively 递归的 -r</p>
       <p>force 强制 -f</p>
       <p>rebase 变基</p>
@@ -889,7 +931,7 @@
       <!-- Already up to date 已经是最新的 -->
       <!-- content-addressable store 内容寻址仓库 -->
       <!-- Lockfile is up to date 锁文件是最新的 -->
-
+      <p>integrity 完整性</p>
 
 
 
@@ -908,12 +950,34 @@
 
 
 
+      <!-- esmodule -->
+      <!-- import export -->
+      <p>import.meta.url</p>
+      <p>import.meta.resolve()</p>
+
+
+
+
+
+      <!-- commonjs -->
+      <p>require 需要</p>
+      <p>module.exports</p>
+      <p>__dirname</p>
+      <p>__filename</p>
+
+
+
+
 
       <!-- webpack -->
       <p>entry 入口</p>
       <!-- entry file 入口文件 -->
       <p>bundle 打包, 打包文件, 捆绑包</p>
-
+      <!-- webpack独有的函数 -->
+      <p>require.context</p>
+      <!-- 非标准 -->
+      <p>import.meta.glob()</p>
+      <p>eager 急切</p>
 
 
 
@@ -1015,6 +1079,14 @@
       <!-- MCP -->
       <p>inspector 检查员</p>
       <p>Notifications 通知(复数)</p>
+
+
+
+
+      <!-- zod -->
+      <p>literal 字面量</p>
+      <p>refine 自定义校验</p>
+      <p>coerce 强制类型转换</p>
 
 
 

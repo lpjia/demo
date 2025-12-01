@@ -1,4 +1,5 @@
 // 把可迭代或类数组对象转成一个新数组
+// 从命名可以看出, from从什么创建Array数组实例, ES6+
 
 /* Array.from()
 一参是可迭代或类数组对象, 二参是回调mapFn(可选), 三参是执行mapFn时用作this的值(可选)
@@ -35,4 +36,7 @@ console.log(
   // Array.isArray(o), // false
 
   // [...o], // TypeError: o is not iterable
+  /* Spread_syntax 展开语法, 只用于可迭代对象, ES6+
+    内置可迭代对象有: 数组、类数组、字符串、Map、Set
+  */
 )
