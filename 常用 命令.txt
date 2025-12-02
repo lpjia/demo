@@ -7,21 +7,25 @@ nvm ls
 nvm install 18.20.8
 
 volta install node@20
-volta pin node@20
+volta pin node@22.21.1
+volta pin node@20.19.5
 volta pin node@18.20.8
 volta pin node@18.14.2
 volta pin node@16.20.2
+volta pin node@14.21.3
 volta pin pnpm@8.15.9
 volta pin pnpm@7.33.7
+volta pin pnpm@6.35.1
 
-pn dev
-pn i
-pn add
-pn add -D
-pn remove
-pn clean
+pnpm dev
+pnpm i
+  install
+pnpm add
+pnpm add -D
+pnpm rm
+  remove
 
-pn store prune
+pnpm store prune
 
 net start mongodb
 net stop mongodb
@@ -29,3 +33,7 @@ net stop mongodb
 rimraf node_modules
 rimraf '**/node_modules'
 pnpx rimraf node_modules
+
+pnpx json5 package.json5 -o package.json
+
+pnpx @vue/cli create export_excel_xlsx-style_try

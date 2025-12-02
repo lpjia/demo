@@ -1,23 +1,54 @@
 
+正则 new RegExp 还没重新总结
 页面调试/* 还没完
 
-计算本地文件md5/*
-'node_api/*'
+
+vue-admin-template-master/*
+vue-element-admin-i18n/*
+vue-element-admin-master/*
+
+pnpm_monorepo_try/*
+json5_try/*
+koa2_ts_mysql/*
+
+请求/*
+请求 _最原始的写法/*
+请求 文件上传 最原始的写法/*
+请求 下载文件/*
+请求 form原生表单 上传文件 原生file/*
+
+node_fs\ESModule模拟__dirname__filename.js
+webpack_try/*
+worker 多线程/*
+'常用 提交相关 tj.txt' '常用 命令.txt'
+
+
+
 react/*
-'md-image-checker 检测/*'
 
 
-'常用 提交相关 tj.txt'
-'常用 命令.txt'
-'常用 片段.txt'
 
+git commit '' -m '202512'
+git commit '' -m '202512'
+git commit '' -m '202512'
+git commit '' -m '202512'
+git commit 'package模板.json' -m '202512'
 
-git commit '' -m '202511'
-git commit '' -m '202511'
-git commit commodity_price/* commodity_price_electron_desktop/* -m '202511'
-
+git commit 'new Array().方法使用/*' 'bi_movie_tv_comic/*' 'bi_word/*' -m '20251201'
+git commit 'polyfill_try/*' -m '20251130'
+git commit 'pnpm_fn_try/*' -m '20251129'
+git commit 'postcss_try/*' -m '20251128'
+git commit 'egg_simple_try/*' -m '20251127'
+git commit 'scss语法/*' -m '20251126'
+git commit 'scss星空/*' -m '20251125'
+git commit 'scss sass 编译器/*' -m '20251124'
+git commit 'node_fs/*' -m '20251123'
+git commit '计算本地文件md5/*' -m '20251122'
+git commit 'node_api/*' -m '20251121'
+git commit 'md-image-checker 检测/*' -m '20251120'
+git commit commodity_price/* commodity_price_electron_desktop/*  '常用 片段.txt' -m '20251119'
 git commit goods_price_frontend_nestjs/* goods_price_frontend_eggjs/* goods_price_electron_desktop/* goods_price_backend_nestjs/* goods_price_backend_eggjs/* 'egg_try_simple/*' 'commodity_price_backend/*' 'commodity_price_backend_nestjs/*' 'commodity_price_frontend/*' egg_simple_try/* goods_price/* -m '20251118'
-git commit 'nest_mysql/*' 'bi_movie_tv_comic/*' 'bi_word/*' -m '20251117'
+git commit 'nest_mysql/*'  -m '20251117'
 git commit 'vue3_reactivity_ws_frontend/*' 'vue3_reactivity_ws_backend/*' 'vue3_reactivity_ws/*' -m '20251116'
 git commit  '唯一ID uuid/*' '学习正则/*' '正则例子/*' -m '20251115'
 git commit '请求/*' '自制小工具/*' -m '20251114'
