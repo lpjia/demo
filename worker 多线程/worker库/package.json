@@ -1,0 +1,14 @@
+{
+  "name": "worker_lib",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "license": "GPL",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "keywords": [],
+  "scripts": {},
+  "dependencies": {
+    "piscina": "^5.1.4"
+  }
+}

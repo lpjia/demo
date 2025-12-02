@@ -8,14 +8,14 @@ if (window.Worker) {
 
   // 工作线程脚本
   const str = `
-        onmessage = function(e) {
-          const time = Math.random() * 3000
-          // 模拟复杂计算
-          setTimeout(() => {
-            postMessage(\`Second \${time.toFixed(0)} ms, ID is \${e.data.uuid}\`);
-          }, time);
-        }
-      `;
+    onmessage = function(e) {
+      const time = Math.random() * 3000
+      // 模拟复杂计算
+      setTimeout(() => {
+        postMessage(\`Second \${time.toFixed(0)} ms, ID is \${e.data.uuid}\`);
+      }, time);
+    }
+  `;
   const blob = new Blob([str]);
   const url = window.URL.createObjectURL(blob);
   // 加载 Worker 脚本
