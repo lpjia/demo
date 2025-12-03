@@ -1,0 +1,5 @@
+webpack不会去运行代码的, 是做打包转换的
+
+同时支持esmodule和commonjs语法
+
+想运行代码
