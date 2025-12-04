@@ -17,7 +17,7 @@
     跨域 从7010端口加载了内容 本地页面服务在5500端口
     这种上传文件方式看不到任何实际意义
   占位 -->
-  <form action="http://127.0.0.1:7010/api/upload/single" method="post" target="iframe" enctype="multipart/form-data">
+  <form action="http://127.0.0.1:7010/api/upload/single" method="POST" target="iframe" enctype="multipart/form-data">
     <input type="file" name="inputFile" onchange="handleChange(event)" />
     <button type="submit">提交</button>
   </form>
