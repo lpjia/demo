@@ -1,0 +1,8 @@
+POST /api/goods HTTP/1.1
+Host: 127.0.0.1:7001
+Content-Type: application/json;charset=utf-8
+
+{
+  "name":"熊二",
+  "age":8
+}
