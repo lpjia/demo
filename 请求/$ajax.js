@@ -1,6 +1,6 @@
 function fn() {
   $.ajax({
-    url: 'http://localhost:3000/api/login',
+    url: 'http://localhost:7010/api/student',
     type: 'POST', // 默认值'GET'
     // async: true, // 默认值true
     // contentType: 'application/json;charset=utf-8', // 默认值'application/x-www-form-urlencoded'

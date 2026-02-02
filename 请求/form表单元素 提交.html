@@ -20,12 +20,17 @@
       type="reset"是复位按钮, 清空表单元素的值, 有value则恢复到value默认值
     表单默认提交行为
       刷新页面
-      地址栏url后会拼接?问号
+      地址栏URL后会拼接?问号
     e.preventDefault(); // 阻止表单默认提交行为
       提交方法要加e.preventDefault();
       <button onclick="handleSubmit(event)">按钮</button>, 方法得传event
     enter事件会自动绑定到input元素, 回车会自动触发提交事件, 不用再手动绑定回车事件了
       回车自动触发"提交"按钮的onclick事件
+  -->
+
+  <!-- form 表单默认提交行为会触发页面刷新
+    也就是触发了submit事件, 想阻止默认行为, 得在submit事件函数中 e.preventDefault()
+    如果单独的表单元素(无form), 则不会触发页面刷新
   -->
 
   <form>

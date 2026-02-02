@@ -1,6 +1,7 @@
 /* 查询字符串 URLSearchParams 原生js
-https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams */
+https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams */
 
+import * as qs from 'https://unpkg.com/qs-esm'
 const params = new URLSearchParams()
 
 // 插入一个键值对
@@ -13,7 +14,7 @@ params.append('teshuzifu', 'abc#xyz+123')
 // }
 
 const queryString = params.toString() // 转成查询字符串键值对(k=v&k=v), 这是原生语法
-const obj = Qs.parse(queryString) // 把查询字符串转成obj结构
+const obj = qs.parse(queryString) // 把查询字符串转成obj结构
 
 /* 如果查询参数的值包含特殊字符，例如空格、+、#、=等，需要使用 encodeURIComponent 函数进行编码 */
 const encodeUrl = encodeURIComponent(queryString)
@@ -27,8 +28,8 @@ console.log(
   /* 返回一个迭代器 */
   // params.entries(),
 
-  // queryString,
-  // obj,
+  queryString,
+  obj,
   encodeUrl,
   decodeUrl,
 

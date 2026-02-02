@@ -1,5 +1,5 @@
 /* 文件上传 FormData 原生js
-https://developer.mozilla.org/zh-CN/docs/Web/API/FormData */
+https://developer.mozilla.org/en-US/docs/Web/API/FormData */
 
 // FormData在nodejs的v18才支持
 const formData = new FormData()
