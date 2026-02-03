@@ -8,6 +8,7 @@ import IndexController from "../controller/IndexController";
 import loginController from "../controller/LoginController";
 import AuthMiddleware from "../middleware/AuthMiddleware";
 import TestMiddleware from "../middleware/TestMiddleware";
+import koaBody from "koa-body";
 
 // 路由
 const router = new KoaRouter({
@@ -40,7 +41,7 @@ router.put('/student', StudentController.updStudent);
 // router.delete('/student', controller.student.delStudent);
 
 router.post('/upload/single', StudentController.uploadSingle)
-router.post('/upload/multiple', StudentController.uploadMultiple)
+router.post('/upload/multiple', koaBody({ multipart: true }), StudentController.uploadMultiple)
 
 /* 搜demo/this指向, 有具体案例 */
 router.post('/chatgpt', StudentController.chatGptText) // 配合类字段 箭头函数 写法

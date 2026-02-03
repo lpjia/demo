@@ -1,8 +1,9 @@
 import { createReadStream, createWriteStream } from "node:fs";
-import { extname, parse } from "node:path";
+import { extname as pathExtname } from "node:path";
 import { PassThrough } from "node:stream";
+import crypto from 'node:crypto'
 import { Context } from "koa"
-import { File } from '../../node_modules/.pnpm/@types+formidable@1.2.5/node_modules/@types/formidable/index';
+import type { File } from 'formidable'; // 使用 File 类型
 import StudentService from "../service/StudentService"
 import { sendMessage } from "./fn";
 import axios from "axios";
@@ -72,10 +73,10 @@ class StudentController {
     const fileForm = ctx.request.files
     // 判断有没有文件
     if (fileForm?.inputFile) {
-      const file = fileForm?.inputFile as unknown as File
+      const file = fileForm?.inputFile as File
 
       // 判断文件类型, 先只允许上传图片
-      const fileType = file.type
+      const fileType = file.mimetype
       const imgTypeSet = new Set(['image/jpeg', 'image/jpg', 'image/gif', 'image/png'])
       if (!imgTypeSet.has(fileType!)) {
         /* 如需提前响应, 用return ctx.body */
@@ -87,16 +88,15 @@ class StudentController {
       }
 
       // 得到扩展名, 带.
-      const ext = extname(file.name!)
+      const ext = pathExtname(file.originalFilename!)
 
       // 随机字符串
-      let urlObj = URL.createObjectURL(new Blob())
-      let randomStr = urlObj.slice(-36)
+      let randomStr = crypto.randomUUID()
 
       const filePath = `/upload/${randomStr}${ext}`
 
       // 创建可读流
-      const reader = createReadStream(file.path)
+      const reader = createReadStream(file.filepath)
       // 创建可写流
       // const writer = createWriteStream(file.name!) // 写入原文件名
       // const writer = createWriteStream(`${randomStr}${ext}`) // 写入随机名
@@ -104,15 +104,11 @@ class StudentController {
       // 可读流通过管道写入可写流
       reader.pipe(writer)
 
-      // 手动释放内存
-      URL.revokeObjectURL(urlObj)
-      urlObj = ''
-
       return ctx.body = {
         code: 0,
         msg: 'success',
         data: {
-          // filePath
+          filePath
         }
       }
     }
@@ -126,27 +122,25 @@ class StudentController {
   /* 多文件上传 */
   async uploadMultiple(ctx: Context) {
     const fileForm = ctx.request.files
-    const filePathList = []
+    const filePathList: string[] = []
     if (fileForm?.inputFile) {
-      const files = fileForm?.inputFile as unknown as File[]
-      for (const file of files) {
+      const files = fileForm?.inputFile as File[]
+      files.forEach(file => {
+        // for (const file of files) {
         // 得到扩展名, 带.
-        const ext = extname(file.name!)
+        const ext = pathExtname(file.originalFilename!)
 
-        // 随机字符
-        let urlObj = URL.createObjectURL(new Blob())
-        let randomStr = urlObj.slice(-36)
+        // 随机字符串
+        let randomStr = crypto.randomUUID()
 
         const filePath = `/upload/${randomStr}${ext}`
 
-        const reader = createReadStream(file.path)
+        const reader = createReadStream(file.filepath)
         const writer = createWriteStream(`static/${filePath}`)
         reader.pipe(writer)
-        URL.revokeObjectURL(urlObj)
-        urlObj = ''
 
         filePathList.push(filePath)
-      }
+      })
 
       ctx.body = {
         code: 0,

@@ -24,12 +24,7 @@ const app = new Koa()
 
 // 在这用中间件, 是全局中间件
 app
-  .use(
-    koaBody({
-      multipart: true,
-      parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE']
-    })
-  )
+  .use(koaBody())
   .use(
     cors({
       /* origin() { //设置允许来自指定域名请求
