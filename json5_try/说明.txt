@@ -1,0 +1,1 @@
+pnpx json5 package.json5 -o package.json
