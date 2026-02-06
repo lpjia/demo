@@ -1,0 +1,5 @@
+{
+  "name": "@monorepo/utils",
+  "version": "0.1.0",
+  "main": "index,js"
+}

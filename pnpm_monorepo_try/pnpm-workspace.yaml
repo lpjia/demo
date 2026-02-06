@@ -1,0 +1,9 @@
+packages:
+  # 匹配 packages 目录下的所有子目录（推荐目录结构）
+  - 'packages/*'
+  # 可选：匹配根目录下的独立子包（如 docs、admin）
+  - 'docs'
+  - 'admin'
+  # 排除不需要的目录（可选）
+  - '!**/node_modules'
+  - '!**/dist'
