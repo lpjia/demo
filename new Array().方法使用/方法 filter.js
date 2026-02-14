@@ -14,6 +14,11 @@ const arr = [0, 1, false, null, '1', 2, undefined, 3, 5, NaN, '', 8]
 arr.filter(Boolean)
 /* Boolean()将数据转为布尔类型
 真值保留, 假值移除 */
+const myArray = [null, false, 'Hello', undefined, 0];
+const filterArr = myArray.filter(Boolean); // ['Hello']
+// 等价于 myArray.filter(val => Boolean(val))
+const someTruthy = myArray.some(Boolean); // true
+const allTruthy = myArray.every(Boolean); // false
 
 
 

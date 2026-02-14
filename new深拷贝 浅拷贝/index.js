@@ -30,7 +30,11 @@ console.log('objB:', objB)
 复制原数据所有层级的属性值, 新旧数据互不影响 */
 
 /* JSON.parse(JSON.stringify())
-递归实现 cloneDeep R.clone _.cloneDeep */
+递归实现
+  cloneDeep
+  R.clone
+  _.cloneDeep
+*/
 
 
 // const { cloneDeep } = require('../util/commonMethod.js') // 引入报错
