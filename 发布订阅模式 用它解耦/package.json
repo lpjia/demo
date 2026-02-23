@@ -1,0 +1,17 @@
+{
+  "name": "event_emitter",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "dev": "tsx watch ./src/index.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0"
+  }
+}
