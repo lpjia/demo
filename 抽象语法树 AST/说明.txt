@@ -1,0 +1,19 @@
+2025-12-05 02:24
+感觉AST用来检测配置文件挺好的
+
+
+
+注意这三个的esm导入和使用
+如果换成cjs, 也得用require().default
+
+import * as parser from "@babel/parser"; // 解析
+import _traverse from "@babel/traverse"; // 遍历
+import _generate from "@babel/generator"; // 生成代码
+
+const traverse = _traverse.default || _traverse; // 处理兼容性
+const generate = _generate.default || _generate; // 处理兼容性
+
+parser.parse(code, {})
+traverse(ast, {})
+const output = generate(ast);
+console.log(output.code);
