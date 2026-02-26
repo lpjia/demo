@@ -1,0 +1,68 @@
+.tip3-success, .tip3-error, .tip3-warning {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.tip3-warning {
+  color: orange;
+}
+
+.tip3-error {
+  color: red;
+}
+
+.tip3-success {
+  color: green;
+}
+
+.tip2, .tip2-success, .tip2-error, .tip2-warning {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.tip2-warning {
+  color: orange;
+}
+
+.tip2-error {
+  color: red;
+}
+
+.tip2-success {
+  color: green;
+}
+
+.tip {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.tip-warning {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+  color: orange;
+}
+
+.tip-error {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+  color: red;
+}
+
+.tip-success {
+  margin: 1em 0;
+  font-size: 0.8em;
+  opacity: 0.8;
+  text-decoration: underline;
+  color: green;
+}

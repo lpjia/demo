@@ -1,0 +1,23 @@
+// 用户自定义模块
+// @use 'scssModule'; // 默认加命名空间, 名字和文件名一样
+@use 'scssModule' as zdy; // 模块重命名
+@use 'sass:math'; // 内置模块
+@use 'media'; // 不带扩展名也可以
+
+
+.cls1 {
+  color: white;
+  background-color: deepskyblue;
+  // border: 1px solid scssModule.$boderColor;
+  border: 1px solid zdy.$boderColor;
+}
+
+.cls2 {
+  margin: 20px * math.sin(30deg);
+  // color: zdy.$_bgColor; // 私有成员, 模块外无法用
+}
+
+
+// @import url('media.scss'); // 运行时
+// 旧语法
+// @import 'media.scss'; // 编译时

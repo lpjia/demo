@@ -1,9 +1,6 @@
 @use 'sass:math';
 @use 'sass:list';
 
-// EasySass插件还不支持@use 'sass:math';
-// 用sass编译器没问题 pnpx sass index.scss index.css --no-source-map -w
-
 html {
   height: 100%;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);

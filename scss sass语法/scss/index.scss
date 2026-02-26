@@ -9,21 +9,24 @@
   }
 }
 
+
 /* @for $i from 开始值 through 结束值
 包含结束值 */
 @for $i from 1 through 10 {
 
   // 变量和字符拼接时, 需要用#{}, 也可以 #{$i}px
   .m-#{$i} {
-    // css不支持数字和单位分开, 也就是不能有空格
+    // css不支持数字和单位分开, 也就是之间不能有空格
     // 巧记, 把所有css当成字符串就行了
 
     // 带变量的只记这一种
-    margin: #{$i/4}rem; // 合法 { margin: 2rem; }
+    margin: #{calc($i / 4)}rem; // 合法 { margin: 2rem; } 推荐
+    // margin: #{$i/4}rem; // 合法 { margin: 2rem; }
     // margin: $i/4rem; // 编译失败
     // margin: $i / 4rem; // 编译失败
-    // margin: $i/4 rem; // 非法, 编译成功但是css不认识 { margin: 2 rem; } 编译结果2和rem不应该有空格
+    // margin: $i/4 rem; // 非法, 编译成功但是css不认识 { margin: 2 rem; } 编译结果 2和rem之间不应该有空格
     // margin: $i / 4 rem; // 非法, 编译成功但是css不认识, 同上
+    // margin: #{calc($i / 4)rem}; // 非法, 编译成功但是css不认识, 同上
     // margin: #{$i}/4rem; // 非法, 编译成功但是css不认识 { margin: 8/4rem; }
     // margin: #{$i}rem/4; // 非法, 编译成功但是css不认识 { margin: 8rem/4; }
 
@@ -34,13 +37,19 @@
   }
 }
 
-
 /* 带单位的变量参与运算, 为了避免出现10 deg等<数字和单位之间多了个空格>
 建议用#{里面放变量参与运算}
+单位放#号{}外面
 原因是除法和/, scss区分不开, 有些css速写属性值包含/ */
 $n: 3;
-$deg: 360deg / $n;
-$deg2: #{(360 / $n)}deg; // 作为对比, (360 / $n)deg编译后是120 deg, 多了个空格
+$deg: calc(360deg / $n); // 合法 推荐
+// $deg: 360deg / $n; // 合法, 但警告没用calc()
+// $deg: (360 / $n)deg; // 编译失败
+
+// $deg2: #{360 / $n}deg; // 合法, 但警告没用calc()
+// $deg2: #{360deg / $n}; // 合法, 但警告没用calc()
+// $deg2: #{calc(360 / $n)}deg; // 合法
+$deg2: #{calc(360deg / $n)}; // 合法 推荐
 
 @for $i from 1 through $n {
   .dot {
@@ -53,90 +62,49 @@ $deg2: #{(360 / $n)}deg; // 作为对比, (360 / $n)deg编译后是120 deg, 多�
   }
 }
 
-
 /* 定义数组, scss里是list数据类型
 用逗号或空格隔开, 推荐用逗号 */
 $bgColor: #337ab7, #5cb85c, #5bc0de, #f0ad4e, deepskyblue, #d9534f, #cd6562;
 
 /* @each 遍历数组
-$c是项, $bgColor是数组 */
+$c是数组项, $bgColor是数组 */
 @each $c in $bgColor {
-  $i: index($bgColor , $c ); // 获取 $c 在数组中的索引，并赋值给 $i, 赋值用冒号
+  // 模块化
+  // @use 'sass:list';
+  // list.index(arr, arrItem);
+  $i: index($bgColor, $c); // 获取 $c 在数组中的索引，并赋值给 $i, 赋值用冒号
 
-  // SCSS 循环索引是从 1 开始
-  // #{} 插值语法
+  // scss循环, 索引是从 1 开始
   .container>div:nth-child(#{$i}) {
     background-color: $c;
   }
 }
 
 
-
-
-$redC: red;
-
-/* 在scss文件声明css变量 */
-:root {
-  --likeColor: deepskyblue;
-  --fontSize: 50px;
-  --red-color: $redC; // 声明css变量时怎么使用scss变量值?
-}
-
-$fontWeight: bold;
-$blue-color: var(--likeColor); // 声明scss变量怎么使用css变量值?
-
-/* scss支持css原生语法, 比如css变量 */
-.likeColor {
-  color: var(--likeColor);
-}
-
-/* css变量, --声明后使用var() */
-/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用#{}包裹变量 */
-.try {
-  font-weight: #{$fontWeight};
-  color: var(--likeColor);
-  font-size: var(--fontSize);
-}
-
-.try2 {
-  color: var(--red-color);
-}
-
-.try3 {
-  color: $blue-color;
-}
-
-// 2斜杠的单行注释, 转成css后不会被保留, /*/的多行注释会被保留
-$msg: 这是自定义的信息;
-$ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
-/* 可以写一些消息, 转之后会被正确识别
-#{$msg} #{$ver}*/
-
-
-
-
-/* @mixin 混入, 类似定义函数, 可带/可不带参
+/* @mixin 混入, 类似定义函数, 可带或不带参, 可设默认值
 @include 类似调用函数
-@content 类似调用时多传入的自定义实参, 也要一并用到 */
+@content 类似调用时多传入的自定义实参, 可以扩展@include大括号内的样式 {}
+*/
 
-/* 简化媒体查询 */
+// 简化媒体查询
 // @mixin flex {
 //   display: flex;
 //   justify-content: center;
 //   align-items: center;
 // }
 @mixin flex($layout: center) {
-  // 类似函数内的变量, 作用域不同, 变量赋值 默认值
+  // 类似函数内的变量, 作用域不同, 变量赋默认值
   display: flex;
   justify-content: $layout;
   align-items: $layout;
-  @content; // @content可以扩展@include大括号内的样式{}
+  @content; // @content可以扩展@include大括号内的样式 {}
 }
 
 .nav {
 
   // 函数调用
   @include flex(start) {
+    // @content可以扩展@include大括号内的样式 {}
     gap: 10px;
   }
 }
@@ -160,7 +128,7 @@ $ver: 'x.x.x'; // 如果字符串有问题, 就加引号包着
 /* 用min-width时，小的放上面大的在下面， 
 同理如果是用max-width那么就是大的在上面，小的在下面 */
 
-/* 拼接字符串, scss分带不带引号
+/* 拼接字符串, scss区分带不带引号
 直接+, 注意scss中所有运算符号前后最好手动加空格
 引号字符串在前, 拼接后是带引号的字符串
 谁在+前, 拼接后就是该形式的字符串
@@ -174,20 +142,26 @@ font-family: sans-serif; */
 
 /* 只用scss(不同html和js)实现不同视口下的文字替换效果
 注意看媒体查询那的不同视口的宽度px是怎么处理的 */
-$font: Lorem, ipsum, dolor, sit, amet;
+$fonts: Lorem, ipsum, dolor, sit, amet;
 
 h2::after {
   text-transform: uppercase;
   // color: deepskyblue;
   // content:'a';
 
-  @each $f in $font {
-    $i: index($font, $f);
+  @each $font in $fonts {
+    // 模块化
+    // @use 'sass:list';
+    // list.index(arr, arrItem);
+    $i: index($fonts, $font);
 
     // px只用书写一次
     @media screen and (max-width: (1700 - $i * 200px)) {
-      content: '' + $f;
-      color: nth($bgColor, $i); // nth直接获取数组的某一项, list.nth(数组, 索引)
+      content: '' + $font;
+      // 模块化
+      // @use 'sass:list';
+      // list.nth(arr, i); list.nth(数组, 索引)
+      color: nth($bgColor, $i); // nth直接获取数组的某一项
     }
   }
 }
