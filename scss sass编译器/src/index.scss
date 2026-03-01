@@ -1,6 +1,9 @@
+// @use 'sass:math';
+
 $n: 3;
+// $deg: math.div(360deg, $n);
 $deg: calc(360deg / $n);
-$deg2: #{calc(360 / $n)}deg;
+$deg2: calc(360 / $n)deg;
 
 @for $i from 1 through $n {
   .dot {

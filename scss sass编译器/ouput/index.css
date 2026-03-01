@@ -4,7 +4,7 @@
 }
 
 .dot2 {
-  transform: rotate(120deg);
+  transform: rotate(120 deg);
 }
 
 .dot {
@@ -13,7 +13,7 @@
 }
 
 .dot2 {
-  transform: rotate(120deg);
+  transform: rotate(120 deg);
 }
 
 .dot {
@@ -22,5 +22,5 @@
 }
 
 .dot2 {
-  transform: rotate(120deg);
+  transform: rotate(120 deg);
 }
