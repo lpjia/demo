@@ -49,8 +49,11 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item>
+          <el-form-item style="margin-right: 10px;">
             <el-button type="primary" :disabled="!canSearchProduct" @click="searchForSimilarProducts">查同类商品</el-button>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" :disabled="!canSearchProduct" @click="copyProductName">copy</el-button>
           </el-form-item>
         </div>
         <el-form-item label="单价" prop="price">
@@ -210,7 +213,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         getProductListHandler()
       })
 
-    } else {
+    }
+    else {
       console.log('error submit!', fields)
     }
   })
@@ -238,6 +242,19 @@ const canSearchProduct = computed(() => typeof form.productId === 'number')
 
 const { tableData, searchForSimilarProducts, fillForm } = useTable(form, productListMap)
 
+const copyProductName = () => {
+  productList.value.find((item) => {
+    if(item.id === form.productId){
+      navigator.clipboard.writeText(item.productName)
+       ElMessage({
+          message: `已复制"${item.productName}"`,
+          type: 'success',
+          plain: true,
+          duration: 1000
+        })
+    }
+  })
+}
 
 onMounted(() => {
   const productForm = getStorage('productForm', window.localStorage)

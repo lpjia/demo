@@ -18,6 +18,9 @@ export function useTable(form: FormData, productListMap: Ref) {
     const productListWithPrice = await getProductListWithPriceByName(productListMap.value[form.productId!]) as unknown as ProductListWithPrice[]
     tableData.value.length = 0
 
+    // 表格数据按商店sortNum排序
+    productListWithPrice.sort((a: ProductListWithPrice, b: ProductListWithPrice) => Number(b.shopInfo.sortNum) - Number(a.shopInfo.sortNum))
+
     for (const product of productListWithPrice) {
       const { productName, productAlias, shopId,
         shopInfo, priceHistoryList } = product
