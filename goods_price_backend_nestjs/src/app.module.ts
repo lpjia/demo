@@ -32,8 +32,9 @@ import { ProductModule } from './product/product.module';
         autoLoadEntities: true, // 自动加载实体, 避免手动一个个导入
       })
     }),
-    // 下面module的顺序和controller中方法的顺序影响swaggerUI的API(按组)的顺序
-    ArticleModule,
+    /* 加载对应模块
+    module的顺序和controller中方法的顺序影响swaggerUI的API(按组)的顺序 */
+    // ArticleModule,
     ProductModule,
     ShopModule,
     UnitModule,
