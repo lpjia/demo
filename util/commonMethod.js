@@ -116,20 +116,22 @@ function formatNumber(n) {
  * @param {array | object} source 
  * @returns {array | object}
  */
-export function deepClone(source) {
+export function cloneDeep(source) {
   if (!source && typeof source !== 'object') {
-    throw new Error('error arguments', 'deepClone')
+    throw new Error('error arguments', 'cloneDeep')
   }
   const targetObj = source.constructor === Array ? [] : {}
   Object.keys(source).forEach(keys => {
     if (source[keys] && typeof source[keys] === 'object') {
-      targetObj[keys] = deepClone(source[keys])
+      targetObj[keys] = cloneDeep(source[keys])
     } else {
       targetObj[keys] = source[keys]
     }
   })
   return targetObj
 }
+/* deepClone 之前的命名, 改为 cloneDeep 符合「动词 + 修饰词」的工具命名习惯 */
+
 
 
 /*
@@ -581,13 +583,34 @@ export function objKeyToOrmField(obj = {}, options) {
 }
 
 
-// 2023-10-19 12:05 星期四
+// 2025-12-03 21:51
+/* 从这开始用单数 @param @return
+@description 详细写函数功能介绍 */
+
+
+/**
+ * 将数字转换成excel的字母列, 0 --> A, 1 --> B
+ * @param {number} n 
+ * @return {string}
+ */
+export function numToExcelCol(n) {
+  let ordA = 'A'.charCodeAt(0)
+  let ordZ = 'Z'.charCodeAt(0)
+  let len = ordZ - ordA + 1
+  let s = ''
+  while (n >= 0) {
+    s = String.fromCharCode((n % len) + ordA) + s
+    n = Math.floor(n / len) - 1
+  }
+  return s
+}
+
 
 /**
  * @description 获取文件后缀
  * @param {string} filenameStr 
  * @param {boolean} isRemovePoint 是否去掉点, 默认false
- * @returns 
+ * @return {string} 
  */
 export function getFileSuffix(filenameStr, isRemovePoint = false) {
   if (typeof filenameStr !== 'string') throw new Error('filenameStr must be string');
