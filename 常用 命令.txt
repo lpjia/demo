@@ -1,4 +1,5 @@
 
+net start | findstr /i mysql
 net start mysql
 net stop mysql
 
@@ -7,15 +8,7 @@ nvm ls
 nvm install 18.20.8
 
 volta install node@20
-volta pin node@22.21.1
-volta pin node@20.19.5
-volta pin node@18.20.8
-volta pin node@18.14.2
-volta pin node@16.20.2
-volta pin node@14.21.3
-volta pin pnpm@8.15.9
-volta pin pnpm@7.33.7
-volta pin pnpm@6.35.1
+volta pin node@
 
 pnpm dev
 pnpm i

@@ -28,6 +28,16 @@ pre元素功能的本质: 它有一个默认的css属性, white-space: pre;
 hyper reference: 通常表示跳转地址
 
 1. 普通链接
+
+href="//www.sina.com/a.html"  
+省略了协议  
+会利用当前页面的协议, 补全  
+
+href="/b.html"  
+只有绝对路径  
+会利用当前页面的协议、域名、端口, 补全  
+
+
 2. 锚链接
 
 id属性: 全局属性, 表示元素在文档中的唯一编号
