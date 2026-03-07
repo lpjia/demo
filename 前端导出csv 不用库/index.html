@@ -28,6 +28,7 @@
     let csvContent = "data:text/csv;charset=utf-8," + rows.map((row) => row.join(",")).join("\n");
     console.log('csvContent:', csvContent)
     /* data:text/csv;charset=utf-8,name1,city1,some other info
+    注意这里换行了, join("\n")导致的
     name2,city2,more info */
 
 
