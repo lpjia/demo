@@ -38,6 +38,7 @@ module.exports = {
     },
     before: require('./mock/mock-server.js')
   },
+  lintOnSave: false, // 取消 ESLint 校验
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
@@ -46,7 +47,9 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    // devtool: 'eval-cheap-module-source-map'
+    devtool: 'source-map'
   },
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
@@ -87,7 +90,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()

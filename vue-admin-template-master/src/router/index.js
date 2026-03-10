@@ -160,6 +160,30 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/excel',
+    component: Layout,
+    redirect: '/excel/table',
+    name: 'excel',
+    meta: { title: '导出excel', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table1',
+        // component: () => import('@/views/production-report/1_one/workhour-stat_merge.vue'),
+        // component: () => import('@/views/production-report/2_two/workhour-stat_nomerge.vue'),
+        component: () => import('@/views/production-report/3_three/workhour-stat_merge_exceljs.vue'),
+        meta: { title: 'Table1', icon: 'table' }
+      },
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: 'Tree', icon: 'tree' }
+      // }
+    ]
+  },
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

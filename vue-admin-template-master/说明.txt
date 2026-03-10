@@ -1,0 +1,106 @@
+
+2026-03-10 18:53
+加了复杂表格的导出功能
+使用旧的导出excel库和新的
+
+
+
+2025-11-29 16:51
+
+webpack 4.47.0
+vue-cli 4
+
+
+这个开发依赖要v5, v4会报错
+svg-sprite-loader": "5.2.1"
+
+
+src\excel\Bolb.js
+猜测这个文件是转二进制用
+暂时没用到
+
+import { saveAs } from 'file-saver';
+推荐, 不用script-loader了
+
+require('script-loader!file-saver'); //保存文件用
+require('script-loader!vendor/Blob'); //转二进制用
+require('script-loader!xlsx/dist/xlsx.core.min'); //xlsx核心
+
+由于这几个文件不支持import引入，所以我们需要`script-loader`来将他们挂载到全局环境下
+
+
+
+require('script-loader!file-saver')
+是 Webpack 构建环境中 的模块导入语法，核心作用是：通过 script-loader 加载 file-saver 库，并以原生 <script> 标签的方式注入到页面中
+
+动态创建一个 <script> 标签
+把目标模块（这里是 file-saver）的源码注入到标签中
+将标签插入到页面的 <head> 或 <body> 中
+浏览器加载并执行该脚本，使模块的 API 暴露到 全局作用域（而非模块作用域）
+
+
+为什么需要 script-loader？
+file-saver 本身支持 模块化导入（ES6 import / CommonJS require），但在某些场景下，开发者可能需要
+让 file-saver 的 API（如 saveAs）直接暴露在全局（比如老项目中没有模块化，或需要全局调用）, 也就是说在window挂载saveAs, window.saveAs
+避免 Webpack 对 file-saver 进行打包（通过脚本注入的方式加载，而非打包进最终的 bundle.js）
+此时，script-loader! 就起到了 “桥接” 作用：将模块化的库，以非模块化的原生脚本方式加载
+
+
+script-loader在webpack 4有文档, 在webpack 5就没文档了
+在node环境不生效, 在浏览器环境才生效
+
+
+每个vue文件的代码, 其实经过webpack转换后, 直接跑在浏览器的, 所以nodejs环境的fs、path等都不能用
+  require可以获取资源, 除了js文件, 其他文件类型都得用对应的loader来转换
+
+
+production-report.vue 生产报告
+workhour-stat.vue 工时统计
+workhour-sum-report.vue 工时汇总报告
+
+
+workhour-stat_merge.vue 最开始的合并单元格的版本
+workhour-stat_nomerge.vue 不合并任何单元格, 空项用N/A表示
+workhour-stat.vue 最初的页面, 不再动了
+workhour-stat_merge_exceljs.vue 使用exceljs来导出
+  好用, api比较友好
+
+
+stat 统计
+staff 员工
+workshop 车间
+
+
+workHoursDTOList // 已有数据的日期
+
+每天工作按8小时算, 480分钟
+8-12, 4个小时
+14-18, 4个小时
+
+reportDate // 上报日期
+actualTime // 实际工作时长
+quotaTime // 工作日配额时长
+overTime // 工作日加班时长
+holidayTime // 节日工作时长
+restDayOverTime // 双休工作时长
+beyondTime // 超产时长
+startTime // 开始时间
+endTime // 结束时间
+isQualified // 是否合格
+
+
+每日的工时, 显示的是真实工作时长
+后面的工时结构要显示各自的小时
+
+
+
+工作日
+休息日(双休)
+节假日
+"holiday": false,
+"restDay": true
+
+
+调试导出, 数据列太多了, 精简到5条, 28-2号
+data\index.js
+data\index_duo.js 还是多列的数据
