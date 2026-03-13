@@ -13,6 +13,7 @@ export default function CreateForm({ addTodo }) {
       <input type="text" placeholder="请输入代办事项"
         value={ctt} onChange={(e) => setCtt(e.target.value)} />
       {/* 这里是原生js的input的处理方式 */}
+
       <button>加入</button>
     </form>
   )

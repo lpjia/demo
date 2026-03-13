@@ -12,6 +12,7 @@ export default function EditForm({ todo, updateTodo }) {
       <input type="text" placeholder="请输入代办事项"
         value={ctt} onChange={(e) => setCtt(e.target.value)} />
       {/* 这里是原生js的input的处理方式 */}
+
       <button>完成</button>
     </form>
   )
