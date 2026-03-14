@@ -154,4 +154,4 @@ function YuanTable() {
   )
 }
 
-export default YuanTable
+export default YuanTable;

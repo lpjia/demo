@@ -6,7 +6,9 @@ export function usePointerPosition() {
   useEffect(() => {
 
     function handleMove(e: PointerEvent) {
-      setPosition({ x: e.clientX, y: e.clientY })
+      requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY })
+      })
     }
     window.addEventListener('pointermove', handleMove)
 

@@ -69,4 +69,4 @@ function ProductTable({ products, filterText, inStockOnly }: ProductTableProps) 
   )
 }
 
-export default ProductTable
+export default ProductTable;

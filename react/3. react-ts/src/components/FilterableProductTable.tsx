@@ -39,4 +39,4 @@ function FilterableProductTable() {
   )
 }
 
-export default FilterableProductTable
+export default FilterableProductTable;

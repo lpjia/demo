@@ -9,7 +9,6 @@ function useDelayedValue(value: P, delay: number) {
     setTimeout(() => {
       setDelayedValue(value)
     }, delay)
-
   }, [value, delay])
 
   return delayedValue;

@@ -19,4 +19,4 @@ function SearchBar({ filterText, inStockOnly, setFilterText, setInStockOnly }: S
   )
 }
 
-export default SearchBar
+export default SearchBar;
