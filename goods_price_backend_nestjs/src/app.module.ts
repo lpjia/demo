@@ -5,7 +5,7 @@ import envConfig from '../config/env';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import { UnitModule } from './unit/unit.module';
-import { ArticleModule } from './article/article.module';
+// import { ArticleModule } from './article/article.module';
 import { ShopModule } from './shop/shop.module';
 import { ProductModule } from './product/product.module';
 

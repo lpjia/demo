@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 // 下划线转小驼峰
 function toCamelCase(str: string): string {

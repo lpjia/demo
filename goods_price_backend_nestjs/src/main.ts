@@ -28,6 +28,6 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, document)
 
   await app.listen(port)
-  console.log(`[\x1B[36m Running\x1B[0m ] 服务已启动: http://localhost:${port}`);
+  console.log(`[\x1B[36mRunning\x1B[0m] 服务已启动: http://localhost:${port}`);
 }
 bootstrap();

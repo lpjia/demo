@@ -5,6 +5,7 @@ import { Repository, Like, Raw, IsNull } from 'typeorm';
 import { PriceHistoryEntity } from './entities/priceHistory.entity';
 import { plainToInstance } from 'class-transformer';
 import { ProductResponseDTO } from './dto/productResponse.dto';
+import { calcPricePerByPrice } from 'src/common/utils/calcPricePer';
 
 @Injectable()
 export class ProductService {
@@ -13,7 +14,7 @@ export class ProductService {
     private readonly productRepository: Repository<ProductEntity>,
 
     @InjectRepository(PriceHistoryEntity)
-    private readonly productHistoryRepository: Repository<PriceHistoryEntity>
+    readonly productHistoryRepository: Repository<PriceHistoryEntity>
   ) { }
 
   // 查商品列表
@@ -26,23 +27,23 @@ export class ProductService {
   async getProductById(id: number) {
     const product = await this.productRepository.findOne({
       where: { id },
-      // select: [
-      //   'id',
-      //   'productName',
-      //   'productAlias',
-      //   'shopId',
-      //   'createTime',
-      //   'updateTime',
-      //   'deleteTime',
-      // ],
+      /* select: [
+        'id',
+        'productName',
+        'productAlias',
+        'shopId',
+        'createTime',
+        'updateTime',
+        'deleteTime',
+      ], */
       // 关联查询（对应原 Egg.js 的 include）
       relations: [
         'shopInfo', // 关联 Shop（别名 shopInfo）
         'priceHistoryList', // 关联 PriceHistory（别名 priceHistoryList）
         'priceHistoryList.unitInfo', // 嵌套关联 PriceHistory 的 Unit（别名 unitInfo）
       ],
-      // 关联实体的字段排除（TypeORM 用 loadEagerRelations + select 或单独配置）
-      // 这里通过 "relations 层级" + "select 排除" 实现关联实体的字段过滤
+      /* 关联实体的字段排除（TypeORM 用 loadEagerRelations + select 或单独配置）
+      这里通过 "relations 层级" + "select 排除" 实现关联实体的字段过滤 */
       loadEagerRelations: true, // 启用关联加载（默认 true，可省略）
     })
 
@@ -106,13 +107,14 @@ export class ProductService {
       buyTime, spec, note,
       productAlias
     } = productAndPrice
+    const pricePer = calcPricePerByPrice(spec!, price!)
 
     // Product表的 productName + shopId, 这2个字段确定唯一性
     let product = await this.productRepository.findOneBy({ productName, shopId })
 
     // 如果没查到, 说明商品表应该增加一条
     if (!product) {
-      product = await this.productRepository.save({ productName, productAlias, shopId });
+      product = await this.productRepository.save({ productName, productAlias, shopId, pricePer });
     }
 
     const has = await this.hasDuplicateHistory(product.id, productAndPrice)
@@ -123,6 +125,7 @@ export class ProductService {
         price,
         unitId,
         spec,
+        pricePer,
         buyTime,
         note,
       });

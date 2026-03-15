@@ -46,6 +46,12 @@ export class PriceHistoryEntity {
   spec: string;
 
   @Column({
+    name: 'price_per',
+    length: 20
+  })
+  pricePer: string;
+
+  @Column({
     length: 100
   })
   note: string;
