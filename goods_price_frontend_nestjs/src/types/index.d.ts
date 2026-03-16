@@ -36,6 +36,7 @@ export interface PriceHistory {
   price: string;
   unitId: string;
   spec: string;
+  pricePer: string;
   note: string;
   unitName: string;
 }
@@ -71,6 +72,7 @@ interface PriceHistoryList {
   price: string;
   unitId: string;
   spec: string;
+  pricePer: string;
   note: string;
   unitInfo: {
     createTime?: any;

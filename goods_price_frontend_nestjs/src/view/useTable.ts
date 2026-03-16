@@ -9,7 +9,8 @@ interface TableItem extends Omit<FormData, 'position' | 'positionAlias' | 'buyTi
   unitName: string;
   priceHistoryId: number;
   buyTime: string;
-  position?: string
+  position?: string;
+  pricePer: string;
 }
 
 export function useTable(form: FormData, productListMap: Ref) {
@@ -37,8 +38,8 @@ export function useTable(form: FormData, productListMap: Ref) {
 
       for (const priceItem of priceHistoryList) {
         const { productId, price, unitId,
-          unitInfo: { unitName }, spec, note,
-          id: priceHistoryId, buyTime } = priceItem
+          unitInfo: { unitName }, spec, pricePer,
+          note, id: priceHistoryId, buyTime } = priceItem
 
         tableData.value.push({
           ...obj,
@@ -47,6 +48,7 @@ export function useTable(form: FormData, productListMap: Ref) {
           unitName,
           unitId,
           spec,
+          pricePer,
           note,
           priceHistoryId,
           buyTime: dayjs(buyTime).format('YYYY-MM-DD'),

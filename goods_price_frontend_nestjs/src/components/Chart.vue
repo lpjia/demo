@@ -59,10 +59,19 @@ const option = ref<EChartsOption>(
         const t = params[0].name;
         const v = params[0].value;
         const u = params[0].data.unitName;
+        const pricePer = params[0].data.pricePer;
+
+        // 没值就不显示
+        const pricePerHtml = pricePer? 
+          `<span style='color:${c};'>●</span>
+          <span style='color:${c};'>${pricePer}</span><br>`
+          : '';
+
         const html = `${t}<br>
-      <span style='color:${c}'>●</span>
-      <span style='color:red;'>${v}</span> ${u}<br>
-      <div data-val='${v}'>查看详情</div>`;
+          <span style='color:${c};'>●</span>
+          <span style='color:red;'>${v}</span> ${u}<br>
+          ${pricePerHtml}
+          <div data-val='${v}'>查看详情</div>`;
         return html;
       }
     },

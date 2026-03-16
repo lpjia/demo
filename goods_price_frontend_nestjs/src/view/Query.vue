@@ -49,6 +49,7 @@ export type ChartD = {
   buyTime: string;
   unitName: string;
   spec: string;
+  pricePer: string;
   note: string;
 }
 interface ChartContainer {
@@ -126,7 +127,8 @@ const getProductPriceHistoryHandler = async (product: ProductTp) => {
         }
 
         for await (const itemHistory of priceHistory.value) {
-          const { price, buyTime, unitName, spec, note } = itemHistory
+          const { price, buyTime, unitName, 
+            spec,pricePer, note } = itemHistory
           const val = Number(price)
           const t = dayjs(buyTime).format('YYYY-MM-DD')
           chartContainer.chartData.push(
@@ -136,6 +138,7 @@ const getProductPriceHistoryHandler = async (product: ProductTp) => {
               buyTime: t,
               unitName,
               spec,
+              pricePer,
               note,
             }
           )

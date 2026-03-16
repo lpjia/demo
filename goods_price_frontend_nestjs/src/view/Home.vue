@@ -24,8 +24,9 @@
         <el-table-column prop="shopName" label="商店名" align="center" width="180" />
         <el-table-column prop="price" label="单价" align="center" width="80" />
         <el-table-column prop="unitName" label="计价单位" align="center" width="100" />
-        <el-table-column prop="spec" label="规格" align="center" width="120" />
-        <el-table-column prop="note" label="备注" align="center" width="180" />
+        <el-table-column prop="spec" label="规格" align="center" width="80" />
+        <el-table-column prop="pricePer" label="元每单位" align="center" width="120" />
+        <el-table-column prop="note" label="备注" align="center" width="100" />
       </el-table>
     </div>
     <div class="formSection mt-5">
