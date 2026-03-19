@@ -1,4 +1,0 @@
-name: &name my_config
-compose:
-  key1: *name
-  key2: my name is *name
