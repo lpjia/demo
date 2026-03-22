@@ -26,6 +26,7 @@ net stop mongodb
 rimraf node_modules
 rimraf '**/node_modules'
 pnpx rimraf node_modules
+pnpm dlx rimraf node_modules
 
 pnpx json5 package.json5 -o package.json
 

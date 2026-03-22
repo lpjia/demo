@@ -1,5 +1,15 @@
 
 
+
+
+
+  "volta": {
+    "node": "20.19.6",
+    "pnpm": "8.15.9"
+  }
+
+
+
 export function App(){
   return (
     <>
@@ -29,10 +39,10 @@ console.timeEnd('标记')
 
 
 浏览器打印台使用
-console.log('---- 分割线 ----\n\n\n')
+console.log('---- 分隔线 ----\n\n\n')
 
 终端使用
-console.log('---- 分割线 ----\n')
+console.log('---- 分隔线 ----\n')
 
 vscode 输出使用
 console.log('\n')
@@ -92,7 +102,7 @@ this.$nextTick(() => {
 →
 
 
-<p>----分割线----</p>
+<p>----分隔线----</p>
 
 <el-divider></el-divider>
 
