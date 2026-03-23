@@ -5,9 +5,9 @@ const obj = {
 obj.sub = obj
 obj.arr.push(obj)
 
-const deepClone = function (value) {
+const cloneDeep = function (value) {
   const cache = new WeakMap(); // WeakMap不影响垃圾回收, 键必须是对象
-  function _deepClone(value) {
+  function _cloneDeep(value) {
     // 判断是不是原始值
     if (value === null || typeof value !== 'object') {
       return value
@@ -22,14 +22,14 @@ const deepClone = function (value) {
     // 遍历, 对象遍历key, 数组遍历index
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        result[key] = _deepClone(value[key]);
+        result[key] = _cloneDeep(value[key]);
       }
     }
     return result
   }
-  return _deepClone(value)
+  return _cloneDeep(value)
 }
-const newObj = deepClone(obj)
+const newObj = cloneDeep(obj)
 
 console.log(newObj.arr !== obj.arr)
 console.log(newObj.sub !== obj.sub)
