@@ -130,10 +130,10 @@ const newObj = merge(
  * @param {T} source
  * @returns 拷贝后的值
  */
-function deepClone(source) {
+function cloneDeep(source) {
   return source
 }
-const newObj2 = deepClone({})
+const newObj2 = cloneDeep({})
 
 
 
