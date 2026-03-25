@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf node_modules"
+    "dev": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +17,9 @@
     "@types/express": "^4.17.17",
     "@types/node": "^20.5.7",
     "longjohn": "^0.2.12"
+  },
+  "volta": {
+    "node": "16.20.2",
+    "pnpm": "7.33.7"
   }
 }
