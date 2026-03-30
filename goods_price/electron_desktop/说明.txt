@@ -1,0 +1,67 @@
+
+
+
+
+    "concurrently": "^9.2.0",
+    "electron": "^37.2.4",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^8.0.3"
+
+
+## 分别单独启动前端、后台、electron
+
+全本地启动, 先不打包成exe
+
+服务 端口:
+> 前端  5173
+> 后台  7001
+> 数据库  3306
+
+跑通了
+
+## 尝试打包
+
+用 commodity_price_electron_desktop 根目录的前端、后台
+
+前端用单独打包好的dist
+
+后台使用生产依赖
+pnpm i --production
+
+后台不用eggjs默认的启动方式 egg-scripts start
+
+
+--------分割线--------
+
+项目用非 commodity_price_electron_desktop 根目录的前端、后台
+配置好对应的入口文件
+
+服务 :
+> 前端  commodity_price_frontend
+> 后台  commodity_price_backend
+> 数据库  本地3306
+
+
+--------分割线--------
+
+### 前端资源的路径问题
+
+绝对路径
+
+相对路径, 使用!
+
+## 通信问题
+
+### 前端API地址
+
+生产环境
+
+### 后端API地址
+
+生产环境
+
+
+
+### 数据库地址
+
+本地地址
