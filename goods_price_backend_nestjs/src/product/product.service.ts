@@ -134,7 +134,7 @@ export class ProductService {
       throw new HttpException('数据重复', 409);
     }
 
-    return product.productName
+    return `${product.productName} ${price}`
   }
 
   /* 怎么判断PriceHistory表的数据是否重复?

@@ -8,12 +8,13 @@
   "scripts": {
     "jiaoben": "pnpm exec ts-node -r tsconfig-paths/register src/script/calcPricePer.ts",
     "dev": "pnpm start:dev",
+    "dist": "pnpm start:prod",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -26,6 +27,7 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/serve-static": "^5.0.4",
     "@nestjs/swagger": "^11.2.0",
     "@nestjs/typeorm": "^11.0.0",
     "big.js": "^7.0.1",
@@ -64,6 +66,10 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
+  "volta": {
+    "node": "20.19.5",
+    "pnpm": "8.15.9"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -80,9 +86,5 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "volta": {
-    "node": "20.19.5",
-    "pnpm": "8.15.9"
   }
 }

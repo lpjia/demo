@@ -8,12 +8,22 @@ import { UnitModule } from './unit/unit.module';
 // import { ArticleModule } from './article/article.module';
 import { ShopModule } from './shop/shop.module';
 import { ProductModule } from './product/product.module';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // 设置为全局
       envFilePath: [envConfig.path]
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'client', 'dist'),
+      exclude: ['/api/{*test}'],
+      serveStaticOptions: {
+        fallthrough: true, // 关闭强制 404
+        index: 'index.html', // 首页刷新不丢失（SPA 必需）
+      },
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
