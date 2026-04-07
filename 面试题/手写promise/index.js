@@ -3,6 +3,11 @@ const p = new MyPromise((resolve, reject) => {
   // reject(2)
   resolve(1)
 })
-console.log(
-  p
-)
+const p2 = new Promise((resolve, reject) => {
+  // throw 123
+  // reject(2)
+  resolve(1)
+})
+
+console.log(p)
+console.log(p2)

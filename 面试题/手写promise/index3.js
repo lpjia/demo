@@ -3,7 +3,7 @@
   resolve(1)
 }) */
 
-const p = new MyPromise((resolve, reject) => {
+const p = new Promise((resolve, reject) => {
   /* 定时器, 会挂起一段时间 */
   setTimeout(() => {
     resolve(1)
@@ -21,7 +21,7 @@ const p = new MyPromise((resolve, reject) => {
 ) */
 
 /* then方法调用多次
-当promise完成后, 每个回调(一函数)都要执行, 同理失败后也要分别执行每个回调(二函数) */
+当promise完成后, 无论then方法调用多少次, 结果都不会变 */
 p.then(
   (res) => {
     console.log('promise 完成1:', res)

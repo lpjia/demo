@@ -9,21 +9,19 @@ const getArticleDetail = (article) => new Promise((resolve, reject) => {
   resolve(`this is ${article} articleDetails`)
 })
 
-/* 还是回调地域 */
-getUserInfo().then((userInfo) => {
-  getArticles(userInfo).then((articles) => {
-    Promise.all(articles.map((article) => getArticleDetail(article))).then((articleDetails) => {
-      console.log(articleDetails)
-    })
-  })
-})
+// /* 还是回调地域 */
+// getUserInfo().then((userInfo) => {
+//   getArticles(userInfo).then((articles) => {
+//     Promise.all(articles.map((article) => getArticleDetail(article))).then((articleDetails) => {
+//       console.log(articleDetails)
+//     })
+//   })
+// })
 
 /* 简化后 */
 getUserInfo()
-  .then(getArticles) // 这里 callback(this.#result) getArticles(getUserInfo的result就是userInfo)
+  .then(getArticles) // userInfo参刚好传给getArticles方法
   .then((articles) =>
     Promise.all(articles.map((article) => getArticleDetail(article)))
   )
-  .then((articleDetails) => {
-    console.log(articleDetails)
-  })
+  .then(console.log)
