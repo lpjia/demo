@@ -1,0 +1,44 @@
+2026-03-13 12:38
+增加一个功能, 展示每升/kg 多少钱, 用来比较性价比
+表 price_history 增加一个字段 price_per
+
+增加列
+alter table price_history add column price_per varchar(20) not null default '' after spec;
+
+修改列
+ALTER TABLE price_history MODIFY COLUMN price_per VARCHAR(20) NOT NULL DEFAULT '' COMMENT '统一衡量单价';
+
+
+
+从规格spec这个字段中截取某些单位, 用逗号来作为分隔符
+g、kg
+  以kg记
+ml、L
+  以L记
+
+
+特别的, 乘法用汉字, 总量用英文
+30克*10根, 300g
+13克*7条, 91g
+330毫升*6罐, 1980ml
+500毫升*12瓶, 6L
+后面带英文单位的作为计算
+
+
+用正则去匹配
+先匹配g、kg、ml、L
+
+表中的数据用sql直接增加新字段的数据, 评估后很复杂, 放弃, 改用后端一次性脚本来跑
+  先查
+  SELECT * FROM price_history
+  WHERE spec REGEXP '[0-9]+[[:space:]]*(g|kg|ml|L)\\b'
+    OR spec REGEXP '[0-9]+\\.?[0-9]*[[:space:]]*(g|kg|ml|L)\\b';
+
+后端服务中也要增加新字段的处理
+  增加了1个一次性脚本
+    calcPricePer.ts
+  新增商品功能时, 处理 spec 字段, 生成 price_per 字段数据
+
+前端页面展示
+  查同类商品的表格, 显示 price_per 字段, 暂定为"元每单位"
+  查询历史价格, 图表hover显示增加一行 price_per 字段

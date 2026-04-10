@@ -1,0 +1,47 @@
+
+2026-04-03 00:27
+
+
+package.json
+去掉
+"jiaoben": "pnpm exec ts-node -r tsconfig-paths/register src/script/calcPricePer.ts",
+"dist": "pnpm start:prod",
+去掉
+"@nestjs/serve-static": "^5.0.4",
+注意
+"start:prod": "node dist/src/main",
+
+
+
+main.ts
+增加
+app.enableCors();
+导出
+bootstrap函数
+
+
+
+app.module.ts
+去掉
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
+
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'client', 'dist'),
+      exclude: ['/api/{*test}'],
+      serveStaticOptions: {
+        fallthrough: true, // 关闭强制 404
+        index: 'index.html', // 首页刷新不丢失（SPA 必需）
+      },
+    }),
+
+
+
+config/env.ts
+全改了
+
+
+
+打包
+pnpm build
+生成dist文件夹

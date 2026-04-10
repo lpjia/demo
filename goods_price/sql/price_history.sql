@@ -12,6 +12,7 @@ create table `price_history` (
   -- `discount_price` decimal(8,2) unsigned not null default 0 comment '折扣价',
   -- `discount_rate` varchar(10) not null default '' comment '折扣',
   `spec` varchar(20) not null default '' comment '规格',
+  `price_per` varchar(20) not null default '' comment '统一衡量单价',
   `buy_time` datetime default null comment '购买时间',
   `note` varchar(100) not null default '' comment '备注',
   `create_time` datetime default null,
