@@ -1,0 +1,51 @@
+/* 只作为案例的css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 清除按钮的默认样式 */
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  /* 清除点击后出现的蓝色轮廓 */
+  outline: none;
+  cursor: pointer;
+  /* 背景色置为透明 */
+  background-color: transparent;
+}
+
+body {
+  margin: 2% 6% 0;
+}
+
+/* 清浮动 */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+/* flex */
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
