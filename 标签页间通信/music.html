@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>music</title>
+  <link rel="stylesheet" href="../common/common.css">
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <audio controls></audio>
+
+  <script>
+    // /* 对应第一种 */
+    // const audio = document.querySelector('audio')
+    // function play(name) {
+    //   audio.src = `./music/${name}`
+    //   audio.play()
+    // }
+    // /* location.search 得到查询字符串, 没有则为'' */
+    // /* URLSearchParams 解析查询字符串
+    // get 方法得到k对应的v */
+    // const params = new URLSearchParams(location.search)
+    // const name = params.get('name')
+    // play(name)
+
+
+
+
+
+    // /* 对应第二种 */
+    // const audio = document.querySelector('audio')
+    // function play(name) {
+    //   audio.src = `./music/${name}`
+    //   audio.play()
+    // }
+    // const params = new URLSearchParams(location.search)
+    // const name = params.get('name')
+    // play(name)
+    // /* 同源页面才能通过 BroadcastChannel 通信
+    //   建立相同频道, new BroadcastChannel(相同字符串)
+    // 占位 */
+    // const channel = new BroadcastChannel('music')
+    // channel.addEventListener('message', (e) => { // 监听message事件, 接收数据e.data
+    //   play(e.data)
+    // })
+
+
+
+
+
+    // /* 对应第三种, 完全版, localStorage方案 */
+    // const audio = document.querySelector('audio')
+    // function play(name) {
+    //   audio.src = `./music/${name}`
+    //   audio.play()
+    // }
+    // const params = new URLSearchParams(location.search)
+    // const name = params.get('name')
+    // play(name)
+    // /* 页面打开, 获取local存储, +1, 然后存local
+    // 页面关闭, 获取local存储, -1, 然后存local */
+    // function changeLocalStorage(param) {
+    //   let newTabCount = +localStorage.getItem('newTabCount')
+    //   if (param === 1) {
+    //     newTabCount++
+    //   }
+    //   else if (param === -1) {
+    //     newTabCount--
+    //   }
+    //   localStorage.setItem('newTabCount', newTabCount + '')
+    // }
+    // changeLocalStorage(1)
+    // window.addEventListener('pagehide', (e) => {
+    //   changeLocalStorage(-1)
+    // });
+    // const channel = new BroadcastChannel('music')
+    // channel.addEventListener('message', (e) => {
+    //   play(e.data)
+    // })
+
+
+
+
+
+
+    /* 对应第四种, 完全版, 频道方案 */
+    const audio = document.querySelector('audio')
+    function play(name) {
+      audio.src = `./music/${name}`
+      audio.play()
+    }
+    const params = new URLSearchParams(location.search)
+    const name = params.get('name')
+    play(name)
+    /* 页面打开, 向A页面发送1,
+    页面关闭, 向A页面发送-1 */
+    const newTabCountChannel = new BroadcastChannel('newTabCount')
+    newTabCountChannel.postMessage(1)
+    window.addEventListener('pagehide', (e) => {
+      newTabCountChannel.postMessage(-1)
+    });
+    const channel = new BroadcastChannel('music')
+    channel.addEventListener('message', (e) => {
+      play(e.data)
+    })
+  </script>
+</body>
+
+</html>

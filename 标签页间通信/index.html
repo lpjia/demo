@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>标签页间通信</title>
+  <link rel="stylesheet" href="../common/common.css">
+  <style>
+    .music {
+      margin: 0 auto;
+      width: 160px;
+    }
+
+    .music-item {
+      background-color: #75c7b9;
+      width: 100%;
+      height: 30px;
+      border-radius: 4px;
+      padding-left: 10px;
+      padding-right: 4px;
+      margin-bottom: 10px;
+    }
+
+    .music-item:last-child {
+      margin-bottom: 0;
+    }
+
+    i:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="music">
+    <div class="music-item flex justify-between items-center">
+      <span>大地</span>
+      <i class="flex items-center" data-name="da di.mp3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5L19 12L8 19V5Z" fill="#000" />
+        </svg>
+      </i>
+    </div>
+    <div class="music-item flex justify-between items-center">
+      <span>麒麟</span>
+      <i class="flex items-center" data-name="qi lin.mp3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5L19 12L8 19V5Z" fill="#000" />
+        </svg>
+      </i>
+    </div>
+    <div class="music-item flex justify-between items-center">
+      <span>Tell me</span>
+      <i class="flex items-center" data-name="tell me.mp3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5L19 12L8 19V5Z" fill="#000" />
+        </svg>
+      </i>
+    </div>
+  </div>
+
+  <script>
+    // /* 对应第一种 */
+    // const btns = document.querySelectorAll('.music-item i')
+    // for (const btn of btns) {
+    //   btn.onclick = function () {
+    //     const name = this.dataset.name
+    //     /* open 方法的二参
+    //       一个不包含空格的字符串，用于指定资源加载到的浏览上下文的名称 。如果该名称无法标识现有上下文，则会创建一个新上下文并赋予其指定的名称
+    //       简单说就是一个新窗口的唯一标识, 没有则新开个窗口, 有则保持那一个窗口, 不再开新窗口
+
+    //       问题有2个: 一、窗口会聚焦到新开的窗口上
+    //       二、新开的窗口页面会刷新
+    //     占位 */
+    //     window.open(`./music.html?name=${name}`, 'music')
+    //   }
+    // }
+
+
+
+
+
+
+    // /* 对应第二种 */
+    // const btns = document.querySelectorAll('.music-item i')
+    // const channel = new BroadcastChannel('music') // 参是频道名称, 唯一字符串
+    // for (const btn of btns) {
+    //   btn.onclick = function () {
+    //     const name = this.dataset.name
+    //     channel.postMessage(name) // 发送数据
+    //   }
+    // }
+
+
+
+
+
+    // /* 对应第三种, 完全版, localStorage方案 */
+    // const btns = document.querySelectorAll('.music-item i')
+    // const channel = new BroadcastChannel('music')
+    // for (const btn of btns) {
+    //   btn.onclick = function () {
+    //     const name = this.dataset.name
+    //     if (!hadNewTab()) {
+    //       window.open(`./music.html?name=${name}`, 'music')
+    //     }
+    //     else {
+    //       channel.postMessage(name)
+    //     }
+    //   }
+    // }
+    // /* 2种方案, 同源
+    // 一、localStorage
+    // 二、频道
+    // 占位 */
+    // let newTabCount = 0 // 新开标签页的数量
+    // localStorage.setItem('newTabCount', newTabCount + '')
+    // function hadNewTab() {
+    //   const newTabCount = +localStorage.getItem('newTabCount')
+    //   console.log('newTabCount:', newTabCount)
+    //   return newTabCount > 0
+    // }
+    // window.addEventListener('pagehide', (e) => {
+    //   localStorage.removeItem('newTabCount')
+    // });
+
+
+
+
+
+    /* 对应第四种, 完全版, 频道方案 */
+    const btns = document.querySelectorAll('.music-item i')
+    const channel = new BroadcastChannel('music')
+    for (const btn of btns) {
+      btn.onclick = function () {
+        const name = this.dataset.name
+        if (newTabCount < 1) {
+          window.open(`./music.html?name=${name}`, 'music')
+        }
+        else {
+          channel.postMessage(name)
+        }
+      }
+    }
+    let newTabCount = 0 // 新开标签页的数量
+    const newTabCountChannel = new BroadcastChannel('newTabCount')
+    newTabCountChannel.addEventListener('message', (e) => {
+      if (e.data === 1) {
+        newTabCount++
+      }
+      else if (e.data === -1) {
+        newTabCount--
+      }
+    })
+  </script>
+</body>
+
+</html>
