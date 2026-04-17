@@ -4,6 +4,23 @@ console.log('typeof typeof 1:', typeof typeof 1)
 console.log('\n')
 
 
+// 返回 'object'
+// 以上常用的区分不开的有 null {} [] 这三种
+console.log('typeof {}:', typeof {})
+console.log('typeof []:', typeof [])
+console.log('typeof null:', typeof null)
+/* 
+export function isObject(value) {
+  return typeof value === 'object' && value !== null;
+}
+
+null 可以用 === 来准确判断
+null === null // true
+还有个推荐 Object.is(null, null)
+*/
+console.log('\n')
+
+
 // 返回 'string'
 console.log('typeof "aaa":', typeof "aaa")
 console.log('\n')
@@ -54,14 +71,6 @@ console.log('typeof Boolean:', typeof Boolean)
 console.log('typeof (()=>{}):', typeof (() => { }))
 console.log('typeof (function fn() { }):', typeof (function fn() { }))
 console.log('typeof class A { }:', typeof class A { })
-console.log('\n')
-
-
-// 返回 'object'
-// 以上常用的区分不开的有 null {} [] 这三种
-console.log('typeof {}:', typeof {})
-console.log('typeof []:', typeof [])
-console.log('typeof null:', typeof null)
 console.log('\n')
 
 
