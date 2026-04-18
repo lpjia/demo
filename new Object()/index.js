@@ -1,5 +1,6 @@
 /* 根据规范，对象的属性键只能是 string 类型或者 Symbol 类型。
-如果不是, 则会进行隐式转换, 都转为字符串 */
+如果不是, 则会进行隐式转换, 都转为字符串
+string 类型的字母区分大小写 */
 let shu_xing = Symbol('sx')
   , shu_xing2 = Symbol('sx2')
 
@@ -16,6 +17,8 @@ let obj = {
   'undefined': 'str undefined',
   null: 'null',
   'null': 'str null',
+  UserMana: 'UserMana',
+  username: 'username'
 }
 console.log("obj:",
   obj
@@ -23,6 +26,13 @@ console.log("obj:",
 console.log(
   obj[Symbol('sx3')], // undefined
   obj[shu_xing], // Symbol(sx)
+)
+
+console.log("obj.UserMana:",
+  obj.UserMana
+)
+console.log("obj.username:",
+  obj.username
 )
 
 
