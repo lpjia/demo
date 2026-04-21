@@ -1,0 +1,13 @@
+2026-04-18 18:13
+using 标识符, 这个是新语法
+我的环境下想运行必须降级
+所以使用swc来降级, 性能好
+没有用babel
+
+
+Object.groupBy
+node21才支持
+
+
+using
+node24才支持

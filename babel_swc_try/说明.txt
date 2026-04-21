@@ -1,0 +1,53 @@
+2026-04-18 18:13
+pnpm add -D @swc/cli @swc/core
+
+
+pnpm --package=@swc/cli dlx swc src/index.js
+需要配合 "explicitResourceManagement": true // 显示资源管理
+在终端打印了编译结果
+
+
+
+"compile": "swc src -d dist"
+--out-dir 简写 -d
+把src目录的模块文件编译输出到dist目录, src目录层级一并被带过来
+
+
+
+自动watch源文件
+pnpm add -D chokidar@4
+v5版本是仅支持 ESM 格式，并将最低 Node.js 版本要求提高至 v20
+使用 fs.watch 和 fs.watchFile 进行监视
+功能强大
+
+编译命令加 -w
+"compile2": "swc -w src -d dist"
+
+
+
+编译后直接node运行文件
+2个命令串行执行
+
+pnpm add npm-run-all -D
+
+脚本命令
+run-s compile index
+
+
+
+swc只转代码, 但不保证编译后代码能运行成功, 还得用core-js来保证代码成功运行
+对于不支持的方法, 使用core-js来补充
+Object.groupBy
+
+pnpm add core-js@3.49
+
+
+  "env": {
+    // jsc.target 与 env.targets 不能同时配置
+    "targets": {
+      "chrome": "58",
+      "ie": "11"
+    },
+    "mode": "usage", // usage按需注入, entry在入口处全量注入
+    "coreJs": "3.49"
+  },

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://swc.rs/schema.json", // $schema 是 JSON 文件的一个特殊字段，用来指定这个 JSON 文件遵循的 “语法规则说明书”
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+      "jsx": false, // 关闭 JSX（React 再打开）
+      "dynamicImport": true,
+      "explicitResourceManagement": true // 显示资源管理
+    },
+    "transform": {},
+    // "target": "es5", // 编译到 ES5 兼容老浏览器 (es5)
+    "loose": false
+  },
+  "env": {
+    // jsc.target 与 env.targets 不能同时配置
+    "targets": {
+      "chrome": "58",
+      "ie": "11"
+    },
+    "mode": "usage", // usage按需注入, entry在入口处全量注入
+    "coreJs": "3.49" // 要和安装的版本保持一致
+  },
+  "module": {
+    "type": "commonjs" // 输出 CommonJS 模块
+  },
+  "minify": false // 关闭压缩
+}
