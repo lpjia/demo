@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "esnext" /* 指定编译后产出的模块化规范 */,
+    "target": "esnext" /* 设置编译后产出的 JS 版本，并加载对应内置类型库 */, // 追求最新特性 ESNext
+    "strict": true /* 严格模式 */,
+    // /* 指定项目需要引入的内置类型声明库 */
+    // "lib": [
+    //   "ESNext"
+    // ],
+    // /* 手动指定需要全局加载的第三方类型包 */ // 加了会有代码提示
+    "types": [
+      "node"
+    ],
+    "paths": {} /* 配置模块路径别名映射 */,
+    "esModuleInterop": true /* 兼容 CommonJS 模块导入，抹平模块化差异 */, // Interop是互操作的意思
+    "forceConsistentCasingInFileNames": true /* 强制导入文件名大小写严格一致，避免跨系统问题 */,
+    "skipLibCheck": true /* 忽略所有第三方 .d.ts 类型文件的类型错误 */
+  },
+  /* 排除这些文件, 不需要被ts处理 */
+  "exclude": [
+    "node_module",
+    "dist"
+  ]
+  /* 哪些文件需要被 TypeScript 处理 */
+  // "include": []
+}

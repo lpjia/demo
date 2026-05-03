@@ -1,0 +1,28 @@
+{
+  "name": "@pnpm_monorepo_du/components",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {},
+  "buildOptions": {
+    "name": "DuMonorepoComponents",
+    "formats": [
+      "es",
+      "cjs",
+      "iife"
+    ]
+  },
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  },
+  "dependencies": {
+    "vue": "^3.5.33",
+    "@pnpm_monorepo_du/utils": "workspace:*"
+  }
+}

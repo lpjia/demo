@@ -1,0 +1,8 @@
+packages:
+  # 子包位置
+  # 匹配 packages 目录下的所有子目录（推荐目录结构）
+  - 'packages/*'
+  - 'apps/*'
+  # 排除不需要的目录（可选）
+  - '!**/node_modules'
+  - '!**/dist'

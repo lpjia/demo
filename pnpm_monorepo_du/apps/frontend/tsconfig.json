@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    /* 前端需要dom环境 */
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
+  },
+  /* 哪些文件需要被 TypeScript 处理 */
+  "include": [
+    "src"
+  ]
+}

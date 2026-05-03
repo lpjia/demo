@@ -1,0 +1,129 @@
+2026-04-30 04:18
+
+
+规范的统一化管理
+
+代码格式检查 prettier
+代码质量检查 eslint
+拼写检查 cspell
+提交规范
+
+
+
+
+代码的统一化管理
+1. 如何统一打包
+2. 如何建立包依赖
+3. 如何统一测试
+4. 如何发布
+
+
+1. 如何统一打包
+  公共库, rollup rolldown webpack rspack turbopack
+  单独的前端或后端项目, 有自己的打包, 在这不需要
+
+  对公共库进行统一打包
+  安装依赖
+  pnpm add -Dw rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs rollup-plugin-typescript2 @vitejs/plugin-vue rollup-plugin-postcss @rollup/plugin-terser
+
+
+@rollup/plugin-node-resolve
+让 Rollup 能找到并打包 node_modules 里的第三方依赖
+
+和 @rollup/plugin-commonjs 配合（必用）, 很多 npm 包是 CommonJS 格式，需搭配 commonjs 插件
+
+rollup-plugin-typescript2
+必须 nodeResolve() → commonjs() → typescript()，否则解析失败
+
+@vitejs/plugin-vue
+vue3 官方编译插件
+
+rollup-plugin-postcss
+Rollup 处理所有样式文件 的插件
+
+@rollup/plugin-terser
+Rollup 官方推荐的代码压缩插件
+
+
+2. 如何建立包依赖
+  pnpm add vue
+
+  package.json文件, 添加依赖 "@pnpm_monorepo_du/utils": "workspace:*"
+  直接用软链接把包链接过来, 保持文件内容同步
+
+  导入的依赖包 from '@pnpm_monorepo_du/utils', 它的package.json
+  "type": "module",
+  "main": "./dist/index.cjs.js", // 最老的cjs
+  "module": "./dist/index.es.js", // 稍旧一点的打包器用的esm
+  "types": "./dist/index.d.ts", // 同上配合用
+  "exports": { // 新的入口字段, 识别这个字段后, 上面3个字段就跳过了
+    ".": {
+      "types": "./dist/index.d.ts", // 类型先写
+      "import": "./dist/index.es.js", // esm
+      "require": "./dist/index.cjs.js" // cjs
+    }
+  },
+
+  公共库打包后, 如果有依赖关系, 那么连同用到的依赖会一起打包进来, 所以要一起打包
+
+  "dependencies": {
+    "vue": "^3.5.33",
+    "@pnpm_monorepo_du/utils": "workspace:*"
+  }
+
+
+3. 如何统一测试
+  Jest Mocha Vitest
+
+  pnpm add -Dw vitest@3 @vitest/browser@3 vitest-browser-vue@1 vue
+
+  @vitest/browser 内置了一个无头(无界面)浏览器
+  vitest-browser-vue 测试vue的组件
+
+  __test__ 文件夹
+
+  // vite.config.ts
+  test: {
+    globals: true, // 启用全局 API，如 describe, it, expect 等
+  },
+  // tsconfig.json
+  "compilerOptions": {
+    "types": ["vitest/globals"] // 添加 Vitest 全局变量的类型定义
+  }
+
+  公共子包的tsconfig.json不能动, 不能把test文件打包进来
+
+  vitest@3, 最新是v4
+  @vitest/browser@3, 最新是v4
+  vitest-browser-vue@1, 最新是v2
+  最新版本跑不起来
+
+
+4. 如何发布
+
+  只发布1个子包
+  "publish:utils": "pnpm --filter \"@pnpm_monorepo_du/utils\" publish"
+
+  // package.json
+  files字段, 指定同级目录下哪些东西要发布的
+
+
+  登录npm
+  npm whoami
+  账号名字要和 @pnpm_monorepo_du/utils 里的 pnpm_monorepo_du 保持一致
+  以后有机会再搞发布
+
+
+  "publish:utils": "pnpm --filter \"@pnpm_monorepo_du/utils\" publish --no-git-checks"
+  不检查git
+
+
+  私包得付费, 设为公共包
+  // package.json
+  "publishConfig": {
+    "access": "public"
+  }
+
+
+  每次发布时, 版本号自增
+  

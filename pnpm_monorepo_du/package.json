@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "pnpm_monorepo_du",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "module": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "scripts": {
+    "lint:prettier": "prettier --write \"**/*.{js,ts,mjs,cjs,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:eslint": "eslint",
+    "lint:spellcheck": "cspell lint \"(packages|apps)/**/*.{js,ts,mjs,cjs,json,css,less,scss,vue,html,md}\"",
+    "commit": "git-cz",
+    "prepare": "husky",
+    "precommit": "lint-staged",
+    "build": "node ./scripts/build.js",
+    "dev": "node ./scripts/dev.js",
+    "test": "vitest",
+    "publish:utils": "pnpm --filter \"@pnpm_monorepo_du/utils\" publish"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
+    "@cspell/dict-lorem-ipsum": "^4.0.5",
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@types/node": "20",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitest/browser": "^3.2.4",
+    "commitizen": "^4.3.1",
+    "cspell": "9",
+    "cz-git": "^1.13.0",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.9.0",
+    "globals": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "rollup": "^4.60.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.37.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^3.2.4",
+    "vitest-browser-vue": "^1.1.0",
+    "vue": "^3.5.33"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@pnpm_monorepo_du/utils",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {},
+  "buildOptions": {
+    "name": "DuMonorepoUtils",
+    "formats": [
+      "es",
+      "cjs",
+      "iife"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

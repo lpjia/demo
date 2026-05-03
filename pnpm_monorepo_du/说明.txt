@@ -1,0 +1,220 @@
+2026-04-30 04:18
+1. 遇到问题
+2. 解决方案
+3. 技术选型
+4. 技术实施
+5. 呈现效果
+
+
+
+
+命名习惯
+apps/ 业务的包
+  frontend/ 前端工程
+    web/ web端
+    mobile/ 移动端
+  backend/ 后端工程
+packages/ 公共子包
+  utils/ 工具包
+  components/ 组件库
+  cli/ 命令行包
+docs/ 文档的包
+
+
+
+根目录的 package.json, name字段的值是 pnpm_monorepo_du
+子包的 package.json, name字段的值是 @pnpm_monorepo_du/xxx
+
+
+
+环境要统一, 各个子包都需要的, 在根工程配置
+
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+
+.npmrc文件, 严格, 不符合就报错
+engine-strict=true
+
+
+在根工程里执行命令
+pnpm --workspace-root xxx
+pnpm -w xxx
+怎么知道哪个是根工程? 有 pnpm-workspace.yaml 文件的目录
+
+
+pnpm add -D --workspace-root typescript
+pnpm add -D -w typescript
+pnpm add -Dw typescript
+
+
+pnpm add -Dw @types/node
+
+
+-------------------------------------
+
+pnpm add -Dw prettier
+控制代码格式
+
+
+配置文件
+prettier.config.js
+.prettierignore
+
+
+脚本命令
+"lint:prettier": "prettier --write \"**/*.{js,ts,mjs,cjs,json,tsx,css,less,scss,vue,html,md}\"",
+
+
+忽略检查所有json文件, .prettierignore文件
+**/*.json
+
+
+-------------------------------------
+
+pnpm add -Dw eslint @eslint/js globals typescript-eslint eslint-plugin-prettier eslint-config-prettier eslint-plugin-vue
+检查代码质量
+
+eslint // ESLint 核心库，代码检查工具
+@eslint/js // ESLint 官方的 JavaScript 规则集
+globals // 提供常用全局变量定义，避免未定义变量报错
+typescript-eslint //  TypeScript支持
+eslint-plugin-prettier // 将 Prettier 格式化规则作为 ESLint 规则运行
+eslint-config-prettier // 关闭与 Prettier 冲突的 ESLint 规则
+eslint-plugin-vue // Vue 单文件组件的 ESLint 支持插件
+
+配置文件
+eslint.config.js
+
+脚本命令
+"lint:eslint": "eslint",
+
+
+-------------------------------------
+
+
+pnpm -Dw add cspell@9 @cspell/dict-lorem-ipsum
+拼写检查
+
+
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-dictionary",
+      "path": "./.cspell/custom-dictionary.txt", // 自定义的词典
+      "addWords": true
+    }
+  ],
+
+
+创建一个文件 
+.cspell/custom-dictionary.txt
+
+脚本命令
+"lint:spellcheck": "cspell lint \"(packages|apps)/**/*.{js,ts,mjs,cjs,json,css,less,scss,vue,html,md}\"",
+
+
+-------------------------------------
+
+
+pnpm add -Dw @commitlint/cli @commitlint/config-conventional commitizen cz-git
+标准化提交
+
+
+@commitlint/cli 是 commitlint 工具的核心。
+@commitlint/config-conventional 是基于 conventional commits 规范的配置文件。
+commitizen 提供了一个交互式撰写 commit 信息的插件
+cz-git 是国人开发的一款工具，工程性更强，自定义程度更高，交互性更好
+
+
+// package.json
+"config": {
+  "commitizen": {
+    "path": "node_modules/cz-git"
+  }
+}
+
+配置文件
+commitlint.config.js
+
+脚本命令
+"commit": "git-cz",
+
+
+-------------------------------------
+
+pnpm add -Dw husky
+在提交或推送时，自动化的检查提交信息、检查代码 和 运行测试
+连接git hooks
+提交前验证, 不通过不让提交
+
+
+初始化
+pnpx husky init
+
+多了个脚本命令, 不用管
+"prepare": "husky"
+安装单个包, 也触发prepare脚本, 没必要
+改成 "postinstall": "husky", 也会触发
+目前用 "first:i": "husky" 手动给项目装上 Git 提交校验
+
+
+.husky\pre-commit文件, 写提交之前需要运行的命令
+
+// pre-commit文件
+#!/usr/bin/env sh
+pnpm lint:prettier && pnpm lint:eslint && pnpm lint:spellcheck
+
+
+-------------------------------------
+
+pnpm add -Dw lint-staged
+只对本次要提交的文件(暂存区文件)进行检查, 而不是整个代码库文件
+lint-staged 通常与 husky 配合使用，从而在 Git 生命周期中实现自动化
+安装后不会出现在devDependencies, 而出现在pnpm-lock.yaml文件里
+
+
+配置文件
+.lintstagedrc.js
+里面有prettier、eslint、cspell检查命令并执行
+
+脚本命令
+"precommit": "lint-staged",
+
+
+此命令脚本 "commit": "git-cz", 提交前会先自动运行 "precommit": "lint-staged",
+所以命名precommit脚本, 钩子机制
+
+
+-------------------------------------
+
+
+当用pnpm commit提交时, 走标准化提交
+流程: 
+  lint-staged
+  git-cz
+    确认提交后才运行.husky\pre-commit的脚本命令
+  prettier --write xxx 所有文件全prettier
+  eslint
+  cspell lint
+  提交成功
+当用git commit -m 'xxx'提交时, 
+流程:
+  运行.husky\pre-commit的脚本命令
+    pnpm lint:prettier && pnpm lint:eslint && pnpm lint:spellcheck
+  prettier --write xxx 所有文件全prettier
+  eslint
+  cspell lint
+  提交成功
+
+
+
+最终形成的方案如下
+// pre-commit文件
+#!/usr/bin/env sh
+pnpm precommit
+
+执行 pnpm commit 脚本命令会执行2遍 lint-staged, 问题不大(只检查暂存区文件)
+
+改成"commit": "git-cz --dry-run", pnpm commit只执行1次 lint-staged, 底层不会执行git commit
+还改成旧的 "commit": "git-cz",

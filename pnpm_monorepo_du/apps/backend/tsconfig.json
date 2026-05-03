@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    /* 后端需要node环境 */
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ESNext"
+    ]
+  },
+  /* 哪些文件需要被 TypeScript 处理 */
+  "include": [
+    "src"
+  ]
+}
