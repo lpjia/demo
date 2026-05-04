@@ -1,0 +1,17 @@
+{
+  "name": "npm_hooks",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "main": "",
+  "type": "module",
+  "module": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "prebuild": "echo 执行前置脚本",
+    "build": "echo 执行核心脚本",
+    "postbuild": "echo 执行后置脚本"
+  }
+}

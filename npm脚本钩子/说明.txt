@@ -1,0 +1,10 @@
+2026-05-02 03:33
+脚本钩子, 自动触发
+固定顺序：prexxx → xxx → postxxx
+前置脚本失败，后续脚本全部中断
+
+
+pnpm@7以上版本不会默认触发钩子
+.npmrc文件
+enable-pre-post-scripts=true
+启用
