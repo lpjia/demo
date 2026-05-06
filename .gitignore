@@ -1,7 +1,11 @@
 node_modules
 dist
 新建文件夹
-
+.idea
+.vscode
+# temp_lpj/
+release/
+music/
 
 
 

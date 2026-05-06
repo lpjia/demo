@@ -1,10 +1,40 @@
 
 
+识别并转文本
 
+
+识别并转文本
+不要中文词汇
+
+
+
+
+Claude Code
+
+
+
+开发依赖
+仅仅生产依赖
+
+
+例子看demo搜
+ramda
 
 
   "volta": {
-    "node": "20.19.6",
+    "node": "22.22.2",
+    "pnpm": "9.15.9"
+  }
+
+
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  }
+
+
+  "volta": {
+    "node": "18.20.8",
     "pnpm": "8.15.9"
   }
 
@@ -83,7 +113,7 @@ rimraf node_modules
 "clean": "rimraf node_modules"
 
 
-git log --pretty=oneline
+git log --oneline
 
 
 node_modules,lib,*-lock.*,*.map
@@ -100,6 +130,8 @@ this.$nextTick(() => {
 ——
   上一行是中文的双横线
 →
+ →  
+  前后各加了空格, 美观
 
 
 <p>----分隔线----</p>
@@ -124,7 +156,7 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 
 
 
-let currTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
+let curTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
 
 
 $wh: 50px;

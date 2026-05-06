@@ -28,6 +28,11 @@ rimraf '**/node_modules'
 pnpx rimraf node_modules
 pnpm dlx rimraf node_modules
 
+node -e "require('fs').rmSync('./node_modules', { recursive: true, force: true })"
+  
+
+pnpm --package=@nestjs/cli dlx nest new .
+
 pnpx json5 package.json5 -o package.json
 
 pnpx @vue/cli create export_excel_xlsx-style_try

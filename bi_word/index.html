@@ -28,15 +28,19 @@
     <section id="dom_sort_before">
 
       <!-- 命名 -->
+      <!-- 方法命名, 原则是动词在前, 形容词在后
+       比如 cloneDeep 深拷贝, 先拷贝 再深
+      -->
+
       <p>k key 键</p>
       <p>v val value 值</p>
       <p>i idx index 索引</p>
       <p>str string</p>
       <p>num number</p>
-      <p>bol boolean</p>
+      <!-- boolean -->
       <p>obj object</p>
       <p>arr array</p>
-      <p>syb symbol</p>
+      <!-- symbol -->
       <p>get</p>
       <p>set</p>
       <p>null</p>
@@ -132,6 +136,7 @@
       <p>opacity 不透明度, 也就是值为1是显示(对应字面意思1为true), 值为0则不显示(透明)</p>
       <p>ellipsis 省略</p>
       <p>overflow 溢出</p>
+      <p>italic 斜体 i标签</p>
 
       <p>viewport 视口</p>
       <p>smooth 平滑的</p>
@@ -141,6 +146,13 @@
       <p>letter-spacing 文本字符的间距</p>
       <p>text-transform 文本大小写</p>
       <p>filter 筛选, 滤镜, 过滤器</p>
+      <!-- filter: drop-shadow()
+        filter 滤镜
+        drop-shadow 投影
+
+        box-shadow 盒子阴影
+        text-shadow 文字阴影
+      占位 -->
       <p>blur 模糊</p>
       <p>backdrop-filter 背景滤镜</p>
       <p>visible 可见的, overflow的默认值, 只显示可见区域</p>
@@ -150,7 +162,8 @@
 
       <!-- css 文字 -->
       <!-- text-stroke
-        -webkit-text-stroke 文字描边 -->
+        -webkit-text-stroke 文字描边
+      -->
       <!-- text-decoration 文字装饰 -->
       <p>underline 下划线</p>
       <p>line-through 删除线</p>
@@ -332,10 +345,10 @@
       <p>splice 拼接(数组删除、替换、添加元素)</p>
       <p>reduce 减少数组项</p>
 
-      <p>slice 切片, 提取分片</p>
       <!-- 字符串和数组都有这个方法, 返回 子串/子数组 -->
-      <p>concat 拼接字符串, 连接合并数组</p>
+      <p>slice 切片, 提取分片</p>
       <!-- 字符串和数组都有这个方法, 返回 新数组 -->
+      <p>concat 拼接字符串, 连接合并数组</p>
 
       <p>domain 域名</p>
       <p>host 主机</p>
@@ -347,11 +360,12 @@
       <p>sync 同步 synchronize</p>
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
-      <p>post 发送</p>
+      <!-- post 发送 -->
       <p>await 等待</p>
       <p>emit 发</p>
       <p>target 目标 目标元素</p>
       <p>capture 捕获</p>
+      <p>callback 回调 cb</p>
       <p>syntax 语法</p>
       <p>iterable 可迭代的</p>
       <p>observe 观察</p>
@@ -364,7 +378,7 @@
       <p>version 版本 ver v</p>
       <p>timeout 超时</p>
       <p>polyfill 填充物, 有些叫垫片(这个不好理解)</p>
-      <p>flat 扁平化</p>
+      <p>flat 拍扁, 扁平化</p>
       <p>debounce 防抖</p>
       <p>throttle 节流</p>
       <p>initialValue 初始值</p>
@@ -372,7 +386,6 @@
       <p>currentValue 当前值</p>
       <p>title 名称</p>
       <p>name 名字</p>
-      <p>struct 结构体</p>
       <p>utils 工具</p>
       <p>lib 库 library</p>
       <p>sel 选择器 selector</p>
@@ -417,7 +430,7 @@
       <p>dep 依赖 deps(复数) dependence</p>
       <p>scheduler 调度器</p>
       <p>effect 副作用</p>
-      <p>patch 更新, 打补丁</p>
+      <!-- patch 更新, 打补丁 -->
       <p>mount 挂载 mounted</p>
       <p>immediate 立即, 立刻</p>
       <p>deep 深</p>
@@ -490,6 +503,7 @@
       <p>Omit 省略, 去掉</p>
       <p>declare 声明, 类型描述</p>
       <p>type 类型 Tp 这缩写当不知道用啥命名时再用</p>
+      <!-- type 打字 动词 -->
       <p>interface 接口</p>
       <!-- user interface 用户界面 UI -->
       <!-- extends 泛型约束 -->
@@ -516,7 +530,7 @@
       <p>network 网络</p>
       <p>request 请求 req</p>
       <p>response 响应 res resp</p>
-      <p>raw 未加工的, 原始的</p>
+      <p>raw 未加工的, 原始的, 裸的</p>
       <p>parse 解析</p>
       <p>payload 有效载荷</p>
       <p>token 令牌, 词元(大模型用的)</p>
@@ -535,9 +549,14 @@
       <p>fadeIn 淡入</p>
       <p>fadeOut 淡出</p>
 
-      <p>pre 预</p>
+      <p>pre 预, 预先, 提前</p>
       <p>preset 预设</p>
       <p>preview 预览</p>
+      <p>preload 预加载</p>
+      <p>prefetch 预获取</p>
+      <p>preconnect 预连接</p>
+      <p>postXxx 后</p>
+      <p>preXxx 先</p>
 
       <p>prefix 前缀</p>
       <p>suffix 后缀</p>
@@ -594,6 +613,7 @@
 
       <p>boundary 分界线, 分隔符</p>
       <p>binary 二进制的</p>
+      <!-- bin 缩写, 二进制可执行文件 / 程序，就是能直接运行的东西 -->
 
       <p>steam 一个游戏平台叫这名</p>
       <p>stream 流</p>
@@ -611,7 +631,8 @@
       <p>Correct 正确的</p>
       <p>Incorrect 错误的</p>
 
-
+      <p>serial 串行 s </p>
+      <p>parallel 并行 p </p>
 
 
 
@@ -816,7 +837,6 @@
 
       <!-- 提示信息 -->
       <p>fatal 致命的, 重大的</p>
-      <p>Untracked 未跟踪的</p>
       <p>diverged 分叉</p>
       <p>integrate 整合</p>
       <p>conflict 冲突</p>
@@ -824,7 +844,7 @@
       <p>upstream 上游</p>
       <!-- invalid 无效的 -->
       <p>staged 已暂存的</p>
-      <p>insertions 插入(复数)</p>
+      <p>insertions 新增(复数)</p>
       <p>deletions 删除(复数)</p>
 
       <!-- 分支名 -->
@@ -834,6 +854,18 @@
       <!-- release 预发布分支 -->
       <!-- hotfix 修bug分支 -->
 
+
+      <p>VCS 版本控制系统</p>
+      <!-- Untracked Files 未跟踪的文件 -->
+      <!-- Unversioned Files 未版本化的文件 -->
+      <!-- Unstaged Files 未暂存的文件, 已追踪但有改动没add -->
+
+      <p>patch 差异补丁</p>
+      <!-- Contents are identical 内容完全相同 -->
+
+
+      <!-- Absolute Path 绝对路径 -->
+      <!-- Path From Repository Root 以 Git 仓库根目录为起点 -->
 
 
       <!-- 这3个先搁置 -->
@@ -990,6 +1022,12 @@
       <!-- 非标准 -->
       <p>import.meta.glob()</p>
       <p>eager 急切</p>
+      <!-- target 构建目标 -->
+      <!-- chunk 块, 包, 分片 -->
+      <!-- asset 资源 -->
+
+      <!-- rollup -->
+      <!-- External 排除掉 -->
 
 
 
@@ -1034,7 +1072,7 @@
       <p>Observable 可观察的</p>
       <p>Test_Suites 测试套件</p>
       <!-- numeric string is expected 预期为数字字符串 -->
-      <p>schema 架构, 模式</p>
+      <p>schema 架构, 结构模式</p>
 
 
 
@@ -1088,9 +1126,12 @@
 
 
       <!-- AI -->
+      <!-- Raw Model 裸模型, 原始模型 -->
       <!-- Agent 智能体 -->
       <!-- MCP 模型上下文协议 -->
       <!-- Auto-approve 自动批准 -->
+      <!-- skills -->
+      <p>description 描述</p>
 
 
 
@@ -1119,11 +1160,25 @@
 
 
       <!-- GIS -->
-      <p>feature 地理要素</p>
+      <!-- feature 地理要素 -->
       <p>tile 瓦片 Tile</p>
       <p>vector 向量 Vector</p>
       <!-- stroke 笔划 线 -->
       <p>Geometry 几何形状</p>
+
+
+
+      <!-- rust -->
+      <!-- 编译器自动为结构体或枚举生成指定特征的实现代码 -->
+      <p>derive 派生</p>
+      <p>struct 结构体</p>
+      <!-- 描述一个类型「具备什么能力」 -->
+      <p>Trait 特征</p>
+      <!-- let x; 相当于js的 const x;
+        let mut y; 相当于js的 let y;
+      -->
+      <p>mut 可变</p>
+
 
 
       <p>batch 批, 批量</p>
@@ -1143,7 +1198,7 @@
       <p>mobilePhone 手机号</p>
       <p>telephone 座机号</p>
 
-      <p>blank 空, 填空, 空白页</p>
+      <p>blank 空的, 填空, 空白页</p>
 
       <p>dynamic 动态</p>
       <p>sticky 粘性</p>
@@ -1182,6 +1237,10 @@
 
       <p>backup 备份</p>
       <p>silent 静默</p>
+
+      <!-- Symbol.dispose 资源释放符号
+        using 资源自动释放 声明一个块级作用域的局部变量, 想象成 let
+      占位-->
 
 
       <p>Architecture 硬件架构 arch</p>
@@ -1266,8 +1325,9 @@
       <p>compare 比较 Comparator 比较器</p>
       <p>goods 商品, 货物</p>
       <p>press 按哪个键</p>
-      <p>image img 图片</p>
+      <!-- image img 图片 -->
       <p>desktop 桌面</p>
+      <p>recommend 推荐</p>
 
 
 
