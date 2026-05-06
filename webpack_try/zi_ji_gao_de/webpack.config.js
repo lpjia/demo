@@ -1,8 +1,7 @@
-import { resolve as pathResolve, dirname as pathDirname } from 'node:path'
+import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = pathDirname(__filename);
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default {
   mode: 'development', // 模式
@@ -10,13 +9,13 @@ export default {
   entry: './src/index.js', // 入口文件路径
   output: {
     filename: 'bundle.js',
-    path: pathResolve(__dirname, 'dist'), // 编译后的文件输出路径
+    path: resolve(__dirname, 'dist'), // 编译后的文件输出路径
     clean: true, // 每次构建前清空dist目录
   },
   devtool: 'source-map',
   resolve: {
     alias: { // 别名
-      '@': pathResolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src')
     },
   },
   module: {
