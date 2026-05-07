@@ -17,7 +17,10 @@ $.fn.extend({
 
 $(function () {
 
-  $("input[type=checkbox]").check();
-  $("input[type=radio]").uncheck();
+  setTimeout(() => {
+    $("input[type=checkbox]").check();
+    $("input[type=radio]").uncheck();
+  }, 2000);
+
 
 })
