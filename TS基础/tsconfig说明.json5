@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "compilerOptions": {
+    /* 官方文档：https://aka.ms/tsconfig */
+    // 可以看monorepo根工程的 tsconfig.json +子包的 tsconfig.json
+
+    /* 项目配置 */
+    // "incremental": true,                              /* 保存 .tsbuildinfo 文件，支持项目增量编译 */
+    // "composite": true,                                /* 开启约束，允许当前 TS 项目被其他项目引用 */
+    // "tsBuildInfoFile": "./.tsbuildinfo",              /* 指定增量编译信息文件的输出路径 */
+    // "disableSourceOfProjectReferenceRedirect": true,  /* 引用复合项目时，优先使用声明文件而非源码 */
+    // "disableSolutionSearching": true,                 /* 编辑时跳过多项目引用的关联检查 */
+    // "disableReferencedProjectLoad": true,             /* 减少 TS 自动加载的关联项目数量 */
+
+    /* 语言与运行环境 */
+    "target": "ESNext", /* 设置编译后产出的 JS 版本，并加载对应内置类型库 */ // 追求最新特性 ESNext
+    // "lib": [],                                        /* 指定项目需要引入的内置类型声明库 */
+    // "jsx": "preserve",                                /* 指定 JSX 语法的编译处理模式 */
+    "experimentalDecorators": true, /* 启用实验性的装饰器语法支持 */
+    // "emitDecoratorMetadata": true,                    /* 为装饰器生成运行时类型元数据 */
+    // "jsxFactory": "",                                 /* 自定义 React 风格 JSX 的创建函数 */
+    // "jsxFragmentFactory": "",                         /* 自定义 JSX Fragment 片段的引入函数 */
+    // "jsxImportSource": "",                            /* 指定 JSX 自动导入的模块来源 */
+    // "reactNamespace": "",                             /* 自定义 React 全局调用对象（仅旧式 JSX 生效） */
+    // "noLib": true,                                    /* 禁用所有内置默认类型库（如 dom、es5） */
+    // "useDefineForClassFields": true,                  /* 使用 ES 标准规范编译类成员属性 */
+    // "moduleDetection": "auto",                        /* 控制 TS 如何识别模块格式的 JS 文件 */
+
+    /* 模块解析配置 */
+    "module": "commonjs", /* 指定编译后产出的模块化规范 */
+    // "rootDir": "./",                                  /* 指定源码根目录，限制编译读取范围 */
+    // "moduleResolution": "node",                       /* 设置模块解析策略（node / classic） */
+    // "baseUrl": "./",                                  /* 配置非相对路径导入的基础目录 */ // v6不需要, 移除了
+    // "paths": {},                                      /* 配置模块路径别名映射 */
+    // "rootDirs": [],                                   /* 合并多个目录为统一虚拟根目录进行解析 */
+    // "typeRoots": [],                                  /* 指定全局类型声明文件的查找目录 */
+    // "types": [],                                      /* 手动指定需要全局加载的第三方类型包 */
+    // "allowUmdGlobalAccess": true,                     /* 允许在模块内直接访问 UMD 全局变量 */
+    // "moduleSuffixes": [],                             /* 自定义模块导入时的文件后缀匹配规则 */
+    // "resolveJsonModule": true,                        /* 允许直接导入 JSON 文件 */
+    // "noResolve": true,                                /* 禁止 TS 自动解析、追加导入的依赖文件 */
+
+    /* JavaScript 兼容支持 */
+    // "allowJs": true,                                  /* 允许项目中混入 JS 文件参与编译 */
+    // "checkJs": true,                                  /* 对 JS 文件开启严格的类型检查与报错 */
+    // "maxNodeModuleJsDepth": 1,                        /* 限制 node_modules 下 JS 文件的类型检查深度 */
+
+    /* 编译产物输出 */
+    // "declaration": true,                              /* 自动生成对应 .d.ts 类型声明文件 */
+    // "declarationMap": true,                           /* 为类型声明文件生成 sourcemap 源码映射 */
+    // "emitDeclarationOnly": true,                      /* 仅输出 .d.ts 类型文件，不产出 JS 代码 */
+    // "sourceMap": true,                                /* 生成 JS 代码的 sourcemap 调试映射文件 */
+    // "outFile": "./",                                  /* 将所有编译代码打包合并为单个文件 */
+    // "outDir": "./",                                   /* 指定所有编译产物的输出目录 */
+    // "removeComments": true,                           /* 移除编译后代码中的所有注释 */
+    // "noEmit": true,                                   /* 只做类型检查，不生成任何编译文件 */
+    // "importHelpers": true,                            /* 从 tslib 统一导入工具方法，减少代码冗余 */
+    // "importsNotUsedAsValues": "remove",               /* 控制仅用于类型的导入语句编译行为 */
+    // "downlevelIteration": true,                       /* 为低版本 JS 兼容迭代器语法（数组、for...of） */
+    // "sourceRoot": "",                                 /* 自定义 sourcemap 中源码的根路径 */
+    // "mapRoot": "",                                    /* 自定义 sourcemap 文件的访问路径 */
+    // "inlineSourceMap": true,                          /* 将 sourcemap 内容内嵌到 JS 文件中 */
+    // "inlineSources": true,                            /* 将完整源码内嵌到 sourcemap 内 */
+    // "emitBOM": true,                                  /* 在输出文件头部添加 UTF-8 BOM 标记 */
+    // "newLine": "crlf",                                /* 指定编译文件的换行符格式 */
+    // "stripInternal": true,                            /* 忽略带有 @internal 内部标记的声明 */
+    // "noEmitHelpers": true,                            /* 禁止 TS 自动生成内置工具辅助函数 */
+    // "noEmitOnError": true,                            /* 存在编译错误时，不输出任何产物 */
+    // "preserveConstEnums": true,                       /* 保留常量枚举，不编译为纯常量 */
+    // "declarationDir": "./",                           /* 单独指定 .d.ts 类型文件的输出目录 */
+    // "preserveValueImports": true,                     /* 保留未使用的导入值，避免编译被移除 */
+
+    /* 模块互操作约束 */
+    // "isolatedModules": true,                          /* 确保每个文件可独立单独转译（适配 Vite/Next） */
+    // "allowSyntheticDefaultImports": true,             /* 允许无默认导出的模块使用 import 默认导入 */
+    "esModuleInterop": true, /* 兼容 CommonJS 模块导入，抹平模块化差异 */ // Interop是互操作的意思
+    // "preserveSymlinks": true,                         /* 不解析软链接，保持原始文件路径识别 */
+    "forceConsistentCasingInFileNames": true, /* 强制导入文件名大小写严格一致，避免跨系统问题 */
+
+    /* 严格类型检查 */
+    "strict": true, /* 一次性开启所有严格类型校验规则 */
+    // "noImplicitAny": true,                            /* 禁止变量、参数隐式推断为 any 类型 */
+    // "strictNullChecks": true,                         /* 严格区分 null / undefined，禁止随意赋值 */
+    // "strictFunctionTypes": true,                      /* 严格校验函数参数、返回值的类型兼容性 */
+    // "strictBindCallApply": true,                      /* 严格校验 bind / call / apply 的参数类型 */
+    // "strictPropertyInitialization": true,             /* 强制类属性必须在构造器初始化赋值 */
+    // "noImplicitThis": true,                           /* 禁止 this 隐式为 any 类型 */
+    // "useUnknownInCatchVariables": true,               /* 捕获异常默认类型为 unknown 而非 any */
+    // "alwaysStrict": true,                             /* 编译后代码自动开启严格模式 'use strict' */
+    // "noUnusedLocals": true,                           /* 未使用的局部变量直接报错 */
+    // "noUnusedParameters": true,                       /* 未使用的函数入参直接报错 */
+    // "exactOptionalPropertyTypes": true,               /* 严格区分可选属性与 undefined 赋值 */
+    // "noImplicitReturns": true,                        /* 函数所有分支必须显式返回值 */
+    // "noFallthroughCasesInSwitch": true,               /* 禁止 switch 语句 case 穿透遗漏 break */
+    // "noUncheckedIndexedAccess": true,                 /* 索引取值自动追加 undefined 类型防护 */
+    // "noImplicitOverride": true,                       /* 重写父类方法必须显式添加 override 标识 */
+    // "noPropertyAccessFromIndexSignature": true,       /* 索引类型字段禁止用点语法访问 */
+    // "allowUnusedLabels": true,                        /* 允许存在未使用的代码标签 */
+    // "allowUnreachableCode": true,                     /* 忽略不可达代码的报错提示 */
+
+    /* 完整性兼容 */
+    // "skipDefaultLibCheck": true,                      /* 跳过内置默认类型库的类型校验 */
+    "skipLibCheck": true, /* 忽略所有第三方 .d.ts 类型文件的类型错误 */
+  }
+}
