@@ -1,0 +1,24 @@
+2026-04-28 05:50
+带min的是压缩版本
+带slim的是不包括ajax和动画相关api的版本
+带module的是符合esm标准
+
+
+各大最新版本是
+1.12.4
+2.2.4
+3.7.1
+4.0.0
+
+
+jquery-migrate 是jQuery 版本兼容补丁，专门解决：老代码用新版 jQuery 报错、功能失效的问题
+先引入 jQuery 主文件
+再引入 jquery-migrate 兼容文件
+
+
+jQuery 1.x / 2.x 用 migrate 1.x
+jQuery 3.x 用 migrate 3.x
+jQuery 4.x 用 migrate 4.x
+
+
+非压缩版本的 jquery-migrate 才会在控制台打印警告信息
