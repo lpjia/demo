@@ -1,0 +1,13 @@
+2026-04-19 03:03
+@babel/plugin-transform-optional-chaining
+可选链的插件
+
+
+
+babel支持的配置文件形式
+babel.config.js
+babel.config.json
+
+
+babel配置项
+"useBuiltIns": "usage", // 按需导入

@@ -1,0 +1,14 @@
+
+语言问题
+  兼容性
+    API兼容   polyfill, 一般常用core-js库
+    语法兼容  syntax transformer 语法转换 ( runtime )
+      不同的语法用不同的工具来转换(没有一个大而全的工具)
+
+      async await 用regenerator
+  
+  语法增强    babel   AST(抽象语法树)
+    源代码 --> AST --> (babel插件, 来影响转换结果) --> 目标代码
+
+    babel预设 (一堆插件) @babel/preset-env 统一搞定
+    swc(rust编写)

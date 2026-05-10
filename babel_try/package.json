@@ -1,0 +1,32 @@
+{
+  "name": "babel_try",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "compile": "babel babel/source.js -o babel/target.js",
+    "start": "node babel/target.js",
+    "compile2": "babel core-js/source.js -o core-js/target.js",
+    "start2": "node runtime/compiler.js"
+  },
+  "dependencies": {
+    "core-js": "^3.47.0",
+    "regenerator": "^0.14.12"
+  },
+  "volta": {
+    "node": "18.20.8",
+    "pnpm": "8.15.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/plugin-transform-optional-chaining": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@types/core-js": "^2.5.8"
+  }
+}
