@@ -1,0 +1,21 @@
+{
+  "name": "node_sass",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "compile": "node-sass -r --output-style compact src/ -o output/"
+  },
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}

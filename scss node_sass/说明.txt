@@ -1,0 +1,27 @@
+
+2026-04-25 04:05
+"compile": "node-sass -r --output-style compact src/ -o output/"
+
+-w --watch 监听文件内容变更
+-r --recursive 递归
+-o --output 输出目录
+--output-style
+  compact 简洁明了, 每个选择器是一行
+  expanded 全展开
+  compressed 生产压缩
+
+--source-map
+  true 生成映射文件.map
+  默认不生成
+"compile": "node-sass -r --output-style compact --source-map true src/ -o output/"
+
+
+src/ 文件夹
+output/
+
+
+.map文件是给浏览器开发者工具用的
+
+
+node-sass@9
+已经不维护了且不更新版本了
