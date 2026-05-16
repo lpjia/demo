@@ -1,0 +1,21 @@
+css语言
+1. 语法缺失(循环、判断、拼接)
+2. 功能缺失(颜色函数、数学函数、自定义函数)
+
+
+新语言 --编译器--> css语言
+sass/less等
+css预编译器
+
+
+---->厂商前缀、代码压缩、代码剪枝
+后处理器
+
+
+
+"compile": "postcss src/**/*.css -d output -w --no-map"
+
+-w --watch 监听文件内容变更
+-d --dir 输出目录
+--no-map 不生成映射文件.map
+-o --output 输出文件

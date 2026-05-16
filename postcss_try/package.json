@@ -2,16 +2,19 @@
   "name": "postcss_try",
   "version": "0.1.0",
   "author": "lpjia",
-  "license": "GPL",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "type": "module",
+  "main": "",
+  "description": "",
   "keywords": [],
+  "license": "",
   "scripts": {
-    "compile": "postcss src/**/*.css -d dist -w --no-map"
+    "compile": "postcss src/**/*.css -d output --no-map",
+    "compile2": "cross-env ENABLE_MODULES=true postcss src2/**/*.css -d output --no-map"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
+    "cross-env": "^10.1.0",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-modules": "^6.0.1",

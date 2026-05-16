@@ -13,3 +13,4 @@ postcss-preset-env
 postcss-modules
 加类名哈希
 {"container":"_container_ve476_9"}
+会生成1个json文件来映射关系
