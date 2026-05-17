@@ -1,0 +1,50 @@
+
+
+2026-04-30 03:20
+我是win10系统, 用的新的ninja客户端, 我想增加一些站点的直连规则, 怎么增加?
+回答:
+Clash verge/ninja 自定义规则
+左边订阅的profiles配置 点击配置然后, 规则编辑 add增加
+
+可用的匹配很多比如:
+此界面用于增加和删减配置文件中的规则，目前 Clash 支持的规则类型如下：
+
+DOMAIN-SUFFIX：域名后缀匹配
+DOMAIN：域名匹配
+DOMAIN-KEYWORD：域名关键字匹配
+IP-CIDR：IP 段匹配
+SRC-IP-CIDR：源 IP 段匹配
+GEOIP：GEOIP 数据库（国家代码）匹配
+DST-PORT：目标端口匹配
+SRC-PORT：源端口匹配
+PROCESS-NAME：源进程名匹配
+RULE-SET：Rule Provider 规则匹配
+MATCH：全匹配
+
+那么如果要加一个比如是 qq.com 结尾的,选择DOMAIN-SUFFIX 比如 a.qq.com 和 b.qq.com 都直接连接 (不使用代理) 那么选择路由为 direct 直接
+如果比如需要 ip 8.8.8.8 必须走代理: IP-CIDR 8.8.8.8/23 然后路由为 PROXIES
+
+
+
+
+
+
+2026-04-30 03:20
+离线导入订阅?
+回答:
+clash verge/Ninja Win/Mac/Linux离线导入
+先下载这边客服提供的yaml文件, 点击[download下载], 保存到电脑文件夹
+clash -> 订阅 -> 右上角 点击 [new新建] -> 类型选择 [local本地] 引用电脑里刚才下载到本地的yaml格式文件 -> 点击 [保存OK] -> 出现新的配置 -> 右击新出现的配置 -> [use 使用] -> 直接重启电脑或者设备
+clash -> 设置/首页 -> 打开 [系统代理] (tun模式是虚拟网卡模式,接管所有流量, 系统代理只接管大部分网页流量)
+clash -> 代理-> 找到 国外流量分组 然后选择一个有延时的节点, 这时候左下角的速度应该不是 0kb 为正常了
+clash -> 设置 -> dns覆写 打开, 旁边选项按钮里面确保开了 增强 fake ip模式
+如果离线导入后, [代理]里面没有看到节点, 那么重启软件再次导入基本能解决
+Windows用户推荐开 TUN网卡模式
+
+Clash Meta/Ninja for Android 安卓 离线yaml格式离线文件导入
+
+想办法先把yaml节点配置文件发送到手机的下载文件夹先, 然后
+
+回到Clash 客户端「配置」栏，点击右上角「➕」 然后选择「文件」选项
+依次点击「浏览文件」->「配置文件.yaml 后面的三个书点」->「导入」选择刚刚下载的「.yaml」结尾的clash yaml配置文件
+选择后回到「配置」界面将名称改为「小火箭」或随意填写，最后点击右上角「保存」按钮
