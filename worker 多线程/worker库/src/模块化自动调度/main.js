@@ -1,14 +1,13 @@
 /* 主线程：发任务，不关心线程 */
 import { Piscina } from 'piscina';
-import { resolve as pathResolve, dirname as pathDirname } from 'node:path'
+import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = pathDirname(__filename);
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 // 配置线程池：1个 Worker 入口 + 4个线程（自动调度）
 const pool = new Piscina({
-  filename: pathResolve(__dirname, './worker_entry.js'), // 常见的绝对路径
+  filename: resolve(__dirname, './worker_entry.js'), // 常见的绝对路径
   maxThreads: 4, // 4 个线程 = 4 个并行处理的“worker 实例”
 });
 

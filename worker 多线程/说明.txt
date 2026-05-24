@@ -5,3 +5,6 @@ Worker线程用来代替主线程执行cpu密集型任务
 Worker 线程之间不能直接通信
 必须通过 主线程（Main Thread）作为中间转发 来实现间接通信
 
+
+立即终止线程
+workerInstance.terminate()
