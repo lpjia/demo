@@ -1,1 +1,0 @@
-const about = '这是about文件'
