@@ -5,7 +5,6 @@ import envConfig from '../config/env';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import { UnitModule } from './unit/unit.module';
-// import { ArticleModule } from './article/article.module';
 import { ShopModule } from './shop/shop.module';
 import { ProductModule } from './product/product.module';
 
@@ -34,7 +33,6 @@ import { ProductModule } from './product/product.module';
     }),
     /* 加载对应模块
     module的顺序和controller中方法的顺序影响swaggerUI的API(按组)的顺序 */
-    // ArticleModule,
     ProductModule,
     ShopModule,
     UnitModule,
