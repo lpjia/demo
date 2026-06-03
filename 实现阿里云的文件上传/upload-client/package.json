@@ -1,12 +1,16 @@
 {
   "name": "upload-client",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
+  },
+  "volta": {
+    "node": "16.20.2",
+    "pnpm": "7.33.7"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.15",
