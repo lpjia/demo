@@ -14,7 +14,7 @@ console.log(
   // 0 == '', // true, 0 == 0
   // 0 == '0', // true, 0 == 0
   // 2 == true, // false, 2 == 1
-  // 2 == false, // false ,2 == 1
+  // 2 == false, // false, 2 == 0
   // NaN == '', // false, 存在NaN则false
   // false == 'false', // false, 0 == NaN
   // false == '0', // true, 0 == 0

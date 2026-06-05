@@ -1,0 +1,26 @@
+运算
+
+表达式
+
+类型转换
+
+隐式转换
+
+
+遇到 ==, 看"隐式转换.md"
+
+
+
+先看"运算规则.drawio"
+再看"类型转换规则 隐式转换.drawio"
+
+
+
+算术运算, 加 减 乘 除 取余
+转原始类型, 也就是转数字(number)
+Number(xxx)
+
+null + undefined
+Number(null) -> 0
+Number(undefined) -> NaN
+NaN和任何类型运算得到的还是NaN
