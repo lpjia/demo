@@ -1,0 +1,19 @@
+2026-05-16 23:28
+npm上2个常用库
+js-yaml
+yaml, 比 js-yaml 新一点，API 更现代，ESM / TypeScript 友好
+
+
+pnpm add js-yaml
+pnpm add -D @types/js-yaml
+
+
+推荐
+pnpm add yaml
+
+
+解析配置文件的话, 一般项目用"仅仅生产依赖"
+
+
+为了学习用法, 这里安装为"开发依赖"
+pnpm add yaml -D

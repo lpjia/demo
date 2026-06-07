@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "volta": {
+    "node": "18.20.8",
+    "pnpm": "8.15.9"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.8.0",
+    "js-yaml": "^4.1.1",
+    "yaml": "^2.9.0"
+  }
+}

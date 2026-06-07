@@ -1,0 +1,9 @@
+{
+  "volta": {
+    "node": "18.20.8",
+    "pnpm": "8.15.9"
+  },
+  "devDependencies": {
+    "json5": "^2.2.3"
+  }
+}

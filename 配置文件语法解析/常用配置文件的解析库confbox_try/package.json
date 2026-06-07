@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "volta": {
+    "node": "18.20.8",
+    "pnpm": "8.15.9"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "confbox": "^0.2.4"
+  }
+}

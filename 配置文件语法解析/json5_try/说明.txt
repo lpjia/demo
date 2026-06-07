@@ -1,0 +1,3 @@
+2026-05-17 05:02
+用命令
+pnpm json5 try.json5 -o try.json

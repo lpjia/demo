@@ -1,0 +1,4 @@
+2026-05-16 23:41
+用于解析和序列化 YAML ( js-yaml )、 TOML ( smol-toml )、 JSONC ( jsonc-parser )、 JSON5 ( json5 )、 INI ( ini ) 和 JSON 的实用程序
+
+pnpm add -D confbox

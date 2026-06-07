@@ -1,0 +1,20 @@
+scripts: { # 加不加{}都行
+  test: vitest # 冒号后要留空格
+}
+devDependencies: {
+  vitest: ^0.34.2, # {}内有多个属性时, 需要加','
+  vue: {
+    vue/cli: 1,
+    vue/core: 3,
+    vue/runtime: node
+  }
+}
+helloKey: helloValue
+keywords:
+  - 数组项1
+  - 数组项2
+  - 数组项3
+对象arr:
+  - { k1: v1 }
+  - { k2: v2 }
+  - { k3: v3 }
