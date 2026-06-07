@@ -38,3 +38,5 @@ type B2 = B[number]
 
 
 const o: ObjType<string> = { name: 'ooo' }
+
+

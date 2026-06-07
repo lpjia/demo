@@ -4,7 +4,39 @@ export { }
 
 
 /* ----类型体操---- */
+{
+  /* 得到某个类型所有的只读字段 */
 
+
+  /* 看2个类型是否相等?
+  使用函数, X、Y是任意类型
+  只有两个泛型函数的类型参数约束、返回值逻辑完全一致时，它们才会被判定为相同类型 */
+  type Equal<X, Y> = (<U>() => U extends X ? 1 : 2) extends
+    (<U>() => U extends Y ? 1 : 2) ?
+    true : false
+
+  /* type ReadonlyKeys<T> = {
+    [K in keyof T]-?:
+    (<U>() => U extends { readonly [P in K]: T[K] } ? 1 : 2) extends
+    (<U>() => U extends { [P in K]: T[K] } ? 1 : 2)
+    ? never
+    : K
+  }[keyof T]; */
+
+  type GetReadonlyKeys<T> = {
+    [K in keyof T]-?: (Equal<{ readonly [P in K]: T[K] }, { [P in K]: T[K] }>) extends true ? K : never
+  }[keyof T]
+
+  interface One {
+    readonly one: string;
+    two: number;
+    readonly three: boolean;
+    four: object
+  }
+
+  type Result = GetReadonlyKeys<One>
+  type Result2 = Pick<One, GetReadonlyKeys<One>>
+}
 
 {
   /* 联合转元组 */
@@ -181,5 +213,5 @@ type MyRecord<K extends keyof any, T> = {
 
 /* 手写 NonNullable */
 type MyNonNullable<T> = T extends null | undefined ? never : T
-  /* NonNullable<Type>
+/* NonNullable<Type>
 构造一个类型，这个类型从Type中排除了所有的null、undefined的类型 */

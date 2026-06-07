@@ -3,6 +3,7 @@
   "compilerOptions": {
     /* 官方文档：https://aka.ms/tsconfig */
     // 可以看monorepo根工程的 tsconfig.json +子包的 tsconfig.json
+    // "ignoreDeprecations": "6.0", // 消除"baseUrl": "./",的报错提示
 
     /* 项目配置 */
     // "incremental": true,                              /* 保存 .tsbuildinfo 文件，支持项目增量编译 */
@@ -31,7 +32,7 @@
     // "rootDir": "./",                                  /* 指定源码根目录，限制编译读取范围 */
     // "moduleResolution": "node",                       /* 设置模块解析策略（node / classic） */
     // "baseUrl": "./",                                  /* 配置非相对路径导入的基础目录 */ // v6不需要, 移除了
-    // "paths": {},                                      /* 配置模块路径别名映射 */
+    // "paths": {},                                      /* 配置模块路径别名映射 */ // nestjs配置 "paths":{"#/*": ["./src/*"]},
     // "rootDirs": [],                                   /* 合并多个目录为统一虚拟根目录进行解析 */
     // "typeRoots": [],                                  /* 指定全局类型声明文件的查找目录 */
     // "types": [],                                      /* 手动指定需要全局加载的第三方类型包 */

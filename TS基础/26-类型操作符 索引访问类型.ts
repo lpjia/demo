@@ -72,6 +72,24 @@ type App2 = typeof APP[number]
 
 
 
+
+/* 常见的对象结构, 想用具体值作为类型而不是统一string */
+const userRoleMap = {
+  1: 'root',
+  2: 'admin',
+  3: 'author',
+  4: 'visitor',
+} as const // 叫 const断言
+// type RoleParam = typeof userRoleMap[keyof typeof userRoleMap]
+type KeyOfUserRoleMap = keyof typeof userRoleMap
+type RoleParam = typeof userRoleMap[KeyOfUserRoleMap]
+// 得到具体值的联合类型
+
+
+
+
+
+
 // 元组类型和数组类型的区别
 
 type StringArr = string[]
