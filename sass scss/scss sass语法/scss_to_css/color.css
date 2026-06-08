@@ -1,0 +1,104 @@
+.btn {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn.type_1 {
+  background-color: #409eff;
+  color: #fff;
+}
+.btn.type_1:hover {
+  background-color: rgb(115, 183.9005235602, 255);
+}
+.btn.type_1:active {
+  background-color: rgb(13, 132.0994764398, 255);
+}
+.btn.type_1:disabled {
+  background-color: rgb(166, 209.8010471204, 255);
+}
+
+.btn.type_2 {
+  background-color: #67c23a;
+  color: #fff;
+}
+.btn.type_2:hover {
+  background-color: rgb(132.6071428571, 207.3571428571, 95.6428571429);
+}
+.btn.type_2:active {
+  background-color: rgb(82.1547619048, 154.7380952381, 46.2619047619);
+}
+.btn.type_2:disabled {
+  background-color: rgb(162.7619047619, 219.0952380952, 134.9047619048);
+}
+
+.btn.type_3 {
+  background-color: #8b590f;
+  color: #fff;
+}
+.btn.type_3:hover {
+  background-color: rgb(185.0324675325, 118.474025974, 19.9675324675);
+}
+.btn.type_3:active {
+  background-color: rgb(92.9675324675, 59.525974026, 10.0324675325);
+}
+.btn.type_3:disabled {
+  background-color: rgb(230.2597402597, 147.7922077922, 25.7402597403);
+}
+
+.btn.type_4 {
+  background-color: #f54343;
+  color: #fff;
+}
+.btn.type_4:hover {
+  background-color: rgb(247.5757575758, 115.4242424242, 115.4242424242);
+}
+.btn.type_4:active {
+  background-color: rgb(242.4242424242, 18.5757575758, 18.5757575758);
+}
+.btn.type_4:disabled {
+  background-color: rgb(250.1515151515, 163.8484848485, 163.8484848485);
+}
+
+.btn.type_5 {
+  background-color: #6c6d71;
+  color: #fff;
+}
+.btn.type_5:hover {
+  background-color: rgb(133.3076923077, 134.3846153846, 138.6923076923);
+}
+.btn.type_5:active {
+  background-color: rgb(83.0769230769, 83.8461538462, 86.9230769231);
+}
+.btn.type_5:disabled {
+  background-color: rgb(159.3846153846, 160.2307692308, 163.6153846154);
+}
+
+.btn.type_11 {
+  background-color: #409eff;
+  color: #fff;
+}
+
+.btn.type_22 {
+  background-color: #67c23a;
+  color: #fff;
+}
+
+.btn.type_33 {
+  background-color: #8b590f;
+  color: #fff;
+}
+
+.btn.type_44 {
+  background-color: #f54343;
+  color: #fff;
+}
+
+.btn.type_55 {
+  background-color: #6c6d71;
+  color: #fff;
+}

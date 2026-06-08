@@ -1,0 +1,43 @@
+
+2025-12-05 21:46
+
+
+scss的语法
+代码全在这几个文件总结
+云笔记只负责截图及说明即可
+旧内容能不动的就不动
+
+
+重新记
+  编译器
+  模块化
+  简单语法
+
+
+
+原有的scss文件, 带详细注释
+新加的同名+模块化语法.scss文件, 去掉所有注释
+  用sass官方的试验场来验证吧, 不要"模块化语法.scss文件"了
+
+
+function.scss和scss星空的index.scss一样, 就不再重复编译了, 放根目录
+
+
+vite-vue3/scss_module 项目也有一些使用案例, 已总结到这里了
+
+
+注释, 循环内的注释要用//
+
+
+
+阮一峰 sass
+https://www.ruanyifeng.com/blog/2012/06/sass.html
+
+
+
+
+不用EasySass了
+
+EasySass只能把作为工作区的根目录scss文件正确转成css文件
+
+为了方便, 用vscode打开某项目文件夹, 根目录有scss文件

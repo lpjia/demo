@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* 循环 遍历 */
+/* @for $i from 开始值 to 结束值
+不包含结束值 */
+.container > .item { color: white; font-size: 30px; }
+
+.container > .item { color: white; font-size: 30px; }
+
+.container > .item { color: white; font-size: 30px; }
+
+.container > .item { color: white; font-size: 30px; }
+
+/* @for $i from 开始值 through 结束值
+包含结束值 */
+.m-1 { margin: 0.25rem; }
+
+.m-2 { margin: 0.5rem; }
+
+.m-3 { margin: 0.75rem; }
+
+.m-4 { margin: 1rem; }
+
+.m-5 { margin: 1.25rem; }
+
+.m-6 { margin: 1.5rem; }
+
+.m-7 { margin: 1.75rem; }
+
+.m-8 { margin: 2rem; }
+
+.m-9 { margin: 2.25rem; }
+
+.m-10 { margin: 2.5rem; }
+
+/* 带单位的变量参与运算, 为了避免出现10 deg等<数字和单位之间多了个空格>
+建议用里面放变量参与运算
+原因是除法和/, scss区分不开, 有些css速写属性值包含/ */
+.dot { transform: rotate(0deg); transform-origin: 10px; }
+
+.dot2 { transform: rotate(120deg); }
+
+.dot { transform: rotate(120deg); transform-origin: 20px; }
+
+.dot2 { transform: rotate(120deg); }
+
+.dot { transform: rotate(240deg); transform-origin: 30px; }
+
+.dot2 { transform: rotate(120deg); }
+
+/* 定义数组, scss里是list数据类型
+用逗号或空格隔开, 推荐用逗号 */
+/* @each 遍历数组
+$c是项, $bgColor是数组 */
+.container > div:nth-child(1) { background-color: #337ab7; }
+
+.container > div:nth-child(2) { background-color: #5cb85c; }
+
+.container > div:nth-child(3) { background-color: #5bc0de; }
+
+.container > div:nth-child(4) { background-color: #f0ad4e; }
+
+.container > div:nth-child(5) { background-color: deepskyblue; }
+
+.container > div:nth-child(6) { background-color: #d9534f; }
+
+.container > div:nth-child(7) { background-color: #cd6562; }
+
+/* 在scss文件声明css变量 */
+:root { --likeColor: deepskyblue; --fontSize: 50px; --red-color: red; }
+
+/* scss支持css原生语法, 比如css变量 */
+.likeColor { color: var(--likeColor); }
+
+/* css变量, --声明后使用var() */
+/* scss变量, $声明后, 将变量动态嵌入到选择器名、属性名、注释等位置时, 必须使用${}包裹变量 */
+.try { font-weight: bold; color: var(--likeColor); font-size: var(--fontSize); }
+
+.try2 { color: var(--red-color); }
+
+.try3 { color: var(--likeColor); }
+
+/* 可以写一些消息, 转之后会被正确识别
+这是自定义的信息 x.x.x*/
+/* @mixin 混入, 类似定义函数, 可带/可不带参
+@include 类似调用函数
+@content 类似调用时多传入的自定义实参, 也要一并用到 */
+/* 简化媒体查询 */
+.nav { display: flex; justify-content: start; align-items: start; gap: 10px; }
+
+.bd { display: flex; justify-content: start; align-items: start; }
+
+.header { width: 100%; display: flex; justify-content: center; align-items: center; }
+
+/* 用min-width时，小的放上面大的在下面， 
+同理如果是用max-width那么就是大的在上面，小的在下面 */
+/* 拼接字符串, scss分带不带引号
+直接+, 注意scss中所有运算符号前后最好手动加空格
+引号字符串在前, 拼接后是带引号的字符串
+谁在+前, 拼接后就是该形式的字符串
+
+如content: "Foo " + Bar;
+font-family: sans- + "serif";
+
+编译后的css样式
+content: "Foo Bar";
+font-family: sans-serif; */
+/* 只用scss(不同html和js)实现不同视口下的文字替换效果
+注意看媒体查询那的不同视口的宽度px是怎么处理的 */
+h2::after { text-transform: uppercase; }
+
+@media screen and (max-width: 1500px) { h2::after { content: "Lorem"; color: #337ab7; } }
+
+@media screen and (max-width: 1300px) { h2::after { content: "ipsum"; color: #5cb85c; } }
+
+@media screen and (max-width: 1100px) { h2::after { content: "dolor"; color: #5bc0de; } }
+
+@media screen and (max-width: 900px) { h2::after { content: "sit"; color: #f0ad4e; } }
+
+@media screen and (max-width: 700px) { h2::after { content: "amet"; color: deepskyblue; } }

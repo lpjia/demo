@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* 切换主题色 */
+.themeItem { line-height: 2; font-size: 20px; }
+
+html[data-theme='light'] .themeItem { background-color: #fff; color: #000; }
+
+html[data-theme='dark'] .themeItem { background-color: #000; color: #fff; }

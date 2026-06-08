@@ -1,0 +1,27 @@
+@charset "UTF-8";
+:root {
+  --likeColor: deepskyblue;
+  --fontSize: 50px;
+  --red-color: $redC;
+}
+
+.likeColor {
+  color: var(--likeColor);
+}
+
+.try {
+  font-weight: bold;
+  color: var(--likeColor);
+  font-size: var(--fontSize);
+}
+
+.try2 {
+  color: var(--red-color);
+}
+
+.try3 {
+  color: var(--likeColor);
+}
+
+/* 可以写一些消息, 编译之后会被正确识别
+这是自定义的信息 x.x.x*/

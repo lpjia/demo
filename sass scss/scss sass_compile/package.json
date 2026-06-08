@@ -1,0 +1,22 @@
+{
+  "name": "sass",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "compile": "sass input:output --no-source-map"
+  },
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "sass": "^1.99.0"
+  }
+}

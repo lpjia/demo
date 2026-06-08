@@ -1,0 +1,31 @@
+2026-05-18 04:44
+@use ' ';
+模块化从
+Dart Sass 1.23.0
+开始启用, 与 @import 共存, 不过不清楚什么时候废除 @import
+
+
+"sass": "1.62.1"
+兼容旧全局函数, 用的这个版本, 不会报警告
+不过 "sass": "^1.99.0" 还会正确生成css文件
+
+
+
+2026-05-18 04:09
+src\index.js
+实现"经典 compact"格式
+
+
+
+
+2026-04-25 05:20
+"compile": "sass input:output --no-source-map -w"
+
+-w --watch 监听文件内容变更
+-s --style
+  expanded 全展开, 默认
+  compressed 生产压缩
+--no-source-map 不生成映射文件.map
+
+
+input:output 输入文件夹:输出文件夹
