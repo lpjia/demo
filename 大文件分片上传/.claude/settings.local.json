@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(Get-ChildItem -Recurse -Depth 3 -Force | Where-Object { $_.Name -notmatch 'node_modules|\\\\.git' } | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\('D:\\\\demo\\\\大文件分片上传\\\\', ''\\) })",
-      "PowerShell(Get-ChildItem -Recurse -Depth 5 -Force | Where-Object { $_.Name -notmatch 'node_modules|\\\\.git' } | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\('D:\\\\demo\\\\大文件分片上传\\\\', ''\\) })"
-    ]
-  }
-}
