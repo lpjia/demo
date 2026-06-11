@@ -12,8 +12,7 @@ const traverse = _traverse.default || _traverse; // 处理兼容性
 const generate = _generate.default || _generate; // 处理兼容性
 
 // 读取config.js文件
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const filePath = path.resolve(__dirname, 'config.js')
 const code = fs.readFileSync(filePath, 'utf-8')
 

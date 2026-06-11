@@ -1,0 +1,12 @@
+tag 表
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+name 标签名
+20个字符长度够用了, string
+
+未完成

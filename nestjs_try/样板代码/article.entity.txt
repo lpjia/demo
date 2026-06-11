@@ -1,0 +1,110 @@
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, AfterLoad } from "typeorm";
+import { articleTypeMap } from "../../common/constant";
+
+@Entity("article")
+export class ArticleEntity {
+  /** 主键ID */
+  @PrimaryGeneratedColumn({ unsigned: true }) // 标记为主列，值自动生成
+  id!: number;
+
+  /** 文章标题 */
+  @Column({ length: 50, unique: true }) // 数据库唯一约束, 但是建表时没有搞唯一约束, 数据容易报错, 后台没有处理捕获这类错误
+  title!: string;
+
+  /** 作者 */
+  @Column({ length: 20 })
+  author!: string;
+
+  /** 文章内容 */
+  @Column("text")
+  content!: string;
+
+  /** 封面URL */
+  @Column({
+    name: 'cover_url', // 对应数据库的字段用下划线命名
+    default: ''
+  })
+  // 后台的字段常用小驼峰命名
+  coverUrl?: string;
+
+  /**
+   * 文章类型
+   * @privateRemarks 文章类型(1=未知, 2=原创, 3=转载)
+   */
+  @Column({
+    type: 'tinyint',
+    unsigned: true, // 无符号, 不要负数范围, 扩大数字类型的实际使用范围
+    // comment: "文章类型(1=未知, 2=原创, 3=转载)" // 注释。 一般先在数据库里定义好, 实体就不用写了
+  })
+  type!: number;
+
+  /**
+   * 文章类型text
+   * @privateRemarks 非数据库字段，仅用于返回给前端
+   */
+  typeText!: string;
+
+  /** 创建时间 */
+  @CreateDateColumn({
+    name: 'create_time',
+    type: 'datetime',
+  })
+  createTime!: Date;
+
+  // @Column({
+  //   name: 'create_time',
+  //   type: 'timestamp',
+  // })
+  // createTime!: Date;
+
+  /** 更新时间 */
+  @UpdateDateColumn({
+    name: 'update_time',
+    type: 'datetime',
+  })
+  updateTime!: Date;
+
+  // @Column({
+  //   name: 'update_time',
+  //   type: 'timestamp',
+  // })
+  // updateTime!: Date;
+
+  /** 删除时间 */
+  @DeleteDateColumn({
+    name: 'delete_time',
+    type: 'datetime',
+    select: false // 所有查询默认都不返回该字段
+  })
+  deleteTime!: Date;
+
+  @AfterLoad()
+  setTypeText() {
+    this.typeText = articleTypeMap[this.type] ?? '';
+  }
+
+  /* @Column({
+    name: 'create_time',
+    type: 'timestamp',
+    default: () => "CURRENT_TIMESTAMP", // 插入时自动填充当前时间。 这里只能是函数
+    update: false, // 禁止后续更新（防止误修改创建时间）
+  })
+  createTime: Date;
+  
+  @Column({
+    name: "update_time", // 对应数据库的列名
+    type: "timestamp", // 数据库的数据类型
+    default: null, // 默认值
+    onUpdate: "CURRENT_TIMESTAMP", // 仅当数据更新时，自动填充当前时间。 这里只能是字符串
+    nullable: true, // 可否为null
+  })
+  updateTime: Date | null;
+  
+  @Column({
+    name: 'delete_time',
+    type: 'timestamp',
+    default: null,
+    nullable: true,
+  })
+  deleteTime: Date | null; */
+}

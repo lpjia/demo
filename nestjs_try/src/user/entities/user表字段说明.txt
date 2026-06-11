@@ -1,0 +1,55 @@
+user 表
+
+
+ulid 作为主键ID
+固定26个字符长度, string ,导入第三方库生成 ulid()
+
+
+auto_id 自增 autoId , 方便排序
+为自增列创建唯一索引
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+username 用户名
+必填字段, 前端必须传且不为空'', sql不给默认值
+50个字符长度够用了, string
+
+
+nickname 昵称
+非必填字段, sql给默认值 DEFAULT ''
+50个字符长度够用了, string
+
+
+password 密码
+必填字段, 前端必须传且不为空'', sql不给默认值
+长度不少于6位
+前端明文, 后台去加密, 然后存数据库
+数据库存 VARCHAR(255) 类型, string
+不返回给前端
+
+
+avatar 头像
+非必填字段, sql给默认值 DEFAULT ''
+一般是url格式的字符串, 或者用base64
+数据库存 VARCHAR(255) 类型, string
+
+
+email 邮箱
+必填字段, 前端必须传且不为空'', sql不给默认值
+100个字符长度够用了, string
+
+
+role 角色(1=root, 2=author, 3=visitor)
+必填字段, 前端必须传数字, 前端传string | number 都行, 后台要校验且转成number, sql给默认值 DEFAULT 0
+数据库存 TINYINT 类型 UNSIGNED, 0-255 数字够用了, 表里面是number
+0 保留为默认赋值, 不给任何实际业务含义
+
+
+roleText 角色映射文本
+非数据库字段，仅用于返回给前端

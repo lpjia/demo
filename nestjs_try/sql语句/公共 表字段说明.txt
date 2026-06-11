@@ -1,0 +1,7 @@
+
+create_time 创建时间 createTime
+operate_update_time 用户操作时间 operateUpdateTime
+update_time 更新时间 updateTime
+delete_time 删除时间 deleteTime
+所有时间字段, 数据库存 DATETIME 数据类型
+deleteTime、update_time不返回给前端

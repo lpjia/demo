@@ -1,0 +1,26 @@
+user_role 表, 作为中间表
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+user_id 用户id, 关联表user userId
+数据库存 VARCHAR(10) 类型, string
+sql给默认值 DEFAULT ''
+
+
+role_id 角色id, 关联表role roleId
+数据库存 VARCHAR(10) 类型, string
+sql给默认值 DEFAULT ''
+
+
+user 用户信息
+非数据库字段, 表关联
+user_role 多对一 user
+
+
+role 角色信息
+非数据库字段, 表关联
+user_role 多对一 role

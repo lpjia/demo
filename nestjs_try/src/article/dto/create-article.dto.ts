@@ -1,0 +1,73 @@
+import { IsArrayOfIntHuoString, IsIntHuoString } from "#/core/decorator/index.decorator";
+import { Transform } from "class-transformer";
+import { IsNotEmpty, IsInt, Min, Max, Matches, IsString, IsOptional, IsArray } from "class-validator";
+
+export class CreateArticleDto {
+  /** 文章标题 */
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly title!: string;
+
+  /** 作者 */
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly author!: string;
+
+  /** 文章内容 */
+  readonly content!: string;
+
+  /** 封面图URL */
+  readonly coverUrl?: string;
+
+  /** 文章类型(1=未知, 2=原创, 3=转载) */
+  @Max(3, { message: (arg) => `${arg.property}字段必须小于等于3` })
+  @Min(1, { message: (arg) => `${arg.property}字段必须大于等于1` })
+  @IsInt({ message: (arg) => `${arg.property}字段必须为整数` })
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly type!: number;
+
+  /** 分类id */
+  @IsIntHuoString()
+  @IsOptional()
+  readonly kindId?: string;
+
+  /** 标签id数组 */
+  @IsArrayOfIntHuoString({ each: true })
+  @IsOptional()
+  readonly tags?: string[];
+
+
+  // /** 标签id */
+  // @IsIntHuoString()
+  // @IsOptional()
+  // readonly tagId?: string;
+
+  /** 分类id */
+  /* @Matches(/^\d+$/, { message: 'kindId 必须是整数或整数字符串, 需要>=0' })
+  @IsString({ message: 'kindId 必须是字符串类型' })
+  @IsOptional()
+  @Transform(({ value }) => {
+    if (value === null || value === void 0 || value === '') {
+      return void 0;
+    }
+    if (typeof value === 'number') {
+      return String(value);
+    }
+    return value;
+  })
+  readonly kindId?: string; */
+
+  /** 标签id */
+  /* @Matches(/^\d+$/, { message: 'tagId 必须是整数或整数字符串, 需要>=0' })
+  @IsString({ message: 'tagId 必须是字符串类型' })
+  @Transform(({ value }) => {
+    if (value === null || value === void 0 || value === '') {
+      return void 0;
+    }
+    if (typeof value === 'number') {
+      return String(value);
+    }
+    return value;
+  })
+  @IsOptional()
+  readonly tagId?: string; */
+
+}

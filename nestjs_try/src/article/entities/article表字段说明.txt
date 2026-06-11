@@ -1,0 +1,92 @@
+article 表
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+title 文章标题
+必填字段, 前端必须传且不为空'', sql不给默认值
+50个字符长度够用了, string
+
+
+author 作者
+必填字段, 前端必须传且不为空'', sql不给默认值
+20个字符长度够用了, string
+
+
+content 文章内容
+必填字段, 前端必须传且不为空'', sql不给默认值
+数据库存 TEXT 类型, string
+
+
+cover_url 封面URL coverUrl
+非必填字段, sql给默认值 DEFAULT ''
+数据库存 VARCHAR(255) 类型, string
+
+
+type 文章类型(1=未知, 2=原创, 3=转载)
+必填字段, 前端必须传数字, 前端传string | number 都行, 后台要校验且转成number, sql给默认值 DEFAULT 0
+数据库存 TINYINT 类型 UNSIGNED, 0-255 数字够用了, 表里面是number
+0 保留为默认赋值, 不给任何实际业务含义
+
+
+typeText 文章类型映射文本
+非数据库字段，仅用于返回给前端
+
+
+summary 摘要, 自动生成
+非必填字段, sql给默认值 DEFAULT ''
+数据库存 VARCHAR(255) 类型, string
+
+
+read_count 阅读量 readCount
+数据库存 INT 类型 UNSIGNED
+前端不用传, sql给默认值 DEFAULT 0
+每查1次某篇文章, 则它的readCount+1
+考虑到更新文章, 也是先查出来文章的详情再看情况更新, 区分点赞量+1和查文章详情
+
+
+like_count 点赞量 likeCount
+数据库存 INT 类型 UNSIGNED
+前端不用传, sql给默认值 DEFAULT 0
+每个user只能点赞1次
+
+
+isMyLike
+某用户查某文章时, 显示自己是否已点赞该文章
+关联user_like表, 通过匹配userUlid和articleId来判断
+非数据库字段
+
+
+is_recommend 是否推荐(1=推荐, 2=不推荐) isRecommend
+数据库存 TINYINT 类型 UNSIGNED, sql给默认值 DEFAULT 0
+0 保留为默认赋值, 不给任何实际业务含义
+
+
+isRecommendText 是否推荐映射文本
+非数据库字段，仅用于返回给前端
+
+
+status 文章状态(1=draft, 2=publish)
+数据库存 TINYINT 类型 UNSIGNED, sql给默认值 DEFAULT 0
+0 保留为默认赋值, 不给任何实际业务含义
+
+
+kind_id 分类id, 关联表kind kindId
+数据库存 VARCHAR(10) 类型, string
+多的记少的
+前端可传string | number的数字, 但后台统一处理为string
+
+
+kindInfo 分类信息
+非数据库字段, 表关联
+article 多对一 kind
+每一个文章分类都可以对应多篇文章，反过来一篇文章只能属于一个分类，这种文章表和分类表的关系就是一对多的关系
+若去掉kindInfo字段则用kindName
+
+
+publish_time 发布时间 publishTime
+数据库存 DATETIME, NULL, sql给默认值 DEFAULT NULL
+publishTime是文章状态为publish时才会添加相应的值

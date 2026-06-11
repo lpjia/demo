@@ -1,0 +1,44 @@
+import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, Length, Max, Min, MinLength, MaxLength } from "class-validator";
+
+export class CreateUserDto {
+  /** 用户名 */
+  @Length(2, 50, {
+    message: (arg) => `${arg.property}字段长度必须在2-50之间`
+  })
+  @IsString({ message: (arg) => `${arg.property}字段必须为字符串` })
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly username!: string;
+
+  /** 昵称 */
+  @MaxLength(50, {
+    message: (arg) => `${arg.property}字段长度不要多于50位`
+  })
+  @IsString({ message: (arg) => `${arg.property}字段必须为字符串` })
+  @IsOptional()
+  readonly nickname?: string;
+
+  /** 密码 */
+  @MinLength(6, {
+    message: (arg) => `${arg.property}字段长度不要少于6位`
+  })
+  @IsString({ message: (arg) => `${arg.property}字段必须为字符串` })
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly password!: string;
+
+  /** 头像 */
+  @IsString({ message: (arg) => `${arg.property}字段必须为字符串` })
+  @IsOptional()
+  readonly avatar?: string;
+
+  /** 邮箱地址 */
+  @IsEmail({}, { message: (arg) => `${arg.property}字段必须为有效的邮箱地址` })
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly email!: string;
+
+  /** 角色 */
+  @Min(1, { message: (arg) => `${arg.property}字段必须>=1` })
+  @Max(3, { message: (arg) => `${arg.property}字段必须<=3` })
+  @IsInt({ message: (arg) => `${arg.property}字段必须为整数` })
+  @IsNotEmpty({ message: (arg) => `${arg.property}字段不能为空` })
+  readonly role!: number;
+}

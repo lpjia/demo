@@ -1,0 +1,97 @@
+2026-05-09 18:40
+做1个示例项目
+
+
+core文件夹
+里面是全局用到的
+
+
+
+
+
+字段校验全靠class-validator
+dto去配置
+
+有哪些情况?
+少字段        IsNotEmpty()覆盖了
+字段值为''    IsNotEmpty()覆盖了
+?curPage=&pageSize=   传给后台的是空''
+字段值为null        IsNotEmpty()覆盖了
+字段值为'undefined'
+字段值为'[object Object]'
+数组解析为很奇怪的
+
+
+JSON不支持undefined, 作为对象属性值, 会把k去掉
+也就是前端传{ k: undefined }, 序列化后 { }, 传到后台这就没有这个字段了
+
+
+前端传null
+sql字段 NOT NULL, 冲突报错
+
+
+
+还可以踢某个用户下线
+user表加字段token_ver
+    type: 'tinyint', 0-255 数字够用了
+    unsigned: true,
+不返回给前端
+
+gv 全局版本号, 改它, 全部用户下线
+uv 用户版本号, 改它, 单个用户下线
+2个字段都用number
+{
+  ulid,
+  username,
+  role,
+  gv,
+  uv
+}
+
+
+
+文章设计的需求，文章基本信息：标题、封面、摘要、阅读量、点赞量等；文章有分类，一篇只能选择一个分类；一篇文章可以选择多个标签，文章的状态分为草稿和已发布，考虑到后期文章的展示，还给文章设置了推荐标识
+
+
+user表
+
+article表
+kind表 分类
+每一个文章分类都可以对应多篇文章，反过来一篇文章只能属于一个分类，这种文章表和分类表的关系就是一对多的关系
+
+
+
+article 文章  articles
+user  用户  users
+kind  分类  kinds
+tag   标签  tags
+
+
+
+改动接口字段, 要同时改
+实体
+dto
+
+
+
+
+多对多 表关联 junction table 中间表(最标准、TypeORM 官方用词，首选)
+中间表都放到src/junction-table此目录下, 防止src子级目录过多
+中间表和原表, 多对一关系
+中间表单独创建, 好扩展
+使用单独模块注册, 好维护
+
+
+
+登录相关错误:
+账号错误
+密码错误
+token没传, 请先登录
+token传错了, token无效 token不正确
+token过期了, 登录已过期
+踢人下线, token已失效
+角色不匹配, 权限不足
+
+
+浓缩一下:
+未登录或token错误或token失效

@@ -1,0 +1,11 @@
+role 表
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+name 角色名
+数据库存 VARCHAR(20) 类型, string
+必填字段, 前端必须传且不为空'', sql不给默认值

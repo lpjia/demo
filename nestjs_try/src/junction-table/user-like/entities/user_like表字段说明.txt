@@ -1,0 +1,14 @@
+user_like 表字段说明
+
+id          - 主键ID (自增)
+user_ulid   - 用户ULID, 关联 user.ulid
+article_id  - 文章ID, 关联 article.id
+create_time - 点赞时间
+delete_time - 软删除时间 (取消点赞时记录)
+
+
+
+先不加唯一索引, 保证数据冗余
+联合唯一索引 (user_ulid, article_id)：
+  确保一个用户只能给同一篇文章点赞一次
+  再次点赞时 INSERT 会报重复键错误，用于实现 toggle 逻辑

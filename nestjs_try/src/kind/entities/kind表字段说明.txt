@@ -1,0 +1,16 @@
+kind 表
+
+
+id 主键ID
+INT UNSIGNED  无符号整数类型
+AUTO_INCREMENT  自增
+
+
+name 分类名
+20个字符长度够用了, string
+
+
+articleList 文章列表
+非数据库字段, 表关联
+article 多对一 kind
+每一个文章分类都可以对应多篇文章，反过来一篇文章只能属于一个分类，这种文章表和分类表的关系就是一对多的关系
