@@ -1,11 +1,26 @@
 
 
-识别并转文本
 
+
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const filePath = path.resolve(__dirname, '拿路径去拼接')
+const file = await fs.readFile(filePath, 'utf-8')
+// file拿到的是文件内容, 一般是字符串; 有些比如json文件, 想当对象用, 得解析 反序列化 JSON.parse(file)
+
+
+
+
+识别并转文本
 
 识别并转文本
 不要中文词汇
 
+等会把我发的图片
+识别并转文本
 
 
 
@@ -13,30 +28,12 @@ Claude Code
 
 
 
-开发依赖
-仅仅生产依赖
+"开发依赖"
+"仅仅生产依赖"
 
 
 例子看demo搜
 ramda
-
-
-  "volta": {
-    "node": "22.22.2",
-    "pnpm": "9.15.9"
-  }
-
-
-  "volta": {
-    "node": "20.20.2",
-    "pnpm": "9.15.9"
-  }
-
-
-  "volta": {
-    "node": "18.20.8",
-    "pnpm": "8.15.9"
-  }
 
 
 
@@ -63,6 +60,24 @@ export default (param) => {
 }
 
 
+function sleep(delay) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+}
+await sleep(2000)
+
+
+
+let resolve, reject;
+const promise = new Promise((res, rej) => {
+  resolve = res;
+  reject = rej;
+});
+
+
+
+
 console.time('标记')
 console.timeEnd('标记')
 
@@ -70,6 +85,8 @@ console.timeEnd('标记')
 
 浏览器打印台使用
 console.log('---- 分隔线 ----\n\n\n')
+console.log('---- 分隔线 111 ----\n\n\n')
+111到999, 够用了
 
 终端使用
 console.log('---- 分隔线 ----\n')
@@ -86,7 +103,13 @@ console.log('\n')
 --------以上置顶--------
 --------
 ----以上内容置顶----
+
 --------分割线--------
+
+
+<p>----分隔线----</p>
+
+<el-divider></el-divider>
 
 
 --------2025-09-29 16:12--------
@@ -108,14 +131,6 @@ Alt Shift
 <%=  %>
 
 
-rimraf *
-rimraf node_modules
-"clean": "rimraf node_modules"
-
-
-git log --oneline
-
-
 node_modules,lib,*-lock.*,*.map
 
 
@@ -130,13 +145,8 @@ this.$nextTick(() => {
 ——
   上一行是中文的双横线
 →
- →  
+ → 
   前后各加了空格, 美观
-
-
-<p>----分隔线----</p>
-
-<el-divider></el-divider>
 
 
 

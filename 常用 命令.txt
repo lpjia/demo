@@ -1,4 +1,18 @@
 
+pnpm add -D @types/node
+
+
+使用git bash
+创建文件
+touch package.json
+
+
+git log --oneline
+
+
+git diff --cached --name-only --diff-filter=D
+
+
 net start | findstr /i mysql
 net start mysql
 net stop mysql

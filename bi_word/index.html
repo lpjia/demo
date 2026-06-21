@@ -76,12 +76,13 @@
       <p>jump 跳</p>
       <p>to 到, 转成</p>
       <p>go 去, 到</p>
+      <p>clear 清除</p>
 
       <p>by 通过</p>
       <p>for 就什么而言, 为了</p>
       <p>A of B, B的A, 属于B</p>
 
-
+      <p>field 字段</p>
 
 
       <!-- html 块盒 行盒 元素 -->
@@ -326,8 +327,6 @@
       <p>anonymous 匿名</p>
       <p>append 添加, 附加</p>
       <p>entries 条目 Entries 一般用来遍历map结构(obj和Map), 项是[k, v]</p>
-      <p>referrer 来源, 来路</p>
-      <p>reference 引用</p>
       <p>assign 分配</p>
 
       <p>split 字符串分割/拆分成数组 </p>
@@ -355,6 +354,7 @@
       <p>path 路径</p>
       <p>query 查询</p>
       <!-- hash 哈希 -->
+      <p>bypass 绕过</p>
 
       <p>async 异步</p>
       <p>sync 同步 synchronize</p>
@@ -373,7 +373,7 @@
       <p>refactor 重构</p>
       <p>signal 信号</p>
       <p>chunk 块, 包, 分片</p>
-      <p>vendor 供应商</p>
+      <p>vendor 供应商, 依赖库打包后的命名</p>
       <p>timestamp 时间戳</p>
       <p>version 版本 ver v</p>
       <p>timeout 超时</p>
@@ -419,6 +419,20 @@
       <p>focus() 聚焦</p>
       <p>blur() 失焦</p>
 
+      <!-- ceil 天花板, floor 地面 -->
+      <!-- Math.ceil(num) 向上取整, 数轴向右 -->
+      <!-- Math.floor(num) 向下取整, 数轴向左 -->
+      <!-- Math.trunc(num) 向0取整, 直接舍弃小数 -->
+      <!-- parseInt(str, 多少进制) 向0取整, 直接舍弃小数 -->
+
+
+      <!-- 拖拽api -->
+      <!-- @dragenter="dragInHandler"
+        @dragover="dragInHandler"
+        @drop="dropHandler"
+        @dragleave="dragLeaveHandler"
+      占位 -->
+      <p>drop 下降, 落下</p>
 
 
 
@@ -496,6 +510,13 @@
 
 
 
+      <!-- HTTP -->
+      <p>Referer 来源</p>
+      <!-- HTTP Referer（标准拼写常少一个 r：Referer） -->
+      <p>referrer 来源, 来路</p>
+
+
+
 
 
       <!-- ts typescript -->
@@ -513,7 +534,7 @@
       <p>satisfies 满足(满足...约束)</p>
       <p>abstract 抽象类</p>
       <p>Infer 推断</p>
-      <!-- reference 引用 -->
+      <p>reference 类型引用</p>
       <p>Record 记录</p>
       <p>Extract 提取</p>
       <p>Utility_Types 实用工具类型</p>
@@ -564,8 +585,8 @@
       <p>single 单个的</p>
       <p>multiple 多个的</p>
 
-      <p>ahead 跑在xxx的前面</p>
-      <p>behind 跑在xxx的后面</p>
+      <p>ahead 跑在xxx的前面, 领先</p>
+      <p>behind 跑在xxx的后面, 落后</p>
 
       <p>import 导入</p>
       <p>export 导出</p>
@@ -605,6 +626,7 @@
       <p>expectation 期望</p>
       <p>execution 执行</p>
 
+      <!-- convert 转换 -->
       <p>conversion 转换</p>
       <p>conversation 交谈</p>
 
@@ -677,7 +699,7 @@
       <p>access_denied 拒绝访问 ACCESS_DENIED</p>
       <p>grant 授予 GRANT</p>
       <!-- alter 改变 -->
-      <p>drop 丢弃 删除 DROP</p>
+      <!-- drop 丢弃 删除 DROP -->
       <p>truncate 清空表数据 TRUNCATE</p>
       <p>identified 确认 IDENTIFIED</p>
       <p>primary_key 主键 PRIMARY_KEY</p>
@@ -700,7 +722,7 @@
       <p>unique 唯一的 UNIQUE</p>
       <p>constraint 约束 CONSTRAINT</p>
       <p>distinct 消除重复行 DISTINCT</p>
-      <p>exists 存在(复数) EXISTS(大写)</p>
+      <!-- exist 存在(动词) exists 第三人称单数 EXISTS(大写) -->
       <p>Packet 数据包</p>
       <p>comment 注释 COMMENT</p>
       <p>incorrect 不正确的, 不合规的</p>
@@ -720,12 +742,41 @@
       <!-- get命名, 前端和后台好统一, 好搜索
         find命名, 用到crud里即可
       -->
-      <p>find() 查询</p>
-      <!-- findOne
-        findAndCount
-      -->
 
 
+      <!-- crud -->
+      <!-- 传统 API 是 “动作导向”（我要执行什么操作），而 CRUD 是 “资源导向”（我要操作什么对象） -->
+
+
+      <!-- nestjs -->
+      <p>express 快速</p>
+      <p>bootstrap 引导程序</p>
+      <p>Injectable 可注入的</p>
+      <p>InjectRepository 注入存储库</p>
+      <p>Repository 存储库</p>
+      <p>Entity 实体 entity</p>
+      <!-- Exception 异常 exception -->
+      <p>Interceptor 拦截器 interceptor</p>
+      <p>ExecutionContext 执行上下文</p>
+      <p>execute 执行</p>
+      <!-- Transform 转换 transform -->
+      <p>transformer 转换器</p>
+      <p>pipe 管道, 管线</p>
+      <p>Observable 可观察的</p>
+      <p>Test_Suites 测试套件</p>
+      <!-- numeric string is expected 预期为数字字符串 -->
+      <p>schema 架构, 结构模式</p>
+      <p>Optional 可选的</p>
+      <p>InternalServerError 内部服务错误</p>
+      <p>strategy 策略</p>
+      <p>summary 概要</p>
+      <!-- eager 立即加载 -->
+      <p>canActivate 可激活 路由准入</p>
+      <p>inverseSide 反向一边</p>
+      <p>manager 事务管理器</p>
+      <p>adapter 适配器</p>
+      <p>ImplicitConversion 隐式转换</p>
+      <p>criteria 标准</p>
 
 
 
@@ -1025,9 +1076,11 @@
       <!-- target 构建目标 -->
       <!-- chunk 块, 包, 分片 -->
       <!-- asset 资源 -->
+      <p>optimization 优化</p>
 
       <!-- rollup -->
       <!-- External 排除掉 -->
+      <!-- manualChunks 手动分chunk -->
 
 
 
@@ -1048,33 +1101,6 @@
 
       <p>Attach 附加</p>
       <p>debug 调试</p>
-
-
-      <!-- crud -->
-      <!-- 传统 API 是 “动作导向”（我要执行什么操作），而 CRUD 是 “资源导向”（我要操作什么对象） -->
-
-
-
-      <!-- nestjs -->
-      <p>express 快速</p>
-      <p>bootstrap 引导程序</p>
-      <p>Injectable 可注入的</p>
-      <p>InjectRepository 注入存储库</p>
-      <p>Repository 存储库</p>
-      <p>Entity 实体 entity</p>
-      <!-- Exception 异常 exception -->
-      <p>Interceptor 拦截器 interceptor</p>
-      <p>ExecutionContext 执行上下文</p>
-      <p>execute 执行</p>
-      <!-- Transform 转换 transform -->
-      <p>transformer 转换器</p>
-      <p>pipe 管道, 管线</p>
-      <p>Observable 可观察的</p>
-      <p>Test_Suites 测试套件</p>
-      <!-- numeric string is expected 预期为数字字符串 -->
-      <p>schema 架构, 结构模式</p>
-
-
 
 
 
@@ -1132,6 +1158,11 @@
       <!-- Auto-approve 自动批准 -->
       <!-- skills -->
       <p>description 描述</p>
+      <!-- Resume 恢复 -->
+      <!-- Esc to interrupt 按Esc键来打断当前 -->
+      <!-- in the comfort of your IDE 在你熟悉的 IDE 环境中 -->
+      <!-- Attach file 附加文件 上传文件 -->
+      <p>command-approval 命令批准</p>
 
 
 
@@ -1178,9 +1209,12 @@
         let mut y; 相当于js的 let y;
       -->
       <p>mut 可变</p>
+      <p>crate 箱, 类似依赖包</p>
 
 
 
+      <p>built-in 内置</p>
+      <p>behavior 行为</p>
       <p>batch 批, 批量</p>
       <p>person 人</p>
       <p>rate 评级, 率</p>
@@ -1188,7 +1222,8 @@
       <p>recursion 递归</p>
 
       <p>peer 同辈</p>
-      <p>parallel 并行</p>
+
+      <p>concurrency 并发 concurrent</p>
 
       <p>current 当前的 cur</p>
 
@@ -1263,6 +1298,7 @@
       <p>cart 手推车</p>
       <p>padding 垫, 填充</p>
       <p>respond 回应</p>
+      <p>notify 通知</p>
 
       <p>persistent 持久的</p>
       <p>persist 持久</p>
@@ -1312,6 +1348,7 @@
 
       <p>studio 工作室, 制作室</p>
 
+      <p>category 分类</p>
       <p>comic 漫画</p>
       <p>champion 冠军</p>
       <p>runner_up 亚军</p>
@@ -1328,6 +1365,15 @@
       <!-- image img 图片 -->
       <p>desktop 桌面</p>
       <p>recommend 推荐</p>
+      <!-- OpenAI Compatible 兼容 -->
+      <p>reviver 还原函数, 多见于json字符串转json对象</p>
+      <p>preserveIndentation 保留缩进</p>
+      <p>preserveWhitespace 保留空白</p>
+      <p>CaptureScreen 截取屏幕, 截屏</p>
+      <p>draft 草稿</p>
+
+
+      <!-- 未知 wei -->
 
 
 

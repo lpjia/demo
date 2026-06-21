@@ -1,3 +1,18 @@
+# 暂时不用追踪的文件夹, 方便查看更改的文件
+待办事项管理应用
+日程管理应用
+dao_ji_shi_try
+Font_Awesome_try
+skills_try
+try_trae_规则和技能
+vite_try
+zod_try
+
+
+
+
+
+# 
 node_modules
 dist
 新建文件夹
@@ -6,6 +21,7 @@ dist
 # temp_lpj/
 release/
 music/
+*.exe
 
 
 
