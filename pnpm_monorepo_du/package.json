@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
   "name": "pnpm_monorepo_du",
   "version": "0.1.0",
   "author": "lpjia",

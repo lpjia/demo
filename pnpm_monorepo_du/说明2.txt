@@ -53,8 +53,8 @@ Rollup 官方推荐的代码压缩插件
 
   导入的依赖包 from '@pnpm_monorepo_du/utils', 它的package.json
   "type": "module",
-  "main": "./dist/index.cjs.js", // 最老的cjs
-  "module": "./dist/index.es.js", // 稍旧一点的打包器用的esm
+  "main": "./dist/index.cjs.js", // 最老的cjs入口
+  "module": "./dist/index.es.js", // 稍旧一点的打包器用的esm入口
   "types": "./dist/index.d.ts", // 同上配合用
   "exports": { // 新的入口字段, 识别这个字段后, 上面3个字段就跳过了
     ".": {
