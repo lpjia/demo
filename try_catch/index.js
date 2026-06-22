@@ -3,8 +3,8 @@
 
 try {
   setTimeout(() => {
-    const num = 1 / 0; // 故意制造错误
-    console.log(num);
+    const str = "abc:123"; // 故意制造错误
+    console.log(JSON.parse(str));
   }, 1000);
 } catch (err) {
   // 这里捕获不到！因为 setTimeout 回调是异步执行的，外层 try/catch 已经结束
