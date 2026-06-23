@@ -1,0 +1,53 @@
+-- 1. 用户表
+CREATE TABLE `sys_user` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    `nickname` VARCHAR(50),
+    `status` TINYINT NOT NULL DEFAULT 1 COMMENT '1启用 0禁用',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_username` (`username`)
+);
+
+-- 2. 角色表
+CREATE TABLE `sys_role` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `role_name` VARCHAR(50) NOT NULL,
+    `role_code` VARCHAR(50) NOT NULL COMMENT '角色唯一标识，如 ADMIN、EDITOR',
+    `description` VARCHAR(200),
+    `status` TINYINT NOT NULL DEFAULT 1,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_role_code` (`role_code`)
+);
+
+-- 3. 权限表
+CREATE TABLE `sys_permission` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `perm_name` VARCHAR(50) NOT NULL COMMENT '权限名称，如“用户创建”',
+    `perm_code` VARCHAR(100) NOT NULL COMMENT '权限标识符，如 user:create',
+    `perm_type` VARCHAR(20) NOT NULL COMMENT '权限类型：MENU、BUTTON、API',
+    `parent_id` BIGINT UNSIGNED DEFAULT 0 COMMENT '用于菜单/功能分组',
+    `sort_order` INT DEFAULT 0,
+    `status` TINYINT NOT NULL DEFAULT 1,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uk_perm_code` (`perm_code`)
+);
+
+-- 4. 用户-角色关联表（多对多）
+CREATE TABLE `sys_user_role` (
+    `user_id` BIGINT UNSIGNED NOT NULL,
+    `role_id` BIGINT UNSIGNED NOT NULL,
+    PRIMARY KEY (`user_id`, `role_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `sys_user`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`role_id`) REFERENCES `sys_role`(`id`) ON DELETE CASCADE
+);
+
+-- 5. 角色-权限关联表（多对多）
+CREATE TABLE `sys_role_permission` (
+    `role_id` BIGINT UNSIGNED NOT NULL,
+    `perm_id` BIGINT UNSIGNED NOT NULL,
+    PRIMARY KEY (`role_id`, `perm_id`),
+    FOREIGN KEY (`role_id`) REFERENCES `sys_role`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`perm_id`) REFERENCES `sys_permission`(`id`) ON DELETE CASCADE
+);

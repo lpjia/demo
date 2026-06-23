@@ -1,0 +1,37 @@
+-- 获取用户拥有的所有权限标识符（最常用，用于拦截器或前端控制）
+SELECT DISTINCT p.perm_code
+FROM sys_user u
+JOIN sys_user_role ur ON u.id = ur.user_id
+JOIN sys_role_permission rp ON ur.role_id = rp.role_id
+JOIN sys_permission p ON rp.perm_id = p.id
+WHERE u.id = 1 AND u.status = 1 AND p.status = 1;
+
+
+
+
+-- 判断用户是否具有某个特定权限（如 order:export）
+SELECT EXISTS (
+    SELECT 1
+    FROM sys_user_role ur
+    JOIN sys_role_permission rp ON ur.role_id = rp.role_id
+    JOIN sys_permission p ON rp.perm_id = p.id
+    WHERE ur.user_id = 1 AND p.perm_code = 'order:export'
+) AS has_permission;
+
+
+
+
+
+
+-- 获取用户的所有权限（含完整信息，用于前端渲染动态菜单）
+SELECT p.id, p.perm_name, p.perm_code, p.perm_type, p.parent_id, p.sort_order
+FROM sys_user_role ur
+JOIN sys_role_permission rp ON ur.role_id = rp.role_id
+JOIN sys_permission p ON rp.perm_id = p.id
+WHERE ur.user_id = 1 AND p.status = 1
+ORDER BY p.parent_id, p.sort_order;
+
+
+
+
+

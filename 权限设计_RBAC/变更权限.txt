@@ -1,0 +1,23 @@
+-- 新增一个权限
+-- 不需要修改表结构，只需插入一条记录
+-- 后续可将该权限分配给任意角色
+INSERT INTO `sys_permission` (`perm_name`, `perm_code`, `perm_type`) 
+VALUES ('导出订单报表', 'order:export', 'API');
+
+
+
+-- 删除一个权限
+-- 物理删除（同时自动删除角色-权限关联）
+DELETE FROM `sys_permission` WHERE `perm_code` = 'order:export';
+-- 如果不想物理删除，可增加 status 字段，使用软删除 UPDATE ... SET status=0
+
+
+
+-- 给角色分配权限
+-- 假设 role_id=2（运营），perm_id=10（order:export）
+INSERT INTO `sys_role_permission` (`role_id`, `perm_id`) VALUES (2, 10);
+
+
+
+-- 从角色回收权限
+DELETE FROM `sys_role_permission` WHERE `role_id` = 2 AND `perm_id` = 10;
