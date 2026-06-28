@@ -446,7 +446,7 @@ npm audit
 
 工具支持本地工程和远程仓库，包含CVSS、CWE、依赖链等关键审计信息。
 
-审计结果为标准化 markdown 文件，将来亦可支持渲染为其他标准格式，如JSON、HTML等。工具可用于本地依赖检查和技术选型等安全审计工作。
+审计结果为标准化 markdown 文件，将来也可支持渲染为其他标准格式，如JSON、HTML等。工具可用于本地依赖检查和技术选型等安全审计工作。
 
 项目已无缝集成到公司的LLM工具链，服务于公司所有生产线，安全审计效率提升90%。
 
@@ -458,9 +458,9 @@ npm audit
 - 利用 workspace api 解析 monorepo 工程的所有子工程依赖
 - 无安装实现 lock 文件生成
 - 利用 npm security api 完成住主工程安全审计
-- 依赖图到依赖链底转换，完成图结构的DFS并处理 recursive dependency 问题
+- 依赖图到依赖链的转换，完成图结构的DFS并处理 recursive dependency 问题
 - 使用模板引擎渲染审计结果
-- 使用容器技术固定环境保本
+- 使用容器技术固定环境版本
 - 合并漏洞影响的语义范围
 - 使用 LRU 提升审计性能
 - 使用 MCP Prompts、MCP Tools、MCP Resources 构建 MCP 服务链
