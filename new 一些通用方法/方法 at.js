@@ -25,6 +25,25 @@ array.at(-1)
 减1和负1 */
 
 
+const arr = [
+  { name: 'one', val: 1 },
+  { name: 'five', val: 5 },
+  { name: 'three', val: 3 },
+  { name: 'two', val: 2 },
+  { name: 'four', val: 4 },
+]
+console.log(
+  arr[1], // 索引
+  arr.at(1)
+)
+console.log(
+  arr[-1], // -1被当作字符串'-1', 没有-1索引这个东西
+  arr.at(-1) // -1 从右往左数
+)
+console.log(
+  arr[0], // 索引
+  arr.at(0)
+)
 
 
 
