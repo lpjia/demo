@@ -1,0 +1,16 @@
+2026-05-26 05:12
+获取组件的类型
+
+
+组件库类型丢失
+
+
+引入类型
+ts配置文件的字段
+"types"
+
+
+CompOne3.vue 配合
+/// <reference types="element-plus/global.d.ts" />
+ElForm 和 ElInput 组件, 在没有导入的情况下都显示出类型了
+没有手动导入, 所以只有类型提示, 运行还是会报错
