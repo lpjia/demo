@@ -1,0 +1,15 @@
+@use 'sass:math';
+$r: 60px;
+$n: 6;
+$step: calc(360deg / $n);
+
+@for $i from 1 through $n {
+  .menu-item:nth-child(#{$i}) {
+    $deg: ($i - 1) * $step;
+    $x: $r * math.sin($deg);
+    $y: -$r * math.cos($deg);
+    @debug $x,
+    $y;
+    transform: translate($x, $y);
+  }
+}
