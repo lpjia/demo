@@ -1,0 +1,21 @@
+{
+  "name": "node_env",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "type": "module",
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "dev": "node src/index.js",
+    "dev2": "cross-env NODE_ENV=development node src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

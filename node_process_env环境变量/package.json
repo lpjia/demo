@@ -1,0 +1,26 @@
+{
+  "name": "node_env",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "main": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "dev": "node src/index.js",
+    "dev2": "cross-env NODE_ENV=production node src/index.js",
+    "dev11": "node src/load_env_file.js",
+    "dev12": "cross-env NODE_ENV=production node src/use_env_load_var.js",
+    "dev13": "cross-env NODE_ENV=development node src/use_env_load_var.js",
+    "dev21": "node --env-file=.env src/no_dotenv.js",
+    "dev22": "node --env-file=.env.development src/no_dotenv.js",
+    "dev23": "node --env-file=.env.production src/no_dotenv.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

@@ -17,26 +17,17 @@
 
 
 
-// /* 返回启动目录的绝对路径
-// 返回当前工作目录, 是启动 Node.js 程序时所在的文件夹路径
-// 比如在 d:\demo 目录执行 node xxx.js
-// cwd() 返回 'D:\demo'  */
-// console.log(process.cwd())
-// // cpu架构
-// console.log(process.arch)
-// // Node.js 版本
-// console.log(process.version)
-// // 当前操作系统的名称
-// console.log(process.platform)
-
-
-
-
-// console.log(process.env)
-console.log(process.env.NODE_ENV) // undefined
-console.log(process.env.VITE_API_BASE_URL) // undefined
-console.log(process.env.VUE_APP_BASE_API) // undefined
-/* 安装 dotenv 读取 .env 文件, 把环境变量注入到 process.env */
+/* 返回启动目录的绝对路径
+返回当前工作目录, 是启动 Node.js 程序时所在的文件夹路径
+比如在 d:\demo 目录执行 node xxx.js
+cwd() 返回 'D:\demo'  */
+console.log('process.cwd():', process.cwd())
+// cpu架构
+console.log(process.arch)
+// Node.js 版本
+console.log(process.version)
+// 当前操作系统的名称
+console.log(process.platform)
 
 
 
