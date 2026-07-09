@@ -39,14 +39,14 @@ import { PermissionModule } from './permission/permission.module';
         host: configService.get('DB_HOST'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT'), // 端口号
         username: configService.get('DB_USER'),   // 用户名
-        password: configService.get('DB_PAWD'), // 密码
+        password: configService.get('DB_PSWD'), // 密码
         database: configService.get('DB_NAME'), // 数据库名
         timezone: '+08:00', // 服务器上配置的时区
         synchronize: false, // 根据实体自动创建数据库表, 生产环境建议关闭, 实体的任何改动都会影响数据库的列以及数据
         autoLoadEntities: true, // 自动加载实体, 避免手动一个个导入
       })
     }),
-    RedisCacheModule,
+    // RedisCacheModule,
     /* 加载对应模块
     module的顺序和controller中方法的顺序影响swaggerUI的API(按组)的顺序 */
     ArticleModule,
