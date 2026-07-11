@@ -2,6 +2,7 @@ import FilterableProductTable from './components/FilterableProductTable';
 import ChatRoom from './components/ChatRoom';
 import DotArrayCanvas from './components/DotArrayCanvas';
 import YuanTable from './components/YuanTable';
+import Game from './components/Game';
 
 
 function App() {
@@ -9,11 +10,13 @@ function App() {
     <>
       {/* <FilterableProductTable /> */}
 
-      {/* <YuanTable /> */}
+      <YuanTable />
 
       {/* <ChatRoom /> */}
 
-      <DotArrayCanvas />
+      {/* <DotArrayCanvas /> */}
+
+      {/* <Game /> */}
     </>
   )
 }

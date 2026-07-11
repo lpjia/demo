@@ -2,6 +2,10 @@ import { useState } from 'react'
 import SearchBar from './SearchBar';
 import ProductTable from './ProductTable';
 
+/* category 类别
+stocked 有库存
+占位 */
+
 const products = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
   { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },

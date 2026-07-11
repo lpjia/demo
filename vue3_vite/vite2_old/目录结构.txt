@@ -1,0 +1,11 @@
+主要说 views
+
+views
+  文件夹(- 写法)
+    index.vue
+    components
+    composables(写组合式函数)
+      组件(大驼峰写法) / 文件夹(- 写法)
+        index.vue
+        components
+        composables
