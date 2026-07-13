@@ -1,0 +1,13 @@
+.wrap {
+  background-color: orange;
+}
+
+.two::deep {
+  .wrap {
+    background-color: deepskyblue;
+  }
+}
+
+.ziti {
+  color: deepskyblue;
+}
