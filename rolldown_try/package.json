@@ -1,0 +1,31 @@
+{
+  "name": "rolldown_try",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "main": "",
+  "type": "module",
+  "module": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "build": "rolldown -c",
+    "build2": "rolldown -c rolldown2.config.js",
+    "build3": "rolldown -c rolldown3.config.js",
+    "build4": "rolldown -c rolldown4.config.js",
+    "build5": "rolldown -c rolldown5.config.js",
+    "build6": "rolldown -c rolldown6.config.js"
+  },
+  "volta": {
+    "node": "22.22.2",
+    "pnpm": "9.15.9"
+  },
+  "devDependencies": {
+    "rolldown": "1.0.2"
+  },
+  "dependencies": {
+    "lodash": "^4.18.1",
+    "lodash-es": "^4.18.1"
+  }
+}

@@ -1,0 +1,85 @@
+2026-05-01 03:50
+https://rolldown.rs/guide/getting-started
+
+
+rolldown 和 rollup 的很多api都兼容
+
+
+"rolldown": "1.0.0-rc.18" 固定了版本, 不会变动
+有新版本, 怎么更新?
+pnpm update rolldown --latest
+更新了
+"rolldown": "1.0.2"
+
+
+
+
+把rollup的那些都挪过来看看结果
+
+
+
+
+CJS support
+Rolldown 开箱即用，支持混合 ESM/CJS 模块图，无需 @rollup/plugin-commonjs
+
+
+
+Module resolution
+Rolldown 默认根据 TypeScript 和 Node.js 的行为解析模块，无需 @rollup/plugin-node-resolve
+
+
+
+
+配置项 output.minify: true, 这不是默认值
+等同于
+import terser from '@rollup/plugin-terser';
+
+plugins: [
+  terser() // 压缩代码
+]
+
+
+
+
+dist4
+使用rolldown4.config.js打包的
+input: 'src2/index.js',
+
+打包后的单文件有480kb, 明显没有tree-shaking, 可直接运行
+代码 import { chunk, camelCase } from 'lodash';
+
+
+
+dist5
+使用rolldown4.config.js打包的
+input: 'src2/index2.js',
+
+使用lodash-es包, 打包后的单文件有34kb, 有tree-shaking
+如果是es模块, 则不需要用 commonjs()
+
+
+
+dist6
+使用rolldown4.config.js打包的
+input: 'src2/index2.js',
+
+打包后的单文件有8kb
+加了配置项 output.minify: true
+
+
+
+
+dist7
+使用rolldown5.config.js打包的
+// src3/index.js
+import { version } from '../package.json';
+这代码在这不参与运行, 只作转换(不是插件, 插件是需要运行的)
+转换后变成 var version = "0.1.0";
+
+
+
+
+
+dist8
+使用rolldown6.config.js打包的
+自己开发插件并引入到rolldown
