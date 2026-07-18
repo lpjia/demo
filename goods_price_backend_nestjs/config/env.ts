@@ -12,8 +12,8 @@ function parseEnv() {
 
   /* 兼容 集成到electron */
   const PROJECT_ROOT = path.resolve(__dirname, '../../');
-  const localEnv = path.join(PROJECT_ROOT, '.env'); // 清晰明了, 指向根目录的.env文件路径
-  const prodEnv = path.join(PROJECT_ROOT, '.env.prod');
+  const localEnv = path.join(PROJECT_ROOT, '.env.development'); // 清晰明了, 指向根目录的.env文件路径
+  const prodEnv = path.join(PROJECT_ROOT, '.env.production');
 
   if (!fs.existsSync(localEnv) && !fs.existsSync(prodEnv)) {
     throw new Error('缺少环境配置文件');
