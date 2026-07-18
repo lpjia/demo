@@ -1,0 +1,35 @@
+{
+  "name": "rollup_try",
+  "version": "0.1.0",
+  "author": "lpjia",
+  "private": true,
+  "main": "",
+  "type": "module",
+  "module": "",
+  "description": "",
+  "keywords": [],
+  "license": "",
+  "scripts": {
+    "build": "rollup -c",
+    "build2": "rollup -c rollup2.config.js",
+    "build3": "rollup -c rollup3.config.js",
+    "build4": "rollup -c rollup4.config.js",
+    "build5": "rollup -c rollup5.config.js",
+    "build6": "rollup -c rollup6.config.js"
+  },
+  "volta": {
+    "node": "22.22.2",
+    "pnpm": "9.15.9"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.60.2"
+  },
+  "dependencies": {
+    "lodash": "^4.18.1",
+    "lodash-es": "^4.18.1"
+  }
+}

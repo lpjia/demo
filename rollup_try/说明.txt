@@ -1,0 +1,119 @@
+2026-05-01 03:50
+https://cn.rollupjs.org/introduction/
+
+
+命令行配置
+
+rollup -c
+
+-c, --config <filename>     使用此配置文件（如果使用了该参
+                数但未指定值时，Rollup 将尝试按以下顺序加载
+                配置文件:
+                rollup.config.mjs -> rollup.config.cjs -> rollup.config.js）
+
+-f, --format <format>       输出类型（amd、cjs、es、iife、umd、system）
+
+
+
+"build2": "rollup -c rollup2.config.js"
+
+
+
+
+
+dist说明
+dist1/bundle.js
+打包成常见的cjs模块
+Rollup默认启动tree-shaking, math.js的subtract函数就没打包进去
+
+
+dist2/bundle.umd.js
+打包成umd模块
+umd – 通用模块定义规范，同时支持 amd，cjs 和 iife
+不过不常用, 通常打包成各自模块
+
+
+dist3
+一般通常打包成各自模块 es、cjs、iife
+output.strict: true // 默认
+该选项用于决定是否在生成非 ES bundle 的顶部包含“use strict”用法。严格地讲，ES 模块 总是 使用严格模式
+
+
+
+
+Rollup 默认不支持 CommonJS 模块
+Rollup 原生只支持 ES 模块（import/export）
+
+
+
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import terser from '@rollup/plugin-terser';
+
+plugins: [
+  nodeResolve(), // 让 Rollup 找到并打包 node_modules 第三方依赖
+  commonjs(), // 解析 CommonJS 模块, 转 CommonJS 为 ES
+  terser() // 压缩代码
+]
+
+rollup项目一般都用到了这3个插件来处理依赖包
+
+
+
+dist4
+使用rollup4.config.js打包的
+input: 'src2/index.js',
+
+打包后的单文件有500多kb, 明显没有tree-shaking, 可直接运行
+代码 import { chunk, camelCase } from 'lodash';
+配置 nodeResolve(), commonjs()
+
+
+
+dist5
+使用rollup4.config.js打包的
+input: 'src2/index2.js',
+
+使用lodash-es包, 打包后的单文件有30kb, 有tree-shaking
+如果是es模块, 则不需要用 commonjs()
+
+
+
+dist6
+使用rollup4.config.js打包的
+input: 'src2/index2.js',
+
+打包后的单文件有7kb
+配置 nodeResolve(), terser()
+
+配置项 output.minifyInternalExports 精简内部导出
+默认情况下，在 es、system 格式下或者 output.compact 值为 true 的情况下该选项值为 true
+
+意味着 Rollup 会尝试把内部变量导出为单个字母的变量，以便更好地压缩代码
+配合 terser() 压缩代码
+混淆变量
+
+
+
+精简（移除空格、换行、缩短变量名等）
+
+
+
+
+dist7
+使用rollup5.config.js打包的
+// src3/index.js
+import { version } from '../package.json';
+这代码在这不参与运行, 只作转换(不是插件, 插件是需要运行的)
+转换后变成 var version = "0.1.0";
+
+
+
+
+dist8
+使用rollup6.config.js打包的
+自己开发插件并引入到rollup
+
+
+
+顶层使用await, 在rollup更推荐在 buildStart 钩子函数里异步读取, 符合 Rollup 生命周期
