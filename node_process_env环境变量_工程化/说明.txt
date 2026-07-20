@@ -1,0 +1,5 @@
+2026-07-16 17:44
+index2.js 是符合常用的情况
+使用 dotenv 来读取环境配置文件 .env.development .env.production
+用 cross-env 来设置环境 NODE_ENV=development
+  cross-env NODE_ENV=development node src/index2.js

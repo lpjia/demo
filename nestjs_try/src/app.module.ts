@@ -29,6 +29,21 @@ import { PermissionModule } from './permission/permission.module';
         index: 'index.html', // 首页刷新不丢失（SPA 必需）
       },
     }),
+    /* TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get('DB_HOST'),
+        port: configService.get<number>('DB_PORT'),
+        username: configService.get('DB_USER'),
+        password: configService.get('DB_PSWD'),
+        database: configService.get('DB_NAME'),
+        timezone: '+08:00',
+        synchronize: false,
+        autoLoadEntities: true,
+      }) 无注释版
+    }), */
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
