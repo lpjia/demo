@@ -1,0 +1,26 @@
+{
+  "name": "build_control_vite",
+  "private": true,
+  "version": "0.1.0",
+  "author": "lpjia",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "volta": {
+    "node": "14.21.3",
+    "pnpm": "6.35.1"
+  },
+  "dependencies": {
+    "ramda": "^0.29.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.5",
+    "@types/ramda": "^0.29.6",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}

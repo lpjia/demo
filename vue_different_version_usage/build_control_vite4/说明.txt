@@ -1,0 +1,13 @@
+2026-05-28 02:52
+同时配置了assetFileNames和manualChunks, 先后触发顺序:
+
+manualChunks 先执行 → 然后才执行 assetFileNames
+
+模块解析 → manualChunks（拆分JS chunk） → 生成资源 → assetFileNames（资源命名）
+
+
+
+manualChunks 先于 assetFileNames 执行
+manualChunks 负责决定“这个 JS 应该属于哪个 chunk”
+assetFileNames 负责决定“这个文件最终放在哪个目录、叫什么名字”（主要针对非 JS 资源）
+JS chunk（包括 manualChunks 产生的）默认走 chunkFileNames，不会走 assetFileNames

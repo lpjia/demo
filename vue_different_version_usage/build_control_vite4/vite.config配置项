@@ -1,0 +1,69 @@
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  build: {
+    rollupOptions: {
+      output: {
+        /* 打包后的入口文件 */
+        // entryFileNames: 'js/new_entry.js' // dist2
+
+        /* [name]是占位符, 表示文件的名字 */
+        // entryFileNames: 'js/[name].js' // dist3
+
+        /* [hash] 哈希占位符 */
+        // entryFileNames: 'js/[name]-[hash].js', // dist4
+
+
+
+        /* 手动分包 */
+        // chunkFileNames: 'js/[name]-[hash].js', // dist5
+
+        /* 其他静态资源分类存放 */
+        // assetFileNames: '[ext]/[name]-[hash][extname]' // dist7
+
+        /* 其他静态资源分类存放, 细腻控制, 通过回调函数 */
+        // assetFileNames(assetInfo) { // dist8
+        //   if (assetInfo.name.endsWith('.css')) {
+        //     return 'css/[name]-[hash][extname]'
+        //   }
+        //   if (['.png', '.jpg', '.jpeg', '.webp', '.svg', '.gif'].some(ext => assetInfo.name.endsWith(ext))) {
+        //     return 'img/[name]-[hash][extname]'
+        //   }
+
+        //   /* 其他资源（字体、视频等） */
+        //   return 'assets/[name]-[hash][extname]'
+        // },
+
+        /* 手动分包, 把第三方库单独分包 */
+        // manualChunks: { // dist10
+        //   lib: ['ramda', 'vue']
+        // }
+
+        /* 这里仅用了2个第三方库, 分别单独分包 */
+        // manualChunks: { // dist11
+        //   ramda: ['ramda'],
+        //   vue: ['vue']
+        // }
+
+        /* 手动分包, 通过回调形式 */
+        // manualChunks(id) { // dist12
+        //   /* id是每个模块的绝对路径 */
+        //   console.log('id:', id)
+        //   if (id.includes('node_modules')) {
+        //     return 'vendor' // 习惯按vendor分
+        //   }
+        // }
+
+        /* 习惯按lib分 */
+        // manualChunks(id) {
+        //   if (id.includes('node_modules')) {
+        //     return 'lib'
+        //   }
+        // }
+
+      }
+    }
+  }
+})
