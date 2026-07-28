@@ -1,0 +1,21 @@
+2026-05-27 05:31
+
+@vue/cli-service
+v5版本新增加的 defineConfig
+
+// vue.config.js 
+const { defineConfig } = require('@vue/cli-service')
+
+module.exports = defineConfig({
+	
+})
+可以触发编辑器的配置项字段提示
+
+
+
+
+
+
+@vue/cli-service
+v4版本
+vue.config.js 没有 defineConfig
