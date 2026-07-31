@@ -40,6 +40,37 @@
       position: relative;
     }
   </style>
+  <style>
+    .ball {
+      width: 100px;
+      height: 100px;
+      background: #f40;
+      border-radius: 50%;
+      margin: 30px;
+    }
+
+    .ball_1 {
+      animation: move1 1s alternate infinite ease-in-out;
+    }
+
+    .ball_2 {
+      position: fixed;
+      left: 0;
+      animation: move2 1s alternate infinite ease-in-out;
+    }
+
+    @keyframes move1 {
+      to {
+        transform: translate(100px);
+      }
+    }
+
+    @keyframes move2 {
+      to {
+        left: 100px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -51,11 +82,16 @@
 
   <!-- 尝试其它动画, 验证封装的函数是不是通用 -->
   <div class="kuai"></div>
+  <hr />
+
+  <button id="btn">死循环</button>
+  <div class="ball ball_1"></div>
+  <div class="ball ball_2"></div>
 
 
   <script src="animation.js"></script>
   <script type="module">
-    import { $toFixed } from '../utils/commonMethod.js'
+    import { $toFixed } from '../util/commonMethod.js'
     const doms = {
       label: document.querySelector('label'),
       btn: document.querySelector('.btn'),
@@ -79,6 +115,15 @@
         // doms.kuai.style.top = `${$toFixed(val)}px`
       })
     })
+  </script>
+  <script>
+    function delay(duration) {
+      var start = Date.now();
+      while (Date.now() - start < duration) { }
+    }
+    btn.onclick = function () {
+      delay(2000);
+    };
   </script>
 </body>
 

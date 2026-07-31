@@ -29,3 +29,30 @@ function animation(option, onProgress) { // onProgress 处理函数
   requestAnimationFrame(_run) // 下一次渲染的时候, 调用_run, 启动动画
   /* requestAnimationFrame() 的回调执行时机是由浏览器控制的，因此你不能确定它何时会被调用，只能确定它会在下一次重绘之前被调用 */
 }
+
+/* 
+function animation(option, onProgress) {
+  const { duration, from, to } = option
+  const distance = to - from
+  const speed = distance / duration
+  const startTime = Date.now()
+  let value = from
+  onProgress(value)
+
+  function _run() {
+    const now = Date.now()
+    const time = now - startTime
+    if (time >= duration) {
+      value = to
+      onProgress(value)
+      return;
+    }
+    const d = time * speed
+    value = from + d
+    onProgress(value)
+    requestAnimationFrame(_run)
+  }
+
+  requestAnimationFrame(_run)
+}
+ */
