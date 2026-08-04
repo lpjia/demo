@@ -1,0 +1,7 @@
+2026-03-17 00:35
+看每个 package.json 文件的 name
+
+
+pnpm dlx @vue/cli@4
+
+pnpm dlx @vue/cli@4 create .
