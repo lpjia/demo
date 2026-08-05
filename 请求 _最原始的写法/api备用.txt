@@ -1,0 +1,55 @@
+GET 和 DELETE 可以用查询字符串
+POST 和 PUT 可以用请求体
+
+
+
+GET /api/goodsByPage?page=1&pageSize=10 HTTP/1.1
+
+
+
+GET /api/goodsByPage
+?page=3
+&pageSize=10 HTTP/1.1
+Host: 127.0.0.1:7001
+Content-Type: application/x-www-form-urlencoded
+
+
+
+GET /api/articles/page
+?curPage=3
+&pageSize=10 HTTP/1.1
+Host: 127.0.0.1:7101
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ims1cXNjcF9za2I3NiIsImd2IjoxLCJpYXQiOjE3ODA2ODc0ODksImV4cCI6MTc4MDY4OTI4OX0.cV668D40FwgqCLQCbRr9TrTyTghdYPIMZezfB4ms1s8
+
+
+
+
+DELETE /api/articles/21 HTTP/1.1
+GET /api/articles/123 HTTP/1.1
+GET /api/articles/page HTTP/1.1
+GET /api/kinds/646516464 HTTP/1.1
+GET /api/users/me HTTP/1.1
+Host: 127.0.0.1:7101
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ims1cXNjcF9za2I3NiIsImd2IjoxLCJpYXQiOjE3ODA2ODc0ODksImV4cCI6MTc4MDY4OTI4OX0.cV668D40FwgqCLQCbRr9TrTyTghdYPIMZezfB4ms1s8
+
+
+
+
+
+POST /api/auth/login HTTP/1.1
+Host: 127.0.0.1:7101
+Content-Type: application/json;charset=utf-8
+
+{
+  "username": "k5qscp_skb76",
+  "password": "DpNol3k9VJCrd9q"
+}
+
+
+{
+  "username": "super_root_2026-06-06",
+  "password": "@@n06mFme!"
+}
+

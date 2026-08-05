@@ -1,0 +1,17 @@
+{
+  "name": "mini-ioc",
+  "version": "0.0.1",
+  "private": true,
+  "author": "lpjia",
+  "description": "最小版 IoC 容器, 模拟 NestJS 依赖注入精髓",
+  "scripts": {
+    "dev": "ts-node src/main.ts"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
