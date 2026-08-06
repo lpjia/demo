@@ -11,7 +11,7 @@ class EventEmitter {
 
   // 监听
   on(eventName: EventNames, listener: Function) {
-    this.listeners[eventName].add(listener)
+    this.listeners[eventName].add(listener) // 事件触发的顺序取决于 index.ts 导入的顺序
   }
 
   // 触发

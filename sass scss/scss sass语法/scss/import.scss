@@ -3,6 +3,7 @@
 @use 'scssModule' as zdy; // 模块重命名
 @use 'sass:math'; // 内置模块
 @use 'media'; // 不带扩展名也可以
+// @use '@/styles/mixin.scss' as *; 不需要命名空间了
 
 
 .cls1 {

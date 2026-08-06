@@ -9,7 +9,9 @@
   "keywords": [],
   "license": "",
   "scripts": {
-    "dev": "tsx watch ./src/index.ts"
+    "dev": "tsx watch ./src/index.ts",
+    "dev2": "tsx watch ./src2/index.ts",
+    "dev3": "tsx ./src2/demo.ts"
   },
   "devDependencies": {
     "tsx": "^4.21.0"
