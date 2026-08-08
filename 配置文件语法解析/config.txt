@@ -1,0 +1,31 @@
+2026-08-03 21:55
+对于不同的配置文件
+confbox聚合了多种
+pnpm add -D confbox
+
+
+底层其实用了其他开源的各配置文件解析库
+js-yaml
+yaml
+jsonc-parser
+js-toml
+smol-toml
+toml
+ini
+json5
+
+
+import {
+  parseJSON5,
+  stringifyJSON5,
+  parseJSONC,
+  stringifyJSONC,
+  parseYAML,
+  stringifyYAML,
+  parseJSON,
+  stringifyJSON,
+  parseTOML,
+  stringifyTOML,
+  parseINI,
+  stringifyINI,
+} from "confbox";

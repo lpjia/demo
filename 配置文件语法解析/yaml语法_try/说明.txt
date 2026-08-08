@@ -1,7 +1,9 @@
 2026-05-16 23:28
 npm上2个常用库
-js-yaml
-yaml, 比 js-yaml 新一点，API 更现代，ESM / TypeScript 友好
+1. js-yaml
+2. yaml
+比 js-yaml 新一点，API 更现代，ESM / TypeScript 友好
+支持注释保留、源码位置、精细修改 YAML 内容
 
 
 pnpm add js-yaml
