@@ -1,0 +1,16 @@
+{
+  "name": "ramda-rollup-bundle",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js",
+    "build": "rollup --config"
+  },
+  "dependencies": {
+    "ramda": "^0.32.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.0.0"
+  }
+}

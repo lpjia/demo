@@ -1,0 +1,11 @@
+dist1  没有把依赖包打包进来    329B
+dist2  把ramda依赖包打包进来了   5967B
+
+
+在rollup打包工具
+import { splitEvery as R_splitEvery } from 'ramda'
+import * as R from 'ramda'
+打包产物大小一样
+
+
+可能其它打包工具需要不同的导入语句写法才能看出区别

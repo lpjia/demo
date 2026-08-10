@@ -1,5 +1,3 @@
-/* 语言层面的 */
-
 const obj = {
   "numSum": 13,
   "item": [
@@ -14,12 +12,12 @@ const obj = {
   ]
 }
 
-console.log(
-  // 深拷贝
-  R.clone(obj)
-)
-console.log(
-  _.cloneDeep(obj)
-)
+
+
+/* clone 深拷贝 */
+let a = R.clone(obj)
+let a2 = _.cloneDeep(obj)
 obj.item = null
 console.log(obj)
+console.log(a)
+console.log(a2)

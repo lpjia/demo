@@ -1,0 +1,82 @@
+js默认的6种假值:
+
+null
+undefined
+
+NaN
+
+''
+false
+0
+
+
+上面6种假值中, 有数据意义的值有  false  0
+
+
+有效值, 除了null  undefined  NaN
+
+
+[]  Array.isArray(arr) && arr.length === 0
+{}  一般不会有, 除非删光了obj自有属性;  Reflect.ownKeys(obj).length === 0
+
+
+
+json数据没有的: undefined  NaN
+
+
+api返回的数据可能有: null  []  ''
+
+
+undefined  值不会有, 但是取k的时候可能会出现k不存在, 比如 undefined.xxx
+null  数据库查不到数据一般会返回, 也会出现 null.xxx
+[]  数据库查列表查不到数据一般会返回空[]
+{}  不会有
+
+
+
+
+单独判断
+null         v === null
+undefined    v === undefined
+NaN          Number.isNaN(v)
+''           v === ''
+
+
+
+?.  可选链
+??  空值
+&&  与
+||  或
+
+
+
+a && b
+左是真值则返回右的结果  (非true/false那么简单, 无论用了多少个&&运算符, 计算表达式的结果)  '1' && true && 1 && null && 123
+左是假值则返回左的结果
+
+
+a || b
+左是假值则返回右的结果
+左是真值则返回左的结果
+
+
+let c = d ?? 'default string'
+d是非nil, 返回d的结果  (nil 包括 null 和 undefined)
+d是nil, 返回右的结果
+
+
+e?.f
+e是非nil, 返回后面的运算结果
+e是nil, 终止运算并返回 undefined
+
+
+(e得已声明, 否则报错)  user?.address?.street
+
+if(user && user.address && user.address.street){
+  // 以前会这样处理, 写很多重复的, 确保属性存在, 很呆
+}
+
+
+与 || 的区别?
+|| 是验证假值, 也就是 false null undefined '' 0 NaN
+?? 是验证 null undefined
