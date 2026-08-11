@@ -1,0 +1,25 @@
+2026-08-03 20:13
+viewport 视口
+
+
+┌──────────────────── 浏览器视口顶部
+│ getBoundingClientRect().top ←【元素上边距离视口顶部】
+│
+┌──────────────────── offsetParent 顶部
+│ offsetTop ←【元素上边距离最近定位父级顶部】
+│
+┌─────┐
+│元素 │ style.top（定位时的偏移设置值）
+└─────┘
+
+
+所有以上 top 基准线：元素盒子模型的外上边框边线（border-top 外边）
+包含 margin：✅ offsetTop /getBoundingClientRect.top 会把自身 margin 算进去
+padding、border：属于元素盒子内部，不影响上边基准线
+
+
+
+function isBelowViewport(el){
+  const rect = el.getBoundingClientRect()
+  return rect.top - window.innerHeight > 0;
+}

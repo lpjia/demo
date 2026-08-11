@@ -25,6 +25,17 @@ function getName(req, res) {
   })
 }
 
+/* function home(req, res) {
+  console.log(req.cookies, 222)
+
+  res.json({
+    code: 200,
+    msg: '',
+    data: req.body
+  })
+} */
+
 module.exports = {
-  getName
+  getName,
+  /* home, */
 }
