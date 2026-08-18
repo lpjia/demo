@@ -16,7 +16,7 @@ let obj3 = {
 }
 Object.defineProperty(obj3, 'cc', {
   value: 33,
-  enumerable: false // 可枚举的
+  enumerable: false // 可枚举的, false是不可枚举
 })
 console.log(
   Reflect.ownKeys(obj3) // ['aa', 'bb', 'cc', Symbol(dd)]
