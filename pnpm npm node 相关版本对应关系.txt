@@ -1,0 +1,75 @@
+// package.json
+  "volta": {
+    "node": "14.21.3",
+    "pnpm": "6.35.1"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: 5.3
+
+
+
+
+// package.json
+  "volta": {
+    "node": "16.20.2",
+    "pnpm": "7.33.7"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: 5.4
+
+
+
+
+// package.json
+  "volta": {
+    "node": "18.20.8",
+    "pnpm": "8.15.9"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: '6.0'
+
+
+
+
+// package.json
+  "volta": {
+    "node": "20.20.2",
+    "pnpm": "9.15.9"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: '6.0' node-sass@9
+lockfileVersion: '9.0' sass@1.99.0
+
+
+
+
+// package.json
+  "volta": {
+    "node": "22.22.3",
+    "pnpm": "9.15.9"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: '9.0'
+
+
+
+
+// package.json
+  "volta": {
+    "node": "24.18.1",
+    "pnpm": "10.34.5"
+  }
+
+// pnpm-lock.yaml
+lockfileVersion: '9.0'
+
+
+
+
+顺便更新有道云笔记, 搜
+pnpm npm node 相关版本对应关系

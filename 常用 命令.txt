@@ -1,10 +1,46 @@
 
 pnpm add -D @types/node
+mise x -- pnpm add -D @types/node
+
+
+mise use node@24.18.0 npm:pnpm@10.34.4
+mise use node@22.22.3 npm:pnpm@9.15.9
+mise use node@20.20.2 npm:pnpm@9.15.9
+mise use node@18.20.8 npm:pnpm@8.15.9
+
+
+mise settings node.mirror_url=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/
+
+mise settings unset node.mirror_url
+
+
+pnpm --package=@nestjs/cli dlx nest new .
+mise x -- pnpm --package=@nestjs/cli dlx nest new .
+
+
+
+mise x -- npm config set registry https://registry.npmmirror.com
+
+
+node -e "require('fs').rmSync('./node_modules', { recursive: true, force: true })"
+mise x -- node -e "require('fs').rmSync('./node_modules', { recursive: true, force: true })"
+
+
+
+pnpm create vite . --template vue-ts
+Vite 需要 Node.js 版本 20.19+ 或 22.12+
+
 
 
 使用git bash
 创建文件
 touch package.json
+
+
+使用powershell
+创建文件
+New-Item package.json
+New-Item mise.toml
 
 
 git log --oneline
@@ -16,6 +52,7 @@ git diff --cached --name-only --diff-filter=D
 net start | findstr /i mysql
 net start mysql
 net stop mysql
+
 
 nvm use 18.14.0
 nvm ls
@@ -41,12 +78,36 @@ rimraf node_modules
 rimraf '**/node_modules'
 pnpx rimraf node_modules
 pnpm dlx rimraf node_modules
+mise x -- pnpx rimraf '**/node_modules'
 
-node -e "require('fs').rmSync('./node_modules', { recursive: true, force: true })"
-  
-
-pnpm --package=@nestjs/cli dlx nest new .
 
 pnpx json5 package.json5 -o package.json
 
 pnpx @vue/cli create export_excel_xlsx-style_try
+
+
+ffmpeg -f concat -i vdo.txt -c copy concat.mp4
+
+
+ffmpeg -i videoplayback.mp4 -i videoplayback.weba -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
+
+
+ffmpeg -i 1v.mp4 -i 1a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy 2output.mp4
+ffmpeg -i v.mp4 -i a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
+
+
+ffmpeg -i vdo.mp4 -ss 00:00:04 -to 01:49:00 -c copy z_output.mp4
+
+
+ffmpeg -i input.mp4 -ss 00:00:01.000 -vframes 1 output.jpg
+
+
+ffplay -f lavfi -i "movie=input.mp4,delogo=x=11:y=22:w=33:h=44:show=1"
+ffplay -f lavfi -i "movie=input.mp4,delogo=x=1:y=1150:w=320:h=120:show=1,delogo=x=500:y=890:w=210:h=168:show=1"
+
+
+ffmpeg -i input.mp4 -vf "delogo=x=714:y=28:w=130:h=50" -c:a copy output.mp4
+ffmpeg -i input.mp4 -vf "delogo=x=1:y=1150:w=320:h=120,delogo=x=500:y=890:w=210:h=168" -c:a copy output.mp4
+
+
+git commit 'generator生成器/*' 'test.md' -m '20230707'

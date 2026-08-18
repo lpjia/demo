@@ -2,6 +2,19 @@
 
 
 
+
+
+d:\demo\* folder: *关键词* !d:\demo\*\*
+
+d:\demo\* *关键词*
+
+
+
+node_modules,lib,*-lock.*,*.map
+
+
+
+
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url';
@@ -14,6 +27,9 @@ const file = await fs.readFile(filePath, 'utf-8')
 
 
 
+把这个会话的聊天记录write到根目录的1个文件
+
+
 识别并转文本
 
 识别并转文本
@@ -21,6 +37,9 @@ const file = await fs.readFile(filePath, 'utf-8')
 
 等会把我发的图片
 识别并转文本
+
+识别并转文本
+翻译成中文
 
 
 
@@ -131,19 +150,19 @@ Alt Shift
 <%=  %>
 
 
-node_modules,lib,*-lock.*,*.map
-
-
 this.$nextTick(() => {
 
 })
 
 
 、
+  中文逗号
 。
+  中文句号
 （）
+  中文括号
 ——
-  上一行是中文的双横线
+  中文双横线
 →
  → 
   前后各加了空格, 美观
@@ -179,35 +198,3 @@ height: $wh;
 }
 
 @include wh(30px);
-
-
-
-
-pnpm create vite commodity_price_frontend --template vue-ts
-
-
-ffmpeg -f concat -i vdo.txt -c copy concat.mp4
-
-
-ffmpeg -i videoplayback.mp4 -i videoplayback.weba -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
-
-
-ffmpeg -i 1v.mp4 -i 1a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy 2output.mp4
-ffmpeg -i v.mp4 -i a.mp4 -map 0:v -map 1:a -c:v copy -c:a copy z_output.mp4
-
-
-ffmpeg -i vdo.mp4 -ss 00:00:04 -to 01:49:00 -c copy z_output.mp4
-
-
-ffmpeg -i input.mp4 -ss 00:00:01.000 -vframes 1 output.jpg
-
-
-ffplay -f lavfi -i "movie=input.mp4,delogo=x=11:y=22:w=33:h=44:show=1"
-ffplay -f lavfi -i "movie=input.mp4,delogo=x=1:y=1150:w=320:h=120:show=1,delogo=x=500:y=890:w=210:h=168:show=1"
-
-
-ffmpeg -i input.mp4 -vf "delogo=x=714:y=28:w=130:h=50" -c:a copy output.mp4
-ffmpeg -i input.mp4 -vf "delogo=x=1:y=1150:w=320:h=120,delogo=x=500:y=890:w=210:h=168" -c:a copy output.mp4
-
-
-git commit 'generator生成器/*' 'test.md' -m '20230707'

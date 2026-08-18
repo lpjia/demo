@@ -1,0 +1,23 @@
+[tools]
+node = "18.20.8"
+"npm:pnpm" = "8.15.9"
+
+
+[tools]
+node = "20.20.2"
+"npm:pnpm" = "8.15.9"
+
+
+[tools]
+node = "20.20.2"
+"npm:pnpm" = "9.15.9"
+
+
+[tools]
+node = "22.22.3"
+"npm:pnpm" = "9.15.9"
+
+
+[tools]
+node = "24.18.1"
+"npm:pnpm" = "10.34.5"

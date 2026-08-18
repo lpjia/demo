@@ -1,0 +1,57 @@
+
+
+2026-03-29 03:14
+global 文件夹
+里面的css和js文件, 有很多html文件引入了
+暂时不改html, 把global文件夹删除
+
+
+global 这个文件夹名字, 我总感觉是 js 相关的, 用作 css 不太合适
+鉴于不影响旧项目, 再复制一份到 common 文件夹, 新改动内容就不在这更新了
+
+
+
+global.css 内容
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 2% 6% 0;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+button {
+  padding: 2px 4px;
+}
+
+.up_down {
+  margin: 20px 0;
+}
+
+.margin_tb {
+  margin: 20px 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.d_ib {
+  display: inline-block;
+}
+
+hr {
+  margin: 1rem 0;
+}
+
+
+
+
+globalConfig.js 内容
+export const RAP2_TUNNEL_ONLINE_MONITORING = 'http://rap2api.taobao.org/app/mock' + '/270234'

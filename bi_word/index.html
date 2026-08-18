@@ -116,6 +116,7 @@
       <p>head header 顶部, 头部</p>
       <p>foot footer tail 底部, 尾部</p>
       <p>banner 横幅</p>
+      <p>container 容器</p>
 
 
 
@@ -210,7 +211,7 @@
 
 
 
-      <!-- sass scss -->
+      <!-- sass scss 关键字一般需要加@ -->
       <p>quote() 加引号</p>
       <p>unquote() 只去除最外层的引号</p>
       <p>compile 编译</p>
@@ -218,6 +219,7 @@
       <p>through 直到</p>
       <p>lighten() 旧语法 darken()</p>
       <p>adjust() 调整</p>
+      <p>forward 转发</p>
 
 
 
@@ -319,6 +321,7 @@
       <!-- js -->
       <p>handleClick 事件方法命名 不知道怎么命名时就用handle前缀</p>
       <p>prototype 原型</p>
+      <!-- instance 实例 -->
       <!-- new String(123) instanceof String -->
       <p>instanceof 实例 (必须是对象才可以, 字面量不行, 得包装一层)</p>
       <p>typeof 类型, typeof 456</p>
@@ -360,7 +363,7 @@
       <p>sync 同步 synchronize</p>
       <p>expose 暴露</p>
       <p>iterator 迭代器</p>
-      <!-- post 发送 -->
+      <!-- post 发送, 岗位 -->
       <p>await 等待</p>
       <p>emit 发</p>
       <p>target 目标 目标元素</p>
@@ -449,7 +452,7 @@
       <p>immediate 立即, 立刻</p>
       <p>deep 深</p>
       <p>directive 指令</p>
-      <p>generic 通用的, 声明泛型类型参数</p>
+      <p>generic 通用的, 声明泛型类型参数, 组件本身变成泛型组件</p>
       <p>route 路由</p>
       <p>router 路由器</p>
       <p>missing 丢失</p>
@@ -611,6 +614,10 @@
       <p>expand 扩展</p>
       <p>extend 扩展</p>
 
+      <p>income 收入</p>
+      <p>expense 支出</p>
+
+
       <!-- 容易记错 易错 一组词 -->
       <!-- https://www.cnblogs.com/straybirds/p/9788968.html 一些容易混淆单词 -->
       <p>alert 警报</p>
@@ -619,6 +626,9 @@
       <p>context 上下文 ctx</p>
       <p>content 内容 ctt</p>
 
+      <!-- total 总计 -->
+      <!-- count 数量, 计数 -->
+      <!-- num 数字 -->
       <p>quantity 数量</p>
       <p>quality 质量</p>
 
@@ -656,6 +666,9 @@
       <p>serial 串行 s </p>
       <p>parallel 并行 p </p>
 
+      <p>byte 字节 Byte B, 一般大写</p>
+      <p>bit 位, 比特位, 一般小写</p>
+
 
 
 
@@ -689,6 +702,12 @@
       <!-- modal 模态框 -->
 
 
+
+
+
+      <!-- 字段命名 -->
+      <p>biz_type 业务类型 business type</p>
+      <p></p>
 
 
 
@@ -726,6 +745,7 @@
       <p>Packet 数据包</p>
       <p>comment 注释 COMMENT</p>
       <p>incorrect 不正确的, 不合规的</p>
+      <p>union 联合</p>
 
 
       <!-- orm sequelize -->
@@ -777,6 +797,7 @@
       <p>adapter 适配器</p>
       <p>ImplicitConversion 隐式转换</p>
       <p>criteria 标准</p>
+      <p>provider 提供者, 向容器提供xxx的具体实现</p>
 
 
 
@@ -835,13 +856,15 @@
       <!-- github -->
       <p>issue 提问, 念1ʃu</p>
       <p>archive 存档, 也就是不再维护了</p>
-      <p>Public_archive 公共档案</p>
+      <!-- Public archive 公共档案 -->
       <p>chore 例行工作, 日常事务</p>
       <p>release 发行</p>
       <p>stable 稳定版本</p>
       <p>inactive 不活跃的</p>
       <p>fix 修复</p>
       <p>feature 特性 feat</p>
+      <!-- pull request 合并请求 -->
+      <!-- schedule 计划任务 -->
 
 
 
@@ -998,9 +1021,11 @@
 
 
       <!-- node npm pnpm nvm volta mise -->
-      <p>deprecated 已弃用</p>
+      <p>monorepo 单体仓库</p>
+      <p>deprecated 已弃用 DEPRECATED</p>
       <p>uglify 混淆</p>
-      <p>peerDependencies 对等依赖</p>
+      <p>peerDependencies 对等依赖(复数) peerDependency</p>
+
       <!-- shamefully-hoist=true 强制提升所有依赖到根node_modules 强制扁平化 -->
       <p>shamefully 可耻的, 不体面的</p>
       <p>hoist 提升</p>
@@ -1011,7 +1036,6 @@
       <p>Extracting 正在提取</p>
       <p>refuse 拒绝</p>
       <p>untouched 未改动的</p>
-      <p>activate 激活</p>
       <p>pin 固定</p>
       <p>image 镜像</p>
       <p>toolchain 工具链</p>
@@ -1030,6 +1054,7 @@
       <p>integrity 完整性</p>
       <p>shim 垫片</p>
       <p>exec 执行(缩写)</p>
+      <p>activate 激活</p>
 
 
 
@@ -1084,6 +1109,12 @@
       <!-- rollup -->
       <!-- External 排除掉 -->
       <!-- manualChunks 手动分chunk -->
+      <!-- sideEffects 副作用, 相对于纯函数的概念
+        副作用: 函数执行，除了返回值之外，对外界产生任何可观测的外部改变
+        打印语句就算副作用, 改变了外部控制台的输出状态
+
+        sideEffects: false; // 标记该模块无副作用, 用于树摇优化
+      -->
 
 
 
@@ -1103,6 +1134,7 @@
 
 
       <p>Attach 附加</p>
+      <!-- attachClickEvent 加上点击事件 -->
       <p>debug 调试</p>
 
 
@@ -1116,7 +1148,6 @@
       <p>restricted 受限制的 </p>
       <p>mute 静音</p>
       <p>reply 回复, 回应</p>
-      <p>forward 转发</p>
       <p>subscriber 订阅者, 用户</p>
       <p>permanently 永久的</p>
 
@@ -1193,12 +1224,23 @@
 
 
 
-      <!-- GIS -->
+      <!-- WebGIS -->
       <!-- feature 地理要素 -->
       <p>tile 瓦片 Tile</p>
       <p>vector 向量 Vector</p>
       <!-- stroke 笔划 线 -->
-      <p>Geometry 几何形状</p>
+      <p>Geometry 几何形状 geometry 也可以叫"点位"</p>
+      <p>Polygon 多边多角形</p>
+      <p>longitude 经度 lon</p>
+      <p>latitude 纬度 lat</p>
+      <p>anchor 锚点</p>
+      <p>expression 表达式</p>
+      <p>pixel 像素 px</p>
+
+
+      <!-- 飞机 -->
+      <p>heading 航向</p>
+      <p>icao24 应答器信号, 相当于飞机id</p>
 
 
 
@@ -1213,6 +1255,21 @@
       -->
       <p>mut 可变</p>
       <p>crate 箱, 类似依赖包</p>
+
+
+
+      <!-- ramda 数据源在后 -->
+      <p>splitEvery list分块chunk</p>
+      <!-- gt 大于 greater_than -->
+      <!-- lt 小于 less_than -->
+      <!-- lte 小于等于 less_than_or_equal  -->
+      <!-- gte 大于等于 greater_than_or_equal -->
+      <p>map 遍历</p>
+      <!-- clone 深拷贝 -->
+      <!-- filter 过滤为真值的返回 -->
+      <!-- reject 过滤为假值的返回 -->
+      <!-- remove 删除列表中从 start 开始的 count 个元素, 不改变原列表 -->
+      <!-- groupBy 分组 -->
 
 
 
@@ -1325,7 +1382,7 @@
       <p>migrate 迁移</p>
       <p>pure 纯净的</p>
       <p>slide 滑动</p>
-      <p>interval 间隔</p>
+      <p>interval 时间间隔</p>
       <p>charset 字符集</p>
       <p>compose 组成</p>
       <p>dashboard 面板, 指示板, 类似于主界面</p>
@@ -1339,7 +1396,7 @@
       <p>overlap 重叠</p>
       <p>destination 目的地</p>
       <p>commodity 商品</p>
-      <p>note 备注</p>
+      <p>remark 备注 note</p>
       <p>Annually 每年</p>
       <p>heartbeat 心跳</p>
       <p>generate 生成</p>
@@ -1351,7 +1408,9 @@
 
       <p>studio 工作室, 制作室</p>
 
+      <p>kind 种类</p>
       <p>category 分类</p>
+
       <p>comic 漫画</p>
       <p>champion 冠军</p>
       <p>runner_up 亚军</p>
@@ -1374,6 +1433,24 @@
       <p>preserveWhitespace 保留空白</p>
       <p>CaptureScreen 截取屏幕, 截屏</p>
       <p>draft 草稿</p>
+      <p>dept 部门</p>
+      <p>construction 施工</p>
+      <p>progress 进度</p>
+      <p>navigate 导航 navigator navigation</p>
+      <p>ledger 收支总账</p>
+      <p>transfer 转账</p>
+      <p>android 安卓</p>
+      <p>priority 优先级</p>
+      <p>extension 扩展</p>
+      <p>isBelowViewport 在视口之下</p>
+      <p>Locale 区域, 本地化</p>
+      <p>local 本地的</p>
+      <p>workbench 工作台</p>
+      <p>credentials 凭证, 凭据 credential 单数</p>
+      <p>site 地点 sites 复数</p>
+      <p>chart 图表</p>
+      <p>toggle 切换</p>
+      <p>gutter 横向间隔</p>
 
 
       <!-- 未知 wei -->
@@ -1424,17 +1501,6 @@
     <section id="dom_sort_after"></section>
   </div>
 
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script> -->
-  <!-- <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script> -->
-  <!-- unpkg比jsdelivr加载明显快多了 -->
-  <!--  <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>-->
-  <!--  <script src="https://unpkg.com/ramda@0.29.1/dist/ramda.min.js"></script>-->
-  <!-- 用字节的cdn -->
-  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/dayjs/1.10.8/dayjs.min.js"
-    type="application/javascript"></script>
-  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/ramda/0.28.0/ramda.min.js"
-    type="application/javascript"></script>
   <script src="index.js"></script>
 </body>
 

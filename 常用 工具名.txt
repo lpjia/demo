@@ -1,0 +1,9 @@
+2026-08-03 21:19
+camel 小驼峰
+snake 下划线
+constant 常量, XX_XX这种
+kebab 横线
+pascal 大驼峰
+upper 全部字母大写
+lower 全部字母小写
+dot 点
