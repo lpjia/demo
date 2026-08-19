@@ -31,12 +31,59 @@ let o = { // 类数组对象
 }
 
 console.log(
-  // Array.from(o), // [ 'arrItem1', 'arrItem2' ]
+  Array.from(o) // [ 'arrItem1', 'arrItem2' ]
+)
 
-  // Array.isArray(o), // false
 
-  // [...o], // TypeError: o is not iterable
-  /* Spread_syntax 展开语法, 只用于可迭代对象, ES6+
-    内置可迭代对象有: 数组、类数组、字符串、Map、Set
-  */
+console.log(
+  Array.isArray(o) // false
+)
+
+
+// [...o], // TypeError: o is not iterable
+/* Spread_syntax 展开语法, 只用于可迭代对象, ES6+
+  内置可迭代对象有: 数组、类数组、字符串、Map、Set
+*/
+
+
+
+/* 
+const floorButtonContent = computed(() => {
+  console.log(111)
+  return (v) => {
+    console.log(222)
+    const floorText = `${v}层`;
+    return v % 3 === 0 ? `${floorText} 99%` : floorText;
+  };
+});
+
+computed计算属性, 如果直接用返回fn的形式, 再传入1个template上的实参来动态改变dom
+会失去 computed 最大优势"缓存", 每改变1次button的状态, 就要计算"打印"33次的"222"
+因为缓存的是 (v) => {...} 这个函数, 而非想象的
+
+作为替代, 用arr提前计算好数组项的变化内容, 只会一开始计算"打印"33次的"222", 后续不再重复打印
+
+const floorButtonList = computed(() => {
+  console.log(111);
+  return Array.from({ length: 33 }, (_, index) => {
+    const value = index + 1;
+    const floorText = `${value}层`;
+    console.log(222);
+    return {
+      value,
+      label: value % 3 === 0 ? `${floorText} 99%` : floorText
+    };
+  });
+});
+*/
+
+console.log(
+  Array.from({ length: 33 }, (_, index) => {
+    const value = index + 1;
+    const floorText = `${value}层`;
+    return {
+      value,
+      label: value % 3 === 0 ? `${floorText} 99%` : floorText
+    }
+  })
 )
