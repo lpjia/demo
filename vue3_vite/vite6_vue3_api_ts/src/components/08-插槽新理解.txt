@@ -1,0 +1,11 @@
+插槽其实是一个对象
+
+{
+  default: function() {},
+  slot_1: function() {},
+  slot_2: function(scope) {}, // 这个插槽有个参数, 对应<template #slot_2="scope">
+  [xxx]: function() {}, // 动态插槽
+}
+
+调用函数就能返回自定义组件内的html内容
+<a href="javascript:;">这是a标签</a> 是函数返回结果
