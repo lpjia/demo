@@ -1,0 +1,34 @@
+[
+  {
+    "id": 111,
+    "workerTypeId": 111,
+    "workerTypeName": "泥工",
+    "progress": 100,
+    "status": 1,
+    "createTime": "2026-05-02"
+  },
+  {
+    "id": 112,
+    "workerTypeId": 112,
+    "workerTypeName": "木工",
+    "progress": 80,
+    "status": 2,
+    "createTime": "2026-05-02"
+  },
+  {
+    "id": 113,
+    "workerTypeId": 113,
+    "workerTypeName": "乳胶漆",
+    "progress": 60,
+    "status": 2,
+    "createTime": "2026-05-02"
+  },
+  {
+    "id": 114,
+    "workerTypeId": 114,
+    "workerTypeName": "小工",
+    "progress": 40,
+    "status": 2,
+    "createTime": "2026-05-02"
+  }
+]
