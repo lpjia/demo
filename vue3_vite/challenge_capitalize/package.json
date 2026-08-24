@@ -1,23 +1,25 @@
 {
   "name": "challenge_capitalize",
+  "version": "0.0.1",
   "private": true,
-  "author": "lpjia",
-  "version": "0.1.0",
   "type": "module",
+  "author": "lpjia",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "volta": {
-    "node": "16.20.2",
-    "pnpm": "7.33.7"
+    "node": "22.22.3",
+    "pnpm": "9.15.9"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "vue": "^3.5.40"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.8"
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0"
   }
 }

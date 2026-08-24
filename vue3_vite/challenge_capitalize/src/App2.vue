@@ -1,11 +1,12 @@
 <template>
-  <input type="text" v-model.capitalize="v" />
-  <br />
-  <input type="text" v-model="v" />
+  <div>
+    <Comp />
+  </div>
 </template>
 
 <script setup>
 import { ref, vModelText } from 'vue';
+import Comp from './components/Comp2.vue';
 
 /* 这个方案使用vue内部变量, 会影响自己和子组件的 v-model.capitalize */
 const _vModelText = vModelText;
@@ -14,8 +15,6 @@ _vModelText.updated = (el, { value, modifiers }) => {
     el.value = value[0].toUpperCase() + value.substring(1);
   }
 };
-
-const v = ref('');
 </script>
 
 <style scoped></style>
