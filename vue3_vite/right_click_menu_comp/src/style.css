@@ -1,0 +1,7 @@
+:root {
+  --base: 500px;
+}
+
+.flex {
+  display: flex;
+}
