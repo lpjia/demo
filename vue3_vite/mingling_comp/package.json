@@ -1,0 +1,25 @@
+{
+  "name": "mingling_comp",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "author": "lpjia",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "volta": {
+    "node": "22.22.3",
+    "pnpm": "9.15.9"
+  },
+  "dependencies": {
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0"
+  }
+}
