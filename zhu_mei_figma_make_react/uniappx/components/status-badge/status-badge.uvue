@@ -1,0 +1,53 @@
+<template>
+  <view :class="['status-badge', statusClass]">
+    <text :class="['status-text', `${statusClass}-text`]">{{ status }}</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+const props = defineProps<{ status: string }>();
+
+const statusClass = computed((): string => {
+  if (props.status == "已完工") return "status-finished";
+  if (props.status == "施工中") return "status-working";
+  return "status-pending";
+});
+</script>
+
+<style scoped lang="scss">
+.status-badge {
+  display: flex;
+  align-items: center;
+  padding: 4rpx 20rpx;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 999rpx;
+  flex-shrink: 0;
+}
+
+.status-text {
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.status-finished {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.status-finished-text {
+  color: #16a34a;
+}
+.status-working {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+}
+.status-working-text {
+  color: #d97706;
+}
+.status-pending {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+.status-pending-text {
+  color: #64748b;
+}
+</style>

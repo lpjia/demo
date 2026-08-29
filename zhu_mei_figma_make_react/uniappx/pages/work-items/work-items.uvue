@@ -1,0 +1,65 @@
+<!-- 为了迁移 React 施工项目清单，保留状态、平方、费用和责任人信息，并通过 store 进入详情。 -->
+<template>
+	<scroll-view class="page" scroll-y>
+		<screen-header :title="`${building} · ${floor}`" subtitle="施工项目" :show-back="true" @back="goBack" />
+		<view class="list">
+			<view v-for="(item, index) in INITIAL_ITEMS" :key="index" class="item-card">
+				<view class="item-top" @click="openDetail(item)">
+					<view class="item-identity"><view class="small-index"><text class="small-index-text">{{ index + 1 }}</text></view><text class="item-type">{{ item.type }}</text><text class="dot">·</text><text class="item-area">{{ item.area }}</text></view>
+					<view class="item-status"><status-badge :status="item.status" /><text class="chevron">›</text></view>
+				</view>
+				<view class="divider"></view>
+				<view class="metrics">
+					<view class="metric"><text class="metric-label">平方</text><text class="metric-value">{{ item.sqm }}<text class="metric-unit">m²</text></text></view>
+					<view class="metric-separator"></view>
+					<view class="metric"><text class="metric-label">费用</text><text class="metric-value orange-text">¥{{ item.cost }}</text></view>
+					<view class="metric-separator"></view>
+					<view class="metric"><text class="metric-label">责任人</text><text class="person-value">{{ item.responsiblePeople.length == 0 ? '无' : item.responsiblePeople[0].name }}</text></view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	import { INITIAL_ITEMS } from '../../common/data.uts'
+	import { selectWorkItem } from '../../common/store.uts'
+	import type { WorkItem } from '../../common/types.uts'
+	const building = ref('')
+	const floor = ref('')
+
+	onLoad((options) => {
+		building.value = decodeURIComponent(options['building'] as string)
+		floor.value = decodeURIComponent(options['floor'] as string)
+	})
+
+	function goBack(): void { uni.navigateBack() }
+	function openDetail(item: WorkItem): void {
+		selectWorkItem(item)
+		uni.navigateTo({ url: `/pages/detail/detail?building=${encodeURIComponent(building.value)}&floor=${encodeURIComponent(floor.value)}` })
+	}
+</script>
+
+<style>
+	.page { flex: 1; background-color: #F8F9FB; }
+	.list { padding: 32rpx; }
+	.item-card { margin-bottom: 24rpx; background-color: #FFFFFF; border: 1px solid #E8EBF0; border-radius: 32rpx; overflow: hidden; }
+	.item-top { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 26rpx 30rpx 20rpx; }
+	.item-identity, .item-status { display: flex; flex-direction: row; align-items: center; }
+	.item-identity { flex: 1; min-width: 0; }
+	.small-index { width: 40rpx; height: 40rpx; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background-color: #F0F2F5; border-radius: 10rpx; }
+	.small-index-text { color: #6B7280; font-size: 22rpx; font-weight: 700; }
+	.item-type { margin-left: 16rpx; color: #111827; font-size: 32rpx; font-weight: 700; }
+	.dot { margin: 0 12rpx; color: #9CA3AF; font-size: 28rpx; }
+	.item-area { color: #6B7280; font-size: 28rpx; font-weight: 500; }
+	.chevron { margin-left: 8rpx; color: #9CA3AF; font-size: 40rpx; }
+	.divider { height: 1px; margin: 0 30rpx; background-color: #E8EBF0; }
+	.metrics { display: flex; flex-direction: row; align-items: stretch; padding: 22rpx 30rpx 26rpx; }
+	.metric { flex: 1; }
+	.metric-label { color: #9CA3AF; font-size: 24rpx; }
+	.metric-value { margin-top: 4rpx; color: #111827; font-size: 32rpx; font-weight: 700; }
+	.metric-unit { margin-left: 4rpx; color: #9CA3AF; font-size: 22rpx; font-weight: 400; }
+	.person-value { margin-top: 6rpx; color: #111827; font-size: 28rpx; font-weight: 600; }
+	.orange-text { color: #F97316; }
+	.metric-separator { width: 1px; margin: 0 20rpx; background-color: #E8EBF0; }
+</style>

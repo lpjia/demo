@@ -1,0 +1,85 @@
+{
+	"pages": [
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/overview/overview",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/ledger/ledger",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/buildings/buildings",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/floors/floors",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/worker-type/worker-type",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/work-items/work-items",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/ledger-detail/ledger-detail",
+			"style": {
+				"navigationStyle": "default"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#9CA3AF",
+		"selectedColor": "#F97316",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/overview/overview",
+				"text": "施工",
+				"iconPath": "static/tabbar/construction.png",
+				"selectedIconPath": "static/tabbar/construction-active.png"
+			},
+			{
+				"pagePath": "pages/ledger/ledger",
+				"text": "进出帐",
+				"iconPath": "static/tabbar/ledger.png",
+				"selectedIconPath": "static/tabbar/ledger-active.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "工地管理",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F8F9FB"
+	},
+	"uniIdRouter": {}
+}

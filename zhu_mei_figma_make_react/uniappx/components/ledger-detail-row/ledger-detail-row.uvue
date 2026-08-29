@@ -1,0 +1,25 @@
+<!-- 为了保持收支详情字段的对齐规则一致，将重复的标签和值布局抽成公共组件。 -->
+<template>
+	<view class="detail-row">
+		<text class="detail-label">{{ label }}</text>
+		<text class="detail-value" :style="{ color: valueColor }">{{ value }}</text>
+	</view>
+</template>
+
+<script setup lang="uts">
+	defineProps<{ label: string; value: string; valueColor: string }>()
+</script>
+
+<style>
+	.detail-row {
+		min-height: 112rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid #E8EBF0;
+	}
+
+	.detail-label { flex-shrink: 0; color: #9CA3AF; font-size: 24rpx; font-weight: 500; }
+	.detail-value { flex: 1; margin-left: 40rpx; font-size: 28rpx; font-weight: 600; text-align: right; }
+</style>

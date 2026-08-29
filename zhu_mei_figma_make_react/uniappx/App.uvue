@@ -1,0 +1,65 @@
+<script setup lang="uts">
+// #ifdef APP-ANDROID || APP-HARMONY
+let firstBackTime = 0;
+// #endif
+
+onLaunch(() => {
+  console.log("App Launch");
+});
+
+onAppShow(() => {
+  console.log("App Show");
+});
+
+onAppHide(() => {
+  console.log("App Hide");
+});
+
+// #ifdef APP-ANDROID || APP-HARMONY
+onLastPageBackPress(() => {
+  console.log("App LastPageBackPress");
+  if (firstBackTime == 0) {
+    uni.showToast({
+      title: "再按一次退出应用",
+      position: "bottom"
+    });
+    firstBackTime = Date.now();
+    setTimeout(() => {
+      firstBackTime = 0;
+    }, 2000);
+  } else if (Date.now() - firstBackTime < 2000) {
+    firstBackTime = Date.now();
+    uni.exit();
+  }
+});
+
+onExit(() => {
+  console.log("App Exit");
+});
+// #endif
+</script>
+
+<style>
+/*每个页面公共css */
+
+/* 因为全部页面使用自定义导航栏，所以统一预留状态栏和刘海安全区域，避免顶部内容被系统区域遮挡。 */
+/* page { */
+/* 	min-height: 100%; */
+/* 	padding-top: var(--status-bar-height); */
+/* 	background-color: #F8F9FB; */
+/* 	color: #111827; */
+/* 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; */
+/* } */
+
+/* 因为改用微信小程序默认导航栏，所以移除手动顶部留白，交由平台自动避开状态栏和刘海区域。 */
+page {
+  min-height: 100%;
+  background-color: #f8f9fb;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button::after {
+  border: none;
+}
+</style>

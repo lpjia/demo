@@ -1,0 +1,31 @@
+// 为了替代 React 根组件逐层传递对象与 setter，使用共享响应式状态承载收支记录和当前详情对象。
+import { ref } from 'vue'
+import { INITIAL_LEDGER_ENTRIES } from './data.uts'
+import type { LedgerEntry, WorkItem } from './types.uts'
+
+export const ledgerEntries = ref<LedgerEntry[]>(INITIAL_LEDGER_ENTRIES)
+export const currentWorkItem = ref<WorkItem | null>(null)
+export const currentLedgerEntry = ref<LedgerEntry | null>(null)
+
+export function selectWorkItem(item: WorkItem): void {
+	currentWorkItem.value = item
+}
+
+export function selectLedgerEntry(entry: LedgerEntry): void {
+	currentLedgerEntry.value = entry
+}
+
+export function addLedgerEntry(entry: LedgerEntry): void {
+	let maxId = 0
+	ledgerEntries.value.forEach((item) => {
+		if (item.id > maxId) maxId = item.id
+	})
+	entry.id = maxId + 1
+	ledgerEntries.value.unshift(entry)
+}
+
+export function updateLedgerEntry(entry: LedgerEntry): void {
+	const index = ledgerEntries.value.findIndex((item) => item.id == entry.id)
+	if (index >= 0) ledgerEntries.value[index] = entry
+	currentLedgerEntry.value = entry
+}

@@ -1,0 +1,51 @@
+// 为了把 React 的 TypeScript 数据结构迁移为 UTS，并让跨页面数据保持明确类型，集中定义领域模型。
+export type ResponsiblePerson = {
+	name: string
+	unitPrice: number
+}
+
+export type WorkItem = {
+	type: string
+	area: string
+	sqm: number
+	status: string
+	cost: number
+	responsiblePeople: ResponsiblePerson[]
+}
+
+export type RecentRecord = {
+	building: string
+	floor: string
+	type: string
+	status: string
+	time: string
+}
+
+export type LedgerAttachment = {
+	id: string
+	name: string
+	url: string
+}
+
+export type LedgerEntry = {
+	id: number
+	type: string
+	label: string
+	name: string
+	amount: number
+	date: string
+	note: string
+	channel: string
+	purpose: string
+	attachments: LedgerAttachment[]
+}
+
+export type LedgerFormState = {
+	date: string
+	type: string
+	amount: string
+	channel: string
+	purpose: string
+	name: string
+	attachments: LedgerAttachment[]
+}

@@ -1,0 +1,101 @@
+<template>
+  <scroll-view class="page" scroll-y>
+    <screen-header title="楼栋单元" subtitle="" />
+    <view class="list">
+      <view
+        v-for="(building, index) in BUILDINGS"
+        :key="building"
+        class="building-card"
+        @click="openFloors(building)"
+      >
+        <view class="card-main">
+          <view class="index-box">
+            <text class="index-text">{{ index + 1 }}</text>
+          </view>
+          <view class="building-copy">
+            <text class="building-name">{{ building }}</text>
+            <text class="building-meta">共 {{ 10 + index * 2 }} 层，已完工 0 层</text>
+          </view>
+        </view>
+        <text class="chevron">›</text>
+      </view>
+    </view>
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+import { BUILDINGS } from "../../common/data.uts";
+
+function openFloors(building: string): void {
+  uni.navigateTo({ url: `/pages/floors/floors?building=${encodeURIComponent(building)}` });
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  background-color: #f8f9fb;
+}
+
+.list {
+  padding: 32rpx;
+}
+
+.building-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding: 28rpx 32rpx;
+  background-color: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 32rpx;
+}
+
+.card-main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.index-box {
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: #f0f2f5;
+  border: 1px solid #e8ebf0;
+  border-radius: 24rpx;
+}
+
+.index-text {
+  color: #6b7280;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.building-copy {
+  margin-left: 28rpx;
+}
+
+.building-name {
+  color: #111827;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.building-meta {
+  margin-top: 6rpx;
+  color: #9ca3af;
+  font-size: 24rpx;
+}
+
+.chevron {
+  color: #9ca3af;
+  font-size: 46rpx;
+}
+</style>

@@ -1,0 +1,73 @@
+<template>
+  <scroll-view class="page" scroll-y>
+    <screen-header :title="building" subtitle="楼层" />
+    <view class="floor-grid">
+      <view
+        v-for="floor in FLOORS"
+        :key="floor"
+        :class="['floor-cell', floor.startsWith('-') ? 'basement-cell' : '']"
+        @click="openWorkerTypes(floor)"
+      >
+        <text :class="['floor-text', floor.startsWith('-') ? 'basement-text' : '']">
+          {{ floor }}
+        </text>
+      </view>
+    </view>
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+import { FLOORS } from "../../common/data.uts";
+const building = ref("");
+
+onLoad((options) => {
+  building.value = decodeURIComponent(options["building"] as string);
+});
+
+function goBack(): void {
+  uni.navigateBack();
+}
+function openWorkerTypes(floor: string): void {
+  uni.navigateTo({
+    url: `/pages/worker-type/worker-type?building=${encodeURIComponent(
+      building.value
+    )}&floor=${encodeURIComponent(floor)}`
+  });
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  background-color: #f8f9fb;
+}
+.floor-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 24rpx;
+}
+.floor-cell {
+  width: 30.3%;
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5%;
+  background-color: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 24rpx;
+}
+.basement-cell {
+  background-color: #6d6d6d;
+  border-color: #6d6d6d;
+}
+.floor-text {
+  color: #111827;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.basement-text {
+  color: #ffffff;
+}
+</style>

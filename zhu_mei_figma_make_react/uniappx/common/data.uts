@@ -1,0 +1,46 @@
+// 为了让迁移后的所有页面共享与 React 源码一致的演示数据，在独立数据模块中统一维护常量。
+import type { LedgerEntry, RecentRecord, WorkItem } from './types.uts'
+
+export const BUILDINGS: string[] = ['1号楼一单元', '1号楼二单元', '2号楼一单元', '2号楼二单元', '3号楼一单元']
+
+export const FLOORS: string[] = [
+	'-1层', '1层', '2层', '3层', '4层', '5层', '6层', '7层', '8层', '9层',
+	'10层', '11层', '12层', '13层', '14层', '15层', '16层', '17层', '18层', '19层',
+	'20层', '21层', '22层', '23层', '24层', '25层', '26层', '27层', '28层', '29层',
+	'30层', '31层', '32层'
+]
+
+export const WORKER_TYPES: string[] = ['泥工', '木工', '乳胶漆', '小工']
+
+export const INITIAL_ITEMS: WorkItem[] = [
+	{
+		type: '墙砖', area: '大堂', sqm: 50, status: '已完工', cost: 300,
+		responsiblePeople: [{ name: '赵四', unitPrice: 30 }]
+	},
+	{
+		type: '地砖', area: '楼梯', sqm: 30, status: '施工中', cost: 300,
+		responsiblePeople: [{ name: '王五', unitPrice: 10 }]
+	},
+	{
+		type: '踢脚线', area: '大堂', sqm: 20, status: '待施工', cost: 0,
+		responsiblePeople: []
+	}
+]
+
+export const RECENT_RECORDS: RecentRecord[] = [
+	{ building: '1号楼一单元', floor: '1层', type: '大堂 · 墙砖 · 泥工', status: '已完工', time: '上报时间: 2026-07-26 19:01' },
+	{ building: '1号楼一单元', floor: '1层', type: '楼梯 · 地砖 · 泥工', status: '施工中', time: '上报时间: 2026-07-26 19:01' },
+	{ building: '1号楼一单元', floor: '1层', type: '楼梯 · 地砖 · 乳胶漆', status: '施工中', time: '上报时间: 2026-07-26 19:01' }
+]
+
+export const TRANSFER_CHANNELS: string[] = ['微信转账', '支付宝', '银行卡转账']
+export const EXPENSE_PURPOSES: string[] = ['工资支出', '物料采购', '加油', '其它']
+
+export const INITIAL_LEDGER_ENTRIES: LedgerEntry[] = [
+	{ id: 1, type: 'income', label: '地砖款', name: '地砖款', channel: '微信转账', purpose: '', amount: 18000, date: '2026-07-26', note: '', attachments: [] },
+	{ id: 2, type: 'expense', label: '买地砖', name: '买地砖', channel: '微信转账', purpose: '物料采购', amount: 18000, date: '2026-07-25', note: '', attachments: [] },
+	{ id: 3, type: 'expense', label: '师傅工资结算', name: '师傅工资结算', channel: '微信转账', purpose: '工资支出', amount: 2700, date: '2026-07-25', note: '', attachments: [] },
+	{ id: 4, type: 'income', label: '加油', name: '加油', channel: '微信转账', purpose: '', amount: 1200, date: '2026-07-24', note: '', attachments: [] },
+	{ id: 5, type: 'expense', label: '加油', name: '加油', channel: '微信转账', purpose: '加油', amount: 1200, date: '2026-07-23', note: '', attachments: [] },
+	{ id: 6, type: 'expense', label: '辅料采购', name: '辅料采购', channel: '微信转账', purpose: '物料采购', amount: 850, date: '2026-07-22', note: '', attachments: [] }
+]

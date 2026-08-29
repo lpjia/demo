@@ -1,0 +1,40 @@
+// 为了替代 React 工程中的 dayjs、big.js 与 randomUUID，提供不依赖第三方包的轻量工具函数。
+let attachmentSequence = 0
+
+function pad2(value: number): string {
+	return value < 10 ? `0${value}` : `${value}`
+}
+
+export function getToday(): string {
+	const date = new Date()
+	return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`
+}
+
+export function formatShortDate(value: string): string {
+	const parts = value.split('-')
+	return parts.length == 3 ? `${parts[1]}-${parts[2]}` : value
+}
+
+export function formatLongDate(value: string): string {
+	const parts = value.split('-')
+	return parts.length == 3 ? `${parts[0]}年${parts[1]}月${parts[2]}日` : value
+}
+
+export function toMoney(value: number): string {
+	return value.toFixed(2)
+}
+
+export function roundMoney(value: number): number {
+	return Math.round(value * 100) / 100
+}
+
+export function createAttachmentId(): string {
+	attachmentSequence += 1
+	return `${Date.now()}-${attachmentSequence}`
+}
+
+export function fileNameFromPath(path: string): string {
+	const normalized = path.replaceAll('\\', '/')
+	const parts = normalized.split('/')
+	return parts.length > 0 ? parts[parts.length - 1] : '附件图片'
+}

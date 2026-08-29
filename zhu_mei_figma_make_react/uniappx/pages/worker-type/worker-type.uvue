@@ -1,0 +1,45 @@
+<!-- 为了迁移 React 工种选择页，保留工种进度和状态信息并继续下钻到施工项目。 -->
+<template>
+	<scroll-view class="page" scroll-y>
+		<screen-header :title="`${building} · ${floor}`" subtitle="工种" :show-back="true" @back="goBack" />
+		<view class="list">
+			<view v-for="(workerType, index) in WORKER_TYPES" :key="workerType" class="worker-card" @click="openWorkItems">
+				<view class="worker-main">
+					<view class="index-box"><text class="index-text">{{ index + 1 }}</text></view>
+					<text class="worker-name">{{ workerType }}</text>
+					<text class="worker-progress">{{ 100 - index * 20 }}%</text>
+					<status-badge :status="index == 0 ? '已完工' : '施工中'" />
+				</view>
+				<text class="chevron">›</text>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	import { WORKER_TYPES } from '../../common/data.uts'
+	const building = ref('')
+	const floor = ref('')
+
+	onLoad((options) => {
+		building.value = decodeURIComponent(options['building'] as string)
+		floor.value = decodeURIComponent(options['floor'] as string)
+	})
+
+	function goBack(): void { uni.navigateBack() }
+	function openWorkItems(): void {
+		uni.navigateTo({ url: `/pages/work-items/work-items?building=${encodeURIComponent(building.value)}&floor=${encodeURIComponent(floor.value)}` })
+	}
+</script>
+
+<style>
+	.page { flex: 1; background-color: #F8F9FB; }
+	.list { padding: 32rpx; }
+	.worker-card { display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 24rpx; padding: 28rpx 30rpx; background-color: #FFFFFF; border: 1px solid #E8EBF0; border-radius: 32rpx; }
+	.worker-main { flex: 1; display: flex; flex-direction: row; align-items: center; }
+	.index-box { width: 80rpx; height: 80rpx; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background-color: #F0F2F5; border: 1px solid #E8EBF0; border-radius: 22rpx; }
+	.index-text { color: #6B7280; font-size: 28rpx; font-weight: 700; }
+	.worker-name { margin-left: 22rpx; color: #111827; font-size: 28rpx; font-weight: 600; }
+	.worker-progress { margin: 0 22rpx; color: #111827; font-size: 28rpx; font-weight: 600; }
+	.chevron { color: #9CA3AF; font-size: 46rpx; }
+</style>

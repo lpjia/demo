@@ -1,0 +1,245 @@
+<template>
+  <scroll-view class="page" scroll-y>
+    <view class="topbar">
+      <text class="eyebrow">工地管理</text>
+      <text class="page-title">登封智慧城</text>
+    </view>
+    <view class="content">
+      <view class="progress-card" @click="openBuildings">
+        <view>
+          <text class="meta-label">总体施工进度</text>
+          <text class="progress-value">5%</text>
+          <text class="progress-link">点击查看楼栋详情 →</text>
+        </view>
+        <view class="progress-ring">
+          <view class="progress-mark"></view>
+          <text class="ring-home">⌂</text>
+        </view>
+      </view>
+
+      <view class="stats-row">
+        <view class="stat-card stat-green">
+          <text class="stat-value green-text">1</text>
+          <text class="stat-label green-text">已完工</text>
+        </view>
+        <view class="stat-card stat-amber">
+          <text class="stat-value amber-text">2</text>
+          <text class="stat-label amber-text">施工中</text>
+        </view>
+        <view class="stat-card stat-slate">
+          <text class="stat-value slate-text">30</text>
+          <text class="stat-label slate-text">待施工</text>
+        </view>
+      </view>
+
+      <text class="section-title">最近上报记录</text>
+      <view v-for="(record, index) in RECENT_RECORDS" :key="index" class="record-card">
+        <view class="record-top">
+          <view class="record-copy">
+            <text class="record-title">{{ record.building }} · {{ record.floor }}</text>
+            <text class="record-type">{{ record.type }}</text>
+          </view>
+          <status-badge :status="record.status" />
+        </view>
+        <text class="record-time">{{ record.time }}</text>
+      </view>
+    </view>
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+import { RECENT_RECORDS } from "../../common/data.uts";
+
+function openBuildings(): void {
+  uni.navigateTo({ url: "/pages/buildings/buildings" });
+}
+</script>
+
+<style scoped lang="scss">
+@use "@/" .page {
+  flex: 1;
+  background-color: #f8f9fb;
+}
+
+.topbar {
+  padding: 32rpx 40rpx;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8ebf0;
+  border-top: 1px solid #e8ebf0;
+}
+
+.eyebrow {
+  color: #f97316;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.page-title {
+  margin-top: 4rpx;
+  color: #111827;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.content {
+  padding: 32rpx;
+}
+
+.progress-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  background-color: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 32rpx;
+}
+
+.meta-label {
+  color: #9ca3af;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.progress-value {
+  margin-top: 6rpx;
+  color: #f97316;
+  font-size: 80rpx;
+  font-weight: 700;
+}
+
+.progress-link {
+  margin-top: 12rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+}
+
+.progress-ring {
+  position: relative;
+  width: 144rpx;
+  height: 144rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 14rpx solid #f0f2f5;
+  border-radius: 999rpx;
+}
+
+.progress-mark {
+  position: absolute;
+  top: -14rpx;
+  right: 46rpx;
+  width: 18rpx;
+  height: 18rpx;
+  background-color: #f97316;
+  border-radius: 999rpx;
+}
+
+.ring-home {
+  color: #f97316;
+  font-size: 42rpx;
+}
+
+.stats-row {
+  display: flex;
+  flex-direction: row;
+  margin: 24rpx -8rpx 0;
+}
+
+.stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 8rpx;
+  padding: 22rpx 8rpx;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 24rpx;
+}
+
+.stat-green {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.stat-amber {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+}
+
+.stat-slate {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.stat-value {
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.stat-label {
+  margin-top: 4rpx;
+  font-size: 24rpx;
+}
+
+.green-text {
+  color: #16a34a;
+}
+
+.amber-text {
+  color: #d97706;
+}
+
+.slate-text {
+  color: #64748b;
+}
+
+.section-title {
+  margin: 30rpx 0 16rpx;
+  color: #111827;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.record-card {
+  margin-bottom: 16rpx;
+  padding: 28rpx 30rpx;
+  background-color: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 24rpx;
+}
+
+.record-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.record-copy {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.record-title {
+  color: #111827;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.record-type,
+.record-time {
+  color: #9ca3af;
+  font-size: 24rpx;
+}
+
+.record-type {
+  margin-top: 6rpx;
+}
+
+.record-time {
+  margin-top: 16rpx;
+}
+</style>
