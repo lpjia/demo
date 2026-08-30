@@ -1,0 +1,56 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "vue",
+    "import" // ES module 导入/导出相关规则（如未使用的导入、循环依赖等）
+  ],
+  // 声明运行环境，决定哪些全局变量可用、不报"未定义"
+  "env": {
+    "browser": true, // 浏览器全局变量（window、document 等）
+    "node": true, // Node.js 全局变量（process、module 等）
+    "vue": true // Vue 相关全局变量
+  },
+  // 按 oxlint 的规则大类设置默认级别（全局兜底，优先级低于 rules）
+  "categories": {
+    "correctness": "error", // 正确性问题（很可能有 bug 的代码）报错误
+    "suspicious": "warn", // 可疑代码报警告
+    "perf": "warn" // 性能相关代码报警告
+  },
+  // 单独覆盖某条具体规则
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-shadow": "off", // 允许参数名覆盖外层作用域的变量
+    "eqeqeq": "warn", // 强制用 ===/!==（不用 ==/!=）
+    // 禁止存在未使用的变量
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_", // 以下划线开头的参数/变量名会被忽略（_foo 不报错）
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    // 纯副作用导入（引入全局样式、注册 svg 图标、执行初始化模块）本身无需赋值，通过 allow 白名单放行
+    "import/no-unassigned-import": [
+      "warn",
+      {
+        "allow": ["**/*.scss", "virtual:*", "./permission", "echarts/theme/*"]
+      }
+    ],
+    // vite.config.js 中需要用 Node 环境变量 __dirname（ESM 下手工声明），白名单放行
+    "no-underscore-dangle": [
+      "warn",
+      {
+        "allow": ["__dirname"]
+      }
+    ]
+  },
+  // 忽略文件（等价 .eslintignore）
+  "ignorePatterns": [
+    "dist/**", // 构建打包产物
+    "node_modules/**", // 依赖
+    ".*", // 大多配置文件/目录(隐藏文件)
+    "src/assets/**", // 静态资源
+    "public/**"
+  ]
+}

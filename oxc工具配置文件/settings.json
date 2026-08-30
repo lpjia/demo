@@ -1,0 +1,40 @@
+{
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file", // oxfmt 不支持局部格式化，需整文件格式化
+  // 语言级设置必须写，否则用户级的默认格式化器会覆盖掉工作区配置
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  // 可选：让扩展直接定位到本地二进制，避免在 Windows 上找不到可执行文件
+  "oxc.path.oxfmt": "node_modules/oxfmt/dist/cli.js",
+  "oxc.path.oxlint": "node_modules/oxlint/dist/cli.js",
+  // 保存时顺带自动应用 oxlint 的自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "always"
+  }
+}

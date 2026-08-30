@@ -1,0 +1,25 @@
+2026-07-23 17:25
+
+@import 是 CSS 原生规则
+
+
+/* 形式1：标准写法, 兼容性更好 */
+@import url("../assets/css/reset.css");
+
+/* 形式2：简写写法，字符串形式，必须带引号 */
+@import "../assets/css/reset.css";
+
+
+@import 必须放在当前样式代码最头部
+
+
+
+
+<!-- 单独标签引入，带scoped -->
+<style src="../assets/css/aaa.css" scoped></style>
+才不会变成全局样式
+
+
+
+
+import './style.css' JS/TS 中引入（构建工具特性，不是 CSS 语法）
