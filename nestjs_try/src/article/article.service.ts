@@ -6,7 +6,7 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { FindAllArticleDto } from './dto/find-all-article.dto';
 import { ArticleTagEntity } from '#/junction-table/article-tag/entities/article-tag.entity';
 import { UserLikeService } from '#/junction-table/user-like/user-like.service';
-import { isEmptyThree } from '#/core/util';
+import { isEmptyThree } from '#/common/util';
 
 @Injectable()
 export class ArticleService {
@@ -16,11 +16,11 @@ export class ArticleService {
 
     private dataSource: DataSource,
 
-    private readonly userLikeService: UserLikeService,
-  ) { }
+    private readonly userLikeService: UserLikeService
+  ) {}
 
   async create(article: CreateArticleDto) {
-    const { tags, ...articleData } = article
+    const { tags, ...articleData } = article;
     const title = article.title;
     if (!title) {
       throw new HttpException('缺少文章标题', 400);
@@ -32,25 +32,25 @@ export class ArticleService {
       throw new HttpException('文章已存在', 409);
     }
     const entity = await this.dataSource.transaction(async (manager) => {
-      const articleObj = manager.create(ArticleEntity, articleData)
-      const savedArticle = await manager.save(articleObj)
+      const articleObj = manager.create(ArticleEntity, articleData);
+      const savedArticle = await manager.save(articleObj);
 
       await Promise.all(
         tags?.map(async (tagId) => {
           const articleTag = manager.create(ArticleTagEntity, {
             articleId: String(savedArticle.id),
             tagId
-          })
-          await manager.save(articleTag)
+          });
+          await manager.save(articleTag);
         }) ?? []
-      )
-      return savedArticle
-    })
+      );
+      return savedArticle;
+    });
 
     return {
       _respData: entity,
       _respMsg: '添加成功'
-    }
+    };
   }
   /* async create(article: CreateArticleDto) {
     const { tagId, ...articleData } = article
@@ -117,8 +117,8 @@ export class ArticleService {
 
   /** 获取全部文章 */
   async findAll() {
-    const [list, total] = await this.articleRepository.findAndCount()
-    return { total, list }
+    const [list, total] = await this.articleRepository.findAndCount();
+    return { total, list };
   }
 
   /** 分页查询文章列表 */
@@ -129,14 +129,14 @@ export class ArticleService {
     // 每页10条, 索引是0->10, 11->20
     const [list, total] = await this.articleRepository.findAndCount({
       skip: (curPage - 1) * pageSize,
-      take: pageSize,
+      take: pageSize
     });
 
     return {
       curPage,
       pageSize,
       total,
-      list,
+      list
     };
   }
 
@@ -163,31 +163,32 @@ export class ArticleService {
       .leftJoinAndSelect('articleTag.tag', 'tag')
       .leftJoinAndSelect('article.likeList', 'articleLike')
       .where('article.id=:id')
-      .setParameter('id', id)
+      .setParameter('id', id);
 
-    const result = await qb.getOne()
+    const result = await qb.getOne();
     return {
-      result, qb
-    }
+      result,
+      qb
+    };
   }
 
   async findViewById(id: number) {
-    const { result, qb } = await this.findOneById(id)
+    const { result, qb } = await this.findOneById(id);
     if (!result) {
       throw new HttpException(`id为${id}的文章不存在`, 404);
     }
     await this.articleRepository.update(id, {
       readCount: result.readCount + 1
-    })
-    return (await qb.getOne())?.toResponseObject()
+    });
+    return (await qb.getOne())?.toResponseObject();
   }
 
   async findById(id: number) {
-    const { result, qb } = await this.findOneById(id)
+    const { result, qb } = await this.findOneById(id);
     if (!result) {
       throw new HttpException(`id为${id}的文章不存在`, 404);
     }
-    return (await qb.getOne())?.toResponseObject()
+    return (await qb.getOne())?.toResponseObject();
     // return await qb.getOne() // 测试返回的初始数据
   }
   /* async findById(id: number) {
@@ -215,7 +216,6 @@ export class ArticleService {
 
     return existArticle
   } */
-
 
   // async updateById(id: number, article: CreateArticleDto) {
   // 还没有关联其他表呢
@@ -246,24 +246,33 @@ export class ArticleService {
   //   }
   // }
 
-  async updateById(id: number, article: Partial<ArticleEntity & { tags?: string[] }>) {
+  async updateById(
+    id: number,
+    article: Partial<ArticleEntity & { tags?: string[] }>
+  ) {
     const existArticle = await this.articleRepository.findOne({
       where: { id }
     });
     if (!existArticle) {
       throw new HttpException(`id为${id}的文章不存在`, 404);
     }
-    const doc = await this.articleRepository.findOneBy({ title: article.title });
+    const doc = await this.articleRepository.findOneBy({
+      title: article.title
+    });
     if (doc && doc.id !== id) {
       throw new HttpException('文章已存在', 409);
     }
     const { tags, ...articleData } = article;
     const cleanArticle = Object.fromEntries(
       Object.entries(articleData).filter(([_, v]) => !isEmptyThree(v))
-    )
+    );
     try {
       await this.dataSource.transaction(async (manager) => {
-        const updateArticle = manager.merge(ArticleEntity, existArticle, cleanArticle);
+        const updateArticle = manager.merge(
+          ArticleEntity,
+          existArticle,
+          cleanArticle
+        );
         updateArticle.operateUpdateTime = new Date(); // 更新操作时间
         await manager.save(updateArticle);
 
@@ -282,15 +291,14 @@ export class ArticleService {
         }
       });
       return { _respMsg: '更新成功' };
-    }
-    catch {
+    } catch {
       throw new HttpException('更新失败', 400);
     }
   }
 
   async toggleLike(userUlid: string, articleId: string) {
     const article = await this.articleRepository.findOne({
-      where: { id: Number(articleId) },
+      where: { id: Number(articleId) }
     });
     if (!article) {
       throw new NotFoundException(`id为${articleId}的文章不存在`);
@@ -301,14 +309,15 @@ export class ArticleService {
   async remove(id: number) {
     const result = await this.articleRepository.softDelete({
       id,
-      deleteTime: IsNull(), // 不会重复删除"已删除"的记录
+      deleteTime: IsNull() // 不会重复删除"已删除"的记录
     });
     if (!result.affected) {
       throw new NotFoundException(`id为${id}的文章不存在或已删除`);
     }
-    await this.articleRepository.update(id, { // 调接口改数据才更新operateUpdateTime
+    await this.articleRepository.update(id, {
+      // 调接口改数据才更新operateUpdateTime
       operateUpdateTime: new Date()
     });
-    return { _respMsg: '删除成功' } // 只在服务层返回, 要不然还得在控制层判断啥的
+    return { _respMsg: '删除成功' }; // 只在服务层返回, 要不然还得在控制层判断啥的
   }
 }

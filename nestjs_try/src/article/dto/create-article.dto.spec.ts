@@ -1,14 +1,14 @@
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 import { CreateArticleDto } from './create-article.dto';
-import { testIntHuoStringField } from '#/core/util/testCommonFieldDto';
+import { testIntHuoStringField } from '#/common/util/testCommonFieldDto';
 
 describe('CreateArticleDto', () => {
   const validDto = {
     title: 'NestJS 入门',
     author: '张三',
     content: '文章内容...',
-    type: 1,
+    type: 1
   };
 
   describe('基础验证', () => {
@@ -23,7 +23,7 @@ describe('CreateArticleDto', () => {
         ...validDto,
         coverUrl: 'https://example.com/cover.png',
         kindId: '123',
-        tagId: '456',
+        tagId: '456'
       });
       const errors = await validate(dto);
       expect(errors.length).toBe(0);
@@ -41,7 +41,10 @@ describe('CreateArticleDto', () => {
 
   describe('author', () => {
     it('为空时不应该通过验证', async () => {
-      const dto = plainToInstance(CreateArticleDto, { ...validDto, author: '' });
+      const dto = plainToInstance(CreateArticleDto, {
+        ...validDto,
+        author: ''
+      });
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
       expect(errors[0].property).toBe('author');
@@ -50,7 +53,10 @@ describe('CreateArticleDto', () => {
 
   describe('type', () => {
     it('为空时不应该通过验证', async () => {
-      const dto = plainToInstance(CreateArticleDto, { ...validDto, type: undefined });
+      const dto = plainToInstance(CreateArticleDto, {
+        ...validDto,
+        type: undefined
+      });
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
       expect(errors[0].property).toBe('type');

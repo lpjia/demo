@@ -1,3 +1,3 @@
-import { PageQueryDto } from '#/core/dto/page-query.dto';
+import { PageQueryDto } from '#/common/dto/page-query.dto';
 
-export class FindAllKindDto extends PageQueryDto { }
+export class FindAllKindDto extends PageQueryDto {}

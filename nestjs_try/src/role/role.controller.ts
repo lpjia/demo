@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpCode, UseInterceptors, ClassSerializerInterceptor, UseGuards, Query, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  HttpCode,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  UseGuards,
+  Query,
+  Put
+} from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
@@ -9,9 +22,9 @@ import { FindAllRoleDto } from './dto/find-all-role.dto';
 @UseGuards(AuthGuard('jwt'))
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('角色')
-@Controller('roles')
+@Controller('role')
 export class RoleController {
-  constructor(private readonly roleService: RoleService) { }
+  constructor(private readonly roleService: RoleService) {}
 
   /** 新增角色 */
   @HttpCode(200)

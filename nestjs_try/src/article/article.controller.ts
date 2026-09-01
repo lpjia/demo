@@ -1,4 +1,18 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, Query, HttpCode, UseGuards, UseInterceptors, ClassSerializerInterceptor, Req } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+  Query,
+  HttpCode,
+  UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  Req
+} from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { FindAllArticleDto } from './dto/find-all-article.dto';
@@ -9,9 +23,9 @@ import { Roles, RolesGuard } from '#/auth/role.guard';
 @UseInterceptors(ClassSerializerInterceptor)
 @UseGuards(AuthGuard('jwt'))
 @ApiTags('文章')
-@Controller('articles')
+@Controller('article')
 export class ArticleController {
-  constructor(private readonly articleService: ArticleService) { }
+  constructor(private readonly articleService: ArticleService) {}
 
   /** 新增文章 */
   // @Roles(['admin', 'author']) // 角色权限

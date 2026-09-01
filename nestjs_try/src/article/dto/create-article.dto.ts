@@ -1,6 +1,18 @@
-import { IsArrayOfIntHuoString, IsIntHuoString } from "#/core/decorator/index.decorator";
-import { Transform } from "class-transformer";
-import { IsNotEmpty, IsInt, Min, Max, Matches, IsString, IsOptional, IsArray } from "class-validator";
+import {
+  IsArrayOfIntHuoString,
+  IsIntHuoString
+} from '#/common/decorator/index.decorator';
+import { Transform } from 'class-transformer';
+import {
+  IsNotEmpty,
+  IsInt,
+  Min,
+  Max,
+  Matches,
+  IsString,
+  IsOptional,
+  IsArray
+} from 'class-validator';
 
 export class CreateArticleDto {
   /** 文章标题 */
@@ -33,7 +45,6 @@ export class CreateArticleDto {
   @IsArrayOfIntHuoString({ each: true })
   @IsOptional()
   readonly tags?: string[];
-
 
   // /** 标签id */
   // @IsIntHuoString()
@@ -69,5 +80,4 @@ export class CreateArticleDto {
   })
   @IsOptional()
   readonly tagId?: string; */
-
 }

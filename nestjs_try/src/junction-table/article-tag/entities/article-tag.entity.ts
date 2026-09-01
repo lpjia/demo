@@ -1,9 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from "typeorm";
-import { BaseEntity } from "#/core/entity/base.entity";
-import { ArticleEntity } from "#/article/entities/article.entity";
-import { TagEntity } from "#/tag/entities/tag.entity";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  ManyToOne
+} from 'typeorm';
+import { BaseEntity } from '#/common/entity/base.entity';
+import { ArticleEntity } from '#/article/entities/article.entity';
+import { TagEntity } from '#/tag/entities/tag.entity';
 
-@Entity("article_tag")
+@Entity('article_tag')
 export class ArticleTagEntity extends BaseEntity {
   /** 主键ID */
   @PrimaryGeneratedColumn({ unsigned: true })

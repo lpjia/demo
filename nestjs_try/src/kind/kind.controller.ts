@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpCode, UseInterceptors, ClassSerializerInterceptor, UseGuards, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  HttpCode,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  UseGuards,
+  Put,
+  Query
+} from '@nestjs/common';
 import { CreateKindDto } from './dto/create-kind.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { KindService } from './kind.service';
@@ -8,9 +21,9 @@ import { FindAllKindDto } from './dto/find-all-kind.dto';
 @UseGuards(AuthGuard('jwt'))
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('分类')
-@Controller('kinds')
+@Controller('kind')
 export class KindController {
-  constructor(private readonly kindService: KindService) { }
+  constructor(private readonly kindService: KindService) {}
 
   /** 新增分类 */
   @HttpCode(200)

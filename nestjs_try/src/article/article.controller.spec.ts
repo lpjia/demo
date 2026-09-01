@@ -24,7 +24,7 @@ describe('ArticleController', () => {
       findAllPagination: jest.fn(),
       findById: jest.fn(),
       updateById: jest.fn(),
-      remove: jest.fn(),
+      remove: jest.fn()
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -32,9 +32,9 @@ describe('ArticleController', () => {
       providers: [
         {
           provide: ArticleService,
-          useValue: articleService,
-        },
-      ],
+          useValue: articleService
+        }
+      ]
     }).compile();
 
     controller = module.get<ArticleController>(ArticleController);
@@ -50,7 +50,7 @@ describe('ArticleController', () => {
         title: 'NestJS 入门',
         author: '张三',
         content: '文章内容',
-        type: 1,
+        type: 1
       };
       const expected = { id: 1, ...article };
       articleService.create.mockResolvedValue(expected);
@@ -63,7 +63,10 @@ describe('ArticleController', () => {
     });
 
     it('应该设置 HttpCode 元数据为 200', () => {
-      const httpCode = Reflect.getMetadata(HTTP_CODE_METADATA, ArticleController.prototype.create);
+      const httpCode = Reflect.getMetadata(
+        HTTP_CODE_METADATA,
+        ArticleController.prototype.create
+      );
 
       expect(httpCode).toBe(200);
     });
@@ -74,9 +77,9 @@ describe('ArticleController', () => {
       const expected = {
         list: [
           { id: 1, title: 'NestJS 入门' },
-          { id: 2, title: '拉萨大家了解' },
+          { id: 2, title: '拉萨大家了解' }
         ],
-        total: 2,
+        total: 2
       };
       articleService.findAll.mockResolvedValue(expected);
 
@@ -87,7 +90,10 @@ describe('ArticleController', () => {
     });
 
     it('应该使用 jwt 认证守卫', () => {
-      const guards = Reflect.getMetadata(GUARDS_METADATA, ArticleController.prototype.findAll);
+      const guards = Reflect.getMetadata(
+        GUARDS_METADATA,
+        ArticleController.prototype.findAll
+      );
 
       expect(guards).toHaveLength(1);
       expect(typeof guards[0]).toBe('function');
@@ -98,7 +104,7 @@ describe('ArticleController', () => {
     it('应该调用 ArticleService.findAllPagination 并返回结果', async () => {
       const query: FindAllArticleDto = {
         curPage: 1,
-        pageSize: 10,
+        pageSize: 10
       };
       const expected = {
         ...query,
@@ -106,8 +112,8 @@ describe('ArticleController', () => {
         list: [
           { id: 1, title: 'NestJS 入门' },
           { id: 10, title: '爱丽丝等级划分 入门' },
-          { id: 100, title: '啊管控手段包括多个 入门' },
-        ],
+          { id: 100, title: '啊管控手段包括多个 入门' }
+        ]
       };
       articleService.findAllPagination.mockResolvedValue(expected);
 
@@ -119,7 +125,10 @@ describe('ArticleController', () => {
     });
 
     it('应该使用 jwt 认证守卫', () => {
-      const guards = Reflect.getMetadata(GUARDS_METADATA, ArticleController.prototype.findAllPagination);
+      const guards = Reflect.getMetadata(
+        GUARDS_METADATA,
+        ArticleController.prototype.findAllPagination
+      );
 
       expect(guards).toHaveLength(1);
       expect(typeof guards[0]).toBe('function');
@@ -145,7 +154,7 @@ describe('ArticleController', () => {
         title: 'NestJS 进阶',
         author: '李四',
         content: '更新后的文章内容',
-        type: 1,
+        type: 1
       };
       const expected = { id: 1, ...article };
       articleService.updateById.mockResolvedValue(expected);

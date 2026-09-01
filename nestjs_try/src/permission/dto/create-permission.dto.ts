@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
 export class CreatePermissionDto {
   /** 权限名 */
@@ -19,4 +19,3 @@ export class CreatePermissionDto {
   /** 父级权限字符串 */
   readonly parentLook?: string;
 }
-

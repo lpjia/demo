@@ -1,12 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { articleTypeMap } from "#/core/constant";
-import { KindEntity } from "#/kind/entities/kind.entity";
-import { ArticleTagEntity } from "#/junction-table/article-tag/entities/article-tag.entity";
-import { UserLikeEntity } from "#/junction-table/user-like/entities/user-like.entity";
-import { BaseEntity } from "#/core/entity/base.entity";
-import { isEmptyFour } from "#/core/util";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  ManyToOne,
+  OneToMany
+} from 'typeorm';
+import { articleTypeMap } from '#/common/constant';
+import { KindEntity } from '#/kind/entities/kind.entity';
+import { ArticleTagEntity } from '#/junction-table/article-tag/entities/article-tag.entity';
+import { UserLikeEntity } from '#/junction-table/user-like/entities/user-like.entity';
+import { BaseEntity } from '#/common/entity/base.entity';
+import { isEmptyFour } from '#/common/util';
 
-@Entity("article")
+@Entity('article')
 export class ArticleEntity extends BaseEntity {
   /** 主键ID */
   @PrimaryGeneratedColumn({ unsigned: true })
@@ -21,7 +28,7 @@ export class ArticleEntity extends BaseEntity {
   author!: string;
 
   /** 文章内容 */
-  @Column("text")
+  @Column('text')
   content!: string;
 
   /** 封面URL */
@@ -80,10 +87,12 @@ export class ArticleEntity extends BaseEntity {
     name: 'kind_id',
     type: 'varchar',
     transformer: {
-      to(val) { // 写到DB
-        return val
+      to(val) {
+        // 写到DB
+        return val;
       },
-      from(val) { // 从DB读
+      from(val) {
+        // 从DB读
         if (isEmptyFour(val)) {
           return void 0;
         }
@@ -107,28 +116,29 @@ export class ArticleEntity extends BaseEntity {
   likeList?: UserLikeEntity[];
 
   /** 发布时间 */
-  @Column({ name: 'publish_time', type: 'datetime', })
+  @Column({ name: 'publish_time', type: 'datetime' })
   publishTime!: Date;
 
-  toResponseObject() { // 整理返回数据的格式
-    let respObj = {
-      ...this,
+  toResponseObject() {
+    // 整理返回数据的格式
+    const respObj = {
+      ...this
       // isRecommend: this.isRecommend ? true : false,
-    }
+    };
     if (this.kind) {
       respObj['kindName'] = this.kind.name;
-      delete respObj.kind
+      delete respObj.kind;
     }
     if (this.tagList) {
       respObj['tags'] = this.tagList.map((item) => ({
         id: item.tag?.id,
-        name: item.tag?.name,
-      }))
-      delete respObj.tagList
+        name: item.tag?.name
+      }));
+      delete respObj.tagList;
     }
     if (this.likeList) {
-      respObj['isMyLike'] = this.likeList.length > 0
-      delete respObj.likeList
+      respObj['isMyLike'] = this.likeList.length > 0;
+      delete respObj.likeList;
     }
     // if (this.author && this.author.id) {
     //   respObj.userId = this.author.id;

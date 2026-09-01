@@ -1,4 +1,10 @@
-import { lookToCurId, curIdToLook, getModuleId, getOperationMask, hasPermission } from './permission';
+import {
+  lookToCurId,
+  curIdToLook,
+  getModuleId,
+  getOperationMask,
+  hasPermission
+} from './permission';
 
 describe('permission', () => {
   describe('lookToCurId / curIdToLook', () => {

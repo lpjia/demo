@@ -9,6 +9,6 @@ import { KindEntity } from './entities/kind.entity';
   // imports: [TypeOrmModule.forFeature([KindEntity]), RedisCacheModule],
   imports: [TypeOrmModule.forFeature([KindEntity])],
   controllers: [KindController],
-  providers: [KindService],
+  providers: [KindService]
 })
-export class KindModule { }
+export class KindModule {}

@@ -1,4 +1,18 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpCode, UseInterceptors, ClassSerializerInterceptor, UseGuards, Req, Query, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  HttpCode,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  UseGuards,
+  Req,
+  Query,
+  Put
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -9,9 +23,9 @@ import { Roles, RolesGuard } from '#/auth/role.guard';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('用户')
-@Controller('users')
+@Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   /** 注册用户 */
   @ApiOperation({ security: [] })
@@ -26,7 +40,7 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   getUserInfo(@Req() req) {
-    return req.user
+    return req.user;
   }
 
   /** 获取全部用户 */

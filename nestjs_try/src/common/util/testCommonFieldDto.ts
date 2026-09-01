@@ -1,7 +1,11 @@
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 
-export function testIntHuoStringField(DtoClass: new (...args: any[]) => any, validDto: Record<string, unknown>, field: string) {
+export function testIntHuoStringField(
+  DtoClass: new (...args: any[]) => any,
+  validDto: Record<string, unknown>,
+  field: string
+) {
   describe(field, () => {
     it('为合法数字字符串时应通过验证', async () => {
       const dto = plainToInstance(DtoClass, { ...validDto, [field]: '1' });

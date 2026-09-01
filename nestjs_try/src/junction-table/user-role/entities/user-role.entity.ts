@@ -1,9 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from "typeorm";
-import { BaseEntity } from "#/core/entity/base.entity";
-import { UserEntity } from "#/user/entities/user.entity";
-import { RoleEntity } from "#/role/entities/role.entity";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  ManyToOne
+} from 'typeorm';
+import { BaseEntity } from '#/common/entity/base.entity';
+import { UserEntity } from '#/user/entities/user.entity';
+import { RoleEntity } from '#/role/entities/role.entity';
 
-@Entity("user_role")
+@Entity('user_role')
 export class UserRoleEntity extends BaseEntity {
   /** 主键ID */
   @PrimaryGeneratedColumn({ unsigned: true })

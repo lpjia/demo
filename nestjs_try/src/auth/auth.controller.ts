@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Param, Delete, Req, UseGuards, UseInterceptors, ClassSerializerInterceptor, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Req,
+  UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  HttpCode
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
@@ -7,7 +19,7 @@ import { LoginDto } from './dto/login.dto';
 @ApiTags('鉴权')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   /** 登录 */
   @ApiOperation({ security: [] }) // 去掉🔒

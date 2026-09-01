@@ -1,4 +1,9 @@
-import { ArgumentsHost, BadRequestException, HttpException, InternalServerErrorException } from '@nestjs/common';
+import {
+  ArgumentsHost,
+  BadRequestException,
+  HttpException,
+  InternalServerErrorException
+} from '@nestjs/common';
 import { HttpExceptionFilter } from './http-exception.filter';
 
 describe('HttpExceptionFilter', () => {
@@ -10,13 +15,13 @@ describe('HttpExceptionFilter', () => {
     const response = {
       status: jest.fn().mockReturnThis(),
       header: jest.fn().mockReturnThis(),
-      send: jest.fn(),
+      send: jest.fn()
     };
 
     const host = {
       switchToHttp: jest.fn().mockReturnValue({
-        getResponse: jest.fn().mockReturnValue(response),
-      }),
+        getResponse: jest.fn().mockReturnValue(response)
+      })
     } as unknown as ArgumentsHost;
 
     return { host, response };
@@ -25,16 +30,22 @@ describe('HttpExceptionFilter', () => {
   it('应该处理 class-validator 风格的数组错误信息', () => {
     const filter = new HttpExceptionFilter();
     const { host, response } = createHost();
-    const exception = new BadRequestException(['title 不能为空', 'content 长度不足']);
+    const exception = new BadRequestException([
+      'title 不能为空',
+      'content 长度不足'
+    ]);
 
     filter.catch(exception, host);
 
     expect(response.status).toHaveBeenCalledWith(200);
-    expect(response.header).toHaveBeenCalledWith('Content-Type', 'application/json; charset=utf-8');
+    expect(response.header).toHaveBeenCalledWith(
+      'Content-Type',
+      'application/json; charset=utf-8'
+    );
     expect(response.send).toHaveBeenCalledWith({
       status: 'fail',
       code: 400,
-      msg: 'title 不能为空, content 长度不足',
+      msg: 'title 不能为空, content 长度不足'
     });
   });
 
@@ -48,7 +59,7 @@ describe('HttpExceptionFilter', () => {
     expect(response.send).toHaveBeenCalledWith({
       status: 'fail',
       code: 403,
-      msg: '无权限访问',
+      msg: '无权限访问'
     });
   });
 
@@ -62,7 +73,7 @@ describe('HttpExceptionFilter', () => {
     expect(response.send).toHaveBeenCalledWith({
       status: 'fail',
       code: 500,
-      msg: 'Service Error',
+      msg: 'Service Error'
     });
   });
 
@@ -76,7 +87,7 @@ describe('HttpExceptionFilter', () => {
     expect(response.send).toHaveBeenCalledWith({
       status: 'fail',
       code: 500,
-      msg: '服务器异常',
+      msg: '服务器异常'
     });
   });
 
@@ -90,7 +101,7 @@ describe('HttpExceptionFilter', () => {
     expect(response.send).toHaveBeenCalledWith({
       status: 'fail',
       code: 404,
-      msg: 'Client Error',
+      msg: 'Client Error'
     });
   });
 });

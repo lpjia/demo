@@ -5,10 +5,8 @@ import { UserLikeEntity } from './entities/user-like.entity';
 import { ArticleEntity } from '#/article/entities/article.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([UserLikeEntity]),
-  ],
+  imports: [TypeOrmModule.forFeature([UserLikeEntity])],
   providers: [UserLikeService],
-  exports: [UserLikeService],
+  exports: [UserLikeService]
 })
-export class UserLikeModule { }
+export class UserLikeModule {}

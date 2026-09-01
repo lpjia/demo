@@ -1,4 +1,9 @@
-import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
+import {
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  NestInterceptor
+} from '@nestjs/common';
 import { map, Observable } from 'rxjs';
 import { convertDate, isObject } from '../../util';
 import { Resp } from '../../type';
@@ -23,8 +28,8 @@ export class TransformInterceptor implements NestInterceptor {
             status: 'success',
             code: 200,
             msg: '',
-            data,
-          }
+            data
+          };
         }
 
         const {
@@ -34,14 +39,15 @@ export class TransformInterceptor implements NestInterceptor {
         } = (data ?? {}) as ServiceResp;
 
         // 优先使用服务层显式返回的 _respData, 否则兜底使用普通业务数据字段
-        const finalData = _respData ?? (Object.keys(restData).length ? restData : null);
+        const finalData =
+          _respData ?? (Object.keys(restData).length ? restData : null);
 
         return {
           status: 'success',
           code: 200,
           msg: _respMsg,
-          data: convertDate(finalData),
-        }
+          data: convertDate(finalData)
+        };
       })
     );
   }

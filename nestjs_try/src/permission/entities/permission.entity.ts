@@ -1,8 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "#/core/entity/base.entity";
-import { RolePermissionEntity } from "#/junction-table/role-permission/entities/role-permission.entity";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+  ManyToOne,
+  OneToMany
+} from 'typeorm';
+import { BaseEntity } from '#/common/entity/base.entity';
+import { RolePermissionEntity } from '#/junction-table/role-permission/entities/role-permission.entity';
 
-@Entity("permission")
+@Entity('permission')
 export class PermissionEntity extends BaseEntity {
   /** 主键ID */
   @PrimaryGeneratedColumn({ unsigned: true })

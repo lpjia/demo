@@ -8,6 +8,6 @@ import { RolePermissionEntity } from '#/junction-table/role-permission/entities/
 @Module({
   imports: [TypeOrmModule.forFeature([RoleEntity, RolePermissionEntity])],
   controllers: [RoleController],
-  providers: [RoleService],
+  providers: [RoleService]
 })
-export class RoleModule { }
+export class RoleModule {}

@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from '../../core/entity/base.entity';
+import { BaseEntity } from '../../common/entity/base.entity';
 
 @Entity('system_config')
 export class SystemConfigEntity extends BaseEntity {

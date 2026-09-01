@@ -1,12 +1,17 @@
-import { Exclude } from "class-transformer";
-import dayjs from "dayjs";
-import { CreateDateColumn, Column, UpdateDateColumn, DeleteDateColumn } from "typeorm";
+import { Exclude } from 'class-transformer';
+import dayjs from 'dayjs';
+import {
+  CreateDateColumn,
+  Column,
+  UpdateDateColumn,
+  DeleteDateColumn
+} from 'typeorm';
 
 export class BaseEntity {
   /** 创建时间 */
   @CreateDateColumn({
     name: 'create_time',
-    type: 'datetime',
+    type: 'datetime'
     /* transformer: {
       to: (value: Date) => value,
       from: (value: Date) => {

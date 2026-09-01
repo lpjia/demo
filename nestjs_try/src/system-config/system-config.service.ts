@@ -8,12 +8,12 @@ export class SystemConfigService {
   constructor(
     @InjectRepository(SystemConfigEntity)
     private readonly systemConfigRepository: Repository<SystemConfigEntity>
-  ) { }
+  ) {}
 
   async getJwtGlobalVersion() {
     const config = await this.systemConfigRepository.findOne({
       where: { configKey: 'JWT_GLOBAL_VERSION' }
-    })
-    return Number(config?.configValue ?? 1)
+    });
+    return Number(config?.configValue ?? 1);
   }
 }

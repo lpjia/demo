@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Param, Delete, UseGuards, UseInterceptors, ClassSerializerInterceptor, HttpCode, Query, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  HttpCode,
+  Query,
+  Put
+} from '@nestjs/common';
 import { PermissionService } from './permission.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
@@ -9,9 +22,9 @@ import { FindAllPermissionDto } from './dto/find-all-permission.dto';
 @UseGuards(AuthGuard('jwt'))
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('权限')
-@Controller('permissions')
+@Controller('permission')
 export class PermissionController {
-  constructor(private readonly permissionService: PermissionService) { }
+  constructor(private readonly permissionService: PermissionService) {}
 
   /** 新增权限 */
   @HttpCode(200)

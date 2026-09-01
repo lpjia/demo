@@ -1,9 +1,17 @@
-import { Column, Entity, Index, BeforeInsert, AfterLoad, PrimaryColumn, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  BeforeInsert,
+  AfterLoad,
+  PrimaryColumn,
+  OneToMany
+} from 'typeorm';
 import { ulid } from 'ulid';
-import { userRoleMap } from '../../core/constant';
-import { BaseEntity } from '../../core/entity/base.entity';
+import { userRoleMap } from '../../common/constant';
+import { BaseEntity } from '../../common/entity/base.entity';
 import { UserLikeEntity } from '#/junction-table/user-like/entities/user-like.entity';
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcryptjs';
 import { Exclude, Expose } from 'class-transformer';
 import { UserRoleEntity } from '#/junction-table/user-role/entities/user-role.entity';
 
@@ -15,7 +23,12 @@ export class UserEntity extends BaseEntity {
 
   /** 自增ID */
   @Index({ unique: true }) // 为自增列创建唯一索引
-  @Column({ name: 'auto_id', generated: "increment", type: "int", unsigned: true })
+  @Column({
+    name: 'auto_id',
+    generated: 'increment',
+    type: 'int',
+    unsigned: true
+  })
   autoId!: number;
 
   /** 用户名 */
@@ -63,7 +76,7 @@ export class UserEntity extends BaseEntity {
   likeList?: UserLikeEntity[];
 
   constructor() {
-    super()
+    super();
     this.ulid = ulid();
   }
 

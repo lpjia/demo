@@ -9,10 +9,10 @@ import { FindAllKindDto } from './dto/find-all-kind.dto';
 export class KindService {
   constructor(
     @InjectRepository(KindEntity)
-    private readonly kindRepository: Repository<KindEntity>,
+    private readonly kindRepository: Repository<KindEntity>
 
     // private readonly redisCacheService: RedisCacheService
-  ) { }
+  ) {}
 
   async create(kind: Partial<KindEntity>) {
     const { name } = kind;
@@ -29,8 +29,8 @@ export class KindService {
   }
 
   async findAll() {
-    const [list, total] = await this.kindRepository.findAndCount()
-    return { total, list }
+    const [list, total] = await this.kindRepository.findAndCount();
+    return { total, list };
   }
 
   async findAllPagination(query: FindAllKindDto) {
@@ -38,31 +38,31 @@ export class KindService {
 
     const [list, total] = await this.kindRepository.findAndCount({
       skip: (curPage - 1) * pageSize,
-      take: pageSize,
+      take: pageSize
     });
 
     return {
       curPage,
       pageSize,
       total,
-      list,
+      list
     };
   }
 
   async findById(id: number) {
     const existKind = await this.kindRepository.findOne({
-      where: { id },
+      where: { id }
     });
     if (!existKind) {
       throw new HttpException(`id为${id}的分类不存在`, 404);
     }
-    return existKind
+    return existKind;
   }
 
   async updateById(id: number, tag: Partial<KindEntity>) {
     const existKind = await this.kindRepository.findOne({
       where: { id }
-    })
+    });
     if (!existKind) {
       throw new HttpException(`id为${id}的分类不存在`, 404);
     }
@@ -70,17 +70,16 @@ export class KindService {
       where: {
         name: tag.name
       }
-    })
+    });
     if (k && k.id !== id) {
-      throw new HttpException('分类已存在', 409)
+      throw new HttpException('分类已存在', 409);
     }
     const updateKind = this.kindRepository.merge(existKind, tag);
     updateKind.operateUpdateTime = new Date();
     try {
       await this.kindRepository.save(updateKind);
       return { _respMsg: '更新成功' };
-    }
-    catch {
+    } catch {
       throw new HttpException('更新失败', 400);
     }
   }
@@ -88,7 +87,7 @@ export class KindService {
   async remove(id: number) {
     const result = await this.kindRepository.softDelete({
       id,
-      deleteTime: IsNull(), // 不会重复删除"已删除"的记录
+      deleteTime: IsNull() // 不会重复删除"已删除"的记录
     });
     if (!result.affected) {
       throw new HttpException(`id为${id}的分类不存在或已删除`, 404);
@@ -96,7 +95,7 @@ export class KindService {
     await this.kindRepository.update(id, {
       operateUpdateTime: new Date()
     });
-    return { _respMsg: '删除成功' }
+    return { _respMsg: '删除成功' };
   }
 
   // // 缓存穿透防护：查 DB → 写入缓存 → 返回
@@ -149,5 +148,4 @@ export class KindService {
   //   await this.redisCacheService.cacheSet(`kind:${id}`, null, 1);
   //   await this.redisCacheService.cacheSet('kind:all', null, 1);
   // }
-
 }

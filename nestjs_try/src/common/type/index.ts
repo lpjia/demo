@@ -6,8 +6,8 @@ export interface Resp {
 }
 
 export interface JwtPayload {
-  ulid: string
-  username: string
-  role: number
-  gv: number
+  ulid: string;
+  username: string;
+  role: number;
+  gv: number;
 }

@@ -3,14 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user.entity';
 import { IsNull, Repository } from 'typeorm';
 import { FindAllUserDto } from './dto/find-all-user.dto';
-import { isEmptyThree } from '#/core/util';
+import { isEmptyThree } from '#/common/util';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>
-  ) { }
+  ) {}
 
   async register(user: Partial<UserEntity>): Promise<UserEntity> {
     const { username } = user;
@@ -55,8 +55,8 @@ export class UserService {
   } */
 
   async findAll() {
-    const [list, total] = await this.userRepository.findAndCount()
-    return { total, list }
+    const [list, total] = await this.userRepository.findAndCount();
+    return { total, list };
   }
 
   async findAllPagination(query: FindAllUserDto) {
@@ -66,48 +66,48 @@ export class UserService {
     // 每页10条, 索引是0->10, 11->20
     const [list, total] = await this.userRepository.findAndCount({
       skip: (curPage - 1) * pageSize,
-      take: pageSize,
+      take: pageSize
     });
 
     return {
       curPage,
       pageSize,
       total,
-      list,
+      list
     };
   }
 
   async findById(ulid: string) {
     const existUser = await this.userRepository.findOne({
-      where: { ulid },
+      where: { ulid }
     });
     if (!existUser) {
       throw new HttpException(`ulid为${ulid}的用户不存在`, 404);
     }
-    return existUser
+    return existUser;
   }
 
   async updateById(ulid: string, user: Partial<UserEntity>) {
     const existUser = await this.userRepository.findOne({
-      where: { ulid },
+      where: { ulid }
     });
     if (!existUser) {
       throw new HttpException(`ulid为${ulid}的用户不存在`, 404);
     }
     const u = await this.userRepository.findOneBy({ username: user.username });
-    if (u && u.ulid !== ulid) { // 得排除自身
+    if (u && u.ulid !== ulid) {
+      // 得排除自身
       throw new HttpException('用户名已存在', 409);
     }
     const cleanUser = Object.fromEntries(
       Object.entries(user).filter(([_, v]) => !isEmptyThree(v)) // 字段值为空的字段全都去掉
-    )
+    );
     const updateUser = this.userRepository.merge(existUser, cleanUser);
     updateUser.operateUpdateTime = new Date(); // 调接口改数据才更新operateUpdateTime
     try {
       await this.userRepository.save(updateUser);
       return { _respMsg: '更新成功' };
-    }
-    catch {
+    } catch {
       throw new HttpException('更新失败', 400);
     }
   }
@@ -115,7 +115,7 @@ export class UserService {
   async remove(ulid: string) {
     const result = await this.userRepository.softDelete({
       ulid,
-      deleteTime: IsNull(), // 不会重复删除"已删除"的记录
+      deleteTime: IsNull() // 不会重复删除"已删除"的记录
     });
     if (!result.affected) {
       throw new NotFoundException(`ulid为${ulid}的文章不存在或已删除`);
@@ -123,6 +123,6 @@ export class UserService {
     await this.userRepository.update(ulid, {
       operateUpdateTime: new Date()
     });
-    return { _respMsg: '删除成功' }
+    return { _respMsg: '删除成功' };
   }
 }

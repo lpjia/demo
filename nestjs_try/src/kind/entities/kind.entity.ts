@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-import { BaseEntity } from "#/core/entity/base.entity";
-import { ArticleEntity } from "#/article/entities/article.entity";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { BaseEntity } from '#/common/entity/base.entity';
+import { ArticleEntity } from '#/article/entities/article.entity';
 
-@Entity("kind")
+@Entity('kind')
 export class KindEntity extends BaseEntity {
   /** 主键ID */
   @PrimaryGeneratedColumn({ unsigned: true })
@@ -14,5 +14,5 @@ export class KindEntity extends BaseEntity {
 
   /** 文章列表 */
   @OneToMany(() => ArticleEntity, (article) => article.kind)
-  articleList!: ArticleEntity[]
+  articleList!: ArticleEntity[];
 }

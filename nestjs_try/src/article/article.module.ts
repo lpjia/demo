@@ -13,10 +13,10 @@ import { UserLikeModule } from '#/junction-table/user-like/user-like.module';
     TypeOrmModule.forFeature([ArticleEntity]),
     AuthModule,
     ArticleTagModule,
-    UserLikeModule,
+    UserLikeModule
   ],
   // exports:[], 导出
   controllers: [ArticleController],
-  providers: [ArticleService],
+  providers: [ArticleService]
 })
-export class ArticleModule { }
+export class ArticleModule {}

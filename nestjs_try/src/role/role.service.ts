@@ -9,7 +9,7 @@ export class RoleService {
   constructor(
     @InjectRepository(RoleEntity)
     private readonly roleRepository: Repository<RoleEntity>
-  ) { }
+  ) {}
 
   async create(role: Partial<RoleEntity>) {
     const { name } = role;
@@ -26,8 +26,8 @@ export class RoleService {
   }
 
   async findAll() {
-    const [list, total] = await this.roleRepository.findAndCount()
-    return { total, list }
+    const [list, total] = await this.roleRepository.findAndCount();
+    return { total, list };
   }
 
   async findAllPagination(query: FindAllRoleDto) {
@@ -35,14 +35,14 @@ export class RoleService {
 
     const [list, total] = await this.roleRepository.findAndCount({
       skip: (curPage - 1) * pageSize,
-      take: pageSize,
+      take: pageSize
     });
 
     return {
       curPage,
       pageSize,
       total,
-      list,
+      list
     };
   }
 
@@ -54,13 +54,13 @@ export class RoleService {
     if (!existRole) {
       throw new HttpException(`id为${id}的角色不存在`, 404);
     }
-    return existRole
+    return existRole;
   }
 
   async updateById(id: number, role: Partial<RoleEntity>) {
     const existRole = await this.roleRepository.findOne({
       where: { id }
-    })
+    });
     if (!existRole) {
       throw new HttpException(`id为${id}的角色不存在`, 404);
     }
@@ -68,17 +68,16 @@ export class RoleService {
       where: {
         name: role.name
       }
-    })
+    });
     if (r && r.id !== id) {
-      throw new HttpException('角色已存在', 409)
+      throw new HttpException('角色已存在', 409);
     }
     const updateRole = this.roleRepository.merge(existRole, role);
     updateRole.operateUpdateTime = new Date();
     try {
       await this.roleRepository.save(updateRole);
       return { _respMsg: '更新成功' };
-    }
-    catch {
+    } catch {
       throw new HttpException('更新失败', 400);
     }
   }
@@ -86,7 +85,7 @@ export class RoleService {
   async remove(id: number) {
     const result = await this.roleRepository.softDelete({
       id,
-      deleteTime: IsNull(), // 不会重复删除"已删除"的记录
+      deleteTime: IsNull() // 不会重复删除"已删除"的记录
     });
     if (!result.affected) {
       throw new HttpException(`id为${id}的角色不存在或已删除`, 404);
@@ -94,6 +93,6 @@ export class RoleService {
     await this.roleRepository.update(id, {
       operateUpdateTime: new Date()
     });
-    return { _respMsg: '删除成功' }
+    return { _respMsg: '删除成功' };
   }
 }

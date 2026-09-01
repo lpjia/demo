@@ -1,4 +1,17 @@
-import { Controller, Get, Post, Body, Param, Delete, UseInterceptors, ClassSerializerInterceptor, HttpCode, UseGuards, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  HttpCode,
+  UseGuards,
+  Put,
+  Query
+} from '@nestjs/common';
 import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -8,9 +21,9 @@ import { FindAllTagDto } from './dto/find-all-tag.dto';
 @UseGuards(AuthGuard('jwt'))
 @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('标签')
-@Controller('tags')
+@Controller('tag')
 export class TagController {
-  constructor(private readonly tagService: TagService) { }
+  constructor(private readonly tagService: TagService) {}
 
   /** 新增标签 */
   @HttpCode(200)

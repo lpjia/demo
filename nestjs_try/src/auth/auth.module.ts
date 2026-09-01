@@ -19,14 +19,14 @@ const jwtModule = JwtModule.register({
 
 const jwtModule = JwtModule.registerAsync({
   inject: [ConfigService],
-  useFactory: async (configService: ConfigService) => {
+  useFactory: (configService: ConfigService) => {
     return {
       secret: configService.get('SECRET'),
       signOptions: { expiresIn: '30h' } // 没有月, 有年y 周w 天d 时h 分m 秒s 毫秒ms
       // signOptions: { expiresIn: '10s' } // 没有月, 有年y 周w 天d 时h 分m 秒s 毫秒ms
-    }
+    };
   }
-})
+});
 
 @Module({
   imports: [
@@ -37,11 +37,6 @@ const jwtModule = JwtModule.registerAsync({
   ],
   exports: [jwtModule],
   controllers: [AuthController],
-  providers: [
-    AuthService,
-    LocalStrategy,
-    JwtStrategy,
-    SystemConfigService
-  ],
+  providers: [AuthService, LocalStrategy, JwtStrategy, SystemConfigService]
 })
-export class AuthModule { }
+export class AuthModule {}

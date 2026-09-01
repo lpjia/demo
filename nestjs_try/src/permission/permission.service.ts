@@ -4,7 +4,7 @@ import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IsNull, Repository } from 'typeorm';
 import { PermissionEntity } from './entities/permission.entity';
-import { curIdToLook } from '#/core/util/permission';
+import { curIdToLook } from '#/common/util/permission';
 import { FindAllPermissionDto } from './dto/find-all-permission.dto';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class PermissionService {
   constructor(
     @InjectRepository(PermissionEntity)
     private readonly permissionRepository: Repository<PermissionEntity>
-  ) { }
+  ) {}
 
   async create(permission: CreatePermissionDto) {
     const { name } = permission;
@@ -24,7 +24,7 @@ export class PermissionService {
       throw new HttpException('权限已存在', 409);
     }
 
-    this.validateLookCodes(permission)
+    this.validateLookCodes(permission);
 
     // const computedLook = curIdToLook(curId)
     // if (look !== computedLook) {
@@ -47,14 +47,15 @@ export class PermissionService {
   validateLookCodes(permission: CreatePermissionDto) {
     const { curId, look, parentId, parentLook } = permission;
 
-    const computedLook = curIdToLook(curId)
+    const computedLook = curIdToLook(curId);
     if (look !== computedLook) {
       throw new HttpException('curId和look不匹配', 400);
     }
 
-    let computedParentLook = ''
-    if (parentId) { // 不是null就
-      computedParentLook = curIdToLook(parentId)
+    let computedParentLook = '';
+    if (parentId) {
+      // 不是null就
+      computedParentLook = curIdToLook(parentId);
       if (parentLook !== computedParentLook) {
         throw new HttpException('parentId和parentLook不匹配', 400);
       }
@@ -62,8 +63,8 @@ export class PermissionService {
   }
 
   async findAll() {
-    const [list, total] = await this.permissionRepository.findAndCount()
-    return { total, list }
+    const [list, total] = await this.permissionRepository.findAndCount();
+    return { total, list };
   }
 
   async findAllPagination(query: FindAllPermissionDto) {
@@ -71,31 +72,31 @@ export class PermissionService {
 
     const [list, total] = await this.permissionRepository.findAndCount({
       skip: (curPage - 1) * pageSize,
-      take: pageSize,
+      take: pageSize
     });
 
     return {
       curPage,
       pageSize,
       total,
-      list,
+      list
     };
   }
 
   async findById(id: number) {
     const existPermission = await this.permissionRepository.findOne({
-      where: { id },
+      where: { id }
     });
     if (!existPermission) {
       throw new HttpException(`id为${id}的权限不存在`, 404);
     }
-    return existPermission
+    return existPermission;
   }
 
   async updateById(id: number, permission: CreatePermissionDto) {
     const existPermission = await this.permissionRepository.findOne({
       where: { id }
-    })
+    });
     if (!existPermission) {
       throw new HttpException(`id为${id}的权限不存在`, 404);
     }
@@ -103,20 +104,22 @@ export class PermissionService {
       where: {
         name: permission.name
       }
-    })
+    });
     if (p && p.id !== id) {
-      throw new HttpException('权限已存在', 409)
+      throw new HttpException('权限已存在', 409);
     }
 
-    this.validateLookCodes(permission)
+    this.validateLookCodes(permission);
 
-    const updatePermission = this.permissionRepository.merge(existPermission, permission);
+    const updatePermission = this.permissionRepository.merge(
+      existPermission,
+      permission
+    );
     updatePermission.operateUpdateTime = new Date();
     try {
       await this.permissionRepository.save(updatePermission);
       return { _respMsg: '更新成功' };
-    }
-    catch {
+    } catch {
       throw new HttpException('更新失败', 400);
     }
   }
@@ -124,7 +127,7 @@ export class PermissionService {
   async remove(id: number) {
     const result = await this.permissionRepository.softDelete({
       id,
-      deleteTime: IsNull(), // 不会重复删除"已删除"的记录
+      deleteTime: IsNull() // 不会重复删除"已删除"的记录
     });
     if (!result.affected) {
       throw new HttpException(`id为${id}的权限不存在或已删除`, 404);
@@ -132,6 +135,6 @@ export class PermissionService {
     await this.permissionRepository.update(id, {
       operateUpdateTime: new Date()
     });
-    return { _respMsg: '删除成功' }
+    return { _respMsg: '删除成功' };
   }
 }

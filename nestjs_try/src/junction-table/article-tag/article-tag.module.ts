@@ -3,6 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ArticleTagEntity } from './entities/article-tag.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ArticleTagEntity])],
+  imports: [TypeOrmModule.forFeature([ArticleTagEntity])]
 })
-export class ArticleTagModule { }
+export class ArticleTagModule {}

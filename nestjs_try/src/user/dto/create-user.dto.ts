@@ -1,4 +1,14 @@
-import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, Length, Min, MinLength, MaxLength } from "class-validator";
+import {
+  IsEmail,
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Length,
+  Min,
+  MinLength,
+  MaxLength
+} from 'class-validator';
 
 export class CreateUserDto {
   /** 用户名 */

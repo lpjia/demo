@@ -21,8 +21,7 @@ export function calcPricePer(spec: string, price: string): string | undefined {
     const liters = unit === 'ml' ? value / 1000 : value;
     pricePerUnit = priceNum / liters;
     unitLabel = '元/L';
-  }
-  else if (unit === 'g' || unit === 'kg') {
+  } else if (unit === 'g' || unit === 'kg') {
     const kgs = unit === 'g' ? value / 1000 : value;
     pricePerUnit = priceNum / kgs;
     unitLabel = '元/kg';
