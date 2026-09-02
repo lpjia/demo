@@ -1,0 +1,108 @@
+ export const WORK_ITEM_LIST = [
+    {
+      "createTime": "2026-09-02 16:44:41",
+      "operateUpdateTime": null,
+      "id": 1,
+      "workerTypeId": 1,
+      "name": "墙砖",
+      "sqm": 320,
+      "status": 1,
+      "cost": "25600.00",
+      "progress": 100,
+      "remark": "水电布线全部完工，验收合格",
+      "workers": [
+        {
+          "createTime": "2026-09-02 16:44:41",
+          "operateUpdateTime": null,
+          "id": 1,
+          "workItemId": 1,
+          "name": "王建国",
+          "unitPrice": "80.00",
+          "cost": "25600.00",
+          "remark": "水电组长，负责商铺整体水电排布"
+        },
+        {
+          "createTime": "2026-09-02 16:44:41",
+          "operateUpdateTime": null,
+          "id": 2,
+          "workItemId": 1,
+          "name": "李志强",
+          "unitPrice": "75.00",
+          "cost": "24000.00",
+          "remark": "水电技工，管线铺设作业"
+        }
+      ]
+    },
+    {
+      "createTime": "2026-09-02 16:44:41",
+      "operateUpdateTime": null,
+      "id": 2,
+      "workerTypeId": 1,
+      "name": "地砖",
+      "sqm": 285,
+      "status": 1,
+      "cost": "22800.00",
+      "progress": 100,
+      "remark": "给排水与强弱电施工完毕",
+      "workers": [
+        {
+          "createTime": "2026-09-02 16:44:41",
+          "operateUpdateTime": null,
+          "id": 3,
+          "workItemId": 2,
+          "name": "张海涛",
+          "unitPrice": "80.00",
+          "cost": "22800.00",
+          "remark": "负责西侧商铺给排水施工"
+        }
+      ]
+    },
+    {
+      "createTime": "2026-09-02 16:44:41",
+      "operateUpdateTime": null,
+      "id": 3,
+      "workerTypeId": 1,
+      "name": "踢脚线",
+      "sqm": 260,
+      "status": 1,
+      "cost": "18200.00",
+      "progress": 100,
+      "remark": "瓷砖铺贴、墙面抹灰已完成",
+      "workers": [
+        {
+          "createTime": "2026-09-02 16:44:41",
+          "operateUpdateTime": null,
+          "id": 4,
+          "workItemId": 3,
+          "name": "刘卫国",
+          "unitPrice": "70.00",
+          "cost": "18200.00",
+          "remark": "泥瓦工带班，地面瓷砖铺贴"
+        }
+      ]
+    },
+    {
+      "createTime": "2026-09-02 16:44:41",
+      "operateUpdateTime": null,
+      "id": 4,
+      "workerTypeId": 1,
+      "name": "楼梯",
+      "sqm": 45,
+      "status": 2,
+      "cost": "3150.00",
+      "progress": 75,
+      "remark": "吊顶龙骨搭建完毕，面板铺设中",
+      "workers": [
+        {
+          "createTime": "2026-09-02 16:44:41",
+          "operateUpdateTime": null,
+          "id": 5,
+          "workItemId": 4,
+          "name": "赵明亮",
+          "unitPrice": "70.00",
+          "cost": "3150.00",
+          "remark": "木工，吊顶框架搭建施工"
+        }
+      ]
+    }
+  ]

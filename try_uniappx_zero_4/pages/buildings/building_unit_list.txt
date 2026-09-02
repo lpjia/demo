@@ -1,0 +1,74 @@
+export const BUILDING_UNIT_LIST = [
+	{
+		"buildingId": 1,
+		"buildingName": "1#",
+		"projectId": 1,
+		"unitId": 1,
+		"unitName": "一单元",
+		"totalFloor": "4",
+		"finishedFloor": "3"
+	},
+	{
+		"buildingId": 1,
+		"buildingName": "1#",
+		"projectId": 1,
+		"unitId": 2,
+		"unitName": "二单元",
+		"totalFloor": "4",
+		"finishedFloor": "2"
+	},
+	{
+		"buildingId": 2,
+		"buildingName": "2#",
+		"projectId": 1,
+		"unitId": 3,
+		"unitName": "一单元",
+		"totalFloor": "3",
+		"finishedFloor": "2"
+	},
+	{
+		"buildingId": 2,
+		"buildingName": "2#",
+		"projectId": 1,
+		"unitId": 4,
+		"unitName": "二单元",
+		"totalFloor": "3",
+		"finishedFloor": "1"
+	},
+	{
+		"buildingId": 2,
+		"buildingName": "2#",
+		"projectId": 1,
+		"unitId": 5,
+		"unitName": "三单元",
+		"totalFloor": "3",
+		"finishedFloor": "2"
+	},
+	{
+		"buildingId": 3,
+		"buildingName": "3#",
+		"projectId": 1,
+		"unitId": 6,
+		"unitName": "一单元",
+		"totalFloor": "3",
+		"finishedFloor": "1"
+	},
+	{
+		"buildingId": 3,
+		"buildingName": "3#",
+		"projectId": 1,
+		"unitId": 7,
+		"unitName": "二单元",
+		"totalFloor": "3",
+		"finishedFloor": "1"
+	},
+	{
+		"buildingId": 4,
+		"buildingName": "4#",
+		"projectId": 1,
+		"unitId": 8,
+		"unitName": "一单元",
+		"totalFloor": "3",
+		"finishedFloor": "2"
+	}
+]

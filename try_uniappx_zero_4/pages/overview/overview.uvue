@@ -1,0 +1,276 @@
+<template>
+	<scroll-view class="page" scroll-y>
+		<view class="topbar">
+			<text class="eyebrow">工地管理</text>
+			<text class="page-title">{{ projectName }}</text>
+		</view>
+		<view class="content">
+			<view class="progress-card" @click="openBuildings">
+				<view>
+					<text class="meta-label">总体施工进度</text>
+					<text class="progress-value">{{ progress }}%</text>
+					<text class="progress-link">点击查看楼栋详情 →</text>
+				</view>
+				<view class="progress-ring" :style="ringStyle">
+					<view class="progress-ring-inner">
+						<image class="ring-home" src="@/static/overview/progress-home.svg" />
+					</view>
+				</view>
+			</view>
+
+			<view class="stats-row">
+				<view class="stat-card stat-green">
+					<text class="stat-value green-text">{{ finishedCount }}</text>
+					<text class="stat-label green-text">已完工</text>
+				</view>
+				<view class="stat-card stat-amber">
+					<text class="stat-value amber-text">{{ workingCount }}</text>
+					<text class="stat-label amber-text">施工中</text>
+				</view>
+				<view class="stat-card stat-slate">
+					<text class="stat-value slate-text">{{ pendingCount }}</text>
+					<text class="stat-label slate-text">待施工</text>
+				</view>
+			</view>
+
+			<text class="section-title">最近上报记录</text>
+			<view v-for="(record, index) in RECENT_RECORDS" :key="index" class="record-card">
+				<view class="record-top">
+					<view class="record-copy">
+						<text class="record-title">{{ record.building }} · {{ record.floor }}</text>
+						<text class="record-type">{{ record.type }}</text>
+					</view>
+					<status-badge :status="record.status" />
+				</view>
+				<text class="record-time">{{ record.time }}</text>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	import { getProjectById } from "@/api/index.uts";
+	import { RECENT_RECORDS } from "@/common/data.uts";
+	import { getStorage } from "@/utils/common.uts";
+	// import { PROJECT } from './project.uts'
+
+	const projectName = ref('')
+	const progress = ref(0)
+	const finishedCount = ref(0)
+	const workingCount = ref(0)
+	const pendingCount = ref(0)
+
+	getStorage('projectId')
+		.then(getProjectById)
+		.then((data : any) => {
+			console.log(data, 100);
+			projectName.value = data.name
+			progress.value = data.progress
+			finishedCount.value = data.finishedCount
+			workingCount.value = data.workingCount
+			pendingCount.value = data.pendingCount
+		})
+
+	const ringStyle = computed(() => {
+		const value = Math.max(0, Math.min(100, progress.value));
+		return (
+			"background: conic-gradient(from 0deg, #F97316 0 " + value + "%, #EEF0F2 " + value + "% 100%);"
+		);
+	});
+
+	function openBuildings() : void {
+		uni.navigateTo({ url: "/pages/buildings/buildings" });
+	}
+</script>
+
+<style scoped lang="scss">
+	@use "@/styles/_color.scss" as colorScss;
+
+	.page {
+		flex: 1;
+		background-color: colorScss.$color-surface;
+	}
+
+	.topbar {
+		padding: 32rpx 40rpx;
+		background-color: colorScss.$color-bg;
+		border-bottom: 1px solid colorScss.$color-border;
+		border-top: 1px solid colorScss.$color-border;
+	}
+
+	.eyebrow {
+		color: colorScss.$color-orange;
+		font-size: 24rpx;
+		font-weight: 600;
+	}
+
+	.page-title {
+		margin-top: 4rpx;
+		color: colorScss.$color-text;
+		font-size: 40rpx;
+		font-weight: 700;
+	}
+
+	.content {
+		padding: 32rpx;
+	}
+
+	.progress-card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 40rpx;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 32rpx;
+	}
+
+	.meta-label {
+		color: colorScss.$color-text-tertiary;
+		font-size: 24rpx;
+		font-weight: 500;
+	}
+
+	.progress-value {
+		margin-top: 6rpx;
+		color: colorScss.$color-orange;
+		font-size: 80rpx;
+		font-weight: 700;
+	}
+
+	.progress-link {
+		margin-top: 12rpx;
+		color: colorScss.$color-text-secondary;
+		font-size: 24rpx;
+	}
+
+	.progress-ring {
+		width: 144rpx;
+		height: 144rpx;
+		padding: 14rpx;
+		box-sizing: border-box;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.progress-ring-inner {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.ring-home {
+		color: colorScss.$color-orange;
+		width: 40rpx;
+		height: 40rpx;
+	}
+
+	.stats-row {
+		display: flex;
+		flex-direction: row;
+		margin: 24rpx -8rpx 0;
+	}
+
+	.stat-card {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0 8rpx;
+		padding: 22rpx 8rpx;
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 24rpx;
+	}
+
+	.stat-green {
+		background-color: colorScss.$color-green-light;
+		border-color: colorScss.$color-green-border;
+	}
+
+	.stat-amber {
+		background-color: colorScss.$color-amber-light;
+		border-color: colorScss.$color-amber-border;
+	}
+
+	.stat-slate {
+		background-color: colorScss.$color-slate-light;
+		border-color: colorScss.$color-slate-border;
+	}
+
+	.stat-value {
+		font-size: 44rpx;
+		font-weight: 700;
+	}
+
+	.stat-label {
+		margin-top: 4rpx;
+		font-size: 24rpx;
+	}
+
+	.green-text {
+		color: colorScss.$color-green;
+	}
+
+	.amber-text {
+		color: colorScss.$color-amber;
+	}
+
+	.slate-text {
+		color: colorScss.$color-slate;
+	}
+
+	.section-title {
+		margin: 30rpx 0 16rpx;
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+		font-weight: 600;
+	}
+
+	.record-card {
+		margin-bottom: 16rpx;
+		padding: 28rpx 30rpx;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 24rpx;
+	}
+
+	.record-top {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.record-copy {
+		flex: 1;
+		margin-right: 20rpx;
+	}
+
+	.record-title {
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+		font-weight: 500;
+	}
+
+	.record-type,
+	.record-time {
+		color: colorScss.$color-text-tertiary;
+		font-size: 24rpx;
+	}
+
+	.record-type {
+		margin-top: 6rpx;
+	}
+
+	.record-time {
+		margin-top: 16rpx;
+	}
+</style>

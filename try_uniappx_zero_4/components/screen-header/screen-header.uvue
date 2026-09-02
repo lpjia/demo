@@ -1,0 +1,56 @@
+<template>
+  <view class="screen-header">
+    <text class="screen-title">{{ title }}</text>
+    <text v-if="subtitle.length !== 0" class="screen-subtitle">{{ subtitle }}</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+defineProps<{
+  title: string;
+  subtitle: string;
+  // showBack: boolean;
+}>();
+defineEmits<{
+  back: [];
+}>();
+</script>
+
+<style>
+.screen-header {
+  padding: 32rpx 40rpx 24rpx;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8ebf0;
+  border-top: 1px solid #e8ebf0;
+}
+
+.back-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.back-icon {
+  color: #f97316;
+  font-size: 44rpx;
+  line-height: 32rpx;
+}
+.back-text {
+  margin-left: 4rpx;
+  color: #f97316;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.screen-title {
+  color: #111827;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.screen-subtitle {
+  margin-top: 4rpx;
+  color: #9ca3af;
+  font-size: 24rpx;
+}
+</style>

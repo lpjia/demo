@@ -1,0 +1,19 @@
+export const PROJECT = {
+	"createTime": "2026-08-31 10:25:43",
+	"operateUpdateTime": null,
+	"id": 1,
+	"name": "正商 · 书香华府",
+	"num": "PROJ20260811001",
+	"manager": "小葛",
+	"outputValue": "286000000.00",
+	"expense": "152300000.00",
+	"progress": 45,
+	"finishedCount": 3,
+	"workingCount": 5,
+	"pendingCount": 4,
+	"provinceId": "410000",
+	"cityId": "410100",
+	"districtId": "410108",
+	"address": "河南省郑州市惠济区天河路与开元路交叉口北侧",
+	"remark": "住宅楼盘施工项目，总楼栋12栋"
+}

@@ -1,0 +1,83 @@
+<template>
+	<scroll-view class="page" scroll-y>
+		<screen-header :title="buName" subtitle="楼层" />
+		<view class="floor-grid">
+			<view v-for="floor in floors" :key="floor.id"
+				:class="['floor-cell', floor.name.startsWith('-') ? 'basement-cell' : '']"
+				@click="openWorkerTypes(floor)">
+				<text :class="['floor-text', floor.name.startsWith('-') ? 'basement-text' : '']">
+					{{ floor.name }}
+				</text>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	import { COLOR } from "@/utils/const.uts";
+	// import { FLOORS } from "../../common/data.uts";
+	import { getFloorsById } from "@/api/index.uts";
+	import { Floor } from "@/type/index.uts";
+
+	const buName = ref("");
+	const floors = ref([])
+	const unitId = ref<number>(null)
+	const basement = ref(COLOR.deepGray);
+
+	onLoad((options) => {
+		buName.value = decodeURIComponent(options.buName);
+		unitId.value = options.unitId
+
+		getFloorsById(unitId.value).then((list : any[]) => floors.value = list)
+	});
+
+	function openWorkerTypes(floor : Floor) {
+		const bulName = `${buName.value} · ${floor.name}`
+
+		uni.navigateTo({
+			url: `/pages/worker-type/worker-type?bulName=${encodeURIComponent(bulName)}&floorId=${floor.id}`
+		});
+	}
+</script>
+<style scoped lang="scss">
+	@use "@/styles/_color.scss" as colorScss;
+
+	.page {
+		flex: 1;
+		background-color: colorScss.$color-surface;
+	}
+
+	.floor-grid {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 24rpx;
+	}
+
+	.floor-cell {
+		width: 30.3%;
+		height: 92rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1.5%;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 24rpx;
+	}
+
+	.basement-cell {
+		background-color: v-bind("basement");
+		border-color: v-bind("basement");
+	}
+
+	.floor-text {
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+		font-weight: 500;
+	}
+
+	.basement-text {
+		color: colorScss.$color-bg;
+	}
+</style>

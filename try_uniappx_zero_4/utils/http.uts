@@ -1,0 +1,287 @@
+export type HttpRequestConfig<T = any> = {
+	url?: string | null
+	method?: RequestMethod | null
+	data?: any | null
+	header?: UTSJSONObject | null
+	timeout?: number | null
+	dataType?: string | null
+	responseType?: string | null
+	baseURL?: string | null
+}
+
+export type HttpResponse<T> = {
+	data: T | null
+	statusCode: number
+	header: UTSJSONObject
+	cookies: string[]
+	config: HttpRequestConfig<T>
+}
+
+export type HttpClientOptions = {
+	baseURL?: string | null
+	timeout?: number | null
+	header?: UTSJSONObject | null
+	validateStatus?: ((statusCode: number) => boolean) | null
+}
+
+type InterceptorFulfilled<T> = (value: T) => T | Promise<T>
+type InterceptorRejected = (error: any) => any
+
+type InterceptorHandler<T> = {
+	id: number
+	fulfilled: InterceptorFulfilled<T> | null
+	rejected: InterceptorRejected | null
+}
+
+// Axios 的请求拦截器后注册的先执行，响应拦截器先注册的先执行，并允许 eject 移除单个拦截器。
+export class InterceptorManager<T> {
+	private handlers: Array<InterceptorHandler<T>> = []
+	private nextId: number = 0
+
+	use(
+		fulfilled: InterceptorFulfilled<T> | null,
+		rejected: InterceptorRejected | null = null
+	): number {
+		const id = this.nextId
+		this.nextId += 1
+		this.handlers.push({ id, fulfilled, rejected })
+		return id
+	}
+
+	eject(id: number): void {
+		for (let index = 0; index < this.handlers.length; index += 1) {
+			if (this.handlers[index].id == id) {
+				this.handlers[index].fulfilled = null
+				this.handlers[index].rejected = null
+				return
+			}
+		}
+	}
+
+	clear(): void {
+		this.handlers = []
+	}
+
+	runFulfilled(value: T, reverse: boolean = false): Promise<T> {
+		let chain: Promise<any> = Promise.resolve(value)
+		if (reverse) {
+			for (let index = this.handlers.length - 1; index >= 0; index -= 1) {
+				const handler = this.handlers[index]
+				chain = chain.then(
+					handler.fulfilled == null ? undefined : handler.fulfilled,
+					handler.rejected == null ? undefined : handler.rejected
+				)
+			}
+		} else {
+			this.handlers.forEach((handler) => {
+				chain = chain.then(
+					handler.fulfilled == null ? undefined : handler.fulfilled,
+					handler.rejected == null ? undefined : handler.rejected
+				)
+			})
+		}
+		return chain as Promise<T>
+	}
+
+	runError(error: any, reverse: boolean = false): Promise<T> {
+		let chain: Promise<any> = Promise.reject(error)
+		if (reverse) {
+			for (let index = this.handlers.length - 1; index >= 0; index -= 1) {
+				const handler = this.handlers[index]
+				chain = chain.then(
+					handler.fulfilled == null ? undefined : handler.fulfilled,
+					handler.rejected == null ? undefined : handler.rejected
+				)
+			}
+		} else {
+			this.handlers.forEach((handler) => {
+				chain = chain.then(
+					handler.fulfilled == null ? undefined : handler.fulfilled,
+					handler.rejected == null ? undefined : handler.rejected
+				)
+			})
+		}
+		return chain as Promise<T>
+	}
+}
+
+export class HttpError {
+	readonly name: string = 'HttpError'
+	message: string
+	config: HttpRequestConfig<any>
+	response: HttpResponse<any> | null
+	statusCode: number | null
+
+	constructor(
+		message: string,
+		config: HttpRequestConfig<any>,
+		response: HttpResponse<any> | null = null,
+		statusCode: number | null = null
+	) {
+		this.message = message
+		this.config = config
+		this.response = response
+		this.statusCode = statusCode
+	}
+}
+
+export type HttpInterceptors = {
+	request: InterceptorManager<HttpRequestConfig<any>>
+	response: InterceptorManager<HttpResponse<any>>
+}
+
+export class HttpClient {
+	private baseURL: string
+	private timeout: number
+	private defaultHeader: UTSJSONObject
+	private validateStatus: (statusCode: number) => boolean
+	readonly interceptors: HttpInterceptors
+
+	constructor(options: HttpClientOptions = {}) {
+		this.baseURL = options.baseURL ?? ''
+		this.timeout = options.timeout ?? 15000
+		this.defaultHeader = this.copyHeader(options.header)
+		this.validateStatus = options.validateStatus ?? ((statusCode: number): boolean => {
+			return statusCode >= 200 && statusCode < 300
+		})
+		this.interceptors = {
+			request: new InterceptorManager<HttpRequestConfig<any>>(),
+			response: new InterceptorManager<HttpResponse<any>>()
+		}
+	}
+
+	request<T>(config: HttpRequestConfig<T>): Promise<HttpResponse<T>> {
+		if (config.url == null || config.url.length == 0) {
+			return Promise.reject(new HttpError('Request url is required', config))
+		}
+		const mergedConfig = this.mergeConfig(config)
+		return this.interceptors.request.runFulfilled(mergedConfig, true)
+			.then((requestConfig) => this.dispatch<T>(requestConfig))
+			.then(
+				(response) => this.interceptors.response.runFulfilled(response) as Promise<HttpResponse<T>>,
+				error => this.interceptors.response.runError(error) as Promise<HttpResponse<T>>
+			)
+	}
+
+  /* 5种请求方法 */
+	get<T>(url: string, config: HttpRequestConfig<T> | null = null): Promise<HttpResponse<T>> {
+		return this.request<T>(this.withMethod(url, 'GET', config))
+	}
+	post<T>(url: string, data: any | null = null, config: HttpRequestConfig<T> | null = null): Promise<HttpResponse<T>> {
+		const requestConfig = this.withMethod(url, 'POST', config)
+		requestConfig.data = data
+		return this.request<T>(requestConfig)
+	}
+	put<T>(url: string, data: any | null = null, config: HttpRequestConfig<T> | null = null): Promise<HttpResponse<T>> {
+		const requestConfig = this.withMethod(url, 'PUT', config)
+		requestConfig.data = data
+		return this.request<T>(requestConfig)
+	}
+	patch<T>(url: string, data: any | null = null, config: HttpRequestConfig<T> | null = null): Promise<HttpResponse<T>> {
+		const requestConfig = this.withMethod(url, 'PATCH', config)
+		requestConfig.data = data
+		return this.request<T>(requestConfig)
+	}
+	delete<T>(url: string, config: HttpRequestConfig<T> | null = null): Promise<HttpResponse<T>> {
+		return this.request<T>(this.withMethod(url, 'DELETE', config))
+	}
+
+	private withMethod<T>(url: string, method: RequestMethod, config: HttpRequestConfig<T> | null): HttpRequestConfig<T> {
+		if (config == null) {
+			return { url, method }
+		}
+		return {
+			url,
+			method,
+			data: config.data,
+			header: config.header,
+			timeout: config.timeout,
+			dataType: config.dataType,
+			responseType: config.responseType,
+			baseURL: config.baseURL
+		}
+	}
+
+	private mergeConfig<T>(config: HttpRequestConfig<T>): HttpRequestConfig<T> {
+		return {
+			url: config.url ?? '',
+			method: config.method ?? 'GET',
+			data: config.data,
+			header: this.mergeHeader(config.header),
+			timeout: config.timeout ?? this.timeout,
+			dataType: config.dataType,
+			responseType: config.responseType,
+			baseURL: config.baseURL ?? this.baseURL
+		}
+	}
+
+	private mergeHeader(header: UTSJSONObject | null | undefined): UTSJSONObject {
+		const merged = this.copyHeader(this.defaultHeader)
+		if (header != null) {
+			for (const key in header) {
+				merged[key] = header[key]
+			}
+		}
+		return merged
+	}
+
+	private copyHeader(header: UTSJSONObject | null | undefined): UTSJSONObject {
+		const copied = new UTSJSONObject()
+		if (header != null) {
+			for (const key in header) {
+				copied[key] = header[key]
+			}
+		}
+		return copied
+	}
+
+	private resolveUrl(baseURL: string | null | undefined, url: string): string {
+		if (url.startsWith('http://') || url.startsWith('https://')) {
+			return url
+		}
+		const base = baseURL ?? ''
+		if (base.length == 0) return url
+		if (base.endsWith('/') && url.startsWith('/')) return `${base}${url.substring(1)}`
+		if (!base.endsWith('/') && !url.startsWith('/')) return `${base}/${url}`
+		return `${base}${url}`
+	}
+
+	private dispatch<T>(config: HttpRequestConfig<T>): Promise<HttpResponse<T>> {
+		return new Promise<HttpResponse<T>>((resolve, reject) => {
+			const requestOptions: RequestOptions<T> = {
+				url: this.resolveUrl(config.baseURL, config.url ?? ''),
+				method: config.method,
+				data: config.data,
+				header: config.header,
+				timeout: config.timeout,
+				dataType: config.dataType,
+				responseType: config.responseType,
+				success: (result) => {
+					const response: HttpResponse<T> = {
+						data: result.data,
+						statusCode: result.statusCode,
+						header: (result.header as UTSJSONObject) ?? new UTSJSONObject(),
+						cookies: result.cookies ?? [],
+						config
+					}
+					if (!this.validateStatus(response.statusCode)) {
+						reject(new HttpError(`Request failed with status code ${response.statusCode}`, config, response, response.statusCode))
+						return
+					}
+					resolve(response)
+				},
+				fail: (error) => {
+					reject(new HttpError(error.errMsg, config))
+				}
+			}
+			uni.request<T>(requestOptions)
+		})
+	}
+}
+
+export function createHttp(options: HttpClientOptions = {}): HttpClient {
+	return new HttpClient(options)
+}
+
+/* 统一实例便于业务模块直接导入，也支持通过 createHttp 创建多个独立实例。 */
+export const http = createHttp()

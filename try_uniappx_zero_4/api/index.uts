@@ -1,0 +1,11 @@
+import request from "@/utils/request.uts";
+
+export const getProjectById = (id : number) => request.get(`/project/${id}`);
+
+export const getBuildingUnitListByProjectId = (id : number) => request.get(`/project/${id}/buildingUnit/all`);
+
+export const getFloorsById = (id : number) => request.get(`/floor/${id}/all`)
+
+export const getWorkerTypesById = (id : number) => request.get(`/worker-type/${id}/all`)
+
+export const getWorkItemsById = (id : number) => request.get(`/work-item/${id}/all`)

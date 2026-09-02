@@ -1,0 +1,36 @@
+<template>
+  <view class="detail-row">
+    <text class="detail-label">{{ label }}</text>
+    <text class="detail-value" :style="{ color: valueColor }">{{ value }}</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+defineProps<{ label: string; value: string; valueColor: string }>();
+</script>
+
+<style scoped lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+
+.detail-row {
+  min-height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid colorScss.$color-border;
+}
+.detail-label {
+  flex-shrink: 0;
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.detail-value {
+  flex: 1;
+  margin-left: 40rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: right;
+}
+</style>

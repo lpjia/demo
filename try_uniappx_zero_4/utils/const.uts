@@ -1,0 +1,18 @@
+export const COLOR = {
+	btnBlue: '#5bc0de',
+	expense: '#E11D48',
+	expenseLight: '#FFF1F2',
+	expenseBorder: '#FECDD3',
+	green: '#16A34A',
+	greenLight: '#F0FDF4',
+	greenBorder: '#BBF7D0',
+	deepGray: '#6d6d6d'
+} as const
+
+// 施工状态
+export const CONSTRUCTION_STATUS = {
+	0: '未知',
+	1: '已完工',
+	2: '施工中',
+	3: '待施工'
+} as const

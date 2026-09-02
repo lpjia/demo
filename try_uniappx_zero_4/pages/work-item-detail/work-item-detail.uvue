@@ -1,0 +1,664 @@
+<template>
+  <view class="page">
+    <screen-header :title="bulwName" subtitle="施工项详情" />
+    <scroll-view class="detail-scroll" scroll-y>
+      <view class="content">
+        <view class="info-card">
+          <view class="info-row">
+            <view class="info-cell">
+              <text class="info-label">施工项</text>
+              <text class="info-value">{{ item2.name }}</text>
+            </view>
+            <view class="info-cell">
+              <text class="info-label">区域</text>
+              <text class="info-value">{{ item.area }}</text>
+            </view>
+          </view>
+          <view class="info-row second-info-row">
+            <view class="info-cell">
+              <text class="info-label">平方数</text>
+              <text class="info-value">{{ item2.sqm }} 平方米</text>
+            </view>
+            <view class="info-cell">
+              <text class="info-label">施工状态</text>
+              <status-badge :status="CONSTRUCTION_STATUS[item2.status]" style="width: 120rpx" />
+            </view>
+          </view>
+        </view>
+
+        <button
+          class="add-person-button"
+          @click="openAddPerson"
+          :style="{ backgroundColor: COLOR.btnBlue }"
+        >
+          <uni-icons type="plusempty" size="30rpx" color="var(--color-bg)" />
+          <text class="add-person-text">添加责任人</text>
+        </button>
+
+        <view v-if="noWorker" class="empty-person">
+          <text class="empty-person-text">暂无责任人</text>
+        </view>
+        <view
+          v-for="(person, index) in responsiblePeople"
+          :key="`${person.name}-${index}`"
+          class="person-card"
+        >
+          <view class="person-top">
+            <view class="person-copy">
+              <text class="info-label">责任人</text>
+              <text class="person-name">{{ person.name }}</text>
+            </view>
+            <view class="person-actions">
+              <view class="person-action edit-action" @click="openEditPerson(index)">
+                <uni-icons type="compose" size="30rpx" color="var(--color-orange)" />
+                <text class="edit-text">修改</text>
+              </view>
+              <view class="person-action delete-action" @click="deletePersonIndex = index">
+                <uni-icons type="closeempty" size="30rpx" color="var(--color-danger)" />
+                <text class="delete-text">删除</text>
+              </view>
+            </view>
+          </view>
+          <view class="person-divider"></view>
+          <view class="person-metrics">
+            <view class="person-metric">
+              <text class="info-label">单价</text>
+              <text class="person-metric-value">{{ person.unitPrice }} 元/平方米</text>
+            </view>
+            <view class="person-metric">
+              <text class="info-label">工价</text>
+              <text class="person-metric-value">{{ person.unitPrice * item.sqm }} 元</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="cost-banner">
+          <text class="cost-label">已产生造价</text>
+          <text class="cost-value">{{ item2.cost }}元</text>
+        </view>
+
+        <view class="report-card">
+          <text class="report-title">
+            上报施工进度
+            <text class="report-current">(目前是{{ item2.progress }}%)</text>
+          </text>
+          <view class="progress-options">
+            <view
+              v-for="value in progressOptions"
+              :key="value"
+              :class="['progress-option', progress == value ? 'progress-active' : '']"
+              @click="progress = value"
+            >
+              <text
+                :class="['progress-option-text', progress == value ? 'progress-active-text' : '']"
+              >
+                {{ value }}%
+              </text>
+            </view>
+          </view>
+          <button
+            :class="['report-button', progress == null ? 'disabled-button' : '']"
+            :disabled="progress == null"
+            @click="submitProgress"
+          >
+            确认上报
+          </button>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view v-if="personFormMode.length !== 0" class="mask bottom-mask">
+      <view class="person-sheet">
+        <view class="modal-header">
+          <text class="modal-title">
+            {{ personFormMode == "add" ? "新增责任人" : "修改责任人" }}
+          </text>
+          <view class="modal-close" @click="closePersonForm">
+            <text class="modal-close-text">×</text>
+          </view>
+        </view>
+        <view class="modal-field">
+          <text class="field-label">责任人</text>
+          <input class="modal-input" v-model="personName" placeholder="请输入姓名" />
+        </view>
+        <view class="modal-field">
+          <text class="field-label">单价（元/平方米）</text>
+          <input
+            class="modal-input"
+            v-model="personUnitPrice"
+            type="digit"
+            placeholder="请输入单价"
+          />
+        </view>
+        <view class="modal-actions">
+          <button class="modal-cancel" @click="closePersonForm">取消</button>
+          <button
+            :class="['modal-save', canSavePerson ? '' : 'disabled-button']"
+            :disabled="!canSavePerson"
+            @click="savePerson"
+          >
+            保存
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <view v-if="personToDelete != null" class="mask center-mask">
+      <view class="delete-dialog">
+        <view class="danger-icon"><text class="danger-icon-text">×</text></view>
+        <text class="delete-title">删除责任人</text>
+        <text class="delete-message">确认删除“{{ personToDeleteName }}”吗？删除后无法恢复。</text>
+        <view class="modal-actions">
+          <button class="modal-cancel" @click="deletePersonIndex = -1">取消</button>
+          <button class="confirm-delete" @click="confirmDeletePerson">确认删除</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { INITIAL_ITEMS } from "../../common/data.uts";
+import { currentWorkItem } from "../../common/store.uts";
+import type { ResponsiblePerson, WorkItem } from "../../common/types.uts";
+
+import { COLOR } from "@/utils/const.uts";
+import { getStorage } from "@/utils/common.uts";
+import { WorkItem as WorkItem2 } from "@/type/index.uts";
+import { CONSTRUCTION_STATUS } from "@/utils/const.uts";
+
+const bulwName = ref("");
+const item2 = ref<WorkItem2>({});
+// const workers = ref([])
+
+const noWorker = computed((): boolean => {
+  console.log("noWorker noWorker");
+  const workers = (item.value as any).workers;
+  return !Array.isArray(workers) || workers.length === 0;
+});
+
+onLoad((options) => {
+  bulwName.value = decodeURIComponent(options.bulwName);
+
+  getStorage("workItem").then((workItem: WorkItem2) => (item2.value = workItem));
+});
+
+const item = ref<WorkItem>(INITIAL_ITEMS[0]);
+const progress = ref<number | null>(null);
+const progressOptions: number[] = [30, 50, 80, 100];
+
+const responsiblePeople = ref<ResponsiblePerson[]>([]);
+const personFormMode = ref("");
+const editPersonIndex = ref(-1);
+const personName = ref("");
+const personUnitPrice = ref("");
+const deletePersonIndex = ref(-1);
+
+const personToDelete = computed((): ResponsiblePerson | null => {
+  if (deletePersonIndex.value < 0 || deletePersonIndex.value >= responsiblePeople.value.length)
+    return null;
+  return responsiblePeople.value[deletePersonIndex.value];
+});
+
+// 为了避免模板使用非空断言，在计算属性中统一提供删除对象名称的安全兜底。
+const personToDeleteName = computed((): string =>
+  personToDelete.value == null ? "" : personToDelete.value!.name
+);
+
+const canSavePerson = computed((): boolean => {
+  const price = parseFloat(personUnitPrice.value);
+  return (
+    personName.value.trim().length > 0 &&
+    personUnitPrice.value.trim().length > 0 &&
+    !isNaN(price) &&
+    price >= 0
+  );
+});
+
+function openAddPerson(): void {
+  personName.value = "";
+  personUnitPrice.value = "";
+  editPersonIndex.value = -1;
+  personFormMode.value = "add";
+}
+
+function openEditPerson(index: number): void {
+  const person = responsiblePeople.value[index];
+  personName.value = person.name;
+  personUnitPrice.value = `${person.unitPrice}`;
+  editPersonIndex.value = index;
+  personFormMode.value = "edit";
+}
+
+function closePersonForm(): void {
+  personFormMode.value = "";
+}
+
+function savePerson(): void {
+  if (!canSavePerson.value) {
+    return;
+  }
+  const values = {
+    name: personName.value.trim(),
+    unitPrice: parseFloat(personUnitPrice.value)
+  } as ResponsiblePerson;
+  if (personFormMode.value == "add") {
+    responsiblePeople.value.push(values);
+  } else if (editPersonIndex.value >= 0) {
+    responsiblePeople.value[editPersonIndex.value] = values;
+  }
+  closePersonForm();
+}
+
+function confirmDeletePerson() {
+  if (deletePersonIndex.value < 0) {
+    return;
+  }
+  responsiblePeople.value.splice(deletePersonIndex.value, 1);
+  deletePersonIndex.value = -1;
+}
+
+function submitProgress() {
+  if (progress.value == null) {
+    return;
+  }
+  if (progress.value <= item2.value.progress) {
+    uni.showToast({
+      title: "得大于目前进度",
+      icon: "error"
+    });
+    return;
+  }
+  uni.showToast({ title: "上报成功", icon: "success" });
+  // uni.navigateBack();
+}
+</script>
+
+<style scoped lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+
+.page {
+  flex: 1;
+  background-color: colorScss.$color-surface;
+}
+
+.detail-scroll {
+  flex: 1;
+  min-height: 0;
+}
+
+.content {
+  padding: 24rpx 32rpx 48rpx;
+}
+
+.info-card,
+.person-card,
+.report-card {
+  padding: 30rpx;
+  background-color: colorScss.$color-bg;
+  border: 1px solid colorScss.$color-border;
+  border-radius: 32rpx;
+}
+
+.info-row,
+.person-top,
+.person-metrics {
+  display: flex;
+  flex-direction: row;
+}
+
+.second-info-row {
+  margin-top: 30rpx;
+}
+
+.info-cell,
+.person-metric {
+  flex: 1;
+}
+
+.info-label {
+  margin-bottom: 8rpx;
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+}
+
+.info-value {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.add-person-button {
+  height: 88rpx;
+  margin: 24rpx 0;
+  color: colorScss.$color-bg;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 88rpx;
+  --color-bg: #{colorScss.$color-bg};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-person-text {
+  margin-left: 10rpx;
+  color: colorScss.$color-bg;
+  font-size: 32rpx;
+}
+
+.empty-person {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+  background-color: colorScss.$color-bg;
+  border: 1px dashed colorScss.$color-border-strong;
+  border-radius: 24rpx;
+}
+
+.empty-person-text {
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+}
+
+.person-card {
+  margin-bottom: 24rpx;
+}
+
+.person-top {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.person-copy {
+  flex: 1;
+}
+
+.person-name {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.person-actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.person-action {
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 18rpx;
+  border-radius: 16rpx;
+  --color-orange: #{colorScss.$color-orange};
+  --color-danger: #{colorScss.$color-danger};
+}
+
+.edit-action {
+  margin-right: 12rpx;
+  background-color: colorScss.$color-orange-light;
+}
+
+.delete-action {
+  background-color: colorScss.$color-danger-light;
+}
+
+.edit-text,
+.delete-text {
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-left: 10rpx;
+}
+
+.edit-text {
+  color: colorScss.$color-orange;
+}
+
+.delete-text {
+  color: colorScss.$color-danger;
+}
+
+.person-divider {
+  height: 1px;
+  margin: 24rpx 0;
+  background-color: colorScss.$color-border;
+}
+
+.person-metric-value {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.cost-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding: 24rpx 30rpx;
+  background-color: colorScss.$color-orange-light;
+  border: 1px solid colorScss.$color-orange-border;
+  border-radius: 24rpx;
+}
+
+.cost-label {
+  color: colorScss.$color-orange;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.cost-value {
+  color: colorScss.$color-orange;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.report-title {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.report-current {
+  color: colorScss.$color-text-tertiary;
+  font-weight: 400;
+}
+
+.progress-options {
+  display: flex;
+  flex-direction: row;
+  margin: 24rpx -6rpx 0;
+}
+
+.progress-option {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 6rpx;
+  background-color: colorScss.$color-surface-alt;
+  border: 1px solid colorScss.$color-border;
+  border-radius: 16rpx;
+}
+
+.progress-active {
+  background-color: colorScss.$color-orange;
+  border-color: colorScss.$color-orange;
+}
+
+.progress-option-text {
+  color: colorScss.$color-text-secondary;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.progress-active-text {
+  color: colorScss.$color-bg;
+}
+
+.report-button {
+  height: 88rpx;
+  margin-top: 24rpx;
+  color: colorScss.$color-bg;
+  background-color: colorScss.$color-green;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 88rpx;
+}
+
+.disabled-button {
+  opacity: 0.4;
+}
+
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  padding: 32rpx;
+  background-color: rgba(17, 24, 39, 0.38);
+}
+
+.bottom-mask {
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.center-mask {
+  align-items: center;
+  justify-content: center;
+}
+
+.person-sheet,
+.delete-dialog {
+  width: 100%;
+  padding: 36rpx;
+  background-color: colorScss.$color-bg;
+  border-radius: 32rpx;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title,
+.delete-title {
+  color: colorScss.$color-text;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.modal-close {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colorScss.$color-surface-alt;
+  border-radius: 14rpx;
+}
+
+.modal-close-text {
+  color: colorScss.$color-text-secondary;
+  font-size: 36rpx;
+}
+
+.modal-field {
+  margin-top: 28rpx;
+}
+
+.field-label {
+  margin-bottom: 10rpx;
+  color: colorScss.$color-text-secondary;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.modal-input {
+  height: 88rpx;
+  padding: 0 24rpx;
+  color: colorScss.$color-text;
+  background-color: colorScss.$color-surface;
+  border: 1px solid colorScss.$color-border-strong;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: row;
+  margin-top: 32rpx;
+}
+
+.modal-cancel,
+.modal-save,
+.confirm-delete {
+  flex: 1;
+  height: 84rpx;
+  margin: 0;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 84rpx;
+}
+
+.modal-cancel {
+  margin-right: 20rpx;
+  color: colorScss.$color-text-secondary;
+  background-color: colorScss.$color-surface-alt;
+}
+
+.modal-save {
+  color: colorScss.$color-bg;
+  background-color: colorScss.$color-orange;
+}
+
+.delete-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.danger-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  background-color: colorScss.$color-danger-light;
+  border-radius: 999rpx;
+}
+
+.danger-icon-text {
+  color: colorScss.$color-danger;
+  font-size: 48rpx;
+}
+
+.delete-message {
+  margin-top: 14rpx;
+  color: colorScss.$color-text-secondary;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.confirm-delete {
+  color: colorScss.$color-bg;
+  background-color: colorScss.$color-danger;
+}
+</style>

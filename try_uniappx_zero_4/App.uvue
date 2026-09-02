@@ -1,0 +1,65 @@
+<script setup lang="uts">
+// #ifdef APP-ANDROID || APP-HARMONY
+let firstBackTime = 0;
+// #endif
+
+onLaunch(() => {
+  console.log("App Launch");
+});
+
+onAppShow(() => {
+  console.log("App Show");
+});
+
+onAppHide(() => {
+  console.log("App Hide");
+});
+
+// #ifdef APP-ANDROID || APP-HARMONY
+onLastPageBackPress(() => {
+  console.log("App LastPageBackPress");
+  if (firstBackTime == 0) {
+    uni.showToast({
+      title: "再按一次退出应用",
+      position: "bottom"
+    });
+    firstBackTime = Date.now();
+    setTimeout(() => {
+      firstBackTime = 0;
+    }, 2000);
+  } else if (Date.now() - firstBackTime < 2000) {
+    firstBackTime = Date.now();
+    uni.exit();
+  }
+});
+
+onExit(() => {
+  console.log("App Exit");
+});
+// #endif
+</script>
+
+<style lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+/*每个页面公共css */
+page {
+  min-height: 100%;
+  background-color: #f8f9fb;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button::after {
+  border: none;
+}
+
+.forward {
+  color: colorScss.$color-text-secondary;
+  width: 32rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+</style>

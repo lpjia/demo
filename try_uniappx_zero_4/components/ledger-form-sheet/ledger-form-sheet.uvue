@@ -1,0 +1,553 @@
+<template>
+  <view class="mask">
+    <view class="sheet">
+      <view class="sheet-header">
+        <view>
+          <text class="sheet-title">{{ mode == "create" ? "新增收支" : "修改收支" }}</text>
+          <text class="sheet-subtitle">
+            {{ mode == "create" ? "记录本次资金往来" : "更新本次资金记录" }}
+          </text>
+        </view>
+        <view class="close-button" @click="emit('close')"><text class="close-text">×</text></view>
+      </view>
+
+      <scroll-view class="form-scroll" scroll-y>
+        <view class="form-body">
+          <view class="field">
+            <text class="field-label">
+              日期
+              <text class="required">*</text>
+            </text>
+            <picker mode="date" :value="ledgerForm.date" @change="onDateChange">
+              <view class="picker-field">
+                <text class="field-value">{{ ledgerForm.date }}</text>
+                <text class="picker-arrow">›</text>
+              </view>
+            </picker>
+          </view>
+
+          <view class="field">
+            <text class="field-label">
+              类别
+              <text class="required">*</text>
+            </text>
+            <view class="type-control">
+              <view
+                :class="['type-option', ledgerForm.type == 'expense' ? 'type-active' : '']"
+                @click="changeType('expense')"
+              >
+                <text
+                  :class="[
+                    'type-option-text',
+                    ledgerForm.type == 'expense' ? 'expense-text' : 'muted-text'
+                  ]"
+                >
+                  ↓ 支出
+                </text>
+              </view>
+              <view
+                :class="['type-option', ledgerForm.type == 'income' ? 'type-active' : '']"
+                @click="changeType('income')"
+              >
+                <text
+                  :class="[
+                    'type-option-text',
+                    ledgerForm.type == 'income' ? 'income-text' : 'muted-text'
+                  ]"
+                >
+                  ↑ 收入
+                </text>
+              </view>
+            </view>
+          </view>
+
+          <view class="field">
+            <text class="field-label">
+              金额
+              <text class="required">*</text>
+            </text>
+            <view class="amount-field">
+              <text class="currency">¥</text>
+              <input
+                class="amount-input"
+                type="digit"
+                :value="ledgerForm.amount"
+                placeholder="0.00"
+                @input="onAmountInput"
+                @blur="onAmountBlur"
+              />
+            </view>
+          </view>
+
+          <view class="field">
+            <text class="field-label">
+              转账渠道
+              <text class="required">*</text>
+            </text>
+            <picker :range="TRANSFER_CHANNELS" @change="onChannelChange">
+              <view class="picker-field">
+                <text
+                  :class="['field-value', ledgerForm.channel.length === 0 ? 'placeholder' : '']"
+                >
+                  {{ ledgerForm.channel.length !== 0 ? ledgerForm.channel : "请选择转账渠道" }}
+                </text>
+                <text class="picker-arrow">›</text>
+              </view>
+            </picker>
+          </view>
+
+          <view v-if="ledgerForm.type == 'expense'" class="field">
+            <text class="field-label">
+              支出用途
+              <text class="required">*</text>
+            </text>
+            <picker :range="EXPENSE_PURPOSES" @change="onPurposeChange">
+              <view class="picker-field">
+                <text :class="['field-value', ledgerForm.purpose.length == 0 ? 'placeholder' : '']">
+                  {{ ledgerForm.purpose.length !== 0 ? ledgerForm.purpose : "请选择支出用途" }}
+                </text>
+                <text class="picker-arrow">›</text>
+              </view>
+            </picker>
+          </view>
+
+          <view class="field">
+            <text class="field-label">
+              名称
+              <text class="optional">选填</text>
+            </text>
+            <input class="text-input" v-model="ledgerForm.name" placeholder="例如：7月材料款" />
+          </view>
+
+          <view class="field">
+            <view class="attachment-title-row">
+              <text class="field-label">
+                附件
+                <text v-if="mode == 'create'" class="required">*</text>
+              </text>
+              <text v-if="ledgerForm.attachments.length !== 0" class="attachment-count">
+                {{ ledgerForm.attachments.length }} 张
+              </text>
+            </view>
+            <view class="attachment-grid">
+              <view
+                v-for="attachment in ledgerForm.attachments"
+                :key="attachment.id"
+                class="attachment-item"
+              >
+                <image class="attachment-image" :src="attachment.url" mode="aspectFill" />
+                <view class="remove-attachment" @click="removeAttachment(attachment.id)">
+                  <text class="remove-text">×</text>
+                </view>
+              </view>
+              <view class="add-attachment" @click="chooseAttachments">
+                <text class="add-icon">+</text>
+                <text class="add-text">添加图片</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="sheet-actions">
+        <button class="cancel-button" @click="emit('close')">取消</button>
+        <button
+          :class="[
+            'save-button',
+            ledgerForm.type == 'expense' ? 'save-expense' : 'save-income',
+            canSaveLedger ? '' : 'button-disabled'
+          ]"
+          :disabled="!canSaveLedger"
+          @click="saveLedger"
+        >
+          {{
+            mode == "create" ? (ledgerForm.type == "expense" ? "保存支出" : "保存收入") : "保存修改"
+          }}
+        </button>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { EXPENSE_PURPOSES, TRANSFER_CHANNELS } from "../../common/data.uts";
+import { createAttachmentId, fileNameFromPath, getToday, roundMoney } from "../../common/utils.uts";
+import type { LedgerAttachment, LedgerEntry, LedgerFormState } from "../../common/types.uts";
+
+const props = defineProps<{ mode: string; initialEntry: LedgerEntry | null }>();
+const emit = defineEmits<{ close: []; save: [entry: LedgerEntry] }>();
+
+function createForm(): LedgerFormState {
+  const entry = props.initialEntry;
+  if (entry != null) {
+    return {
+      date: entry.date,
+      type: entry.type,
+      amount: entry.amount.toFixed(2),
+      channel: entry.channel,
+      purpose: entry.purpose,
+      name: entry.name,
+      attachments: entry.attachments.slice()
+    };
+  }
+  return {
+    date: getToday(),
+    type: "expense",
+    amount: "",
+    channel: "",
+    purpose: "",
+    name: "",
+    attachments: []
+  };
+}
+
+const ledgerForm = ref<LedgerFormState>(createForm());
+const canSaveLedger = computed((): boolean => {
+  const amount = parseFloat(ledgerForm.value.amount);
+  return (
+    ledgerForm.value.date.length > 0 &&
+    !isNaN(amount) &&
+    amount > 0 &&
+    ledgerForm.value.channel.length > 0 &&
+    (ledgerForm.value.type == "income" || ledgerForm.value.purpose.length > 0) &&
+    (ledgerForm.value.attachments.length > 0 || props.mode == "edit")
+  );
+});
+
+function changeType(type: string): void {
+  ledgerForm.value.type = type;
+  if (type == "income") ledgerForm.value.purpose = "";
+}
+
+function onDateChange(event: UniPickerChangeEvent): void {
+  ledgerForm.value.date = event.detail.value as string;
+}
+
+function onChannelChange(event: UniPickerChangeEvent): void {
+  const index = parseInt(event.detail.value as string);
+  ledgerForm.value.channel = TRANSFER_CHANNELS[index];
+}
+
+function onPurposeChange(event: UniPickerChangeEvent): void {
+  const index = parseInt(event.detail.value as string);
+  ledgerForm.value.purpose = EXPENSE_PURPOSES[index];
+}
+
+function onAmountInput(event: UniInputEvent): string {
+  const value = event.detail.value;
+  if (/^\d*(\.\d{0,2})?$/.test(value)) ledgerForm.value.amount = value;
+  return ledgerForm.value.amount;
+}
+
+function onAmountBlur(): void {
+  if (ledgerForm.value.amount.length == 0) return;
+  const value = parseFloat(ledgerForm.value.amount);
+  if (!isNaN(value)) ledgerForm.value.amount = value.toFixed(2);
+}
+
+function chooseAttachments(): void {
+  uni.chooseImage({
+    count: 9,
+    sizeType: ["compressed"],
+    sourceType: ["album", "camera"],
+    success: (result) => {
+      result.tempFilePaths.forEach((path) => {
+        ledgerForm.value.attachments.push({
+          id: createAttachmentId(),
+          name: fileNameFromPath(path),
+          url: path
+        } as LedgerAttachment);
+      });
+    }
+  });
+}
+
+function removeAttachment(id: string): void {
+  ledgerForm.value.attachments = ledgerForm.value.attachments.filter((item) => item.id != id);
+}
+
+function saveLedger(): void {
+  if (!canSaveLedger.value) return;
+  const name = ledgerForm.value.name.trim();
+  const entryType = ledgerForm.value.type;
+  const entry = {
+    id: props.initialEntry == null ? 0 : props.initialEntry!.id,
+    type: entryType,
+    label: name.length > 0 ? name : entryType == "expense" ? ledgerForm.value.purpose : "收入入账",
+    name: name,
+    amount: roundMoney(parseFloat(ledgerForm.value.amount)),
+    date: ledgerForm.value.date,
+    note:
+      entryType == "expense"
+        ? `${ledgerForm.value.purpose} · ${ledgerForm.value.channel}`
+        : ledgerForm.value.channel,
+    channel: ledgerForm.value.channel,
+    purpose: entryType == "expense" ? ledgerForm.value.purpose : "",
+    attachments: ledgerForm.value.attachments.slice()
+  } as LedgerEntry;
+  emit("save", entry);
+}
+</script>
+
+<style scoped lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48rpx 16rpx 0;
+  background-color: rgba(17, 24, 39, 0.46);
+}
+.sheet {
+  max-height: 96%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: colorScss.$color-bg;
+  border-radius: 32rpx 32rpx 0 0;
+}
+.sheet-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 40rpx;
+  border-bottom: 1px solid colorScss.$color-border;
+}
+.sheet-title {
+  color: colorScss.$color-text;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.sheet-subtitle {
+  margin-top: 4rpx;
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+}
+.close-button {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colorScss.$color-surface-alt;
+  border-radius: 16rpx;
+}
+.close-text {
+  color: colorScss.$color-text-secondary;
+  font-size: 40rpx;
+}
+.form-scroll {
+  flex: 1;
+  min-height: 0;
+}
+.form-body {
+  padding: 30rpx 40rpx 16rpx;
+}
+.field {
+  margin-bottom: 28rpx;
+}
+.field-label {
+  margin-bottom: 12rpx;
+  color: colorScss.$color-text-secondary;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.required {
+  color: colorScss.$color-danger;
+}
+.optional {
+  color: colorScss.$color-text-tertiary;
+  font-weight: 400;
+}
+.picker-field,
+.text-input,
+.amount-field {
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: colorScss.$color-surface;
+  border: 1px solid colorScss.$color-border-strong;
+  border-radius: 24rpx;
+}
+.picker-field {
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+.field-value {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.placeholder {
+  color: colorScss.$color-text-tertiary;
+}
+.picker-arrow {
+  color: colorScss.$color-text-tertiary;
+  font-size: 40rpx;
+}
+.text-input {
+  padding: 0 24rpx;
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+}
+.amount-field {
+  height: 96rpx;
+  padding: 0 28rpx;
+}
+.currency {
+  color: colorScss.$color-text;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.amount-input {
+  flex: 1;
+  height: 96rpx;
+  margin-left: 16rpx;
+  color: colorScss.$color-text;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+.type-control {
+  display: flex;
+  flex-direction: row;
+  padding: 8rpx;
+  background-color: colorScss.$color-surface-alt;
+  border-radius: 24rpx;
+}
+.type-option {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+}
+.type-active {
+  background-color: colorScss.$color-bg;
+}
+.type-option-text {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.expense-text {
+  color: colorScss.$color-expense;
+}
+.income-text {
+  color: colorScss.$color-green;
+}
+.muted-text {
+  color: colorScss.$color-text-tertiary;
+}
+.attachment-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.attachment-count {
+  color: colorScss.$color-green;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.attachment-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 4rpx -8rpx 0;
+}
+.attachment-item,
+.add-attachment {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 8rpx;
+  overflow: hidden;
+  border-radius: 16rpx;
+}
+.attachment-item {
+  position: relative;
+  background-color: colorScss.$color-surface-alt;
+  border: 1px solid colorScss.$color-border;
+}
+.attachment-image {
+  width: 100%;
+  height: 100%;
+}
+.remove-attachment {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(17, 24, 39, 0.72);
+  border-radius: 12rpx;
+}
+.remove-text {
+  color: colorScss.$color-bg;
+  font-size: 32rpx;
+}
+.add-attachment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: colorScss.$color-green-light;
+  border: 1px dashed colorScss.$color-green;
+}
+.add-icon {
+  color: colorScss.$color-green;
+  font-size: 42rpx;
+}
+.add-text {
+  margin-top: 10rpx;
+  color: colorScss.$color-green;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.sheet-actions {
+  display: flex;
+  flex-direction: row;
+  padding: 24rpx 40rpx 40rpx;
+  border-top: 1px solid colorScss.$color-border;
+  background-color: colorScss.$color-bg;
+}
+.cancel-button,
+.save-button {
+  height: 88rpx;
+  margin: 0;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 88rpx;
+}
+.cancel-button {
+  flex: 1;
+  margin-right: 20rpx;
+  color: colorScss.$color-text-secondary;
+  background-color: colorScss.$color-surface-alt;
+}
+.save-button {
+  flex: 1.6;
+  color: colorScss.$color-bg;
+}
+.save-expense {
+  background-color: colorScss.$color-expense;
+}
+.save-income {
+  background-color: colorScss.$color-green;
+}
+.button-disabled {
+  opacity: 0.4;
+}
+</style>

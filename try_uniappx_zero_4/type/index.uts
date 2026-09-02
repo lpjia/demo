@@ -1,0 +1,43 @@
+export interface BuildingUnit {
+	buildingName : string;
+	unitName : string;
+	totalFloor : string;
+	finishedFloor : string;
+	unitId : number;
+}
+
+export interface Floor {
+	// createTime: string;
+	// operateUpdateTime: null;
+	id : number;
+	unitId : number;
+	name : string;
+	// remark: string;
+	// commencementTime: string;
+	// completionTime: string;
+	// settlementTime: string;
+}
+
+export interface WorkerType {
+  // createTime: string;
+  // operateUpdateTime: null;
+  id: number;
+  floorId: number;
+  name: string;
+  progress: number;
+  status: number;
+  remark: string;
+}
+
+export interface WorkItem {
+  // createTime: string;
+  // operateUpdateTime: null;
+  id: number;
+  workerTypeId: number;
+  name: string;
+  sqm: number;
+  status: number;
+  cost: string;
+  progress: number;
+  remark: string;
+}

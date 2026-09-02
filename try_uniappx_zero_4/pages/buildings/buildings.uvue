@@ -1,0 +1,110 @@
+<template>
+	<scroll-view class="page" scroll-y>
+		<screen-header title="楼栋单元" subtitle="" />
+		<view class="list">
+			<view v-for="(buildingUnit, i) in buildingUnitList" :key="buildingUnit.unitId" class="building-card"
+				@click="openFloors(buildingUnit)">
+				<view class="card-main">
+					<view class="index-box">
+						<text class="index-text">{{ i + 1 }}</text>
+					</view>
+					<view class="building-copy">
+						<text class="building-name">
+							{{ `${buildingUnit.buildingName} ${buildingUnit.unitName}` }}
+						</text>
+						<text class="building-meta">
+							共 {{ buildingUnit.totalFloor }} 层，已完工 {{ buildingUnit.finishedFloor }} 层
+						</text>
+					</view>
+				</view>
+				<text class="forward">›</text>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	import { getBuildingUnitListByProjectId } from "@/api/index.uts";
+	import { BuildingUnit } from "@/type/index.uts";
+	import { getStorage } from "@/utils/common.uts";
+	// import { BUILDING_UNIT_LIST } from './building_unit_list.uts'
+
+	const buildingUnitList = ref([]);
+
+	getStorage("projectId")
+		.then(getBuildingUnitListByProjectId)
+		.then((list : any) => {
+			buildingUnitList.value = list;
+		});
+
+	function openFloors(buildingUnit : BuildingUnit) {
+		const buName = `${buildingUnit.buildingName} ${buildingUnit.unitName}`
+		uni.navigateTo({ url: `/pages/floors/floors?buName=${encodeURIComponent(buName)}&unitId=${buildingUnit.unitId}` });
+	}
+</script>
+
+<style scoped lang="scss">
+	@use "@/styles/_color.scss" as colorScss;
+
+	.page {
+		flex: 1;
+		background-color: colorScss.$color-surface;
+	}
+
+	.list {
+		padding: 32rpx;
+	}
+
+	.building-card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 24rpx;
+		padding: 28rpx 32rpx;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 32rpx;
+	}
+
+	.card-main {
+		flex: 1;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.index-box {
+		width: 88rpx;
+		height: 88rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		background-color: colorScss.$color-surface-alt;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 24rpx;
+	}
+
+	.index-text {
+		color: colorScss.$color-text-secondary;
+		font-size: 28rpx;
+		font-weight: 700;
+	}
+
+	.building-copy {
+		margin-left: 28rpx;
+	}
+
+	.building-name {
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+		font-weight: 600;
+	}
+
+	.building-meta {
+		margin-top: 6rpx;
+		color: colorScss.$color-text-tertiary;
+		font-size: 24rpx;
+	}
+</style>

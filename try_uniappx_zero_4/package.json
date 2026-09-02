@@ -1,0 +1,47 @@
+{
+	"name": "",
+	"version": "0.1.0",
+	"author": "lpjia",
+	"private": true,
+	"type": "module",
+	"main": "",
+	"module": "",
+	"description": "",
+	"keywords": [],
+	"license": "",
+	"scripts": {},
+	"uni-app": {
+		"scripts": {
+			"mp-weixin-dev": {
+				"title": "微信开发环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
+					"NODE_ENV": "development"
+				},
+				"define": {
+					"APP_ENV_DEV": true
+				}
+			},
+			"mp-weixin-sit": {
+				"title": "微信测试环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
+					"NODE_ENV": "development"
+				},
+				"define": {
+					"APP_ENV_SIT": true
+				}
+			},
+			"mp-weixin-prod": {
+				"title": "微信生产环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
+					"NODE_ENV": "production"
+				},
+				"define": {
+					"APP_ENV_PROD": true
+				}
+			}
+		}
+	}
+}

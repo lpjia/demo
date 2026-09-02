@@ -1,0 +1,30 @@
+type StorageResp = { data : unknown }
+
+/* storage本地存储 */
+export function setStorage(key : string, v : unknown) {
+	uni.setStorage({ key, data: v })
+}
+export async function getStorage(key : string) {
+	const res = await uni.getStorage({ key }) as unknown as StorageResp
+	return res.data
+}
+export function removeStorage(key : string) {
+	uni.removeStorage({ key })
+}
+export function clearStorage() {
+	uni.clearStorage()
+}
+
+/* 同步storage本地存储 */
+export function setStorageSync(k : string, v : unknown) {
+	uni.setStorageSync(k, v)
+}
+export function getStorageSync(k : string) {
+	return uni.getStorageSync(k)
+}
+export function removeStorageSync(k : string) {
+	uni.removeStorageSync(k)
+}
+export function clearStorageSync() {
+	uni.clearStorageSync()
+}

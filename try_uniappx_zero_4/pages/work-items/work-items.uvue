@@ -1,0 +1,211 @@
+<template>
+	<scroll-view class="page" scroll-y>
+		<screen-header :title="bulwName" subtitle="施工项" />
+		<view class="list">
+			<view v-for="(item, i) in workItems" :key="item.id" class="item-card">
+				<view class="item-top" @click="openDetail(item)">
+					<view class="item-identity">
+						<view class="small-index">
+							<text class="small-index-text">{{ i + 1 }}</text>
+						</view>
+						<text class="item-name">{{ item.name}}</text>
+						<!-- <text class="item-type">{{ item.type}}</text>
+						<text class="dot">·</text>
+						<text class="item-area">{{ item.area }}</text> -->
+					</view>
+					<view class="item-status">
+						<status-badge :status="CONSTRUCTION_STATUS[item.status]" />
+						<text class="forward">›</text>
+					</view>
+				</view>
+				<view class="divider"></view>
+				<view class="metrics">
+					<view class="metric">
+						<text class="metric-label">平方</text>
+						<text class="metric-value">
+							{{ item.sqm }}
+							<text class="metric-unit">m²</text>
+						</text>
+					</view>
+					<view class="metric-separator"></view>
+					<view class="metric">
+						<text class="metric-label">费用</text>
+						<text class="metric-value orange-text">¥{{ item.cost }}</text>
+					</view>
+					<view class="metric-separator"></view>
+					<view class="metric">
+						<text class="metric-label">责任人</text>
+						<text class="person-value">
+							{{ item.workers.length === 0 ? "无" : item.workers[0].name }}
+						</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</template>
+
+<script setup lang="uts">
+	// import { INITIAL_ITEMS } from "../../common/data.uts";
+	// import { selectWorkItem } from "../../common/store.uts";
+	// import type { WorkItem } from "../../common/types.uts";
+	import { setStorageSync } from "@/utils/common.uts";
+	import { getWorkItemsById } from "@/api/index.uts";
+	import { WorkItem } from "@/type/index.uts";
+	import { CONSTRUCTION_STATUS } from "@/utils/const.uts";
+
+	const bulwName = ref("");
+	const workerTypeId = ref<number>(null);
+	const workItems = ref([]);
+
+	onLoad((options) => {
+		bulwName.value = decodeURIComponent(options.bulwName);
+		workerTypeId.value = options.workerTypeId;
+
+		getWorkItemsById(workerTypeId.value).then((list : any[]) => (workItems.value = list));
+	});
+
+	function openDetail(item : WorkItem) {
+		setStorageSync('workItem', item)
+
+		uni.navigateTo({
+			url: `/pages/work-item-detail/work-item-detail?bulwName=${encodeURIComponent(bulwName.value)}`
+		});
+	}
+</script>
+
+<style scoped lang="scss">
+	@use "@/styles/_color.scss" as colorScss;
+
+	.page {
+		flex: 1;
+		background-color: colorScss.$color-surface;
+	}
+
+	.list {
+		padding: 32rpx;
+	}
+
+	.item-card {
+		margin-bottom: 24rpx;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-border;
+		border-radius: 32rpx;
+		overflow: hidden;
+	}
+
+	.item-top {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 26rpx 30rpx 20rpx;
+	}
+
+	.item-identity,
+	.item-status {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.item-identity {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.small-index {
+		width: 40rpx;
+		height: 40rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		background-color: colorScss.$color-surface-alt;
+		border-radius: 10rpx;
+	}
+
+	.small-index-text {
+		color: colorScss.$color-text-secondary;
+		font-size: 22rpx;
+		font-weight: 700;
+	}
+
+	// .item-type {
+	.item-name {
+		margin-left: 16rpx;
+		color: colorScss.$color-text;
+		font-size: 32rpx;
+		font-weight: 700;
+	}
+
+	.dot {
+		margin: 0 12rpx;
+		color: colorScss.$color-text-tertiary;
+		font-size: 28rpx;
+	}
+
+	.item-area {
+		color: colorScss.$color-text-secondary;
+		font-size: 28rpx;
+		font-weight: 500;
+	}
+
+	.forward {
+		margin-left: 8rpx;
+		padding-bottom: 6rpx;
+	}
+
+	.divider {
+		height: 1px;
+		margin: 0 30rpx;
+		background-color: colorScss.$color-border;
+	}
+
+	.metrics {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		padding: 22rpx 30rpx 26rpx;
+	}
+
+	.metric {
+		flex: 1;
+	}
+
+	.metric-label {
+		color: colorScss.$color-text-tertiary;
+		font-size: 24rpx;
+	}
+
+	.metric-value {
+		margin-top: 4rpx;
+		color: colorScss.$color-text;
+		font-size: 32rpx;
+		font-weight: 700;
+	}
+
+	.metric-unit {
+		margin-left: 4rpx;
+		color: colorScss.$color-text-tertiary;
+		font-size: 22rpx;
+		font-weight: 400;
+	}
+
+	.person-value {
+		margin-top: 6rpx;
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+		font-weight: 600;
+	}
+
+	.orange-text {
+		color: colorScss.$color-orange;
+	}
+
+	.metric-separator {
+		width: 1px;
+		margin: 0 20rpx;
+		background-color: colorScss.$color-border;
+	}
+</style>

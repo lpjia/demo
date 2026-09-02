@@ -1,0 +1,157 @@
+<template>
+	<view class="page">
+		<view class="brand-area">
+			<view class="brand-icon">
+				<image class="brand-symbol" src="@/static/login/home.svg" />
+			</view>
+			<view>
+				<text class="brand-title">工地管理系统</text>
+				<text class="brand-subtitle">登录您的账户以继续</text>
+			</view>
+		</view>
+		<view class="form-area">
+			<text class="form-label">手机号</text>
+			<view class="input-shell">
+				<image class="input-icon" src="@/static/login/phone.svg" />
+				<input class="login-input" v-model="phone" type="number" maxlength="11" placeholder="请输入手机号" />
+			</view>
+			<text class="form-label">密码</text>
+			<view class="input-shell">
+				<image class="input-icon" src="@/static/login/lock.svg" />
+				<input class="login-input" v-model="password" :password="!showPassword" placeholder="请输入密码" />
+				<view class="password-toggle" @click="showPassword = !showPassword">
+					<image class="input-icon" v-if="!showPassword" src="@/static/login/eye.svg" />
+					<image class="input-icon" v-else src="@/static/login/close-eye.svg" />
+				</view>
+			</view>
+			<button class="login-button" @click="login">登录</button>
+		</view>
+	</view>
+</template>
+
+<script setup lang="uts">
+	import { setStorage } from "@/utils/common";
+
+	const phone = ref("");
+	const password = ref("");
+	const showPassword = ref(false);
+
+	function login() {
+		/* 登录成功后, 保存token和工程id */
+		setTimeout(() => {
+			setStorage('projectId', 1);
+			uni.switchTab({ url: "/pages/overview/overview" });
+		});
+	}
+</script>
+<style scoped lang="scss">
+	@use "@/styles/_color.scss" as colorScss;
+
+	.page {
+		flex: 1;
+		min-height: 100%;
+		background-color: colorScss.$color-bg;
+	}
+
+	.brand-area {
+		padding: 150rpx 48rpx 92rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background-image: linear-gradient(to bottom, colorScss.$color-orange-light, colorScss.$color-bg);
+		border-bottom: 1px solid colorScss.$color-border;
+
+		view:last-child {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.brand-icon {
+		width: 112rpx;
+		height: 112rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: colorScss.$color-bg;
+		border: 1px solid colorScss.$color-orange-border;
+		border-radius: 28rpx;
+		margin-right: 32rpx;
+
+		image {
+			color: colorScss.$color-orange;
+			width: 44rpx;
+			height: 44rpx;
+		}
+	}
+
+	.brand-title {
+		color: colorScss.$color-text;
+		font-size: 48rpx;
+		font-weight: 700;
+	}
+
+	.brand-subtitle {
+		margin-top: 12rpx;
+		color: colorScss.$color-text-tertiary;
+		font-size: 26rpx;
+	}
+
+	.form-area {
+		padding: 32rpx 48rpx 0;
+
+		.form-label {
+			font-size: 24rpx;
+			margin-bottom: 12rpx;
+			font-weight: 600;
+			color: colorScss.$color-text-secondary;
+		}
+	}
+
+	.input-shell {
+		height: 96rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 24rpx;
+		padding: 0 28rpx;
+		background-color: colorScss.$color-surface;
+		border: 1px solid colorScss.$color-border-strong;
+		border-radius: 24rpx;
+	}
+
+	.input-icon {
+		width: 38rpx;
+		color: colorScss.$color-text-tertiary;
+		font-size: 28rpx;
+	}
+
+	.login-input {
+		flex: 1;
+		height: 96rpx;
+		margin-left: 44rpx;
+		color: colorScss.$color-text;
+		font-size: 28rpx;
+	}
+
+	.password-toggle {
+		padding: 20rpx 0 20rpx 20rpx;
+	}
+
+	.toggle-text {
+		color: colorScss.$color-orange;
+		font-size: 24rpx;
+		font-weight: 500;
+	}
+
+	.login-button {
+		height: 96rpx;
+		margin-top: 16rpx;
+		color: colorScss.$color-bg;
+		background-color: colorScss.$color-orange;
+		border-radius: 24rpx;
+		font-size: 30rpx;
+		font-weight: 600;
+		line-height: 96rpx;
+	}
+</style>

@@ -1,0 +1,307 @@
+<template>
+  <scroll-view class="page" scroll-y>
+    <view class="topbar">
+      <view>
+        <text class="eyebrow">进出帐</text>
+        <text class="page-title">收支记录</text>
+      </view>
+      <view class="add-button" @click="showLedgerForm = true">
+        <uni-icons type="plusempty" size="30rpx" color="var(--color-green)" />
+        <text class="add-button-text">新增</text>
+      </view>
+    </view>
+
+    <view class="content">
+      <view class="summary-row">
+        <view class="summary-card income-summary">
+          <text class="summary-label income-text">总收入</text>
+          <text class="summary-value income-text">¥{{ toMoney(totalIncome) }}</text>
+        </view>
+        <view class="summary-card expense-summary">
+          <text class="summary-label expense-text">总支出</text>
+          <text class="summary-value expense-text">¥{{ toMoney(totalExpense) }}</text>
+        </view>
+      </view>
+
+      <view class="filter-tabs">
+        <view
+          v-for="option in tabOptions"
+          :key="option.value"
+          :class="['filter-tab', tab == option.value ? 'filter-active' : '']"
+          @click="tab = option.value"
+        >
+          <text :class="['filter-text', tab == option.value ? 'filter-active-text' : '']">
+            {{ option.label }}
+          </text>
+        </view>
+      </view>
+
+      <view v-if="filteredEntries.length === 0" class="empty-list">
+        <text class="empty-text">暂无收支记录</text>
+      </view>
+      <view v-for="entry in filteredEntries" :key="entry.id" class="entry-card">
+        <view :class="['entry-icon', entry.type == 'income' ? 'income-icon' : 'expense-icon']">
+          <text :class="entry.type == 'income' ? 'income-text' : 'expense-text'">
+            {{ entry.type == "income" ? "↑" : "↓" }}
+          </text>
+        </view>
+        <view class="entry-copy">
+          <text class="entry-label">{{ entry.label }}</text>
+          <text class="entry-meta">
+            {{ entry.channel.length !== 0 ? entry.channel : "未记录渠道" }} ·
+            {{ formatShortDate(entry.date) }}
+          </text>
+        </view>
+        <text :class="['entry-amount', entry.type == 'income' ? 'income-text' : 'expense-text']">
+          {{ entry.type == "income" ? "+" : "-" }}¥{{ toMoney(entry.amount) }}
+        </text>
+        <view class="detail-button" @click="openDetail(entry)">
+          <text class="forward">›</text>
+        </view>
+      </view>
+    </view>
+
+    <ledger-form-sheet
+      v-if="showLedgerForm"
+      mode="create"
+      :initial-entry="null"
+      @close="showLedgerForm = false"
+      @save="saveLedger"
+    />
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+import { addLedgerEntry, ledgerEntries, selectLedgerEntry } from "../../common/store.uts";
+import { formatShortDate, toMoney } from "../../common/utils.uts";
+import type { LedgerEntry } from "../../common/types.uts";
+
+type TabOption = { value: string; label: string };
+const tab = ref("all");
+const showLedgerForm = ref(false);
+const tabOptions: TabOption[] = [
+  { value: "all", label: "全部" },
+  { value: "income", label: "收入" },
+  { value: "expense", label: "支出" }
+];
+
+const totalIncome = computed((): number => {
+  let total = 0;
+  ledgerEntries.value.forEach((entry) => {
+    if (entry.type == "income") total += entry.amount;
+  });
+  return total;
+});
+
+const totalExpense = computed((): number => {
+  let total = 0;
+  ledgerEntries.value.forEach((entry) => {
+    if (entry.type == "expense") total += entry.amount;
+  });
+  return total;
+});
+
+const filteredEntries = computed((): LedgerEntry[] => {
+  if (tab.value == "all") return ledgerEntries.value;
+  return ledgerEntries.value.filter((entry) => entry.type == tab.value);
+});
+
+function saveLedger(entry: LedgerEntry): void {
+  addLedgerEntry(entry);
+  showLedgerForm.value = false;
+  uni.showToast({ title: "保存成功", icon: "success" });
+}
+
+function openDetail(entry: LedgerEntry): void {
+  selectLedgerEntry(entry);
+  uni.navigateTo({ url: "/pages/ledger-detail/ledger-detail" });
+}
+</script>
+<style scoped lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+.page {
+  flex: 1;
+  background-color: colorScss.$color-surface;
+}
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 40rpx;
+  background-color: colorScss.$color-bg;
+  border-bottom: 1px solid colorScss.$color-border;
+  border-top: 1px solid colorScss.$color-border;
+}
+.eyebrow {
+  color: colorScss.$color-green;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.page-title {
+  margin-top: 4rpx;
+  color: colorScss.$color-text;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.add-button {
+  padding: 12rpx 24rpx;
+  background-color: colorScss.$color-green-light;
+  border: 1px solid colorScss.$color-green-border;
+  border-radius: 16rpx;
+  --color-green: #{colorScss.$color-green};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.add-button-text {
+  color: colorScss.$color-green;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-left: 10rpx;
+}
+.content {
+  padding: 32rpx;
+}
+.summary-row {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -10rpx;
+}
+.summary-card {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 30rpx;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 32rpx;
+}
+.income-summary {
+  background-color: colorScss.$color-green-light;
+  border-color: colorScss.$color-green-border;
+}
+.expense-summary {
+  background-color: colorScss.$color-expense-light;
+  border-color: colorScss.$color-expense-border;
+}
+.summary-label {
+  font-size: 24rpx;
+}
+.summary-value {
+  margin-top: 8rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+}
+.income-text {
+  color: colorScss.$color-green;
+}
+.expense-text {
+  color: colorScss.$color-expense;
+}
+.filter-tabs {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24rpx;
+  padding: 8rpx;
+  background-color: colorScss.$color-surface-alt;
+  border-radius: 24rpx;
+}
+.filter-tab {
+  flex: 1;
+  height: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+}
+.filter-active {
+  background-color: colorScss.$color-bg;
+}
+.filter-text {
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.filter-active-text {
+  color: colorScss.$color-text;
+}
+.entry-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16rpx;
+  padding: 26rpx 24rpx;
+  background-color: colorScss.$color-bg;
+  border: 1px solid colorScss.$color-border;
+  border-radius: 24rpx;
+}
+.entry-icon {
+  width: 68rpx;
+  height: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 22rpx;
+}
+.income-icon {
+  background-color: colorScss.$color-green-light;
+  border-color: colorScss.$color-green-border;
+}
+.expense-icon {
+  background-color: colorScss.$color-expense-light;
+  border-color: colorScss.$color-expense-border;
+}
+.entry-copy {
+  flex: 1;
+  min-width: 0;
+  margin-left: 20rpx;
+}
+.entry-label {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.entry-meta {
+  margin-top: 5rpx;
+  color: colorScss.$color-text-tertiary;
+  font-size: 22rpx;
+}
+.entry-amount {
+  flex-shrink: 0;
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+.detail-button {
+  width: 58rpx;
+  height: 58rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 14rpx;
+  background-color: colorScss.$color-surface-alt;
+  border: 1px solid colorScss.$color-border;
+  border-radius: 16rpx;
+}
+.forward {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 10rpx;
+}
+.empty-list {
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.empty-text {
+  color: colorScss.$color-text-tertiary;
+  font-size: 26rpx;
+}
+</style>

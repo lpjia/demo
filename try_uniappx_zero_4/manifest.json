@@ -1,0 +1,73 @@
+{
+	// 为了保留空模板的原应用名，先注释旧值，再使用迁移后面向用户的产品名称。
+	// "name" : "try_uniappx_zero_2",
+	"name": "工地管理系统",
+	"appid": "__UNI__8D14BB0",
+	"description": "",
+	"versionName": "0.0.1",
+	"versionCode": "1",
+	"uni-app-x": {
+		"styleIsolationVersion": "2"
+	},
+	/* 快应用特有相关 */
+	"quickapp": {},
+	/* 小程序特有相关 */
+	"mp-weixin": {
+		"appid": "wx2941ca5e9ed2305c",
+		"setting": {
+			"urlCheck": false
+		},
+		"usingComponents": true
+	},
+	"mp-alipay": {
+		"usingComponents": true
+	},
+	"mp-baidu": {
+		"usingComponents": true
+	},
+	"mp-toutiao": {
+		"usingComponents": true
+	},
+	"uniStatistics": {
+		"enable": false
+	},
+	"vueVersion": "3",
+	"app": {
+		"distribute": {
+			"icons": {
+				"android": {
+					"hdpi": "",
+					"xhdpi": "",
+					"xxhdpi": "",
+					"xxxhdpi": ""
+				}
+			}
+		}
+	},
+	"app-android": {
+		"distribute": {
+			"modules": {},
+			"icons": {
+				"hdpi": "",
+				"xhdpi": "",
+				"xxhdpi": "",
+				"xxxhdpi": ""
+			},
+			"splashScreens": {
+				"default": {}
+			}
+		}
+	},
+	"app-ios": {
+		"distribute": {
+			"modules": {},
+			"icons": {},
+			"splashScreens": {}
+		}
+	},
+	"web": {
+		"router": {
+			"mode": ""
+		}
+	}
+}

@@ -1,0 +1,42 @@
+export const WORKER_TYPE_LIST = [
+    {
+      "createTime": "2026-09-02 14:13:34",
+      "operateUpdateTime": null,
+      "id": 1,
+      "floorId": 1,
+      "name": "泥工",
+      "progress": 100,
+      "status": 1,
+      "remark": ""
+    },
+    {
+      "createTime": "2026-09-02 14:13:34",
+      "operateUpdateTime": null,
+      "id": 2,
+      "floorId": 1,
+      "name": "木工",
+      "progress": 80,
+      "status": 2,
+      "remark": ""
+    },
+    {
+      "createTime": "2026-09-02 14:13:34",
+      "operateUpdateTime": null,
+      "id": 3,
+      "floorId": 1,
+      "name": "乳胶漆",
+      "progress": 60,
+      "status": 2,
+      "remark": ""
+    },
+    {
+      "createTime": "2026-09-02 14:13:34",
+      "operateUpdateTime": null,
+      "id": 4,
+      "floorId": 1,
+      "name": "小工",
+      "progress": 40,
+      "status": 2,
+      "remark": ""
+    }
+]

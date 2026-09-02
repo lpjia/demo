@@ -1,0 +1,59 @@
+import { createHttp } from '@/utils/http.uts'
+import { ENV } from '@/config/env.uts'
+import { clearStorage, clearStorageSync } from './common'
+
+const ins = createHttp({
+	baseURL: ENV.baseURL,
+	timeout: 10000
+})
+
+ins.interceptors.request.use((config) => {
+	// const token = uni.getStorageSync('token')
+	const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiOTk5MjBiODNjNzU2NDViYmI3MzY1ZWU1Zjg1NDVlYTgiLCJ1c2VySWQiOjEsImlhdCI6MTc4ODM0NDM5M30.Ft2evvyvLQ0qHPjPqpqiOmuPR6q16Jg2o949jCMGIpw'
+	const header = config.header ?? new UTSJSONObject()
+
+	if (token != null && token != '') {
+		header['Authorization'] = `Bearer ${token}`
+	}
+
+	config.header = header
+	return config
+})
+
+ins.interceptors.response.use(
+	// response.data 拿到的就是 { "code": 200, "msg": "操作成功", "data": ... }
+	(response) => {
+		if (response.data?.code === 200) {
+			return response.data?.data
+		}
+		else if (response.data?.code === 401) {
+			const routes = getCurrentPages()
+			console.log('routes:', routes)
+			console.log(routes[routes.length - 1].route);
+			// 非登录页
+			if (routes[routes.length - 1].route !== 'pages/login/login') {
+				// 重新跳转到首页
+				uni.reLaunch({ url: '/pages/login/login' })
+
+				// 清空登录用户数据
+				clearStorageSync()
+			}
+
+		}
+		/* 这里应该没有处理完, 看云笔记
+		uni-app x 跳转页面
+		权限不存在则拦截, 跳转到登录页 */
+
+		return Promise.reject(response.data?.msg)
+
+	},
+	(error) => {
+		if (error.statusCode == 401) {
+			uni.removeStorageSync('token')
+		}
+
+		return Promise.reject(error)
+	}
+)
+
+export default ins;

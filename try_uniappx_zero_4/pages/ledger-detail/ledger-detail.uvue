@@ -1,0 +1,300 @@
+<template>
+  <scroll-view class="page" scroll-y>
+    <view class="detail-header" :style="{ borderBottom: `1px solid ${accentBorder}` }">
+      <view>
+        <text class="header-eyebrow" :style="{ color: accent }">收支记录</text>
+        <text class="header-title">收支详情</text>
+      </view>
+      <view
+        class="edit-button"
+        :style="{ backgroundColor: accentLight, borderColor: accentBorder }"
+        @click="showEditForm = true"
+      >
+        <uni-icons v-if="isExpense" type="compose" size="30rpx" color="var(--color-expense)" />
+        <uni-icons v-else type="compose" size="30rpx" color="var(--color-green)" />
+        <text class="edit-button-text" :style="{ color: accent }">修改</text>
+      </view>
+    </view>
+
+    <view
+      class="amount-banner"
+      :style="{ backgroundColor: accentLight, borderColor: accentBorder }"
+    >
+      <view class="amount-icon" :style="{ borderColor: accentBorder }">
+        <text :style="{ color: accent }">{{ isExpense ? "↓" : "↑" }}</text>
+      </view>
+      <view class="amount-copy">
+        <text class="amount-label">{{ entry.label }}</text>
+        <text class="amount-value" :style="{ color: accent }">
+          {{ isExpense ? "-" : "+" }}¥{{ toMoney(entry.amount) }}
+        </text>
+      </view>
+    </view>
+
+    <view class="rows-section">
+      <ledger-detail-row label="日期" :value="formatLongDate(entry.date)" value-color="#111827" />
+      <ledger-detail-row label="类别" :value="isExpense ? '支出' : '收入'" :value-color="accent" />
+      <ledger-detail-row label="金额" :value="`¥${toMoney(entry.amount)}`" :value-color="accent" />
+      <ledger-detail-row
+        label="转账渠道"
+        :value="entry.channel.length !== 0 ? entry.channel : '未记录'"
+        value-color="#111827"
+      />
+      <ledger-detail-row
+        v-if="isExpense"
+        label="支出用途"
+        :value="entry.purpose.length !== 0 ? entry.purpose : '未记录'"
+        value-color="#111827"
+      />
+      <view class="name-row">
+        <text class="row-label">名称</text>
+        <text :class="['name-value', entry.name.length == 0 ? 'muted-name' : '']">
+          {{ entry.name.length !== 0 ? entry.name : "未填写" }}
+        </text>
+      </view>
+    </view>
+
+    <view class="attachments-section">
+      <view class="section-header">
+        <text class="section-title">附件</text>
+        <text
+          v-if="entry.attachments.length !== 0"
+          class="attachment-count"
+          :style="{ color: accent }"
+        >
+          {{ entry.attachments.length }} 张
+        </text>
+      </view>
+      <view v-if="entry.attachments.length !== 0" class="attachment-grid">
+        <view
+          v-for="(attachment, index) in entry.attachments"
+          :key="attachment.id"
+          class="attachment-item"
+          @click="previewAttachment(index)"
+        >
+          <image class="attachment-image" :src="attachment.url" mode="aspectFill" />
+        </view>
+      </view>
+      <view v-else class="empty-attachments"><text class="empty-text">未上传附件</text></view>
+    </view>
+
+    <ledger-form-sheet
+      v-if="showEditForm"
+      mode="edit"
+      :initial-entry="entry"
+      @close="showEditForm = false"
+      @save="saveEdit"
+    />
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+import { INITIAL_LEDGER_ENTRIES } from "../../common/data.uts";
+import { currentLedgerEntry, updateLedgerEntry } from "../../common/store.uts";
+import { formatLongDate, toMoney } from "../../common/utils.uts";
+import type { LedgerEntry } from "../../common/types.uts";
+
+import { COLOR } from "@/utils/const.uts";
+
+const entry = ref<LedgerEntry>(INITIAL_LEDGER_ENTRIES[0]);
+const showEditForm = ref(false);
+const isExpense = computed((): boolean => entry.value.type == "expense");
+const accent = computed((): string => (isExpense.value ? COLOR.expense : COLOR.green));
+const accentLight = computed((): string =>
+  isExpense.value ? COLOR.expenseLight : COLOR.greenLight
+);
+const accentBorder = computed((): string =>
+  isExpense.value ? COLOR.expenseBorder : COLOR.greenBorder
+);
+
+onLoad(() => {
+  refreshEntry();
+});
+onShow(() => {
+  refreshEntry();
+});
+
+function refreshEntry(): void {
+  if (currentLedgerEntry.value != null) entry.value = currentLedgerEntry.value!;
+}
+
+function previewAttachment(index: number): void {
+  const urls: string[] = [];
+  entry.value.attachments.forEach((attachment) => {
+    urls.push(attachment.url);
+  });
+  uni.previewImage({ urls: urls, current: index });
+}
+
+function saveEdit(updatedEntry: LedgerEntry): void {
+  updateLedgerEntry(updatedEntry);
+  entry.value = updatedEntry;
+  showEditForm.value = false;
+  uni.showToast({ title: "修改成功", icon: "success" });
+}
+</script>
+
+<style scoped lang="scss">
+@use "@/styles/_color.scss" as colorScss;
+.page {
+  flex: 1;
+  background-color: colorScss.$color-surface;
+}
+.detail-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 40rpx;
+  background-color: colorScss.$color-bg;
+  border-top: 1px solid colorScss.$color-border;
+}
+.header-eyebrow {
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.header-title {
+  margin-top: 4rpx;
+  color: colorScss.$color-text;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.edit-button {
+  padding: 12rpx 24rpx;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16rpx;
+  --color-expense: #{colorScss.$color-expense};
+  --color-green: #{colorScss.$color-green};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.edit-button-text {
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-left: 10rpx;
+}
+.amount-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 36rpx 40rpx;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.amount-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: colorScss.$color-bg;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 24rpx;
+}
+.amount-copy {
+  flex: 1;
+  min-width: 0;
+  margin-left: 24rpx;
+}
+.amount-label {
+  color: colorScss.$color-text-secondary;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.amount-value {
+  margin-top: 4rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+.rows-section {
+  margin-top: 24rpx;
+  padding: 0 40rpx;
+  background-color: colorScss.$color-bg;
+  border-top: 1px solid colorScss.$color-border;
+  border-bottom: 1px solid colorScss.$color-border;
+}
+.name-row {
+  min-height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.row-label {
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.name-value {
+  flex: 1;
+  margin-left: 40rpx;
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: right;
+}
+.muted-name {
+  color: colorScss.$color-text-tertiary;
+}
+.attachments-section {
+  margin-top: 24rpx;
+  padding: 30rpx 40rpx 40rpx;
+  background-color: colorScss.$color-bg;
+  border-top: 1px solid colorScss.$color-border;
+  border-bottom: 1px solid colorScss.$color-border;
+}
+.section-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.section-title {
+  color: colorScss.$color-text;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.attachment-count {
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.attachment-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: -8rpx;
+}
+.attachment-item {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 8rpx;
+  overflow: hidden;
+  background-color: colorScss.$color-surface-alt;
+  border: 1px solid colorScss.$color-border;
+  border-radius: 16rpx;
+}
+.attachment-image {
+  width: 100%;
+  height: 100%;
+}
+.empty-attachments {
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colorScss.$color-surface;
+  border: 1px dashed colorScss.$color-border-strong;
+  border-radius: 16rpx;
+}
+.empty-text {
+  color: colorScss.$color-text-tertiary;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+</style>
